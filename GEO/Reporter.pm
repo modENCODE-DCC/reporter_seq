@@ -450,17 +450,47 @@ sub get_real_factors {
     for my $rank (keys %$factors) {
 	my $type = $factors->{$rank}->[1];
 	my $rfactor = undef;
-	$rfactor = 'Strain ' . $strain{ident $self} if $type =~ /strain/i ;
-	$rfactor = 'Cell Line ' . $cellline{ident $self} if $type =~ /cell\s*line/i;
-	$rfactor = 'Developmental Stage ' . $devstage{ident $self} if ( $type =~ /dev/i || $type =~ /stage/i);
-	$rfactor = 'Tissue ' . $tissue{ident $self} if $type =~ /tissue/i;
-	$rfactor = 'Sex ' . $sex{ident $self} if $type =~ /sex/i;
-	if ( $type =~ /antibody/i ) {
-	    my $antibody_name = get_dbfield_info($antibody{ident $self})->{'official name'};
-	    $rfactor = 'Antibody ' . $antibody_name;
+	if ($type =~ /strain/i) {
+	    my $rfactor = 'Strain ' . $strain{ident $self};
+	    push @rfactors, $rfactor if defined($rfactor);
 	}
-	$rfactor = 'Gene' . $factors->{$rank}->[0] if $type =~ /gene/i;
-	push @rfactors, $rfactor if defined($rfactor);
+	elsif ($type =~ /cell\s*line/i) {
+	    my $rfactor = 'Cell Line ' . $cellline{ident $self};
+	    push @rfactors, $rfactor if defined($rfactor);
+	}
+	elsif ($type =~ /dev/i || $type =~ /stage/i) {
+	    my $rfactor = 'Developmental Stage ' . $devstage{ident $self};
+	    push @rfactors, $rfactor if defined($rfactor);
+	}
+	elsif ($type =~ /tissue/i) {
+	    my $rfactor = 'Tissue ' . $tissue{ident $self};
+	    push @rfactors, $rfactor if defined($rfactor);
+	}
+	elsif ($type =~ /sex/i) {
+	    my $rfactor = 'Sex ' . $sex{ident $self};
+	    push @rfactors, $rfactor if defined($rfactor);
+	}
+	elsif ($type =~ /antibody/i) {
+	    my $antibody_name = get_dbfield_info($antibody{ident $self})->{'official name'};
+	    my $rfactor = 'Antibody ' . $antibody_name;
+	    push @rfactors, $rfactor if defined($rfactor);	    
+	}
+	else {
+	    my $factor_name = get_value_by_info(0, 'name', $factors->{$rank}->[0]);
+	    my $rfactor = "$type $factor_name";
+	    push @rfactors, $rfactor if defined($rfactor);
+	}
+	#$rfactor = 'Strain ' . $strain{ident $self} if $type =~ /strain/i ;
+	#$rfactor = 'Cell Line ' . $cellline{ident $self} if $type =~ /cell\s*line/i;
+	#$rfactor = 'Developmental Stage ' . $devstage{ident $self} if ( $type =~ /dev/i || $type =~ /stage/i);
+	#$rfactor = 'Tissue ' . $tissue{ident $self} if $type =~ /tissue/i;
+	#$rfactor = 'Sex ' . $sex{ident $self} if $type =~ /sex/i;
+	#if ( $type =~ /antibody/i ) {
+	#    my $antibody_name = get_dbfield_info($antibody{ident $self})->{'official name'};
+	#    $rfactor = 'Antibody ' . $antibody_name;
+	#}
+	#$rfactor = 'Gene' . $factors->{$rank}->[0] if $type =~ /gene/i;
+	#push @rfactors, $rfactor if defined($rfactor);
     }
     return \@rfactors;
 }
@@ -484,6 +514,7 @@ sub get_factors {
 	    }
 	}
     }
+    print Dumper(%factor);
     $factors{ident $self} = \%factor;
 }
 
@@ -1899,6 +1930,38 @@ sub get_slotnum_by_datum_property {#this could go into a subclass of experiment
     }
     return @slots;
 }
+
+sub get_value_by_info {
+    my ($self, $row, $field, $fieldtext) = @_;
+    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+	for my $direction (('input', 'output')) {
+	    my $func = "get_" . $direction . "_data";
+	    for my $datum (@{$ap->$func()}) {
+		my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
+		if ($field eq 'name') {
+		    return $value if $name =~ /$fieldtext/;
+		}
+		if ($field eq 'heading') {
+		    return $value if $heading =~ /$fieldtext/;
+		}
+		for my $attr ($datum->get_attributes()) {
+		    my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+		    if ($field eq 'name') {
+			return $avalue if $aname =~ /$fieldtext/;		    
+		    }
+		    if ($field eq 'heading') {
+			return $avalue if $aheading =~ /$fieldtext/;
+		    }	    
+		}
+	    }
+	}
+    }
+    return undef;
+}
+
+
+
 
 sub _get_data_by_info {
     my ($aps, $direction, $field, $fieldtext) = @_;
