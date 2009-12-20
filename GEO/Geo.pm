@@ -92,6 +92,14 @@ sub get_gse_gsm {
     $gsm{ident $self}->{$gse} = \@gsml;
 }
 
+sub gsm_for_gse {
+    my ($self, $gse) = @_;
+    for my $k (keys %{$gsm{ident $self}}) {
+	return $gsm{ident $self}->{$k} if $k eq $gse;
+    }
+    return undef;
+}
+
 sub gse_for_gsm {
     my ($self, $gsm) = @_;
     for my ($gse, $gsml) (each $gsm{ident $self}) {
@@ -99,6 +107,7 @@ sub gse_for_gsm {
 	    return $gse if $xgsm eq $gsm;
 	}
     }
+    return undef;
 }
 
 sub fetch {
