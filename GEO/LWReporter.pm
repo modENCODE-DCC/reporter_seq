@@ -19,6 +19,10 @@ my %ap_slots               :ATTR( :set<ap_slots>               :default<undef>);
 my %project                :ATTR( :set<project>                :default<undef>);
 my %lab                    :ATTR( :set<lab>                    :default<undef>);
 my %contributors           :ATTR( :set<contributors>           :default<undef>);
+my %strain                 :ATTR( :set<strain>                 :default<undef>);
+my %cellline               :ATTR( :set<cellline>               :default<undef>);
+my %devstage               :ATTR( :set<devstage>               :default<undef>);
+my %antibody               :ATTR( :set<antibody>               :default<undef>);
 
 
 sub BUILD {
@@ -34,7 +38,7 @@ sub BUILD {
 
 sub get_all {
     my $self = shift;
-    for my $parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots project lab contributors]) {
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots project lab contributors strain cellline devstage antibody]) {
         my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
         $self->$get_func();
@@ -206,6 +210,175 @@ sub get_slotnum_ip {
     return $aps[-1] if scalar(@aps);
     return undef;
 }
+
+sub get_strain {
+    my $self = shift;
+    #for my $row (@{$groups{ident $self}->{0}->{0}}) {
+    for my $row ((0..$num_of_rows{ident $self})) {
+        my $strain = $self->get_strain_row($row);
+        print "strain $strain\n" and $strain{ident $self} = $strain and last if defined($strain);
+    }
+}
+
+sub get_strain_row {
+    my ($self, $row) = @_;
+    my ($strain, $tgt_gene, $tag);
+    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+        my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+        print $ap->get_protocol->get_name, "\n";
+        for my $datum (@{$ap->get_input_data()}) {
+            my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
+            print "$name, $heading, $value\n";
+            if (lc($name) =~ /^\s*strain\s*$/) {
+                if ($value =~ /[Ss]train:(.*)&/) {
+                    my $name = $1;
+                    if ($name =~ /(.*?):/) {
+                        my $tmp = uri_unescape($1);
+                        $tmp =~ s/_/ /g;
+                        $strain .= $tmp;
+                    } else {
+                        my $tmp = uri_unescape($name);    
+                        $tmp =~ s/_/ /g;
+                        $strain .= $tmp;
+                    }
+                } else { #fly strain
+                    $value =~ /(.*)&/ ;
+                    my $tmp = uri_unescape($1);
+                    $tmp =~ s/_/ /g;
+                    $strain .= $tmp;
+                }
+            }
+            for my $attr (@{$datum->get_attributes()}) {
+                my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+                if (lc($aname) =~ /^\s*strain\s*$/) {
+                    if ( $avalue =~ /[Ss]train:(.*)&/ ) {
+                        my $name = $1;
+                        if ($name =~ /(.*?):/) {
+                            my $tmp = uri_unescape($1);
+                            $tmp =~ s/_/ /g;
+                            $strain .= $tmp;
+                        }
+                    } else {
+                        $value =~ /(.*)&/ ;
+                        my $tmp = uri_unescape($1);
+                        $tmp =~ s/_/ /g;
+                        $strain .= $tmp;                        
+                    }
+                }
+                if (lc($aheading =~ /^target\s*id$/)) {
+                    $tgt_gene = uri_unescape($avalue);
+                }
+                if (lc($aheading =~ /^\s*tags\s*$/)) {
+                    $tag = uri_unescape($avalue);
+                }               
+            }
+        }
+    }
+    if ( defined($strain) ) {
+        $strain .= " (engineered, target gene $tgt_gene" if defined($tgt_gene);
+        $strain .= " tagged by $tag)" if defined($tag);
+        return $strain;
+    }
+    return undef;
+}
+
+
+sub get_cellline {
+    my $self = shift;
+    #for my $row (@{$groups{ident $self}->{0}->{0}}) {
+    for my $row ((0..$num_of_rows{ident $self})) {
+        my $cellline = $self->get_cellline_row($row);
+        print "cell line $cellline\n" and $cellline{ident $self} = $cellline and last if defined($cellline);
+    }
+}
+
+sub get_cellline_row {
+    my ($self, $row) = @_;
+    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+        my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+        for my $datum (@{$ap->get_input_data()}) {
+            my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
+            if (lc($name) =~ /^\s*cell[_\s]*line\s*$/) {
+                if ( $value =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
+                    my $tmp = uri_unescape($1);
+                    $tmp =~ s/_/ /g;
+                    return $tmp;
+                }
+            }
+            for my $attr (@{$datum->get_attributes()}) {
+                my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+                if (lc($aname) =~ /^cell[_\s]*line/) {
+                    if ( $avalue =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
+                        my $tmp = uri_unescape($1);
+                        $tmp =~ s/_/ /g;
+                        return $tmp;
+                    }
+                }
+            }
+        }
+    }
+    return undef;
+}
+
+sub get_devstage {
+    my $self = shift;
+    #for my $row (@{$groups{ident $self}->{0}->{0}}) {
+    for my $row ((0..$num_of_rows{ident $self})) {
+        my $devstage = $self->get_devstage_row($row);
+        print "dev stage $devstage\n" and $devstage{ident $self} = $devstage and last if defined($devstage);
+    }
+}
+
+sub get_devstage_row {
+    my ($self, $row) = @_;
+    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+        my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+        for my $datum (@{$ap->get_input_data()}) {
+            my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
+            if (lc($name) =~ /^\s*stage\s*$/) {
+                if ( $value =~ /[Dd]ev[Ss]tage(Worm|Fly):(.*?):/ ) {
+                    my $tmp = uri_unescape($2);
+                    $tmp =~ s/_/ /g;
+                    return $tmp;
+                }
+            }
+            for my $attr (@{$datum->get_attributes()}) {
+                my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+                if (lc($aname) =~ /dev.*stage/) {
+                    if ( $avalue =~ /[Dd]ev[Ss]tage(Worm|Fly):(.*?):/ ) {
+                        my $tmp = uri_unescape($2);
+                        $tmp =~ s/_/ /g;
+                        return $tmp;
+                    }
+                }               
+            }
+        }
+    }
+    return undef;
+}
+
+sub get_antibody {
+    my $self = shift;
+    if ($ap_slots{ident $self}->{'immunoprecipitation'}) {
+        #for my $row (@{$groups{ident $self}->{0}->{0}}) {
+	for my $row ((0..$num_of_rows{ident $self})) {	    
+            my $ab = $self->get_antibody_row($row);
+	    print "antibody $antibody\n" and $antibody{ident $self} = $ab and last if defined($ab);
+        }
+    }
+}
+
+sub get_antibody_row { #keep it as a datum object
+    my ($self, $row) = @_;
+    my $denorm_slots = $denorm_slots{ident $self} ;
+    my $ap_slots = $ap_slots{ident $self} ;
+    my $ip_ap = $denorm_slots->[$ap_slots->{'immunoprecipitation'}]->[$row];
+    my $antibodies;
+    eval { $antibodies = _get_datum_by_info($ip_ap, 'input', 'name', 'antibody') } ;
+    return $antibodies->[0] unless $@;
+    return undef;
+}
+
 
 sub get_slotnum_by_datum_property {#this could go into a subclass of experiment 
     #direction for input/output, field for heading/name, value for the text of heading/name
