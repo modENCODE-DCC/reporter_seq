@@ -16,10 +16,16 @@ my %title              :ATTR( :set<title>         :default<undef>);
 my $submission_date    :ATTR( :set<submission_date>         :default<undef>); 
 my %type         :ATTR( :set<type>         :default<undef>);
 my %strategy      :ATTR( :set<strategy>         :default<undef>);
+my %source      :ATTR( :set<source>         :default<undef>);
+my %organism      :ATTR( :set<organism>         :default<undef>);
+my %strain      :ATTR( :set<strain>         :default<undef>);
+my %devstage      :ATTR( :set<devstage>         :default<undef>);
+my %antibody      :ATTR( :set<antibody>         :default<undef>);
 my %supplementary_data  :ATTR( :set<supplementary_data>         :default<undef>);
 my %bed             :ATTR( :set<bed>         :default<[]>);
 my %wiggle         :ATTR( :set<wiggle>         :default<[]);
 my %sra             :ATTR( :set<sra>         :default<[]>);
+my %characteristics  :ATTR( :set<characteristics>         :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
@@ -34,7 +40,7 @@ sub BUILD {
 
 sub get_all {
     my ($self) = @_;
-    for my $parameter (qw[miniml contributor lab title submission_date type strategy supplementary_data wiggle sra]) {
+    for my $parameter (qw[miniml contributor lab title submission_date type strategy source organism devstage antibody supplementary_data wiggle sra ]) {
         my $get_func = "get_" . $parameter;
         $self->$get_func();	
     }
@@ -92,6 +98,48 @@ sub get_strategy {
     $strategy{ident $self} = $strategy;
 }
 
+sub get_source {
+    my ($self) = @_;
+    my $accxml = $miniml{ident $self};
+    my $source = $accxml->{Sample}->{'Library-Source'};
+    print "   Source: $source\n";
+    $source{ident $self} = $source;    
+}
+
+sub get_organism {
+    my ($self) = @_;
+    my $accxml = $miniml{ident $self};
+    my $organism = $accxml->{Sample}->{'Library-Organism'};
+    print "   Organism: $organism\n";
+    $organism{ident $self} = $organism;
+}
+
+sub get_characteristics {
+    my ($self) = @_;
+    my $accxml = $miniml{ident $self};
+    my $charact = $accxml->{Sample}->{'Characteristics'};
+    $characteristics{ident $self} = $charact;
+}
+
+sub get_strain {
+    my ($self) = @_;
+    my @contents = $self->get_content('characteristics', 'tag', 'strain');
+    $strain{ident $self} = $contents[0];
+}
+
+sub get_devstage {
+    my ($self) = @_;
+    my @contents = $self->get_content('characteristics', 'tag', 'growth stage');
+    $devstage{ident $self} = $contents[0];
+}
+
+sub get_antibody {
+    my ($self) = @_;
+    my @contents = $self->get_content('characteristics', 'tag', 'antibody');
+    $antibody{ident $self} = $contents[0];
+}
+
+
 sub get_supplementary_data {
     my ($self) = @_;
     my $accxml = $miniml{ident $self};
@@ -101,46 +149,43 @@ sub get_supplementary_data {
 
 sub get_bed {
     my ($self) = @_;
-    my $type = 'BED';
-    my @files = $self->get_datafiles($type);
+    my @files = $self->get_content('supplementary_data', 'type', 'BED');
     $bed{ident $self} = \@files;    
 }
 
 sub get_wiggle {
     my ($self) = @_;
-    my $type = 'WIG';
-    my @files = $self->get_datafiles($type);
+    my @files = $self->get_content('supplementary_data', 'type', 'WIG');
     $wiggle{ident $self} = \@files;
 }
 
 sub get_sra {
     my ($self) = @_;
-    my $type = 'SRA Experiment';
-    my @files = $self->get_datafiles($type);
+    my @files = $self->get_content('supplementary_data', 'type', 'SRA Experiment');;
     $sra{ident $self} = \@files;
 }
 
-sub get_datafiles {
-    my ($self, $type) = @_;
-    my @files;
-    my $datal = $supplementary_data{ident $self};
-    if (ref($datal) eq 'ARRAY') {
-	for my $data (@$datal) {
-	    if ($data->{'type'} eq $type) {
-		my $file = $data->{'content'};
-		$file =~ s/^\s*//; $file =~ s/\s*$//;
-		push @files, $file;
+sub get_content {
+    my ($self, $ele, $attr_name, $attr_value) = @_;
+    my @contents;
+    my $contentl = ${$ele}{ident $self};
+    if (ref($contentl) eq 'ARRAY') {
+	for my $data (@$contentl) {
+	    if ($data->{$attr_name} eq $attr_value) {
+		my $content = $data->{'content'};
+		$content =~ s/^\s*//; $content =~ s/\s*$//;
+		push @contents, $content;
 	    }
 	}
     }
-    if (ref($datal) eq 'HASH') {
-	if ($datal->{'type'} eq $type) {
-	    my $file = $datal->{'content'};
-	    $file =~ s/^\s*//; $file =~ s/\s*$//;
-	    push @files, $file;
+    if (ref($contentl) eq 'HASH') {
+	if ($contentl->{'attr'} eq $attr) {
+	    my $content = $contentl->{'content'};
+	    $content =~ s/^\s*//; $content =~ s/\s*$//;
+	    push @contents, $content;
 	}	
     }
-    return @files;
+    return @contents;
 }
 
 sub get_miniml {
