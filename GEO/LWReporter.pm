@@ -23,7 +23,8 @@ my %strain                 :ATTR( :set<strain>                 :default<undef>);
 my %cellline               :ATTR( :set<cellline>               :default<undef>);
 my %devstage               :ATTR( :set<devstage>               :default<undef>);
 my %antibody               :ATTR( :set<antibody>               :default<undef>);
-
+my %factors                :ATTR( :set<factors>                :default<undef>);
+my %tgt_gene               :ATTR( :set<tgt_gene>               :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
@@ -38,7 +39,7 @@ sub BUILD {
 
 sub get_all {
     my $self = shift;
-    for my $parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots project lab contributors strain cellline devstage antibody]) {
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots project lab contributors factors strain cellline devstage tgt_gene antibody]) {
         my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
         $self->$get_func();
@@ -168,6 +169,41 @@ sub get_contributors {
         $person{$rank}{'roles'} = $value if $name =~ /Person\s*Roles/i;
     }
     $contributors{ident $self} = \%person;
+}
+
+sub get_factors {
+    my $self = shift;
+    my %factor;
+    foreach my $property (@{$experiment{ident $self}->get_properties()}) {
+	my ($name, $value, $rank, $type) = ($property->get_name(), 
+					    $property->get_value(), 
+					    $property->get_rank(), 
+					    $property->get_type());
+	if ($name =~ /Experimental\s*Factor\s*Name/i) {
+	    $factor{$rank} = [$value];
+	}
+	if ($name =~ /Experimental\s*Factor\s*Type/i) {
+	    push @{$factor{$rank}}, $value;
+	    if (defined($property->get_termsource())) {
+		push @{$factor{$rank}} , ($type->get_cv()->get_name(), 
+					  $property->get_termsource()->get_accession());
+	    }
+	}
+    }
+    print Dumper(%factor);
+    $factors{ident $self} = \%factor;
+}
+
+sub get_tgt_gene {
+    my $self = shift;
+    my $factors = $factors{ident $self};
+    my $header;
+    for my $rank (keys %$factors) {
+	my $type = $factors->{$rank}->[1];
+	$header = $factors->{$rank}->[0] and last if $type eq 'gene';
+    }
+    my $tgt_gene = $self->get_value_by_info(0, 'name', $header);
+    $tgt_gene{ident $self} = $tgt_gene;
 }
 
 sub get_slotnum_seq {
@@ -379,6 +415,34 @@ sub get_antibody_row { #keep it as a datum object
     return undef;
 }
 
+sub get_value_by_info {
+    my ($self, $row, $field, $fieldtext) = @_;
+    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+	for my $direction (('input', 'output')) {
+	    my $func = "get_" . $direction . "_data";
+	    for my $datum (@{$ap->$func()}) {
+		my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
+		if ($field eq 'name') {
+		    return $value if $name =~ /$fieldtext/;
+		}
+		if ($field eq 'heading') {
+		    return $value if $heading =~ /$fieldtext/;
+		}
+		for my $attr ($datum->get_attributes()) {
+		    my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+		    if ($field eq 'name') {
+			return $avalue if $aname =~ /$fieldtext/;		    
+		    }
+		    if ($field eq 'heading') {
+			return $avalue if $aheading =~ /$fieldtext/;
+		    }	    
+		}
+	    }
+	}
+    }
+    return undef;
+}
 
 sub get_slotnum_by_datum_property {#this could go into a subclass of experiment 
     #direction for input/output, field for heading/name, value for the text of heading/name
