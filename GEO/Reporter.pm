@@ -732,6 +732,7 @@ sub get_tgt_gene {
 	$header = $factors->{$rank}->[0] and last if $type eq 'gene';
     }
     my $tgt_gene = $self->get_value_by_info(0, 'name', $header);
+    print $tgt_gene;
     $tgt_gene{ident $self} = $tgt_gene;
 }
 
@@ -1033,13 +1034,25 @@ sub get_molecule_type_row {
 sub get_antibody {
     my $self = shift;
     if ($ap_slots{ident $self}->{'immunoprecipitation'}) {
-     	for my $row (@{$groups{ident $self}->{0}->{0}}) {
-	    my $ab = $self->get_antibody_row($row);
-	    if ($ab) {
-		if ( is_antibody($ab) != -1 ) { #negative control or real antibody 
-		    $antibody{ident $self} = $ab;
+	if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {
+	    for my $row (@{$groups{ident $self}->{0}->{0}}) {
+		my $ab = $self->get_antibody_row($row);
+		if ($ab) {
+		    if ( is_antibody($ab) != -1 ) { #negative control or real antibody 
+			$antibody{ident $self} = $ab;
+		    }
 		}
 	    }
+	}
+	elsif (defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1) {
+	    for my $row (0..$num_of_rows{ident $self}) {
+		my $ab = $self->get_antibody_row($row);
+		if ($ab) {
+		    if ( is_antibody($ab) != -1 ) { #negative control or real antibody
+			$antibody{ident $self} = $ab;
+		    }
+		}
+	    }	    
 	}
     }
 }
@@ -1051,6 +1064,7 @@ sub is_antibody {
     $antibody =~ /[Aa][Bb]:([\w ]*?):/;
     $antibody = $1;
     $antibody =~ s/ +/ /g;
+    print $antibody;
     my @special_antibodies = ('No Antibody Control', 'AB46540_NIgG');
     my $is_control = 0;
     for my $control (@special_antibodies) {
@@ -1946,7 +1960,7 @@ sub get_value_by_info {
 		if ($field eq 'heading') {
 		    return $value if $heading =~ /$fieldtext/;
 		}
-		for my $attr ($datum->get_attributes()) {
+		for my $attr (@{$datum->get_attributes()}) {
 		    my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
 		    if ($field eq 'name') {
 			return $avalue if $aname =~ /$fieldtext/;		    
