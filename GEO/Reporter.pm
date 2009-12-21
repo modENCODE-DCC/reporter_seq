@@ -44,7 +44,7 @@ my %sex                    :ATTR( :set<sex>                    :default<undef>);
 my %molecule_type          :ATTR( :set<molecule_type>          :default<undef>);
 my %factors                :ATTR( :set<factors>                :default<undef>);
 my %antibody               :ATTR( :set<antibody>               :default<undef>);
-
+my %tgt_gene               :ATTR( :set<tgt_gene>               :default<undef>);
 
 
 
@@ -61,7 +61,7 @@ sub BUILD {
 
 sub get_all {
     my $self = shift;
-    for my $parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors experiment_design experiment_type organism strain cellline devstage genotype transgene tissue sex molecule_type factors antibody]) {
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type organism strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene]) {
 	my $get_func = "get_" . $parameter;
 	print "try to find $parameter ...";
 	$self->$get_func();
@@ -452,28 +452,33 @@ sub get_real_factors {
 	my $rfactor = undef;
 	if ($type =~ /strain/i) {
 	    my $rfactor = 'Strain ' . $strain{ident $self};
-	    push @rfactors, $rfactor if defined($rfactor);
+	    push @rfactors, $rfactor if defined($strain{ident $self});
 	}
 	elsif ($type =~ /cell\s*line/i) {
 	    my $rfactor = 'Cell Line ' . $cellline{ident $self};
-	    push @rfactors, $rfactor if defined($rfactor);
+	    push @rfactors, $rfactor if defined($cellline{ident $self});
 	}
 	elsif ($type =~ /dev/i || $type =~ /stage/i) {
 	    my $rfactor = 'Developmental Stage ' . $devstage{ident $self};
-	    push @rfactors, $rfactor if defined($rfactor);
+	    push @rfactors, $rfactor if defined($devstage{ident $self});
 	}
 	elsif ($type =~ /tissue/i) {
 	    my $rfactor = 'Tissue ' . $tissue{ident $self};
-	    push @rfactors, $rfactor if defined($rfactor);
+	    push @rfactors, $rfactor if defined($tissue{ident $self});
 	}
 	elsif ($type =~ /sex/i) {
 	    my $rfactor = 'Sex ' . $sex{ident $self};
-	    push @rfactors, $rfactor if defined($rfactor);
+	    push @rfactors, $rfactor if defined($sex{ident $self});
 	}
 	elsif ($type =~ /antibody/i) {
 	    my $antibody_name = get_dbfield_info($antibody{ident $self})->{'official name'};
 	    my $rfactor = 'Antibody ' . $antibody_name;
-	    push @rfactors, $rfactor if defined($rfactor);	    
+	    push @rfactors, $rfactor if defined($antibody{ident $self});	    
+	}
+	elsif ($type =~ /gene/i) {
+	    my $gene = $tgt_gene{ident $self};
+	    my $rfactor = 'Target gene ' . $gene;
+	    push @rfactors, $rfactor if defined($gene);
 	}
 	else {
 	    my $factor_name = get_value_by_info(0, 'name', $factors->{$rank}->[0]);
@@ -717,6 +722,20 @@ sub get_organism {
 	print $attr->get_value(), "\n" and $organism{ident $self} = $attr->get_value() if $attr->get_heading() eq 'species';
     }
 }
+
+sub get_tgt_gene {
+    my $self = shift;
+    my $factors = $factors{ident $self};
+    my $header;
+    for my $rank (keys %$factors) {
+	my $type = $factors->{$rank}->[1];
+	$header = $factors->{$rank}->[0] and last if $type eq 'gene';
+    }
+    my $tgt_gene = $self->get_value_by_info(0, 'name', $header);
+    $tgt_gene{ident $self} = $tgt_gene;
+}
+
+
 
 sub get_strain {
     my $self = shift;
@@ -1889,44 +1908,26 @@ sub get_slotnum_by_datum_property {#this could go into a subclass of experiment
     my @slots = ();
     my $found = 0;
     for (my $i=0; $i<scalar(@{$experiment->get_applied_protocol_slots()}); $i++) {
-	for my $applied_protocol (@{$experiment->get_applied_protocol_slots()->[$i]}) {
-	    last if $found;
-	    if ($direction eq 'input') {
-		for my $input_datum (@{$applied_protocol->get_input_data()}) {
-		    if ($isattr) {
-			for my $attr (@{$input_datum->get_attributes()}) {
-			    if (_get_attr_value($attr, $field, $fieldtext) =~ /$value/i) {
-				push @slots, $i;
-				$found = 1 and last;
-			    }
-			}			
-		    } else {
-			if (_get_datum_info($input_datum, $field) =~ /$value/i) {
+        for my $applied_protocol (@{$experiment->get_applied_protocol_slots()->[$i]}) {
+            last if $found;
+	    my $func = 'get_' . $direction . '_data';
+	    for my $datum (@{$applied_protocol->$func()}) {
+		if ($isattr) {
+		    for my $attr (@{$datum->get_attributes()}) {
+			if (_get_attr_value($attr, $field, $fieldtext) =~ /$value/i) {
 			    push @slots, $i;
 			    $found = 1 and last;
 			}
+		    }                       
+		} else {
+		    if (_get_datum_info($datum, $field) =~ /$value/i) {
+			push @slots, $i;
+			$found = 1 and last;
 		    }
-		}
+		}		
 	    }
-	    if ($direction eq 'output') {
-		for my $output_datum (@{$applied_protocol->get_output_data()}) {
-		    if ($isattr) {
-			for my $attr (@{$output_datum->get_attributes()}) {
-			    if (_get_attr_value($attr, $field, $fieldtext) =~ /$value/i) {
-				push @slots, $i;
-				$found = 1 and last;
-			    }
-			}			
-		    } else {
-			if (_get_datum_info($output_datum, $field) =~ /$value/i) {
-			    push @slots, $i;
-			    $found = 1 and last;
-			}
-		    }
-		}
-	    }
-	}
-	$found = 0;
+        }
+        $found = 0;
     }
     return @slots;
 }
