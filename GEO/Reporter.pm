@@ -76,7 +76,8 @@ sub chado2series {
     my $uniquename = $experiment{ident $self}->get_uniquename();
     my $internal_id = "modENCODE_submission_$unique_id{ident $self}";
     my $project_announcement = 'This submission comes from a modENCODE project of ' . $project{ident $self} . '. For full list of modENCODE projects, see http://www.genome.gov/26524648 ';
-    my $data_use_policy = 'DATA USE POLICY: This dataset was generated under the auspices of the modENCODE (http://www.modencode.org) project, which has a specific data release policy stating that the data may be used, but not published, until 9 months from the date of public release. If any data used for the analysis are derived from unpublished data prior to the expiration of the nine-month protected period, then the resource users should obtain the consent of respective resource producers prior to submission of a manuscript.';
+    my $data_use_policy = 'For data usage terms and conditions, please refer to http://www.genome.gov/27528022 and http://www.genome.gov/Pages/Research/ENCODE/ENCODEDataReleasePolicyFinal2008.pdf';
+    #my $data_use_policy = 'DATA USE POLICY: This dataset was generated under the auspices of the modENCODE (http://www.modencode.org) project, which has a specific data release policy stating that the data may be used, but not published, until 9 months from the date of public release. If any data used for the analysis are derived from unpublished data prior to the expiration of the nine-month protected period, then the resource users should obtain the consent of respective resource producers prior to submission of a manuscript.';
     my ($investigation_title, $project_goal);
     my @pubmed;
     foreach my $property (@{$experiment{ident $self}->get_properties()}) {
@@ -359,7 +360,6 @@ sub get_overall_design {
     my $self = shift;
     my $overall_design = "";
     $overall_design .= "EXPERIMENT TYPE: " . $experiment_type{ident $self} . ". ";
-    
     my ($biological_source, $source);
     if ( $experiment_type{ident $self} eq 'CGH' ) {
 	$biological_source = $self->get_biological_source_CGH();
@@ -370,16 +370,19 @@ sub get_overall_design {
 	}
     } else {
 	$biological_source = $self->get_biological_source();
+	print "ok";
 	$source = join("; ", @$biological_source);
 	$overall_design .= 'BIOLOGICAL SOURCE: ' . $source . "; ";
     }
-
+    print $overall_design;
     $overall_design .= " " . $self->get_replicate_status();
-
+    print $self->get_replicate_status();
+    print "ok2";
     my $real_factors = $self->get_real_factors();
     my $factors = join("; ", @$real_factors);
     $overall_design .= " EXPERIMENTAL FACTORS: " . $factors;
-
+    print "ok3";
+    print $overall_design;
     return $overall_design;
 }
 
