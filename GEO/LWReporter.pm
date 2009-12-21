@@ -429,7 +429,7 @@ sub get_value_by_info {
 		if ($field eq 'heading') {
 		    return $value if $heading =~ /$fieldtext/;
 		}
-		for my $attr ($datum->get_attributes()) {
+		for my $attr (@{$datum->get_attributes()}) {
 		    my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
 		    if ($field eq 'name') {
 			return $avalue if $aname =~ /$fieldtext/;		    
