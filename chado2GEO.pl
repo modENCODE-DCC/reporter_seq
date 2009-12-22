@@ -113,21 +113,22 @@ if (($use_existent_metafile == 0) && ($use_existent_tarball == 0)) {
     $reporter->chado2series();
     print "done.\n";
     print "generating GEO sample file ...";
-    my ($raw_datafiles, $normalized_datafiles) = $reporter->chado2sample();
+    my ($raw_datafiles, $normalized_datafiles, $more_datafiles) = $reporter->chado2sample();
     my @nr_raw_datafiles = nr(@$raw_datafiles);
-    my @nr_normalized_datafiles = nr(@$normalized_datafiles);
-    my @datafiles = (@nr_raw_datafiles, @nr_normalized_datafiles);
+    my @nr_normalized_datafiles = nr(@$raw_datafiles);
+    my @rd_datafiles = (@$raw_datafiles, @$normalized_datafiles, @$more_datafiles);
+    my @datafiles = nr(@rd_datafiles);
     for my $datafile (@datafiles) {
 	print $file_datafilenamesFH $datafile, "\n";
     }
     chdir $report_dir;
     my $file1 = basename($seriesfile);
     my $file2 = basename($samplefile);
-    system("cat $file1 $file2 > $metafile") == 0 || die "can not catenate series and sample files to make soft file: $?";    
-    system("rm $file1 $file2") == 0 || die "can not remove the series and sample files: $?";
     close $sampleFH;
     close $seriesFH;
     close $file_datafilenamesFH;
+    system("cat $file1 $file2 > $metafile") == 0 || die "can not catenate series and sample files to make soft file: $?";    
+    system("rm $file1 $file2") == 0 || die "can not remove the series and sample files: $?";
     print "done\n";
 }
 
@@ -168,6 +169,14 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
     system("rm $file_datafilenames") == 0 || die "can not remove file $file_datafilenames.";
 
     for my $datafile (@datafiles) {
+	if ($datafile =~ /\.fastq/) {
+	    my $request = $ua->request(HTTP::Request->new('GET' => $datafile));
+	    $request->is_success or die "$url: " . $request->message;
+	    my ($tmpfh, $tmpfile) = File::Temp::tempfile();
+	    print $tmpfh $request->content();
+	    system("tar -r --remove-files -f $tarfile $tmpfile") == 0 || die "can not append a datafile $datafile from download to my tarball $tarfile and then remove it (leave no garbage).";
+	} 
+	else {
 	#remove subdirectory prefix, remove suffix of compression, such as .zip, .bz2, this is the filename goes into geo tarball
 	my $myfile = unzipp(basename($datafile));
 
@@ -192,6 +201,7 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
 	    system("mv $filename_in_tarball $myfile") == 0 || die "can not change filename $filename_in_tarball to $myfile";
 	}
 	system("tar -r --remove-files -f $tarfile $myfile") == 0 || die "can not append a datafile $filename_in_tarball from download tarball $allfile to my tarball $tarfile and then remove it (leave no garbage).";
+	}
     }
     system("rm $tarballfile 2>&1 > /dev/null") if -e $tarballfile; # Remove the gzip if it already exists; ignore output
     system("gzip $tarfile") == 0 || die "cannot gzip the tar file $tarfile";
