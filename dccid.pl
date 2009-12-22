@@ -41,24 +41,24 @@ my $gsm_cache_dir = $ini{cache}{gsm};
 
 my @dcc_ids = get_dcc_ids($dcc_id_file);
 
-my $geo_reader = new GEO::Geo({'config' => \%ini,
+#my $geo_reader = new GEO::Geo({'config' => \%ini,
 			       'xmldir' => $summary_cache_dir});
-print "geo reader ready\n";
-$geo_reader->get_uid();
-$geo_reader->get_all_gse_gsm();
-%in_memory;
-@all_gsm;
-for my $gsml (values %{$geo_reader->get_gsm()}) {
-    for my $gsmid (@$gsml) {
-	unless ($in_memory{$gsmid}) {
-	    my $gsm = new GEO::Gsm({'config' => \%ini;
-				    'xmldir' => $gsm_cache_dir});
-	    $gsm->get_all();
-	    push @all_gsm, $gsm;
-	    $in_memory{$gsmid} = 1;
-	}	
-    }
-}
+#print "geo reader ready\n";
+#$geo_reader->get_uid();
+#$geo_reader->get_all_gse_gsm();
+#%in_memory;
+#@all_gsm;
+#for my $gsml (values %{$geo_reader->get_gsm()}) {
+#    for my $gsmid (@$gsml) {
+#	unless ($in_memory{$gsmid}) {
+#	    my $gsm = new GEO::Gsm({'config' => \%ini;
+#				    'xmldir' => $gsm_cache_dir});
+#	    $gsm->get_all();
+#	    push @all_gsm, $gsm;
+#	    $in_memory{$gsmid} = 1;
+#	}	
+#    }
+#}
 
 my $dbname = $ini{database}{dbname};
 my $dbhost = $ini{database}{host};
@@ -112,24 +112,64 @@ for my $unique_id (@dcc_ids) {
 	    if ( scalar @$sra != 0 ) {
 		print "sra found.\n";
 		print @$sra, "\n";
+		if ( $gsm_reader->valid_sra() ) {
+		    print " all sra valid. ";
+		} else {
+		    print 'sra invalid.\n';
+		}
 	    } else {
 		print 'no sra yet.\n';
 	    }
 	}
     }
-    unless ( $sdrf_fastq_found || $sdrf_geo_id_found) {
-	my $dcc_strain = $reporter->get_strain();
-	my $dcc_cellline = $reporter->get_cellline();
-	my $dcc_devstage = $reporter->get_devstage();
-	my $dcc_antibody = $reporter->get_antibody();
-	my $dcc_tgt_gene = $reporter->get_tgt_gene();
-	my @dcc_wiggles = $reporter->get_wiggle_files();
-
-    }
+#    unless ( $sdrf_fastq_found || $sdrf_geo_id_found) {
+#	my $organism = $reporter->get_organism();
+#	my $dcc_strain = $reporter->get_strain();
+#	my $dcc_cellline = $reporter->get_cellline();
+#	my $dcc_devstage = $reporter->get_devstage();
+#	my $dcc_antibody = $reporter->get_antibody();
+#	my $dcc_tgt_gene = $reporter->get_tgt_gene();
+#	my @dcc_wiggles = $reporter->get_wiggle_files();
+	
+#	my $found_wig = 0;
+#	my @gsm_id = check_wiggles(\@dcc_wiggles, \@all_gsm);
+#	if (scalar @gsm_id >= 1) {
+#	    print " DCC submission $unique_id matches GEO records @gsm_id with wiggle datafiles\n";
+#	    $found_wig = 1;
+#	}
+#	unless ($found_wig) {	    
+#	}
+#    }
 }
 
+#sub check_strain {    
+#}
 
 
+sub check_wiggles {
+    my ($dcc_wig, $all_gsm) = @_;
+    my @id;
+    for my $gsm (@$all_gsm) {
+	my @gsm_wig = @{$gsm->get_wiggle()};
+	@gsm_wig = map { $_ =~ s/GSM\d*_//; $_; } @gsm_wig;
+	sort @gsm_wig;
+	push @id, $gsm->get_gsm() if part_of($dcc_wig, \@gsm_wig);
+    }
+    return @id;
+}
+
+sub part_of {
+    my ($a, $b) = @_;
+    return 0 if ( scalar @$a < scalar @$b);
+    for my $bele (@$b) {
+	my $in=0;
+	for my $aele (@$a) {
+	    $in=1 if $aele eq $bele;
+	}
+	return 0 unless $in;
+    }
+    return 1;
+}
 
 sub get_dcc_ids {
     my $file = shift;
