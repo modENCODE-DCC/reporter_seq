@@ -32,11 +32,33 @@ $config = $root_dir . 'geoid.ini';
 my $option = GetOptions ("id=s"            => \$dcc_id_file,
 			 "out=s"           => \$output_dir,
 			 "config=s"        => \$config);
-
+$output_dir = File::Spec->rel2abs($output_dir);
+$output_dir .= '/' unless $output_dir =~ /\/$/;
 my %ini;
 tie %ini, 'Config::IniFiles', (-file => $config);
+my $summary_cache_dir = $ini{cache}{summary};
+my $gsm_cache_dir = $ini{cache}{gsm};
 
 my @dcc_ids = get_dcc_ids($dcc_id_file);
+
+my $geo_reader = new GEO::Geo({'config' => \%ini,
+			       'xmldir' => $summary_cache_dir});
+print "geo reader ready\n";
+$geo_reader->get_uid();
+$geo_reader->get_all_gse_gsm();
+%in_memory;
+@all_gsm;
+for my $gsml (values %{$geo_reader->get_gsm()}) {
+    for my $gsmid (@$gsml) {
+	unless ($in_memory{$gsmid}) {
+	    my $gsm = new GEO::Gsm({'config' => \%ini;
+				    'xmldir' => $gsm_cache_dir});
+	    $gsm->get_all();
+	    push @all_gsm, $gsm;
+	    $in_memory{$gsmid} = 1;
+	}	
+    }
+}
 
 my $dbname = $ini{database}{dbname};
 my $dbhost = $ini{database}{host};
@@ -47,11 +69,6 @@ my $reader = new ModENCODE::Parser::Chado({
     'host' => $dbhost,
     'username' => $dbusername,
     'password' => $dbpassword});
-
-my $geo_reader = new GEO::Geo({
-    'config' => \%ini});
-print "geo reader ready\n";
-
 for my $unique_id (@dcc_ids) {
     print "# submission $unique_id #\n";
     print "connecting to database ...";
@@ -63,7 +80,7 @@ for my $unique_id (@dcc_ids) {
     $reader->load_experiment($experiment_id);
     my $experiment = $reader->get_experiment();
     print "done.\n";
-    my $reporter = new GEO::Reporter({
+    my $reporter = new GEO::LWReporter({
         'unique_id' => $unique_id,
         'reader' => $reader,
         'experiment' => $experiment,
@@ -95,13 +112,19 @@ for my $unique_id (@dcc_ids) {
 	    if ( scalar @$sra != 0 ) {
 		print "sra found.\n";
 		print @$sra, "\n";
+	    } else {
+		print 'no sra yet.\n';
 	    }
 	}
     }
     unless ( $sdrf_fastq_found || $sdrf_geo_id_found) {
-	my @wiggles = $reporter->get_wiggle_files();
-	print "wiggle files:\n";
-	print @wiggles, "\n";
+	my $dcc_strain = $reporter->get_strain();
+	my $dcc_cellline = $reporter->get_cellline();
+	my $dcc_devstage = $reporter->get_devstage();
+	my $dcc_antibody = $reporter->get_antibody();
+	my $dcc_tgt_gene = $reporter->get_tgt_gene();
+	my @dcc_wiggles = $reporter->get_wiggle_files();
+
     }
 }
 
