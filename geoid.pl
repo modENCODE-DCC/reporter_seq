@@ -223,7 +223,7 @@ sub fetch {
     }
     my $ua = new LWP::UserAgent;
     my $request = $ua->request(HTTP::Request->new('GET' => $url));
-    $request->is_success or die "$search_url: " . $request->message;
+    $request->is_success or die "$url: " . $request->message;
     print $fh $request->content();
     close $fh;
     return $file;
