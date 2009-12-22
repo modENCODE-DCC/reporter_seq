@@ -14,10 +14,10 @@ my %config                 :ATTR( :name<config>                :default<undef>);
 my %uid                    :ATTR( :set<uid>                    :default<[]>);
 my %gse                    :ATTR( :set<gse>                    :default<{}>);
 my %gsm                    :ATTR( :set<gsm>                    :default<{}>);
-
+my %xmldir                 :ATTR( :name<xmldir>                 :default<undef>);
 sub BUILD {
     my ($self, $ident, $args) = @_;
-    for my $parameter (qw[config]) {
+    for my $parameter (qw[config xmldir]) {
 	my $value = $args->{$parameter};
 	defined $value || croak "can not find required parameter $parameter"; 
 	my $set_func = "set_" . $parameter;
@@ -43,12 +43,48 @@ sub get_uid {
     $uid{ident $self} = $ids;
 }
 
+sub parse_esummary {
+    my ($self, $geofile) = @_;
+    opendir my $xdh, $xmldir{ident $self};
+    my @xmlfiles = grep { $_ =~ /\.xml/} readdir($xdh);
+    @xmlfiles = map {$xmldir . '/' . $_;} @xmlfiles;
+    open my $gfh, ">", $geofile;
+    my $xs = new XML::Simple;
+    for my $summaryfile (@xmlfiles) {
+	$summaryfile =~ /(\d*)\.xml/;
+	my $uid = $1;
+	my $esummary = $xs->XMLin($summaryfile);
+	my $gse;
+	my @gsml;
+	for my $item (@{$esummary->{DocSum}->{Item}}) {
+	    if ($item->{Name} eq 'GSE') {
+		$gse = $item->{content};
+		$gse =~ /(\d*)/; $gse = 'GSE' . $1;
+	    }
+	    if ($item->{Name} eq 'GSM_L') {
+		my $gsml = $item->{content};
+		$gsml =~ s/^\s*//; $gsml =~ s/\s*$//;
+		@gsml = split(';', $gsml);
+		pop @gsml if $gsml[scalar(@gsml)-1] =~ /^\s*$/;
+		@gsml = map { $_ =~ /(\d*)/; 'GSM' . $1; } @gsml;
+	    }
+	}
+	$gse{ident $self}->{$uid} = $gse;
+	$gsm{ident $self}->{$gse} = \@gsml;
+	print $gfh "@"."$gse\n";
+	map {print $gfh $_, "\n";} @gsml;
+    }
+    close $gfh;
+}
+
 sub get_all_gse_gsm {
     my $self = shift;
     my $ini = $config{ident $self};
     #use entrez esummary with input UID to fetch summary
     print "download and parse esummary xml file for GEO UIDs ...\n";
     for my $id (@{$uid{ident $self}}) {
+	my $xmlfile = $xmldir{ident $self} . '.xml';
+	next if -e $xmlfile;
 	$self->get_gse_gsm_by_uid($id);
 }
 
@@ -58,7 +94,8 @@ sub get_gse_gsm {
     print "############\n";
     print "GEO UID $id: downloading...";
     my $summary_url = $ini->{geo}{summary_url} . "db=$ini->{geo}{db}" . "&id=$uid";
-    my $summaryfile = fetch($summary_url);
+    my $xmlfile = $xmldir{ident $self} . $uid . '.xml';
+    my $summaryfile = fetch($summary_url, $xmlfile);
     print "done. parsing...";
     my $esummary = $xs->XMLin($summaryfile);
     my ($type, $title, $summary, $gse, $gsml);
