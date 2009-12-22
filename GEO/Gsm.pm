@@ -9,6 +9,7 @@ use XML::Simple;
 
 my %config                 :ATTR( :name<config>                :default<undef>);
 my %gsm                 :ATTR( :name<gsm>                :default<undef>);
+my %xmldir                 :ATTR( :name<xmldir>                :default<undef>);
 my %miniml              :ATTR( :set<miniml>              :default<undef>);
 my %contributor         :ATTR( :set<contributor>         :default<undef>);
 my %lab                :ATTR( :set<lab>         :default<undef>);
@@ -29,7 +30,7 @@ my %characteristics  :ATTR( :set<characteristics>         :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
-    for my $parameter (qw[config gsm]) {
+    for my $parameter (qw[config gsm xmldir]) {
 	my $value = $args->{$parameter};
 	defined $value || croak "can not find required parameter $parameter"; 
 	my $set_func = "set_" . $parameter;
@@ -193,7 +194,10 @@ sub get_miniml {
     my $ini = $config{ident $self};
     my $gsm_id = $gsm{ident $self};
     my $acc_url = $ini->{acc}{acc_url} . $gsm_id . "&targ=$ini->{acc}{targ}" . "&view=$ini->{acc}{view}" . "&form=$ini->{acc}{form}" ;
-    my $accfile = fetch($acc_url);
+    my $accfile = $xmldir{ident $self} . $gsm_id . '.xml';
+    unless (-e $accfile) { 
+	$accfile = fetch($acc_url);
+    }
     my $xsacc = new XML::Simple;
     my $accxml = $xsacc->XMLin($accfile);
     $miniml{ident $self} = $accxml;
