@@ -105,7 +105,7 @@ sub chado2series {
     print $seriesFH "!Series_web_link = http://www.modencode.org\n";
     
     my %contributors = %{$contributors{ident $self}};
-    my $pi_already_in_contributors = 0;
+#    my $pi_already_in_contributors = 0;
     my $pi = $project{ident $self}; 
     foreach my $rank (sort keys %contributors) {
 	my $firstname = $contributors{$rank}{'first'};
@@ -115,16 +115,18 @@ sub chado2series {
 	}
 	my $lastname = $contributors{$rank}{'last'};
 	$str .= $lastname;
+	print $str, "\n";
 	print $seriesFH "!Series_contributor = ", $str, "\n";
-	my $name = ucfirst($firstname) . " " . ucfirst($lastname);
-	$pi_already_in_contributors = 1 if $name eq $pi; 
+	#my $name = ucfirst($firstname) . " " . ucfirst($lastname);
+	#Mike Snyder == Michael Snyder
+#	$pi_already_in_contributors = 1 if $pi =~ /$lastname/i; 
     }
     
     #add project PI as contributor as needed
-    if (not $pi_already_in_contributors) {
-	$pi =~ s/ /,/;
-	print $seriesFH "!Series_contributor = ", $pi, "\n";
-    }
+#    if (not $pi_already_in_contributors) {
+#	$pi =~ s/ /,/;
+#	print $seriesFH "!Series_contributor = ", $pi, "\n";
+#    }
 }
 
 sub chado2sample {
@@ -134,30 +136,53 @@ sub chado2sample {
     my %combined_grp = %{$groups{ident $self}};
     my @raw_datafiles, ;
     my @normalize_datafiles;
+    my @more_datafiles;
 
     for my $extraction (sort keys %combined_grp) {
 	for my $array (sort keys %{$combined_grp{$extraction}}) {
+	    print "##########", $extraction, $array, "\n";
 	    $self->write_series_sample($extraction, $array);
 	    for (my $channel=0; $channel<scalar(@{$combined_grp{$extraction}{$array}}); $channel++) {
 		my $row = $combined_grp{$extraction}{$array}->[$channel];
+		print $row, "\n";
 		$self->write_sample_source($extraction, $array, $row, $channel);
 		$self->write_sample_organism($row, $channel);
 		$self->write_characteristics($row, $channel);
 		$self->write_sample_description($row, $channel);
 		$self->write_sample_growth($row, $channel);
 		$self->write_sample_extraction($row, $channel);
-		$self->write_sample_label($row, $channel);	
+		if ( defined($ap_slots{ident $self}->{'labeling'}) and $ap_slots{ident $self}->{'labeling'} != -1 ) {		
+		    $self->write_sample_label($row, $channel);
+		}
+		if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
+		    $self->write_sample_type($row);
+		    $self->write_sample_lib_strategy($row);
+		    $self->write_sample_lib_source($row);
+		    $self->write_sample_lib_selection($row);
+		    $self->write_sample_instrument_model($row);
+		}
 		push @raw_datafiles, $self->write_raw_data($row, $channel);
 	    }
 	    my $row = $combined_grp{$extraction}{$array}->[0];
-	    $self->write_sample_hybridization($row);		    
-	    $self->write_sample_scan($row);
+	    if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {	
+		$self->write_sample_hybridization($row);
+	    }
+	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {	
+		#$self->write_sample_seq($row);
+	    }	    
+	    if ( defined($ap_slots{ident $self}->{'scanning'}) and $ap_slots{ident $self}->{'scanning'} != -1 ) {		    
+		$self->write_sample_scan($row);
+	    }
+	    
 	    $self->write_sample_normalization($row);
-	    $self->write_platform($row);
+	    if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {	    
+		$self->write_platform($row);
+	    }
 	    push @normalize_datafiles, $self->write_normalized_data($row);
+	    push @more_datafiles, $self->get_more_data($row);
 	}
     }
-    return (\@raw_datafiles, \@normalize_datafiles);
+    return (\@raw_datafiles, \@normalize_datafiles, \@more_datafiles);
 }
 
 sub write_series_sample {
@@ -165,9 +190,16 @@ sub write_series_sample {
     my $seriesFH = $seriesFH{ident $self};
     my $sampleFH = $sampleFH{ident $self};
     my $name = $self->get_sample_name_safe($extraction, $array);
+    print $name, "\n";
     print $seriesFH "!Series_sample_id = GSM for ", $name, "\n";
     print $sampleFH "^Sample = GSM for ", $name, "\n";
     print $sampleFH "!Sample_title = ", $name, "\n";
+}
+
+sub write_sample_type {
+    my ($self, $row) = @_;
+    my $sampleFH = $sampleFH{ident $self};
+    print $sampleFH "!Sample_type = ", "SRA", "\n";
 }
 
 sub write_sample_source {
@@ -246,8 +278,14 @@ sub write_sample_extraction {
     my $sampleFH = $sampleFH{ident $self};
     my $ch = $channel+1;
     print $sampleFH "!Sample_molecule_ch$ch = ", $self->get_molecule_type_row($row), "\n";
-    
-    for (my $i=$first_extraction_slot{ident $self}; $i<$ap_slots{ident $self}->{'labeling'}; $i++) {
+    my $final_slot;
+    if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {
+	$final_slot = $ap_slots{ident $self}->{'labeling'};
+    }
+    elsif ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
+	$final_slot = $ap_slots{ident $self}->{'seq'};
+    }
+    for (my $i=$first_extraction_slot{ident $self}; $i<$final_slot; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
 	my $protocol_text = $self->get_protocol_text($ap);
 	$protocol_text =~ s/\n//g; #one line
@@ -275,6 +313,61 @@ sub write_sample_hybridization {
     print $sampleFH "!Sample_hyb_protocol = ", $protocol_text, "\n";
 }
 
+sub write_sample_lib_strategy {
+    my ($self, $row) = @_;
+    my $sampleFH = $sampleFH{ident $self};
+    my $strategy = $self->get_lib_strategy();
+    print $sampleFH "!Sample_library_strategy = ", $strategy, "\n";
+}
+
+sub write_sample_lib_source {
+    my ($self, $row) = @_;
+    my $sampleFH = $sampleFH{ident $self};
+    print $sampleFH "!Sample_library_source = ", 'genomic', "\n";
+}
+
+sub write_sample_lib_selection {
+    my ($self, $row) = @_;
+    my $sampleFH = $sampleFH{ident $self};
+    my $selection = $self->get_lib_selection();
+    print $sampleFH "!Sample_library_selection = ", $selection, "\n";
+}
+
+sub write_sample_instrument_model {
+    my ($self, $row) = @_;
+    my $sampleFH = $sampleFH{ident $self};
+    my %machines = ('GPL9309' => 'Illumina Genome Analyzer',
+		    'GPL9058' => 'Illumina Genome Analyzer',
+		    'GPL6072' => 'Illumina Genome Analyzer'
+	);
+    my $sampleFH = $sampleFH{ident $self};
+    my $gpl = $self->get_seqmachine_row($row);
+    print $sampleFH "!Sample_instrument_model = ", $machines{$gpl}, "\n";   
+}
+
+sub get_lib_strategy {
+    my ($self) = @_;
+    if (defined($ap_slots{ident $self}->{'immunoprecipitation'}) and $ap_slots{ident $self}->{'immunoprecipitation'} != -1) {
+	return "ChIP-Seq";
+    }
+}
+
+sub get_lib_selection {
+    my ($self) = @_;
+    if (defined($ap_slots{ident $self}->{'immunoprecipitation'}) and $ap_slots{ident $self}->{'immunoprecipitation'} != -1) {
+	return "ChIP";   
+    }
+}
+
+sub write_sample_seq {
+    my ($self, $row, ) = @_;
+    my $sampleFH = $sampleFH{ident $self};
+    my $ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'seq'}]->[$row];
+    my $protocol_text = $self->get_protocol_text($ap);
+    $protocol_text =~ s/\n//g; #one line
+    print $sampleFH "!Sample_hyb_protocol = ", $protocol_text, "\n";
+}
+
 sub write_sample_scan {
     my ($self, $row) = @_;    
     my $sampleFH = $sampleFH{ident $self};
@@ -288,24 +381,34 @@ sub write_sample_normalization {
     my ($self, $row) = @_;
     my $sampleFH = $sampleFH{ident $self};
     my $genome_version_already_written = 0;
-    print $sampleFH "!Sample_data_processing = "; 
-    for (my $i=$ap_slots{ident $self}->{'scanning'}+1; $i<=$ap_slots{ident $self}->{'normalization'}; $i++) {
+    print $sampleFH "!Sample_data_processing = ";
+    my ($begin_slot, $end_slot);
+    if (defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1) {
+	$begin_slot = $ap_slots{ident $self}->{'scanning'}+1;
+	$end_slot = $ap_slots{ident $self}->{'normalization'};
+    }
+    if (defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1) {
+	$begin_slot = $ap_slots{ident $self}->{'seq'}+1;
+	$end_slot = scalar(@{$denorm_slots{ident $self}})-1;
+    }
+    for (my $i=$begin_slot; $i<=$end_slot; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
 	my $protocol_text = $self->get_protocol_text($ap);
+	my $protocol_name = $ap->get_protocol()->get_name() . ' protocol. ';
 	$protocol_text =~ s/\n//g; #one line
-	print $sampleFH $protocol_text, " Processed data are obtained using following parameters: ";
+	print $sampleFH $protocol_name, $protocol_text, " ";
 	for my $datum (@{$ap->get_input_data()}) {
 	    $genome_version_already_written = 1 if $datum->get_name() =~ /genome\s*version/i;
-	    print $sampleFH $datum->get_name(), " is ", $datum->get_value(), "   " if $datum->get_heading() =~ /Parameter/i;
+	    print $sampleFH " Processed data are obtained using following parameters: ", $datum->get_name(), " is ", $datum->get_value(), "   " if ($datum->get_heading() =~ /Parameter/i and $datum->get_value() !~ /^\s*$/);
 	}	
     }
-    if (not $genome_version_already_written) {
-	my $organism = $organism{ident $self};
-	my $genome_version;
-	$genome_version = 'r5' if $organism eq "Drosophila melanogaster";
-	$genome_version = 'WS180' if $organism eq "Caenorhabditis elegans";
-	print $sampleFH "genome version is $genome_version";
-    }
+    #if (not $genome_version_already_written) {
+	#my $organism = $organism{ident $self};
+	#my $genome_version;
+	#$genome_version = 'r5' if $organism eq "Drosophila melanogaster";
+	#$genome_version = 'WS180' if $organism eq "Caenorhabditis elegans";
+	#print $sampleFH "genome version is $genome_version";
+    #}
     print $sampleFH "\n";
 }
 
@@ -318,9 +421,14 @@ sub write_raw_data {
     for my $datum (@{$ap->get_output_data()}) {
 	if (($datum->get_heading() =~ /Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
 	    my $path = $datum->get_value();
+	    print "###raw data###", $path, "\n";
 	    my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
 	    if (scalar grep {lc($suffix) eq $_} @suffixs) {
-		print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+		if ($datum->get_name =~ /fastq/i) {
+		    print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+		} else {
+		    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+		}
 	    } else {
 		print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
 	    }
@@ -344,16 +452,35 @@ sub write_normalized_data {
     my @normalization_datafiles;
     my @suffixs = ('.bz2', '.z', '.gz', '.zip', '.rar');
     for my $datum (@{$normalization_ap->get_output_data()}) {
-	my $path = $datum->get_value();
-	my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
-	if (scalar grep {lc($suffix) eq $_} @suffixs) {
-	    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
-	} else {
-	    print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+	if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
+	    my $path = $datum->get_value();
+	    my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
+	    if (scalar grep {lc($suffix) eq $_} @suffixs) {
+		print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+	    } else {
+		print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+	    }
+	    push @normalization_datafiles, $path;
 	}
-	push @normalization_datafiles, $path; 
     }
     return @normalization_datafiles;
+}
+
+sub get_more_data {
+     my ($self, $row) = @_;
+     my @more_datafiles;
+     my $start_slot = $ap_slots{ident $self}->{'normalization'};
+     $start_slot -= 1 if $start_slot == scalar($denorm_slots{ident $self})-1;
+     for (my $i=$start_slot; $i<scalar(@{$denorm_slots{ident $self}}); $i++) {
+	 my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+	 for my $datum (@{$ap->get_output_data()}) {
+	     if ($datum->get_heading() =~ /Result\s*File/i) {
+		 my $path = $datum->get_value();
+		 push @more_datafiles, $path;
+	     }
+	 }
+     }
+     return @more_datafiles;
 }
 
 sub get_overall_design {
@@ -375,9 +502,12 @@ sub get_overall_design {
 	$overall_design .= 'BIOLOGICAL SOURCE: ' . $source . "; ";
     }
     print $overall_design;
-    $overall_design .= " " . $self->get_replicate_status();
-    print $self->get_replicate_status();
-    print "ok2";
+    if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {
+	$overall_design .= " " . $self->get_replicate_status();
+	print $self->get_replicate_status();
+	print "ok2";
+    }
+    print "####################\n";
     my $real_factors = $self->get_real_factors();
     my $factors = join("; ", @$real_factors);
     $overall_design .= " EXPERIMENTAL FACTORS: " . $factors;
@@ -476,7 +606,7 @@ sub get_real_factors {
 	elsif ($type =~ /antibody/i) {
 	    my $antibody_name = get_dbfield_info($antibody{ident $self})->{'official name'};
 	    my $rfactor = 'Antibody ' . $antibody_name;
-	    push @rfactors, $rfactor if defined($antibody{ident $self});	    
+	    push @rfactors, $rfactor if defined($antibody{ident $self});
 	}
 	elsif ($type =~ /gene/i) {
 	    my $gene = $tgt_gene{ident $self};
@@ -484,7 +614,7 @@ sub get_real_factors {
 	    push @rfactors, $rfactor if defined($gene);
 	}
 	else {
-	    my $factor_name = get_value_by_info(0, 'name', $factors->{$rank}->[0]);
+	    my $factor_name = $self->get_value_by_info(0, 'name', $factors->{$rank}->[0]);
 	    my $rfactor = "$type $factor_name";
 	    push @rfactors, $rfactor if defined($rfactor);
 	}
@@ -1137,6 +1267,15 @@ sub get_label_row { #keep it as a datum object
     return $labels->[0];
 }
 
+sub get_seqmachine_row {
+    my ($self, $row) = @_;
+    my $seq_ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'seq'}]->[$row];
+    my $gd = _get_datum_by_info($seq_ap, 'input', 'name', '\s*sequencing\s*platform\s*');
+    my $gpl = $gd->[0]->get_value();
+    print $gpl;
+    return $gpl;
+}
+
 sub get_array_row {
     my ($self, $row) = @_;
     my $hyb_ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'hybridization'}]->[$row];
@@ -1189,8 +1328,13 @@ sub get_sample_name_safe {
 sub get_sample_name_row_safe {
     my ($self, $extraction, $array, $row) = @_;
     my $extrac = $extraction+1;
-    my $arry = $array+1;    
-    return $self->get_sample_name_row($extraction, $array, $row) . ' extraction' . $extrac . "_array" . $arry;
+    my $arry = $array+1;
+    if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1) {
+	return $self->get_sample_name_row($extraction, $array, $row) . ' extraction' . $extrac . "_array" . $arry;
+    }
+    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1) {
+	return $self->get_sample_name_row($extraction, $array, $row) . ' extraction' . $extrac . "_seq" . $arry;
+    }    
 }
 
 sub get_sample_name_row {
@@ -1217,7 +1361,12 @@ sub get_sample_sourcename_row_safe {
     my ($sourcename, $autogenerate) = $self->get_sample_sourcename_row($extraction, $array, $row);
     my $extrac = $extraction+1;
     my $arry = $array+1;
-    return $sourcename . ' extraction' . $extrac . "_array" . $arry;
+    if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1) {
+	return $sourcename . ' extraction' . $extrac . "_array" . $arry;
+    }
+    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1) {
+	return $sourcename . ' extraction' . $extrac . "_seq" . $arry;
+    }
 }
 
 sub get_sample_sourcename_row {
@@ -1499,11 +1648,20 @@ sub get_slotnum_normalize {
 
 sub get_slotnum_normalize_seq {
     my $self = shift;
-    my @types = ('WIG');
+    my @types = ('WIG', 'BED');
+    my $slot;
     for my $type (@types) {
 	my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
-	return $aps[0] if scalar(@aps);
+	sort @aps;
+	if (scalar(@aps)) {
+	    if (defined($slot)) {
+		$slot = $aps[-1] if ($aps[-1] > $slot);
+	    } else {
+		$slot = $aps[-1];
+	    }
+	}
     }
+    return $slot if defined($slot);
     croak("can not find the normalization protocol");
 }
 
