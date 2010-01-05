@@ -47,7 +47,7 @@ sub parse_esummary {
     my ($self, $geofile) = @_;
     opendir my $xdh, $xmldir{ident $self};
     my @xmlfiles = grep { $_ =~ /\.xml/} readdir($xdh);
-    @xmlfiles = map {$xmldir . '/' . $_;} @xmlfiles;
+    @xmlfiles = map {$xmldir{ident $self} . $_;} @xmlfiles;
     open my $gfh, ">", $geofile;
     my $xs = new XML::Simple;
     for my $summaryfile (@xmlfiles) {
@@ -83,7 +83,7 @@ sub get_all_gse_gsm {
     #use entrez esummary with input UID to fetch summary
     print "download and parse esummary xml file for GEO UIDs ...\n";
     for my $id (@{$uid{ident $self}}) {
-	my $xmlfile = $xmldir{ident $self} . '.xml';
+	my $xmlfile = $xmldir{ident $self} . $id . '.xml';
 	next if -e $xmlfile;
 	$self->get_gse_gsm_by_uid($id);
 }
@@ -92,11 +92,12 @@ sub get_gse_gsm {
     my ($self, $uid) = @_;
     my $ini = $config{ident $self};
     print "############\n";
-    print "GEO UID $id: downloading...";
+    print "GEO UID $uid: downloading...";
     my $summary_url = $ini->{geo}{summary_url} . "db=$ini->{geo}{db}" . "&id=$uid";
     my $xmlfile = $xmldir{ident $self} . $uid . '.xml';
     my $summaryfile = fetch($summary_url, $xmlfile);
     print "done. parsing...";
+    my $xs = new XML::Simple;
     my $esummary = $xs->XMLin($summaryfile);
     my ($type, $title, $summary, $gse, $gsml);
     my $is_gse = 0;
@@ -124,9 +125,9 @@ sub get_gse_gsm {
 	#@gsml = map { $_ =~ s/^\s*//; $_ =~ s/\s*$//; 'GSM' . $_; } @gsml;
 	@gsml = map { $_ =~ /(\d*)/; 'GSM' . $1; } @gsml;
 	print "done.\n";
+	$gse{ident $self}->{$uid} = $gse;
+	$gsm{ident $self}->{$gse} = \@gsml;
     }
-    $gse{ident $self}->{$uid} = $gse;
-    $gsm{ident $self}->{$gse} = \@gsml;
 }
 
 sub gsm_for_gse {
@@ -139,7 +140,7 @@ sub gsm_for_gse {
 
 sub gse_for_gsm {
     my ($self, $gsm) = @_;
-    for my ($gse, $gsml) (each $gsm{ident $self}) {
+    while ( my ($gse, $gsml) = each %{$gsm{ident $self}} ) {
 	for my $xgsm (@$gsml) {
 	    return $gse if $xgsm eq $gsm;
 	}
