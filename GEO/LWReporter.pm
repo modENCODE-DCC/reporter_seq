@@ -212,7 +212,7 @@ sub get_tgt_gene {
 	$header = $factors->{$rank}->[0] and last if $type eq 'gene';
     }
     my $tgt_gene = $self->get_value_by_info(0, 'name', $header);
-    $tgt_gene{ident $self} = $tgt_gene;
+    print $tgt_gene and $tgt_gene{ident $self} = $tgt_gene;
 }
 
 sub get_slotnum_seq {
