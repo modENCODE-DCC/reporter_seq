@@ -408,7 +408,7 @@ sub get_antibody {
         #for my $row (@{$groups{ident $self}->{0}->{0}}) {
 	for my $row ((0..$num_of_rows{ident $self}-1)) {	    
             my $ab = $self->get_antibody_row($row);
-	    print "antibody", Dumper($ab) and $antibody{ident $self} = $ab and last if defined($ab);
+	    print "antibody", Dumper($ab) and $antibody{ident $self} = $ab and last if defined($ab) and defined($ab->get_value());
         }
     }
 }
