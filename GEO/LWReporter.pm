@@ -259,7 +259,7 @@ sub get_slotnum_ip {
 sub get_strain {
     my $self = shift;
     #for my $row (@{$groups{ident $self}->{0}->{0}}) {
-    for my $row ((0..$num_of_rows{ident $self})) {
+    for my $row ((0..$num_of_rows{ident $self}-1)) {
         my $strain = $self->get_strain_row($row);
         print "strain $strain\n" and $strain{ident $self} = $strain and last if defined($strain);
     }
@@ -331,7 +331,7 @@ sub get_strain_row {
 sub get_cellline {
     my $self = shift;
     #for my $row (@{$groups{ident $self}->{0}->{0}}) {
-    for my $row ((0..$num_of_rows{ident $self})) {
+    for my $row ((0..$num_of_rows{ident $self}-1)) {
         my $cellline = $self->get_cellline_row($row);
         print "cell line $cellline\n" and $cellline{ident $self} = $cellline and last if defined($cellline);
     }
@@ -368,7 +368,7 @@ sub get_cellline_row {
 sub get_devstage {
     my $self = shift;
     #for my $row (@{$groups{ident $self}->{0}->{0}}) {
-    for my $row ((0..$num_of_rows{ident $self})) {
+    for my $row ((0..$num_of_rows{ident $self}-1)) {
         my $devstage = $self->get_devstage_row($row);
         print "dev stage $devstage\n" and $devstage{ident $self} = $devstage and last if defined($devstage);
     }
@@ -406,7 +406,7 @@ sub get_antibody {
     my $self = shift;
     if ($ap_slots{ident $self}->{'immunoprecipitation'}) {
         #for my $row (@{$groups{ident $self}->{0}->{0}}) {
-	for my $row ((0..$num_of_rows{ident $self})) {	    
+	for my $row ((0..$num_of_rows{ident $self}-1)) {	    
             my $ab = $self->get_antibody_row($row);
 	    print "antibody $ab\n" and $antibody{ident $self} = $ab and last if defined($ab);
         }
