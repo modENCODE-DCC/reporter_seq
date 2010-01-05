@@ -181,7 +181,8 @@ sub valid_sra {
 sub get_content {
     my ($self, $ele, $attr_name, $attr_value) = @_;
     my @contents;
-    my $contentl = ${$ele}{ident $self};
+    no strict 'refs';
+    my $contentl = $$ele{ident $self};
     if (ref($contentl) eq 'ARRAY') {
 	for my $data (@$contentl) {
 	    if ($data->{$attr_name} eq $attr_value) {
