@@ -104,6 +104,9 @@ for my $unique_id (@dcc_ids) {
     } else {
 	print "geo ids in sdrf:\n";
 	$sdrf_geo_id_found = 1;
+	#non-redundant
+	my %h = map {$_ => 1} @geo_ids;
+	@geo_ids = keys %h;
 	print @geo_ids, "\n";
 	for my $gsm_id (@geo_ids) {
 	    my $gsm_reader = new GEO::Gsm({
