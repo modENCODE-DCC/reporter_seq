@@ -1,4 +1,4 @@
-package GEO::Reporter;
+package GEO::LWReporter;
 
 use strict;
 use Carp;
