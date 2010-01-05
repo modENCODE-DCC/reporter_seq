@@ -1178,7 +1178,7 @@ sub get_antibody {
 	    }
 	}
 	elsif (defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1) {
-	    for my $row (0..$num_of_rows{ident $self}) {
+	    for my $row (0..$num_of_rows{ident $self}-1) {
 		my $ab = $self->get_antibody_row($row);
 		if ($ab) {
 		    if ( is_antibody($ab) != -1 ) { #negative control or real antibody
