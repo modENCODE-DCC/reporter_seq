@@ -44,7 +44,7 @@ die unless -e $dcc_id_file;
 my @dcc_ids = get_dcc_ids($dcc_id_file);
 
 #my $geo_reader = new GEO::Geo({'config' => \%ini,
-			       'xmldir' => $summary_cache_dir});
+#			       'xmldir' => $summary_cache_dir});
 #print "geo reader ready\n";
 #$geo_reader->get_uid();
 #$geo_reader->get_all_gse_gsm();
@@ -77,7 +77,7 @@ for my $unique_id (@dcc_ids) {
     #search path for this dataset, this is fixed by modencode chado db
     my $schema = $ini{database}{pathprefix}. $unique_id . $ini{database}{pathsuffix} . ',' . $ini{database}{schema};
     my $experiment_id = $reader->set_schema($schema);
-    print "connected db $dbname.\n";
+    print "connected schema $schema.\n";
     print "loading experiment ...";
     $reader->load_experiment($experiment_id);
     my $experiment = $reader->get_experiment();
@@ -107,7 +107,7 @@ for my $unique_id (@dcc_ids) {
 	print @geo_ids, "\n";
 	for my $gsm_id (@geo_ids) {
 	    my $gsm_reader = new GEO::Gsm({
-		'config' => $ini2,
+		'config' => \%ini,
 		'gsm' => $gsm_id});
 	    my $gsm_reader->get_all();
 	    my $sra = $gsm_reader->get_sra();
