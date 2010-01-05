@@ -110,7 +110,7 @@ for my $unique_id (@dcc_ids) {
 		'config' => \%ini,
 		'gsm' => $gsm_id,
 		'xmldir' => $gsm_cache_dir});
-	    my $gsm_reader->get_all();
+	    $gsm_reader->get_all();
 	    my $sra = $gsm_reader->get_sra();
 	    if ( scalar @$sra != 0 ) {
 		print "sra found.\n";
