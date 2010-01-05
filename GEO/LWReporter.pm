@@ -19,6 +19,7 @@ my %ap_slots               :ATTR( :set<ap_slots>               :default<undef>);
 my %project                :ATTR( :set<project>                :default<undef>);
 my %lab                    :ATTR( :set<lab>                    :default<undef>);
 my %contributors           :ATTR( :set<contributors>           :default<undef>);
+my %organism               :ATTR( :set<organism>               :default<undef>);
 my %strain                 :ATTR( :set<strain>                 :default<undef>);
 my %cellline               :ATTR( :set<cellline>               :default<undef>);
 my %devstage               :ATTR( :set<devstage>               :default<undef>);
@@ -39,11 +40,19 @@ sub BUILD {
 
 sub get_all {
     my $self = shift;
-    for my $parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots project lab contributors factors strain cellline devstage tgt_gene antibody]) {
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots project lab contributors factors organism strain cellline devstage tgt_gene antibody]) {
         my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
         $self->$get_func();
         print " done\n";
+    }
+}
+
+sub get_organism {
+    my $self = shift;
+    my $protocol = $denorm_slots{ident $self}->[0]->[0]->get_protocol();
+    for my $attr (@{$protocol->get_attributes()}) {
+        $organism{ident $self} = $attr->get_value() if $attr->get_heading() eq 'species';
     }
 }
 
@@ -259,7 +268,7 @@ sub get_strain {
 sub get_strain_row {
     my ($self, $row) = @_;
     my ($strain, $tgt_gene, $tag);
-    for (my $i=0; $i<$ap_slots{ident $self}->{seq}; $i++) {
+    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         print $ap->get_protocol->get_name, "\n";
         for my $datum (@{$ap->get_input_data()}) {
@@ -330,7 +339,7 @@ sub get_cellline {
 
 sub get_cellline_row {
     my ($self, $row) = @_;
-    for (my $i=0; $i<$ap_slots{ident $self}->{seq}; $i++) {
+    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
             my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
@@ -367,7 +376,7 @@ sub get_devstage {
 
 sub get_devstage_row {
     my ($self, $row) = @_;
-    for (my $i=0; $i<$ap_slots{ident $self}->{seq}; $i++) {
+    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
             my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
@@ -417,7 +426,7 @@ sub get_antibody_row { #keep it as a datum object
 
 sub get_value_by_info {
     my ($self, $row, $field, $fieldtext) = @_;
-    for (my $i=0; $i<$ap_slots{ident $self}->{seq}; $i++) {
+    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
 	for my $direction (('input', 'output')) {
 	    my $func = "get_" . $direction . "_data";
