@@ -259,7 +259,7 @@ sub get_strain {
 sub get_strain_row {
     my ($self, $row) = @_;
     my ($strain, $tgt_gene, $tag);
-    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+    for (my $i=0; $i<$ap_slots{ident $self}->{seq}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         print $ap->get_protocol->get_name, "\n";
         for my $datum (@{$ap->get_input_data()}) {
@@ -330,7 +330,7 @@ sub get_cellline {
 
 sub get_cellline_row {
     my ($self, $row) = @_;
-    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+    for (my $i=0; $i<$ap_slots{ident $self}->{seq}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
             my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
@@ -367,7 +367,7 @@ sub get_devstage {
 
 sub get_devstage_row {
     my ($self, $row) = @_;
-    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+    for (my $i=0; $i<$ap_slots{ident $self}->{seq}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
             my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
@@ -399,7 +399,7 @@ sub get_antibody {
         #for my $row (@{$groups{ident $self}->{0}->{0}}) {
 	for my $row ((0..$num_of_rows{ident $self})) {	    
             my $ab = $self->get_antibody_row($row);
-	    print "antibody $antibody\n" and $antibody{ident $self} = $ab and last if defined($ab);
+	    print "antibody $ab\n" and $antibody{ident $self} = $ab and last if defined($ab);
         }
     }
 }
@@ -417,7 +417,7 @@ sub get_antibody_row { #keep it as a datum object
 
 sub get_value_by_info {
     my ($self, $row, $field, $fieldtext) = @_;
-    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+    for (my $i=0; $i<$ap_slots{ident $self}->{seq}; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
 	for my $direction (('input', 'output')) {
 	    my $func = "get_" . $direction . "_data";
