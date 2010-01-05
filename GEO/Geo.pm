@@ -85,7 +85,8 @@ sub get_all_gse_gsm {
     for my $id (@{$uid{ident $self}}) {
 	my $xmlfile = $xmldir{ident $self} . $id . '.xml';
 	next if -e $xmlfile;
-	$self->get_gse_gsm_by_uid($id);
+	$self->get_gse_gsm($id);
+    }
 }
 
 sub get_gse_gsm {
