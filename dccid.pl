@@ -32,13 +32,15 @@ $config = $root_dir . 'geoid.ini';
 my $option = GetOptions ("id=s"            => \$dcc_id_file,
 			 "out=s"           => \$output_dir,
 			 "config=s"        => \$config);
-$output_dir = File::Spec->rel2abs($output_dir);
-$output_dir .= '/' unless $output_dir =~ /\/$/;
 my %ini;
 tie %ini, 'Config::IniFiles', (-file => $config);
 my $summary_cache_dir = $ini{cache}{summary};
 my $gsm_cache_dir = $ini{cache}{gsm};
-
+for my $dir ($output_dir, $summary_cache_dir, $gsm_cache_dir) {
+    $dir = File::Spec->rel2abs($dir);
+    $dir .= '/' unless $dir =~ /\/$/;
+}
+die unless -e $dcc_id_file;
 my @dcc_ids = get_dcc_ids($dcc_id_file);
 
 #my $geo_reader = new GEO::Geo({'config' => \%ini,
