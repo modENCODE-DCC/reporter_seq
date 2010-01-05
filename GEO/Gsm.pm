@@ -14,7 +14,7 @@ my %miniml              :ATTR( :set<miniml>              :default<undef>);
 my %contributor         :ATTR( :set<contributor>         :default<undef>);
 my %lab                :ATTR( :set<lab>         :default<undef>);
 my %title              :ATTR( :set<title>         :default<undef>);
-my $submission_date    :ATTR( :set<submission_date>         :default<undef>); 
+my %submission_date    :ATTR( :set<submission_date>         :default<undef>); 
 my %type         :ATTR( :set<type>         :default<undef>);
 my %strategy      :ATTR( :set<strategy>         :default<undef>);
 my %source      :ATTR( :set<source>         :default<undef>);
@@ -180,7 +180,7 @@ sub get_content {
 	}
     }
     if (ref($contentl) eq 'HASH') {
-	if ($contentl->{'attr'} eq $attr) {
+	if ($contentl->{$attr_name} eq $attr_value) {
 	    my $content = $contentl->{'content'};
 	    $content =~ s/^\s*//; $content =~ s/\s*$//;
 	    push @contents, $content;
