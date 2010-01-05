@@ -6,6 +6,7 @@ use Class::Std;
 use Data::Dumper;
 use File::Temp;
 use XML::Simple;
+use LWP::Simple;
 
 my %config                 :ATTR( :name<config>                :default<undef>);
 my %gsm                 :ATTR( :name<gsm>                :default<undef>);
@@ -43,7 +44,8 @@ sub get_all {
     my ($self) = @_;
     for my $parameter (qw[miniml contributor lab title submission_date type strategy source organism devstage antibody supplementary_data wiggle sra ]) {
         my $get_func = "get_" . $parameter;
-        $self->$get_func();	
+        $self->$get_func();
+	print $parameter, " ok\n";
     }
 }
 
@@ -110,7 +112,8 @@ sub get_source {
 sub get_organism {
     my ($self) = @_;
     my $accxml = $miniml{ident $self};
-    my $organism = $accxml->{Sample}->{'Library-Organism'};
+    my $organism = $accxml->{Sample}->{Channel}->{Organism};
+    #my $organism = $accxml->{Sample}->{'Library-Organism'};
     print "   Organism: $organism\n";
     $organism{ident $self} = $organism;
 }
@@ -118,7 +121,7 @@ sub get_organism {
 sub get_characteristics {
     my ($self) = @_;
     my $accxml = $miniml{ident $self};
-    my $charact = $accxml->{Sample}->{'Characteristics'};
+    my $charact = $accxml->{Sample}->{Channel}->{'Characteristics'};
     $characteristics{ident $self} = $charact;
 }
 
@@ -166,6 +169,15 @@ sub get_sra {
     $sra{ident $self} = \@files;
 }
 
+sub valid_sra {
+    my ($self) = @_;
+    my $valid = 1;
+    for my $sra (@{$sra{ident $self}}) {
+	$valid = 0 unless LWP::Simple::head($sra);
+    }
+    return $valid;
+}
+
 sub get_content {
     my ($self, $ele, $attr_name, $attr_value) = @_;
     my @contents;
@@ -195,6 +207,7 @@ sub get_miniml {
     my $gsm_id = $gsm{ident $self};
     my $acc_url = $ini->{acc}{acc_url} . $gsm_id . "&targ=$ini->{acc}{targ}" . "&view=$ini->{acc}{view}" . "&form=$ini->{acc}{form}" ;
     my $accfile = $xmldir{ident $self} . $gsm_id . '.xml';
+    print "miniml $accfile exists. use cache..." if -e $accfile;
     unless (-e $accfile) { 
 	$accfile = fetch($acc_url);
     }
