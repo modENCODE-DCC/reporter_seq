@@ -408,19 +408,43 @@ sub get_antibody {
         #for my $row (@{$groups{ident $self}->{0}->{0}}) {
 	for my $row ((0..$num_of_rows{ident $self}-1)) {	    
             my $ab = $self->get_antibody_row($row);
-	    print "antibody", Dumper($ab) and $antibody{ident $self} = $ab and last if defined($ab) and defined($ab->get_value());
+	    if ($ab) {
+		if (is_antibody($ab) != -1) {
+		    print "antibody", $ab->get_value and $antibody{ident $self} = $ab;
+		}
+	    }
         }
     }
 }
 
+sub is_antibody {
+    my $ab = shift;
+    my $antibody = $ab->get_value();
+    return -1 unless $antibody;
+    $antibody =~ /[Aa][Bb]:([\w ]*?):/;
+    $antibody = $1;
+    $antibody =~ s/ +/ /g;
+    print $antibody;
+    my @special_antibodies = ('No Antibody Control', 'AB46540_NIgG');
+    my $is_control = 0;
+    for my $control (@special_antibodies) {
+	$is_control = 1 and last if $antibody eq $control;
+    }
+    return 0 if $is_control;
+    return 1;
+}
+
 sub get_antibody_row { #keep it as a datum object
     my ($self, $row) = @_;
+    print "row $row";
     my $denorm_slots = $denorm_slots{ident $self} ;
     my $ap_slots = $ap_slots{ident $self} ;
     my $ip_ap = $denorm_slots->[$ap_slots->{'immunoprecipitation'}]->[$row];
     my $antibodies;
     eval { $antibodies = _get_datum_by_info($ip_ap, 'input', 'name', 'antibody') } ;
+    print Dumper($antibodies->[0]);
     return $antibodies->[0] unless $@;
+    print "antibody not found.";
     return undef;
 }
 
@@ -531,5 +555,24 @@ sub _get_datum_info {
     return $datum->get_termsource()->get_db()->get_name() . ":" . $datum->get_termsource()->get_accession() if $field eq 'dbxref';
 }
 
+sub _get_datum_by_info { 
+    my ($ap, $direction, $field, $fieldtext) = @_;
+    my @data = ();
+
+    if ($direction eq 'input') {
+        for my $datum (@{$ap->get_input_data()}) {
+            if ($field eq 'name') {push @data, $datum if $datum->get_name() =~ /$fieldtext/i;}
+            if ($field eq 'heading') {push @data, $datum if $datum->get_heading() =~ /$fieldtext/i;}        
+        }
+    }
+    if ($direction eq 'output') {
+        for my $datum (@{$ap->get_output_data()}) {
+            if ($field eq 'name') {push @data, $datum if $datum->get_name() =~ /$fieldtext/i;}
+            if ($field eq 'heading') {push @data, $datum if $datum->get_heading() =~ /$fieldtext/i;}
+        }
+    }
+    croak("can not find data that has fieldtext like $fieldtext in field $field in chado.data table") unless (scalar @data);
+    return \@data;
+}
 
 1;
