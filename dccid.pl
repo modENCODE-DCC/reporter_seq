@@ -26,6 +26,7 @@ use ModENCODE::Parser::LWChado;
 use GEO::LWReporter;
 use GEO::Geo;
 use GEO::Gsm;
+use Data::Dumper;
 
 my ($dcc_id_file, $output_dir, $config);
 $config = $root_dir . 'geoid.ini';
@@ -40,8 +41,10 @@ for my $dir ($output_dir, $summary_cache_dir, $gsm_cache_dir) {
     $dir = File::Spec->rel2abs($dir);
     $dir .= '/' unless $dir =~ /\/$/;
 }
+my $dcc_summary_file = $output_dir . 'dcc_summary.txt';
 die unless -e $dcc_id_file;
 my @dcc_ids = get_dcc_ids($dcc_id_file);
+open my $dsfh, ">", $dcc_summary_file;
 
 #my $geo_reader = new GEO::Geo({'config' => \%ini,
 #			       'xmldir' => $summary_cache_dir});
@@ -66,14 +69,15 @@ my $dbname = $ini{database}{dbname};
 my $dbhost = $ini{database}{host};
 my $dbusername = $ini{database}{username};
 my $dbpassword = $ini{database}{password};
-my $reader = new ModENCODE::Parser::Chado({
+for my $unique_id (@dcc_ids) {
+    print "# submission $unique_id #\n";
+	print $dsfh "submission $unique_id\n";
+    print "connecting to database ...";
+    my $reader = new ModENCODE::Parser::Chado({
     'dbname' => $dbname,
     'host' => $dbhost,
     'username' => $dbusername,
     'password' => $dbpassword});
-for my $unique_id (@dcc_ids) {
-    print "# submission $unique_id #\n";
-    print "connecting to database ...";
     #search path for this dataset, this is fixed by modencode chado db
     my $schema = $ini{database}{pathprefix}. $unique_id . $ini{database}{pathsuffix} . ',' . $ini{database}{schema};
     my $experiment_id = $reader->set_schema($schema);
@@ -81,6 +85,7 @@ for my $unique_id (@dcc_ids) {
     print "loading experiment ...";
     $reader->load_experiment($experiment_id);
     my $experiment = $reader->get_experiment();
+    print Dumper($experiment);
     print "done.\n";
     my $reporter = new GEO::LWReporter({
         'unique_id' => $unique_id,
@@ -93,14 +98,22 @@ for my $unique_id (@dcc_ids) {
     my @geo_ids = $reporter->get_geo_ids();
     my ($sdrf_fastq_found, $sdrf_geo_id_found);
     if ( scalar @fastq_files == 0 ) {
-	print "no fastq file in sdrf.\n"
+	print "no fastq file in sdrf.\n";
+	print $dsfh "No fastq files\n";
     } else {
 	print "fastq files in sdrf:\n";
 	$sdrf_fastq_found = 1;
 	print @fastq_files;
+        #non-redundant
+        my %h = map {$_ => 1} @fastq_files;
+        @fastq_files = keys %h;
+        print @fastq_files, "\n";
+	map {print $dsfh $_, "  "} @fastq_files;
+	print $dsfh "\n";
     }
     if ( scalar @geo_ids == 0 ) {
 	print "no geo ids in sdrf.\n";
+	print $dsfh "No geo id.\n";
     } else {
 	print "geo ids in sdrf:\n";
 	$sdrf_geo_id_found = 1;
@@ -108,6 +121,8 @@ for my $unique_id (@dcc_ids) {
 	my %h = map {$_ => 1} @geo_ids;
 	@geo_ids = keys %h;
 	print @geo_ids, "\n";
+	map {print $dsfh $_, "  "} @geo_ids;
+	print $dsfh "\n";
 	for my $gsm_id (@geo_ids) {
 	    my $gsm_reader = new GEO::Gsm({
 		'config' => \%ini,
@@ -118,13 +133,17 @@ for my $unique_id (@dcc_ids) {
 	    if ( scalar @$sra != 0 ) {
 		print "sra found.\n";
 		print @$sra, "\n";
+		map {print $dsfh $_, "  "} @$sra;
 		if ( $gsm_reader->valid_sra() ) {
 		    print " all sra valid. ";
+		    print $dsfh "valid\n";
 		} else {
-		    print 'sra invalid.\n';
+		    print "sra invalid.\n";
+		    print $dsfh "invalid\n";
 		}
 	    } else {
-		print 'no sra yet.\n';
+		print "no sra yet.\n";
+		print $dsfh "No sra\n";
 	    }
 	}
     }
@@ -147,6 +166,8 @@ for my $unique_id (@dcc_ids) {
 #	}
 #    }
 }
+
+close $dsfh;
 
 #sub check_strain {    
 #}
