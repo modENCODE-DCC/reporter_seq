@@ -42,7 +42,7 @@ sub BUILD {
 
 sub get_all {
     my ($self) = @_;
-    for my $parameter (qw[miniml contributor lab title submission_date type strategy source organism devstage antibody supplementary_data wiggle sra ]) {
+    for my $parameter (qw[miniml contributor lab title submission_date type strategy source organism characteristics strain devstage antibody supplementary_data wiggle sra ]) {
         my $get_func = "get_" . $parameter;
         $self->$get_func();
 	print $parameter, " ok\n";
@@ -128,18 +128,21 @@ sub get_characteristics {
 sub get_strain {
     my ($self) = @_;
     my @contents = $self->get_content('characteristics', 'tag', 'strain');
+    print $contents[0];
     $strain{ident $self} = $contents[0];
 }
 
 sub get_devstage {
     my ($self) = @_;
     my @contents = $self->get_content('characteristics', 'tag', 'growth stage');
+    print $contents[0];
     $devstage{ident $self} = $contents[0];
 }
 
 sub get_antibody {
     my ($self) = @_;
     my @contents = $self->get_content('characteristics', 'tag', 'antibody');
+    print $contents[0];
     $antibody{ident $self} = $contents[0];
 }
 
@@ -148,6 +151,7 @@ sub get_supplementary_data {
     my ($self) = @_;
     my $accxml = $miniml{ident $self};
     my $datal = $accxml->{Sample}->{'Supplementary-Data'};
+    print Dumper($datal);
     $supplementary_data{ident $self} = $datal;
 }
 
@@ -181,8 +185,10 @@ sub valid_sra {
 sub get_content {
     my ($self, $ele, $attr_name, $attr_value) = @_;
     my @contents;
-    no strict 'refs';
-    my $contentl = $$ele{ident $self};
+    #no strict 'refs';
+    #my $contentl = ${"$ele"}{ident $self};
+    my $contentl = $characteristics{ident $self} if $ele eq 'characteristics';
+    my $contentl = $supplementary_data{ident $self} if $ele eq 'supplementary_data';
     if (ref($contentl) eq 'ARRAY') {
 	for my $data (@$contentl) {
 	    if ($data->{$attr_name} eq $attr_value) {
