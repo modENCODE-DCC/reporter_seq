@@ -437,18 +437,20 @@ sub write_raw_data {
     my $sampleFH = $sampleFH{ident $self};
     my $ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'raw'}]->[$row];
     my @raw_datafiles;
+    my $num_raw_data = 1;
     my @suffixs = ('.bz2', '.z', '.gz', '.zip', '.rar');
     for my $datum (@{$ap->get_output_data()}) {
 	if (($datum->get_heading() =~ /Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
 	    my $path = $datum->get_value();
 	    print "###raw data###", $path, "\n";
-	    #my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
-	    my ($file, $dir, $suffix) = fileparse($path, qr/\.*/);
-	    if ($suffix =~ /\.fastq/i) {
-		if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {#assume there is just one fastq file per channel
-		    print $sampleFH "!Sample_raw_file_1 = ", $file . $suffix, "\n";
-		    print $sampleFH "!Sample_raw_file_type_1 = ", 'fastq', "\n";
-		}
+	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {#assume there is just one fastq file per channel
+		my ($file, $dir, $suffix) = fileparse($path, qr/\.*/);
+		print $sampleFH "!Sample_raw_file_", "$num_raw_data = ", $file . $suffix, "\n";
+		my $type;
+		$type = 'fastq' if $suffix =~ /\.fastq/i;
+		$type = 'wiggle' if $suffix =~ /\.wig/i;
+		print $sampleFH "!Sample_raw_file_type_", "$num_raw_data = ", $type, "\n";
+		$num_raw_data += 1;
 	    }
 	    else {
 		my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
