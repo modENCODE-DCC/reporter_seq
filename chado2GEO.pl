@@ -170,8 +170,9 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
 
     for my $datafile (@datafiles) {
 	if ($datafile =~ /\.fastq/) {
+	    my $ua = new LWP::UserAgent;
 	    my $request = $ua->request(HTTP::Request->new('GET' => $datafile));
-	    $request->is_success or die "$url: " . $request->message;
+	    $request->is_success or die "$datafile: " . $request->message;
 	    my ($tmpfh, $tmpfile) = File::Temp::tempfile();
 	    print $tmpfh $request->content();
 	    system("tar -r --remove-files -f $tarfile $tmpfile") == 0 || die "can not append a datafile $datafile from download to my tarball $tarfile and then remove it (leave no garbage).";
