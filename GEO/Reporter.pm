@@ -538,7 +538,7 @@ sub get_project {
 	    $value =~ s/^\s*//;
 	    $value =~ s/\s*$//;
 	    print "project: $value\n";
-	    $project{ident $self} = $projects{lc($value)};
+	    $project{ident $self} = $projects{lc($value)} if $value;
 	}
     }
 }
