@@ -142,7 +142,8 @@ sub chado2sample {
 	for my $array (sort keys %{$combined_grp{$extraction}}) {
 	    print "##########", $extraction, $array, "\n";
 	    $self->write_series_sample($extraction, $array);
-	    for (my $channel=0; $channel<scalar(@{$combined_grp{$extraction}{$array}}); $channel++) {
+	    my $tot_ch = scalar(@{$combined_grp{$extraction}{$array}});
+	    for (my $channel=0; $channel<$tot_ch; $channel++) {
 		my $row = $combined_grp{$extraction}{$array}->[$channel];
 		print $row, "\n";
 		$self->write_sample_source($extraction, $array, $row, $channel);
