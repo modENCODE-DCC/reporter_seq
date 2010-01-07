@@ -444,11 +444,11 @@ sub write_raw_data {
 	    my $path = $datum->get_value();
 	    print "###raw data###", $path, "\n";
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {#assume there is just one fastq file per channel
-		my ($file, $dir, $suffix) = fileparse($path, qr/\.*/);
+		my ($file, $dir, $suffix) = fileparse($path);
 		print $sampleFH "!Sample_raw_file_", "$num_raw_data = ", $file . $suffix, "\n";
 		my $type;
-		$type = 'fastq' if $suffix =~ /\.fastq/i;
-		$type = 'wiggle' if $suffix =~ /\.wig/i;
+		$type = 'FASTQ' if $file =~ /\.fastq/i;
+		$type = 'WIG' if $file =~ /\.wig/i;
 		print $sampleFH "!Sample_raw_file_type_", "$num_raw_data = ", $type, "\n";
 		$num_raw_data += 1;
 	    }
@@ -484,9 +484,9 @@ sub write_normalized_data {
 	if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
 	    my $path = $datum->get_value();
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
-		my ($file, $dir, $suffix) = fileparse($path, qr/\.*/);
+		my ($file, $dir, $suffix) = fileparse($path);
 		my $type;
-		$type = 'wiggle' if ($suffix =~ /\.wig/i);
+		$type = 'WIG' if ($file =~ /\.wig/i);
 		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $file . $suffix, "\n";
 		print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
 		$num_processed_data+=1;
