@@ -142,8 +142,7 @@ sub chado2sample {
 	for my $array (sort keys %{$combined_grp{$extraction}}) {
 	    print "##########", $extraction, $array, "\n";
 	    $self->write_series_sample($extraction, $array);
-	    my $tot_ch = scalar(@{$combined_grp{$extraction}{$array}});
-	    for (my $channel=0; $channel<$tot_ch; $channel++) {
+	    for (my $channel=0; $channel<scalar(@{$combined_grp{$extraction}{$array}}); $channel++) {
 		my $row = $combined_grp{$extraction}{$array}->[$channel];
 		print $row, "\n";
 		$self->write_sample_source($extraction, $array, $row, $channel);
@@ -208,14 +207,22 @@ sub write_sample_source {
     my $sampleFH = $sampleFH{ident $self};
     my $ch = $channel+1;
     my $sample_name = $self->get_sample_sourcename_row_safe($extraction, $array, $row);
-    print $sampleFH "!Sample_source_name_ch$ch = ", $sample_name, " channel_$ch\n";
+    if (defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1) {
+	print $sampleFH "!Sample_source_name = ", $sample_name, " channel_$ch\n";
+    } else {
+	print $sampleFH "!Sample_source_name_ch$ch = ", $sample_name, " channel_$ch\n";
+    }
 }
 
 sub write_sample_organism {
     my ($self, $row, $channel) = @_;
     my $sampleFH = $sampleFH{ident $self};
     my $ch = $channel+1;
-    print $sampleFH "!Sample_organism_ch$ch = ", $organism{ident $self}, "\n";
+    if (defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1) {
+	print $sampleFH "!Sample_organism = ", $organism{ident $self}, "\n";
+    } else {
+	print $sampleFH "!Sample_organism_ch$ch = ", $organism{ident $self}, "\n";
+    }
 }
 
 sub write_characteristics {
@@ -223,7 +230,11 @@ sub write_characteristics {
     my $sampleFH = $sampleFH{ident $self};
     my $ch = $channel+1;
     for my $biosource (@{$self->get_biological_source_row($row)}) {
-	print $sampleFH  "!Sample_characteristics_ch$ch = ", $biosource, "\n";
+	if (defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1) {
+	    print $sampleFH  "!Sample_characteristics = ", $biosource, "\n";
+	} else {
+	    print $sampleFH  "!Sample_characteristics_ch$ch = ", $biosource, "\n";
+	}
     }
 }
 
@@ -270,7 +281,11 @@ sub write_sample_growth {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
 	my $protocol_text = $self->get_protocol_text($ap);
 	$protocol_text =~ s/\n//g; #one line
-	print $sampleFH "!Sample_growth_protocol_ch$ch = ", $protocol_text, "\n";
+	if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
+	    print $sampleFH "!Sample_growth_protocol = ", $protocol_text, "\n";
+	} else {
+	    print $sampleFH "!Sample_growth_protocol_ch$ch = ", $protocol_text, "\n";
+	}
     }
 }
 
@@ -290,7 +305,11 @@ sub write_sample_extraction {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
 	my $protocol_text = $self->get_protocol_text($ap);
 	$protocol_text =~ s/\n//g; #one line
-	print $sampleFH "!Sample_extract_protocol_ch$ch = ", $protocol_text, "\n";
+	if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
+	    print $sampleFH "!Sample_extract_protocol = ", $protocol_text, "\n";
+	} else {
+	    print $sampleFH "!Sample_extract_protocol_ch$ch = ", $protocol_text, "\n";
+	}
     }
 }
 sub write_sample_label {
@@ -423,15 +442,21 @@ sub write_raw_data {
 	if (($datum->get_heading() =~ /Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
 	    my $path = $datum->get_value();
 	    print "###raw data###", $path, "\n";
-	    my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
-	    if (scalar grep {lc($suffix) eq $_} @suffixs) {
-		if ($datum->get_name =~ /fastq/i) {
-		    print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
-		} else {
-		    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+	    #my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
+	    my ($file, $dir, $suffix) = fileparse($path, qr/\.*/);
+	    if ($suffix =~ /\.fastq/i) {
+		if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {#assume there is just one fastq file per channel
+		    print $sampleFH "!Sample_raw_file_1 = ", $file . $suffix, "\n";
+		    print $sampleFH "!Sample_raw_file_type_1 = ", 'fastq', "\n";
 		}
-	    } else {
-		print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+	    }
+	    else {
+		my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
+		if (scalar grep {lc($suffix) eq $_} @suffixs) {
+		    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+		} else {
+		    print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+		}
 	    }
 	    push @raw_datafiles, $path;
 	}
@@ -452,14 +477,25 @@ sub write_normalized_data {
     my $normalization_ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'normalization'}]->[$row];
     my @normalization_datafiles;
     my @suffixs = ('.bz2', '.z', '.gz', '.zip', '.rar');
+    my $num_processed_data = 1;
     for my $datum (@{$normalization_ap->get_output_data()}) {
 	if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
 	    my $path = $datum->get_value();
-	    my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
-	    if (scalar grep {lc($suffix) eq $_} @suffixs) {
-		print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
-	    } else {
-		print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
+		my ($file, $dir, $suffix) = fileparse($path, qr/\.*/);
+		my $type;
+		$type = 'wiggle' if ($suffix =~ /\.wig/i);
+		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $file . $suffix, "\n";
+		print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
+		$num_processed_data+=1;
+	    } 
+	    else {
+		my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
+		if (scalar grep {lc($suffix) eq $_} @suffixs) {
+		    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+		} else {
+		    print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+		}
 	    }
 	    push @normalization_datafiles, $path;
 	}
