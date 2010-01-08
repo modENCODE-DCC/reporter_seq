@@ -59,10 +59,10 @@ $report_dir .= '/' unless $report_dir =~ /\/$/;
 #build the uniquename for this dataset
 my $unique_name = 'modencode_' . $unique_id;
 
-my ($seriesfile, $samplefile, $file_datafilenames, $metafile);
+my ($seriesfile, $samplefile, $chado_datafiles, $metafile);
 $seriesfile = $report_dir . $unique_name . '_series.txt';
 $samplefile = $report_dir . $unique_name . '_sample.txt';
-$file_datafilenames = $report_dir . $unique_name . '_datafilenames.txt';
+$chado_datafiles = $report_dir . $unique_name . '_chado_datafiles.txt';
 $metafile = $unique_name . '.soft';
 
 if (($use_existent_metafile == 0) && ($use_existent_tarball == 0)) {
@@ -91,7 +91,7 @@ if (($use_existent_metafile == 0) && ($use_existent_tarball == 0)) {
 
     open my $seriesFH, ">", $seriesfile;
     open my $sampleFH, ">", $samplefile;
-    open my $file_datafilenamesFH, ">", $file_datafilenames;    
+    open my $chado_datafilesFH, ">", $chado_datafiles;    
     my $reporter = new GEO::Reporter({
         'config' => \%ini,
         'unique_id' => $unique_id,
@@ -114,14 +114,14 @@ if (($use_existent_metafile == 0) && ($use_existent_tarball == 0)) {
     my @rd_datafiles = (@$raw_datafiles, @$normalized_datafiles, @$more_datafiles);
     my @datafiles = nr(@rd_datafiles);
     for my $datafile (@datafiles) {
-	print $file_datafilenamesFH $datafile, "\n";
+	print $chado_datafilesFH $datafile, "\n";
     }
     chdir $report_dir;
     my $file1 = basename($seriesfile);
     my $file2 = basename($samplefile);
     close $sampleFH;
     close $seriesFH;
-    close $file_datafilenamesFH;
+    close $chado_datafilesFH;
     system("cat $file1 $file2 > $metafile") == 0 || die "can not catenate series and sample files to make soft file: $?";    
     system("rm $file1 $file2") == 0 || die "can not remove the series and sample files: $?";
     print "done\n";
@@ -135,82 +135,76 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
     #make a tar ball at report_dir for all datafiles
     chdir $report_dir;
     system("tar cf $tarfile $metafile") == 0 || die "can not tar the GEO soft file: $?";
-    system("rm $metafile") == 0 || die "can not remove GEO soft file: $?";
 
     print "   downloading tarball provided by pipeline ...";
     my $url = $ini{tarball}{url};
     $url .= '/' unless $url =~ /\/$/;
     $url .= $unique_id . $ini{tarball}{condition};
-    my $allfile = 'extracted.tgz';
-    my @allfilenames;
+    my $pipeline_tarball = 'modencode_' . $unique_id . '_pipeline.tgz';
     #download flattened tarball of submission
-#    unless ( -e $allfile ) { #<------------change here 
-    open my $allfh, ">" , $allfile;
-    my $ua = new LWP::UserAgent;
-    my $request = $ua->request(HTTP::Request->new('GET' => $url));
-    $request->is_success or die "$url: " . $request->message;
-    print $allfh $request->content();
-    close $allfh;
-#}
+    unless ( -e $pipeline_tarball ) { 
+	download_pipeline($url, $pipeline_tarball);
+    }
     print "done.\n";
-    #peek into tarball to list all filenames
-    @allfilenames = split(/\n/, `tar tzf "$allfile"`);
+    #peek into pipeline tarball to list all pipeline filenames
+    my @pipeline_filenames = split(/\n/, `tar tzf "$pipeline_tarball"`);
     print "from pipeline###########\n";
-    map {print $_, "\n"} @allfilenames; 
+    map {print $_, "\n"} @pipeline_filenames; 
     my @datafiles;
-    open my $file_datafilenamesFH, "<", $file_datafilenames;
-    while (<$file_datafilenamesFH>) {
+    open my $chado_datafilesFH, "<", $chado_datafiles;
+    while (<$chado_datafilesFH>) {
 	chomp;
 	push @datafiles, $_;
     }
-    close $file_datafilenames;
-    system("rm $file_datafilenames") == 0 || die "can not remove file $file_datafilenames.";
+    close $chado_datafiles;
 
     my $max_download_times = 10;
+    my @fastqfiles;
     for my $datafile (@datafiles) {
 	if ($datafile =~ /\.fastq/) {
 	    print $datafile, "\n";
-	    for (my $i=$max_download_times; $i>0; $i--) { #<---------change here
-		my $ua = new LWP::UserAgent;
-		my $request = $ua->request(HTTP::Request->new('GET' => $datafile));
-		if ($request->is_success) {
-		    my ($tmpfh, $tmpfile) = File::Temp::tempfile();
-		    print $tmpfh $request->content();
-		    system("tar -r --remove-files -f $tarfile $tmpfile") == 0 || die "can not append a datafile $datafile from download to my tarball $tarfile and then remove it (leave no garbage).";
-		    last;
-		} #end of if request is success
-	    } #end of for max_download_times
+	    my $fastqfile = basename($datafile);
+	    push @fastqfiles, $fastqfile;
+	    unless ( -e $fastqfile ) {
+		download_fastq($datafile, $max_download_times, $fastqfile);
+	    }
+	    system("tar -r -f $tarfile $fastqfile") == 0 || die "can not append a fastq file $fastqfile from download to my tarball $tarfile.";
     	} # end of if datafile is fastq
 	else {
-	#remove subdirectory prefix, remove suffix of compression, such as .zip, .bz2, this is the filename goes into geo tarball
-	my $myfile = unzipp(basename($datafile));
+	    #remove subdirectory prefix, remove suffix of compression, such as .zip, .bz2, this is the filename goes into geo tarball
+	    my $myfile = unzipp(basename($datafile));
 
-	#replace / with _ , use it to match the filenames in downloaded tarball
-	$datafile =~ s/\//_/g;	
-	my $chars = 0 - length($datafile);
-	my $filename_in_tarball;
-	for my $filename (@allfilenames) {
-	    # the filenames in pipeline provided tarball are of pattern extracted_maindirectory_subdirectory_datafilename(_compression_suffix),
-	    # the filenames in chado are of pattern subdirectory_datafilenames(_compression_suffix) 
-	    $filename_in_tarball = $filename and last if substr($filename, $chars) eq $datafile;
-	}
-	system("tar xzf $allfile $filename_in_tarball") == 0 || die "can not extract a datafile $filename_in_tarball from download tarball $allfile";
-	#if it is compressed ......right now only allows one level of compression
-	#if it is multiple levels of compression, GEO will still get compressed files in tarball, they will complain and we will fix.
-	my $zipsuffix = iszip($filename_in_tarball);
-	if ($zipsuffix) {
-	    #unzip and remove the original compressed file
-	    my $filename_no_zip = do_unzip($filename_in_tarball, $zipsuffix);
-	    system("mv $filename_no_zip $myfile") == 0 || die "can not change filename $filename_no_zip to $myfile";
-	} else {
-	    system("mv $filename_in_tarball $myfile") == 0 || die "can not change filename $filename_in_tarball to $myfile";
-	}
-	system("tar -r --remove-files -f $tarfile $myfile") == 0 || die "can not append a datafile $filename_in_tarball from download tarball $allfile to my tarball $tarfile and then remove it (leave no garbage).";
+	    #replace / with _ , use it to match the filenames in downloaded tarball
+	    $datafile =~ s/\//_/g;	
+	    my $chars = 0 - length($datafile);
+	    my $filename_in_tarball;
+	    for my $filename (@pipeline_filenames) {
+		# the filenames in pipeline provided tarball are of pattern extracted_maindirectory_subdirectory_datafilename(_compression_suffix),
+		# the filenames in chado are of pattern subdirectory_datafilenames(_compression_suffix) 
+		$filename_in_tarball = $filename and last if substr($filename, $chars) eq $datafile;
+	    }
+	    system("tar xzf $pipeline_tarball $filename_in_tarball") == 0 || die "can not extract a datafile $filename_in_tarball from download tarball $pipeline_tarball";
+	    #if it is compressed ......right now only allows one level of compression
+	    #if it is multiple levels of compression, GEO will still get compressed files in tarball, they will complain and we will fix.
+	    my $zipsuffix = iszip($filename_in_tarball);
+	    if ($zipsuffix) {
+		#unzip and remove the original compressed file
+		my $filename_no_zip = do_unzip($filename_in_tarball, $zipsuffix);
+		system("mv $filename_no_zip $myfile") == 0 || die "can not change filename $filename_no_zip to $myfile";
+	    } else {
+		system("mv $filename_in_tarball $myfile") == 0 || die "can not change filename $filename_in_tarball to $myfile";
+	    }
+	    system("tar -r --remove-files -f $tarfile $myfile") == 0 || die "can not append a datafile $filename_in_tarball from download tarball $pipeline_tarball to my tarball $tarfile and then remove it (leave no garbage).";
 	}
     }
     system("rm $tarballfile 2>&1 > /dev/null") if -e $tarballfile; # Remove the gzip if it already exists; ignore output
     system("gzip $tarfile") == 0 || die "cannot gzip the tar file $tarfile";
-    #system("rm $allfile") == 0 || die "can not remove file $allfile"; #<---------change here
+
+    #cleaning
+    system("rm $metafile") == 0 || die "can not remove GEO soft file: $?";
+    system("rm $chado_datafiles") == 0 || die "can not remove file $chado_datafiles.";
+    system("rm $pipeline_tarball") == 0 || die "can not remove file $pipeline_tarball";
+
     $tarball_made = 1;
     print "tarball made.\n";
 }
@@ -260,6 +254,31 @@ if (($tarball_made || $use_existent_tarball) && $send_to_geo) {
 }
 
 exit 0;
+
+sub download_fastq {
+    my ($url, $max_download_times, $file) = @_;
+    for (my $i=$max_download_times; $i>0; $i--) {
+	my $ua = new LWP::UserAgent;
+	my $request = $ua->request(HTTP::Request->new('GET' => $url));
+	if ($request->is_success) {
+	    open my $fh, ">", $file;
+	    print $fh $request->content();
+	    close $fh;
+	    last;
+	}
+    }
+}
+
+sub download_pipeline {
+    my ($url, $file) = @_;
+    open my $fh, ">", $file;
+    my $ua = new LWP::UserAgent;
+    my $request = $ua->request(HTTP::Request->new('GET' => $url));
+    $request->is_success or die "$url: " . $request->message;
+    print $fh $request->content();
+    close $fh;       
+}
+
 
 sub nr {
     my @files = @_;
