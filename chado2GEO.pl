@@ -67,17 +67,12 @@ $metafile = $unique_name . '.soft';
 
 if (($use_existent_metafile == 0) && ($use_existent_tarball == 0)) {
     #what is the database for this dataset? 
-#    my $dbname = $ini{database}{dbname};
-#    my $dbhost = $ini{database}{host};
-#    my $dbusername = $ini{database}{username};
-#    my $dbpassword = $ini{database}{password};
-#    #search path for this dataset, this is fixed by modencode chado db
-#    my $schema = $ini{database}{pathprefix}. $unique_id . $ini{database}{pathsuffix} . ',' . $ini{database}{schema};
-    my $dbname = 'modencode_2542';
-    my $dbhost = 'localhost';
-    my $dbusername = 'zheng';
-    my $dbpassword = 'weigaocn';
-    my $schema = 'public';
+    my $dbname = $ini{database}{dbname};
+    my $dbhost = $ini{database}{host};
+    my $dbusername = $ini{database}{username};
+    my $dbpassword = $ini{database}{password};
+    #search path for this dataset, this is fixed by modencode chado db
+    my $schema = $ini{database}{pathprefix}. $unique_id . $ini{database}{pathsuffix} . ',' . $ini{database}{schema};
 
     #start read chado
     print "connecting to database ...";
@@ -149,16 +144,19 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
     my $allfile = 'extracted.tgz';
     my @allfilenames;
     #download flattened tarball of submission
+#    unless ( -e $allfile ) { #<------------change here 
     open my $allfh, ">" , $allfile;
     my $ua = new LWP::UserAgent;
     my $request = $ua->request(HTTP::Request->new('GET' => $url));
     $request->is_success or die "$url: " . $request->message;
     print $allfh $request->content();
     close $allfh;
+#}
     print "done.\n";
     #peek into tarball to list all filenames
     @allfilenames = split(/\n/, `tar tzf "$allfile"`);
-    
+    print "from pipeline###########\n";
+    map {print $_, "\n"} @allfilenames; 
     my @datafiles;
     open my $file_datafilenamesFH, "<", $file_datafilenames;
     while (<$file_datafilenamesFH>) {
@@ -168,15 +166,21 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
     close $file_datafilenames;
     system("rm $file_datafilenames") == 0 || die "can not remove file $file_datafilenames.";
 
+    my $max_download_times = 10;
     for my $datafile (@datafiles) {
 	if ($datafile =~ /\.fastq/) {
-	    my $ua = new LWP::UserAgent;
-	    my $request = $ua->request(HTTP::Request->new('GET' => $datafile));
-	    $request->is_success or die "$datafile: " . $request->message;
-	    my ($tmpfh, $tmpfile) = File::Temp::tempfile();
-	    print $tmpfh $request->content();
-	    system("tar -r --remove-files -f $tarfile $tmpfile") == 0 || die "can not append a datafile $datafile from download to my tarball $tarfile and then remove it (leave no garbage).";
-	} 
+	    print $datafile, "\n";
+	    for (my $i=$max_download_times; $i>0; $i--) { #<---------change here
+		my $ua = new LWP::UserAgent;
+		my $request = $ua->request(HTTP::Request->new('GET' => $datafile));
+		if ($request->is_success) {
+		    my ($tmpfh, $tmpfile) = File::Temp::tempfile();
+		    print $tmpfh $request->content();
+		    system("tar -r --remove-files -f $tarfile $tmpfile") == 0 || die "can not append a datafile $datafile from download to my tarball $tarfile and then remove it (leave no garbage).";
+		    last;
+		} #end of if request is success
+	    } #end of for max_download_times
+    	} # end of if datafile is fastq
 	else {
 	#remove subdirectory prefix, remove suffix of compression, such as .zip, .bz2, this is the filename goes into geo tarball
 	my $myfile = unzipp(basename($datafile));
@@ -206,7 +210,7 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
     }
     system("rm $tarballfile 2>&1 > /dev/null") if -e $tarballfile; # Remove the gzip if it already exists; ignore output
     system("gzip $tarfile") == 0 || die "cannot gzip the tar file $tarfile";
-    system("rm $allfile") == 0 || die "can not remove file $allfile";
+    #system("rm $allfile") == 0 || die "can not remove file $allfile"; #<---------change here
     $tarball_made = 1;
     print "tarball made.\n";
 }
