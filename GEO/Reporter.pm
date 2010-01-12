@@ -1916,9 +1916,8 @@ sub get_groups_seq {
     }
     if ($@) {
 	eval {
-	    $all_grp_by_seq = $self->group_applied_protocols_by_attr($denorm_slots->[$ap_slots->{'seq'}],\
-								     'name', 'sequencing platform');
-	}
+	    $all_grp_by_seq = $self->group_applied_protocols_by_attr($denorm_slots->[$ap_slots->{'seq'}], 'name', 'sequencing platform');
+	};
     }
 
     my %combined_grp;
