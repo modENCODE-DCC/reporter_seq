@@ -1883,7 +1883,6 @@ sub get_groups {
 
 sub get_groups_seq {
     my $self = shift;
-    print "seqOK";
     my $denorm_slots = $denorm_slots{ident $self};
     my $ap_slots = $ap_slots{ident $self};
     my ($nr_grp, $all_grp, $all_grp_by_seq);
@@ -1908,17 +1907,23 @@ sub get_groups_seq {
 	}	
     }
     
-    #default
-    my %all_grp_by_seq = map {$_ => 0} (0..$num_of_rows{ident $self}-1);
-    $all_grp_by_seq = \%all_grp_by_seq;
     eval {
 	$all_grp_by_seq = $self->group_applied_protocols_by_data($denorm_slots->[$ap_slots->{'seq'}], 'input', 'name', 'sequencing platform');
     };
+    print "the eval err msg says: $@";
     if ($@) {
+	print "seq machine ok1";
 	eval {
 	    $all_grp_by_seq = $self->group_applied_protocols_by_attr($denorm_slots->[$ap_slots->{'seq'}], 'name', 'sequencing platform');
 	};
+	if ($@) {
+	    print "seq machine ok2";
+	    my %all_grp_by_seq = map {$_ => 0} (0..$num_of_rows{ident $self}-1);
+	    $all_grp_by_seq = \%all_grp_by_seq;
+	}
     }
+    print "all groups by seq machine...\n";
+    print Dumper($all_grp_by_seq);
 
     my %combined_grp;
     while (my ($row, $extract_grp) = each %$all_grp) {
@@ -1937,8 +1942,6 @@ sub get_groups_seq {
 	    $combined_grp{$extract_grp}{$seq_grp} = [$row]; 
 	}
     }
-    print "denorm slots...\n";
-    print Dumper($denorm_slots);
     print "all groups by extraction...\n";
     print Dumper($all_grp);
     print "final groups...\n";
@@ -2039,6 +2042,7 @@ sub group_applied_protocols_by_attr {
             }
         }
     }
+    croak("can not get applied protocol that has attribute with field $field equals to fieldtext $fieldtext") unless scalar @attrs;
     return _group(\@attrs, $rtn);
 }
 
@@ -2217,6 +2221,7 @@ sub _get_data_by_info {
     for my $ap (@$aps) {
 	push @data, @{_get_datum_by_info($ap, $direction, $field, $fieldtext)};
     }
+    croak("can not find data with field $field and fieldtext $fieldtext") unless scalar @data;
     return \@data;
 }
 
@@ -2237,7 +2242,7 @@ sub _get_datum_by_info {
 	    if ($field eq 'heading') {push @data, $datum if $datum->get_heading() =~ /$fieldtext/i;}
 	}
     }
-    #croak("can not find data that has fieldtext like $fieldtext in field $field in chado.data table") unless (scalar @data);
+    croak("can not find data that has fieldtext like $fieldtext in field $field in chado.data table") unless (scalar @data);
     return \@data;
 }
 
