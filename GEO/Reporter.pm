@@ -61,7 +61,7 @@ sub BUILD {
 
 sub get_all {
     my $self = shift;
-    for my $parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type organism strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene]) {
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene]) {
 	my $get_func = "get_" . $parameter;
 	print "try to find $parameter ...";
 	$self->$get_func();
@@ -370,12 +370,18 @@ sub get_lib_strategy {
     if (defined($ap_slots{ident $self}->{'immunoprecipitation'}) and $ap_slots{ident $self}->{'immunoprecipitation'} != -1) {
 	return "ChIP-Seq";
     }
+    else {#default, whole genome shotgun
+	return "WGS";
+    }
 }
 
 sub get_lib_selection {
     my ($self) = @_;
     if (defined($ap_slots{ident $self}->{'immunoprecipitation'}) and $ap_slots{ident $self}->{'immunoprecipitation'} != -1) {
 	return "ChIP";   
+    }
+    else { #default random shearing only
+	return "RANDOM";
     }
 }
 
@@ -1309,10 +1315,25 @@ sub get_label_row { #keep it as a datum object
 sub get_seqmachine_row {
     my ($self, $row) = @_;
     my $seq_ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'seq'}]->[$row];
-    my $gd = _get_datum_by_info($seq_ap, 'input', 'name', '\s*sequencing\s*platform\s*');
-    my $gpl = $gd->[0]->get_value();
-    print $gpl;
-    return $gpl;
+    my $gd;
+    eval {
+	my $gd = _get_datum_by_info($seq_ap, 'input', 'name', '\s*sequencing\s*platform\s*');
+    };
+    if ($@) {
+	if ($organism{ident $self} eq 'Drosophila melanogaster') {
+	    print 'GPL9058';
+	    return 'GPL9058';
+	}
+	if ($organism{ident $self} eq 'Caenorhabditis elegans') {
+	    print 'GPL9309';
+	    return 'GPL9309';
+	}
+    }
+    else {
+	my $gpl = $gd->[0]->get_value();
+	print $gpl;
+	return $gpl;
+    }
 }
 
 sub get_array_row {
@@ -1836,11 +1857,12 @@ sub group_by_this_ap_slot {
     print "replicate group slot $replicate_group_col\n";
     print "extract name slot $extract_name_col\n";
     print "sample name slot $sample_name_col\n";
-    print "source name slot $source_name_col\n"; 
+    print "source name slot $source_name_col\n";
+    return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
     return [$extract_name_col, 'Extract\s*Name'] if ( defined($extract_name_col) and $last_extraction_slot{ident $self} > $extract_name_col );
     if ( $self->ap_slot_without_real_data($last_extraction_slot{ident $self}) ) {#no extract name, usually, in SDRF
 	#first use source name, since most experiment replicates are of biological replicates
-	return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
+	#return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
 	return [$source_name_col, 'Source\s*Name'] if defined($source_name_col);
 	return [$extract_name_col, 'Extract\s*Name'] if defined($extract_name_col);
 	return [$sample_name_col, 'Sample\s*Name'] if defined($sample_name_col);
@@ -1885,8 +1907,20 @@ sub get_groups_seq {
 	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'output', 'heading', $method);
 	}	
     }
+    
+    #default
+    my %all_grp_by_seq = map {$_ => 0} (0..$num_of_rows{ident $self}-1);
+    $all_grp_by_seq = \%all_grp_by_seq;
+    eval {
+	$all_grp_by_seq = $self->group_applied_protocols_by_data($denorm_slots->[$ap_slots->{'seq'}], 'input', 'name', 'sequencing platform');
+    }
+    if ($@) {
+	eval {
+	    $all_grp_by_seq = $self->group_applied_protocols_by_attr($denorm_slots->[$ap_slots->{'seq'}],\
+								     'name', 'sequencing platform');
+	}
+    }
 
-    $all_grp_by_seq = $self->group_applied_protocols_by_data($denorm_slots->[$ap_slots->{'seq'}], 'input', 'name', 'sequencing platform');
     my %combined_grp;
     while (my ($row, $extract_grp) = each %$all_grp) {
 	my $seq_grp = $all_grp_by_seq->{$row};
@@ -2204,7 +2238,7 @@ sub _get_datum_by_info {
 	    if ($field eq 'heading') {push @data, $datum if $datum->get_heading() =~ /$fieldtext/i;}
 	}
     }
-    croak("can not find data that has fieldtext like $fieldtext in field $field in chado.data table") unless (scalar @data);
+    #croak("can not find data that has fieldtext like $fieldtext in field $field in chado.data table") unless (scalar @data);
     return \@data;
 }
 
