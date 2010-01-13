@@ -299,7 +299,7 @@ sub write_sample_extraction {
 	$final_slot = $ap_slots{ident $self}->{'labeling'};
     }
     elsif ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
-	$final_slot = $ap_slots{ident $self}->{'seq'};
+	$final_slot = $ap_slots{ident $self}->{'seq'}+1;
     }
     for (my $i=$first_extraction_slot{ident $self}; $i<$final_slot; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
@@ -907,11 +907,15 @@ sub get_tgt_gene {
     my $header;
     for my $rank (keys %$factors) {
 	my $type = $factors->{$rank}->[1];
+	print $type;
 	$header = $factors->{$rank}->[0] and last if $type eq 'gene';
+	print "header is $header";
     }
-    my $tgt_gene = $self->get_value_by_info(0, 'name', $header);
-    print $tgt_gene;
-    $tgt_gene{ident $self} = $tgt_gene;
+    if ($header) {
+	my $tgt_gene = $self->get_value_by_info(0, 'name', $header);
+	print "tgt gene is:", $tgt_gene;
+	$tgt_gene{ident $self} = $tgt_gene;
+    }
 }
 
 
@@ -1055,7 +1059,10 @@ sub get_devstage_row {
 			$tmp =~ s/_/ /g;
 			return $tmp;
 		    }
-		}		
+		}
+		if (lc($aheading =~ /dev.*stage/)) {
+		    return uri_unescape($avalue);
+		}
 	    }
 	}
     }
@@ -1579,7 +1586,7 @@ sub get_slotnum_extract {
 		    return $aps[0];
 		}
 	    } elsif (scalar(@aps) == 0) {#oops, we have no protocol with protocol type equals regex to 'biosample_preparation_protocol'
-		my @itypes = ('whole_organism', 'organism_part');
+		my @itypes = ('whole_organism', 'organism_part', 'DNA');
 		my @iaps;
 		for my $type (@itypes) {
 		    my @xaps = $self->get_slotnum_by_datum_property('input', 0, 'type', undef, $type);
@@ -1850,6 +1857,8 @@ sub get_ap_slot_by_attr_info {
 
 sub group_by_this_ap_slot {
     my $self = shift;
+    my $hyb_col = $ap_slots{ident $self}->{'hybridization'};
+    my $seq_col = $ap_slots{ident $self}->{'seq'};
     my $replicate_group_col = $replicate_group_ap_slot{ident $self};
     my $extract_name_col = $extract_name_ap_slot{ident $self};
     my $sample_name_col = $sample_name_ap_slot{ident $self};
@@ -1858,15 +1867,21 @@ sub group_by_this_ap_slot {
     print "extract name slot $extract_name_col\n";
     print "sample name slot $sample_name_col\n";
     print "source name slot $source_name_col\n";
-    return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
-    return [$extract_name_col, 'Extract\s*Name'] if ( defined($extract_name_col) and $last_extraction_slot{ident $self} > $extract_name_col );
-    if ( $self->ap_slot_without_real_data($last_extraction_slot{ident $self}) ) {#no extract name, usually, in SDRF
-	#first use source name, since most experiment replicates are of biological replicates
-	#return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
+    if ( defined($replicate_group_col) && (defined($hyb_col) and $hyb_col>=0) ) {
+	return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
+    }
+    if ( defined($replicate_group_col) && (defined($seq_col) and !defined($extract_name_col) and (!defined($sample_name_col) or $sample_name_col == 0)) ) {
+	print "warning! use author-submitted replicate group information to group rows in SDRF for a sequencing experiment. if you have control aliquote in each replicate group, this grouping method will fail\n";
+	return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
+    }
+    return [$extract_name_col, 'Extract\s*Name'] if ( defined($extract_name_col) and $last_extraction_slot{ident $self} <= $extract_name_col );
+    return [$last_extraction_slot{ident $self}, 'protocol'] if ( defined($extract_name_col) and $last_extraction_slot{ident $self} > $extract_name_col );
+    if ( !defined($extract_name_col) ) {
 	return [$source_name_col, 'Source\s*Name'] if defined($source_name_col);
-	return [$extract_name_col, 'Extract\s*Name'] if defined($extract_name_col);
 	return [$sample_name_col, 'Sample\s*Name'] if defined($sample_name_col);
-	croak("suspicious submission, extraction protocol has only anonymous data, AND no protocol has Extract Name, Sample Name, Source(Hybrid) Name.");
+	if ( $self->ap_slot_without_real_data($last_extraction_slot{ident $self}) ) { 
+	    croak("suspicious submission, extraction protocol has only anonymous data, AND no protocol has Extract Name, Sample Name, Source(Hybrid) Name.");
+	}
     } else {
 	    return [$last_extraction_slot{ident $self}, 'protocol'];
     }
@@ -2092,7 +2107,7 @@ sub get_protocol_text {
 	} else {
 	    $url =~ /\?title=(\w+):?/;
 	    $title = $1;
-	}
+	} 
       	$title =~ s/_/ /g;
 	return $title . " protocol; " . decode_entities($self->_get_full_protocol_text($url));
     }
