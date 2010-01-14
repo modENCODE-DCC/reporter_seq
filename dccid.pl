@@ -27,6 +27,7 @@ use GEO::LWReporter;
 use GEO::Geo;
 use GEO::Gsm;
 use Data::Dumper;
+use URI;
 
 my ($dcc_id_file, $output_dir, $config);
 $config = $root_dir . 'geoid.ini';
@@ -64,6 +65,9 @@ open my $dsfh, ">", $dcc_summary_file;
 #	}	
 #    }
 #}
+
+my $ftp = Net::FTP->new("ftp.ncbi.nlm.nih.gov") or die "Cannot connect to, $@";
+$ftp->login();
 
 my $dbname = $ini{database}{dbname};
 my $dbhost = $ini{database}{host};
@@ -121,26 +125,31 @@ for my $unique_id (@dcc_ids) {
 	my %h = map {$_ => 1} @geo_ids;
 	@geo_ids = keys %h;
 	print @geo_ids, "\n";
-	map {print $dsfh $_, "  "} @geo_ids;
-	print $dsfh "\n";
+	#map {print $dsfh $_, "  "} @geo_ids;
+	#print $dsfh "\n";
 	for my $gsm_id (@geo_ids) {
 	    my $gsm_reader = new GEO::Gsm({
 		'config' => \%ini,
 		'gsm' => $gsm_id,
 		'xmldir' => $gsm_cache_dir});
 	    $gsm_reader->get_all();
+	    print $gsm_id, " ", $gsm_reader->get_title(), "\n";
 	    my $sra = $gsm_reader->get_sra();
 	    if ( scalar @$sra != 0 ) {
 		print "sra found.\n";
 		print @$sra, "\n";
-		map {print $dsfh $_, "  "} @$sra;
-		if ( $gsm_reader->valid_sra() ) {
-		    print " all sra valid. ";
-		    print $dsfh "valid\n";
-		} else {
-		    print "sra invalid.\n";
-		    print $dsfh "invalid\n";
+		for my $dir (@$sra) {
+		    my $uri = URI->new($dir);
+		    map {print $_, "\n"} @{$ftp->ls($uri->path())};
 		}
+		#map {print $dsfh $_, "  "} @$sra;
+		#if ( $gsm_reader->valid_sra() ) {
+		#    print " all sra valid. ";
+		#    print $dsfh "valid\n";
+		#} else {
+		#    print "sra invalid.\n";
+		#    print $dsfh "invalid\n";
+		#}
 	    } else {
 		print "no sra yet.\n";
 		print $dsfh "No sra\n";
