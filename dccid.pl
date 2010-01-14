@@ -52,6 +52,25 @@ my $geo_reader = new GEO::Geo({'config' => \%ini,
 print "geo reader ready\n";
 $geo_reader->get_uid();
 $geo_reader->get_all_gse_gsm();
+
+my $uidfile = $ini{output}{uid};
+my $gsefile = $ini{output}{gse};
+my $gsmfile = $ini{output}{gsm};
+
+open my $uidfh, ">", $uidfile;
+open my $gsefh, ">", $gsefile;
+open my $gsmfh, ">", $gsmfile;
+map {print $_, "\n"} @{$geo_reader->get_uid()};
+while ( my ($uid, $gse) = each %{$geo_reader->get_gse()} ) {
+    print $gsefh $uid, " ", $gse, "\n";
+}
+while ( my ($gse, $gsml) = each %{$geo_reader->get_gsm()} ) {
+    print $gsmfh $gse, " ", join(" ", @$gsml), "\n";
+}
+close $uidfh;
+close $gsefh;
+close $gsmfh;
+
 my %in_memory;
 #@all_gsm;
 for my $gsml (values %{$geo_reader->get_gsm()}) {
@@ -133,14 +152,14 @@ for my $unique_id (@dcc_ids) {
 		'gsm' => $gsm_id,
 		'xmldir' => $gsm_cache_dir});
 	    $gsm_reader->get_all();
-	    print $gsm_id, " ", $gsm_reader->get_title(), "\n";
+	    print $dsfh $gsm_id, " ", $gsm_reader->get_title(), "\n";
 	    my $sra = $gsm_reader->get_sra();
 	    if ( scalar @$sra != 0 ) {
 		print "sra found.\n";
 		print @$sra, "\n";
 		for my $dir (@$sra) {
 		    my $uri = URI->new($dir);
-		    map {print $_, "\n"} @{$ftp->ls($uri->path())};
+		    map {print $dsfh $_, "\n"} @{$ftp->ls($uri->path())};
 		}
 		#map {print $dsfh $_, "  "} @$sra;
 		#if ( $gsm_reader->valid_sra() ) {
