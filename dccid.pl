@@ -60,7 +60,7 @@ my $gsmfile = $ini{output}{gsm};
 open my $uidfh, ">", $uidfile;
 open my $gsefh, ">", $gsefile;
 open my $gsmfh, ">", $gsmfile;
-map {print $_, "\n"} @{$geo_reader->get_uid()};
+map {print $uidfh $_, "\n"} @{$geo_reader->get_uid()};
 while ( my ($uid, $gse) = each %{$geo_reader->get_gse()} ) {
     print $gsefh $uid, " ", $gse, "\n";
 }
