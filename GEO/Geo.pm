@@ -44,38 +44,40 @@ sub get_uid {
     $uid{ident $self} = $ids;
 }
 
-sub parse_esummary {
-    my ($self, $geofile) = @_;
+sub _parse_esummary {
+    my $summaryfile = shift;
+    my $xs = new XML::Simple;
+    my $esummary = $xs->XMLin($summaryfile);
+    my $gse;
+    my @gsml;
+    for my $item (@{$esummary->{DocSum}->{Item}}) {
+	if ($item->{Name} eq 'GSE') {
+	    $gse = $item->{content};
+	    $gse =~ /(\d*)/; $gse = 'GSE' . $1;
+	}
+	if ($item->{Name} eq 'GSM_L') {
+	    my $gsml = $item->{content};
+	    $gsml =~ s/^\s*//; $gsml =~ s/\s*$//;
+	    @gsml = split(';', $gsml);
+	    pop @gsml if $gsml[scalar(@gsml)-1] =~ /^\s*$/;
+	    @gsml = map { $_ =~ /(\d*)/; 'GSM' . $1; } @gsml;
+	}
+    }
+    return ($gse, \@gsml);
+}
+
+sub parse_cached_esummary {
+    my ($self) = @_;
     opendir my $xdh, $xmldir{ident $self};
     my @xmlfiles = grep { $_ =~ /\.xml/} readdir($xdh);
     @xmlfiles = map {$xmldir{ident $self} . $_;} @xmlfiles;
-    open my $gfh, ">", $geofile;
-    my $xs = new XML::Simple;
     for my $summaryfile (@xmlfiles) {
 	$summaryfile =~ /(\d*)\.xml/;
 	my $uid = $1;
-	my $esummary = $xs->XMLin($summaryfile);
-	my $gse;
-	my @gsml;
-	for my $item (@{$esummary->{DocSum}->{Item}}) {
-	    if ($item->{Name} eq 'GSE') {
-		$gse = $item->{content};
-		$gse =~ /(\d*)/; $gse = 'GSE' . $1;
-	    }
-	    if ($item->{Name} eq 'GSM_L') {
-		my $gsml = $item->{content};
-		$gsml =~ s/^\s*//; $gsml =~ s/\s*$//;
-		@gsml = split(';', $gsml);
-		pop @gsml if $gsml[scalar(@gsml)-1] =~ /^\s*$/;
-		@gsml = map { $_ =~ /(\d*)/; 'GSM' . $1; } @gsml;
-	    }
-	}
+	my $gse, $gsml = _parse_esummary($summaryfile);
 	$gse{ident $self}->{$uid} = $gse;
-	$gsm{ident $self}->{$gse} = \@gsml;
-	print $gfh "@"."$gse\n";
-	map {print $gfh $_, "\n";} @gsml;
+	$gsm{ident $self}->{$gse} = $gsml;
     }
-    close $gfh;
 }
 
 sub get_all_gse_gsm {
@@ -88,6 +90,7 @@ sub get_all_gse_gsm {
 	next if -e $xmlfile;
 	$self->get_gse_gsm($id);
     }
+    $self->parse_cached_esummary();
 }
 
 sub get_gse_gsm {
@@ -99,37 +102,9 @@ sub get_gse_gsm {
     my $xmlfile = $xmldir{ident $self} . $uid . '.xml';
     my $summaryfile = fetch($summary_url, $xmlfile);
     print "done. parsing...";
-    my $xs = new XML::Simple;
-    my $esummary = $xs->XMLin($summaryfile);
-    my ($type, $title, $summary, $gse, $gsml);
-    my $is_gse = 0;
-    for my $item (@{$esummary->{DocSum}->{Item}}) {
-	if ($item->{Name} eq 'entryType') {
-	    $type = $item->{content};
-	    $type =~ s/^\s*//; $type =~ s/\s*$//;
-	    if ($type eq 'GSE') {
-		$is_gse = 1 and last;
-	    }
-	}
-    }
-    if ($is_gse) {
-	for my $item (@{$esummary->{DocSum}->{Item}}) {
-	    $title = $item->{content} if $item->{Name} eq 'title';
-	    $summary = $item->{content} if $item->{Name} eq 'summary';
-	    $gse = $item->{content} if $item->{Name} eq 'GSE';
-	    $gsml = $item->{content} if $item->{Name} eq 'GSM_L';
-	}
-	#$gse =~ s/^\s*//; $gse =~ s/\s*$//; $gse = 'GSE' . $gse;
-	$gse =~ /(\d*)/; $gse = 'GSE' . $1;
-	$gsml =~ s/^\s*//; $gsml =~ s/\s*$//;
-	my @gsml = split(';', $gsml);
-	pop @gsml if $gsml[scalar(@gsml)-1] =~ /^\s*$/;
-	#@gsml = map { $_ =~ s/^\s*//; $_ =~ s/\s*$//; 'GSM' . $_; } @gsml;
-	@gsml = map { $_ =~ /(\d*)/; 'GSM' . $1; } @gsml;
-	print "done.\n";
-	$gse{ident $self}->{$uid} = $gse;
-	$gsm{ident $self}->{$gse} = \@gsml;
-    }
+    my $gse, $gsml = _parse_esummary($summaryfile);
+    $gse{ident $self}->{$uid} = $gse;
+    $gsm{ident $self}->{$gse} = $gsml;
 }
 
 sub gsm_for_gse {
