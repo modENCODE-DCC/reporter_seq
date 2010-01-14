@@ -47,24 +47,24 @@ die unless -e $dcc_id_file;
 my @dcc_ids = get_dcc_ids($dcc_id_file);
 open my $dsfh, ">", $dcc_summary_file;
 
-#my $geo_reader = new GEO::Geo({'config' => \%ini,
-#			       'xmldir' => $summary_cache_dir});
-#print "geo reader ready\n";
-#$geo_reader->get_uid();
-#$geo_reader->get_all_gse_gsm();
-#%in_memory;
+my $geo_reader = new GEO::Geo({'config' => \%ini,
+			       'xmldir' => $summary_cache_dir});
+print "geo reader ready\n";
+$geo_reader->get_uid();
+$geo_reader->get_all_gse_gsm();
+%in_memory;
 #@all_gsm;
-#for my $gsml (values %{$geo_reader->get_gsm()}) {
-#    for my $gsmid (@$gsml) {
-#	unless ($in_memory{$gsmid}) {
-#	    my $gsm = new GEO::Gsm({'config' => \%ini;
-#				    'xmldir' => $gsm_cache_dir});
-#	    $gsm->get_all();
+for my $gsml (values %{$geo_reader->get_gsm()}) {
+    for my $gsmid (@$gsml) {
+	unless ($in_memory{$gsmid}) {
+	    my $gsm = new GEO::Gsm({'config' => \%ini;
+				    'xmldir' => $gsm_cache_dir});
+	    $gsm->get_miniml();
 #	    push @all_gsm, $gsm;
-#	    $in_memory{$gsmid} = 1;
-#	}	
-#    }
-#}
+	    $in_memory{$gsmid} = 1;
+	}	
+    }
+}
 
 my $ftp = Net::FTP->new("ftp.ncbi.nlm.nih.gov") or die "Cannot connect to, $@";
 $ftp->login();
