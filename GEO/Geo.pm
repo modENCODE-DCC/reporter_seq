@@ -12,8 +12,8 @@ use XML::Simple;
 
 my %config                 :ATTR( :name<config>                :default<undef>);
 my %uid                    :ATTR( :set<uid>                    :default<[]>);
-my %gse                    :ATTR( :set<gse>                    :default<{}>);
-my %gsm                    :ATTR( :set<gsm>                    :default<{}>);
+my %gse                    :ATTR( :name<gse>                    :default<{}>);
+my %gsm                    :ATTR( :name<gsm>                    :default<{}>);
 my %xmldir                 :ATTR( :name<xmldir>                 :default<undef>);
 sub BUILD {
     my ($self, $ident, $args) = @_;
@@ -28,11 +28,12 @@ sub BUILD {
 
 sub get_uid {
     my $self = shift;
+    return $uid{ident $self} if scalar @{$uid{ident $self}};
     #get xml result from entrez search
     print "download entrez esearch results ...";
     my $ini = $config{ident $self}; 
     my $search_url = $ini->{geo}{search_url} . "db=$ini->{geo}{db}" . "&term=$ini->{geo}{term}" . "[$ini->{geo}{field}]" . "&retmax=$ini->{geo}{retmax}" ;
-    my $searchfile = $xmldir{ident $self} . 'esearch.xml';
+    my $searchfile = 'esearch.xml';
     $searchfile = fetch($search_url, $searchfile);    
     print "done.\n";
     #parse the xml file to get entrez UID for submissions
@@ -74,9 +75,9 @@ sub parse_cached_esummary {
     for my $summaryfile (@xmlfiles) {
 	$summaryfile =~ /(\d*)\.xml/;
 	my $uid = $1;
-	my ($gse, $gsml) = _parse_esummary($summaryfile);
-	$gse{ident $self}->{$uid} = $gse;
-	$gsm{ident $self}->{$gse} = $gsml;
+	my ($gsx, $gsml) = _parse_esummary($summaryfile);
+	$gse{ident $self}->{$uid} = $gsx;
+	$gsm{ident $self}->{$gsx} = $gsml;
     }
 }
 
@@ -86,25 +87,25 @@ sub get_all_gse_gsm {
     #use entrez esummary with input UID to fetch summary
     print "download and parse esummary xml file for GEO UIDs ...\n";
     for my $id (@{$uid{ident $self}}) {
+	print "GEO UID $id: ";
 	my $xmlfile = $xmldir{ident $self} . $id . '.xml';
-	next if -e $xmlfile;
-	$self->get_gse_gsm($id);
+	print "use cached $xmlfile\n" and next if -e $xmlfile;
+	$self->fetch_gse_gsm($id);
     }
     $self->parse_cached_esummary();
 }
 
-sub get_gse_gsm {
+sub fetch_gse_gsm {
     my ($self, $uid) = @_;
     my $ini = $config{ident $self};
-    print "############\n";
-    print "GEO UID $uid: downloading...";
+    print "downloading...";
     my $summary_url = $ini->{geo}{summary_url} . "db=$ini->{geo}{db}" . "&id=$uid";
     my $xmlfile = $xmldir{ident $self} . $uid . '.xml';
     my $summaryfile = fetch($summary_url, $xmlfile);
     print "done. parsing...";
-    my ($gse, $gsml) = _parse_esummary($summaryfile);
-    $gse{ident $self}->{$uid} = $gse;
-    $gsm{ident $self}->{$gse} = $gsml;
+    my ($gsx, $gsml) = _parse_esummary($summaryfile);
+    $gse{ident $self}->{$uid} = $gsx;
+    $gsm{ident $self}->{$gsx} = $gsml;
 }
 
 sub gsm_for_gse {

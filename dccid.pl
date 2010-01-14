@@ -52,7 +52,7 @@ my $geo_reader = new GEO::Geo({'config' => \%ini,
 print "geo reader ready\n";
 $geo_reader->get_uid();
 $geo_reader->get_all_gse_gsm();
-
+print "ok1";
 my $uidfile = $ini{output}{uid};
 my $gsefile = $ini{output}{gse};
 my $gsmfile = $ini{output}{gsm};
@@ -70,14 +70,15 @@ while ( my ($gse, $gsml) = each %{$geo_reader->get_gsm()} ) {
 close $uidfh;
 close $gsefh;
 close $gsmfh;
-
+print "ok2";
 my %in_memory;
 #@all_gsm;
 for my $gsml (values %{$geo_reader->get_gsm()}) {
     for my $gsmid (@$gsml) {
 	unless ($in_memory{$gsmid}) {
 	    my $gsm = new GEO::Gsm({'config' => \%ini,
-				    'xmldir' => $gsm_cache_dir});
+				    'xmldir' => $gsm_cache_dir,
+				    'gsm' => $gsmid});
 	    $gsm->get_miniml();
 #	    push @all_gsm, $gsm;
 	    $in_memory{$gsmid} = 1;
