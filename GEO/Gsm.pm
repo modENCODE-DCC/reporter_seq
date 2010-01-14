@@ -216,7 +216,7 @@ sub get_miniml {
     my $accfile = $xmldir{ident $self} . $gsm_id . '.xml';
     print "miniml $accfile exists. use cache..." if -e $accfile;
     unless (-e $accfile) { 
-	$accfile = fetch($acc_url);
+	$accfile = fetch($acc_url, $accfile);
     }
     my $xsacc = new XML::Simple;
     my $accxml = $xsacc->XMLin($accfile);
