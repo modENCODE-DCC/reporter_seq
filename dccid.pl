@@ -52,12 +52,12 @@ my $geo_reader = new GEO::Geo({'config' => \%ini,
 print "geo reader ready\n";
 $geo_reader->get_uid();
 $geo_reader->get_all_gse_gsm();
-%in_memory;
+my %in_memory;
 #@all_gsm;
 for my $gsml (values %{$geo_reader->get_gsm()}) {
     for my $gsmid (@$gsml) {
 	unless ($in_memory{$gsmid}) {
-	    my $gsm = new GEO::Gsm({'config' => \%ini;
+	    my $gsm = new GEO::Gsm({'config' => \%ini,
 				    'xmldir' => $gsm_cache_dir});
 	    $gsm->get_miniml();
 #	    push @all_gsm, $gsm;
