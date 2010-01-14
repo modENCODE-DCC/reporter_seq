@@ -32,7 +32,8 @@ sub get_uid {
     print "download entrez esearch results ...";
     my $ini = $config{ident $self}; 
     my $search_url = $ini->{geo}{search_url} . "db=$ini->{geo}{db}" . "&term=$ini->{geo}{term}" . "[$ini->{geo}{field}]" . "&retmax=$ini->{geo}{retmax}" ;
-    my $searchfile = fetch($search_url);    
+    my $searchfile = $xmldir{ident $self} . 'esearch.xml';
+    $searchfile = fetch($search_url, $searchfile);    
     print "done.\n";
     #parse the xml file to get entrez UID for submissions
     print "parsing esearch result xml file ...";
