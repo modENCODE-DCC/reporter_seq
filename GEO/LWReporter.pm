@@ -52,7 +52,7 @@ sub get_organism {
     my $self = shift;
     my $protocol = $denorm_slots{ident $self}->[0]->[0]->get_protocol();
     for my $attr (@{$protocol->get_attributes()}) {
-        $organism{ident $self} = $attr->get_value() if $attr->get_heading() eq 'species';
+        print $attr->get_value() and $organism{ident $self} = $attr->get_value() if $attr->get_heading() eq 'species';
     }
 }
 
@@ -75,8 +75,8 @@ sub get_geo_ids {
     my @geo_ids = ();
     for my $ap (@{$normalized_slots{ident $self}->[$ap_slots{ident $self}->{'normalization'}]}) {
 	for my $datum (@{$ap->get_output_data()}) {
-            my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
-	    push @geo_ids, $value and last if ($name =~ /^geo\s*record$/i and $value !~ /^\s*$/) ;
+            my ($type, $heading, $value) = ($datum->get_type(), $datum->get_heading(), $datum->get_value());
+	    push @geo_ids, $value and last if ($type->get_name() =~ /^geo_record$/i and $value !~ /^\s*$/) ;
 	}
     }
     return @geo_ids;
@@ -96,11 +96,13 @@ sub get_wiggle_files {
 
 sub get_normalized_slots {
     my $self = shift;
+    print Dumper($reader{ident $self}->get_normalized_protocol_slots());
     $normalized_slots{ident $self} = $reader{ident $self}->get_normalized_protocol_slots();
 }
 
 sub get_denorm_slots {
     my $self = shift;
+    print Dumper($reader{ident $self}->get_denormalized_protocol_slots());
     $denorm_slots{ident $self} = $reader{ident $self}->get_denormalized_protocol_slots();
 }
 
@@ -230,7 +232,7 @@ sub get_slotnum_seq {
 
 sub get_slotnum_normalize {
     my $self = shift;
-    my @types = ('WIG');
+    my @types = ('WIG', 'Sequence_Alignment\/Map \(SAM\)');
     for my $type (@types) {
         my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
         return $aps[0] if scalar(@aps);
