@@ -44,7 +44,7 @@ for my $dir ($output_dir, $summary_cache_dir, $gsm_cache_dir) {
 }
 my $dcc_summary_file = $output_dir . 'dcc_summary.txt';
 die unless -e $dcc_id_file;
-my @dcc_ids = get_dcc_ids($dcc_id_file);
+my @dcc_ids = get_ids($dcc_id_file);
 open my $dsfh, ">", $dcc_summary_file;
 
 my $geo_reader = new GEO::Geo({'config' => \%ini,
@@ -118,9 +118,17 @@ for my $unique_id (@dcc_ids) {
     });
     print "reporter done.\n";
     $reporter->get_all();
+    my @karact = ('strain', 'cellline', 'devstage', 'tgt_gene');
+    for my $kar (@karact) {
+	my $fun = 'get_' . $kar;
+	my $s = $reporter->$fun;
+	print $dsfh $kar, ":", $s, "\n" if $s;
+    }
+    print $dsfh 
     my @fastq_files = $reporter->get_fastq_files();
     my @geo_ids = $reporter->get_geo_ids();
-    my ($sdrf_fastq_found, $sdrf_geo_id_found);
+    my @sra_ids = $reporter->get_sra_ids();
+    my ($sdrf_fastq_found, $sdrf_geo_id_found, $sdrf_sra_id_found);
     if ( scalar @fastq_files == 0 ) {
 	print "no fastq file in sdrf.\n";
 	print $dsfh "No fastq files\n";
@@ -176,6 +184,18 @@ for my $unique_id (@dcc_ids) {
 	    }
 	}
     }
+    if (scalar @sra_ids == 0) {
+	print "no sra experiment id in sdrf.\n";
+        print $dsfh "No sra experiment id\n";
+    } else {
+	print "sra experiment id found in sdrf:\n";
+	$sdrf_sra_id_found = 1;
+	my %h = map {$_ => 1} @sra_ids;
+        @sra_ids = keys %h;
+        print @sra_ids, "\n";
+        map {print $dsfh $_, "  "} @sra_ids;
+        print $dsfh "\n";
+    }
 #    unless ( $sdrf_fastq_found || $sdrf_geo_id_found) {
 #	my $organism = $reporter->get_organism();
 #	my $dcc_strain = $reporter->get_strain();
@@ -227,7 +247,7 @@ sub part_of {
     return 1;
 }
 
-sub get_dcc_ids {
+sub get_ids {
     my $file = shift;
     open my $fh, "<", $file;
     my @ids;
