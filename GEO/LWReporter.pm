@@ -158,6 +158,7 @@ sub get_project {
             $value =~ s/\n//g;
             $value =~ s/^\s*//;
             $value =~ s/\s*$//;
+	    print "project $value \n";
             $project{ident $self} = $projects{lc($value)};
         }
     }
@@ -170,7 +171,8 @@ sub get_lab {
                                             $property->get_value(), 
                                             $property->get_rank(), 
                                             $property->get_type());
-        $lab{ident $self} = $value if ($name =~ /^\s*Lab\s*$/i); 
+	
+        print "lab $value \n" and $lab{ident $self} = $value if ($name =~ /^\s*Lab\s*$/i); 
     }    
 }
 
@@ -192,6 +194,7 @@ sub get_contributors {
         $person{$rank}{'email'} = $value if $name =~ /Person\s*Email/i;
         $person{$rank}{'roles'} = $value if $name =~ /Person\s*Roles/i;
     }
+    print Dumper(%person);
     $contributors{ident $self} = \%person;
 }
 
