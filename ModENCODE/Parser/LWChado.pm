@@ -1,4 +1,4 @@
-package ModENCODE::Parser::Chado;
+package ModENCODE::Parser::LWChado;
 =pod
 
 =head1 NAME
