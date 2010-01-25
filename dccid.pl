@@ -97,7 +97,7 @@ for my $unique_id (@dcc_ids) {
     print "# submission $unique_id #\n";
 	print $dsfh "submission $unique_id\n";
     print "connecting to database ...";
-    my $reader = new ModENCODE::Parser::Chado({
+    my $reader = new ModENCODE::Parser::LWChado({
     'dbname' => $dbname,
     'host' => $dbhost,
     'username' => $dbusername,
