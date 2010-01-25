@@ -399,7 +399,7 @@ sub get_devstage_row {
         for my $datum (@{$ap->get_input_data()}) {
             my ($name, $heading, $value, $type) = ($datum->get_name(), $datum->get_heading(), $datum->get_value(), $datum->get_type());
             if (lc($name) =~ /^\s*stage\s*$/ || $type->get_name() eq 'developmental_stage') {
-                if ( $value =~ /[Dd]ev[Ss]tage(Worm|Fly):(.*?):/ ) {
+                if ( $value =~ /[Dd]ev[Ss]tage(Worm|Fly)?:(.*?):/ ) {
                     my $tmp = uri_unescape($2);
                     $tmp =~ s/_/ /g;
                     return $tmp;
@@ -408,7 +408,7 @@ sub get_devstage_row {
             for my $attr (@{$datum->get_attributes()}) {
                 my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
                 if (lc($aname) =~ /dev.*stage/) {
-                    if ( $avalue =~ /[Dd]ev[Ss]tage(Worm|Fly):(.*?):/ ) {
+                    if ( $avalue =~ /[Dd]ev[Ss]tage(Worm|Fly)?:(.*?):/ ) {
                         my $tmp = uri_unescape($2);
                         $tmp =~ s/_/ /g;
                         return $tmp;
