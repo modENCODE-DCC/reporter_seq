@@ -94,7 +94,6 @@ sub get_sra_ids {
     }
     return @sra_ids;
 }    
-}
 
 sub get_wiggle_files {
     my $self = shift;
@@ -227,8 +226,11 @@ sub get_tgt_gene {
 	my $type = $factors->{$rank}->[1];
 	$header = $factors->{$rank}->[0] and last if $type eq 'gene';
     }
-    my $tgt_gene = $self->get_value_by_info(0, 'name', $header);
-    print $tgt_gene and $tgt_gene{ident $self} = $tgt_gene;
+    if ($header) {
+        my $tgt_gene = $self->get_value_by_info(0, 'name', $header);
+        print "tgt gene is:", $tgt_gene;
+        $tgt_gene{ident $self} = $tgt_gene;
+    }
 }
 
 sub get_slotnum_seq {
