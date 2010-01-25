@@ -232,11 +232,12 @@ sub get_dcc_ids {
     open my $fh, "<", $file;
     my @ids;
     while(my $line = <$fh>) {
-	chomp;
+	chomp $line;
 	next if $line =~ /^\s*$/;
 	next if $line =~ /^#/;
 	my @fields = split / \s*/, $line, 2;
 	push @ids, $fields[0]; 
+
     }
     close $fh;
     return @ids;

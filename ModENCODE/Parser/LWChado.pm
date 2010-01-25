@@ -1311,7 +1311,8 @@ sub set_schema {
     $schema =~ s/;/_/g;
 
     $schema{ident $self} = $schema;
-    $dbh{ident $self}->do("SET search_path = $schema");
+    print "schema is $schema\n";
+    $dbh{ident $self}->do("SET search_path to $schema");
 
     my ($experiment_id) = $dbh{ident $self}->selectrow_array("SELECT experiment_id FROM experiment");
     return $experiment_id;
