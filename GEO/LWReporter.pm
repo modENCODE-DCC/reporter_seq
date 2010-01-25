@@ -282,7 +282,7 @@ sub get_strain {
     #for my $row (@{$groups{ident $self}->{0}->{0}}) {
     for my $row ((0..$num_of_rows{ident $self}-1)) {
         my $strain = $self->get_strain_row($row);
-        print "strain $strain\n" and $strain{ident $self} = $strain and last if defined($strain);
+        print "strain $strain\n" and $strain{ident $self} = $strain and return $strain if defined($strain);
     }
 }
 
@@ -354,7 +354,7 @@ sub get_cellline {
     #for my $row (@{$groups{ident $self}->{0}->{0}}) {
     for my $row ((0..$num_of_rows{ident $self}-1)) {
         my $cellline = $self->get_cellline_row($row);
-        print "cell line $cellline\n" and $cellline{ident $self} = $cellline and last if defined($cellline);
+        print "cell line $cellline\n" and $cellline{ident $self} = $cellline and return $cellline if defined($cellline);
     }
 }
 
@@ -391,7 +391,7 @@ sub get_devstage {
     #for my $row (@{$groups{ident $self}->{0}->{0}}) {
     for my $row ((0..$num_of_rows{ident $self}-1)) {
         my $devstage = $self->get_devstage_row($row);
-        print "dev stage $devstage\n" and $devstage{ident $self} = $devstage and last if defined($devstage);
+        print "dev stage $devstage\n" and $devstage{ident $self} = $devstage and return $devstage if defined($devstage);
     }
 }
 
