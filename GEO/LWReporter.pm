@@ -89,7 +89,7 @@ sub get_sra_ids {
     for my $ap (@{$normalized_slots{ident $self}->[$ap_slots{ident $self}->{'seq'}]}) {
 	for my $datum (@{$ap->get_output_data()}) {
             my ($type, $heading, $value) = ($datum->get_type(), $datum->get_heading(), $datum->get_value());
-	    push @sra_ids, $value and last if ($type->get_name() =~ /^$rtype$/i and $value !~ /^\s*$/) ;
+	    push @sra_ids, $value and last if ($type->get_name() eq $rtype and $value !~ /^\s*$/) ;
 	}
     }
     return @sra_ids;
