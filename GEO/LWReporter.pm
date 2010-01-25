@@ -290,9 +290,9 @@ sub get_strain_row {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         print $ap->get_protocol->get_name, "\n";
         for my $datum (@{$ap->get_input_data()}) {
-            my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
+            my ($name, $heading, $value, $type) = ($datum->get_name(), $datum->get_heading(), $datum->get_value(), $datum->get_type());
             print "$name, $heading, $value\n";
-            if (lc($name) =~ /^\s*strain\s*$/) {
+            if (lc($name) =~ /^\s*strain\s*$/ || $type->get_name() eq 'strain_or_line') {
                 if ($value =~ /[Ss]train:(.*)&/) {
                     my $name = $1;
                     if ($name =~ /(.*?):/) {
@@ -360,8 +360,8 @@ sub get_cellline_row {
     for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
-            my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
-            if (lc($name) =~ /^\s*cell[_\s]*line\s*$/) {
+            my ($name, $heading, $value, $type) = ($datum->get_name(), $datum->get_heading(), $datum->get_value(), $datum->get_type());
+            if (lc($name) =~ /^\s*cell[_\s]*line\s*$/ || $type->get_name() eq 'cell_line') {
                 if ( $value =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
                     my $tmp = uri_unescape($1);
                     $tmp =~ s/_/ /g;
@@ -397,8 +397,8 @@ sub get_devstage_row {
     for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
-            my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
-            if (lc($name) =~ /^\s*stage\s*$/) {
+            my ($name, $heading, $value, $type) = ($datum->get_name(), $datum->get_heading(), $datum->get_value(), $datum->get_type());
+            if (lc($name) =~ /^\s*stage\s*$/ || $type->get_name() eq 'developmental_stage') {
                 if ( $value =~ /[Dd]ev[Ss]tage(Worm|Fly):(.*?):/ ) {
                     my $tmp = uri_unescape($2);
                     $tmp =~ s/_/ /g;
