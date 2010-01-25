@@ -82,6 +82,20 @@ sub get_geo_ids {
     return @geo_ids;
 }
 
+sub get_sra_ids {
+    my $self = shift;
+    my @sra_ids = ();
+    my $rtype = 'ShortReadArchive_project_ID (SRA)';
+    for my $ap (@{$normalized_slots{ident $self}->[$ap_slots{ident $self}->{'seq'}]}) {
+	for my $datum (@{$ap->get_output_data()}) {
+            my ($type, $heading, $value) = ($datum->get_type(), $datum->get_heading(), $datum->get_value());
+	    push @sra_ids, $value and last if ($type->get_name() =~ /^$rtype$/i and $value !~ /^\s*$/) ;
+	}
+    }
+    return @sra_ids;
+}    
+}
+
 sub get_wiggle_files {
     my $self = shift;
     my @wiggle_files = ();
