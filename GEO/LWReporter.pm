@@ -286,7 +286,7 @@ sub get_strain {
 sub get_strain_row {
     my ($self, $row) = @_;
     my ($strain, $tgt_gene, $tag);
-    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         print $ap->get_protocol->get_name, "\n";
         for my $datum (@{$ap->get_input_data()}) {
@@ -357,7 +357,7 @@ sub get_cellline {
 
 sub get_cellline_row {
     my ($self, $row) = @_;
-    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
             my ($name, $heading, $value, $type) = ($datum->get_name(), $datum->get_heading(), $datum->get_value(), $datum->get_type());
@@ -394,7 +394,7 @@ sub get_devstage {
 
 sub get_devstage_row {
     my ($self, $row) = @_;
-    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
             my ($name, $heading, $value, $type) = ($datum->get_name(), $datum->get_heading(), $datum->get_value(), $datum->get_type());
