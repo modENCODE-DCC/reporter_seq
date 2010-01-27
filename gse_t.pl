@@ -4,6 +4,7 @@ use Config::IniFiles;
 use Getopt::Long;
 use File::Spec;
 use GEO::Gse;
+use GEO::Gsm;
 use Net::FTP;
 
 my $root_dir;
