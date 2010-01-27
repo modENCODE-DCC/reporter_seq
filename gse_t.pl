@@ -37,7 +37,8 @@ map {print $_, "\n"} @gsms;
  
 my $dcc_summary_file = $output_dir . 'dcc_summary.txt';
 open my $dsfh, ">", $dcc_summary_file;
-my $ftp = Net::FTP->new("ftp.ncbi.nlm.nih.gov") or die "Cannot connect to, $@";
+my $host = "ftp.ncbi.nlm.nih.gov";
+my $ftp = Net::FTP->new($host) or die "Cannot connect to, $@";
 $ftp->login();
 
 for my $gsm (@gsms) {
@@ -53,7 +54,12 @@ for my $gsm (@gsms) {
 	for my $dir (@$sra) {
 	    print $dsfh $dir;
 	    my $uri = URI->new($dir);
-	    eval { map {print $_, "\n"; print $dsfh $_, "\n"} @{$ftp->ls($uri->path())} };
+	    my ($scheme, $thishost, $path) = ($uri->scheme, $uri->host, $uri->path);
+	    if ($thishost ne $host) {
+		$ftp = Net::FTP->new($thishost) or die "Cannot connect to, $@";
+		$ftp->login();
+	    }
+	    eval { map {print $_, "\n"; print $dsfh $scheme, '://', $thishost, '/', $_, "\n"} @{$ftp->ls($path)} };
 	    print "invalid sra link: $uri\n" and print $dsfh "invalid\n" if $@;
 	}
     }
