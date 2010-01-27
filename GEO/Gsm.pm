@@ -171,21 +171,21 @@ sub get_bed {
     my ($self) = @_;
     my @files = $self->get_content('supplementary_data', 'type', 'BED');
     $bed{ident $self} = \@files;
-    return @files;
+    return \@files;
 }
 
 sub get_wiggle {
     my ($self) = @_;
     my @files = $self->get_content('supplementary_data', 'type', 'WIG');
     $wiggle{ident $self} = \@files;
-    return @files;
+    return \@files;
 }
 
 sub get_sra {
     my ($self) = @_;
     my @files = $self->get_content('supplementary_data', 'type', 'SRA Experiment');
     $sra{ident $self} = \@files;
-    return @files;
+    return \@files;
 }
 
 sub valid_sra {
