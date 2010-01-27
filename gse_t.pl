@@ -46,6 +46,7 @@ for my $gsm (@gsms) {
 			     'gsm' => $gsm});
     $gsmr->get_miniml();
     print $dsfh $gsm, " ", $gsmr->get_title(), "\n";
+    $gsmr->get_supplementary_data();
     my $sra = $gsmr->get_sra();
     if ( scalar @$sra != 0 ) {
 	map {print $_, "\n"} @$sra;
