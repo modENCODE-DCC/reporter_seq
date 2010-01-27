@@ -14,6 +14,7 @@ BEGIN {
   push @INC, $root_dir;
 }
 
+my ($gse, $output_dir);
 my $config = $root_dir . 'geoid.ini';
 my $option = GetOptions ("gse=s"            => \$gse,
 			 "out=s"           => \$output_dir,
@@ -44,7 +45,7 @@ for my $gsm (@gsms) {
 			     'gsm' => $gsm});
     $gsmr->get_miniml();
     print $dsfh $gsm, " ", $gsmr->get_title(), "\n";
-    my $gsmr->get_sra();
+    my $sra = $gsmr->get_sra();
     if ( scalar @$sra != 0 ) {
 	map {print $_, "\n"} @$sra;
 	for my $dir (@$sra) {
@@ -52,5 +53,6 @@ for my $gsm (@gsms) {
 	    my $uri = URI->new($dir);
 	    eval { map {print $_, "\n"; print $dsfh $_, "\n"} @{$ftp->ls($uri->path())} };
 	    print "invalid sra link: $uri\n" and print $dsfh "invalid\n" if $@;
+	}
     }
 }
