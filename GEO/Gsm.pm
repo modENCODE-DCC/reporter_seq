@@ -6,6 +6,7 @@ use Class::Std;
 use Data::Dumper;
 use File::Temp;
 use XML::Simple;
+use LWP::UserAgent;
 use LWP::Simple;
 
 my %config                 :ATTR( :name<config>                :default<undef>);
@@ -58,6 +59,7 @@ sub get_contributor {
      my $contributor = "$pfn $pfl";
      print "   Contributor: $contributor ";
      $contributor{ident $self} = $contributor;
+     return $contributor;
 }
 
 sub get_lab {
@@ -66,6 +68,7 @@ sub get_lab {
      my $lab = $accxml->{Contributor}->{Laboratory};
      print "   Lab: $lab " if $lab;
      $lab{ident $self} = $lab;
+     return $lab;
 }
 
 sub get_title {
@@ -75,6 +78,7 @@ sub get_title {
      $title =~ s/^\s*//; $title =~ s/\s*$//; 
      print "   Title: $title ";
      $title{ident $self} = $title;
+     return $title;
 }
 
 sub get_submission_date {
@@ -83,6 +87,7 @@ sub get_submission_date {
      my $date = $accxml->{Sample}->{Status}->{'Submission-Date'};
      print "   Submission date: $date ";
      $submission_date{ident $self} = $date;
+     return $date;
 }
 
 sub get_type {
@@ -91,6 +96,7 @@ sub get_type {
      my $type = $accxml->{Sample}->{Type};
      print "   Type: $type ";
      $type{ident $self} = $type;
+     return $type;
 }
 
 sub get_strategy {
@@ -99,6 +105,7 @@ sub get_strategy {
     my $strategy = $accxml->{Sample}->{'Library-Strategy'};
     print "   Strategy: $strategy\n";
     $strategy{ident $self} = $strategy;
+    return $strategy;
 }
 
 sub get_source {
@@ -107,6 +114,7 @@ sub get_source {
     my $source = $accxml->{Sample}->{'Library-Source'};
     print "   Source: $source\n";
     $source{ident $self} = $source;    
+    return $source;
 }
 
 sub get_organism {
@@ -116,6 +124,7 @@ sub get_organism {
     #my $organism = $accxml->{Sample}->{'Library-Organism'};
     print "   Organism: $organism\n";
     $organism{ident $self} = $organism;
+    return $organism;
 }
 
 sub get_characteristics {
@@ -123,6 +132,7 @@ sub get_characteristics {
     my $accxml = $miniml{ident $self};
     my $charact = $accxml->{Sample}->{Channel}->{'Characteristics'};
     $characteristics{ident $self} = $charact;
+    return $charact;
 }
 
 sub get_strain {
@@ -130,6 +140,7 @@ sub get_strain {
     my @contents = $self->get_content('characteristics', 'tag', 'strain');
     print $contents[0];
     $strain{ident $self} = $contents[0];
+    return $contents[0];
 }
 
 sub get_devstage {
@@ -144,6 +155,7 @@ sub get_antibody {
     my @contents = $self->get_content('characteristics', 'tag', 'antibody');
     print $contents[0];
     $antibody{ident $self} = $contents[0];
+    return $contents[0];
 }
 
 
@@ -158,19 +170,22 @@ sub get_supplementary_data {
 sub get_bed {
     my ($self) = @_;
     my @files = $self->get_content('supplementary_data', 'type', 'BED');
-    $bed{ident $self} = \@files;    
+    $bed{ident $self} = \@files;
+    return @files;
 }
 
 sub get_wiggle {
     my ($self) = @_;
     my @files = $self->get_content('supplementary_data', 'type', 'WIG');
     $wiggle{ident $self} = \@files;
+    return @files;
 }
 
 sub get_sra {
     my ($self) = @_;
-    my @files = $self->get_content('supplementary_data', 'type', 'SRA Experiment');;
+    my @files = $self->get_content('supplementary_data', 'type', 'SRA Experiment');
     $sra{ident $self} = \@files;
+    return @files;
 }
 
 sub valid_sra {

@@ -57,3 +57,4 @@ for my $gsm (@gsms) {
 	}
     }
 }
+close $dsfh;
