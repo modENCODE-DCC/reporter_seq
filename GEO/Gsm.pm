@@ -200,10 +200,18 @@ sub valid_sra {
 sub get_content {
     my ($self, $ele, $attr_name, $attr_value) = @_;
     my @contents;
+    my $contentl;
     #no strict 'refs';
     #my $contentl = ${"$ele"}{ident $self};
-    my $contentl = $characteristics{ident $self} if $ele eq 'characteristics';
-    my $contentl = $supplementary_data{ident $self} if $ele eq 'supplementary_data';
+    if ($ele eq 'characteristics') {
+	$contentl = $characteristics{ident $self};
+	$contentl = $self->get_characteristics() unless $contentl;
+    }
+    if ($ele eq 'supplementary_data') {
+	$contentl = $supplementary_data{ident $self};
+	$contentl = $self->get_supplementary_data() unless $contentl;
+    }    
+
     if (ref($contentl) eq 'ARRAY') {
 	for my $data (@$contentl) {
 	    if ($data->{$attr_name} eq $attr_value) {

@@ -124,7 +124,6 @@ for my $unique_id (@dcc_ids) {
 	my $s = $reporter->$fun;
 	print $dsfh $kar, ":", $s, "\n" if $s;
     }
-    print $dsfh 
     my @fastq_files = $reporter->get_fastq_files();
     my @geo_ids = $reporter->get_geo_ids();
     my @sra_ids = $reporter->get_sra_ids();

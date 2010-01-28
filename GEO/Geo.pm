@@ -75,9 +75,15 @@ sub parse_cached_esummary {
     for my $summaryfile (@xmlfiles) {
 	$summaryfile =~ /(\d*)\.xml/;
 	my $uid = $1;
+<<<<<<< .mine
+	my ($gsx, $gsml) = _parse_esummary($summaryfile);
+	$gse{ident $self}->{$uid} = $gsx;
+	$gsm{ident $self}->{$gse} = $gsml;
+=======
 	my ($gsx, $gsml) = _parse_esummary($summaryfile);
 	$gse{ident $self}->{$uid} = $gsx;
 	$gsm{ident $self}->{$gsx} = $gsml;
+>>>>>>> .r1898
     }
 }
 
@@ -103,9 +109,15 @@ sub fetch_gse_gsm {
     my $xmlfile = $xmldir{ident $self} . $uid . '.xml';
     my $summaryfile = fetch($summary_url, $xmlfile);
     print "done. parsing...";
+<<<<<<< .mine
+    my ($gsx, $gsml) = _parse_esummary($summaryfile);
+    $gse{ident $self}->{$uid} = $gsx;
+    $gsm{ident $self}->{$gse} = $gsml;
+=======
     my ($gsx, $gsml) = _parse_esummary($summaryfile);
     $gse{ident $self}->{$uid} = $gsx;
     $gsm{ident $self}->{$gsx} = $gsml;
+>>>>>>> .r1898
 }
 
 sub gsm_for_gse {

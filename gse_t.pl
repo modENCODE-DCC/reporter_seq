@@ -47,6 +47,8 @@ for my $gsm (@gsms) {
 			     'gsm' => $gsm});
     $gsmr->get_miniml();
     print $dsfh $gsm, " ", $gsmr->get_title(), "\n";
+    print $dsfh 'devstage: ', $gsmr->get_devstage(), "\n";
+    print $dsfh 'antibody: ', $gsmr->get_antibody(), "\n";
     $gsmr->get_supplementary_data();
     my $sra = $gsmr->get_sra();
     if ( scalar @$sra != 0 ) {
