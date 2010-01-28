@@ -145,7 +145,7 @@ sub get_strain {
 
 sub get_devstage {
     my ($self) = @_;
-    my @contents = $self->get_content('characteristics', 'tag', 'growth stage');
+    my @contents = $self->get_content('characteristics', 'tag', 'development stage');
     print $contents[0];
     $devstage{ident $self} = $contents[0];
 }
