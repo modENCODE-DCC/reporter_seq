@@ -22,6 +22,7 @@ my %strategy      :ATTR( :set<strategy>         :default<undef>);
 my %source      :ATTR( :set<source>         :default<undef>);
 my %organism      :ATTR( :set<organism>         :default<undef>);
 my %strain      :ATTR( :set<strain>         :default<undef>);
+my %cellline      :ATTR( :set<cellline>         :default<undef>);
 my %devstage      :ATTR( :set<devstage>         :default<undef>);
 my %antibody      :ATTR( :set<antibody>         :default<undef>);
 my %supplementary_data  :ATTR( :set<supplementary_data>         :default<undef>);
@@ -141,6 +142,14 @@ sub get_strain {
     print $contents[0];
     $strain{ident $self} = $contents[0];
     return $contents[0];
+}
+
+sub get_cellline {
+    my ($self) = @_;
+    my @contents = $self->get_content('characteristics', 'tag', 'cell line');
+    print $contents[0];
+    $cellline{ident $self} = $contents[0];
+    return $contents[0];    
 }
 
 sub get_devstage {
