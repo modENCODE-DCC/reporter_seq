@@ -356,9 +356,11 @@ sub write_sample_lib_selection {
 sub write_sample_instrument_model {
     my ($self, $row) = @_;
     my $sampleFH = $sampleFH{ident $self};
-    my %machines = ('GPL9309' => 'Illumina Genome Analyzer',
-		    'GPL9058' => 'Illumina Genome Analyzer',
-		    'GPL6072' => 'Illumina Genome Analyzer'
+    my %machines = ('GPL9309' => 'Illumina Genome Analyzer', #worm
+		    'GPL9058' => 'Illumina Genome Analyzer', #fly
+		    'GPL6072' => 'Illumina Genome Analyzer', 
+		    'GPL9269' => 'Illumina Genome Analyzer II', #worm
+		    'GPL6664' => 'Illumina Genome Analyzer', #fly
 	);
     my $sampleFH = $sampleFH{ident $self};
     my $gpl = $self->get_seqmachine_row($row);
