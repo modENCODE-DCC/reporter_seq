@@ -337,8 +337,8 @@ sub write_sample_label_without_labeling_protocol {
     #make sure this is a affy chip
     my $array = $self->get_array_row($row, 1);
     my $platform;
-    for my $attr ($array->[0]->get_attributes()) {
-	$platform = $attr->get_value() if (($attr->get_heading() =~ /platform/) and (defined($attr->get_value())));
+    for my $attr (@{$array->[0]->get_attributes()}) {
+  	$platform = $attr->get_value() if (($attr->get_heading() =~ /platform/) and (defined($attr->get_value())));
     }
     unless (lc($platform) eq 'affymetrix') {
 	die "this is not an affymetrix array experiment, yet there is no labeling protocol. suspicious submission.\n"
