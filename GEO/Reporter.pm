@@ -155,8 +155,10 @@ sub chado2sample {
 		$self->write_sample_description($row, $channel);
 		$self->write_sample_growth($row, $channel);
 		$self->write_sample_extraction($row, $channel);
-		if ( defined($ap_slots{ident $self}->{'labeling'}) and $ap_slots{ident $self}->{'labeling'} != -1 ) {		
+		if ( defined($ap_slots{ident $self}->{'labeling'}) ) {		
 		    $self->write_sample_label($row, $channel);
+		} else {
+		    $self->write_sample_label_without_labeling_protocol($row, $channel);
 		}
 		if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		    $self->write_sample_type($row);
@@ -326,6 +328,29 @@ sub write_sample_label {
     my $protocol_text = $self->get_protocol_text($ap);
     $protocol_text =~ s/\n//g; #one line
     print $sampleFH "!Sample_label_protocol_ch$ch = ", $protocol_text, "\n";
+}
+
+sub write_sample_label_without_labeling_protocol {
+    my ($self, $row, $channel) = @_;
+    my $sampleFH = $sampleFH{ident $self};
+
+    #make sure this is a affy chip
+    my $array = $self->get_array_row($row);
+    my $platform;
+    for my $attr ($array->get_attributes()) {
+	$platform = $attr->get_value() if (($attr->get_heading() =~ /platform/) and (defined($attr->get_value())));
+    }
+    unless (lc($platform) eq 'affymetrix') {
+	die "this is not an affymetrix array experiment, yet there is no labeling protocol. suspicious submission.\n"
+    }
+
+    my $ch = $channel+1;
+    print $sampleFH "!Sample_label_ch$ch = biotin\n";
+
+    my $ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'hybridization'}]->[$row];
+    my $protocol_text = $self->get_protocol_text($ap);
+    $protocol_text =~ s/\n//g; #one line
+    print $sampleFH "!Sample_label_protocol_ch$ch = ", $protocol_text, "\n";    
 }
 
 sub write_sample_hybridization {
@@ -1355,7 +1380,7 @@ sub get_seqmachine_row {
 }
 
 sub get_array_row {
-    my ($self, $row) = @_;
+    my ($self, $row, $return_object) = @_;
     my $hyb_ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'hybridization'}]->[$row];
     my $array;
     my $ok1 = eval { $array = _get_datum_by_info($hyb_ap, 'input', 'name', '\s*array\s*') } ;
@@ -1373,6 +1398,7 @@ sub get_array_row {
 	}
     }
     if ($gpl eq '') {croak("can not find the array GPL number\n");};
+    return $array if $return_object;
     return $gpl;
 }
 
@@ -1508,8 +1534,7 @@ sub set_ap_slots {
     print "found sequencing protocol at slot $slots{'seq'}...\n" if defined($slots{'seq'}) and $slots{'seq'} != -1;
     $slots{'labeling'} = $self->get_slotnum_label();
     unless (defined($slots{'labeling'})) {
-	print "WARNING!!! did not find labeling protocol. will use hybridization protocol instead.\n";
-	$slots{'labeling'} = $slots{'hybridization'};
+	print "WARNING!!! did not find labeling protocol.\n";
     }
     print "found labeling protocol at slot $slots{'labeling'}...\n" if defined($slots{'labeling'});
     $slots{'scanning'} = $self->get_slotnum_scan();
