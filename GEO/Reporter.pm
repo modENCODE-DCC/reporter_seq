@@ -627,6 +627,7 @@ sub get_real_factors {
     my $self = shift;
     my $factors = $factors{ident $self};
     my @rfactors;
+    print "#############here are factors: ", Dumper($factors);
     for my $rank (keys %$factors) {
 	my $type = $factors->{$rank}->[1];
 	my $rfactor = undef;
@@ -634,7 +635,8 @@ sub get_real_factors {
 	    my $rfactor = 'Strain ' . $strain{ident $self};
 	    push @rfactors, $rfactor if defined($strain{ident $self});
 	}
-	elsif ($type =~ /cell\s*line/i) {
+	elsif ($type =~ /cell[\s_]*line/i) {
+	    print $cellline{ident $self};
 	    my $rfactor = 'Cell Line ' . $cellline{ident $self};
 	    push @rfactors, $rfactor if defined($cellline{ident $self});
 	}
@@ -959,8 +961,8 @@ sub get_strain_row {
 		}
 	    }
 	    for my $attr (@{$datum->get_attributes()}) {
-		my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
-		if (lc($aname) =~ /^\s*strain\s*$/) {
+		my ($aname, $aheading, $avalue, $atype) = ($attr->get_name(), $attr->get_heading(), $attr->get_value(), $attr->get_type());
+		if (lc($aname) =~ /^\s*strain\s*$/ || lc($atype->get_name()) eq 'strain_or_line') {
 		    if ( $avalue =~ /[Ss]train:(.*)&/ ) {
 			my $name = $1;
 			if ($name =~ /(.*?):/) {
@@ -1018,8 +1020,8 @@ sub get_cellline_row {
 		}
 	    }
 	    for my $attr (@{$datum->get_attributes()}) {
-		my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
-		if (lc($aname) =~ /^cell[_\s]*line/) {
+		my ($aname, $aheading, $avalue, $atype) = ($attr->get_name(), $attr->get_heading(), $attr->get_value(), $attr->get_type());
+		if (lc($aname) =~ /^cell[_\s]*line/ || $atype->get_name() eq 'cell_line') {
 		    if ( $avalue =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
 			my $tmp = uri_unescape($1);
 			$tmp =~ s/_/ /g;
@@ -1054,8 +1056,8 @@ sub get_devstage_row {
 		}
 	    }
 	    for my $attr (@{$datum->get_attributes()}) {
-		my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
-		if (lc($aname) =~ /dev.*stage/) {
+		my ($aname, $aheading, $avalue, $atype) = ($attr->get_name(), $attr->get_heading(), $attr->get_value(), $attr->get_type());
+		if (lc($aname) =~ /dev.*stage/ || $atype->get_name() eq 'developmental_stage') {
 		    if ( $avalue =~ /[Dd]ev[Ss]tage(Worm|Fly)?:(.*?):/ ) {
 			my $tmp = uri_unescape($2);
 			$tmp =~ s/_/ /g;
@@ -1503,14 +1505,17 @@ sub get_ap_slots {
     my %slots;
     $slots{'hybridization'} = $self->get_slotnum_hyb();
     $slots{'seq'} = $self->get_slotnum_seq();
-    print "found sequencing protocol at slot $slots{'seq'}..." if defined($slots{'seq'}) and $slots{'seq'} != -1;
+    print "found sequencing protocol at slot $slots{'seq'}...\n" if defined($slots{'seq'}) and $slots{'seq'} != -1;
     $slots{'labeling'} = $self->get_slotnum_label();
+    print "found labeling protocol at slot $slots{'labeling'}...\n" if defined($slots{'labeling'});
     $slots{'scanning'} = $self->get_slotnum_scan();
+    print "found scanning protocol at slot $slots{'scanning'}...\n" if defined($slots{'scanning'});
     $slots{'normalization'} = $self->get_slotnum_normalize();
-    print "found normalization protocol at slot $slots{'normalization'}..." if defined($slots{'normalization'}) and $slots{'normalization'} != -1;
+    print "found normalization protocol at slot $slots{'normalization'}...\n" if defined($slots{'normalization'}) and $slots{'normalization'} != -1;
     $slots{'raw'} = $self->get_slotnum_raw();
-    print "found raw protocol at slot $slots{'raw'}..." if defined($slots{'raw'}) and $slots{'raw'} != -1;
+    print "found raw protocol at slot $slots{'raw'}...\n" if defined($slots{'raw'}) and $slots{'raw'} != -1;
     $slots{'immunoprecipitation'} = $self->get_slotnum_ip();
+    print "found ip protocol at slot $slots{'immunoprecipitation'}...\n" if defined($slots{'immunoprecipitation'});
     $slots{'rip'} = $self->get_slotnum_rip();
     $slots{'source name'} = $self->get_slotnum_source_name();
     $slots{'sample name'} = $self->get_slotnum_sample_name();
@@ -1700,9 +1705,11 @@ sub get_slotnum_raw_array {
     my $self = shift;
     #first search by output data type, such as modencode-helper:nimblegen_microarray_data_file (pair) [pair]
     #or modencode-helper:CEL [Array Data File], or agilent_raw_microarray_data_file (TXT)
-    my @types = ('nimblegen_microarray_data_file\s*\(pair\)', 'CEL', 'agilent_raw_microarray_data_file');
+    my @types = ('nimblegen_microarray_data_file (pair)', 'CEL', 'agilent_raw_microarray_data_file');
     for my $type (@types) {
+	print $type;
 	my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
+	print @aps;
 	#even there are more than 1 raw-data-generating protocols, choose the first one since it is the nearest to hyb protocol
 	return $aps[0] if scalar(@aps);
     }
@@ -1737,7 +1744,7 @@ sub get_slotnum_normalize_seq {
 sub get_slotnum_normalize_array {
     my $self = shift;
     #first search by output data type, such as modencode-helper:Signal_Graph_File [sig gr]
-    my @types = ('Signal_Graph_File', 'normalized\s*data', 'scaled\s*data');
+    my @types = ('Signal_Graph_File', 'normalized data', 'scaled data');
     for my $type (@types) {
 	my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
 	#even there are more than 1 normalization protocols, choose the first one since it is the nearest to hyb protocol
@@ -1817,7 +1824,7 @@ sub get_sample_name_ap_slot {
     } else {
 	my $islot = $self->get_ap_slot_by_datum_info('input', 'heading', $text);
 	if ( defined($islot) and $islot == 0 ) {
-	    $sample_name_ap_slot{ident $self} = $islot;
+	    $source_name_ap_slot{ident $self} = $islot;
 	}
     }
 }
@@ -1833,8 +1840,10 @@ sub get_ap_slot_by_datum_info {
     for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
 	my $ap = $normalized_slots{ident $self}->[$i]->[0];
 	eval { _get_datum_by_info($ap, $direction, $field, $fieldtext) };
-	return $i unless $@;
+ 	return $i unless $@;
+	next if $@;
     }
+    return undef;
 }
 
 sub get_ap_slot_by_attr_info {
@@ -1845,14 +1854,17 @@ sub get_ap_slot_by_attr_info {
 	    for my $datum (@{$ap->get_input_data()}) {
 		eval { _get_attr_by_info($datum, $field, $fieldtext) };
 		return $i unless $@;
+		next if $@;
 	    }
 	} else {
 	    for my $datum (@{$ap->get_output_data()}) {
                 eval { _get_attr_by_info($datum, $field, $fieldtext) };
 		return $i unless $@;
+		next if $@;
 	    }
 	}
     }
+    return undef;
 }
 
 
@@ -1870,22 +1882,26 @@ sub group_by_this_ap_slot {
     print "sample name slot $sample_name_col\n";
     print "source name slot $source_name_col\n";
     if ( defined($replicate_group_col) && (defined($hyb_col) and $hyb_col>=0) ) {
+	print "I will use ap slot $replicate_group_col (replicate group) to group\n";
 	return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
     }
     if ( defined($replicate_group_col) && (defined($seq_col) and !defined($extract_name_col) and (!defined($sample_name_col) or $sample_name_col == 0)) ) {
 	print "warning! use author-submitted replicate group information to group rows in SDRF for a sequencing experiment. if you have control aliquote in each replicate group, this grouping method will fail\n";
 	return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
     }
-    return [$extract_name_col, 'Extract\s*Name'] if ( defined($extract_name_col) and $last_extraction_slot{ident $self} <= $extract_name_col );
-    return [$last_extraction_slot{ident $self}, 'protocol'] if ( defined($extract_name_col) and $last_extraction_slot{ident $self} > $extract_name_col );
+
+    print "I will use ap slot $extract_name_col (extract name) to group\n" and return [$extract_name_col, 'Extract\s*Name'] if ( defined($extract_name_col) and $last_extraction_slot{ident $self} <= $extract_name_col );
+
+    print "I will use ap slot $last_extraction_slot{ident $self} (last extraction slot) to group\n" and return [$last_extraction_slot{ident $self}, 'protocol'] if ( defined($extract_name_col) and $last_extraction_slot{ident $self} > $extract_name_col );
+
     if ( !defined($extract_name_col) ) {
-	return [$source_name_col, 'Source\s*Name'] if defined($source_name_col);
-	return [$sample_name_col, 'Sample\s*Name'] if defined($sample_name_col);
+	print "I will use ap slot $source_name_col (source name) to group\n" and return [$source_name_col, 'Source\s*Name'] if defined($source_name_col);
+	print "I will use ap slot $sample_name_col (sample name) to group\n" and return [$sample_name_col, 'Sample\s*Name'] if defined($sample_name_col);
 	if ( $self->ap_slot_without_real_data($last_extraction_slot{ident $self}) ) { 
 	    croak("suspicious submission, extraction protocol has only anonymous data, AND no protocol has Extract Name, Sample Name, Source(Hybrid) Name.");
 	}
     } else {
-	    return [$last_extraction_slot{ident $self}, 'protocol'];
+	print "I will use ap slot $last_extraction_slot{ident $self} (last choice) to group\n" and return [$last_extraction_slot{ident $self}, 'protocol'];
     }
 }
 
@@ -2183,14 +2199,28 @@ sub get_slotnum_by_datum_property {#this could go into a subclass of experiment
 		if ($isattr) {
 		    for my $attr (@{$datum->get_attributes()}) {
 			if (_get_attr_value($attr, $field, $fieldtext) =~ /$value/i) {
-			    push @slots, $i;
-			    $found = 1 and last;
+			    if ($field eq 'type') {
+				if (_get_attr_value($attr, $field, $fieldtext) eq $value ) {
+				    push @slots, $i;
+				    $found = 1 and last;
+				}
+			    } else {
+				push @slots, $i;
+				$found = 1 and last;
+			    }
 			}
 		    }                       
 		} else {
 		    if (_get_datum_info($datum, $field) =~ /$value/i) {
-			push @slots, $i;
-			$found = 1 and last;
+			if ($field eq 'type') {
+			    if (_get_datum_info($datum, $field) eq $value ) {
+				push @slots, $i;
+				$found = 1 and last;
+			    }
+			} else {
+			    push @slots, $i;
+			    $found = 1 and last;
+			}
 		    }
 		}		
 	    }
