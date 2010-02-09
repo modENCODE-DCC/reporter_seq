@@ -1371,21 +1371,21 @@ sub get_array_row {
 
 sub get_slotnum_source_name {
     my $self = shift;
-    my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Source Name');
+    my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Source\s*Name');
     return $aps[0] if scalar(@aps);
     return undef;
 }
 
 sub get_slotnum_sample_name {
     my $self = shift;
-    my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Sample Name');
+    my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Sample\*Name');
     return $aps[0] if scalar(@aps);
     return undef;
 }
 
 sub get_slotnum_extract_name {
     my $self = shift;
-    my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Extract Name');
+    my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Extract\s*Name');
     return $aps[0] if scalar(@aps);
     return undef;
 }
@@ -1593,13 +1593,13 @@ sub get_slotnum_extract {
 		    return $aps[0];
 		}
 	    } elsif (scalar(@aps) == 0) {#oops, we have no protocol with protocol type equals regex to 'biosample_preparation_protocol'
-		my @itypes = ('whole_organism', 'organism_part', 'DNA');
+		my @itypes = ('whole_organism', 'multi-cellular organism', 'organism_part', 'DNA', 'genomic_DNA');
 		my @iaps;
 		for my $type (@itypes) {
 		    my @xaps = $self->get_slotnum_by_datum_property('input', 0, 'type', undef, $type);
 		    @iaps = merge_two_lists(\@iaps, \@xaps);
 		}
-		my @otypes = ('DNA', 'chromatin', 'rna');
+		my @otypes = ('DNA', 'genomic_DNA', 'chromatin', 'mRNA', '\s*RNA');
 		my @oaps;
 		for my $type (@otypes) {
 		    my @xaps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
