@@ -64,10 +64,13 @@ sub set_all {
     my $self = shift;
     for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene]) {
 	my $set_func = "set_" . $parameter;
-	print "try to find $parameter ...";
 	$self->$set_func();
-	print $self->$set_func() unless $parameter eq 'ap_slots';
-	print " done\n";
+    }
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene]) {
+	my $get_func = "get_" . $parameter;
+	print "find $parameter "
+	print $self->$get_func();
+	print "done.\n";
     }
 }
 
