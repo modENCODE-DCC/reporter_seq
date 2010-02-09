@@ -302,7 +302,11 @@ sub write_sample_extraction {
     print $sampleFH "!Sample_molecule_ch$ch = ", $self->get_molecule_type_row($row), "\n";
     my $final_slot;
     if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {
-	$final_slot = $ap_slots{ident $self}->{'labeling'};
+	if ( defined($ap_slots{ident $self}->{'labeling'}) ) {
+	    $final_slot = $ap_slots{ident $self}->{'labeling'};
+	} else {
+	    $final_slot = $ap_slots{ident $self}->{'hybridization'} - 1 ;
+	}
     }
     elsif ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 	$final_slot = $ap_slots{ident $self}->{'seq'}+1;
