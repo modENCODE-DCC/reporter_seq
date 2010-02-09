@@ -1804,7 +1804,7 @@ sub get_replicate_group_ap_slot {
 
 sub get_slotnum_sample_name {
     my $self = shift;
-    my $text = 'Sample Name';
+    my $text = 'Sample\s*Name';
     my $slot = $self->get_ap_slot_by_datum_info('output', 'heading', $text);
     if ( defined($slot) and $slot > 0 ) {
 	$sample_name_ap_slot{ident $self} = $slot;
