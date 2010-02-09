@@ -102,7 +102,7 @@ if (($use_existent_metafile == 0) && ($use_existent_tarball == 0)) {
         'experiment' => $experiment,
 	'long_protocol_text' => $long_protocol_text,
     });
-    $reporter->get_all();
+    $reporter->set_all();
 
     print "generating GEO series file ...";
     $reporter->chado2series();
