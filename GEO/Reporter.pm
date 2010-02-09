@@ -17,35 +17,36 @@ my %report_dir             :ATTR( :name<report_dir>            :default<undef>);
 my %reader                 :ATTR( :name<reader>                :default<undef>);
 my %experiment             :ATTR( :name<experiment>            :default<undef>);
 my %long_protocol_text     :ATTR( :name<long_protocol_text>    :default<undef>);
-my %normalized_slots       :ATTR( :set<normalized_slots>       :default<undef>);
-my %denorm_slots           :ATTR( :set<denorm_slots>           :default<undef>);
-my %num_of_rows            :ATTR( :set<num_of_rows>            :default<undef>);
-my %ap_slots               :ATTR( :set<ap_slots>               :default<undef>);
-my %sample_name_ap_slot    :ATTR( :set<sample_name_ap_slot>    :default<undef>);
-my %source_name_ap_slot    :ATTR( :set<source_name_ap_slot>    :default<undef>);
-my %extract_name_ap_slot   :ATTR( :set<extract_name_ap_slot>   :default<undef>);
-my %replicate_group_ap_slot :ATTR( :set<replicate_group_ap_slot>    :default<undef>);
-my %first_extraction_slot  :ATTR( :set<first_extraction_slot>  :deafult<undef>);
-my %last_extraction_slot   :ATTR( :set<last_extraction_slot>   :deafult<undef>);
-my %groups                 :ATTR( :set<groups>                 :default<undef>);
-my %project                :ATTR( :set<project>                :default<undef>);
-my %lab                    :ATTR( :set<lab>                    :default<undef>);
-my %contributors           :ATTR( :set<contributors>           :default<undef>);
-my %experiment_design      :ATTR( :set<experiment_design>      :default<undef>);
-my %experiment_type        :ATTR( :set<experiment_type>        :default<undef>);
-my %organism               :ATTR( :set<organism>               :default<undef>);
-my %strain                 :ATTR( :set<strain>                 :default<undef>);
-my %cellline               :ATTR( :set<cellline>               :default<undef>);
-my %devstage               :ATTR( :set<devstage>               :default<undef>);
-my %genotype               :ATTR( :set<genotype>               :default<undef>);
-my %transgene              :ATTR( :set<transgene>              :default<undef>);
-my %tissue                 :ATTR( :set<tissue>                 :default<undef>);
-my %sex                    :ATTR( :set<sex>                    :default<undef>);
-my %molecule_type          :ATTR( :set<molecule_type>          :default<undef>);
-my %factors                :ATTR( :set<factors>                :default<undef>);
-my %antibody               :ATTR( :set<antibody>               :default<undef>);
-my %tgt_gene               :ATTR( :set<tgt_gene>               :default<undef>);
-
+my %normalized_slots       :ATTR( :get<normalized_slots>       :default<undef>);
+my %denorm_slots           :ATTR( :get<denorm_slots>           :default<undef>);
+my %num_of_rows            :ATTR( :get<num_of_rows>            :default<undef>);
+my %ap_slots               :ATTR( :get<ap_slots>               :default<undef>);
+my %sample_name_ap_slot    :ATTR( :get<sample_name_ap_slot>    :default<undef>);
+my %source_name_ap_slot    :ATTR( :get<source_name_ap_slot>    :default<undef>);
+my %extract_name_ap_slot   :ATTR( :get<extract_name_ap_slot>   :default<undef>);
+my %replicate_group_ap_slot :ATTR( :get<replicate_group_ap_slot>    :default<undef>);
+my %first_extraction_slot  :ATTR( :get<first_extraction_slot>  :deafult<undef>);
+my %last_extraction_slot   :ATTR( :get<last_extraction_slot>   :deafult<undef>);
+my %groups                 :ATTR( :get<groups>                 :default<undef>);
+my %project                :ATTR( :get<project>                :default<undef>);
+my %lab                    :ATTR( :get<lab>                    :default<undef>);
+my %contributors           :ATTR( :get<contributors>           :default<undef>);
+my %experiment_design      :ATTR( :get<experiment_design>      :default<undef>);
+my %experiment_type        :ATTR( :get<experiment_type>        :default<undef>);
+my %organism               :ATTR( :get<organism>               :default<undef>);
+my %strain                 :ATTR( :get<strain>                 :default<undef>);
+my %cellline               :ATTR( :get<cellline>               :default<undef>);
+my %devstage               :ATTR( :get<devstage>               :default<undef>);
+my %genotype               :ATTR( :get<genotype>               :default<undef>);
+my %transgene              :ATTR( :get<transgene>              :default<undef>);
+my %tissue                 :ATTR( :get<tissue>                 :default<undef>);
+my %sex                    :ATTR( :get<sex>                    :default<undef>);
+my %molecule_type          :ATTR( :get<molecule_type>          :default<undef>);
+my %factors                :ATTR( :get<factors>                :default<undef>);
+my %antibody               :ATTR( :get<antibody>               :default<undef>);
+my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
+my %library_strategy       :ATTR( :get<library_strategy>       :default<undef>);
+my %library_selection      :ATTR( :get<library_selection>      :default<undef>);
 
 
 sub BUILD {
@@ -59,13 +60,13 @@ sub BUILD {
     return $self;
 }
 
-sub get_all {
+sub set_all {
     my $self = shift;
     for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene]) {
-	my $get_func = "get_" . $parameter;
+	my $get_func = "set_" . $parameter;
 	print "try to find $parameter ...";
-	$self->$get_func();
-	print $self->$get_func() unless $parameter eq 'ap_slots';
+	$self->$set_func();
+	print $self->$set_func() unless $parameter eq 'ap_slots';
 	print " done\n";
     }
 }
@@ -367,24 +368,28 @@ sub write_sample_instrument_model {
     print $sampleFH "!Sample_instrument_model = ", $machines{$gpl}, "\n";   
 }
 
-sub get_lib_strategy {
+sub set_lib_strategy {
     my ($self) = @_;
+    my $strategy;
     if (defined($ap_slots{ident $self}->{'immunoprecipitation'}) and $ap_slots{ident $self}->{'immunoprecipitation'} != -1) {
-	return "ChIP-Seq";
+	$strategy = "ChIP-Seq";
     }
     else {#default, whole genome shotgun
-	return "WGS";
+	$strategy = "WGS";
     }
+    $library_strategy{ident $self} = $strategy;
 }
 
-sub get_lib_selection {
+sub set_lib_selection {
     my ($self) = @_;
+    my $selection;
     if (defined($ap_slots{ident $self}->{'immunoprecipitation'}) and $ap_slots{ident $self}->{'immunoprecipitation'} != -1) {
-	return "ChIP";   
+	$selection = "ChIP";   
     }
     else { #default random shearing only
-	return "RANDOM";
+	$selection = "RANDOM";
     }
+    $library_selection{ident $self} = $selection;
 }
 
 sub write_sample_seq {
@@ -393,7 +398,7 @@ sub write_sample_seq {
     my $ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'seq'}]->[$row];
     my $protocol_text = $self->get_protocol_text($ap);
     $protocol_text =~ s/\n//g; #one line
-    print $sampleFH "!Sample_hyb_protocol = ", $protocol_text, "\n";
+    print $sampleFH "!Sample_seq_protocol = ", $protocol_text, "\n";
 }
 
 sub write_sample_scan {
@@ -563,7 +568,7 @@ sub get_overall_design {
     return $overall_design;
 }
 
-sub get_project {
+sub set_project {
     my $self = shift;
     my %projects = ('lieb' => 'Jason Lieb',
 		   'celniker' => 'Susan Celniker',
@@ -590,7 +595,7 @@ sub get_project {
     }
 }
 
-sub get_lab {
+sub set_lab {
     my ($self, $experiment) = @_;
     foreach my $property (@{$experiment{ident $self}->get_properties()}) {
 	my ($name, $value, $rank, $type) = ($property->get_name(), 
@@ -601,7 +606,7 @@ sub get_lab {
     }    
 }
 
-sub get_contributors {
+sub set_contributors {
     my $self = shift;    
     my %person;
     foreach my $property (@{$experiment{ident $self}->get_properties()}) {
@@ -682,7 +687,7 @@ sub get_real_factors {
     return \@rfactors;
 }
 
-sub get_factors {
+sub set_factors {
     my $self = shift;
     my %factor;
     foreach my $property (@{$experiment{ident $self}->get_properties()}) {
@@ -705,7 +710,7 @@ sub get_factors {
     $factors{ident $self} = \%factor;
 }
 
-sub get_experiment_design {
+sub set_experiment_design {
     my $self = shift;
     my %design;
     foreach my $property (@{$experiment{ident $self}->get_properties()}) {
@@ -725,7 +730,7 @@ sub get_experiment_design {
     $experiment_design{ident $self} = \%design;
 }
 
-sub get_experiment_type {
+sub set_experiment_type {
     my $self = shift;
     my $ap_slots = $ap_slots{ident $self};
     my $design = $experiment_design{ident $self};
@@ -755,12 +760,12 @@ sub get_experiment_type {
     }
 }
 
-sub get_normalized_slots {
+sub set_normalized_slots {
     my $self = shift;
     $normalized_slots{ident $self} = $reader{ident $self}->get_normalized_protocol_slots();
 }
 
-sub get_denorm_slots {
+sub set_denorm_slots {
     my $self = shift;
     $denorm_slots{ident $self} = $reader{ident $self}->get_denormalized_protocol_slots();
 #    for my $ap_slot (@{$denorm_slots{ident $self}}) {
@@ -771,7 +776,7 @@ sub get_denorm_slots {
 #    }
 }
 
-sub get_num_of_rows {
+sub set_num_of_rows {
     my $self = shift;
     $num_of_rows{ident $self} = scalar @{$denorm_slots{ident $self}->[0]};
 }
@@ -897,7 +902,7 @@ sub get_dye_swap_status { # an immunoprecipitation protocol must exist before ca
     return \%dye_swap;
 }
 
-sub get_organism {
+sub set_organism {
     my $self = shift;
     my $protocol = $denorm_slots{ident $self}->[0]->[0]->get_protocol();
     for my $attr (@{$protocol->get_attributes()}) {
@@ -905,7 +910,7 @@ sub get_organism {
     }
 }
 
-sub get_tgt_gene {
+sub set_tgt_gene {
     my $self = shift;
     my $factors = $factors{ident $self};
     my $header;
@@ -924,7 +929,7 @@ sub get_tgt_gene {
 
 
 
-sub get_strain {
+sub set_strain {
     my $self = shift;
     for my $row (@{$groups{ident $self}->{0}->{0}}) {
 	my $strain = $self->get_strain_row($row);
@@ -998,7 +1003,7 @@ sub get_strain_row {
     return undef;
 }
 
-sub get_cellline {
+sub set_cellline {
     my $self = shift;
     for my $row (@{$groups{ident $self}->{0}->{0}}) {
 	my $cellline = $self->get_cellline_row($row);
@@ -1034,7 +1039,7 @@ sub get_cellline_row {
     return undef;
 }
 
-sub get_devstage {
+sub set_devstage {
     my $self = shift;
     for my $row (@{$groups{ident $self}->{0}->{0}}) {
 	my $devstage = $self->get_devstage_row($row);
@@ -1073,7 +1078,7 @@ sub get_devstage_row {
     return undef;
 }
 
-sub get_genotype {
+sub set_genotype {
     my $self = shift;
     for my $row (@{$groups{ident $self}->{0}->{0}}) {
 	my $genotype = $self->get_genotype_row($row);
@@ -1099,7 +1104,7 @@ sub get_genotype_row {
     return undef;
 }
 
-sub get_transgene {
+sub set_transgene {
     my $self = shift;
     for my $row (@{$groups{ident $self}->{0}->{0}}) {
 	my $transgene = $self->get_transgene_row($row);
@@ -1125,7 +1130,7 @@ sub get_transgene_row {
     return undef;
 }
 
-sub get_sex {
+sub set_sex {
     my $self = shift;
     for my $row (@{$groups{ident $self}->{0}->{0}}) {
 	my $sex = $self->get_sex_row($row);
@@ -1155,7 +1160,7 @@ sub get_sex_row {
     return undef;
 }
 
-sub get_tissue {
+sub set_tissue {
     my $self = shift;
     for my $row (@{$groups{ident $self}->{0}->{0}}) {
 	my $tissue = $self->get_tissue_row(0);
@@ -1189,7 +1194,7 @@ sub get_tissue_row {
     return undef;
 }
 
-sub get_molecule_type {
+sub set_molecule_type {
     my $self = shift;
     for my $row (@{$groups{ident $self}->{0}->{0}}) {
 	my $molecule_type = $self->get_molecule_type_row($row);
@@ -1220,7 +1225,7 @@ sub get_molecule_type_row {
     return $molecule;
 }
 
-sub get_antibody {
+sub set_antibody {
     my $self = shift;
     if ($ap_slots{ident $self}->{'immunoprecipitation'}) {
 	if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {
@@ -1369,14 +1374,14 @@ sub get_array_row {
     return $gpl;
 }
 
-sub get_slotnum_source_name {
+sub set_source_name_ap_slot {
     my $self = shift;
     my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Source\s*Name');
     return $aps[0] if scalar(@aps);
     return undef;
 }
 
-sub get_slotnum_extract_name {
+sub set_extract_name_ap_slot {
     my $self = shift;
     my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Extract\s*Name');
     return $aps[0] if scalar(@aps);
@@ -1493,7 +1498,7 @@ sub get_sample_sourcename_row {
     }
 }
 
-sub get_ap_slots {
+sub set_ap_slots {
     my $self = shift;
     my %slots;
     $slots{'hybridization'} = $self->get_slotnum_hyb();
@@ -1510,18 +1515,18 @@ sub get_ap_slots {
     $slots{'immunoprecipitation'} = $self->get_slotnum_ip();
     print "found ip protocol at slot $slots{'immunoprecipitation'}...\n" if defined($slots{'immunoprecipitation'});
     $slots{'rip'} = $self->get_slotnum_rip();
-    $slots{'source name'} = $self->get_slotnum_source_name();
-    $slots{'sample name'} = $self->get_slotnum_sample_name();
-    $slots{'extract name'} = $self->get_slotnum_extract_name();    
+    #$slots{'source name'} = $self->get_slotnum_source_name();
+    #$slots{'sample name'} = $self->get_slotnum_sample_name();
+    #$slots{'extract name'} = $self->get_slotnum_extract_name();    
     $ap_slots{ident $self} = \%slots;
 }
 
-sub get_first_extraction_slot {
+sub set_first_extraction_slot {
     my $self = shift;
     $first_extraction_slot{ident $self} = $self->get_slotnum_extract('protocol');    
 }
 
-sub get_last_extraction_slot {
+sub set_last_extraction_slot {
     my $self = shift;
     $last_extraction_slot{ident $self} = $self->get_slotnum_extract('group');
 }
@@ -1796,13 +1801,13 @@ sub ap_slot_without_real_data {
     return $anonymous;
 }
 
-sub get_replicate_group_ap_slot {
+sub set_replicate_group_ap_slot {
     my $self = shift;
     my $text = 'replicate[\s_]*group';
     $replicate_group_ap_slot{ident $self} = $self->get_ap_slot_by_attr_info('input', 'name', $text);
 }
 
-sub get_slotnum_sample_name {
+sub set_sample_name_ap_slot {
     my $self = shift;
     my $text = 'Sample\s*Name';
     my $slot = $self->get_ap_slot_by_datum_info('output', 'heading', $text);
@@ -1886,16 +1891,16 @@ sub group_by_this_ap_slot {
     }
 }
 
-sub get_groups {
+sub set_groups {
     my $self = shift;
     print $self->get_slotnum_seq(), "seq\n";
     print $self->get_slotnum_hyb(), "hyb\n";
 
-    return $self->get_groups_seq() if (defined($self->get_slotnum_seq()) and $self->get_slotnum_seq() != -1);
-    return $self->get_groups_array() if (defined($self->get_slotnum_hyb()) and $self->get_slotnum_hyb() != -1);
+    return $self->set_groups_seq() if (defined($self->get_slotnum_seq()) and $self->get_slotnum_seq() != -1);
+    return $self->set_groups_array() if (defined($self->get_slotnum_hyb()) and $self->get_slotnum_hyb() != -1);
 }
 
-sub get_groups_seq {
+sub set_groups_seq {
     my $self = shift;
     my $denorm_slots = $denorm_slots{ident $self};
     my $ap_slots = $ap_slots{ident $self};
@@ -1963,7 +1968,7 @@ sub get_groups_seq {
     $groups{ident $self} = \%combined_grp;
 }
 
-sub get_groups_array {
+sub set_groups_array {
     my $self = shift;
     my $denorm_slots = $denorm_slots{ident $self};
     my $ap_slots = $ap_slots{ident $self};
