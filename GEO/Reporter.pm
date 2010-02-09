@@ -1819,7 +1819,7 @@ sub set_sample_name_ap_slot {
     } else {
 	my $islot = $self->get_ap_slot_by_datum_info('input', 'heading', $text);
 	if ( defined($islot) and $islot == 0 ) {
-	    $source_name_ap_slot{ident $self} = $islot;
+	    $sample_name_ap_slot{ident $self} = $islot;
 	}
     }
 }
