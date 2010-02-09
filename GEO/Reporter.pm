@@ -1757,7 +1757,7 @@ sub get_slotnum_normalize {
 
 sub get_slotnum_normalize_seq {
     my $self = shift;
-    my @types = ('WIG', 'BED');
+    my @types = ('WIG', 'BED', 'Sequence_Alignment/Map (SAM)');
     my $slot;
     for my $type (@types) {
 	my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
@@ -1777,7 +1777,7 @@ sub get_slotnum_normalize_seq {
 sub get_slotnum_normalize_array {
     my $self = shift;
     #first search by output data type, such as modencode-helper:Signal_Graph_File [sig gr]
-    my @types = ('Signal_Graph_File', 'normalized data', 'scaled data');
+    my @types = ('Signal_Graph_File [sig gr]', 'normalized data', 'scaled data');
     for my $type (@types) {
 	my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
 	#even there are more than 1 normalization protocols, choose the first one since it is the nearest to hyb protocol
