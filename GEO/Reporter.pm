@@ -1376,13 +1376,6 @@ sub get_slotnum_source_name {
     return undef;
 }
 
-sub get_slotnum_sample_name {
-    my $self = shift;
-    my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Sample\*Name');
-    return $aps[0] if scalar(@aps);
-    return undef;
-}
-
 sub get_slotnum_extract_name {
     my $self = shift;
     my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Extract\s*Name');
@@ -1809,13 +1802,7 @@ sub get_replicate_group_ap_slot {
     $replicate_group_ap_slot{ident $self} = $self->get_ap_slot_by_attr_info('input', 'name', $text);
 }
 
-sub get_extract_name_ap_slot {
-    my $self = shift;
-    my $text = 'Extract Name';
-    $extract_name_ap_slot{ident $self} = $self->get_ap_slot_by_datum_info('output', 'heading', $text);
-}
-
-sub get_sample_name_ap_slot {
+sub get_slotnum_sample_name {
     my $self = shift;
     my $text = 'Sample Name';
     my $slot = $self->get_ap_slot_by_datum_info('output', 'heading', $text);
@@ -1827,12 +1814,6 @@ sub get_sample_name_ap_slot {
 	    $source_name_ap_slot{ident $self} = $islot;
 	}
     }
-}
-
-sub get_source_name_ap_slot {
-    my $self = shift;
-    my $text = 'Source Name';
-    $source_name_ap_slot{ident $self} = $self->get_ap_slot_by_datum_info('input', 'heading', $text);
 }
 
 sub get_ap_slot_by_datum_info {
