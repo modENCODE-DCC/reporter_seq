@@ -79,7 +79,7 @@ for my $gsml (values %{$geo_reader->get_gsm()}) {
 	    my $gsm = new GEO::Gsm({'config' => \%ini,
 				    'xmldir' => $gsm_cache_dir,
 				    'gsm' => $gsmid});
-	    $gsm->get_miniml();
+	    $gsm->set_miniml();
 #	    push @all_gsm, $gsm;
 	    $in_memory{$gsmid} = 1;
 	}	
@@ -159,7 +159,7 @@ for my $unique_id (@dcc_ids) {
 		'config' => \%ini,
 		'gsm' => $gsm_id,
 		'xmldir' => $gsm_cache_dir});
-	    $gsm_reader->get_all();
+	    $gsm_reader->set_all();
 	    print $dsfh $gsm_id, " ", $gsm_reader->get_title(), "\n";
 	    my $sra = $gsm_reader->get_sra();
 	    if ( scalar @$sra != 0 ) {
