@@ -1,6 +1,7 @@
 package GEO::Reporter;
 
 use strict;
+use warnings;
 use Carp;
 use Class::Std;
 use Data::Dumper;
@@ -1507,12 +1508,17 @@ sub set_ap_slots {
     $slots{'hybridization'} = $self->get_slotnum_hyb();
     $slots{'seq'} = $self->get_slotnum_seq();
     print "found sequencing protocol at slot $slots{'seq'}...\n" if defined($slots{'seq'}) and $slots{'seq'} != -1;
+    $label_slot = $self->get_slotnum_label();
     $slots{'labeling'} = $self->get_slotnum_label();
+    unless (defined($slots{'labeling'})) {
+	warn("WARNING!!! did not find labeling protocol. will use hybridization protocol instead.");
+	$slot{'labeling'} = $slot{'hybridization'};
+    }
     print "found labeling protocol at slot $slots{'labeling'}...\n" if defined($slots{'labeling'});
     $slots{'scanning'} = $self->get_slotnum_scan();
     print "found scanning protocol at slot $slots{'scanning'}...\n" if defined($slots{'scanning'});
     $slots{'normalization'} = $self->get_slotnum_normalize();
-    print "found normalization protocol at slot $slots{'normalization'}...\n" if defined($slots{'normalization'}) and $slots{'normalization'} != -1;
+    print "found normalization protocol at slot $slots{'normalization'}...\n" if defined($slots{'normalization'});
     $slots{'raw'} = $self->get_slotnum_raw();
     print "found raw protocol at slot $slots{'raw'}...\n" if defined($slots{'raw'}) and $slots{'raw'} != -1;
     $slots{'immunoprecipitation'} = $self->get_slotnum_ip();
@@ -1675,7 +1681,7 @@ sub get_slotnum_label {
     my $type = "label";
     my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
     return $aps[-1] if scalar(@aps);
-    return -1;
+    return undef;
 }
 
 sub get_slotnum_scan {
@@ -1683,7 +1689,7 @@ sub get_slotnum_scan {
     my $type = "scan";
     my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
     return $aps[-1] if scalar(@aps);
-    return -1;
+    return undef;
 }
 
 sub get_slotnum_raw {
