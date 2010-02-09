@@ -1,7 +1,6 @@
 package GEO::Reporter;
 
 use strict;
-use warnings;
 use Carp;
 use Class::Std;
 use Data::Dumper;
@@ -367,7 +366,6 @@ sub write_sample_instrument_model {
 		    'GPL9269' => 'Illumina Genome Analyzer II', #worm
 		    'GPL6664' => 'Illumina Genome Analyzer', #fly
 	);
-    my $sampleFH = $sampleFH{ident $self};
     my $gpl = $self->get_seqmachine_row($row);
     print $sampleFH "!Sample_instrument_model = ", $machines{$gpl}, "\n";   
 }
@@ -1508,11 +1506,10 @@ sub set_ap_slots {
     $slots{'hybridization'} = $self->get_slotnum_hyb();
     $slots{'seq'} = $self->get_slotnum_seq();
     print "found sequencing protocol at slot $slots{'seq'}...\n" if defined($slots{'seq'}) and $slots{'seq'} != -1;
-    $label_slot = $self->get_slotnum_label();
     $slots{'labeling'} = $self->get_slotnum_label();
     unless (defined($slots{'labeling'})) {
-	warn("WARNING!!! did not find labeling protocol. will use hybridization protocol instead.");
-	$slot{'labeling'} = $slot{'hybridization'};
+	print "WARNING!!! did not find labeling protocol. will use hybridization protocol instead.\n";
+	$slots{'labeling'} = $slots{'hybridization'};
     }
     print "found labeling protocol at slot $slots{'labeling'}...\n" if defined($slots{'labeling'});
     $slots{'scanning'} = $self->get_slotnum_scan();
