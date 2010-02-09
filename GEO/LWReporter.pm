@@ -12,20 +12,20 @@ use HTML::Entities;
 my %unique_id              :ATTR( :name<unique_id>             :default<undef>);
 my %reader                 :ATTR( :name<reader>                :default<undef>);
 my %experiment             :ATTR( :name<experiment>            :default<undef>);
-my %normalized_slots       :ATTR( :set<normalized_slots>       :default<undef>);
-my %denorm_slots           :ATTR( :set<denorm_slots>           :default<undef>);
-my %num_of_rows            :ATTR( :set<num_of_rows>            :default<undef>);
-my %ap_slots               :ATTR( :set<ap_slots>               :default<undef>);
-my %project                :ATTR( :set<project>                :default<undef>);
-my %lab                    :ATTR( :set<lab>                    :default<undef>);
-my %contributors           :ATTR( :set<contributors>           :default<undef>);
-my %organism               :ATTR( :set<organism>               :default<undef>);
-my %strain                 :ATTR( :set<strain>                 :default<undef>);
-my %cellline               :ATTR( :set<cellline>               :default<undef>);
-my %devstage               :ATTR( :set<devstage>               :default<undef>);
-my %antibody               :ATTR( :set<antibody>               :default<undef>);
-my %factors                :ATTR( :set<factors>                :default<undef>);
-my %tgt_gene               :ATTR( :set<tgt_gene>               :default<undef>);
+my %normalized_slots       :ATTR( :get<normalized_slots>       :default<undef>);
+my %denorm_slots           :ATTR( :get<denorm_slots>           :default<undef>);
+my %num_of_rows            :ATTR( :get<num_of_rows>            :default<undef>);
+my %ap_slots               :ATTR( :get<ap_slots>               :default<undef>);
+my %project                :ATTR( :get<project>                :default<undef>);
+my %lab                    :ATTR( :get<lab>                    :default<undef>);
+my %contributors           :ATTR( :get<contributors>           :default<undef>);
+my %organism               :ATTR( :get<organism>               :default<undef>);
+my %strain                 :ATTR( :get<strain>                 :default<undef>);
+my %cellline               :ATTR( :get<cellline>               :default<undef>);
+my %devstage               :ATTR( :get<devstage>               :default<undef>);
+my %antibody               :ATTR( :get<antibody>               :default<undef>);
+my %factors                :ATTR( :get<factors>                :default<undef>);
+my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
@@ -38,17 +38,17 @@ sub BUILD {
     return $self;
 }
 
-sub get_all {
+sub set_all {
     my $self = shift;
     for my $parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots project lab contributors factors organism strain cellline devstage tgt_gene antibody]) {
-        my $get_func = "get_" . $parameter;
+        my $set_func = "set_" . $parameter;
         print "try to find $parameter ...";
-        $self->$get_func();
+        $self->$set_func();
         print " done\n";
     }
 }
 
-sub get_organism {
+sub set_organism {
     my $self = shift;
     my $protocol = $denorm_slots{ident $self}->[0]->[0]->get_protocol();
     for my $attr (@{$protocol->get_attributes()}) {
@@ -107,24 +107,24 @@ sub get_wiggle_files {
     return @wiggle_files;    
 }
 
-sub get_normalized_slots {
+sub set_normalized_slots {
     my $self = shift;
     print Dumper($reader{ident $self}->get_normalized_protocol_slots());
     $normalized_slots{ident $self} = $reader{ident $self}->get_normalized_protocol_slots();
 }
 
-sub get_denorm_slots {
+sub set_denorm_slots {
     my $self = shift;
     print Dumper($reader{ident $self}->get_denormalized_protocol_slots());
     $denorm_slots{ident $self} = $reader{ident $self}->get_denormalized_protocol_slots();
 }
 
-sub get_num_of_rows {
+sub set_num_of_rows {
     my $self = shift;
     $num_of_rows{ident $self} = scalar @{$denorm_slots{ident $self}->[0]};
 }
 
-sub get_ap_slots {
+sub set_ap_slots {
     my $self = shift;
     my %slots;
     $slots{'seq'} = $self->get_slotnum_seq();
@@ -137,7 +137,7 @@ sub get_ap_slots {
     $ap_slots{ident $self} = \%slots;
 }
 
-sub get_project {
+sub set_project {
     my $self = shift;
     my %projects = ('lieb' => 'Jason Lieb',
                    'celniker' => 'Susan Celniker',
@@ -164,7 +164,7 @@ sub get_project {
     }
 }
 
-sub get_lab {
+sub set_lab {
     my ($self, $experiment) = @_;
     foreach my $property (@{$experiment{ident $self}->get_properties()}) {
         my ($name, $value, $rank, $type) = ($property->get_name(), 
@@ -176,7 +176,7 @@ sub get_lab {
     }    
 }
 
-sub get_contributors {
+sub set_contributors {
     my $self = shift;    
     my %person;
     foreach my $property (@{$experiment{ident $self}->get_properties()}) {
@@ -198,7 +198,7 @@ sub get_contributors {
     $contributors{ident $self} = \%person;
 }
 
-sub get_factors {
+sub set_factors {
     my $self = shift;
     my %factor;
     foreach my $property (@{$experiment{ident $self}->get_properties()}) {
@@ -221,7 +221,7 @@ sub get_factors {
     $factors{ident $self} = \%factor;
 }
 
-sub get_tgt_gene {
+sub set_tgt_gene {
     my $self = shift;
     my $factors = $factors{ident $self};
     my $header;
@@ -277,7 +277,7 @@ sub get_slotnum_ip {
     return undef;
 }
 
-sub get_strain {
+sub set_strain {
     my $self = shift;
     #for my $row (@{$groups{ident $self}->{0}->{0}}) {
     for my $row ((0..$num_of_rows{ident $self}-1)) {
@@ -349,7 +349,7 @@ sub get_strain_row {
 }
 
 
-sub get_cellline {
+sub set_cellline {
     my $self = shift;
     #for my $row (@{$groups{ident $self}->{0}->{0}}) {
     for my $row ((0..$num_of_rows{ident $self}-1)) {
@@ -386,7 +386,7 @@ sub get_cellline_row {
     return undef;
 }
 
-sub get_devstage {
+sub set_devstage {
     my $self = shift;
     #for my $row (@{$groups{ident $self}->{0}->{0}}) {
     for my $row ((0..$num_of_rows{ident $self}-1)) {
@@ -423,7 +423,7 @@ sub get_devstage_row {
     return undef;
 }
 
-sub get_antibody {
+sub set_antibody {
     my $self = shift;
     if ($ap_slots{ident $self}->{'immunoprecipitation'}) {
         #for my $row (@{$groups{ident $self}->{0}->{0}}) {
