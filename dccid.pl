@@ -117,7 +117,7 @@ for my $unique_id (@dcc_ids) {
         'experiment' => $experiment,
     });
     print "reporter done.\n";
-    $reporter->get_all();
+    $reporter->set_all();
     my @karact = ('strain', 'cellline', 'devstage', 'tgt_gene');
     for my $kar (@karact) {
 	my $fun = 'get_' . $kar;
