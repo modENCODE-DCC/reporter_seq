@@ -11,7 +11,7 @@ use LWP::UserAgent;
 my %config                 :ATTR( :name<config>                :default<undef>);
 my %gse                 :ATTR( :name<gse>                :default<undef>);
 my %xmldir                 :ATTR( :name<xmldir>                :default<undef>);
-my %miniml              :ATTR( :set<miniml>              :default<undef>);
+my %miniml              :ATTR( :get<miniml>              :default<undef>);
 
 
 
@@ -26,7 +26,7 @@ sub BUILD {
     return $self;
 }
 
-sub get_miniml {
+sub set_miniml {
     my ($self) = @_;
     my $ini = $config{ident $self};
     my $gse_id = $gse{ident $self};
