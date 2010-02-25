@@ -196,6 +196,7 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
 		#unzip and remove the original compressed file
 		my $filename_no_zip = do_unzip($filename_in_tarball, $zipsuffix);
 		system("mv $filename_no_zip $myfile") == 0 || die "can not change filename $filename_no_zip to $myfile";
+		system("rm $filename_in_tarball") == 0 || die "can not remove $filename_in_tarball (leave no garbage).";
 	    } else {
 		system("mv $filename_in_tarball $myfile") == 0 || die "can not change filename $filename_in_tarball to $myfile";
 	    }
