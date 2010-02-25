@@ -76,7 +76,7 @@ if (($use_existent_metafile == 0) && ($use_existent_tarball == 0)) {
 
     #start read chado
     print "connecting to database ...";
-    my $reader = new ModENCODE::Parser::Chado({
+    my $reader = new ModENCODE::Parser::LWChado({
 	'dbname' => $dbname,
 	'host' => $dbhost,
 	'username' => $dbusername,
@@ -172,8 +172,11 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
     	} # end of if datafile is fastq
 	else {
 	    #remove subdirectory prefix, remove suffix of compression, such as .zip, .bz2, this is the filename goes into geo tarball
-	    my $myfile = unzipp(basename($datafile));
+	    print $datafile, "#######from chado\n";
+	    print basename($datafile), " base name\n";
 
+	    my $myfile = unzipp(basename($datafile));
+	    print $myfile, " needed file name\n";
 	    #replace / with _ , use it to match the filenames in downloaded tarball
 	    $datafile =~ s/\//_/g;	
 	    my $chars = 0 - length($datafile);
@@ -183,10 +186,12 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
 		# the filenames in chado are of pattern subdirectory_datafilenames(_compression_suffix) 
 		$filename_in_tarball = $filename and last if substr($filename, $chars) eq $datafile;
 	    }
+	    print $filename_in_tarball, " in pipeline\n";
 	    system("tar xzf $pipeline_tarball $filename_in_tarball") == 0 || die "can not extract a datafile $filename_in_tarball from download tarball $pipeline_tarball";
 	    #if it is compressed ......right now only allows one level of compression
 	    #if it is multiple levels of compression, GEO will still get compressed files in tarball, they will complain and we will fix.
 	    my $zipsuffix = iszip($filename_in_tarball);
+	    print $zipsuffix, " zip suffix\n";
 	    if ($zipsuffix) {
 		#unzip and remove the original compressed file
 		my $filename_no_zip = do_unzip($filename_in_tarball, $zipsuffix);
@@ -309,7 +314,11 @@ sub do_unzip {
     my $filename_no_zip;
     if ($zipsuffix eq 'bz2') {
 	$filename_no_zip = substr($zipfile, 0, $char-4);
-	system("bzip2 -d -f $zipfile") == 0 || die "can not bunzip file $zipfile";
+	system("bzip2 -d -f $zipfile > $filename_no_zip") == 0 || die "can not bunzip file $zipfile";
+    }
+    if ($zipsuffix eq 'zip') {
+        $filename_no_zip = substr($zipfile, 0, $char-4);
+        system("unzip -c $zipfile > $filename_no_zip") == 0 || die "can not unzip file $zipfile";
     }
     return $filename_no_zip;
 }
