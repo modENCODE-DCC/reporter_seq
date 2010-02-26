@@ -17,6 +17,7 @@ my %report_dir             :ATTR( :name<report_dir>            :default<undef>);
 my %reader                 :ATTR( :name<reader>                :default<undef>);
 my %experiment             :ATTR( :name<experiment>            :default<undef>);
 my %long_protocol_text     :ATTR( :name<long_protocol_text>    :default<undef>);
+my %split_seq_group        :ATTR( :name<split_seq_group>       :default<undef>);
 my %normalized_slots       :ATTR( :get<normalized_slots>       :default<undef>);
 my %denorm_slots           :ATTR( :get<denorm_slots>           :default<undef>);
 my %num_of_rows            :ATTR( :get<num_of_rows>            :default<undef>);
@@ -51,7 +52,7 @@ my %library_selection      :ATTR( :get<library_selection>      :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
-    for my $parameter (qw[config unique_id sampleFH seriesFH report_dir reader experiment long_protocol_text]) {
+    for my $parameter (qw[config unique_id sampleFH seriesFH report_dir reader experiment long_protocol_text split_seq_group]) {
 	my $value = $args->{$parameter};
 	defined $value || croak "can not find required parameter $parameter"; 
 	my $set_func = "set_" . $parameter;
@@ -1537,7 +1538,7 @@ sub set_ap_slots {
     $slots{'seq'} = $self->get_slotnum_seq();
     print "found sequencing protocol at slot $slots{'seq'}...\n" if defined($slots{'seq'}) and $slots{'seq'} != -1;
     $slots{'labeling'} = $self->get_slotnum_label();
-    unless (defined($slots{'labeling'})) {
+    unless (defined($slots{'labeling'}) and $slots{'hybridization'} != -1) {
 	print "WARNING!!! did not find labeling protocol.\n";
     }
     print "found labeling protocol at slot $slots{'labeling'}...\n" if defined($slots{'labeling'});
@@ -1964,7 +1965,7 @@ sub set_groups_seq {
     eval {
 	$all_grp_by_seq = $self->group_applied_protocols_by_data($denorm_slots->[$ap_slots->{'seq'}], 'input', 'name', 'sequencing platform');
     };
-    print "the eval err msg says: $@";
+    #print "the eval err msg says: $@";
     if ($@) {
 	print "seq machine ok1";
 	eval {
