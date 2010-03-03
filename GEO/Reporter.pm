@@ -145,51 +145,71 @@ sub chado2sample {
 
     for my $extraction (sort keys %combined_grp) {
 	for my $array (sort keys %{$combined_grp{$extraction}}) {
-	    print "##########", $extraction, $array, "\n";
+	    print "\n##########extraction $extraction array $array\n";
 	    sort @{$combined_grp{$extraction}{$array}};
 	    unless ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) {
 		$self->write_series_sample($extraction, $array);
+		print "ok with write_series_sample\n";
 	    }
 	    for (my $channel=0; $channel<scalar(@{$combined_grp{$extraction}{$array}}); $channel++) {
 		my $row = $combined_grp{$extraction}{$array}->[$channel];
 		print $row, "\n";
 		if ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) {
 		    $self->write_series_sample_seq($extraction, $array, $channel);
+		    print "ok with write_series_sample_seq\n";
 		}
 		$self->write_sample_source($extraction, $array, $row, $channel);
+		print "ok with write_sample_source\n";
 		$self->write_sample_organism($row, $channel);
+		print "ok with write_sample_organism\n";
 		$self->write_characteristics($row, $channel);
+		print "ok with write_sample_characteristics\n";
 		$self->write_sample_description($row, $channel);
+		print "ok with write_sample_description\n";
 		$self->write_sample_growth($row, $channel);
+		print "ok with write_sample_growth\n";
 		$self->write_sample_extraction($row, $channel);
-		if ( defined($ap_slots{ident $self}->{'labeling'}) ) {		
-		    $self->write_sample_label($row, $channel);
-		} else {
-		    $self->write_sample_label_without_labeling_protocol($row, $channel);
+		print "ok with write_sample_extraction\n";
+		if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {
+		    if ( defined($ap_slots{ident $self}->{'labeling'}) ) {		
+			$self->write_sample_label($row, $channel);
+		    } else {
+			$self->write_sample_label_without_labeling_protocol($row, $channel);
+		    }
+		    print "ok with write_sample_labeling\n";
 		}
 		if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		    $self->write_sample_type($row);
+		    print "ok with write_sample_type\n";
 		    $self->write_sample_lib_strategy($row);
+		    print "ok with write_sample_lib_strategy\n";
 		    $self->write_sample_lib_source($row);
+		    print "ok with write_sample_lib_source\n"
 		    $self->write_sample_lib_selection($row);
+		    print "ok with write_sample_lib_selection\n";
 		    $self->write_sample_instrument_model($row);
+		    print "ok with write_sample_instrument_model\n";
 		}
 		push @raw_datafiles, $self->write_raw_data($row, $channel);
 	    }
 	    my $row = $combined_grp{$extraction}{$array}->[0];
 	    if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {	
 		$self->write_sample_hybridization($row);
+		print "ok with write_sample_hybridization\n";
 	    }
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {	
 		#$self->write_sample_seq($row);
 	    }	    
 	    if ( defined($ap_slots{ident $self}->{'scanning'}) and $ap_slots{ident $self}->{'scanning'} != -1 ) {		    
 		$self->write_sample_scan($row);
+		print "ok with write_sample_scan\n";
 	    }
 	    
 	    $self->write_sample_normalization($row);
+	    print "ok with write_sample_normalization\n";
 	    if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {	    
 		$self->write_platform($row);
+		print "ok with write_platform\n";
 	    }
 	    push @normalize_datafiles, $self->write_normalized_data($row);
 	    push @more_datafiles, $self->get_more_data($row);
