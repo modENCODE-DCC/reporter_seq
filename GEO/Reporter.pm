@@ -153,7 +153,7 @@ sub chado2sample {
 	    for (my $channel=0; $channel<scalar(@{$combined_grp{$extraction}{$array}}); $channel++) {
 		my $row = $combined_grp{$extraction}{$array}->[$channel];
 		print $row, "\n";
-		if ($split_seq_group{ident $self} == 1 and ap_slots{ident $self)->{seq} >= 0) {
+		if ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) {
 		    $self->write_series_sample_seq($extraction, $array, $channel);
 		}
 		$self->write_sample_source($extraction, $array, $row, $channel);
