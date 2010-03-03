@@ -146,10 +146,16 @@ sub chado2sample {
     for my $extraction (sort keys %combined_grp) {
 	for my $array (sort keys %{$combined_grp{$extraction}}) {
 	    print "##########", $extraction, $array, "\n";
-	    $self->write_series_sample($extraction, $array);
+	    sort @{$combined_grp{$extraction}{$array}};
+	    unless ($split_seq_group{ident $self} == 1 and ap_slots{ident $self)->{seq} >= 0) {
+		$self->write_series_sample($extraction, $array);
+	    }
 	    for (my $channel=0; $channel<scalar(@{$combined_grp{$extraction}{$array}}); $channel++) {
 		my $row = $combined_grp{$extraction}{$array}->[$channel];
 		print $row, "\n";
+		if ($split_seq_group{ident $self} == 1 and ap_slots{ident $self)->{seq} >= 0) {
+		    $self->write_series_sample_seq($extraction, $array, $channel);
+		}
 		$self->write_sample_source($extraction, $array, $row, $channel);
 		$self->write_sample_organism($row, $channel);
 		$self->write_characteristics($row, $channel);
@@ -190,6 +196,18 @@ sub chado2sample {
 	}
     }
     return (\@raw_datafiles, \@normalize_datafiles, \@more_datafiles);
+}
+
+sub write_series_sample_seq {
+    my ($self, $extraction, $array, $channel) = @_;
+    my $seriesFH = $seriesFH{ident $self};
+    my $sampleFH = $sampleFH{ident $self};
+    my $name = $self->get_sample_name_safe($extraction, $array);
+    $name .= " aliquote $channel";
+    print $name, "\n";
+    print $seriesFH "!Series_sample_id = GSM for ", $name, "\n";
+    print $sampleFH "^Sample = GSM for ", $name, "\n";
+    print $sampleFH "!Sample_title = ", $name, "\n";    
 }
 
 sub write_series_sample {
