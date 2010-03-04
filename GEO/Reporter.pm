@@ -46,8 +46,8 @@ my %molecule_type          :ATTR( :get<molecule_type>          :default<undef>);
 my %factors                :ATTR( :get<factors>                :default<undef>);
 my %antibody               :ATTR( :get<antibody>               :default<undef>);
 my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
-my %library_strategy       :ATTR( :get<library_strategy>       :default<undef>);
-my %library_selection      :ATTR( :get<library_selection>      :default<undef>);
+my %lib_strategy       :ATTR( :get<lib_strategy>       :default<undef>);
+my %lib_selection      :ATTR( :get<lib_selection>      :default<undef>);
 
 
 sub BUILD {
@@ -63,11 +63,11 @@ sub BUILD {
 
 sub set_all {
     my $self = shift;
-    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene lib_strategy]) {
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene lib_strategy lib_selection]) {
 	my $set_func = "set_" . $parameter;
 	$self->$set_func();
     }
-    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene lib_strategy]) {
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene lib_strategy lib_selection]) {
 	my $get_func = "get_" . $parameter;
 	print "find $parameter ";
 	print $self->$get_func();
@@ -447,7 +447,7 @@ sub set_lib_strategy {
     else {#default, whole genome shotgun
 	$strategy = "WGS";
     }
-    $library_strategy{ident $self} = $strategy;
+    $lib_strategy{ident $self} = $strategy;
 }
 
 sub set_lib_selection {
@@ -459,7 +459,7 @@ sub set_lib_selection {
     else { #default random shearing only
 	$selection = "RANDOM";
     }
-    $library_selection{ident $self} = $selection;
+    $lib_selection{ident $self} = $selection;
 }
 
 sub write_sample_seq {
