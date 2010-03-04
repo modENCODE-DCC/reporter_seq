@@ -184,7 +184,7 @@ sub chado2sample {
 		    $self->write_sample_lib_strategy($row);
 		    print "ok with write_sample_lib_strategy\n";
 		    $self->write_sample_lib_source($row);
-		    print "ok with write_sample_lib_source\n"
+		    print "ok with write_sample_lib_source\n";
 		    $self->write_sample_lib_selection($row);
 		    print "ok with write_sample_lib_selection\n";
 		    $self->write_sample_instrument_model($row);
