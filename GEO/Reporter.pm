@@ -189,6 +189,9 @@ sub chado2sample {
 		    print "ok with write_sample_lib_selection\n";
 		    $self->write_sample_instrument_model($row);
 		    print "ok with write_sample_instrument_model\n";
+		    if ($split_seq_group{ident $self} == 1) {
+			$self->write_sample_normalization($row);
+		    }
 		}
 		push @raw_datafiles, $self->write_raw_data($row, $channel);
 	    }
@@ -204,10 +207,13 @@ sub chado2sample {
 		$self->write_sample_scan($row);
 		print "ok with write_sample_scan\n";
 	    }
-	    
-	    $self->write_sample_normalization($row);
-	    print "ok with write_sample_normalization\n";
-	    if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {	    
+	    unless ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) {
+		$self->write_sample_normalization($row);
+		print "ok with write_sample_normalization\n";
+	    }
+	    if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {
+                $self->write_sample_normalization($row);
+                print "ok with write_sample_normalization\n";	    
 		$self->write_platform($row);
 		print "ok with write_platform\n";
 	    }
@@ -223,6 +229,7 @@ sub write_series_sample_seq {
     my $seriesFH = $seriesFH{ident $self};
     my $sampleFH = $sampleFH{ident $self};
     my $name = $self->get_sample_name_safe($extraction, $array);
+    $channel += 1;
     $name .= " aliquote $channel";
     print $name, "\n";
     print $seriesFH "!Series_sample_id = GSM for ", $name, "\n";
@@ -538,9 +545,11 @@ sub write_raw_data {
 	    else {
 		my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
 		if (scalar grep {lc($suffix) eq $_} @suffixs) {
-		    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+		   # print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+		    print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
 		} else {
-		    print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+		    #print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+		    print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
 		}
 	    }
 	    push @raw_datafiles, $path;
@@ -569,17 +578,21 @@ sub write_normalized_data {
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		my ($file, $dir, $suffix) = fileparse($path);
 		my $type;
-		$type = 'WIG' if ($file =~ /\.wig/i);
-		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $file . $suffix, "\n";
+		$type = 'WIG' if ($file =~ /\.wig$/i);
+		$type = 'GFF3' if ($file =~ /\.gff3$/i);
+		#print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $file . $suffix, "\n";
+		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
 		print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
 		$num_processed_data+=1;
 	    } 
 	    else {
 		my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
 		if (scalar grep {lc($suffix) eq $_} @suffixs) {
-		    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+		    #print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+		    print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
 		} else {
-		    print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+		    #print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+		    print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
 		}
 	    }
 	    push @normalization_datafiles, $path;
@@ -1447,9 +1460,8 @@ sub get_array_row {
 
 sub set_source_name_ap_slot {
     my $self = shift;
-    my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Source\s*Name');
-    return $aps[0] if scalar(@aps);
-    return undef;
+    my @aps = $self->get_slotnum_by_datum_property('input', 0, 'heading', undef, 'Source\s*Name');
+    $source_name_ap_slot{ident $self} = $aps[0] if scalar(@aps);
 }
 
 sub set_extract_name_ap_slot {
@@ -1945,9 +1957,9 @@ sub group_by_this_ap_slot {
 	print "I will use ap slot $replicate_group_col (replicate group) to group\n";
 	return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
     }
-    if ( defined($replicate_group_col) && (defined($seq_col) and !defined($extract_name_col) and (!defined($sample_name_col) or $sample_name_col == 0)) ) {
-	print "warning! use author-submitted replicate group information to group rows in SDRF for a sequencing experiment. if you have control aliquote in each replicate group, this grouping method will fail\n";
-	return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
+    if ( defined($replicate_group_col) && (defined($seq_col) and $seq_col>=0)) {
+	return [$source_name_col, 'Source\s*Name'] if ($replicate_group_col == $source_name_col);
+	return [$sample_name_col, 'Sample\s*Name'] if ($replicate_group_col == $sample_name_col);
     }
 
     print "I will use ap slot $extract_name_col (extract name) to group\n" and return [$extract_name_col, 'Extract\s*Name'] if ( defined($extract_name_col) and $last_extraction_slot{ident $self} <= $extract_name_col );
@@ -1985,7 +1997,7 @@ sub set_groups_seq {
 	($nr_grp, $all_grp) = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
     } else {
 	if ($method eq 'replicate[\s_]*group') {
-	    $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method);
+	#    $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method);
 	}
 	elsif ($method eq 'Source\s*Name') {
 	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);
@@ -1999,7 +2011,9 @@ sub set_groups_seq {
 	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'output', 'heading', $method);
 	}	
     }
-    
+    print "all groups by extraction...\n";
+    print Dumper($all_grp);
+
     eval {
 	$all_grp_by_seq = $self->group_applied_protocols_by_data($denorm_slots->[$ap_slots->{'seq'}], 'input', 'name', 'sequencing platform');
     };
@@ -2035,8 +2049,6 @@ sub set_groups_seq {
 	    $combined_grp{$extract_grp}{$seq_grp} = [$row]; 
 	}
     }
-    print "all groups by extraction...\n";
-    print Dumper($all_grp);
     print "final groups...\n";
     print Dumper(%combined_grp);
     $groups{ident $self} = \%combined_grp;
@@ -2052,7 +2064,7 @@ sub set_groups_array {
 	($nr_grp, $all_grp) = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
     } else {
 	if ($method eq 'replicate[\s_]*group') {
-	    $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method);
+	#    $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method);
 	}
 	elsif ($method eq 'Source\s*Name') {
 	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);

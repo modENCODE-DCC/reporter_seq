@@ -178,7 +178,8 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
 	    print $datafile, "#######from chado\n";
 	    print basename($datafile), " base name\n";
 
-	    my $myfile = unzipp(basename($datafile));
+	    #my $myfile = unzipp(basename($datafile));
+	    my $myfile = $datafile;
 	    print $myfile, " needed file name\n";
 	    #replace / with _ , use it to match the filenames in downloaded tarball
 	    $datafile =~ s/\//_/g;	
@@ -197,9 +198,10 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
 	    print $zipsuffix, " zip suffix\n";
 	    if ($zipsuffix) {
 		#unzip and remove the original compressed file
-		my $filename_no_zip = do_unzip($filename_in_tarball, $zipsuffix);
-		system("mv $filename_no_zip $myfile") == 0 || die "can not change filename $filename_no_zip to $myfile";
-		system("rm $filename_in_tarball") == 0 || die "can not remove $filename_in_tarball (leave no garbage).";
+		#my $filename_no_zip = do_unzip($filename_in_tarball, $zipsuffix);
+		#system("mv $filename_no_zip $myfile") == 0 || die "can not change filename $filename_no_zip to $myfile";
+		#system("rm $filename_in_tarball") == 0 || die "can not remove $filename_in_tarball (leave no garbage).";
+		system("mv $filename_in_tarball $myfile") == 0 || die "can not change filename $filename_in_tarball to $myfile";
 	    } else {
 		system("mv $filename_in_tarball $myfile") == 0 || die "can not change filename $filename_in_tarball to $myfile";
 	    }
