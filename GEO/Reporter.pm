@@ -29,6 +29,7 @@ my %replicate_group_ap_slot :ATTR( :get<replicate_group_ap_slot>    :default<und
 my %first_extraction_slot  :ATTR( :get<first_extraction_slot>  :deafult<undef>);
 my %last_extraction_slot   :ATTR( :get<last_extraction_slot>   :deafult<undef>);
 my %groups                 :ATTR( :get<groups>                 :default<undef>);
+my %dup                    :ATTR( :get<dup>                    :default<undef>);
 my %project                :ATTR( :get<project>                :default<undef>);
 my %lab                    :ATTR( :get<lab>                    :default<undef>);
 my %contributors           :ATTR( :get<contributors>           :default<undef>);
@@ -217,7 +218,13 @@ sub chado2sample {
 		$self->write_platform($row);
 		print "ok with write_platform\n";
 	    }
-	    push @normalize_datafiles, $self->write_normalized_data($row);
+	    my @these_normalize_datafiles = $self->write_normalized_data($row);
+	    push @normalize_datafiles, @these_normalize_datafiles;
+	    if ($dup{ident $self}->{$row}) {
+		my $that_row = $dup{ident $self}->{$row};
+		my @those_normalize_datafiles = $self->write_normalized_data_dup($that_row, \@these_normalize_datafiles);
+		push @normalize_datafiles, @those_normalize_datafiles;
+	    }
 	    push @more_datafiles, $self->get_more_data($row);
 	}
     }
@@ -2033,16 +2040,24 @@ sub set_groups_seq {
     print Dumper($all_grp_by_seq);
 
     my %combined_grp;
+    my %dup;
     while (my ($row, $extract_grp) = each %$all_grp) {
 	my $seq_grp = $all_grp_by_seq->{$row};
 	if (exists $combined_grp{$extract_grp}{$seq_grp}) {
 	    my $this_extract_ap = $denorm_slots->[$last_extraction_slot]->[$row];
 	    my $this_seq_ap = $denorm_slots->[$ap_slots->{'seq'}]->[$row];
-	    my $ignore = 0; #possible validator bug might cause repeats of rows in denormalized ap slots
+	    my $same = 0; 
+            #repeats of rows in denormalized ap slots caused by experimental factor column at the end of SDRF
+	    #or by sharing inputs
 	    for my $that_row (@{$combined_grp{$extract_grp}{$seq_grp}}) {
                 my $that_extract_ap = $denorm_slots->[$last_extraction_slot]->[$that_row];
                 my $that_seq_ap = $denorm_slots->[$ap_slots->{'seq'}]->[$that_row];
-                $ignore = 1 and print "ignored $row!\n" and last if ($this_extract_ap->equals($that_extract_ap) && $this_seq_ap->equals($that_seq_ap));
+		if ($this_extract_ap->equals($that_extract_ap) && $this_seq_ap->equals($that_seq_ap)) {
+		    $same = 1; 
+		    print "duplicated row $row!\n";
+		    $dup{$that_row} = $this_row; 
+		    last; 
+		}
 	    }
 	    push @{$combined_grp{$extract_grp}{$seq_grp}}, $row unless $ignore;	    
 	} else {
@@ -2052,6 +2067,8 @@ sub set_groups_seq {
     print "final groups...\n";
     print Dumper(%combined_grp);
     $groups{ident $self} = \%combined_grp;
+    print Dumper(%dup);
+    $dup{ident $self} = \%dup;
 }
 
 sub set_groups_array {
