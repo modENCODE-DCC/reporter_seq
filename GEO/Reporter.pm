@@ -220,8 +220,10 @@ sub chado2sample {
 	    }
 	    my @these_normalize_datafiles = $self->write_normalized_data($row);
 	    push @normalize_datafiles, @these_normalize_datafiles;
+	    print "ok with write_normalized_data with row $row\n";
 	    if ($dup{ident $self}->{$row}) {
 		my $that_row = $dup{ident $self}->{$row};
+		print "get duplicated row $that_row\n";
 		my @those_normalize_datafiles = $self->write_normalized_data_dup($that_row, \@these_normalize_datafiles);
 		push @normalize_datafiles, @those_normalize_datafiles;
 	    }
@@ -527,6 +529,26 @@ sub write_sample_normalization {
 	#print $sampleFH "genome version is $genome_version";
     #}
     print $sampleFH "\n";
+}
+
+sub write_normalized_data_dup {
+    my ($self, $row, $exist_normalize_datafiles) = @_;
+    my $sampleFH = $sampleFH{ident $self};
+    my $normalization_ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'normalization'}]->[$row];
+    my $num_processed_data = scalar @$exist_normalize_datafiles + 1;
+    for my $datum (@{$normalization_ap->get_output_data()}) {
+        if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
+            my $path = $datum->get_value();
+	    unless (scalar grep {$path eq $_} @$exist_normalize_datafiles) {
+		my $type;
+		$type = 'WIG' if ($path =~ /\.wig$/i);
+		$type = 'GFF3' if ($path =~ /\.gff3$/i);
+		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
+		print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
+		$num_processed_data+=1;
+	    }
+	}
+    }  
 }
 
 sub write_raw_data {
@@ -2040,7 +2062,7 @@ sub set_groups_seq {
     print Dumper($all_grp_by_seq);
 
     my %combined_grp;
-    my %dup;
+    my %duplicate;
     while (my ($row, $extract_grp) = each %$all_grp) {
 	my $seq_grp = $all_grp_by_seq->{$row};
 	if (exists $combined_grp{$extract_grp}{$seq_grp}) {
@@ -2055,11 +2077,11 @@ sub set_groups_seq {
 		if ($this_extract_ap->equals($that_extract_ap) && $this_seq_ap->equals($that_seq_ap)) {
 		    $same = 1; 
 		    print "duplicated row $row!\n";
-		    $dup{$that_row} = $this_row; 
+		    $duplicate{$that_row} = $row; 
 		    last; 
 		}
 	    }
-	    push @{$combined_grp{$extract_grp}{$seq_grp}}, $row unless $ignore;	    
+	    push @{$combined_grp{$extract_grp}{$seq_grp}}, $row unless $same;	    
 	} else {
 	    $combined_grp{$extract_grp}{$seq_grp} = [$row]; 
 	}
@@ -2067,8 +2089,9 @@ sub set_groups_seq {
     print "final groups...\n";
     print Dumper(%combined_grp);
     $groups{ident $self} = \%combined_grp;
-    print Dumper(%dup);
-    $dup{ident $self} = \%dup;
+    print "duplicates...\n";
+    print Dumper(%duplicate);
+    $dup{ident $self} = \%duplicate;
 }
 
 sub set_groups_array {
