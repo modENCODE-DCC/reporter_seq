@@ -19,7 +19,7 @@ my %title              :ATTR( :get<title>         :default<undef>);
 my %submission_date    :ATTR( :get<submission_date>         :default<undef>); 
 my %type         :ATTR( :get<type>         :default<undef>);
 my %strategy      :ATTR( :get<strategy>         :default<undef>);
-my %source      :ATTR( :get<source>         :default<undef>);
+my %lib_source      :ATTR( :get<lib_source>         :default<undef>);
 my %organism      :ATTR( :get<organism>         :default<undef>);
 my %strain      :ATTR( :get<strain>         :default<undef>);
 my %cellline      :ATTR( :get<cellline>         :default<undef>);
@@ -30,6 +30,9 @@ my %bed             :ATTR( :get<bed>         :default<[]>);
 my %wiggle         :ATTR( :get<wiggle>         :default<[]);
 my %sra             :ATTR( :get<sra>         :default<[]>);
 my %characteristics  :ATTR( :get<characteristics>         :default<undef>);
+my %tissue           :ATTR( :get<tissue>            :default<undef>);
+my %timepoint        :ATTR( :get<timepoint>         :default<undef>);
+my %num_channel      :ATTR( :get<num_channel>       :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
@@ -44,10 +47,9 @@ sub BUILD {
 
 sub set_all {
     my ($self) = @_;
-    for my $parameter (qw[miniml contributor lab title submission_date type strategy source organism characteristics strain devstage antibody supplementary_data wiggle sra ]) {
+    for my $parameter (qw[miniml contributor lab title submission_date type strategy lib_source num_channel organism characteristics strain devstage antibody supplementary_data wiggle sra tissue timepoint]) {
         my $set_func = "set_" . $parameter;
         $self->$set_func();
-	print $parameter, " ok\n";
     }
 }
 
@@ -58,7 +60,7 @@ sub set_contributor {
      #my $pfm = $accxml->{Contributor}->{Person}->{Middle};
      my $pfl = $accxml->{Contributor}->{Person}->{Last};
      my $contributor = "$pfn $pfl";
-     print "   Contributor: $contributor ";
+#     print "   Contributor: $contributor \n";
      $contributor{ident $self} = $contributor;
 }
 
@@ -66,7 +68,8 @@ sub set_lab {
      my ($self) = @_;
      my $accxml = $miniml{ident $self};
      my $lab = $accxml->{Contributor}->{Laboratory};
-     print "   Lab: $lab " if $lab;
+     $lab =~ s/^\s*//; $lab =~ s/\s*$//; 
+#     print "   Lab: $lab \n" if $lab;
      $lab{ident $self} = $lab;
 }
 
@@ -75,7 +78,7 @@ sub set_title {
      my $accxml = $miniml{ident $self};
      my $title = $accxml->{Sample}->{Title};
      $title =~ s/^\s*//; $title =~ s/\s*$//; 
-     print "   Title: $title ";
+#     print "   Title: $title \n";
      $title{ident $self} = $title;
 }
 
@@ -83,7 +86,8 @@ sub set_submission_date {
      my ($self) = @_;
      my $accxml = $miniml{ident $self};
      my $date = $accxml->{Sample}->{Status}->{'Submission-Date'};
-     print "   Submission date: $date ";
+     $date =~ s/^\s*//; $date =~ s/\s*$//; 
+#     print "   Submission date: $date \n";
      $submission_date{ident $self} = $date;
 }
 
@@ -91,7 +95,8 @@ sub set_type {
      my ($self) = @_;
      my $accxml = $miniml{ident $self};
      my $type = $accxml->{Sample}->{Type};
-     print "   Type: $type ";
+     $type =~ s/^\s*//; $type =~ s/\s*$//; 
+#     print "   Type: $type \n";
      $type{ident $self} = $type;
 }
 
@@ -99,68 +104,108 @@ sub set_strategy {
     my ($self) = @_;
     my $accxml = $miniml{ident $self};
     my $strategy = $accxml->{Sample}->{'Library-Strategy'};
-    print "   Strategy: $strategy\n";
+    $strategy =~ s/^\s*//; $strategy =~ s/\s*$//; 
+#    print "   Strategy: $strategy\n";
     $strategy{ident $self} = $strategy;
 }
 
-sub set_source {
+sub set_lib_source {
     my ($self) = @_;
     my $accxml = $miniml{ident $self};
     my $source = $accxml->{Sample}->{'Library-Source'};
-    print "   Source: $source\n";
-    $source{ident $self} = $source;    
+    $source =~ s/^\s*//; $source =~ s/\s*$//; 
+#    print "   Library Source: $source\n";
+    $lib_source{ident $self} = $source;    
+}
+
+sub set_num_channel {
+    my ($self) = @_;
+    my $accxml = $miniml{ident $self};
+    my $num_ch = $accxml->{Sample}->{'Channel-Count'};
+#    print "   number of channels is $num_ch\n";
+    $num_channel{ident $self} = $num_ch;
 }
 
 sub set_organism {
     my ($self) = @_;
     my $accxml = $miniml{ident $self};
-    my $organism = $accxml->{Sample}->{Channel}->{Organism};
+    my $num_ch = $num_channel{ident $self};
+    my $organism;
     #my $organism = $accxml->{Sample}->{'Library-Organism'};
-    print "   Organism: $organism\n";
+    if ($num_ch == 1) {
+	$organism = $accxml->{Sample}->{Channel}->{Organism};
+    } else {
+	$organism = $accxml->{Sample}->{Channel}->[0]->{Organism};
+    }
+#    print "   Organism: $organism\n";
     $organism{ident $self} = $organism;
 }
 
 sub set_characteristics {
     my ($self) = @_;
     my $accxml = $miniml{ident $self};
-    my $charact = $accxml->{Sample}->{Channel}->{'Characteristics'};
+    my $num_ch = $num_channel{ident $self};
+    my $charact = {};
+    if ($num_ch == 1) {    
+	$charact->{0} = $accxml->{Sample}->{Channel}->{Characteristics};
+    } else {
+	for (my $i=0; $i<$num_ch; $i++) {
+	    $charact->{$i} = $accxml->{Sample}->{Channel}->[$i]->{Characteristics};
+	}
+    }
+#    print Dumper($charact);
     $characteristics{ident $self} = $charact;
 }
 
 sub set_strain {
     my ($self) = @_;
     my @contents = $self->get_content('characteristics', 'tag', 'strain');
-    print $contents[0];
+#    print "strain is $contents[0] \n";
     $strain{ident $self} = $contents[0];
 }
 
 sub set_cellline {
     my ($self) = @_;
     my @contents = $self->get_content('characteristics', 'tag', 'cell line');
-    print $contents[0];
+#    print "cell line is $contents[0] \n";
     $cellline{ident $self} = $contents[0];
 }
 
 sub set_devstage {
     my ($self) = @_;
     my @contents = $self->get_content('characteristics', 'tag', 'development stage');
-    print $contents[0];
+#    print "devstage is $contents[0] \n";
     $devstage{ident $self} = $contents[0];
 }
 
 sub set_antibody {
     my ($self) = @_;
-    my @contents = $self->get_content('characteristics', 'tag', 'antibody');
-    print $contents[0];
+    my @contents;
+    @contents = $self->get_content('characteristics', 'tag', 'antibody');
+    @contents = $self->get_content('characteristics', 'tag', 'antibody', 1) if $contents[0] eq 'input';
+#    print "antibody is $contents[0] \n";
     $antibody{ident $self} = $contents[0];
 }
 
+sub set_tissue {
+    my ($self) = @_;
+    my @contents = $self->get_content('characteristics', 'tag', 'tissue');
+#    print "tissue is $contents[0] \n";
+    $tissue{ident $self} = $contents[0];    
+}
+
+sub set_timepoint {
+    my ($self) = @_;
+    my @contents = $self->get_content('characteristics', 'tag', 'time point');
+#    print "time point is $contents[0] \n";
+    $timepoint{ident $self} = $contents[0];      
+}
 
 sub set_supplementary_data {
     my ($self) = @_;
     my $accxml = $miniml{ident $self};
     my $datal = $accxml->{Sample}->{'Supplementary-Data'};
-    print Dumper($datal);
+#    print Dumper($datal);
     $supplementary_data{ident $self} = $datal;
 }
 
@@ -192,7 +237,7 @@ sub valid_sra {
 }
 
 sub get_content {
-    my ($self, $ele, $attr_name, $attr_value) = @_;
+    my ($self, $ele, $attr_name, $attr_value, $channel) = @_;
     my @contents;
     my $contentl;
     #no strict 'refs';
@@ -200,6 +245,8 @@ sub get_content {
     if ($ele eq 'characteristics') {
 	$contentl = $characteristics{ident $self};
 	$contentl = $self->set_characteristics() unless $contentl;
+	$contentl = $contentl->{0};
+	$contentl = $contentl->{$channel} if $channel;
     }
     if ($ele eq 'supplementary_data') {
 	$contentl = $supplementary_data{ident $self};
@@ -208,7 +255,7 @@ sub get_content {
 
     if (ref($contentl) eq 'ARRAY') {
 	for my $data (@$contentl) {
-	    if ($data->{$attr_name} eq $attr_value) {
+	    if (ref($data) eq 'HASH' && $data->{$attr_name} eq $attr_value) {
 		my $content = $data->{'content'};
 		$content =~ s/^\s*//; $content =~ s/\s*$//;
 		push @contents, $content;
@@ -231,7 +278,7 @@ sub set_miniml {
     my $gsm_id = $gsm{ident $self};
     my $acc_url = $ini->{acc}{acc_url} . $gsm_id . "&targ=$ini->{acc}{targ}" . "&view=$ini->{acc}{view}" . "&form=$ini->{acc}{form}" ;
     my $accfile = $xmldir{ident $self} . $gsm_id . '.xml';
-    print "miniml $accfile exists. use cache...\n" if -e $accfile;
+#    print "miniml $accfile exists. use cache...\n" if -e $accfile;
     unless (-e $accfile) { 
 	$accfile = fetch($acc_url, $accfile);
     }

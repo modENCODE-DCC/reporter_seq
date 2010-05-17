@@ -32,7 +32,7 @@ sub set_miniml {
     my $gse_id = $gse{ident $self};
     my $acc_url = $ini->{acc}{acc_url} . $gse_id . "&targ=$ini->{acc}{targ}" . "&view=$ini->{acc}{view}" . "&form=$ini->{acc}{form}" ;
     my $accfile = $xmldir{ident $self} . $gse_id . '.xml';
-    print "miniml $accfile exists. use cache...\n" if -e $accfile;
+#    print "miniml $accfile exists. use cache...\n" if -e $accfile;
     unless (-e $accfile) { 
 	$accfile = fetch($acc_url, $accfile);
     }
