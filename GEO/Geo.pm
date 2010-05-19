@@ -85,7 +85,7 @@ sub set_all_gse_gsm {
     my $self = shift;
     my $ini = $config{ident $self};
     #use entrez esummary with input UID to fetch summary
-    print "download and parse esummary xml file for GEO UIDs ...\n";
+#    print "download and parse esummary xml file for GEO UIDs ...\n";
     for my $id (@{$uid{ident $self}}) {
 #	print "GEO UID $id: ";
 	my $xmlfile = $xmldir{ident $self} . $id . '.xml';

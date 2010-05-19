@@ -20,6 +20,7 @@ my %submission_date    :ATTR( :get<submission_date>         :default<undef>);
 my %type         :ATTR( :get<type>         :default<undef>);
 my %strategy      :ATTR( :get<strategy>         :default<undef>);
 my %lib_source      :ATTR( :get<lib_source>         :default<undef>);
+my %source       :ATTR( :get<source>          :default<undef>);
 my %organism      :ATTR( :get<organism>         :default<undef>);
 my %strain      :ATTR( :get<strain>         :default<undef>);
 my %cellline      :ATTR( :get<cellline>         :default<undef>);
@@ -47,7 +48,7 @@ sub BUILD {
 
 sub set_all {
     my ($self) = @_;
-    for my $parameter (qw[miniml contributor lab title submission_date type strategy lib_source num_channel organism characteristics strain devstage antibody supplementary_data wiggle sra tissue timepoint]) {
+    for my $parameter (qw[miniml contributor lab title submission_date type strategy lib_source num_channel organism source characteristics strain devstage antibody supplementary_data wiggle sra tissue timepoint]) {
         my $set_func = "set_" . $parameter;
         $self->$set_func();
     }
@@ -116,6 +117,19 @@ sub set_lib_source {
     $source =~ s/^\s*//; $source =~ s/\s*$//; 
 #    print "   Library Source: $source\n";
     $lib_source{ident $self} = $source;    
+}
+
+sub set_source {
+    my ($self) = @_;
+    my $accxml = $miniml{ident $self};
+    my $num_ch = $num_channel{ident $self};
+    my $source;
+    if ($num_ch == 1) {
+	$source = $accxml->{Sample}->{Channel}->{Source};
+    } else {
+	$source = $accxml->{Sample}->{Channel}->[0]->{Source};
+    }
+    $source{ident $self} = $source;
 }
 
 sub set_num_channel {
