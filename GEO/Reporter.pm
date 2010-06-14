@@ -7,7 +7,7 @@ use Data::Dumper;
 use File::Basename;
 use URI::Escape;
 use HTML::Entities;
-
+use ModENCODE::Parser::LWChado;
 
 my %config                 :ATTR( :name<config>                :default<undef>);
 my %unique_id              :ATTR( :name<unique_id>             :default<undef>);
@@ -49,7 +49,7 @@ my %antibody               :ATTR( :get<antibody>               :default<undef>);
 my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
 my %lib_strategy       :ATTR( :get<lib_strategy>       :default<undef>);
 my %lib_selection      :ATTR( :get<lib_selection>      :default<undef>);
-
+my %affiliate_submission   :ATTR( :get<affiliate_submission>   :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
@@ -74,6 +74,84 @@ sub set_all {
 	print $self->$get_func();
 	print "done.\n";
     }
+    if (defined($self->affiliate_submission)) {
+	$self->set_affiliate_submission($self->affiliate_submission);
+    }
+}
+
+sub set_affiliate_submission {
+    my ($self, $id) = @_;
+    my $ini = $self->get_config();
+    my $dbname = $ini->{database}{dbname};
+    my $dbhost = $ini->{database}{host};
+    my $dbusername = $ini->{database}{username};
+    my $dbpassword = $ini->{database}{password};
+    #search path for this dataset, this is fixed by modencode chado db
+    my $schema = $ini->{database}{pathprefix}. $id . $ini->{database}{pathsuffix} . ',' . $ini->{database}{schema};
+
+    #start read chado
+    print "connecting to database ...";
+    my $reader = new ModENCODE::Parser::LWChado({
+        'dbname' => $dbname,
+        'host' => $dbhost,
+        'username' => $dbusername,
+        'password' => $dbpassword,
+						});
+    my $experiment_id = $reader->set_schema($schema);
+    print "database connected.\n";
+    print "loading experiment ...";
+    $reader->load_experiment($experiment_id);
+    my $experiment = $reader->get_experiment();
+    my $reporter = new GEO::Reporter({
+        'config' => $ini,
+        'unique_id' => $id,
+        'sampleFH' => $self->get_sampleFH,
+        'seriesFH' => $self->get_seriesFH,
+        'report_dir' => $self->get_report_dir,
+        'reader' => $reader,
+        'experiment' => $experiment,
+	'long_protocol_text' => 0, 
+	'split_seq_group' => 0
+				     });
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots groups strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene]) {
+        my $set_func = "set_" . $parameter;
+        $reporter->$set_func();
+    }
+    $strain{ident $self} = $reporter->get_strain_row(0);
+    $cellline{ident $self} = $reporter->get_cellline_row(0);
+    $devstage{ident $self} = $reporter->get_devstage_row(0);
+    $tissue{ident $self} = $reporter->get_tissue_row(0);
+    $sex{ident $self} = $reporter->get_sex_row(0);
+    $genotype{ident $self} = $reporter->get_genotype_row(0);
+    $transgene{ident $self} = $reporter->get_transgene_row(0);
+    $affiliate_submission{ident $self} = $reporter;
+#    print "rescued strain ", $strain{ident $self};
+#    print "rescued devstage ", $devstage{ident $self};
+}
+
+
+sub affiliate_submission {
+    my $self = shift;
+    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
+        my $ap = $normalized_slots{ident $self}->[$i]->[0];
+	for my $datum (@{$ap->get_input_data()}) {
+	    for my $attr (@{$datum->get_attributes()}) {
+		if (lc($attr->get_type()->get_name()) eq 'reference' && lc($attr->get_type()->get_cv()->get_name()) eq 'modencode') {
+		    my @info = split ':', $attr->get_value();
+		    return $info[0];
+		}
+	    }
+	}
+	for my $datum (@{$ap->get_output_data()}) {
+	    for my $attr (@{$datum->get_attributes()}) {
+		if (lc($attr->get_type()->get_name()) eq 'reference' &&lc($attr->get_type()->get_cv()->get_name()) eq 'modencode') {
+                    my @info = split ':', $attr->get_value();
+                    return $info[0];
+                }
+            }
+	}
+    }
+    return undef;
 }
 
 sub chado2series {
@@ -338,6 +416,20 @@ sub write_sample_growth {
     my ($self, $row, $channel) = @_;
     my $sampleFH = $sampleFH{ident $self};
     my $ch = $channel+1;
+    if (defined($affiliate_submission{ident $self})) {
+	my $ds = $affiliate_submission{ident $self}->get_denorm_slots;
+    for (my $i=0; $i<scalar @$ds; $i++) {
+        my $ap = $ds->[$i]->[0];
+        my $protocol_text = $affiliate_submission{ident $self}->get_protocol_text($ap);
+        $protocol_text =~ s/\n//g; #one line                                                                                                 
+        if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
+            print $sampleFH "!Sample_growth_protocol = ", $protocol_text, "\n";
+        } else {
+            print $sampleFH "!Sample_growth_protocol_ch$ch = ", $protocol_text, "\n";
+        }
+    }
+    }
+
     for (my $i=0; $i<$first_extraction_slot{ident $self}; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
 	my $protocol_text = $self->get_protocol_text($ap);
@@ -771,6 +863,7 @@ sub get_real_factors {
 	}
 	elsif ($type =~ /antibody/i) {
 	    my $antibody_name = get_dbfield_info($antibody{ident $self})->{'official name'};
+	    $antibody_name .= ' (target is ' . get_dbfield_info($antibody{ident $self})->{'target name'} . ')';
 	    my $rfactor = 'Antibody ' . $antibody_name;
 	    push @rfactors, $rfactor if defined($antibody{ident $self});
 	}
@@ -781,6 +874,7 @@ sub get_real_factors {
 	}
 	else {
 	    my $factor_name = $self->get_value_by_info(0, 'name', $factors->{$rank}->[0]);
+	    $factor_name = $self->get_affiliate_submission->get_value_by_info(0, 'name', $factors->{$rank}->[0]) unless $factor_name;
 	    my $rfactor = "$type $factor_name";
 	    push @rfactors, $rfactor if defined($rfactor);
 	}
@@ -914,13 +1008,13 @@ sub get_biological_source_CGH {
 sub get_biological_source_row {
     my ($self, $row) = @_;
     my @str;
-    my $strain = $self->get_strain_row($row);
-    my $cellline = $self->get_cellline_row($row);
-    my $tissue = $self->get_tissue_row($row);
-    my $devstage = $self->get_devstage_row($row);
-    my $genotype = $self->get_genotype_row($row);
-    my $sex = $self->get_sex_row($row);
-    my $transgene = $self->get_transgene_row($row);
+    my $strain = $self->get_strain_row($row) || $self->get_strain();
+    my $cellline = $self->get_cellline_row($row) || $self->get_cellline();
+    my $tissue = $self->get_tissue_row($row) || $self->get_tissue();
+    my $devstage = $self->get_devstage_row($row) || $self->get_devstage();
+    my $genotype = $self->get_genotype_row($row) || $self->get_genotype();
+    my $sex = $self->get_sex_row($row) || $self->get_sex();
+    my $transgene = $self->get_transgene_row($row) || $self->get_transgene();
     push @str, "Strain: $strain" if $strain;
     push @str, "Cell Line: $cellline" if $cellline;
     push @str, "Tissue: $tissue" if $tissue;
@@ -1110,9 +1204,8 @@ sub get_strain_row {
     if ( defined($strain) ) {
 	$strain .= " (engineered, target gene $tgt_gene" if defined($tgt_gene);
 	$strain .= " tagged by $tag)" if defined($tag);
-	return $strain;
+	$strain{ident $self} = $strain;
     }
-    return undef;
 }
 
 sub set_cellline {
@@ -1496,8 +1589,8 @@ sub set_source_name_ap_slot {
 sub set_extract_name_ap_slot {
     my $self = shift;
     my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Extract\s*Name');
-    return $aps[0] if scalar(@aps);
-    return undef;
+    print @aps;
+    $extract_name_ap_slot{ident $self} = $aps[0] if scalar(@aps);
 }
 
 sub get_sample_name_safe {
@@ -1558,7 +1651,7 @@ sub get_sample_sourcename_row {
     my (@sample_names, @more_sample_names, @source_names, @more_source_names);
     my ($ok1, $ok2, $ok21, $ok3, $ok4, $ok41);
     my $autogenerate = 0;
-    $ok1 = eval { $sample_data = _get_datum_by_info($extract_ap, 'input', 'heading', 'Sample\s*Name') } ;
+    $ok1 = eval { $sample_data = _get_datum_by_info($extract_ap, 'input', 'heading', '[Extract|Sample]\s*Name') } ;
     if ($ok1) {
         @sample_names = map {$_->get_value()} @$sample_data;
 	return ($sample_names[0], $autogenerate);
@@ -1580,7 +1673,7 @@ sub get_sample_sourcename_row {
 	}
     }
     
-    if  ( $first_extraction_slot{ident $self} != 0 ) {
+    if  ($first_extraction_slot{ident $self} != 0) {
 	$ok3 = eval { $source_data = _get_datum_by_info($first_ap, 'input', 'heading', '[Hybrid|Source][A-Za-z]*\s*Name') };
 	if ($ok3) {
             @source_names = map {$_->get_value()} @$source_data;
@@ -1928,7 +2021,8 @@ sub set_sample_name_ap_slot {
     my $slot = $self->get_ap_slot_by_datum_info('output', 'heading', $text);
     if ( defined($slot) and $slot > 0 ) {
 	$sample_name_ap_slot{ident $self} = $slot;
-    } else {
+    } else { #fly groups tend to use sample name instead of source name for the beginning material since it is produced
+	#by bloomington subgroup
 	my $islot = $self->get_ap_slot_by_datum_info('input', 'heading', $text);
 	if ( defined($islot) and $islot == 0 ) {
 	    $sample_name_ap_slot{ident $self} = $islot;
@@ -1984,7 +2078,7 @@ sub group_by_this_ap_slot {
     print "source name slot $source_name_col\n";
     if ( defined($replicate_group_col) && (defined($hyb_col) and $hyb_col>=0) ) {
 	print "I will use ap slot $replicate_group_col (replicate group) to group\n";
-	return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
+	#return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
     }
     if ( defined($replicate_group_col) && (defined($seq_col) and $seq_col>=0)) {
 	return [$source_name_col, 'Source\s*Name'] if ($replicate_group_col == $source_name_col);
@@ -2026,7 +2120,7 @@ sub set_groups_seq {
 	($nr_grp, $all_grp) = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
     } else {
 	if ($method eq 'replicate[\s_]*group') {
-	#    $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method);
+	    $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method);
 	}
 	elsif ($method eq 'Source\s*Name') {
 	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);
@@ -2104,7 +2198,7 @@ sub set_groups_array {
 	($nr_grp, $all_grp) = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
     } else {
 	if ($method eq 'replicate[\s_]*group') {
-	#    $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method);
+	    $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method);
 	}
 	elsif ($method eq 'Source\s*Name') {
 	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);
@@ -2143,7 +2237,7 @@ sub set_groups_array {
     }
     #print Dumper($denorm_slots);
     #print Dumper($all_grp);
-    #print Dumper(%combined_grp);
+    print Dumper(%combined_grp);
     $groups{ident $self} = \%combined_grp;
 }
 
@@ -2188,6 +2282,7 @@ sub group_applied_protocols_by_attr {
         }
     }
     croak("can not get applied protocol that has attribute with field $field equals to fieldtext $fieldtext") unless scalar @attrs;
+    print Dumper(@attrs);
     return _group(\@attrs, $rtn);
 }
 
@@ -2310,26 +2405,26 @@ sub get_slotnum_by_datum_property {#this could go into a subclass of experiment
 	    for my $datum (@{$applied_protocol->$func()}) {
 		if ($isattr) {
 		    for my $attr (@{$datum->get_attributes()}) {
-			if (_get_attr_value($attr, $field, $fieldtext) =~ /$value/i) {
-			    if ($field eq 'type') {
-				if (_get_attr_value($attr, $field, $fieldtext) eq $value ) {
-				    push @slots, $i;
-				    $found = 1 and last;
-				}
-			    } else {
+			if ($field eq 'type') {
+			    if (_get_attr_value($attr, $field, $fieldtext) eq $value ) {
+				push @slots, $i;
+				$found = 1 and last;
+			    }
+			} else {
+			    if (_get_attr_value($attr, $field, $fieldtext) =~ /$value/i) { # no regex escape character allowed!!!!
 				push @slots, $i;
 				$found = 1 and last;
 			    }
 			}
 		    }                       
 		} else {
-		    if (_get_datum_info($datum, $field) =~ /$value/i) {
-			if ($field eq 'type') {
-			    if (_get_datum_info($datum, $field) eq $value ) {
-				push @slots, $i;
-				$found = 1 and last;
-			    }
-			} else {
+		    if ($field eq 'type') {
+			if (_get_datum_info($datum, $field) eq $value ) {
+			    push @slots, $i;
+			    $found = 1 and last;
+			}
+		    } else {
+			if (_get_datum_info($datum, $field) =~ /$value/i) { # no regex escape character allowed!!!
 			    push @slots, $i;
 			    $found = 1 and last;
 			}
