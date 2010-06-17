@@ -666,11 +666,11 @@ sub write_raw_data {
 	    else {
 		my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
 		if (scalar grep {lc($suffix) eq $_} @suffixs) {
-		   # print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
-		    print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
+		    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+		    #print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
 		} else {
-		    #print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
-		    print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
+		    print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+		    #print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
 		}
 	    }
 	    push @raw_datafiles, $path;
@@ -709,11 +709,11 @@ sub write_normalized_data {
 	    else {
 		my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
 		if (scalar grep {lc($suffix) eq $_} @suffixs) {
-		    #print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
-		    print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
+		    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+		    #print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
 		} else {
-		    #print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
-		    print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
+		    print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+		    #print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
 		}
 	    }
 	    push @normalization_datafiles, $path;
@@ -1036,23 +1036,23 @@ sub get_replicate_status {
 	#$str .= 'Unknown dye swap status.'; #do not output 'Unknown'
 	return $str;
     }
-    if ( $ap_slots{ident $self}->{'immunoprecipitation'} ) {
-	$dye_swap_status = $self->get_dye_swap_status();
-    }
-    my $no_dye_swap = 1;
-    for my $extraction (sort keys %$extraction_array) {
-	my $replica = $extraction+1;
-	#$str .= "Replicate $replica applied to " . $extraction_array->{$extraction} . " array(s), ";
-	if ( defined($dye_swap_status) ) {
-	    for my $array (sort keys %{$dye_swap_status->{$extraction}}) {
-		if ($dye_swap_status->{$extraction}->{$array} == 1) {
-		    my $sample = $self->get_sample_name_safe($extraction, $array);
-		    #$str .= "Replicate $replica (Sample $sample) is dye swap. ";
-		    $no_dye_swap = 0;
-		}
-	    }
-	}
-    }
+    #if ( $ap_slots{ident $self}->{'immunoprecipitation'} ) {
+#	$dye_swap_status = $self->get_dye_swap_status();
+#    }
+#    my $no_dye_swap = 1;
+#    for my $extraction (sort keys %$extraction_array) {
+#	my $replica = $extraction+1;
+#	#$str .= "Replicate $replica applied to " . $extraction_array->{$extraction} . " array(s), ";
+#	if ( defined($dye_swap_status) ) {
+#	    for my $array (sort keys %{$dye_swap_status->{$extraction}}) {
+#		if ($dye_swap_status->{$extraction}->{$array} == 1) {
+#		    my $sample = $self->get_sample_name_safe($extraction, $array);
+#		    #$str .= "Replicate $replica (Sample $sample) is dye swap. ";
+#		    $no_dye_swap = 0;
+#		}
+#	    }
+#	}
+#    }
     #$str .= 'No dye swap.' if $no_dye_swap;
     return $str;
 }

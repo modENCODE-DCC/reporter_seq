@@ -179,7 +179,7 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
 	    print basename($datafile), " base name\n";
 
 	    #my $myfile = unzipp(basename($datafile));
-	    my $myfile = $datafile;
+	    my $myfile = basename($datafile);
 	    print $myfile, " needed file name\n";
 	    #replace / with _ , use it to match the filenames in downloaded tarball
 	    $datafile =~ s/\//_/g;	
@@ -208,13 +208,13 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
 	    system("tar -r --remove-files -f $tarfile $myfile") == 0 || die "can not append a datafile $filename_in_tarball from download tarball $pipeline_tarball to my tarball $tarfile and then remove it (leave no garbage).";
 	}
     }
-    system("rm $tarballfile 2>&1 > /dev/null") if -e $tarballfile; # Remove the gzip if it already exists; ignore output
+#    system("rm $tarballfile 2>&1 > /dev/null") if -e $tarballfile; # Remove the gzip if it already exists; ignore output
     system("gzip $tarfile") == 0 || die "cannot gzip the tar file $tarfile";
 
     #cleaning
-    system("rm $metafile") == 0 || die "can not remove GEO soft file: $?";
-    system("rm $chado_datafiles") == 0 || die "can not remove file $chado_datafiles.";
-    system("rm $pipeline_tarball") == 0 || die "can not remove file $pipeline_tarball";
+#    system("rm $metafile") == 0 || die "can not remove GEO soft file: $?";
+#    system("rm $chado_datafiles") == 0 || die "can not remove file $chado_datafiles.";
+#    system("rm $pipeline_tarball") == 0 || die "can not remove file $pipeline_tarball";
 
     $tarball_made = 1;
     print "tarball made.\n";
