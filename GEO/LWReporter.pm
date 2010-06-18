@@ -251,7 +251,7 @@ sub get_slotnum_seq {
 
 sub get_slotnum_normalize {
     my $self = shift;
-    my @types = ('WIG', 'BED', 'Sequence_Alignment\/Map \(SAM\)');
+    my @types = ('WIG', 'BED', 'Sequence_Alignment/Map (SAM)');
     for my $type (@types) {
         my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
         return $aps[0] if scalar(@aps);
