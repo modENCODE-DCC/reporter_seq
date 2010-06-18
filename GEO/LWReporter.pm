@@ -251,7 +251,7 @@ sub get_slotnum_seq {
 
 sub get_slotnum_normalize {
     my $self = shift;
-    my @types = ('WIG', 'BED', 'Sequence_Alignment/Map (SAM)');
+    my @types = ('WIG', 'BED', 'Sequence_Alignment\/Map \(SAM\)');
     for my $type (@types) {
         my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
         return $aps[0] if scalar(@aps);
@@ -511,30 +511,30 @@ sub get_slotnum_by_datum_property {#this could go into a subclass of experiment
 	    for my $datum (@{$applied_protocol->$func()}) {
 		if ($isattr) {
 		    for my $attr (@{$datum->get_attributes()}) {
-			if (_get_attr_value($attr, $field, $fieldtext) =~ /$value/i) {
-			    if ($field eq 'type') {
-				if (_get_attr_value($attr, $field, $fieldtext) eq $value ) {
-				    push @slots, $i;
-				    $found = 1 and last;
-				}
-			    } else {
-				push @slots, $i;
-				$found = 1 and last;
-			    }
-			}
-		    }                       
+                        if ($field eq 'type') {
+                            if (_get_attr_value($attr, $field, $fieldtext) eq $value ) {
+                                push @slots, $i;
+                                $found = 1 and last;
+                            }
+                        } else {
+                            if (_get_attr_value($attr, $field, $fieldtext) =~ /$value/i) { # no regex escape character allowed!!!!
+                                push @slots, $i;
+                                $found = 1 and last;
+                            }
+                        }
+                    } 
 		} else {
-		    if (_get_datum_info($datum, $field) =~ /$value/i) {
-			if ($field eq 'type') {
-			    if (_get_datum_info($datum, $field) eq $value ) {
-				push @slots, $i;
-				$found = 1 and last;
-			    }
-			} else {
-			    push @slots, $i;
-			    $found = 1 and last;
-			}
-		    }
+                    if ($field eq 'type') {
+                        if (_get_datum_info($datum, $field) eq $value ) {
+                            push @slots, $i;
+                            $found = 1 and last;
+                        }
+                    } else {
+                        if (_get_datum_info($datum, $field) =~ /$value/i) { # no regex escape character allowed!!!
+                            push @slots, $i;
+                            $found = 1 and last;
+                        }
+                    }
 		}		
 	    }
         }
