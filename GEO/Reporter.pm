@@ -853,7 +853,7 @@ sub get_real_factors {
 	    my $rfactor = 'Developmental Stage ' . $devstage{ident $self};
 	    push @rfactors, $rfactor if defined($devstage{ident $self});
 	}
-	elsif ($type =~ /tissue/i) {
+	elsif ($type =~ /tissue/i || $type =~ /organism_part/i) {
 	    my $rfactor = 'Tissue ' . $tissue{ident $self};
 	    push @rfactors, $rfactor if defined($tissue{ident $self});
 	}
@@ -1381,6 +1381,7 @@ sub get_tissue_row {
             my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
             if (lc($name) =~ /^\s*tissue\s*$/) {
                 if ( $value =~ /[Tt]issue:(.*?):/ ) {
+		    print "regex is $1";
                     my $tmp = uri_unescape($1);
                     $tmp =~ s/_/ /g;
                     return $tmp;
