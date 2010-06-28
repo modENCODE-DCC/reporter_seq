@@ -2072,6 +2072,7 @@ sub group_by_this_ap_slot {
     my $extract_name_col = $extract_name_ap_slot{ident $self};
     my $sample_name_col = $sample_name_ap_slot{ident $self};
     my $source_name_col = $source_name_ap_slot{ident $self};
+    my $raw_data_col = $ap_slots{ident $self}->{'raw'};
     print "replicate group slot $replicate_group_col\n";
     print "extract name slot $extract_name_col\n";
     print "sample name slot $sample_name_col\n";
@@ -2092,8 +2093,9 @@ sub group_by_this_ap_slot {
     if ( !defined($extract_name_col) ) {
 	print "I will use ap slot $source_name_col (source name) to group\n" and return [$source_name_col, 'Source\s*Name'] if defined($source_name_col);
 	print "I will use ap slot $sample_name_col (sample name) to group\n" and return [$sample_name_col, 'Sample\s*Name'] if defined($sample_name_col);
-	if ( $self->ap_slot_without_real_data($last_extraction_slot{ident $self}) ) { 
-	    croak("suspicious submission, extraction protocol has only anonymous data, AND no protocol has Extract Name, Sample Name, Source(Hybrid) Name.");
+	if ( $self->ap_slot_without_real_data($last_extraction_slot{ident $self}) ) {
+	    print "I will use raw data ap slot $raw_data_col (raw data) to group.\n" and return [$raw_data_col, 'raw']; 
+	    #croak("suspicious submission, extraction protocol has only anonymous data, AND no protocol has Extract Name, Sample Name, Source(Hybrid) Name.");
 	}
     } else {
 	print "I will use ap slot $last_extraction_slot{ident $self} (last choice) to group\n" and return [$last_extraction_slot{ident $self}, 'protocol'];
@@ -2130,9 +2132,11 @@ sub set_groups_seq {
 	    } else {
 		$all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'output', 'heading', $method);
 	    }
-	} else { #extract name are treated by validator as output
+	} elsif ($method eq 'Extract\s*Name') { #extract name are treated by validator as output
 	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'output', 'heading', $method);
-	}	
+	} elsif ($method eq 'raw') {
+	    $all_grp = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
+	}
     }
     print "all groups by extraction...\n";
     print Dumper($all_grp);
@@ -2208,9 +2212,12 @@ sub set_groups_array {
 	    } else {
 		$all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'output', 'heading', $method);
 	    }
-	} else { #extract name are treated by validator as output
+	} elsif ($method eq 'Extract\s*Name') { #extract name are treated by validator as output
 	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'output', 'heading', $method);
+	} elsif ($method eq 'raw') {
+	    $all_grp = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
 	}
+
     }
     
     my $ok = eval {$all_grp_by_array = $self->group_applied_protocols_by_data($denorm_slots->[$ap_slots->{'hybridization'}],
