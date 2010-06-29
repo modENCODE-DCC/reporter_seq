@@ -250,7 +250,8 @@ sub chado2sample {
 		$self->write_sample_extraction($row, $channel);
 		print "ok with write_sample_extraction\n";
 		if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {
-		    if ( defined($ap_slots{ident $self}->{'labeling'}) ) {		
+		    if ( defined($ap_slots{ident $self}->{'labeling'}) && defined($self->get_label_row($row)) ) {
+			#print "labeling protocol defined\n";
 			$self->write_sample_label($row, $channel);
 		    } else {
 			$self->write_sample_label_without_labeling_protocol($row, $channel);
@@ -1530,7 +1531,9 @@ sub get_label_row { #keep it as a datum object
     my $denorm_slots = $denorm_slots{ident $self} ;
     my $ap_slots = $ap_slots{ident $self} ;
     my $label_ap = $denorm_slots->[$ap_slots->{'labeling'}]->[$row];
-    my $labels = _get_datum_by_info($label_ap, 'input', 'name', '\s*label\s*');
+    my $labels;
+    eval { $labels = _get_datum_by_info($label_ap, 'input', 'name', '\s*label\s*') } ;
+    return undef if ($@ && !defined($labels));
     return $labels->[0];
 }
 
