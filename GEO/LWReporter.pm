@@ -7,7 +7,7 @@ use Data::Dumper;
 use File::Basename;
 use URI::Escape;
 use HTML::Entities;
-
+use ModENCODE::Parser::LWChado;
 
 my %unique_id              :ATTR( :name<unique_id>             :default<undef>);
 my %reader                 :ATTR( :name<reader>                :default<undef>);
@@ -26,6 +26,7 @@ my %devstage               :ATTR( :get<devstage>               :default<undef>);
 my %antibody               :ATTR( :get<antibody>               :default<undef>);
 my %factors                :ATTR( :get<factors>                :default<undef>);
 my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
+my %affiliate_submission   :ATTR( :get<affiliate_submission>   :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
@@ -46,6 +47,78 @@ sub set_all {
         $self->$set_func();
         print " done\n";
     }
+    if (defined($self->affiliate_submission)) {
+	$self->set_affiliate_submission($self->affiliate_submission);
+    }
+}
+
+sub set_affiliate_submission {
+    my ($self, $id) = @_;
+    my $ini = $self->get_config();
+    my $dbname = $ini->{database}{dbname};
+    my $dbhost = $ini->{database}{host};
+    my $dbusername = $ini->{database}{username};
+    my $dbpassword = $ini->{database}{password};
+    #search path for this dataset, this is fixed by modencode chado db
+    my $schema = $ini->{database}{pathprefix}. $id . $ini->{database}{pathsuffix} . ',' . $ini->{database}{schema};
+
+    #start read chado
+    print "connecting to database ...";
+    my $reader = new ModENCODE::Parser::LWChado({
+        'dbname' => $dbname,
+        'host' => $dbhost,
+        'username' => $dbusername,
+        'password' => $dbpassword,
+						});
+    my $experiment_id = $reader->set_schema($schema);
+    print "database connected.\n";
+    print "loading experiment ...";
+    $reader->load_experiment($experiment_id);
+    my $experiment = $reader->get_experiment();
+    my $reporter = new GEO::LWReporter({
+        'config' => $ini,
+        'unique_id' => $id,
+        'reader' => $reader,
+        'experiment' => $experiment,
+	'long_protocol_text' => 0, 
+	'split_seq_group' => 0
+				     });
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots groups strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene]) {
+        my $set_func = "set_" . $parameter;
+        $reporter->$set_func();
+    }
+    $strain{ident $self} = $reporter->get_strain_row(0);
+    $cellline{ident $self} = $reporter->get_cellline_row(0);
+    $devstage{ident $self} = $reporter->get_devstage_row(0);
+    $tissue{ident $self} = $reporter->get_tissue_row(0);
+    $sex{ident $self} = $reporter->get_sex_row(0);
+    $genotype{ident $self} = $reporter->get_genotype_row(0);
+    $transgene{ident $self} = $reporter->get_transgene_row(0);
+    $affiliate_submission{ident $self} = $reporter;
+}
+
+sub affiliate_submission {
+    my $self = shift;
+    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
+        my $ap = $normalized_slots{ident $self}->[$i]->[0];
+	for my $datum (@{$ap->get_input_data()}) {
+	    for my $attr (@{$datum->get_attributes()}) {
+		if (lc($attr->get_type()->get_name()) eq 'reference' && lc($attr->get_type()->get_cv()->get_name()) eq 'modencode') {
+		    my @info = split ':', $attr->get_value();
+		    return $info[0];
+		}
+	    }
+	}
+	for my $datum (@{$ap->get_output_data()}) {
+	    for my $attr (@{$datum->get_attributes()}) {
+		if (lc($attr->get_type()->get_name()) eq 'reference' &&lc($attr->get_type()->get_cv()->get_name()) eq 'modencode') {
+                    my @info = split ':', $attr->get_value();
+                    return $info[0];
+                }
+            }
+	}
+    }
+    return undef;
 }
 
 sub set_organism {

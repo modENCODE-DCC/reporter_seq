@@ -28,7 +28,7 @@ sub BUILD {
 
 sub set_uid {
     my $self = shift;
-    return $uid{ident $self} if scalar @{$uid{ident $self}};
+    unless (scalar @{$uid{ident $self}}) {
     #get xml result from entrez search
 #    print "download entrez esearch results ...";
     my $ini = $config{ident $self}; 
@@ -43,6 +43,7 @@ sub set_uid {
     my $ids = $esearch->{IdList}->{Id};
 #    print "done.\n";
     $uid{ident $self} = $ids;
+    }
 }
 
 sub _parse_esummary {

@@ -47,8 +47,9 @@ sub BUILD {
 }
 
 sub set_all {
-    my ($self) = @_;
-    for my $parameter (qw[miniml contributor lab title submission_date type strategy lib_source num_channel organism source characteristics strain devstage antibody supplementary_data wiggle sra tissue timepoint]) {
+    my ($self, $refresh) = @_;
+    $self->set_miniml($refresh);
+    for my $parameter (qw[contributor lab title submission_date type strategy lib_source num_channel organism source characteristics strain devstage antibody supplementary_data wiggle sra tissue timepoint]) {
         my $set_func = "set_" . $parameter;
         $self->$set_func();
     }
@@ -287,13 +288,13 @@ sub get_content {
 }
 
 sub set_miniml {
-    my ($self) = @_;
+    my ($self, $refresh) = @_;
     my $ini = $config{ident $self};
     my $gsm_id = $gsm{ident $self};
     my $acc_url = $ini->{acc}{acc_url} . $gsm_id . "&targ=$ini->{acc}{targ}" . "&view=$ini->{acc}{view}" . "&form=$ini->{acc}{form}" ;
     my $accfile = $xmldir{ident $self} . $gsm_id . '.xml';
 #    print "miniml $accfile exists. use cache...\n" if -e $accfile;
-    unless (-e $accfile) { 
+    unless (-e $accfile && !$refresh) { 
 	$accfile = fetch($acc_url, $accfile);
     }
     my $xsacc = new XML::Simple;
