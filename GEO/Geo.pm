@@ -90,7 +90,7 @@ sub set_all_gse_gsm {
     for my $id (@{$uid{ident $self}}) {
 #	print "GEO UID $id: ";
 	my $xmlfile = $xmldir{ident $self} . $id . '.xml';
-#	print "use cached $xmlfile\n" and next if -e $xmlfile;
+	print "use cached $xmlfile\n" and next if -e $xmlfile;
 	$self->fetch_gse_gsm($id);
     }
     $self->parse_cached_esummary();

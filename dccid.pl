@@ -29,11 +29,16 @@ use GEO::Gsm;
 use Data::Dumper;
 use URI;
 
-my ($dcc_id_file, $output_dir, $config);
+my ($dcc_id_file, $output_dir, $config, $refresh);
+$refresh = 0; #default, do not refresh gsm miniml
 $config = $root_dir . 'geoid.ini';
 my $option = GetOptions ("id=s"            => \$dcc_id_file,
 			 "out=s"           => \$output_dir,
-			 "config=s"        => \$config);
+			 "config=s"        => \$config,
+			 "refresh=s" => \$refresh);
+usage() unless $dcc_id_file;
+usage() unless $output_dir;
+usage() unless $config;
 my %ini;
 tie %ini, 'Config::IniFiles', (-file => $config);
 my $summary_cache_dir = $ini{cache}{summary};
@@ -49,10 +54,10 @@ open my $dsfh, ">", $dcc_summary_file;
 
 my $geo_reader = new GEO::Geo({'config' => \%ini,
 			       'xmldir' => $summary_cache_dir});
-print "geo reader ready\n";
-$geo_reader->get_uid();
-$geo_reader->get_all_gse_gsm();
-print "ok1";
+#print "geo reader ready\n";
+$geo_reader->set_uid();
+$geo_reader->set_all_gse_gsm();
+#print "ok1";
 my $uidfile = $ini{output}{uid};
 my $gsefile = $ini{output}{gse};
 my $gsmfile = $ini{output}{gsm};
@@ -70,7 +75,7 @@ while ( my ($gse, $gsml) = each %{$geo_reader->get_gsm()} ) {
 close $uidfh;
 close $gsefh;
 close $gsmfh;
-print "ok2";
+#print "ok2";
 my %in_memory;
 #@all_gsm;
 for my $gsml (values %{$geo_reader->get_gsm()}) {
@@ -78,8 +83,9 @@ for my $gsml (values %{$geo_reader->get_gsm()}) {
 	unless ($in_memory{$gsmid}) {
 	    my $gsm = new GEO::Gsm({'config' => \%ini,
 				    'xmldir' => $gsm_cache_dir,
-				    'gsm' => $gsmid});
-	    $gsm->set_miniml();
+				    'gsm' => $gsmid,
+				   });
+	    $gsm->set_miniml($refresh);
 #	    push @all_gsm, $gsm;
 	    $in_memory{$gsmid} = 1;
 	}	
@@ -152,8 +158,8 @@ for my $unique_id (@dcc_ids) {
 	my %h = map {$_ => 1} @geo_ids;
 	@geo_ids = keys %h;
 	print @geo_ids, "\n";
-	#map {print $dsfh $_, "  "} @geo_ids;
-	#print $dsfh "\n";
+	map {print $dsfh $_, "  "} @geo_ids;
+	print $dsfh "\n";
 	for my $gsm_id (@geo_ids) {
 	    my $gsm_reader = new GEO::Gsm({
 		'config' => \%ini,
@@ -260,4 +266,11 @@ sub get_ids {
     }
     close $fh;
     return @ids;
+}
+
+sub usage {
+    my $usage = qq[$0 -id pipeline_id_file -out output_dir [-config cfg_file] [-refresh <0|1>]];
+    print "Usage: $usage\n";
+    print "default config file is dccid.ini in this directory.\n";
+    exit 2;
 }

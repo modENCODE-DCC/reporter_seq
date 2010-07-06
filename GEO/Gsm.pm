@@ -47,9 +47,8 @@ sub BUILD {
 }
 
 sub set_all {
-    my ($self, $refresh) = @_;
-    $self->set_miniml($refresh);
-    for my $parameter (qw[contributor lab title submission_date type strategy lib_source num_channel organism source characteristics strain devstage antibody supplementary_data wiggle sra tissue timepoint]) {
+    my $self = shift;
+    for my $parameter (qw[miniml contributor lab title submission_date type strategy lib_source num_channel organism source characteristics strain devstage antibody supplementary_data wiggle sra tissue timepoint]) {
         my $set_func = "set_" . $parameter;
         $self->$set_func();
     }
