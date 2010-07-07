@@ -121,7 +121,7 @@ for my $unique_id (@dcc_ids) {
         'unique_id' => $unique_id,
         'reader' => $reader,
         'experiment' => $experiment,
-	'config' => $ini
+	'config' => \%ini
     });
     print "reporter done.\n";
     $reporter->set_all();
