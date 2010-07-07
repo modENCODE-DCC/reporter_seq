@@ -225,19 +225,22 @@ sub set_supplementary_data {
 
 sub set_bed {
     my ($self) = @_;
-    my @files = $self->get_content('supplementary_data', 'type', 'BED');
+    my @files;
+    @files = $self->get_content('supplementary_data', 'type', 'BED');
     $bed{ident $self} = \@files;
 }
 
 sub set_wiggle {
     my ($self) = @_;
-    my @files = $self->get_content('supplementary_data', 'type', 'WIG');
+    my @files;
+    @files = $self->get_content('supplementary_data', 'type', 'WIG');
     $wiggle{ident $self} = \@files;
 }
 
 sub set_sra {
     my ($self) = @_;
-    my @files = $self->get_content('supplementary_data', 'type', 'SRA Experiment');
+    my @files;
+    @files = $self->get_content('supplementary_data', 'type', 'SRA Experiment');
     $sra{ident $self} = \@files;
 }
 
