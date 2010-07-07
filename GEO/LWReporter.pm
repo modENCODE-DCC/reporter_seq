@@ -46,7 +46,7 @@ sub BUILD {
 
 sub set_all {
     my $self = shift;
-    for my $parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots project lab contributors factors organism strain cellline devstage tgt_gene antibody]) {
+    for my yp$parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots project lab contributors factors organism strain cellline devstage tgt_gene antibody tissue genotype sex transgene]) {
         my $set_func = "set_" . $parameter;
         print "try to find $parameter ...";
         $self->$set_func();
@@ -814,5 +814,12 @@ sub set_sex {
     }
 }
 
+sub set_tissue {
+    my $self = shift;
+    for my $row ((0..$num_of_rows{ident $self}-1)) {
+	my $tissue = $self->get_tissue_row(0);
+	print "$tissue\n" and $tissue{ident $self} = $tissue and last if defined($tissue);
+    }
+}
 
 1;
