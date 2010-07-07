@@ -790,7 +790,7 @@ sub set_transgene {
 
 sub get_transgene_row {
     my ($self, $row) = @_;
-    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
             for my $attr (@{$datum->get_attributes()}) {
