@@ -689,7 +689,7 @@ sub _get_datum_by_info {
 
 sub get_tissue_row {
     my ($self, $row) = @_;
-    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
             my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
@@ -716,7 +716,7 @@ sub get_tissue_row {
 
 sub get_genotype_row {
     my ($self, $row) = @_;
-    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
 	for my $datum (@{$ap->get_input_data()}) {
 	    for my $attr (@{$datum->get_attributes()}) {
@@ -733,7 +733,7 @@ sub get_genotype_row {
 }
 sub get_transgene_row {
     my ($self, $row) = @_;
-    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
             for my $attr (@{$datum->get_attributes()}) {
@@ -757,7 +757,7 @@ sub get_sex_row {
 	       'H' => 'Hermaphrodite', 
 	       'M+H' => 'mixed Male and Hermaphrodite population',
 	       'F+H' => 'mixed Female and Hermaphrodite population');
-    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
 	for my $datum (@{$ap->get_input_data()}) {
 	    for my $attr (@{$datum->get_attributes()}) {
