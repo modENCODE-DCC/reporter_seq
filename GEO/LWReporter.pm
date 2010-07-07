@@ -9,6 +9,7 @@ use URI::Escape;
 use HTML::Entities;
 use ModENCODE::Parser::LWChado;
 
+my %config                 :ATTR( :name<config>                :default<undef>);
 my %unique_id              :ATTR( :name<unique_id>             :default<undef>);
 my %reader                 :ATTR( :name<reader>                :default<undef>);
 my %experiment             :ATTR( :name<experiment>            :default<undef>);
@@ -34,7 +35,7 @@ my %transgene              :ATTR( :get<transgene>              :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
-    for my $parameter (qw[unique_id reader experiment]) {
+    for my $parameter (qw[unique_id reader experiment config]) {
 	my $value = $args->{$parameter};
 	defined $value || croak "can not find required parameter $parameter"; 
 	my $set_func = "set_" . $parameter;
