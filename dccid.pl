@@ -168,6 +168,7 @@ for my $unique_id (@dcc_ids) {
 	    $gsm_reader->set_all();
 	    print $dsfh $gsm_id, " ", $gsm_reader->get_title(), "\n";
 	    my $sra = $gsm_reader->get_sra();
+	    my $supplymentary = $gsm_reader->get_supplementary_data();
 	    if ( scalar @$sra != 0 ) {
 		print "sra found.\n";
 		print @$sra, "\n";
@@ -183,6 +184,11 @@ for my $unique_id (@dcc_ids) {
 		#    print "sra invalid.\n";
 		#    print $dsfh "invalid\n";
 		#}
+	    } elsif (scalar @$supplymentary == 1) {
+		print "PROSSIBLE FASTQ file, please check!!!\n";
+		print @$supplymentary, "\n";
+		print $dsfh "PROSSIBLE FASTQ file, please check!!!\n";
+		print $dsfh @$supplymentary, "\n";
 	    } else {
 		print "no sra yet.\n";
 		print $dsfh "No sra\n";
