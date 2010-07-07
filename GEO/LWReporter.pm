@@ -775,14 +775,14 @@ sub get_sex_row {
 
 sub set_genotype {
     my $self = shift;
-    for my $row (@{$denorm_slots{ident $self}->{0}->{0}}) {
+    for my $row ((0..$num_of_rows{ident $self}-1)) {
 	my $genotype = $self->get_genotype_row($row);
 	print "$genotype\n" and $genotype{ident $self} = $genotype and last if defined($genotype);
     }
 }
 sub set_transgene {
     my $self = shift;
-    for my $row (@{$denorm_slots{ident $self}->{0}->{0}}) {
+    for my $row ((0..$num_of_rows{ident $self}-1)) {
 	my $transgene = $self->get_transgene_row($row);
 	print "$transgene\n" and $transgene{ident $self} = $transgene and last if defined($transgene);
     }
@@ -808,7 +808,7 @@ sub get_transgene_row {
 
 sub set_sex {
     my $self = shift;
-    for my $row (@{$denorm_slots{ident $self}->{0}->{0}}) {
+    for my $row ((0..$num_of_rows{ident $self}-1)) {
 	my $sex = $self->get_sex_row($row);
 	print "$sex\n" and $sex{ident $self} = $sex if defined($sex);
     }
