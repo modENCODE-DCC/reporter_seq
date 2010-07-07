@@ -27,6 +27,10 @@ my %antibody               :ATTR( :get<antibody>               :default<undef>);
 my %factors                :ATTR( :get<factors>                :default<undef>);
 my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
 my %affiliate_submission   :ATTR( :get<affiliate_submission>   :default<undef>);
+my %tissue                 :ATTR( :get<tissue>                 :default<undef>);
+my %sex                    :ATTR( :get<sex>                    :default<undef>);
+my %genotype               :ATTR( :get<genotype>               :default<undef>);
+my %transgene              :ATTR( :get<transgene>              :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
@@ -682,5 +686,91 @@ sub _get_datum_by_info {
     croak("can not find data that has fieldtext like $fieldtext in field $field in chado.data table") unless (scalar @data);
     return \@data;
 }
+
+sub get_tissue_row {
+    my ($self, $row) = @_;
+    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+        my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+        for my $datum (@{$ap->get_input_data()}) {
+            my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
+            if (lc($name) =~ /^\s*tissue\s*$/) {
+                if ( $value =~ /[Tt]issue:(.*?):/ ) {
+		    print "regex is $1";
+                    my $tmp = uri_unescape($1);
+                    $tmp =~ s/_/ /g;
+                    return $tmp;
+                }
+            }
+            for my $attr (@{$datum->get_attributes()}) {
+                my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+                if (lc($aheading) =~ /^\s*tissue\s*$/) {
+		    my $tmp = uri_unescape($avalue);
+		    $tmp =~ s/_/ /g;
+		    return $tmp;
+                }
+	    }
+        }
+    }
+    return undef;
+}
+
+sub get_genotype_row {
+    my ($self, $row) = @_;
+    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+	for my $datum (@{$ap->get_input_data()}) {
+	    for my $attr (@{$datum->get_attributes()}) {
+		my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+		if (lc($aheading) =~ /^\s*genotype\s*$/) {
+		    my $tmp = uri_unescape($avalue);
+		    $tmp =~ s/_/ /g;
+		    return $tmp;
+		}
+	    }
+	}
+    }
+    return undef;
+}
+sub get_transgene_row {
+    my ($self, $row) = @_;
+    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+        my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+        for my $datum (@{$ap->get_input_data()}) {
+            for my $attr (@{$datum->get_attributes()}) {
+                my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+                if (lc($aheading) =~ /^\s*transgene\s*$/) {
+		    my $tmp = uri_unescape($avalue);
+		    $tmp =~ s/_/ /g;
+		    return $tmp;
+                }
+            }
+        }
+    }
+    return undef;
+}
+
+sub get_sex_row {
+    my ($self, $row) = @_;
+    my %sex = ('M' => 'Male', 
+	       'F' => 'Female', 
+	       'U' => 'Unknown', 
+	       'H' => 'Hermaphrodite', 
+	       'M+H' => 'mixed Male and Hermaphrodite population',
+	       'F+H' => 'mixed Female and Hermaphrodite population');
+    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+	for my $datum (@{$ap->get_input_data()}) {
+	    for my $attr (@{$datum->get_attributes()}) {
+		my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+		if (lc($aheading) =~ /^\s*sex\s*$/) {
+		    return $sex{uri_unescape($avalue)};
+		}
+	    }
+	}
+    }
+    return undef;
+}
+
+
 
 1;
