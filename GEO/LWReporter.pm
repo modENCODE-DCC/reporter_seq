@@ -46,7 +46,7 @@ sub BUILD {
 
 sub set_all {
     my $self = shift;
-    for my yp$parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots project lab contributors factors organism strain cellline devstage tgt_gene antibody tissue genotype sex transgene]) {
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows ap_slots project lab contributors factors organism strain cellline devstage tgt_gene antibody tissue genotype sex transgene]) {
         my $set_func = "set_" . $parameter;
         print "try to find $parameter ...";
         $self->$set_func();
