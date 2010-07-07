@@ -773,6 +773,46 @@ sub get_sex_row {
     return undef;
 }
 
+sub set_genotype {
+    my $self = shift;
+    for my $row (@{$denorm_slots{ident $self}->{0}->{0}}) {
+	my $genotype = $self->get_genotype_row($row);
+	print "$genotype\n" and $genotype{ident $self} = $genotype and last if defined($genotype);
+    }
+}
+sub set_transgene {
+    my $self = shift;
+    for my $row (@{$denorm_slots{ident $self}->{0}->{0}}) {
+	my $transgene = $self->get_transgene_row($row);
+	print "$transgene\n" and $transgene{ident $self} = $transgene and last if defined($transgene);
+    }
+}
+
+sub get_transgene_row {
+    my ($self, $row) = @_;
+    for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
+        my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+        for my $datum (@{$ap->get_input_data()}) {
+            for my $attr (@{$datum->get_attributes()}) {
+                my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+                if (lc($aheading) =~ /^\s*transgene\s*$/) {
+		    my $tmp = uri_unescape($avalue);
+		    $tmp =~ s/_/ /g;
+		    return $tmp;
+                }
+            }
+        }
+    }
+    return undef;
+}
+
+sub set_sex {
+    my $self = shift;
+    for my $row (@{$denorm_slots{ident $self}->{0}->{0}}) {
+	my $sex = $self->get_sex_row($row);
+	print "$sex\n" and $sex{ident $self} = $sex if defined($sex);
+    }
+}
 
 
 1;
