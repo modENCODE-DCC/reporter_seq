@@ -88,7 +88,7 @@ sub set_affiliate_submission {
 	'long_protocol_text' => 0, 
 	'split_seq_group' => 0
 				     });
-    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots groups strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene]) {
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots strain cellline devstage genotype transgene tissue sex antibody tgt_gene]) {
         my $set_func = "set_" . $parameter;
         $reporter->$set_func();
     }
@@ -334,7 +334,8 @@ sub get_slotnum_normalize {
         my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
         return $aps[0] if scalar(@aps);
     }
-    croak("can not find the normalization protocol");
+    return undef;
+    #croak("can not find the normalization protocol");
 }
 
 sub get_slotnum_raw {

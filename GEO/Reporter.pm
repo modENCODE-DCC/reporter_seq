@@ -1948,7 +1948,8 @@ sub get_slotnum_normalize_seq {
 	}
     }
     return $slot if defined($slot);
-    croak("can not find the normalization protocol");
+    return undef;
+    #croak("can not find the normalization protocol");
 }
 
 sub get_slotnum_normalize_array {
@@ -1972,7 +1973,8 @@ sub get_slotnum_normalize_array {
     my $name = "normalization";
     @aps = $self->get_slotnum_by_protocol_property(0, 'name', undef, $name);
     return $aps[0] if scalar(@aps);
-    croak("can not find the normalization protocol");
+    #croak("can not find the normalization protocol");
+    return undef;
 }
 
 sub get_slotnum_by_protocol_property {
