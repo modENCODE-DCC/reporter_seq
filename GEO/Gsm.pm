@@ -50,7 +50,7 @@ sub BUILD {
 
 sub set_all {
     my $self = shift;
-    for my $parameter (qw[miniml contributor lab title submission_date type strategy lib_source num_channel organism source characteristics strain devstage antibody supplementary_data wiggle sra tissue timepoint]) {
+    for my $parameter (qw[miniml contributor lab title submission_date type strategy lib_source num_channel organism source characteristics strain devstage antibody supplementary_data general_data bed wiggle sra tissue timepoint]) {
         my $set_func = "set_" . $parameter;
         $self->$set_func();
     }
@@ -228,7 +228,7 @@ sub set_supplementary_data {
 sub set_general_data {
     my ($self) = @_;
     my @files = ();
-    @files = $self->get_content('supplementary_data', 'type', 'txt');
+    @files = $self->get_content('supplementary_data', 'type', 'TXT');
     $general_data{ident $self} = \@files;
 }
 
@@ -291,6 +291,7 @@ sub get_content {
     if (ref($contentl) eq 'HASH') {
 	print "it is a hash!!!";
 	print Dumper($contentl);
+	print $attr_name, $attr_value;
 	if ($contentl->{$attr_name} eq $attr_value) {
 	    my $content = $contentl->{'content'};
 	    $content =~ s/^\s*//; $content =~ s/\s*$//;
