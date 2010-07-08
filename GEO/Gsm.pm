@@ -1,3 +1,4 @@
+
 package GEO::Gsm;
 
 use strict;
@@ -27,8 +28,9 @@ my %cellline      :ATTR( :get<cellline>         :default<undef>);
 my %devstage      :ATTR( :get<devstage>         :default<undef>);
 my %antibody      :ATTR( :get<antibody>         :default<undef>);
 my %supplementary_data  :ATTR( :get<supplementary_data>         :default<undef>);
+my %general_data   :ATTR( :get<general_data>   :default<[]>);
 my %bed             :ATTR( :get<bed>         :default<[]>);
-my %wiggle         :ATTR( :get<wiggle>         :default<[]);
+my %wiggle         :ATTR( :get<wiggle>         :default<[]>);
 my %sra             :ATTR( :get<sra>         :default<[]>);
 my %characteristics  :ATTR( :get<characteristics>         :default<undef>);
 my %tissue           :ATTR( :get<tissue>            :default<undef>);
@@ -223,23 +225,30 @@ sub set_supplementary_data {
     $supplementary_data{ident $self} = $datal;
 }
 
+sub set_general_data {
+    my ($self) = @_;
+    my @files = ();
+    @files = $self->get_content('supplementary_data', 'type', 'txt');
+    $general_data{ident $self} = \@files;
+}
+
 sub set_bed {
     my ($self) = @_;
-    my @files;
+    my @files = ();
     @files = $self->get_content('supplementary_data', 'type', 'BED');
     $bed{ident $self} = \@files;
 }
 
 sub set_wiggle {
     my ($self) = @_;
-    my @files;
+    my @files = ();
     @files = $self->get_content('supplementary_data', 'type', 'WIG');
     $wiggle{ident $self} = \@files;
 }
 
 sub set_sra {
     my ($self) = @_;
-    my @files;
+    my @files = ();
     @files = $self->get_content('supplementary_data', 'type', 'SRA Experiment');
     $sra{ident $self} = \@files;
 }
@@ -255,7 +264,7 @@ sub valid_sra {
 
 sub get_content {
     my ($self, $ele, $attr_name, $attr_value, $channel) = @_;
-    my @contents;
+    my @contents = ();
     my $contentl;
     #no strict 'refs';
     #my $contentl = ${"$ele"}{ident $self};
@@ -280,11 +289,14 @@ sub get_content {
 	}
     }
     if (ref($contentl) eq 'HASH') {
+	print "it is a hash!!!";
+	print Dumper($contentl);
 	if ($contentl->{$attr_name} eq $attr_value) {
 	    my $content = $contentl->{'content'};
 	    $content =~ s/^\s*//; $content =~ s/\s*$//;
 	    push @contents, $content;
-	}	
+	}
+	print Dumper(@contents);
     }
     return @contents;
 }
