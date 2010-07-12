@@ -2085,7 +2085,7 @@ sub group_by_this_ap_slot {
     print "source name slot $source_name_col\n";
     if ( defined($replicate_group_col) && (defined($hyb_col) and $hyb_col>=0) ) {
 	print "I will use ap slot $replicate_group_col (replicate group) to group\n";
-	#return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
+	return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
     }
     if ( defined($replicate_group_col) && (defined($seq_col) and $seq_col>=0)) {
 	return [$source_name_col, 'Source\s*Name'] if ($replicate_group_col == $source_name_col);
