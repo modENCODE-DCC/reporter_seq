@@ -308,9 +308,11 @@ sub set_miniml {
     my $gsm_id = $gsm{ident $self};
     my $acc_url = $ini->{acc}{acc_url} . $gsm_id . "&targ=$ini->{acc}{targ}" . "&view=$ini->{acc}{view}" . "&form=$ini->{acc}{form}" ;
     my $accfile = $xmldir{ident $self} . $gsm_id . '.xml';
-#    print "miniml $accfile exists. use cache...\n" if -e $accfile;
-    unless (-e $accfile && !$refresh) { 
+    unless (-e $accfile && !$refresh) {
+	print "Download miniml $accfile from GEO.\n";
 	$accfile = fetch($acc_url, $accfile);
+    } else {
+	print "miniml $accfile exists. use cache...\n";
     }
     my $xsacc = new XML::Simple;
     my $accxml = $xsacc->XMLin($accfile);
