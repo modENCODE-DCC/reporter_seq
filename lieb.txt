@@ -1,0 +1,62 @@
+GSE22669       Desai PolII-4H8          Jul 07, 2010   approved  WIG WIG GFF
+GSE22670       Ahringer AB9050_H3K36ME3_N2_L3  Jul 07, 2010   approved  None
+GSE22697       Ahringer AR0169_H3K4ME3_N2_L3 B  Jul 07, 2010   approved  None
+GSE22698       Ahringer JA00002_IGG_N2_L3  Jul 07, 2010   approved  None
+GSE22699       Ahringer UP07442_H3K9ME3_N2_L3  Jul 07, 2010   approved  None
+GSE22700       Strome NA_MES4FLAG_EEMB  Jul 07, 2010   approved  WIG WIG
+GSE22701       JL00005_SDC2_N2_MXEMB    Jul 07, 2010   approved  GFF
+GSE22702       Lieb validation of SDC-3 (A)  Jul 07, 2010   approved  None
+GSE22703       Lieb validation of SDC-3 (B)  Jul 07, 2010   approved  None
+GSE22704       Lieb validation of DPY-27  Jul 07, 2010   approved  None
+GSE22705       CVMMS126R_8WG16_N2_L4    Jul 07, 2010   approved  WIG WIG WIG
+GSE22706       JL00001_DPY27_N2_L4      Jul 07, 2010   approved  None
+GSE22708       JL00012_DPY28_N2_MXEMB   Jul 07, 2010   approved  None
+GSE22709       SDQ3146_SDC2_N2_MXEMB    Jul 07, 2010   approved  None
+GSE22710       Strome ABAB817_8WG16_N2_EEMB  Jul 07, 2010   approved  None
+GSE22711       Strome UP07442_H3K9ME3_N2_EEMB  Jul 07, 2010   approved  None
+GSE22712       JL00001_DPY27_11DH_MXEMB  Jul 07, 2010   approved  None
+GSE22713       DPY27_YPT41(II;X)_MXEMB  Jul 07, 2010   approved  None
+GSE22714       DPY27_YPT47(V;X)_MXEMB   Jul 07, 2010   approved  None
+GSE22715       SDC3_YPT47(V;X)_MXEMB    Jul 07, 2010   approved  None
+GSE22716       Strome SDQ0790_MRG1_N2_EEMB  Jul 07, 2010   approved  None
+GSE22717       Strome HK00012_H3K36ME22C3_N2_EEMB  Jul 07, 2010   approved  None
+GSE22718       Strome SDQ0791_MES4_N2_EEMB  Jul 07, 2010   approved  None
+GSE22719       Strome HK00001_H3K36ME313C9_N2_EEMB  Jul 07, 2010   approved  None
+GSE22720       Strome HK00009_H3K9ME32F3_N2_EEMB  Jul 07, 2010   approved  None
+GSE22721       Strome WA30534819_H3K4ME3_N2_EEMB  Jul 07, 2010   approved  None
+GSE22722       Strome AR0144_H3144_N2_EEMB  Jul 07, 2010   approved  None
+GSE22723       Strome AB1791_H3609253_N2_EEMB  Jul 07, 2010   approved  None
+GSE22724       Strome AB9049_H3K36ME2608457_N2_EEMB  Jul 07, 2010   approved  None
+GSE22725       Strome AB8898_H3K9ME3339901_N2_EEMB  Jul 07, 2010   approved  None
+GSE22726       Strome NA_N2_EEMB        Jul 07, 2010   approved  None
+GSE22727       Strome SS00050_IGG_N2_EEMB  Jul 07, 2010   approved  None
+GSE22728       Ahringer HK00009_H3K9ME32F3_N2_L3  Jul 07, 2010   approved  None
+GSE22729       Ahringer HK00012_H3K36ME22C3_N2_L3  Jul 07, 2010   approved  None
+GSE22730       Ahringer HK00013_H3K27ME31E7_N2_L3  Jul 07, 2010   approved  None
+GSE22731       Ahringer HK00001_H3K36ME313C9_N2_L3  Jul 07, 2010   approved  None
+GSE22732       Ahringer WA30834809_H3K4ME2_N2_L3  Jul 07, 2010   approved  None
+GSE22733       Ahringer HK00008_H3K9ME26D11_N2_L3  Jul 07, 2010   approved  None
+GSE22734       Ahringer AR0144_H3144_N2_L3  Jul 07, 2010   approved  None
+GSE22735       Ahringer AR0144_H3144_N2_L3_LM  Jul 07, 2010   approved  None
+GSE22736       Ahringer AB1791_H3_N2_L3  Jul 07, 2010   approved  None
+GSE22737       Strome AB2886_H3K79ME1361912_N2_EEMB  Jul 07, 2010   approved  None
+GSE22738       Strome AB3594_H3K79ME2346021_N2_EEMB  Jul 07, 2010   approved  None
+GSE22739       Lieb AB2621_H3K79ME3361576_N2_EEMB  Jul 07, 2010   approved  None
+GSE22740       Strome HK00008_H3K9ME26D11_N2_EEMB  Jul 07, 2010   approved  None
+GSE22741       Strome WA30834809_H3K4ME2_N2_EEMB  Jul 07, 2010   approved  None
+GSE22742       Desai OD00079_HCP3_N2_MXEMB  Jul 07, 2010   approved  WIG WIG WIG WIG
+GSE22743       Strome OD00079_HCP3_N2_EEMB  Jul 07, 2010   approved  None
+GSE22744       Strome AB9048_H3K36ME1206009_N2_EEMB  Jul 07, 2010   approved  None
+GSE22745       Strome MP07030_H3K4ME2DAM1570816_N2_EEMB  Jul 07, 2010   approved  None
+GSE22746       Strome AB9045_H3K9ME1291918_N2_EEMB  Jul 07, 2010   approved  None
+GSE22747       Strome AB8895_H3K4ME1733246_N2_EEMB  Jul 07, 2010   approved  None
+GSE22748       Strome WA30634849_H3K27AC_N2_EEMB  Jul 07, 2010   approved  None
+GSE22749       Strome AB4441_H3K9AC_N2_EEMB  Jul 07, 2010   approved  None
+GSE22750       Strome SDQ3891_LEM2_N2_MXEMB  Jul 07, 2010   approved  None
+GSE22751       Strome SDQ3897_NPP13_N2_MXEMB  Jul 07, 2010   approved  None
+GSE22752       Strome AB8896_H3K9ME1104560_N2_EEMB  Jul 07, 2010   approved  None
+GSE22753       Strome AB4729_H3K27AC361571_N2_EEMB  Jul 07, 2010   approved  None
+GSE22754       Strome AB9051_H4K20ME1104513_N2_EEMB  Jul 07, 2010   approved  None
+GSE22755       Strome LPAR109_H4TETRAAC109_N2_EEMB  Jul 07, 2010   approved  None
+GSE22756       Strome SDQ3582_CBP1_N2_MXEMB  Jul 07, 2010   approved  None
+
