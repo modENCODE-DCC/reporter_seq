@@ -169,7 +169,8 @@ for my $unique_id (@dcc_ids) {
 	    $gsm_reader->set_all();
 	    print $dsfh $gsm_id, " ", $gsm_reader->get_title(), "\n";
 	    my $sra = $gsm_reader->get_sra();
-	    my $supplymentary = $gsm_reader->get_supplementary_data();
+	    my $supplymentary = $gsm_reader->get_general_data();
+	    print Dumper($supplymentary);
 	    if ( scalar @$sra != 0 ) {
 		print "sra found.\n";
 		print @$sra, "\n";
