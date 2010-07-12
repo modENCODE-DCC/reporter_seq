@@ -1,0 +1,563 @@
+submission 582
+No fastq files
+GSM363861  GSM363860  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX002/SRX002674  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX002/SRX002673  valid
+submission 585
+No fastq files
+No geo id.
+submission 586
+No fastq files
+GSM391297  GSM363861  GSM391296  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005649  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX002/SRX002674  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005648  valid
+submission 587
+No fastq files
+No geo id.
+submission 589
+No fastq files
+GSM389313  GSM389311  GSM389308  GSM389310  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005630  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005628  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005625  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005627  valid
+submission 590
+No fastq files
+GSM389313  GSM389309  GSM389312  GSM389310  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005630  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005626  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005629  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005627  valid
+submission 591
+No fastq files
+GSM389648  GSM389649  GSM389651  GSM389646  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005633  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005634  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005636  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005631  valid
+submission 592
+No fastq files
+GSM389648  GSM389651  GSM389647  GSM389650  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005633  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005636  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005632  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005635  valid
+submission 593
+No fastq files
+GSM391226  GSM391228  GSM391227  GSM391229  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005637  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005639  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005638  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX005/SRX005640  valid
+submission 594
+No fastq files
+No geo id.
+submission 734
+No fastq files
+GSM435291  GSM435293  GSM435292  
+No sra
+No sra
+No sra
+submission 2416
+No fastq files
+GSM388728  GSM388727  GSM388729  GSM388726  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX003/SRX003832  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX003/SRX003831  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX003/SRX003833  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX003/SRX003830  valid
+submission 2417
+No fastq files
+GSM435300  GSM435303  GSM435301  
+No sra
+No sra
+No sra
+submission 2418
+No fastq files
+GSM435316  GSM435319  GSM435317  
+No sra
+No sra
+No sra
+submission 2429
+No fastq files
+No geo id.
+submission 2430
+No fastq files
+No geo id.
+submission 2431
+No fastq files
+No geo id.
+submission 2432
+No fastq files
+No geo id.
+submission 2433
+No fastq files
+No geo id.
+submission 2434
+No fastq files
+No geo id.
+submission 2435
+No fastq files
+No geo id.
+submission 2436
+No fastq files
+No geo id.
+submission 2437
+No fastq files
+No geo id.
+submission 2438
+No fastq files
+No geo id.
+submission 2439
+No fastq files
+No geo id.
+submission 2440
+No fastq files
+No geo id.
+submission 2441
+No fastq files
+No geo id.
+submission 2450
+No fastq files
+No geo id.
+submission 2451
+No fastq files
+No geo id.
+submission 2452
+No fastq files
+No geo id.
+submission 2453
+No fastq files
+No geo id.
+submission 777
+No fastq files
+GSM401409  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013031  valid
+submission 778
+No fastq files
+GSM400675  GSM401406  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013022  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013028  valid
+submission 779
+No fastq files
+GSM432636  GSM432593  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013080  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013076  valid
+submission 780
+No fastq files
+GSM432591  GSM432634  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013074  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013078  valid
+submission 781
+No fastq files
+GSM401403  GSM400659  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013025  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013006  valid
+submission 782
+No fastq files
+GSM439464  GSM400673  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013110  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013020  valid
+submission 783
+No fastq files
+GSM432588  GSM400663  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013071  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013010  valid
+submission 784
+No fastq files
+GSM400669  GSM401421  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013016  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013043  valid
+submission 785
+No fastq files
+GSM400661  GSM401418  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013008  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013040  valid
+submission 786
+No fastq files
+GSM401415  GSM400665  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013037  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013012  valid
+submission 787
+No fastq files
+GSM439465  GSM400671  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013111  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013018  valid
+submission 788
+No fastq files
+GSM400667  GSM401411  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013014  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013033  valid
+submission 789
+No fastq files
+GSM400656  GSM400657  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013003  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013004  valid
+submission 790
+No fastq files
+GSM400675  GSM400674  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013022  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013021  valid
+submission 791
+No fastq files
+GSM432636  GSM432585  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013080  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013068  valid
+submission 792
+No fastq files
+GSM432634  GSM432580  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013078  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013063  valid
+submission 793
+No fastq files
+GSM400658  GSM400659  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013005  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013006  valid
+submission 794
+No fastq files
+GSM400672  GSM400673  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013019  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013020  valid
+submission 795
+No fastq files
+GSM400662  GSM400663  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013009  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013010  valid
+submission 796
+No fastq files
+GSM400669  GSM400668  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013016  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013015  valid
+submission 797
+No fastq files
+GSM400660  GSM400661  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013007  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013008  valid
+submission 798
+No fastq files
+GSM400664  GSM400665  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013011  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013012  valid
+submission 799
+No fastq files
+GSM400670  GSM400671  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013017  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013018  valid
+submission 800
+No fastq files
+GSM400667  GSM400666  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013014  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013013  valid
+submission 801
+No fastq files
+GSM439457  GSM400657  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013103  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013004  valid
+submission 802
+No fastq files
+GSM400675  GSM439456  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013022  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013102  valid
+submission 803
+No fastq files
+GSM439455  GSM432636  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013101  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013080  valid
+submission 804
+No fastq files
+GSM432634  GSM439454  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013078  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013100  valid
+submission 805
+No fastq files
+GSM400659  GSM439453  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013006  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013099  valid
+submission 806
+No fastq files
+GSM439452  GSM400673  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013098  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013020  valid
+submission 807
+No fastq files
+GSM400663  GSM439451  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013010  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013097  valid
+submission 808
+No fastq files
+GSM400669  GSM439450  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013016  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013096  valid
+submission 809
+No fastq files
+GSM439449  GSM400665  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013095  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013012  valid
+submission 810
+No fastq files
+GSM439448  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013094  valid
+submission 811
+No fastq files
+GSM400675  GSM439447  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013022  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013093  valid
+submission 812
+No fastq files
+GSM432636  GSM439446  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013080  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013092  valid
+submission 813
+No fastq files
+GSM439445  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013091  valid
+submission 814
+No fastq files
+GSM439444  GSM400659  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013090  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013006  valid
+submission 815
+No fastq files
+GSM439443  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013089  valid
+submission 816
+No fastq files
+GSM439442  GSM400663  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013088  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013010  valid
+submission 817
+No fastq files
+GSM439441  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013087  valid
+submission 818
+No fastq files
+GSM400661  GSM439440  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013008  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013086  valid
+submission 819
+No fastq files
+GSM439439  GSM400665  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013085  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013012  valid
+submission 820
+No fastq files
+GSM400667  GSM439438  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013014  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013084  valid
+submission 821
+No fastq files
+GSM401408  GSM400657  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013030  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013004  valid
+submission 822
+No fastq files
+GSM400675  GSM401405  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013022  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013027  valid
+submission 823
+No fastq files
+GSM432636  GSM432592  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013080  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013075  valid
+submission 824
+No fastq files
+GSM432634  GSM439458  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013078  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013104  valid
+submission 825
+No fastq files
+GSM401402  GSM400659  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013024  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013006  valid
+submission 826
+No fastq files
+GSM400673  GSM401424  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013020  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013046  valid
+submission 827
+No fastq files
+GSM400663  GSM401422  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013010  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013044  valid
+submission 828
+No fastq files
+GSM401420  GSM400669  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013042  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013016  valid
+submission 829
+No fastq files
+GSM401417  GSM400661  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013039  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013008  valid
+submission 830
+No fastq files
+GSM401414  GSM400665  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013036  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013012  valid
+submission 831
+No fastq files
+GSM400671  GSM439459  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013018  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013105  valid
+submission 832
+No fastq files
+GSM400667  GSM432579  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013014  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013062  valid
+submission 834
+No fastq files
+GSM401407  GSM400657  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013029  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013004  valid
+submission 835
+No fastq files
+GSM401404  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013026  valid
+submission 836
+No fastq files
+GSM432636  GSM432583  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013080  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013066  valid
+submission 837
+No fastq files
+GSM432634  GSM432582  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013078  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013065  valid
+submission 838
+No fastq files
+GSM401401  GSM400659  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013023  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013006  valid
+submission 839
+No fastq files
+GSM401423  GSM400673  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013045  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013020  valid
+submission 840
+No fastq files
+GSM432581  GSM400663  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013064  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013010  valid
+submission 841
+No fastq files
+GSM400669  GSM401419  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013016  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013041  valid
+submission 842
+No fastq files
+GSM400661  GSM401416  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013008  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013038  valid
+submission 843
+No fastq files
+GSM401413  GSM400665  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013035  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013012  valid
+submission 844
+No fastq files
+GSM401412  GSM400671  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013034  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013018  valid
+submission 845
+No fastq files
+GSM400667  GSM401410  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013014  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013032  valid
+submission 846
+No fastq files
+GSM432578  GSM432635  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013061  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013079  valid
+submission 847
+No fastq files
+GSM432594  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013077  valid
+submission 848
+No fastq files
+GSM439461  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013107  valid
+submission 849
+No fastq files
+GSM432584  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013067  valid
+submission 850
+No fastq files
+GSM439460  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013106  valid
+submission 851
+No fastq files
+GSM432589  GSM432637  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013072  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013081  valid
+submission 852
+No fastq files
+GSM432587  GSM432638  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013070  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013082  valid
+submission 853
+No fastq files
+GSM432639  GSM432586  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013083  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013069  valid
+submission 854
+No fastq files
+GSM439463  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013109  valid
+submission 855
+No fastq files
+GSM408989  GSM408988  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013054  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013053  valid
+submission 856
+No fastq files
+GSM408987  GSM408986  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013052  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013051  valid
+submission 857
+No fastq files
+GSM432584  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013067  valid
+submission 858
+No fastq files
+GSM439462  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013108  valid
+submission 859
+No fastq files
+GSM408990  GSM408991  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013055  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013056  valid
+submission 860
+No fastq files
+GSM408993  GSM408992  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013058  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013057  valid
+submission 861
+No fastq files
+GSM408995  GSM408994  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013060  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013059  valid
+submission 862
+No fastq files
+GSM408983  GSM408982  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013048  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013047  valid
+submission 863
+No fastq files
+GSM408985  GSM408984  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013050  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013049  valid
+submission 895
+No fastq files
+GSM400669  GSM401419  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013016  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013041  valid
+submission 984
+No fastq files
+GSM432589  GSM432637  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013072  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013081  valid
+submission 985
+No fastq files
+GSM451801  GSM451802  
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013115  valid
+ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX013/SRX013116  valid

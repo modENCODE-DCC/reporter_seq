@@ -1,0 +1,669 @@
+submission 582
+No fastq files
+GSM363861 Pha-4 emb input
+/sra/static/SRX002/SRX002674/SRR013608.fastq.gz
+/sra/static/SRX002/SRX002674/SRR013609.fastq.gz
+GSM363860 Pha-4 emb GFP
+/sra/static/SRX002/SRX002673/SRR013606.fastq.gz
+/sra/static/SRX002/SRX002673/SRR013607.fastq.gz
+submission 585
+No fastq files
+No geo id.
+submission 586
+No fastq files
+GSM391297 Pha-4 emb replicate 2 POL II
+/sra/static/SRX005/SRX005649/SRR017618.fastq.gz
+GSM363861 Pha-4 emb input
+/sra/static/SRX002/SRX002674/SRR013608.fastq.gz
+/sra/static/SRX002/SRX002674/SRR013609.fastq.gz
+GSM391296 Pha-4 emb replicate 1 POL II
+/sra/static/SRX005/SRX005648/SRR017617.fastq.gz
+submission 587
+No fastq files
+No geo id.
+submission 589
+No fastq files
+GSM389313 ama-1 L4/young adult replicate 2 Input
+/sra/static/SRX005/SRX005630/SRR017599.fastq.gz
+GSM389311 ama-1 L4/young adult replicate 2 GFP
+/sra/static/SRX005/SRX005628/SRR017597.fastq.gz
+GSM389308 ama-1 L4/young adult replicate 1 GFP
+/sra/static/SRX005/SRX005625/SRR017594.fastq.gz
+GSM389310 ama-1 L4/young adult replicate 1 Input
+/sra/static/SRX005/SRX005627/SRR017596.fastq.gz
+submission 590
+No fastq files
+GSM389313 ama-1 L4/young adult replicate 2 Input
+/sra/static/SRX005/SRX005630/SRR017599.fastq.gz
+GSM389309 ama-1 L4/young adult replicate 1 POL II
+/sra/static/SRX005/SRX005626/SRR017595.fastq.gz
+GSM389312 ama-1 L4/young adult replicate 2 POL II
+/sra/static/SRX005/SRX005629/SRR017598.fastq.gz
+GSM389310 ama-1 L4/young adult replicate 1 Input
+/sra/static/SRX005/SRX005627/SRR017596.fastq.gz
+submission 591
+No fastq files
+GSM389648 DAF-16 L4/Young adult replicate 1 Input
+/sra/static/SRX005/SRX005633/SRR017602.fastq.gz
+GSM389649 DAF-16 L4/Young adult replicate 2 GFP
+/sra/static/SRX005/SRX005634/SRR017603.fastq.gz
+GSM389651 DAF-16 L4/Young adult replicate 2 Input
+/sra/static/SRX005/SRX005636/SRR017605.fastq.gz
+GSM389646 DAF-16 L4/Young adult replicate 1 GFP
+/sra/static/SRX005/SRX005631/SRR017600.fastq.gz
+submission 592
+No fastq files
+GSM389648 DAF-16 L4/Young adult replicate 1 Input
+/sra/static/SRX005/SRX005633/SRR017602.fastq.gz
+GSM389651 DAF-16 L4/Young adult replicate 2 Input
+/sra/static/SRX005/SRX005636/SRR017605.fastq.gz
+GSM389647 DAF-16 L4/Young adult replicate 1 POL II
+/sra/static/SRX005/SRX005632/SRR017601.fastq.gz
+GSM389650 DAF-16 L4/Young adult replicate 2 POL II
+/sra/static/SRX005/SRX005635/SRR017604.fastq.gz
+submission 593
+No fastq files
+GSM391226 MAB-5 L3 replicate 1 GFP
+/sra/static/SRX005/SRX005637/SRR017606.fastq.gz
+GSM391228 MAB-5 L3 replicate 2 GFP
+/sra/static/SRX005/SRX005639/SRR017608.fastq.gz
+GSM391227 MAB-5 L3 replicate 1 Input
+/sra/static/SRX005/SRX005638/SRR017607.fastq.gz
+GSM391229 MAB-5 L3 replicate 2 Input
+/sra/static/SRX005/SRX005640/SRR017609.fastq.gz
+submission 594
+No fastq files
+No geo id.
+submission 734
+No fastq files
+GSM435291 CEH-14 L2 replicate 1 GFP
+No sra
+GSM435293 CEH-14 L2 replicate 2 Input
+No sra
+GSM435292 CEH-14 L2 replicate 2 GFP
+No sra
+submission 2416
+No fastq files
+GSM388728 DPY-27 emb replicate 2 GFP
+/sra/static/SRX003/SRX003832/SRR015072.fastq.gz
+GSM388727 DPY-27 emb replicate 1 input
+/sra/static/SRX003/SRX003831/SRR015071.fastq.gz
+GSM388729 DPY-27 emb replicate 2 input
+/sra/static/SRX003/SRX003833/SRR015073.fastq.gz
+GSM388726 DPY-27 emb replicate 1 GFP
+/sra/static/SRX003/SRX003830/SRR015070.fastq.gz
+submission 2417
+No fastq files
+GSM435300 EOR-1 L3 replicate 1 GFP
+No sra
+GSM435303 EOR-1 L3 replicate 2 Input
+No sra
+GSM435301 EOR-1 L3 replicate 1 Input
+No sra
+submission 2418
+No fastq files
+GSM435316 HLH-8 L3 replicate 1 GFP
+No sra
+GSM435319 HLH-8 L3 replicate 2 Input
+No sra
+GSM435317 HLH-8 L3 replicate 1 Input
+No sra
+submission 2429
+No fastq files
+No geo id.
+submission 2430
+No fastq files
+No geo id.
+submission 2431
+No fastq files
+No geo id.
+submission 2432
+No fastq files
+No geo id.
+submission 2433
+No fastq files
+No geo id.
+submission 2434
+No fastq files
+No geo id.
+submission 2435
+No fastq files
+No geo id.
+submission 2436
+No fastq files
+No geo id.
+submission 2437
+No fastq files
+No geo id.
+submission 2438
+No fastq files
+No geo id.
+submission 2439
+No fastq files
+No geo id.
+submission 2440
+No fastq files
+No geo id.
+submission 2441
+No fastq files
+No geo id.
+submission 2450
+No fastq files
+No geo id.
+submission 2451
+No fastq files
+No geo id.
+submission 2452
+No fastq files
+No geo id.
+submission 2453
+No fastq files
+No geo id.
+submission 777
+No fastq files
+GSM401409 E0-4_H3K4Me1_ChIPSeq_1
+/sra/static/SRX013/SRX013031/SRR030297.fastq.gz
+submission 778
+No fastq files
+GSM400675 E4-8_INPUT
+/sra/static/SRX013/SRX013022/SRR030288.fastq.gz
+GSM401406 E4-8_H3K4Me1_ChIPSeq_1
+/sra/static/SRX013/SRX013028/SRR030294.fastq.gz
+submission 779
+No fastq files
+GSM432636 E8-12_INPUT
+/sra/static/SRX013/SRX013080/SRR030346.fastq.gz
+GSM432593 E8-12_H3K4Me1_ChIPSeq_1
+/sra/static/SRX013/SRX013076/SRR030342.fastq.gz
+submission 780
+No fastq files
+GSM432591 E12-16_H3K4Me1_ChIPSeq_1
+/sra/static/SRX013/SRX013074/SRR030340.fastq.gz
+GSM432634 E12-16_INPUT
+/sra/static/SRX013/SRX013078/SRR030344.fastq.gz
+submission 781
+No fastq files
+GSM401403 E16-20_H3K4Me1_ChIPSeq_1
+/sra/static/SRX013/SRX013025/SRR030291.fastq.gz
+GSM400659 E16-20_INPUT
+/sra/static/SRX013/SRX013006/SRR030272.fastq.gz
+submission 782
+No fastq files
+GSM439464 E20-24_H3K4Me1_ChIPSeq_1
+/sra/static/SRX013/SRX013110/SRR030376.fastq.gz
+GSM400673 E20-24_INPUT
+/sra/static/SRX013/SRX013020/SRR030286.fastq.gz
+submission 783
+No fastq files
+GSM432588 L1_H3K4Me1_ChIPSeq_1
+/sra/static/SRX013/SRX013071/SRR030337.fastq.gz
+GSM400663 L1_INPUT
+/sra/static/SRX013/SRX013010/SRR030276.fastq.gz
+submission 784
+No fastq files
+GSM400669 L2_INPUT
+/sra/static/SRX013/SRX013016/SRR030282.fastq.gz
+GSM401421 L2_H3K4Me1_ChIPSeq_1
+/sra/static/SRX013/SRX013043/SRR030309.fastq.gz
+submission 785
+No fastq files
+GSM400661 L3_INPUT
+/sra/static/SRX013/SRX013008/SRR030274.fastq.gz
+GSM401418 L3_H3K4Me1_ChIPSeq_1
+/sra/static/SRX013/SRX013040/SRR030306.fastq.gz
+submission 786
+No fastq files
+GSM401415 Pupae_H3K4Me1_ChIPSeq_1
+/sra/static/SRX013/SRX013037/SRR030303.fastq.gz
+GSM400665 Pupae_INPUT
+/sra/static/SRX013/SRX013012/SRR030278.fastq.gz
+submission 787
+No fastq files
+GSM439465 AdultFemale_H3K4Me1_ChIPSeq_1
+/sra/static/SRX013/SRX013111/SRR030377.fastq.gz
+GSM400671 AdultFemale_INPUT
+/sra/static/SRX013/SRX013018/SRR030284.fastq.gz
+submission 788
+No fastq files
+GSM400667 AdultMale_INPUT
+/sra/static/SRX013/SRX013014/SRR030280.fastq.gz
+GSM401411 AdultMale_H3K4Me1_ChIPSeq_1
+/sra/static/SRX013/SRX013033/SRR030299.fastq.gz
+submission 789
+No fastq files
+GSM400656 E0-4_H3K4Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013003/SRR030269.fastq.gz
+GSM400657 E0-4_INPUT
+/sra/static/SRX013/SRX013004/SRR030270.fastq.gz
+submission 790
+No fastq files
+GSM400675 E4-8_INPUT
+/sra/static/SRX013/SRX013022/SRR030288.fastq.gz
+GSM400674 E4-8_H3K4Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013021/SRR030287.fastq.gz
+submission 791
+No fastq files
+GSM432636 E8-12_INPUT
+/sra/static/SRX013/SRX013080/SRR030346.fastq.gz
+GSM432585 E8-12_H3K4Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013068/SRR030334.fastq.gz
+submission 792
+No fastq files
+GSM432634 E12-16_INPUT
+/sra/static/SRX013/SRX013078/SRR030344.fastq.gz
+GSM432580 E12-16_H3K4Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013063/SRR030329.fastq.gz
+submission 793
+No fastq files
+GSM400658 E16-20_H3K4Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013005/SRR030271.fastq.gz
+GSM400659 E16-20_INPUT
+/sra/static/SRX013/SRX013006/SRR030272.fastq.gz
+submission 794
+No fastq files
+GSM400672 E20-24_H3K4Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013019/SRR030285.fastq.gz
+GSM400673 E20-24_INPUT
+/sra/static/SRX013/SRX013020/SRR030286.fastq.gz
+submission 795
+No fastq files
+GSM400662 L1_H3K4Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013009/SRR030275.fastq.gz
+GSM400663 L1_INPUT
+/sra/static/SRX013/SRX013010/SRR030276.fastq.gz
+submission 796
+No fastq files
+GSM400669 L2_INPUT
+/sra/static/SRX013/SRX013016/SRR030282.fastq.gz
+GSM400668 L2_H3K4Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013015/SRR030281.fastq.gz
+submission 797
+No fastq files
+GSM400660 L3_H3K4Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013007/SRR030273.fastq.gz
+GSM400661 L3_INPUT
+/sra/static/SRX013/SRX013008/SRR030274.fastq.gz
+submission 798
+No fastq files
+GSM400664 Pupae_H3K4Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013011/SRR030277.fastq.gz
+GSM400665 Pupae_INPUT
+/sra/static/SRX013/SRX013012/SRR030278.fastq.gz
+submission 799
+No fastq files
+GSM400670 AdultFemale_H3K4Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013017/SRR030283.fastq.gz
+GSM400671 AdultFemale_INPUT
+/sra/static/SRX013/SRX013018/SRR030284.fastq.gz
+submission 800
+No fastq files
+GSM400667 AdultMale_INPUT
+/sra/static/SRX013/SRX013014/SRR030280.fastq.gz
+GSM400666 AdultMale_H3K4Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013013/SRR030279.fastq.gz
+submission 801
+No fastq files
+GSM439457 E0-4_H3K9Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013103/SRR030369.fastq.gz
+GSM400657 E0-4_INPUT
+/sra/static/SRX013/SRX013004/SRR030270.fastq.gz
+submission 802
+No fastq files
+GSM400675 E4-8_INPUT
+/sra/static/SRX013/SRX013022/SRR030288.fastq.gz
+GSM439456 E4-8_H3K9Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013102/SRR030368.fastq.gz
+submission 803
+No fastq files
+GSM439455 E8-12_H3K9Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013101/SRR030367.fastq.gz
+GSM432636 E8-12_INPUT
+/sra/static/SRX013/SRX013080/SRR030346.fastq.gz
+submission 804
+No fastq files
+GSM432634 E12-16_INPUT
+/sra/static/SRX013/SRX013078/SRR030344.fastq.gz
+GSM439454 E12-16_H3K9Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013100/SRR030366.fastq.gz
+submission 805
+No fastq files
+GSM400659 E16-20_INPUT
+/sra/static/SRX013/SRX013006/SRR030272.fastq.gz
+GSM439453 E16-20_H3K9Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013099/SRR030365.fastq.gz
+submission 806
+No fastq files
+GSM439452 E20-24_H3K9Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013098/SRR030364.fastq.gz
+GSM400673 E20-24_INPUT
+/sra/static/SRX013/SRX013020/SRR030286.fastq.gz
+submission 807
+No fastq files
+GSM400663 L1_INPUT
+/sra/static/SRX013/SRX013010/SRR030276.fastq.gz
+GSM439451 L1_H3K9Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013097/SRR030363.fastq.gz
+submission 808
+No fastq files
+GSM400669 L2_INPUT
+/sra/static/SRX013/SRX013016/SRR030282.fastq.gz
+GSM439450 L2_H3K9Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013096/SRR030362.fastq.gz
+submission 809
+No fastq files
+GSM439449 Pupae_H3K9Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013095/SRR030361.fastq.gz
+GSM400665 Pupae_INPUT
+/sra/static/SRX013/SRX013012/SRR030278.fastq.gz
+submission 810
+No fastq files
+GSM439448 E0-4_H3K27Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013094/SRR030360.fastq.gz
+submission 811
+No fastq files
+GSM400675 E4-8_INPUT
+/sra/static/SRX013/SRX013022/SRR030288.fastq.gz
+GSM439447 E4-8_H3K27Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013093/SRR030359.fastq.gz
+submission 812
+No fastq files
+GSM432636 E8-12_INPUT
+/sra/static/SRX013/SRX013080/SRR030346.fastq.gz
+GSM439446 E8-12_H3K27Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013092/SRR030358.fastq.gz
+submission 813
+No fastq files
+GSM439445 E12-16_H3K27Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013091/SRR030357.fastq.gz
+submission 814
+No fastq files
+GSM439444 E16-20_H3K27Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013090/SRR030356.fastq.gz
+GSM400659 E16-20_INPUT
+/sra/static/SRX013/SRX013006/SRR030272.fastq.gz
+submission 815
+No fastq files
+GSM439443 E20-24_H3K27Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013089/SRR030355.fastq.gz
+submission 816
+No fastq files
+GSM439442 L1_H3K27Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013088/SRR030354.fastq.gz
+GSM400663 L1_INPUT
+/sra/static/SRX013/SRX013010/SRR030276.fastq.gz
+submission 817
+No fastq files
+GSM439441 L2_H3K27Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013087/SRR030353.fastq.gz
+submission 818
+No fastq files
+GSM400661 L3_INPUT
+/sra/static/SRX013/SRX013008/SRR030274.fastq.gz
+GSM439440 L3_H3K27Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013086/SRR030352.fastq.gz
+submission 819
+No fastq files
+GSM439439 Pupae_H3K27Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013085/SRR030351.fastq.gz
+GSM400665 Pupae_INPUT
+/sra/static/SRX013/SRX013012/SRR030278.fastq.gz
+submission 820
+No fastq files
+GSM400667 AdultMale_INPUT
+/sra/static/SRX013/SRX013014/SRR030280.fastq.gz
+GSM439438 AdultMale_H3K27Me3_ChIPSeq_1
+/sra/static/SRX013/SRX013084/SRR030350.fastq.gz
+submission 821
+No fastq files
+GSM401408 E0-4_H3K9Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013030/SRR030296.fastq.gz
+GSM400657 E0-4_INPUT
+/sra/static/SRX013/SRX013004/SRR030270.fastq.gz
+submission 822
+No fastq files
+GSM400675 E4-8_INPUT
+/sra/static/SRX013/SRX013022/SRR030288.fastq.gz
+GSM401405 E4-8_H3K9Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013027/SRR030293.fastq.gz
+submission 823
+No fastq files
+GSM432636 E8-12_INPUT
+/sra/static/SRX013/SRX013080/SRR030346.fastq.gz
+GSM432592 E8-12_H3K9Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013075/SRR030341.fastq.gz
+submission 824
+No fastq files
+GSM432634 E12-16_INPUT
+/sra/static/SRX013/SRX013078/SRR030344.fastq.gz
+GSM439458 E12-16_H3K9Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013104/SRR030370.fastq.gz
+submission 825
+No fastq files
+GSM401402 E16-20_H3K9Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013024/SRR030290.fastq.gz
+GSM400659 E16-20_INPUT
+/sra/static/SRX013/SRX013006/SRR030272.fastq.gz
+submission 826
+No fastq files
+GSM400673 E20-24_INPUT
+/sra/static/SRX013/SRX013020/SRR030286.fastq.gz
+GSM401424 E20-24_H3K9Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013046/SRR030312.fastq.gz
+submission 827
+No fastq files
+GSM400663 L1_INPUT
+/sra/static/SRX013/SRX013010/SRR030276.fastq.gz
+GSM401422 L1_H3K9Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013044/SRR030310.fastq.gz
+submission 828
+No fastq files
+GSM401420 L2_H3K9Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013042/SRR030308.fastq.gz
+GSM400669 L2_INPUT
+/sra/static/SRX013/SRX013016/SRR030282.fastq.gz
+submission 829
+No fastq files
+GSM401417 L3_H3K9Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013039/SRR030305.fastq.gz
+GSM400661 L3_INPUT
+/sra/static/SRX013/SRX013008/SRR030274.fastq.gz
+submission 830
+No fastq files
+GSM401414 Pupae_H3K9Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013036/SRR030302.fastq.gz
+GSM400665 Pupae_INPUT
+/sra/static/SRX013/SRX013012/SRR030278.fastq.gz
+submission 831
+No fastq files
+GSM400671 AdultFemale_INPUT
+/sra/static/SRX013/SRX013018/SRR030284.fastq.gz
+GSM439459 AdultFemale_H3K9Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013105/SRR030371.fastq.gz
+submission 832
+No fastq files
+GSM400667 AdultMale_INPUT
+/sra/static/SRX013/SRX013014/SRR030280.fastq.gz
+GSM432579 AdultMale_H3K9Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013062/SRR030328.fastq.gz
+submission 834
+No fastq files
+GSM401407 E0-4_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013029/SRR030295.fastq.gz
+GSM400657 E0-4_INPUT
+/sra/static/SRX013/SRX013004/SRR030270.fastq.gz
+submission 835
+No fastq files
+GSM401404 E4-8_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013026/SRR030292.fastq.gz
+submission 836
+No fastq files
+GSM432636 E8-12_INPUT
+/sra/static/SRX013/SRX013080/SRR030346.fastq.gz
+GSM432583 E8-12_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013066/SRR030332.fastq.gz
+submission 837
+No fastq files
+GSM432634 E12-16_INPUT
+/sra/static/SRX013/SRX013078/SRR030344.fastq.gz
+GSM432582 E12-16_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013065/SRR030331.fastq.gz
+submission 838
+No fastq files
+GSM401401 E16-20_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013023/SRR030289.fastq.gz
+GSM400659 E16-20_INPUT
+/sra/static/SRX013/SRX013006/SRR030272.fastq.gz
+submission 839
+No fastq files
+GSM401423 E20-24_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013045/SRR030311.fastq.gz
+GSM400673 E20-24_INPUT
+/sra/static/SRX013/SRX013020/SRR030286.fastq.gz
+submission 840
+No fastq files
+GSM432581 L1_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013064/SRR030330.fastq.gz
+GSM400663 L1_INPUT
+/sra/static/SRX013/SRX013010/SRR030276.fastq.gz
+submission 841
+No fastq files
+GSM400669 L2_INPUT
+/sra/static/SRX013/SRX013016/SRR030282.fastq.gz
+GSM401419 L2_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013041/SRR030307.fastq.gz
+submission 842
+No fastq files
+GSM400661 L3_INPUT
+/sra/static/SRX013/SRX013008/SRR030274.fastq.gz
+GSM401416 L3_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013038/SRR030304.fastq.gz
+submission 843
+No fastq files
+GSM401413 Pupae_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013035/SRR030301.fastq.gz
+GSM400665 Pupae_INPUT
+/sra/static/SRX013/SRX013012/SRR030278.fastq.gz
+submission 844
+No fastq files
+GSM401412 AdultFemale_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013034/SRR030300.fastq.gz
+GSM400671 AdultFemale_INPUT
+/sra/static/SRX013/SRX013018/SRR030284.fastq.gz
+submission 845
+No fastq files
+GSM400667 AdultMale_INPUT
+/sra/static/SRX013/SRX013014/SRR030280.fastq.gz
+GSM401410 AdultMale_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013032/SRR030298.fastq.gz
+submission 846
+No fastq files
+GSM432578 E4-8_PolII_ChIPSeq_1
+/sra/static/SRX013/SRX013061/SRR030327.fastq.gz
+GSM432635 E4-8_INPUT_PolII
+/sra/static/SRX013/SRX013079/SRR030345.fastq.gz
+submission 847
+No fastq files
+GSM432594 E8-12_PolII_ChIPSeq_1
+/sra/static/SRX013/SRX013077/SRR030343.fastq.gz
+submission 848
+No fastq files
+GSM439461 E12-16_PolII_ChIPSeq_1
+/sra/static/SRX013/SRX013107/SRR030373.fastq.gz
+submission 849
+No fastq files
+GSM432584 E16-20_CBP_ChIPSeq_1
+/sra/static/SRX013/SRX013067/SRR030333.fastq.gz
+submission 850
+No fastq files
+GSM439460 E20-24_PolII_ChIPSeq_1
+/sra/static/SRX013/SRX013106/SRR030372.fastq.gz
+submission 851
+No fastq files
+GSM432589 L1_PolII_ChIPSeq_1
+/sra/static/SRX013/SRX013072/SRR030338.fastq.gz
+GSM432637 L1_INPUT_PolII
+/sra/static/SRX013/SRX013081/SRR030347.fastq.gz
+submission 852
+No fastq files
+GSM432587 L3_PolII_ChIPSeq_1
+/sra/static/SRX013/SRX013070/SRR030336.fastq.gz
+GSM432638 L3_INPUT_PolII
+/sra/static/SRX013/SRX013082/SRR030348.fastq.gz
+submission 853
+No fastq files
+GSM432639 Pupae_INPUT_PolII
+/sra/static/SRX013/SRX013083/SRR030349.fastq.gz
+GSM432586 Pupae_PolII_ChIPSeq_1
+/sra/static/SRX013/SRX013069/SRR030335.fastq.gz
+submission 854
+No fastq files
+GSM439463 E0-4_CBP_ChIPSeq_1
+/sra/static/SRX013/SRX013109/SRR030375.fastq.gz
+submission 855
+No fastq files
+GSM408989 E4-8_INPUT_CBP
+/sra/static/SRX013/SRX013054/SRR030320.fastq.gz
+GSM408988 E4-8_CBP_ChIPSeq_1
+/sra/static/SRX013/SRX013053/SRR030319.fastq.gz
+submission 856
+No fastq files
+GSM408987 E12-16_INPUT_CBP
+/sra/static/SRX013/SRX013052/SRR030318.fastq.gz
+GSM408986 E12-16_CBP_ChIPSeq_1
+/sra/static/SRX013/SRX013051/SRR030317.fastq.gz
+submission 857
+No fastq files
+GSM432584 E16-20_CBP_ChIPSeq_1
+/sra/static/SRX013/SRX013067/SRR030333.fastq.gz
+submission 858
+No fastq files
+GSM439462 E20-24_CBP_ChIPSeq_1
+/sra/static/SRX013/SRX013108/SRR030374.fastq.gz
+submission 859
+No fastq files
+GSM408990 L1_CBP_ChIPSeq_1
+/sra/static/SRX013/SRX013055/SRR030321.fastq.gz
+GSM408991 L1_INPUT_CBP
+/sra/static/SRX013/SRX013056/SRR030322.fastq.gz
+submission 860
+No fastq files
+GSM408993 L3_INPUT_CBP
+/sra/static/SRX013/SRX013058/SRR030324.fastq.gz
+GSM408992 L3_CBP_ChIPSeq_1
+/sra/static/SRX013/SRX013057/SRR030323.fastq.gz
+submission 861
+No fastq files
+GSM408995 Pupae_INPUT_CBP
+/sra/static/SRX013/SRX013060/SRR030326.fastq.gz
+GSM408994 Pupae_CBP_ChIPSeq_1
+/sra/static/SRX013/SRX013059/SRR030325.fastq.gz
+submission 862
+No fastq files
+GSM408983 AdultFemale_INPUT_CBP
+/sra/static/SRX013/SRX013048/SRR030314.fastq.gz
+GSM408982 AdultFemale_CBP_ChIPSeq_1
+/sra/static/SRX013/SRX013047/SRR030313.fastq.gz
+submission 863
+No fastq files
+GSM408985 AdultMale_INPUT_CBP
+/sra/static/SRX013/SRX013050/SRR030316.fastq.gz
+GSM408984 AdultMale_CBP_ChIPSeq_1
+/sra/static/SRX013/SRX013049/SRR030315.fastq.gz
+submission 895
+No fastq files
+GSM400669 L2_INPUT
+/sra/static/SRX013/SRX013016/SRR030282.fastq.gz
+GSM401419 L2_H3K27Ac_ChIPSeq_1
+/sra/static/SRX013/SRX013041/SRR030307.fastq.gz
+submission 984
+No fastq files
+GSM432589 L1_PolII_ChIPSeq_1
+/sra/static/SRX013/SRX013072/SRR030338.fastq.gz
+GSM432637 L1_INPUT_PolII
+/sra/static/SRX013/SRX013081/SRR030347.fastq.gz
+submission 985
+No fastq files
+GSM451801 E8-12_CBP_ChIPSeq_1
+/sra/static/SRX013/SRX013115/SRR030381.fastq.gz
+GSM451802 E8-12_INPUT_CBP
+/sra/static/SRX013/SRX013116/SRR030382.fastq.gz
