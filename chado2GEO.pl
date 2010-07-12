@@ -143,10 +143,21 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
     my $url = $ini{tarball}{url};
     $url .= '/' unless $url =~ /\/$/;
     $url .= $unique_id . $ini{tarball}{condition};
+    print $url;
     my $pipeline_tarball = 'modencode_' . $unique_id . '_pipeline.tgz';
     #download flattened tarball of submission
-    unless ( -e $pipeline_tarball ) { 
-	download_pipeline($url, $pipeline_tarball);
+    for (my $i=0; $i<10; $i++) {
+	print $i;
+    unless ( -s $pipeline_tarball ) { 
+#	download_pipeline($url, $pipeline_tarball);
+	sleep(3);
+    open my $fh, ">", $pipeline_tarball;
+    my $ua = new LWP::UserAgent;
+    my $request = $ua->request(HTTP::Request->new('GET' => $url));
+    $request->is_success or die "$url: " . $request->message;
+    print $fh $request->content();
+    close $fh;
+    }
     }
     print "done.\n";
     #peek into pipeline tarball to list all pipeline filenames
@@ -260,8 +271,8 @@ if (($tarball_made || $use_existent_tarball) && $send_to_geo) {
     $mailer->close or die "couldn't send email to GEO: $!";
     print "file upload and email sent to GEO!\n";
     # Don't remove tarball after uploading...
-    my @rm = ("rm $tarballfile");
-    system(@rm) == 0 || die "can not remove file $tarballfile";   
+    #my @rm = ("rm $tarballfile");
+    #system(@rm) == 0 || die "can not remove file $tarballfile";   
 }
 
 exit 0;
