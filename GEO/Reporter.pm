@@ -29,7 +29,6 @@ my %replicate_group_ap_slot :ATTR( :get<replicate_group_ap_slot>    :default<und
 my %first_extraction_slot  :ATTR( :get<first_extraction_slot>  :deafult<undef>);
 my %last_extraction_slot   :ATTR( :get<last_extraction_slot>   :deafult<undef>);
 my %groups                 :ATTR( :get<groups>                 :default<undef>);
-my %dup                    :ATTR( :get<dup>                    :default<undef>);
 my %project                :ATTR( :get<project>                :default<undef>);
 my %lab                    :ATTR( :get<lab>                    :default<undef>);
 my %contributors           :ATTR( :get<contributors>           :default<undef>);
@@ -49,7 +48,6 @@ my %antibody               :ATTR( :get<antibody>               :default<undef>);
 my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
 my %lib_strategy       :ATTR( :get<lib_strategy>       :default<undef>);
 my %lib_selection      :ATTR( :get<lib_selection>      :default<undef>);
-my %affiliate_submission   :ATTR( :get<affiliate_submission>   :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
@@ -64,7 +62,33 @@ sub BUILD {
 
 sub set_all {
     my $self = shift;
-    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene lib_strategy lib_selection]) {
+    for my $parameter (qw[normalized_slots denorm_slots]) {
+	my $set_func = "set_" . $parameter;
+	$self->$set_func();	
+    }
+    my $aff = $self->affiliate_submission;
+    if (scalar @$aff) {
+	my $trans_self_denorm_slots = _trans($self->get_denorm_slots); #like sdrf now
+	my $reporters = {};
+	for ($i=0; $i<scalar @$aff; $i++) {
+	    $attr = $aff->[$i]->[0];
+	    my ($id, $reference) = split ':', $attr->get_value;
+	    my $row = $aff->[$i]->[1]; #the row in self sdrf
+	    my $reporter;
+	    if ( exists $reporters->{$id} ) {
+		$reporter = $reporters->{$id}->[0];
+	    } else {
+		$reporter = $self->affiliate_submission_reporter($id);
+		$reporters->{$id}->[0] = $reporter;
+		$reporters->{$id}->[1] = _trans($reporter->get_denorm_slots);
+	    }
+	    my $ap_row = $reporter->get_ap_row_by_data($attr); #the row in reporter sdrf
+	    #merge row from reporter and row from self
+	    $trans_self_denorm_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_denorm_slots->[$row]}];
+	}
+	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
+    }        
+    for my $parameter (qw[num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene lib_strategy lib_selection]) {
 	my $set_func = "set_" . $parameter;
 	$self->$set_func();
     }
@@ -74,12 +98,34 @@ sub set_all {
 	print $self->$get_func();
 	print "done.\n";
     }
-    if (defined($self->affiliate_submission)) {
-	$self->set_affiliate_submission($self->affiliate_submission);
+
+}
+
+sub _trans {
+    my $matrix = shift;
+    my $trans = [[]];
+    for (my $i=0; $i<scalar @$matrix; $i++) {
+	for (my $j=0; $j<scalar @{$matrix->[$i]}; $j++) {
+	    $trans->[$j]->[$i] = $matrix->[$i]->[$j];
+	}
+    }
+    return $trans;
+}
+
+sub get_ap_row_by_data {
+    my ($self, $name, $value) = @_;
+    my $last_ap_slot = $self->denorm_slots->[-1];
+    for (my $i=0; $i<scalar @$last_ap_slot; $i++) {
+	my $ap = $last_ap_slot->[$i];
+	for my $data (@{$ap->get_output_data()}) {
+	    if ($data->get_name eq $name && $data->get_value() eq $value) {
+		return $i;
+	    }
+	}
     }
 }
 
-sub set_affiliate_submission {
+sub affiliate_submission_reporter {
     my ($self, $id) = @_;
     my $ini = $self->get_config();
     my $dbname = $ini->{database}{dbname};
@@ -113,45 +159,28 @@ sub set_affiliate_submission {
 	'long_protocol_text' => 0, 
 	'split_seq_group' => 0
 				     });
-    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots groups strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene]) {
+    for my $parameter (qw[normalized_slots denorm_slots]) {
         my $set_func = "set_" . $parameter;
         $reporter->$set_func();
     }
-    $strain{ident $self} = $reporter->get_strain_row(0);
-    $cellline{ident $self} = $reporter->get_cellline_row(0);
-    $devstage{ident $self} = $reporter->get_devstage_row(0);
-    $tissue{ident $self} = $reporter->get_tissue_row(0);
-    $sex{ident $self} = $reporter->get_sex_row(0);
-    $genotype{ident $self} = $reporter->get_genotype_row(0);
-    $transgene{ident $self} = $reporter->get_transgene_row(0);
-    $affiliate_submission{ident $self} = $reporter;
-#    print "rescued strain ", $strain{ident $self};
-#    print "rescued devstage ", $devstage{ident $self};
+    return $reporter;
 }
 
 
 sub affiliate_submission {
     my $self = shift;
-    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
-        my $ap = $normalized_slots{ident $self}->[$i]->[0];
+    my $aff = [];
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}->[0]}; $i++) {
+        my $ap = $denorm_slots{ident $self}->[0]->[$i];
 	for my $datum (@{$ap->get_input_data()}) {
 	    for my $attr (@{$datum->get_attributes()}) {
 		if (lc($attr->get_type()->get_name()) eq 'reference' && lc($attr->get_type()->get_cv()->get_name()) eq 'modencode') {
-		    my @info = split ':', $attr->get_value();
-		    return $info[0];
+		    push @$aff, [$attr, $i]; #keep it as an attribute obj for later use
 		}
 	    }
 	}
-	for my $datum (@{$ap->get_output_data()}) {
-	    for my $attr (@{$datum->get_attributes()}) {
-		if (lc($attr->get_type()->get_name()) eq 'reference' &&lc($attr->get_type()->get_cv()->get_name()) eq 'modencode') {
-                    my @info = split ':', $attr->get_value();
-                    return $info[0];
-                }
-            }
-	}
     }
-    return undef;
+    return $aff;
 }
 
 sub chado2series {
