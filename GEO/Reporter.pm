@@ -29,6 +29,7 @@ my %replicate_group_ap_slot :ATTR( :get<replicate_group_ap_slot>    :default<und
 my %first_extraction_slot  :ATTR( :get<first_extraction_slot>  :deafult<undef>);
 my %last_extraction_slot   :ATTR( :get<last_extraction_slot>   :deafult<undef>);
 my %groups                 :ATTR( :get<groups>                 :default<undef>);
+my %dup                    :ATTR( :get<dup>                    :default<undef>);
 my %project                :ATTR( :get<project>                :default<undef>);
 my %lab                    :ATTR( :get<lab>                    :default<undef>);
 my %contributors           :ATTR( :get<contributors>           :default<undef>);
@@ -68,12 +69,15 @@ sub set_all {
     }
     my $aff = $self->affiliate_submission;
     if (scalar @$aff) {
+	my $trans_self_normalized_slots = _trans($self->get_normalized_slots);
 	my $trans_self_denorm_slots = _trans($self->get_denorm_slots); #like sdrf now
 	my $reporters = {};
-	for ($i=0; $i<scalar @$aff; $i++) {
-	    $attr = $aff->[$i]->[0];
-	    my ($id, $reference) = split ':', $attr->get_value;
-	    my $row = $aff->[$i]->[1]; #the row in self sdrf
+	for (my $i=0; $i<scalar @$aff; $i++) {
+	    my $attr = $aff->[$i]->[0];
+	    my ($id, ) = split ':', $attr->get_value;
+	    my $datum = $aff->[$i]->[1];
+	    print "affiliate extract is ", $datum->get_value;
+	    my $row = $aff->[$i]->[2]; #the row in self sdrf
 	    my $reporter;
 	    if ( exists $reporters->{$id} ) {
 		$reporter = $reporters->{$id}->[0];
@@ -82,11 +86,16 @@ sub set_all {
 		$reporters->{$id}->[0] = $reporter;
 		$reporters->{$id}->[1] = _trans($reporter->get_denorm_slots);
 	    }
-	    my $ap_row = $reporter->get_ap_row_by_data($attr); #the row in reporter sdrf
+	    my $ap_row = $reporter->get_ap_row_by_data($datum->get_name, $datum->get_value); #the row in reporter sdrf
 	    #merge row from reporter and row from self
+	    $trans_self_normalized_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_normalized_slots->[$row]}];
 	    $trans_self_denorm_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_denorm_slots->[$row]}];
 	}
+	$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
+	print "normalized slots::", scalar @{$normalized_slots{ident $self}};
+	print "first slot has ", scalar @{$normalized_slots{ident $self}->[0]};
+	print "denorm slots::", scalar @{$denorm_slots{ident $self}};
     }        
     for my $parameter (qw[num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene lib_strategy lib_selection]) {
 	my $set_func = "set_" . $parameter;
@@ -114,11 +123,11 @@ sub _trans {
 
 sub get_ap_row_by_data {
     my ($self, $name, $value) = @_;
-    my $last_ap_slot = $self->denorm_slots->[-1];
+    my $last_ap_slot = $self->get_denorm_slots->[-1];
     for (my $i=0; $i<scalar @$last_ap_slot; $i++) {
 	my $ap = $last_ap_slot->[$i];
 	for my $data (@{$ap->get_output_data()}) {
-	    if ($data->get_name eq $name && $data->get_value() eq $value) {
+	    if ($data->get_name() eq $name && $data->get_value() eq $value) {
 		return $i;
 	    }
 	}
@@ -175,7 +184,7 @@ sub affiliate_submission {
 	for my $datum (@{$ap->get_input_data()}) {
 	    for my $attr (@{$datum->get_attributes()}) {
 		if (lc($attr->get_type()->get_name()) eq 'reference' && lc($attr->get_type()->get_cv()->get_name()) eq 'modencode') {
-		    push @$aff, [$attr, $i]; #keep it as an attribute obj for later use
+		    push @$aff, [$attr, $datum, $i]; #attr has affiliate submission id, datum has affiliate submission relevant row value, $i is row in self.
 		}
 	    }
 	}
@@ -446,19 +455,6 @@ sub write_sample_growth {
     my ($self, $row, $channel) = @_;
     my $sampleFH = $sampleFH{ident $self};
     my $ch = $channel+1;
-    if (defined($affiliate_submission{ident $self})) {
-	my $ds = $affiliate_submission{ident $self}->get_denorm_slots;
-    for (my $i=0; $i<scalar @$ds; $i++) {
-        my $ap = $ds->[$i]->[0];
-        my $protocol_text = $affiliate_submission{ident $self}->get_protocol_text($ap);
-        $protocol_text =~ s/\n//g; #one line                                                                                                 
-        if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
-            print $sampleFH "!Sample_growth_protocol = ", $protocol_text, "\n";
-        } else {
-            print $sampleFH "!Sample_growth_protocol_ch$ch = ", $protocol_text, "\n";
-        }
-    }
-    }
 
     for (my $i=0; $i<$first_extraction_slot{ident $self}; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
@@ -1764,11 +1760,13 @@ sub set_ap_slots {
 
 sub set_first_extraction_slot {
     my $self = shift;
+    print "first extraction slot is ", $self->get_slotnum_extract('protocol');
     $first_extraction_slot{ident $self} = $self->get_slotnum_extract('protocol');    
 }
 
 sub set_last_extraction_slot {
     my $self = shift;
+    print "last extraction slot is ", $self->get_slotnum_extract('group');
     $last_extraction_slot{ident $self} = $self->get_slotnum_extract('group');
 }
 
@@ -1870,7 +1868,7 @@ sub get_slotnum_extract {
 
 sub check_complexity {
     my ($self, $slots) = @_;
-    my $xap_slots = $experiment{ident $self}->get_applied_protocol_slots();
+    my $xap_slots = $normalized_slots{ident $self};
     my $slot = $slots->[0];
     my $num_norm_ap = scalar @{$xap_slots->[$slot]};
     for my $aslot (@$slots) {
@@ -1902,7 +1900,7 @@ sub get_slotnum_rip {
     my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
     my $otype = 'rna';
     for my $ap_slot (@aps) {
-	my $ap = $normalized_slots{ident $self}->[$ap_slot]->[0];
+	my $ap = $denorm_slots{ident $self}->[$ap_slot]->[0];
 	return $ap_slot if (ap_has_datatype($ap, 'output', $otype));
     }
     return undef;
@@ -1946,9 +1944,7 @@ sub get_slotnum_raw_array {
     #or modencode-helper:CEL [Array Data File], or agilent_raw_microarray_data_file (TXT)
     my @types = ('nimblegen_microarray_data_file (pair)', 'CEL', 'agilent_raw_microarray_data_file');
     for my $type (@types) {
-	print $type;
 	my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
-	print @aps;
 	#even there are more than 1 raw-data-generating protocols, choose the first one since it is the nearest to hyb protocol
 	return $aps[0] if scalar(@aps);
     }
@@ -2010,8 +2006,8 @@ sub get_slotnum_by_protocol_property {
     my ($self, $isattr, $field, $fieldtext, $value) = @_;
     my @slots = ();
     my $found = 0;
-    for (my $i=0; $i<scalar(@{$experiment{ident $self}->get_applied_protocol_slots()}); $i++) {
-	for my $ap (@{$experiment{ident $self}->get_applied_protocol_slots()->[$i]}) {
+    for (my $i=0; $i<scalar(@{$denorm_slots{ident $self}}); $i++) {
+	for my $ap (@{$denorm_slots{ident $self}->[$i]}) {
 	    last if $found;
 	    if ($isattr) {#protocol attribute
 		for my $attr (@{$ap->get_protocol()->get_attributes()}) {
@@ -2035,9 +2031,9 @@ sub get_slotnum_by_protocol_property {
 sub ap_slot_without_real_data {
     my ($self, $ap_slot) = @_;
     my $anonymous = 1;
-    for (my $i = 0; $i < scalar(@{$normalized_slots{ident $self}->[$ap_slot]}); $i++) {
+    for (my $i = 0; $i < scalar(@{$denorm_slots{ident $self}->[$ap_slot]}); $i++) {
 	last if $anonymous == 0;
-	for my $datum (@{$normalized_slots{ident $self}->[$ap_slot]->[$i]->get_output_data}) {
+	for my $datum (@{$denorm_slots{ident $self}->[$ap_slot]->[$i]->get_output_data}) {
 	    $anonymous = 0 and last unless $datum->is_anonymous;
 	}
     }
@@ -2067,8 +2063,8 @@ sub set_sample_name_ap_slot {
 
 sub get_ap_slot_by_datum_info {
     my ($self, $direction, $field, $fieldtext) = @_;
-    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
-	my $ap = $normalized_slots{ident $self}->[$i]->[0];
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
+	my $ap = $denorm_slots{ident $self}->[$i]->[0];
 	eval { _get_datum_by_info($ap, $direction, $field, $fieldtext) };
  	return $i unless $@;
 	next if $@;
@@ -2078,8 +2074,8 @@ sub get_ap_slot_by_datum_info {
 
 sub get_ap_slot_by_attr_info {
     my ($self, $direction, $field, $fieldtext) = @_;
-    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}}; $i++) {
-        my $ap = $normalized_slots{ident $self}->[$i]->[0];
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
+        my $ap = $denorm_slots{ident $self}->[$i]->[0];
 	if ( $direction eq 'input' ) {
 	    for my $datum (@{$ap->get_input_data()}) {
 		eval { _get_attr_by_info($datum, $field, $fieldtext) };
@@ -2112,6 +2108,7 @@ sub group_by_this_ap_slot {
     print "extract name slot $extract_name_col\n";
     print "sample name slot $sample_name_col\n";
     print "source name slot $source_name_col\n";
+    print 'last extraction slot is ', $last_extraction_slot{ident $self};
     if ( defined($replicate_group_col) && (defined($hyb_col) and $hyb_col>=0) ) {
 	print "I will use ap slot $replicate_group_col (replicate group) to group\n";
 	return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
@@ -2132,9 +2129,9 @@ sub group_by_this_ap_slot {
 	    print "I will use raw data ap slot $raw_data_col (raw data) to group.\n" and return [$raw_data_col, 'raw']; 
 	    #croak("suspicious submission, extraction protocol has only anonymous data, AND no protocol has Extract Name, Sample Name, Source(Hybrid) Name.");
 	}
-    } else {
-	print "I will use ap slot $last_extraction_slot{ident $self} (last choice) to group\n" and return [$last_extraction_slot{ident $self}, 'protocol'];
     }
+    print "ok with extraction.";
+    print "I will use ap slot $last_extraction_slot{ident $self} (last choice) to group\n" and return [$last_extraction_slot{ident $self}, 'protocol'];
 }
 
 sub set_groups {
@@ -2234,6 +2231,12 @@ sub set_groups_array {
     my ($last_extraction_slot, $method) = @{$self->group_by_this_ap_slot()};
     my ($nr_grp, $all_grp, $all_grp_by_array);
     if ( $method eq 'protocol' ) {
+	print "###############";
+	for my $ap (@{$denorm_slots->[$last_extraction_slot]}) {
+	    for my $data (@{$ap->get_output_data}) {
+		print $data->get_value();
+	    }
+	}
 	($nr_grp, $all_grp) = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
     } else {
 	if ($method eq 'replicate[\s_]*group') {
@@ -2278,7 +2281,7 @@ sub set_groups_array {
 	}
     }
     #print Dumper($denorm_slots);
-    #print Dumper($all_grp);
+    print Dumper($all_grp);
     print Dumper(%combined_grp);
     $groups{ident $self} = \%combined_grp;
 }
@@ -2437,11 +2440,10 @@ sub _get_full_protocol_text {
 sub get_slotnum_by_datum_property {#this could go into a subclass of experiment 
     #direction for input/output, field for heading/name, value for the text of heading/name
     my ($self, $direction, $isattr, $field, $fieldtext, $value) = @_;
-    my $experiment = $experiment{ident $self};
     my @slots = ();
     my $found = 0;
-    for (my $i=0; $i<scalar(@{$experiment->get_applied_protocol_slots()}); $i++) {
-        for my $applied_protocol (@{$experiment->get_applied_protocol_slots()->[$i]}) {
+    for (my $i=0; $i<scalar(@{$denorm_slots{ident $self}}); $i++) {
+        for my $applied_protocol (@{$denorm_slots{ident $self}->[$i]}) {
             last if $found;
 	    my $func = 'get_' . $direction . '_data';
 	    for my $datum (@{$applied_protocol->$func()}) {
