@@ -715,13 +715,15 @@ sub write_platform {
 sub write_normalized_data {
     my ($self, $row) = @_;
     my $sampleFH = $sampleFH{ident $self};
+    print "normalized slot num is ", $ap_slots{ident $self}->{'normalization'}, "\n";
     my $normalization_ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'normalization'}]->[$row];
     my @normalization_datafiles;
     my @suffixs = ('.bz2', '.z', '.gz', '.zip', '.rar');
     my $num_processed_data = 1;
     for my $datum (@{$normalization_ap->get_output_data()}) {
-	if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
+	if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*[File|Value]/i)) {
 	    my $path = $datum->get_value();
+	    print "normalized data filepath ", $path, "\n";
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		my ($file, $dir, $suffix) = fileparse($path);
 		my $type;
@@ -733,6 +735,7 @@ sub write_normalized_data {
 		$num_processed_data+=1;
 	    } 
 	    else {
+		#print "normalized data filepath ", $path, "\n";
 		my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
 		if (scalar grep {lc($suffix) eq $_} @suffixs) {
 		    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
