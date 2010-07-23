@@ -1980,11 +1980,11 @@ sub get_slotnum_normalize_seq {
 sub get_slotnum_normalize_array {
     my $self = shift;
     #first search by output data type, such as modencode-helper:Signal_Graph_File [sig gr]
-    my @types = ('Signal_Graph_File [sig gr]', 'normalized data', 'scaled data');
+    my @types = ('Signal_Graph_File', 'Signal_Graph_File [sig gr]', 'normalized data', 'scaled data');
     for my $type (@types) {
 	my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
 	#even there are more than 1 normalization protocols, choose the first one since it is the nearest to hyb protocol
-	return $aps[0] if scalar(@aps);
+	print "found sig gr file\n" and return $aps[0] if scalar(@aps);
     }
 
     my @aps;
