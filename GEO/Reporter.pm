@@ -903,7 +903,6 @@ sub get_real_factors {
 	}
 	else {
 	    my $factor_name = $self->get_value_by_info(0, 'name', $factors->{$rank}->[0]);
-	    $factor_name = $self->get_affiliate_submission->get_value_by_info(0, 'name', $factors->{$rank}->[0]) unless $factor_name;
 	    my $rfactor = "$type $factor_name";
 	    push @rfactors, $rfactor if defined($rfactor);
 	}
@@ -1440,7 +1439,12 @@ sub set_molecule_type {
 sub get_molecule_type_row {
     my ($self, $row) = @_;
     my $molecule;
-    my $last_extraction_slot = $last_extraction_slot{ident $self} < $extract_name_ap_slot{ident $self} ? $extract_name_ap_slot{ident $self} : $last_extraction_slot{ident $self};  
+    my $last_extraction_slot;
+    $last_extraction_slot = $last_extraction_slot{ident $self} < $extract_name_ap_slot{ident $self} ? $extract_name_ap_slot{ident $self} : $last_extraction_slot{ident $self};  
+    print "molecule type ip is ", $ap_slots{ident $self}->{'immunoprecipitation'}, "\n"; 
+    $last_extraction_slot = $last_extraction_slot{ident $self} < $ap_slots{ident $self}->{'immunoprecipitation'} ? $ap_slots{ident $self}->{'immunoprecipitation'} : $last_extraction_slot{ident$self} ;
+	
+    print "molecule type last extraction slot: ", $last_extraction_slot, "\n";
     for (my $i=0; $i<=$last_extraction_slot; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
 	for my $datum (@{$ap->get_output_data()}) {
@@ -1685,14 +1689,17 @@ sub get_sample_sourcename_row {
     my $autogenerate = 0;
     $ok1 = eval { $sample_data = _get_datum_by_info($extract_ap, 'input', 'heading', '[Extract|Sample]\s*Name') } ;
     if ($ok1) {
+	print "name ok1\n";
         @sample_names = map {$_->get_value()} @$sample_data;
 	return ($sample_names[0], $autogenerate);
     } else {
         $ok2 = eval { $sample_data = _get_datum_by_info($extract_ap, 'output', 'heading', 'Result') };
 	if ($ok2) {
+	    print "name ok2\n";
 	    @sample_names = map {$_->get_value()} @$sample_data;
 	    $ok21 = eval { $sample_attributes = _get_attr_by_info($sample_data->[0], 'heading', 'Cell\s*Type') } ;
 	    if ($ok21) {
+		print "name ok21\n";
 		@more_sample_names = map {$_->get_value()} @$sample_attributes;
 		my $tmp = join(",", @more_sample_names);
 		$tmp = uri_unescape($tmp);
@@ -1708,15 +1715,18 @@ sub get_sample_sourcename_row {
     if  ($first_extraction_slot{ident $self} != 0) {
 	$ok3 = eval { $source_data = _get_datum_by_info($first_ap, 'input', 'heading', '[Hybrid|Source][A-Za-z]*\s*Name') };
 	if ($ok3) {
+	    print "name ok3\n";
             @source_names = map {$_->get_value()} @$source_data;
 	    return ($source_names[0], $autogenerate);
 	}
 	else {
 	    $ok4 = eval { $source_data = _get_datum_by_info($first_ap, 'output', 'heading', 'Result') };
 	    if ($ok4) {
+		print "name ok4\n";
 		@source_names = map {$_->get_value()} @$source_data;
 		$ok41 = eval { $source_attributes = _get_attr_by_info($source_data->[0], 'heading', 'Cell\s*Type') } ;
 		if ($ok41) {
+		    print "name ok41\n";
 		    @more_source_names = map {$_->get_value()} @$source_attributes;
 		    my $tmp = join(",", @more_sample_names);
 		    $tmp = uri_unescape($tmp);
@@ -1729,10 +1739,10 @@ sub get_sample_sourcename_row {
 	    }
 	}
     }
-    else {
-	$autogenerate = 1;
-	return (join(";", @{$self->get_real_factors()}) , $autogenerate);
-    }
+    $autogenerate = 1;
+    print "autogenerate sample name ...";
+    return ($experiment{ident $self}->get_uniquename, $autogenerate);
+    #return (join(";", @{$self->get_real_factors()}) , $autogenerate);
 }
 
 sub set_ap_slots {
