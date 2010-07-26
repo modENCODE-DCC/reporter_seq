@@ -18,6 +18,7 @@ my %reader                 :ATTR( :name<reader>                :default<undef>);
 my %experiment             :ATTR( :name<experiment>            :default<undef>);
 my %long_protocol_text     :ATTR( :name<long_protocol_text>    :default<undef>);
 my %split_seq_group        :ATTR( :name<split_seq_group>       :default<undef>);
+my %split_arr_group        :ATTR( :name<split_arr_group>       ;default<undef>);
 my %normalized_slots       :ATTR( :get<normalized_slots>       :default<undef>);
 my %denorm_slots           :ATTR( :get<denorm_slots>           :default<undef>);
 my %num_of_rows            :ATTR( :get<num_of_rows>            :default<undef>);
@@ -52,7 +53,7 @@ my %lib_selection      :ATTR( :get<lib_selection>      :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
-    for my $parameter (qw[config unique_id sampleFH seriesFH report_dir reader experiment long_protocol_text split_seq_group]) {
+    for my $parameter (qw[config unique_id sampleFH seriesFH report_dir reader experiment long_protocol_text split_seq_group split_arr_group]) {
 	my $value = $args->{$parameter};
 	defined $value || croak "can not find required parameter $parameter"; 
 	my $set_func = "set_" . $parameter;
@@ -166,7 +167,8 @@ sub affiliate_submission_reporter {
         'reader' => $reader,
         'experiment' => $experiment,
 	'long_protocol_text' => 0, 
-	'split_seq_group' => 0
+	'split_seq_group' => 0,
+	'split_arr_group' => 0
 				     });
     for my $parameter (qw[normalized_slots denorm_slots]) {
         my $set_func = "set_" . $parameter;
@@ -264,15 +266,15 @@ sub chado2sample {
 	for my $array (sort keys %{$combined_grp{$extraction}}) {
 	    print "\n##########extraction $extraction array $array\n";
 	    sort @{$combined_grp{$extraction}{$array}};
-	    unless ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) {
+	    unless ( ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) || ($split_arr_group{ident $self} == 1 and $ap_slots{ident $self}->{hybridization} >= 0) ) {
 		$self->write_series_sample($extraction, $array);
 		print "ok with write_series_sample\n";
 	    }
 	    for (my $channel=0; $channel<scalar(@{$combined_grp{$extraction}{$array}}); $channel++) {
 		my $row = $combined_grp{$extraction}{$array}->[$channel];
 		print $row, "\n";
-		if ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) {
-		    $self->write_series_sample_seq($extraction, $array, $channel);
+		if ( ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) || ($split_arr_group{ident $self} == 1 and $ap_slots{ident $self}->{hybridization} >= 0) ) {
+		    $self->write_series_sample_seq_arr($extraction, $array, $channel);
 		    print "ok with write_series_sample_seq\n";
 		}
 		$self->write_sample_source($extraction, $array, $row, $channel);
@@ -350,7 +352,7 @@ sub chado2sample {
     return (\@raw_datafiles, \@normalize_datafiles, \@more_datafiles);
 }
 
-sub write_series_sample_seq {
+sub write_series_sample_seq_arr {
     my ($self, $extraction, $array, $channel) = @_;
     my $seriesFH = $seriesFH{ident $self};
     my $sampleFH = $sampleFH{ident $self};
@@ -724,6 +726,7 @@ sub write_normalized_data {
 	if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*[File|Value]/i)) {
 	    my $path = $datum->get_value();
 	    print "normalized data filepath ", $path, "\n";
+	    next unless $path;
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		my ($file, $dir, $suffix) = fileparse($path);
 		my $type;
@@ -735,7 +738,7 @@ sub write_normalized_data {
 		$num_processed_data+=1;
 	    } 
 	    else {
-		#print "normalized data filepath ", $path, "\n";
+		print "normalized data filepath ", $path, "\n";
 		my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
 		if (scalar grep {lc($suffix) eq $_} @suffixs) {
 		    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
@@ -2277,6 +2280,7 @@ sub set_groups_array {
 							       'input', 'name', 'adf') unless $ok;
 
     my %combined_grp;
+    my %duplicate;
     while (my ($row, $extract_grp) = each %$all_grp) {
 	my $array_grp = $all_grp_by_array->{$row};
 	if (exists $combined_grp{$extract_grp}{$array_grp}) {
@@ -2286,7 +2290,7 @@ sub set_groups_array {
 	    for my $that_row (@{$combined_grp{$extract_grp}{$array_grp}}) {
                 my $that_extract_ap = $denorm_slots->[$last_extraction_slot]->[$that_row];
                 my $that_hyb_ap = $denorm_slots->[$ap_slots->{'hybridization'}]->[$that_row];
-                $ignore = 1 and print "ignored $row!\n" and last if ($this_extract_ap->equals($that_extract_ap) && $this_hyb_ap->equals($that_hyb_ap));
+                $ignore = 1 and $duplicate{$that_row} = $row and print "ignored $row!\n" and last if ($this_extract_ap->equals($that_extract_ap) && $this_hyb_ap->equals($that_hyb_ap));
 	    }
 	    push @{$combined_grp{$extract_grp}{$array_grp}}, $row unless $ignore;
 	} else {
@@ -2297,6 +2301,7 @@ sub set_groups_array {
     print Dumper($all_grp);
     print Dumper(%combined_grp);
     $groups{ident $self} = \%combined_grp;
+    $dup{ident $self} = \%duplicate;
 }
 
 sub group_applied_protocols {
