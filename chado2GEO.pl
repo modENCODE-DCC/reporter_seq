@@ -37,11 +37,13 @@ my $use_existent_tarball = 0;
 my $send_to_geo = 0;
 my $long_protocol_text = 0;
 my $split_seq_group = 1; #splicate the pair of one manipulation-control biological replicate into 2 gsm records
+my $split_arr_group = 0; #split array replicates
 my $option = GetOptions ("unique_id=s"     => \$unique_id,
 			 "out=s"           => \$output_dir,
 			 "config=s"        => \$config,
 			 "long_protocol_text=s" => \$long_protocol_text,
 			 "split_seq_group=s" => \$split_seq_group,
+			 "split_arr_group=s" => \$split_arr_group,
 			 "use_existent_metafile=s" => \$use_existent_metafile,
 			 "make_tarball=s"  => \$make_tarball,
 			 "use_existent_tarball=s"  => \$use_existent_tarball,   
@@ -104,6 +106,7 @@ if (($use_existent_metafile == 0) && ($use_existent_tarball == 0)) {
         'experiment' => $experiment,
 	'long_protocol_text' => $long_protocol_text,
 	'split_seq_group' => $split_seq_group,
+	'split_arr_group' => $split_arr_group,
     });
     $reporter->set_all();
 
