@@ -239,6 +239,36 @@ sub equals {
   return 1;
 }
 
+sub equals_except_anonymous {
+  my ($self, $other) = @_;
+  return 0 unless ref($self) eq ref($other);
+
+  my @input_data = @{$self->get_input_data()};
+  return 0 unless scalar(@input_data) == scalar(@{$other->get_input_data()});
+  foreach my $datum (@input_data) {
+      next if $datum->is_anonymous;
+    return 0 unless scalar(grep { $_->equals($datum) } @{$other->get_input_data()});
+  }
+
+  my @output_data = @{$self->get_output_data()};
+  return 0 unless scalar(@output_data) == scalar(@{$other->get_output_data()});
+  foreach my $datum (@output_data) {
+      next if $datum->is_anonymous;
+    return 0 unless scalar(grep { $_->equals($datum) } @{$other->get_output_data()});
+  }
+
+  if ($self->get_protocol()) {
+    return 0 unless $other->get_protocol();
+    return 0 unless $self->get_protocol()->equals($other->get_protocol());
+  } else {
+    return 0 if $other->get_protocol();
+  }
+
+
+  return 1;    
+}
+
+
 sub clone {
   my ($self) = @_;
   my $clone = new ModENCODE::Chado::AppliedProtocol({
