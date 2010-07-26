@@ -2220,7 +2220,7 @@ sub set_groups_seq {
 	    for my $that_row (@{$combined_grp{$extract_grp}{$seq_grp}}) {
                 my $that_extract_ap = $denorm_slots->[$last_extraction_slot]->[$that_row];
                 my $that_seq_ap = $denorm_slots->[$ap_slots->{'seq'}]->[$that_row];
-		if ($this_extract_ap->equals($that_extract_ap) && $this_seq_ap->equals($that_seq_ap)) {
+		if ($this_extract_ap->equals_except_anonymous($that_extract_ap) && $this_seq_ap->equals_except_anonymous($that_seq_ap)) {
 		    $same = 1; 
 		    print "duplicated row $row!\n";
 		    $duplicate{$that_row} = $row; 
@@ -2290,7 +2290,7 @@ sub set_groups_array {
 	    for my $that_row (@{$combined_grp{$extract_grp}{$array_grp}}) {
                 my $that_extract_ap = $denorm_slots->[$last_extraction_slot]->[$that_row];
                 my $that_hyb_ap = $denorm_slots->[$ap_slots->{'hybridization'}]->[$that_row];
-                $ignore = 1 and $duplicate{$that_row} = $row and print "ignored $row!\n" and last if ($this_extract_ap->equals($that_extract_ap) && $this_hyb_ap->equals($that_hyb_ap));
+                $ignore = 1 and $duplicate{$that_row} = $row and print "ignored $row!\n" and last if ($this_extract_ap->equals_except_anonymous($that_extract_ap) && $this_hyb_ap->equals_except_anonymous($that_hyb_ap));
 	    }
 	    push @{$combined_grp{$extract_grp}{$array_grp}}, $row unless $ignore;
 	} else {
