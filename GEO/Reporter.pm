@@ -656,16 +656,30 @@ sub write_normalized_data_dup {
     my $sampleFH = $sampleFH{ident $self};
     my $normalization_ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'normalization'}]->[$row];
     my $num_processed_data = scalar @$exist_normalize_datafiles + 1;
+    my @suffixs = ('.bz2', '.z', '.gz', '.zip', '.rar');
     for my $datum (@{$normalization_ap->get_output_data()}) {
         if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
             my $path = $datum->get_value();
 	    unless (scalar grep {$path eq $_} @$exist_normalize_datafiles) {
+		if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		my $type;
 		$type = 'WIG' if ($path =~ /\.wig$/i);
 		$type = 'GFF3' if ($path =~ /\.gff3$/i);
 		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
 		print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
 		$num_processed_data+=1;
+		}
+		else {
+		    print "normalized data filepath ", $path, "\n";
+		    my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
+		    if (scalar grep {lc($suffix) eq $_} @suffixs) {
+			print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+                    #print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
+		    } else {
+			print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+                    #print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
+		    }
+		}
 	    }
 	}
     }  
