@@ -619,8 +619,8 @@ sub get_slotnum_by_datum_property {#this could go into a subclass of experiment
     my $experiment = $experiment{ident $self};
     my @slots = ();
     my $found = 0;
-    for (my $i=0; $i<scalar(@{$experiment->get_applied_protocol_slots()}); $i++) {
-        for my $applied_protocol (@{$experiment->get_applied_protocol_slots()->[$i]}) {
+    for (my $i=0; $i<scalar(@{$denorm_slots{ident $self}}); $i++) {
+        for my $applied_protocol (@{$denorm_slots{ident $self}->[$i]}) {
             last if $found;
 	    my $func = 'get_' . $direction . '_data';
 	    for my $datum (@{$applied_protocol->$func()}) {
@@ -662,8 +662,8 @@ sub get_slotnum_by_protocol_property {
     my ($self, $isattr, $field, $fieldtext, $value) = @_;
     my @slots = ();
     my $found = 0;
-    for (my $i=0; $i<scalar(@{$experiment{ident $self}->get_applied_protocol_slots()}); $i++) {
-        for my $ap (@{$experiment{ident $self}->get_applied_protocol_slots()->[$i]}) {
+    for (my $i=0; $i<scalar(@{$denorm_slots{ident $self}}); $i++) {
+        for my $ap (@{$denorm_slots{ident $self}->[$i]}) {
             last if $found;
             if ($isattr) {#protocol attribute
                 for my $attr (@{$ap->get_protocol()->get_attributes()}) {
