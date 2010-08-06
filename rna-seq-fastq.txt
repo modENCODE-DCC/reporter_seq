@@ -1,0 +1,1465 @@
+submission 342
+cellline:Kc167
+No fastq files
+GSM451125  GSM451122  GSM451121  GSM451123  GSM451126  GSM451120  GSM451124  GSM451119  
+GSM451125 Kc167_PolyA+ BioRep-1 TechRep-7
+/sra/static/SRX012/SRX012964/SRR030170.fastq.gz
+GSM451122 Kc167_PolyA+ BioRep-1 TechRep-4
+/sra/static/SRX012/SRX012961/SRR030167.fastq.gz
+GSM451121 Kc167_PolyA+ BioRep-1 TechRep-3
+/sra/static/SRX012/SRX012960/SRR030166.fastq.gz
+GSM451123 Kc167_PolyA+ BioRep-1 TechRep-5
+/sra/static/SRX012/SRX012962/SRR030168.fastq.gz
+GSM451126 Kc167_PolyA+ BioRep-1 TechRep-8
+/sra/static/SRX012/SRX012965/SRR030171.fastq.gz
+GSM451120 Kc167_PolyA+ BioRep-1 TechRep-2
+/sra/static/SRX012/SRX012959/SRR030165.fastq.gz
+GSM451124 Kc167_PolyA+ BioRep-1 TechRep-6
+/sra/static/SRX012/SRX012963/SRR030169.fastq.gz
+GSM451119 Kc167_PolyA+ BioRep-1 TechRep-1
+/sra/static/SRX012/SRX012958/SRR030164.fastq.gz
+No sra experiment id
+submission 343
+strain:Y cn bw sp
+devstage:Embryo 16-18h
+No fastq files
+GSM439966  
+GSM439966 Dm_emb_16-18h_Total_Ap
+/sra/static/SRX012/SRX012350/SRR029308.fastq.gz
+No sra experiment id
+submission 360
+cellline:Kc167
+No fastq files
+GSM451044  GSM451046  GSM451047  GSM451045  
+GSM451044 Kc167 small RNAs BioRep-1 TechRep-1
+/sra/static/SRX012/SRX012954/SRR030160.fastq.gz
+GSM451046 Kc167 small RNAs BioRep-2 TechRep-1
+/sra/static/SRX012/SRX012956/SRR030162.fastq.gz
+GSM451047 Kc167 small RNAs BioRep-2 TechRep-2
+/sra/static/SRX012/SRX012957/SRR030163.fastq.gz
+GSM451045 Kc167 small RNAs BioRep-1 TechRep-2
+/sra/static/SRX012/SRX012955/SRR030161.fastq.gz
+No sra experiment id
+submission 362
+cellline:S2-DRSC
+No fastq files
+GSM451132  GSM451127  GSM451131  GSM451129  GSM451128  GSM451130  GSM451134  GSM451133  
+GSM451132 S2-DRSC small RNAs BioRep-2 TechRep-2
+/sra/static/SRX012/SRX012971/SRR030178.fastq.gz
+GSM451127 S2-DRSC small RNAs BioRep-1 TechRep-1
+/sra/static/SRX012/SRX012966/SRR030173.fastq.gz
+GSM451131 S2-DRSC small RNAs BioRep-2 TechRep-1
+/sra/static/SRX012/SRX012970/SRR030177.fastq.gz
+GSM451129 S2-DRSC small RNAs BioRep-1 TechRep-3
+/sra/static/SRX012/SRX012968/SRR030175.fastq.gz
+GSM451128 S2-DRSC small RNAs BioRep-1 TechRep-2
+/sra/static/SRX012/SRX012967/SRR030174.fastq.gz
+GSM451130 S2-DRSC small RNAs BioRep-1 TechRep-4
+/sra/static/SRX012/SRX012969/SRR030176.fastq.gz
+GSM451134 S2-DRSC small RNAs BioRep-2 TechRep-4
+/sra/static/SRX012/SRX012973/SRR030180.fastq.gz
+GSM451133 S2-DRSC small RNAs BioRep-2 TechRep-3
+/sra/static/SRX012/SRX012972/SRR030179.fastq.gz
+No sra experiment id
+submission 364
+cellline:CME-W1-Cl.8+
+No fastq files
+GSM451037  GSM451033  GSM451035  GSM451032  GSM451031  GSM451036  GSM451034  
+GSM451037 Cl.8 small RNAs BioRep-2 TechRep-4
+/sra/static/SRX012/SRX012953/SRR030159.fastq.gz
+GSM451033 Cl.8 small RNAs BioRep-1 TechRep-3
+/sra/static/SRX012/SRX012949/SRR030155.fastq.gz
+GSM451035 Cl.8 small RNAs BioRep-2 TechRep-2
+/sra/static/SRX012/SRX012951/SRR030157.fastq.gz
+GSM451032 Cl.8 small RNAs BioRep-1 TechRep-2
+/sra/static/SRX012/SRX012948/SRR030154.fastq.gz
+GSM451031 Cl.8 small RNAs BioRep-1 TechRep-1
+/sra/static/SRX012/SRX012947/SRR030153.fastq.gz
+GSM451036 Cl.8 small RNAs BioRep-2 TechRep-3
+/sra/static/SRX012/SRX012952/SRR030158.fastq.gz
+GSM451034 Cl.8 small RNAs BioRep-2 TechRep-1
+/sra/static/SRX012/SRX012950/SRR030156.fastq.gz
+No sra experiment id
+submission 366
+cellline:ML-DmBG3-c2
+No fastq files
+GSM450972  GSM450973  GSM450974  
+GSM450972 BG3 small RNAs BioRep-1 TechRep-1
+/sra/static/SRX012/SRX012941/SRR030145.fastq.gz
+GSM450973 BG3 small RNAs BioRep-2 TechRep-1
+/sra/static/SRX012/SRX012942/SRR030146.fastq.gz
+GSM450974 BG3 small RNAs BioRep-2 TechRep-2
+/sra/static/SRX012/SRX012943/SRR030147.fastq.gz
+No sra experiment id
+submission 526
+strain:Dcr-2L811fsX
+devstage:Adult Female
+No fastq files
+GSM280083  
+GSM280083 dcr-2-/- ovaries (18-29nt)
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM280nnn/GSM280083/GSM280083_dcr-2_raw_data.txt.gz
+No sra experiment id
+submission 633
+cellline:Kc167
+No fastq files
+GSM390059  GSM390060  
+GSM390059 Kc167-2
+/sra/static/SRX003/SRX003836/SRR015086_1.fastq.gz
+/sra/static/SRX003/SRX003836/SRR015086_2.fastq.gz
+/sra/static/SRX003/SRX003836/SRR015084.fastq.gz
+/sra/static/SRX003/SRX003836/SRR015084_1.fastq.gz
+/sra/static/SRX003/SRX003836/SRR015088.fastq.gz
+/sra/static/SRX003/SRX003836/SRR015088_1.fastq.gz
+/sra/static/SRX003/SRX003836/SRR015084_2.fastq.gz
+/sra/static/SRX003/SRX003836/SRR015088_2.fastq.gz
+GSM390060 Kc167-4
+/sra/static/SRX003/SRX003837/SRR015092_1.fastq.gz
+/sra/static/SRX003/SRX003837/SRR015092_2.fastq.gz
+/sra/static/SRX003/SRX003837/SRR015090.fastq.gz
+/sra/static/SRX003/SRX003837/SRR015090_1.fastq.gz
+/sra/static/SRX003/SRX003837/SRR015090_2.fastq.gz
+No sra experiment id
+submission 650
+cellline:S2-DRSC
+No fastq files
+GSM390064  GSM390063  
+GSM390064 S2-DRSC-16
+/sra/static/SRX003/SRX003841/SRR015110_1.fastq.gz
+/sra/static/SRX003/SRX003841/SRR015110_2.fastq.gz
+/sra/static/SRX003/SRX003841/SRR015112.fastq.gz
+/sra/static/SRX003/SRX003841/SRR015112_1.fastq.gz
+/sra/static/SRX003/SRX003841/SRR015108.fastq.gz
+/sra/static/SRX003/SRX003841/SRR015108_1.fastq.gz
+/sra/static/SRX003/SRX003841/SRR015112_2.fastq.gz
+/sra/static/SRX003/SRX003841/SRR015108_2.fastq.gz
+GSM390063 S2-DRSC-14
+/sra/static/SRX003/SRX003840/SRR015106.fastq.gz
+/sra/static/SRX003/SRX003840/SRR015106_1.fastq.gz
+/sra/static/SRX003/SRX003840/SRR015106_2.fastq.gz
+/sra/static/SRX003/SRX003840/SRR015104.fastq.gz
+/sra/static/SRX003/SRX003840/SRR015104_1.fastq.gz
+/sra/static/SRX003/SRX003840/SRR015104_2.fastq.gz
+No sra experiment id
+submission 651
+cellline:ML-DmBG3-c2
+No fastq files
+GSM390066  GSM390065  
+GSM390066 ML-DmBG3-c2-124
+/sra/static/SRX003/SRX003839/SRR015098.fastq.gz
+/sra/static/SRX003/SRX003839/SRR015098_1.fastq.gz
+/sra/static/SRX003/SRX003839/SRR015098_2.fastq.gz
+/sra/static/SRX003/SRX003839/SRR015102.fastq.gz
+/sra/static/SRX003/SRX003839/SRR015100.fastq.gz
+/sra/static/SRX003/SRX003839/SRR015102_1.fastq.gz
+/sra/static/SRX003/SRX003839/SRR015100_1.fastq.gz
+/sra/static/SRX003/SRX003839/SRR015100_2.fastq.gz
+/sra/static/SRX003/SRX003839/SRR015102_2.fastq.gz
+GSM390065 ML-DmBG3-c2-122
+/sra/static/SRX003/SRX003838/SRR015096.fastq.gz
+/sra/static/SRX003/SRX003838/SRR015096_1.fastq.gz
+/sra/static/SRX003/SRX003838/SRR015096_2.fastq.gz
+/sra/static/SRX003/SRX003838/SRR015094.fastq.gz
+/sra/static/SRX003/SRX003838/SRR015094_1.fastq.gz
+/sra/static/SRX003/SRX003838/SRR015094_2.fastq.gz
+No sra experiment id
+submission 652
+cellline:CME-W1-Cl.8+
+No fastq files
+GSM390061  GSM390062  
+GSM390061 CME_W1_Cl.8+-60
+/sra/static/SRX003/SRX003834/SRR015076.fastq.gz
+/sra/static/SRX003/SRX003834/SRR015076_1.fastq.gz
+/sra/static/SRX003/SRX003834/SRR015076_2.fastq.gz
+/sra/static/SRX003/SRX003834/SRR015074.fastq.gz
+/sra/static/SRX003/SRX003834/SRR015078.fastq.gz
+/sra/static/SRX003/SRX003834/SRR015074_1.fastq.gz
+/sra/static/SRX003/SRX003834/SRR015078_1.fastq.gz
+/sra/static/SRX003/SRX003834/SRR015078_2.fastq.gz
+/sra/static/SRX003/SRX003834/SRR015074_2.fastq.gz
+GSM390062 CME_W1_Cl.8+-62
+/sra/static/SRX003/SRX003835/SRR015080.fastq.gz
+/sra/static/SRX003/SRX003835/SRR015080_1.fastq.gz
+/sra/static/SRX003/SRX003835/SRR015082.fastq.gz
+/sra/static/SRX003/SRX003835/SRR015082_1.fastq.gz
+/sra/static/SRX003/SRX003835/SRR015080_2.fastq.gz
+/sra/static/SRX003/SRX003835/SRR015082_2.fastq.gz
+No sra experiment id
+submission 712
+strain:Y cn bw sp
+devstage:Mixed Adult 7-11 day
+No fastq files
+GSM339266  GSM339264  GSM339267  GSM339263  GSM339265  
+GSM339266 whole_fly_rp_rep1
+/sra/static/SRX003/SRX003192/SRR014393.fastq.gz
+GSM339264 whole_fly_odt_2pmol
+/sra/static/SRX003/SRX003195/SRR014396.fastq.gz
+GSM339267 whole_fly_rp_rep2
+/sra/static/SRX003/SRX003193/SRR014394.fastq.gz
+GSM339263 whole_fly_odt_1pmol
+/sra/static/SRX003/SRX003194/SRR014395.fastq.gz
+GSM339265 whole_fly_odt_4pmol
+/sra/static/SRX003/SRX003196/SRR014397.fastq.gz
+No sra experiment id
+submission 737
+strain:Canton S
+devstage:Adult Female
+No fastq files
+GSM240749  
+GSM240749 Female heads
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM240nnn/GSM240749/GSM240749.txt.gz
+No sra experiment id
+submission 738
+cellline:Kc-Rubin
+No fastq files
+GSM272653  
+GSM272653 KC cells
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM272nnn/GSM272653/GSM272653.txt.gz
+No sra experiment id
+submission 739
+strain:Canton S
+devstage:Adult male
+No fastq files
+GSM286602  
+GSM286602 Male body
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM286nnn/GSM286602/GSM286602.txt.gz
+No sra experiment id
+submission 740
+strain:Canton S
+devstage:Embryo 2-6h
+No fastq files
+GSM286605  
+GSM286605 2-6hr embryo
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM286nnn/GSM286605/GSM286605.txt.gz
+No sra experiment id
+submission 741
+cellline:S2-Rubin
+No fastq files
+GSM272651  
+GSM272651 S2 and KC cells
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM272nnn/GSM272651/GSM272651.txt.gz
+No sra experiment id
+submission 742
+strain:Canton S
+devstage:Adult male
+No fastq files
+GSM275691  
+GSM275691 Imaginal disc
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM275nnn/GSM275691/GSM275691.txt.gz
+No sra experiment id
+submission 743
+strain:Canton S
+devstage:Adult Female
+No fastq files
+GSM286603  
+GSM286603 Female body
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM286nnn/GSM286603/GSM286603.txt.gz
+No sra experiment id
+submission 745
+strain:Canton S
+devstage:Embryo 0-1h
+No fastq files
+GSM286613  
+GSM286613 0-1hr embryo #1
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM286nnn/GSM286613/GSM286613.txt.gz
+No sra experiment id
+submission 746
+cellline:S2-Rubin
+No fastq files
+GSM272652  
+GSM272652 Drosophila melanogaster S2-GMR, first biological replicate
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM272nnn/GSM272652/GSM272652.txt.gz
+No sra experiment id
+submission 747
+strain:Canton S
+devstage:Adult male
+No fastq files
+GSM286601  
+GSM286601 Male heads
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM286nnn/GSM286601/GSM286601.txt.gz
+No sra experiment id
+submission 748
+strain:Canton S
+devstage:3rd instar larvae
+No fastq files
+GSM322208  
+GSM322208 small RNA from 3rd instar larvae (1)
+/sra/static/SRX002/SRX002667/SRR013600.fastq.gz
+No sra experiment id
+submission 749
+strain:Canton S
+devstage:3rd instar larvae
+No fastq files
+GSM322245  
+GSM322245 small RNA from 3rd instar larvae (2)
+/sra/static/SRX002/SRX002669/SRR013602.fastq.gz
+No sra experiment id
+submission 750
+strain:Canton S
+devstage:Adult Female
+No fastq files
+GSM322533  
+GSM322533 small RNAs from adult female head
+/sra/static/SRX002/SRX002671/SRR013604.fastq.gz
+No sra experiment id
+submission 751
+strain:Canton S
+devstage:Adult male
+No fastq files
+GSM322543  
+GSM322543 small RNAs from adult male head
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM322nnn/GSM322543/GSM322543_EL_29.fastq.txt.gz
+No sra experiment id
+submission 752
+strain:Canton S
+devstage:Embryo 2-6h
+No fastq files
+GSM286606  
+GSM286606 2-6hr embryo #1
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM286nnn/GSM286606/GSM286606.txt.gz
+No sra experiment id
+submission 753
+strain:Canton S
+devstage:Embryo 6-10h
+No fastq files
+GSM286611  
+GSM286611 6-10hr embryo #1
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM286nnn/GSM286611/GSM286611.txt.gz
+No sra experiment id
+submission 754
+strain:Canton S
+devstage:Embryo 6-10h
+No fastq files
+GSM286607  
+GSM286607 6-10hr embryo
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM286nnn/GSM286607/GSM286607.txt.gz
+No sra experiment id
+submission 755
+strain:Canton S
+devstage:Embryo 0-1h
+No fastq files
+GSM286604  
+GSM286604 0-1hr embryo
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM286nnn/GSM286604/GSM286604.txt.gz
+No sra experiment id
+submission 757
+strain:Canton S
+devstage:2-4 day old pupae
+No fastq files
+GSM322219  
+GSM322219 small RNA from 2-4 day old pupae (1)
+/sra/static/SRX002/SRX002668/SRR013601.fastq.gz
+No sra experiment id
+submission 758
+strain:Canton S
+devstage:2-4 day old pupae
+No fastq files
+GSM322338  
+GSM322338 small RNA from 2-4 day old pupae (2)
+/sra/static/SRX002/SRX002670/SRR013603.fastq.gz
+No sra experiment id
+submission 762
+strain:Canton S
+devstage:1st instar larvae
+No fastq files
+GSM360256  
+GSM360256 small RNA from 1st instar larvae (1)
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM360nnn/GSM360256/GSM360256_fastq.txt.gz
+No sra experiment id
+submission 772
+strain:Oregon-R
+devstage:Adult male
+No fastq files
+GSM280085  
+GSM280085 WT testes (18-24nt)
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM280nnn/GSM280085/GSM280085_wt_testes_raw_data.txt.gz
+No sra experiment id
+submission 773
+strain:Y cn bw sp
+devstage:Adult Female
+No fastq files
+GSM280082  
+GSM280082 WT ovaries (18-29nt)
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM280nnn/GSM280082/GSM280082_wt_ovaries_raw_data.txt.gz
+No sra experiment id
+submission 774
+strain:Loqs f00791
+devstage:Adult Female
+No fastq files
+GSM280084  
+GSM280084 loqs-/- ovaries (18-29nt)
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM280nnn/GSM280084/GSM280084_loqs_raw_data.txt.gz
+No sra experiment id
+submission 1011
+cellline:S2-DRSC
+No fastq files
+GSM461201  
+GSM461201 S2_DRSC_CG10128_RNAi-1
+/sra/static/SRX014/SRX014483/SRR031767.fastq.gz
+/sra/static/SRX014/SRX014483/SRR031766.fastq.gz
+No sra experiment id
+submission 1012
+cellline:S2-DRSC
+No fastq files
+GSM461195  
+GSM461195 S2_DRSC_CG10203_RNAi-1
+/sra/static/SRX014/SRX014477/SRR031754.fastq.gz
+/sra/static/SRX014/SRX014477/SRR031755.fastq.gz
+No sra experiment id
+submission 1013
+cellline:S2-DRSC
+No fastq files
+GSM461198  
+GSM461198 S2_DRSC_CG10851_RNAi-1
+/sra/static/SRX014/SRX014480/SRR031760.fastq.gz
+/sra/static/SRX014/SRX014480/SRR031761.fastq.gz
+No sra experiment id
+submission 1014
+cellline:S2-DRSC
+No fastq files
+GSM461187  
+GSM461187 S2_DRSC_CG12749_RNAi-1
+/sra/static/SRX014/SRX014469/SRR031738.fastq.gz
+/sra/static/SRX014/SRX014469/SRR031739.fastq.gz
+No sra experiment id
+submission 1015
+cellline:S2-DRSC
+No fastq files
+GSM461190  
+GSM461190 S2_DRSC_CG13425_RNAi-1
+/sra/static/SRX014/SRX014472/SRR031744.fastq.gz
+/sra/static/SRX014/SRX014472/SRR031745.fastq.gz
+No sra experiment id
+submission 1016
+cellline:S2-DRSC
+No fastq files
+GSM461204  
+GSM461204 S2_DRSC_CG1559_RNAi-1
+/sra/static/SRX014/SRX014486/SRR031772.fastq.gz
+/sra/static/SRX014/SRX014486/SRR031773.fastq.gz
+No sra experiment id
+submission 1017
+cellline:S2-DRSC
+No fastq files
+GSM461189  
+GSM461189 S2_DRSC_CG16901_RNAi-1
+/sra/static/SRX014/SRX014471/SRR031742.fastq.gz
+/sra/static/SRX014/SRX014471/SRR031743.fastq.gz
+No sra experiment id
+submission 1018
+cellline:S2-DRSC
+No fastq files
+GSM461196  
+GSM461196 S2_DRSC_CG17136_RNAi-1
+/sra/static/SRX014/SRX014478/SRR031756.fastq.gz
+/sra/static/SRX014/SRX014478/SRR031757.fastq.gz
+No sra experiment id
+submission 1019
+cellline:S2-DRSC
+No fastq files
+GSM461188  
+GSM461188 S2_DRSC_CG17838_RNAi-1
+/sra/static/SRX014/SRX014470/SRR031740.fastq.gz
+/sra/static/SRX014/SRX014470/SRR031741.fastq.gz
+No sra experiment id
+submission 1020
+cellline:S2-DRSC
+No fastq files
+GSM461199  
+GSM461199 S2_DRSC_CG18426_RNAi-1
+/sra/static/SRX014/SRX014481/SRR031763.fastq.gz
+/sra/static/SRX014/SRX014481/SRR031762.fastq.gz
+No sra experiment id
+submission 1021
+cellline:S2-DRSC
+No fastq files
+GSM461194  
+GSM461194 S2_DRSC_CG1987_RNAi-1
+/sra/static/SRX014/SRX014476/SRR031752.fastq.gz
+/sra/static/SRX014/SRX014476/SRR031753.fastq.gz
+No sra experiment id
+submission 1022
+cellline:S2-DRSC
+No fastq files
+GSM461191  
+GSM461191 S2_DRSC_CG30122_RNAi-1
+/sra/static/SRX014/SRX014473/SRR031746.fastq.gz
+/sra/static/SRX014/SRX014473/SRR031747.fastq.gz
+No sra experiment id
+submission 1023
+cellline:S2-DRSC
+No fastq files
+GSM461202  
+GSM461202 S2_DRSC_CG31000_RNAi-1
+/sra/static/SRX014/SRX014484/SRR031769.fastq.gz
+/sra/static/SRX014/SRX014484/SRR031768.fastq.gz
+No sra experiment id
+submission 1024
+cellline:S2-DRSC
+No fastq files
+No geo id.
+No sra experiment id
+submission 1025
+cellline:S2-DRSC
+No fastq files
+GSM461192  
+GSM461192 S2_DRSC_CG4602_RNAi-1
+/sra/static/SRX014/SRX014474/SRR031748.fastq.gz
+/sra/static/SRX014/SRX014474/SRR031749.fastq.gz
+No sra experiment id
+submission 1026
+cellline:S2-DRSC
+No fastq files
+GSM461185  
+GSM461185 S2_DRSC_CG5099_RNAi-1
+/sra/static/SRX014/SRX014467/SRR031734.fastq.gz
+/sra/static/SRX014/SRX014467/SRR031735.fastq.gz
+No sra experiment id
+submission 1027
+cellline:S2-DRSC
+No fastq files
+GSM461197  
+GSM461197 S2_DRSC_CG5442_RNAi-1
+/sra/static/SRX014/SRX014479/SRR031758.fastq.gz
+/sra/static/SRX014/SRX014479/SRR031759.fastq.gz
+No sra experiment id
+submission 1028
+cellline:S2-DRSC
+No fastq files
+GSM461193  
+GSM461193 S2_DRSC_CG5655_RNAi-1
+/sra/static/SRX014/SRX014475/SRR031750.fastq.gz
+/sra/static/SRX014/SRX014475/SRR031751.fastq.gz
+No sra experiment id
+submission 1029
+cellline:S2-DRSC
+No fastq files
+GSM461205  
+GSM461205 S2_DRSC_CG5821_RNAi-1
+/sra/static/SRX014/SRX014487/SRR031774.fastq.gz
+/sra/static/SRX014/SRX014487/SRR031775.fastq.gz
+No sra experiment id
+submission 1030
+cellline:S2-DRSC
+No fastq files
+GSM461206  
+GSM461206 S2_DRSC_CG5836_RNAi-1
+/sra/static/SRX014/SRX014488/SRR031776.fastq.gz
+/sra/static/SRX014/SRX014488/SRR031777.fastq.gz
+No sra experiment id
+submission 1031
+cellline:S2-DRSC
+No fastq files
+GSM461183  
+GSM461183 S2_DRSC_CG6946_RNAi-1
+/sra/static/SRX014/SRX014465/SRR031730.fastq.gz
+/sra/static/SRX014/SRX014465/SRR031731.fastq.gz
+No sra experiment id
+submission 1032
+cellline:S2-DRSC
+No fastq files
+GSM461203  
+GSM461203 S2_DRSC_CG7437_RNAi-1
+/sra/static/SRX014/SRX014485/SRR031771.fastq.gz
+/sra/static/SRX014/SRX014485/SRR031770.fastq.gz
+No sra experiment id
+submission 1033
+cellline:S2-DRSC
+No fastq files
+No geo id.
+No sra experiment id
+submission 1034
+cellline:S2-DRSC
+No fastq files
+GSM461200  
+GSM461200 S2_DRSC_CG7971_RNAi-1
+/sra/static/SRX014/SRX014482/SRR031764.fastq.gz
+/sra/static/SRX014/SRX014482/SRR031765.fastq.gz
+No sra experiment id
+submission 2002
+cellline:ML-DmD20-c5
+No fastq files
+No geo id.
+No sra experiment id
+submission 2003
+cellline:Sg4
+No fastq files
+No geo id.
+No sra experiment id
+submission 2004
+cellline:GM2
+No fastq files
+No geo id.
+No sra experiment id
+submission 2005
+cellline:ML-DmD21
+No fastq files
+No geo id.
+No sra experiment id
+submission 2006
+cellline:1182-4H
+No fastq files
+No geo id.
+No sra experiment id
+submission 2007
+cellline:ML-DmBG1-c1
+No fastq files
+No geo id.
+No sra experiment id
+submission 2008
+strain:Y cn bw sp
+devstage:Adult male, eclosion + 1 day
+No fastq files
+No geo id.
+No sra experiment id
+submission 2009
+strain:Y cn bw sp
+devstage:Adult female, eclosion + 1 day
+No fastq files
+No geo id.
+No sra experiment id
+submission 2010
+strain:Y cn bw sp
+devstage:E0-4
+No fastq files
+GSM451806  
+GSM451806 E0-4_combined_RNAseq_1,2
+/sra/static/SRX012/SRX012977/SRR030232.fastq.gz
+/sra/static/SRX012/SRX012977/SRR030233.fastq.gz
+No sra experiment id
+submission 2019
+strain:Y cn bw sp
+devstage:E4-8
+No fastq files
+GSM451809  
+GSM451809 E4-8_combined_RNAseq_1,2
+/sra/static/SRX012/SRX012980/SRR030238.fastq.gz
+/sra/static/SRX012/SRX012980/SRR030239.fastq.gz
+No sra experiment id
+submission 2020
+strain:Y cn bw sp
+devstage:E8-12
+No fastq files
+GSM451808  
+GSM451808 E8-12_combined_RNAseq_1,2
+/sra/static/SRX012/SRX012979/SRR030236.fastq.gz
+/sra/static/SRX012/SRX012979/SRR030237.fastq.gz
+No sra experiment id
+submission 2021
+strain:Y cn bw sp
+devstage:E12-16
+No fastq files
+GSM451803  
+GSM451803 E12-16_combined_RNAseq_1, 2
+/sra/static/SRX012/SRX012974/SRR030227.fastq.gz
+/sra/static/SRX012/SRX012974/SRR030226.fastq.gz
+No sra experiment id
+submission 2022
+strain:Y cn bw sp
+devstage:E16-20
+No fastq files
+GSM451807  
+GSM451807 E16-20_combined_RNAseq_1,2
+/sra/static/SRX012/SRX012978/SRR030235.fastq.gz
+/sra/static/SRX012/SRX012978/SRR030234.fastq.gz
+No sra experiment id
+submission 2023
+strain:Y cn bw sp
+devstage:E20-24
+No fastq files
+GSM451810  
+GSM451810 E20-24_combined_RNAseq_1, 2
+/sra/static/SRX012/SRX012981/SRR030241.fastq.gz
+/sra/static/SRX012/SRX012981/SRR030240.fastq.gz
+No sra experiment id
+submission 2024
+strain:Y cn bw sp
+devstage:L1
+No fastq files
+GSM451811  
+GSM451811 L1_combined_RNAseq_1,2
+/sra/static/SRX012/SRX012982/SRR030242.fastq.gz
+/sra/static/SRX012/SRX012982/SRR030243.fastq.gz
+No sra experiment id
+submission 2025
+strain:Y cn bw sp
+devstage:L2
+No fastq files
+GSM453867  
+GSM453867 L2_combined_RNAseq_1, 2
+/sra/static/SRX012/SRX012985/SRR030248.fastq.gz
+/sra/static/SRX012/SRX012985/SRR030249.fastq.gz
+No sra experiment id
+submission 2026
+strain:Y cn bw sp
+devstage:Adult Female
+No fastq files
+GSM451805  
+GSM451805 AdultFemale_combined_RNAseq_1, 2
+/sra/static/SRX012/SRX012976/SRR030230.fastq.gz
+/sra/static/SRX012/SRX012976/SRR030231.fastq.gz
+No sra experiment id
+submission 2027
+strain:Y cn bw sp
+devstage:Adult Male
+No fastq files
+GSM451804  
+GSM451804 AdultMale_combined_RNAseq_1, 2
+/sra/static/SRX012/SRX012975/SRR030229.fastq.gz
+/sra/static/SRX012/SRX012975/SRR030228.fastq.gz
+No sra experiment id
+submission 2029
+strain:Y cn bw sp
+devstage:L3
+No fastq files
+GSM451812  
+GSM451812 L3_combined_RNAseq_1,2
+/sra/static/SRX012/SRX012983/SRR030245.fastq.gz
+/sra/static/SRX012/SRX012983/SRR030244.fastq.gz
+No sra experiment id
+submission 2030
+strain:Y cn bw sp
+devstage:Pupae
+No fastq files
+GSM451813  
+GSM451813 Pupae_combined_RNAseq_1,2
+/sra/static/SRX012/SRX012984/SRR030246.fastq.gz
+/sra/static/SRX012/SRX012984/SRR030247.fastq.gz
+No sra experiment id
+submission 2301
+cellline:S2-DRSC
+No fastq files
+GSM461186  
+GSM461186 S2_DRSC_CG9983_RNAi-1
+/sra/static/SRX014/SRX014468/SRR031736.fastq.gz
+/sra/static/SRX014/SRX014468/SRR031737.fastq.gz
+No sra experiment id
+submission 2302
+cellline:S2-DRSC
+No fastq files
+GSM461184  
+GSM461184 S2_DRSC_CG9373_RNAi-1
+/sra/static/SRX014/SRX014466/SRR031732.fastq.gz
+/sra/static/SRX014/SRX014466/SRR031733.fastq.gz
+No sra experiment id
+submission 2305
+cellline:S2-DRSC
+No fastq files
+GSM461182  
+GSM461182 S2_DRSC_Untreated-6
+/sra/static/SRX014/SRX014464/SRR031728.fastq.gz
+/sra/static/SRX014/SRX014464/SRR031729.fastq.gz
+No sra experiment id
+submission 2374
+cellline:Kc-Rubin
+No fastq files
+GSM399110  
+GSM399110 dmel_Kc
+/sra/static/SRX005/SRX005026/SRR016855.fastq.gz
+No sra experiment id
+submission 2375
+cellline:S2-NP
+No fastq files
+GSM371638  
+GSM371638 small RNA from S2 cells (S2-NP)
+/sra/static/SRX003/SRX003967/SRR015372.fastq.gz
+No sra experiment id
+submission 2376
+strain:Canton S
+devstage:Adult male
+No fastq files
+GSM399105  
+GSM399105 dmel_imaginal-disc-brain
+/sra/static/SRX005/SRX005024/SRR016853.fastq.gz
+No sra experiment id
+submission 2530
+strain:D.pseudoobscura wild-type
+devstage:Adult male, eclosion + 7 days
+No fastq files
+No geo id.
+No sra experiment id
+submission 2543
+strain:Canton S
+devstage:0-1 day old pupae
+No fastq files
+GSM360260  
+GSM360260 small RNA from 0-1 day old pupae
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM360nnn/GSM360260/GSM360260_fastq.txt.gz
+No sra experiment id
+submission 2546
+strain:Canton S
+devstage:1st instar larvae
+No fastq files
+GSM360257  
+GSM360257 small RNA from 1st instar larvae (2)
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM360nnn/GSM360257/GSM360257_fastq.txt.gz
+No sra experiment id
+submission 2551
+cellline:S2-DRSC
+No fastq files
+No geo id.
+No sra experiment id
+submission 2552
+cellline:Kc167
+No fastq files
+No geo id.
+No sra experiment id
+submission 2553
+cellline:ML-DmBG3-c2
+No fastq files
+No geo id.
+No sra experiment id
+submission 2554
+strain:Canton SCanton S
+devstage:Adult male
+No fastq files
+GSM399107  
+GSM399107 dmel_male_body
+/sra/static/SRX005/SRX005025/SRR016854.fastq.gz
+No sra experiment id
+submission 2555
+strain:Canton SCanton S
+devstage:Adult Female
+No fastq files
+GSM399106  
+GSM399106 dmel_female_body
+/sra/static/SRX005/SRX005023/SRR018039.fastq.gz
+No sra experiment id
+submission 2556
+strain:Canton S
+devstage:0-2 day old pupae
+No fastq files
+GSM360262  
+GSM360262 small RNA from 0-2 day old pupae
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM360nnn/GSM360262/GSM360262_fastq.txt.gz
+No sra experiment id
+submission 2605
+cellline:OvarySomaticSheet
+No fastq files
+GSM385744  GSM385748  GSM385821  GSM385822  
+GSM385744 Drosophila OSS cell small RNA libraries, rep1
+/sra/static/SRX006/SRX006980/SRR019717.fastq.gz
+GSM385748 Drosophila OSS cell small RNA libraries, rep2
+/sra/static/SRX006/SRX006981/SRR019718.fastq.gz
+GSM385821 Drosophila OSS cell small RNA libraries, rep3
+/sra/static/SRX006/SRX006982/SRR019719.fastq.gz
+GSM385822 Drosophila OSS cell small RNA libraries, rep4
+/sra/static/SRX006/SRX006983/SRR019720.fastq.gz
+No sra experiment id
+submission 2606
+cellline:Kc167
+No fastq files
+GSM399100  GSM399101  
+GSM399100 dmel_Kc167_rep1
+/sra/static/SRX011/SRX011859/SRR028728.fastq.gz
+GSM399101 dmel_Kc167_rep2
+/sra/static/SRX011/SRX011860/SRR028729.fastq.gz
+No sra experiment id
+submission 2607
+strain:D.pseudoobscura wild-type
+devstage:Adult female, eclosion + 7 days
+No fastq files
+No geo id.
+No sra experiment id
+submission 2608
+cellline:S2R+
+No fastq files
+GSM343833  GSM343832  
+GSM343833 S2R+ (biological replicate 2)
+/sra/static/SRX002/SRX002619/SRR013548.fastq.gz
+GSM343832 S2R+ (biological replicate 1)
+/sra/static/SRX002/SRX002618/SRR013547.fastq.gz
+No sra experiment id
+submission 2676
+strain:Y cn bw sp
+devstage:Embryo 0-2h
+No fastq files
+No geo id.
+SRX015641  
+submission 2677
+strain:Y cn bw sp
+devstage:Embryo 2-4h
+No fastq files
+No geo id.
+SRX015642  
+submission 2678
+strain:Y cn bw sp
+devstage:Embryo 4-6h
+No fastq files
+No geo id.
+SRX015643  
+submission 2679
+strain:Y cn bw sp
+devstage:Embryo 6-8h
+No fastq files
+No geo id.
+SRX015644  
+submission 2680
+strain:Y cn bw sp
+devstage:Embryo 8-10h
+No fastq files
+No geo id.
+SRX015645  
+submission 2681
+strain:Y cn bw sp
+devstage:Embryo 10-12h
+No fastq files
+No geo id.
+SRX015646  
+submission 2682
+strain:Y cn bw sp
+devstage:Embryo 12-14h
+No fastq files
+No geo id.
+SRX015647  
+submission 2683
+strain:Y cn bw sp
+devstage:Embryo 14-16h
+No fastq files
+No geo id.
+SRX015648  
+submission 2684
+strain:Y cn bw sp
+devstage:Embryo 16-18h
+No fastq files
+No geo id.
+SRX015649  
+submission 2685
+strain:Y cn bw sp
+devstage:Embryo 18-20h
+No fastq files
+No geo id.
+SRX015650  
+submission 2686
+strain:Y cn bw sp
+devstage:Embryo 20-22h
+No fastq files
+No geo id.
+SRX015651  
+submission 2687
+strain:Y cn bw sp
+devstage:Embryo 22-24hSC
+No fastq files
+No geo id.
+SRX015652  
+submission 2719
+cellline:ML-DmBG3-c2
+No fastq files
+No geo id.
+No sra experiment id
+submission 2721
+cellline:CME-W1-Cl.8+
+No fastq files
+No geo id.
+No sra experiment id
+submission 2722
+cellline:S2-DRSC
+No fastq files
+No geo id.
+No sra experiment id
+submission 2725
+cellline:S2-Rubin
+No fastq files
+GSM361908  
+GSM361908 Drosophila melanogaster S2-GMR, second biological replicate
+/sra/static/SRX002/SRX002678/SRR013618.fastq.gz
+No sra experiment id
+submission 2741
+strain:Canton S
+devstage:Embryo 12-24h
+No fastq files
+GSM364902  
+GSM364902 small RNA from 12-24hr embryo
+/sra/static/SRX003/SRX003183/SRR014367.fastq.gz
+No sra experiment id
+submission 2742
+strain:Y cn bw sp
+devstage:Embryo 14-16h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2743
+strain:Y cn bw sp
+devstage:Embryo 2-4h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2748
+strain:r2d2 1
+devstage:Adult Female
+No fastq files
+No geo id.
+No sra experiment id
+submission 2751
+strain:Canton S
+devstage:Adult male
+No fastq files
+No geo id.
+No sra experiment id
+submission 2790
+strain:Y cn bw sp
+devstage:Adult male, eclosion + 1 day
+No fastq files
+No geo id.
+No sra experiment id
+submission 2791
+strain:Y cn bw sp
+devstage:Adult male, eclosion + 5 days
+No fastq files
+No geo id.
+No sra experiment id
+submission 2792
+strain:Y cn bw sp
+devstage:Adult male, eclosion + 30 days
+No fastq files
+No geo id.
+No sra experiment id
+submission 2793
+strain:Y cn bw sp
+devstage:Adult female, eclosion + 30 days
+No fastq files
+No geo id.
+No sra experiment id
+submission 2794
+strain:Y cn bw sp
+devstage:Adult female, eclosion + 1 day
+No fastq files
+No geo id.
+No sra experiment id
+submission 2795
+strain:Y cn bw sp
+devstage:Adult female, eclosion + 5 days
+No fastq files
+No geo id.
+No sra experiment id
+submission 2796
+strain:Y cn bw sp
+devstage:Embryo 0-2h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2797
+strain:Y cn bw sp
+devstage:Embryo 10-12h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2798
+strain:Y cn bw sp
+devstage:Embryo 12-14h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2799
+strain:Y cn bw sp
+devstage:Embryo 14-16h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2800
+strain:Y cn bw sp
+devstage:Embryo 16-18h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2801
+strain:Y cn bw sp
+devstage:Embryo 18-20h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2802
+strain:Y cn bw sp
+devstage:Embryo 20-22h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2803
+strain:Y cn bw sp
+devstage:Embryo 22-24hSC
+No fastq files
+No geo id.
+No sra experiment id
+submission 2804
+strain:Y cn bw sp
+devstage:Embryo 2-4h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2805
+strain:Y cn bw sp
+devstage:Embryo 4-6h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2806
+strain:Y cn bw sp
+devstage:Embryo 6-8h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2807
+strain:Y cn bw sp
+devstage:Embryo 8-10h
+No fastq files
+No geo id.
+No sra experiment id
+submission 2808
+strain:Y cn bw sp
+devstage:L1 stage larvae
+No fastq files
+No geo id.
+No sra experiment id
+submission 2809
+strain:Y cn bw sp
+devstage:L2 stage larvae
+No fastq files
+No geo id.
+No sra experiment id
+submission 2810
+strain:Y cn bw sp
+devstage:L3 stage larvae, 12 hr post-molt
+No fastq files
+No geo id.
+No sra experiment id
+submission 2811
+strain:Y cn bw sp
+devstage:L3 stage larvae, dark blue gut PS(1-2) stage
+No fastq files
+No geo id.
+No sra experiment id
+submission 2812
+strain:Y cn bw sp
+devstage:L3 stage larvae, light blue gut PS(3-6) stage
+No fastq files
+No geo id.
+No sra experiment id
+submission 2813
+strain:Y cn bw sp
+devstage:L3 stage larvae, clear gut PS(7-9) stage
+No fastq files
+No geo id.
+No sra experiment id
+submission 2814
+strain:Y cn bw sp
+devstage:White prepupae (WPP)
+No fastq files
+No geo id.
+No sra experiment id
+submission 2815
+strain:Y cn bw sp
+devstage:WPP + 12 hr
+No fastq files
+No geo id.
+No sra experiment id
+submission 2816
+strain:Y cn bw sp
+devstage:WPP + 24 hr
+No fastq files
+No geo id.
+No sra experiment id
+submission 2817
+strain:Y cn bw sp
+devstage:Pupae, WPP + 2 days
+No fastq files
+No geo id.
+No sra experiment id
+submission 2818
+strain:Y cn bw sp
+devstage:Pupae, WPP + 3 days
+No fastq files
+No geo id.
+No sra experiment id
+submission 2819
+strain:Y cn bw sp
+devstage:Pupae, WPP + 4 days
+No fastq files
+No geo id.
+No sra experiment id
+submission 2820
+cellline:CME-L1
+No fastq files
+No geo id.
+No sra experiment id
+submission 2834
+strain:Ago2 414
+devstage:Adult Female
+No fastq files
+No geo id.
+No sra experiment id
+submission 910
+cellline:S2-DRSC
+No fastq files
+No geo id.
+No sra experiment id
+submission 983
+cellline:S2-DRSC
+No fastq files
+No geo id.
+No sra experiment id
+submission 2371
+strain:Canton S
+devstage:Adult male
+No fastq files
+GSM399107  
+GSM399107 dmel_male_body
+/sra/static/SRX005/SRX005025/SRR016854.fastq.gz
+No sra experiment id
+submission 2372
+strain:Canton S
+devstage:Adult Female
+No fastq files
+GSM399106  
+GSM399106 dmel_female_body
+/sra/static/SRX005/SRX005023/SRR018039.fastq.gz
+No sra experiment id
+submission 2373
+strain:Canton S
+devstage:0-2 day old pupae
+No fastq files
+GSM360262  
+GSM360262 small RNA from 0-2 day old pupae
+PROSSIBLE FASTQ file, please check!!!
+ftp://ftp.ncbi.nih.gov/pub/geo/DATA/supplementary/samples/GSM360nnn/GSM360262/GSM360262_fastq.txt.gz
+No sra experiment id
+submission 2750
+strain:Ago2 414
+devstage:Adult male
+No fastq files
+No geo id.
+No sra experiment id
+submission 634
+strain:N2
+devstage:Mixed stage of embryos 20dC
+No fastq files
+GSM336052  
+GSM336052 embryo hermaphrodites
+/sra/static/SRX003/SRX003786/SRR014966.fastq.gz
+No sra experiment id
+submission 635
+strain:N2
+devstage:mid-L1 20dC 4hrs post-L1
+No fastq files
+GSM336055  
+GSM336055 mid-L1 hermaphrodites
+/sra/static/SRX003/SRX003787/SRR014967.fastq.gz
+No sra experiment id
+submission 636
+strain:N2
+devstage:mid-L2 20dC 14hrs post-L1
+No fastq files
+GSM336056  
+GSM336056 mid-L2 hermaphrodites
+/sra/static/SRX003/SRX003788/SRR014968.fastq.gz
+No sra experiment id
+submission 637
+strain:N2
+devstage:mid-L3 20dC 25hrs post-L1
+No fastq files
+GSM336058  
+GSM336058 mid-L3 hermaphrodites
+/sra/static/SRX003/SRX003789/SRR014969.fastq.gz
+No sra experiment id
+submission 638
+strain:N2
+devstage:mid-L4 20dC 36hrs post-L1
+No fastq files
+GSM336059  
+GSM336059 mid-L4 hermaphrodites
+/sra/static/SRX003/SRX003790/SRR014970.fastq.gz
+No sra experiment id
+submission 639
+strain:N2
+devstage:yAdult 20dC 48hrs post-L1
+No fastq files
+GSM336060  
+GSM336060 young adult hermaphrodites
+/sra/static/SRX003/SRX003791/SRR014971.fastq.gz
+No sra experiment id
+submission 640
+strain:dpy28(y1);him-8(e1489)
+devstage:yAdult Males 23dC
+No fastq files
+GSM336086  
+GSM336086 young adult males
+/sra/static/SRX003/SRX003792/SRR014972.fastq.gz
+No sra experiment id
+submission 896
+strain:N2
+devstage:Mixed embryos 20dC
+No fastq files
+No geo id.
+No sra experiment id
+submission 2321
+strain:N2
+devstage:early embryo
+No fastq files
+No geo id.
+SRX004864  SRX004863  
+submission 2324
+strain:N2
+devstage:late embryo 20dC 4.5 hrs post-early embryo
+No fastq files
+No geo id.
+SRX004866  SRX004865  
+submission 2325
+strain:dpy28(y1);him-8(e1489)
+devstage:Male larva mid-L4 25dC 30 hrs post-L1
+No fastq files
+No geo id.
+SRX004868  
+submission 2326
+strain:N2
+devstage:larva mid-L1 25dC 4.0 hrs post-L1
+No fastq files
+No geo id.
+SRX004867  
+submission 2343
+strain:MT10430
+devstage:Lin-35(n745) larva mid-L1 25dC 4.0 hrs post-L1
+No fastq files
+No geo id.
+SRX004869  
+submission 2345
+strain:spe-9(hc88)
+devstage:Adult spe-9(hc88) 23dC 8 days post-L4 molt
+No fastq files
+No geo id.
+SRX008136  
+submission 2346
+strain:him-8(e1489)
+devstage:embryo him-8(e1480) 20dC
+No fastq files
+No geo id.
+SRX011569  
+submission 2347
+strain:daf-2(e1370)
+devstage:dauer daf-2(el370) 25dC 91hrs post-L1
+No fastq files
+No geo id.
+SRX008138  
+submission 2349
+strain:daf-2(e1370)
+devstage:dauer exit daf-2(el370) 25dC 91hrs 15dC 12hrs post-L1
+No fastq files
+No geo id.
+SRX008140  
+submission 2351
+strain:N2
+devstage:larva mid-L2 25dC 17.75 hrs post-L1
+No fastq files
+No geo id.
+SRX001872  
+submission 2352
+strain:N2
+devstage:larva mid-L3 25dC 26.75 hrs post-L1
+No fastq files
+No geo id.
+SRX001875  
+submission 2353
+strain:N2
+devstage:larva mid-L4 25dC 34.25 hrs post-L1
+No fastq files
+No geo id.
+SRX001874  
+submission 2354
+strain:N2
+devstage:Young Adult (pre-gravid) 25dC 46 hrs post-L1
+No fastq files
+No geo id.
+SRX001873  
+submission 2387
+strain:daf-2(e1370)
+devstage:dauer entry daf-2(el370) 25dC 48 hrs post-L1
+No fastq files
+No geo id.
+SRX008139  
+submission 2455
+strain:N2
+devstage:L1 20dC 8hr post-L1
+No fastq files
+No geo id.
+No sra experiment id
+submission 2456
+strain:N2
+devstage:L2 20dC 20hr post-L1
+No fastq files
+No geo id.
+No sra experiment id
+submission 2457
+strain:N2
+devstage:L3 20dC 30hr post-L1
+No fastq files
+No geo id.
+No sra experiment id
+submission 2458
+strain:N2
+devstage:L4 20dC 45hr post-L1
+No fastq files
+No geo id.
+No sra experiment id
+submission 2459
+strain:him-8(e1489)
+devstage:Adult males 20dC 70hr post-L1
+No fastq files
+No geo id.
+No sra experiment id
+submission 2460
+strain:N2
+devstage:Adult 20dC 70hr post-L1
+No fastq files
+No geo id.
+No sra experiment id
+submission 2461
+strain:daf-2(e1370)
+devstage:Dauer Larvae
+No fastq files
+No geo id.
+No sra experiment id
+submission 2462
+strain:daf-7(e1372)
+devstage:Dauer Larvae
+No fastq files
+No geo id.
+No sra experiment id
+submission 2463
+strain:daf-9(m540)
+devstage:Dauer Larvae
+No fastq files
+No geo id.
+No sra experiment id
+submission 2464
+strain:daf-11(m47)
+devstage:Dauer Larvae
+No fastq files
+No geo id.
+No sra experiment id
+submission 2465
+strain:N2
+devstage:Mixed embryos 20dC
+No fastq files
+No geo id.
+No sra experiment id
+submission 2482
