@@ -1,0 +1,457 @@
+modencode_2384 GSE17290 
+GSM432739 orr_weaver_follicle_1 extraction1_array1 
+GSM432740 orr_weaver_follicle_2 extraction2_array1 
+modencode_2385 GSE17291 
+GSM432742 orr_weaver_follicle_1 extraction1_array1 
+modencode_2544 GSE17288 
+GSM432735 orr_weaver_salivary_1 extraction1_array1 
+modencode_2545 GSE17289 
+GSM432737 orr_weaver_salivary_1 extraction1_array1 
+GSM432738 orr_weaver_salivary_2 extraction2_array1 
+modencode_2753 GSE20887 GSM522353 GSM522354 GSM522355 
+GSM522353 ORC2_S2_DRSC_1 extraction1_seq1 aliquote 1 
+GSM522354 ORC2_S2_DRSC_2 extraction2_seq1 aliquote 1 
+GSM522355 ORC2_S2_DSRC_Input_1 extraction3_seq1 aliquote 1 
+modencode_2754 GSE20888 GSM522356 GSM522357 GSM522358 
+GSM522356 ORC2_ML_DmBG3_c2_1 extraction1_seq1 aliquote 1 
+GSM522357 ORC2_ML_DmBG3_c2_2 extraction2_seq1 aliquote 1 
+GSM522358 ORC2_ML_DmBG3_c2_Input_1 extraction3_seq1 aliquote 1 
+modencode_2755 GSE20889 GSM522359 GSM522361 GSM522360 
+GSM522359 ORC2_KC167_1 extraction1_seq1 aliquote 1 
+GSM522360 ORC2_KC167_2 extraction2_seq1 aliquote 1 
+GSM522361 ORC2_KC167_Input_1 extraction3_seq1 aliquote 1 
+modencode_2783 GSE20890 GSM522363 GSM522364 GSM522362 
+GSM522362 MCM_KC167_1 extraction1_seq1 aliquote 1 
+GSM522363 MCM_KC167_2 extraction2_seq1 aliquote 1 
+GSM522364 MCM_KC167_Input_1 extraction3_seq1 aliquote 1 
+modencode_201: GSE20759 
+GSM520775 Cell Line S2-DRSC;Antibody H4AcTetra extraction1_array1 
+GSM520776 Cell Line S2-DRSC;Antibody H4AcTetra extraction2_array1 
+GSM520777 Cell Line S2-DRSC;Antibody H4AcTetra extraction3_array1 
+GSM520778 Cell Line S2-DRSC;Antibody H4AcTetra extraction4_array1 
+GSM520779 Cell Line S2-DRSC;Antibody H4AcTetra extraction5_array1 
+modencode_274: GSE20760 
+GSM520780 Cell Line S2-DRSC;Antibody BEAF-HB extraction1_array1 
+GSM520781 Cell Line S2-DRSC;Antibody BEAF-HB extraction2_array1 
+GSM520782 Cell Line S2-DRSC;Antibody BEAF-HB extraction3_array1 
+GSM520783 Cell Line S2-DRSC;Antibody BEAF-HB extraction4_array1 
+modencode_275: GSE20761 
+GSM520784 Cell Line ML-DmBG3-c2;Antibody Chro(Chriz)BR extraction1_array1 
+GSM520785 Cell Line ML-DmBG3-c2;Antibody Chro(Chriz)BR extraction2_array1 
+GSM520786 Cell Line ML-DmBG3-c2;Antibody Chro(Chriz)BR extraction3_array1 
+GSM520787 Cell Line ML-DmBG3-c2;Antibody Chro(Chriz)BR extraction4_array1 
+modencode_276: GSE20762 
+GSM520788 Cell Line CME-W1-Cl.8+;Antibody Chro(Chriz)BR extraction1_array1 
+GSM520789 Cell Line CME-W1-Cl.8+;Antibody Chro(Chriz)BR extraction2_array1 
+GSM520790 Cell Line CME-W1-Cl.8+;Antibody Chro(Chriz)BR extraction3_array1 
+GSM520791 Cell Line CME-W1-Cl.8+;Antibody Chro(Chriz)BR extraction4_array1 
+modencode_277: GSE20763 
+GSM520792 Cell Line Kc167;Antibody Chro(Chriz)BR extraction1_array1 
+GSM520793 Cell Line Kc167;Antibody Chro(Chriz)BR extraction2_array1 
+GSM520794 Cell Line Kc167;Antibody Chro(Chriz)BR extraction3_array1 
+GSM520795 Cell Line Kc167;Antibody Chro(Chriz)BR extraction4_array1 
+modencode_278: GSE20764 
+GSM520796 Cell Line S2-DRSC;Antibody Chro(Chriz)BR extraction1_array1 
+GSM520797 Cell Line S2-DRSC;Antibody Chro(Chriz)BR extraction2_array1 
+GSM520798 Cell Line S2-DRSC;Antibody Chro(Chriz)BR extraction3_array1 
+GSM520799 Cell Line S2-DRSC;Antibody Chro(Chriz)BR extraction4_array1 
+modencode_279: GSE20765 
+GSM520800 Cell Line S2-DRSC;Antibody Chro(Chriz)WR extraction1_array1 
+GSM520801 Cell Line S2-DRSC;Antibody Chro(Chriz)WR extraction2_array1 
+GSM520802 Cell Line S2-DRSC;Antibody Chro(Chriz)WR extraction3_array1 
+GSM520803 Cell Line S2-DRSC;Antibody Chro(Chriz)WR extraction4_array1 
+modencode_280: GSE20766 
+GSM520804 Cell Line S2-DRSC;Antibody CP190-VC extraction1_array1 
+GSM520805 Cell Line S2-DRSC;Antibody CP190-VC extraction2_array1 
+GSM520806 Cell Line S2-DRSC;Antibody CP190-VC extraction3_array1 
+GSM520807 Cell Line S2-DRSC;Antibody CP190-VC extraction4_array1 
+modencode_282: GSE20767 
+GSM520808 Cell Line ML-DmBG3-c2;Antibody CTCF-VC extraction1_array1 
+GSM520809 Cell Line ML-DmBG3-c2;Antibody CTCF-VC extraction2_array1 
+GSM520810 Cell Line ML-DmBG3-c2;Antibody CTCF-VC extraction3_array1 
+GSM520811 Cell Line ML-DmBG3-c2;Antibody CTCF-VC extraction4_array1 
+modencode_283: GSE20768 
+GSM520812 Cell Line S2-DRSC;Antibody CTCF-VC extraction1_array1 
+GSM520813 Cell Line S2-DRSC;Antibody CTCF-VC extraction2_array1 
+GSM520814 Cell Line S2-DRSC;Antibody CTCF-VC extraction3_array1 
+GSM520815 Cell Line S2-DRSC;Antibody CTCF-VC extraction4_array1 
+modencode_284: GSE20769 
+GSM520816 Cell Line S2-DRSC;Antibody Ez extraction1_array1 
+GSM520817 Cell Line S2-DRSC;Antibody Ez extraction2_array1 
+GSM520818 Cell Line S2-DRSC;Antibody Ez extraction3_array1 
+GSM520819 Cell Line S2-DRSC;Antibody Ez extraction4_array1 
+GSM520820 Cell Line S2-DRSC;Antibody Ez extraction5_array1 
+GSM520821 Cell Line S2-DRSC;Antibody Ez extraction6_array1 
+modencode_285: GSE20770 
+GSM520822 Cell Line S2-DRSC;Antibody GAF extraction1_array1 
+GSM520823 Cell Line S2-DRSC;Antibody GAF extraction2_array1 
+GSM520824 Cell Line S2-DRSC;Antibody GAF extraction3_array1 
+GSM520825 Cell Line S2-DRSC;Antibody GAF extraction4_array1 
+modencode_288: GSE20771 
+GSM520826 Cell Line ML-DmBG3-c2;Antibody H2B-ubiq (NRO3) extraction1_array1 
+GSM520827 Cell Line ML-DmBG3-c2;Antibody H2B-ubiq (NRO3) extraction2_array1 
+GSM520828 Cell Line ML-DmBG3-c2;Antibody H2B-ubiq (NRO3) extraction3_array1 
+GSM520829 Cell Line ML-DmBG3-c2;Antibody H2B-ubiq (NRO3) extraction4_array1 
+modencode_289: GSE20772 
+GSM520830 Cell Line Kc167;Antibody H2B-ubiq (NRO3) extraction1_array1 
+GSM520831 Cell Line Kc167;Antibody H2B-ubiq (NRO3) extraction2_array1 
+GSM520832 Cell Line Kc167;Antibody H2B-ubiq (NRO3) extraction3_array1 
+GSM520833 Cell Line Kc167;Antibody H2B-ubiq (NRO3) extraction4_array1 
+modencode_290: GSE20773 
+GSM520834 Cell Line S2-DRSC;Antibody H2B-ubiq (NRO3) extraction1_array1 
+GSM520835 Cell Line S2-DRSC;Antibody H2B-ubiq (NRO3) extraction2_array1 
+GSM520836 Cell Line S2-DRSC;Antibody H2B-ubiq (NRO3) extraction3_array1 
+GSM520837 Cell Line S2-DRSC;Antibody H2B-ubiq (NRO3) extraction4_array1 
+modencode_291: GSE20774 
+GSM520838 Cell Line ML-DmBG3-c2;Antibody H3K18ac extraction1_array1 
+GSM520839 Cell Line ML-DmBG3-c2;Antibody H3K18ac extraction2_array1 
+GSM520840 Cell Line ML-DmBG3-c2;Antibody H3K18ac extraction3_array1 
+GSM520841 Cell Line ML-DmBG3-c2;Antibody H3K18ac extraction4_array1 
+modencode_292: GSE20775 
+GSM520842 Cell Line S2-DRSC;Antibody H3K18ac extraction1_array1 
+GSM520843 Cell Line S2-DRSC;Antibody H3K18ac extraction2_array1 
+GSM520844 Cell Line S2-DRSC;Antibody H3K18ac extraction3_array1 
+GSM520845 Cell Line S2-DRSC;Antibody H3K18ac extraction4_array1 
+modencode_293: GSE20776 
+GSM520846 Cell Line ML-DmBG3-c2;Antibody H3K23ac extraction1_array1 
+GSM520847 Cell Line ML-DmBG3-c2;Antibody H3K23ac extraction2_array1 
+GSM520848 Cell Line ML-DmBG3-c2;Antibody H3K23ac extraction3_array1 
+GSM520849 Cell Line ML-DmBG3-c2;Antibody H3K23ac extraction4_array1 
+modencode_294: GSE20777 
+GSM520850 Cell Line S2-DRSC;Antibody H3K23ac extraction1_array1 
+GSM520851 Cell Line S2-DRSC;Antibody H3K23ac extraction2_array1 
+GSM520852 Cell Line S2-DRSC;Antibody H3K23ac extraction3_array1 
+GSM520853 Cell Line S2-DRSC;Antibody H3K23ac extraction4_array1 
+GSM520854 Cell Line S2-DRSC;Antibody H3K23ac extraction5_array1 
+modencode_295: GSE20778 
+GSM520855 Cell Line ML-DmBG3-c2;Antibody H3K27Ac extraction1_array1 
+GSM520856 Cell Line ML-DmBG3-c2;Antibody H3K27Ac extraction2_array1 
+GSM520857 Cell Line ML-DmBG3-c2;Antibody H3K27Ac extraction3_array1 
+GSM520858 Cell Line ML-DmBG3-c2;Antibody H3K27Ac extraction4_array1 
+modencode_296: GSE20779 
+GSM520859 Cell Line S2-DRSC;Antibody H3K27Ac extraction1_array1 
+GSM520860 Cell Line S2-DRSC;Antibody H3K27Ac extraction2_array1 
+GSM520861 Cell Line S2-DRSC;Antibody H3K27Ac extraction3_array1 
+GSM520862 Cell Line S2-DRSC;Antibody H3K27Ac extraction4_array1 
+modencode_297: GSE20780 
+GSM520863 Cell Line ML-DmBG3-c2;Antibody H3K27Me3 (Abcam2) extraction1_array1 
+GSM520864 Cell Line ML-DmBG3-c2;Antibody H3K27Me3 (Abcam2) extraction2_array1 
+GSM520865 Cell Line ML-DmBG3-c2;Antibody H3K27Me3 (Abcam2) extraction3_array1 
+GSM520866 Cell Line ML-DmBG3-c2;Antibody H3K27Me3 (Abcam2) extraction4_array1 
+modencode_298: GSE20781 
+GSM520867 Cell Line S2-DRSC;Antibody H3K27Me3 (Abcam2) extraction1_array1 
+GSM520868 Cell Line S2-DRSC;Antibody H3K27Me3 (Abcam2) extraction2_array1 
+GSM520869 Cell Line S2-DRSC;Antibody H3K27Me3 (Abcam2) extraction3_array1 
+GSM520870 Cell Line S2-DRSC;Antibody H3K27Me3 (Abcam2) extraction4_array1 
+modencode_299: GSE20782 
+GSM520871 Cell Line ML-DmBG3-c2;Antibody H3K36me1 extraction1_array1 
+GSM520872 Cell Line ML-DmBG3-c2;Antibody H3K36me1 extraction2_array1 
+GSM520873 Cell Line ML-DmBG3-c2;Antibody H3K36me1 extraction3_array1 
+GSM520874 Cell Line ML-DmBG3-c2;Antibody H3K36me1 extraction4_array1 
+modencode_301: GSE20783 
+GSM520875 Cell Line ML-DmBG3-c2;Antibody H3K36me3 extraction1_array1 
+GSM520876 Cell Line ML-DmBG3-c2;Antibody H3K36me3 extraction2_array1 
+GSM520877 Cell Line ML-DmBG3-c2;Antibody H3K36me3 extraction3_array1 
+GSM520878 Cell Line ML-DmBG3-c2;Antibody H3K36me3 extraction4_array1 
+modencode_302: GSE20784 
+GSM520879 Cell Line Kc167;Antibody H3K36me3 extraction1_array1 
+GSM520880 Cell Line Kc167;Antibody H3K36me3 extraction2_array1 
+GSM520881 Cell Line Kc167;Antibody H3K36me3 extraction3_array1 
+GSM520882 Cell Line Kc167;Antibody H3K36me3 extraction4_array1 
+modencode_303: GSE20785 
+GSM520883 Cell Line S2-DRSC;Antibody H3K36me3 extraction1_array1 
+GSM520884 Cell Line S2-DRSC;Antibody H3K36me3 extraction2_array1 
+GSM520885 Cell Line S2-DRSC;Antibody H3K36me3 extraction3_array1 
+GSM520886 Cell Line S2-DRSC;Antibody H3K36me3 extraction4_array1 
+modencode_304: GSE20786 
+GSM520887 Cell Line S2-DRSC;Antibody H3K4me1 extraction1_array1 
+GSM520888 Cell Line S2-DRSC;Antibody H3K4me1 extraction2_array1 
+GSM520889 Cell Line S2-DRSC;Antibody H3K4me1 extraction3_array1 
+GSM520890 Cell Line S2-DRSC;Antibody H3K4me1 extraction4_array1 
+GSM520891 Cell Line S2-DRSC;Antibody H3K4me1 extraction5_array1 
+GSM520892 Cell Line S2-DRSC;Antibody H3K4me1 extraction6_array1 
+modencode_305: GSE20787 
+GSM520893 Antibody H3K4Me3(LP) extraction1_array1 
+GSM520894 Antibody H3K4Me3(LP) extraction2_array1 
+GSM520895 Antibody H3K4Me3(LP) extraction3_array1 
+GSM520896 Antibody H3K4Me3(LP) extraction4_array1 
+GSM520897 Antibody H3K4Me3(LP) extraction5_array1 
+GSM520898 Antibody H3K4Me3(LP) extraction6_array1 
+modencode_306: GSE20788 
+GSM520899 Cell Line ML-DmBG3-c2;Antibody H3K79Me2 extraction1_array1 
+GSM520900 Cell Line ML-DmBG3-c2;Antibody H3K79Me2 extraction2_array1 
+GSM520901 Cell Line ML-DmBG3-c2;Antibody H3K79Me2 extraction3_array1 
+GSM520902 Cell Line ML-DmBG3-c2;Antibody H3K79Me2 extraction4_array1 
+modencode_307: GSE20789 
+GSM520903 Cell Line S2-DRSC;Antibody H3K79Me2 extraction1_array1 
+GSM520904 Cell Line S2-DRSC;Antibody H3K79Me2 extraction2_array1 
+GSM520905 Cell Line S2-DRSC;Antibody H3K79Me2 extraction3_array1 
+GSM520906 Cell Line S2-DRSC;Antibody H3K79Me2 extraction4_array1 
+modencode_309: GSE20790 
+GSM520907 Cell Line S2-DRSC;Antibody H3K9ac extraction1_array1 
+GSM520908 Cell Line S2-DRSC;Antibody H3K9ac extraction2_array1 
+GSM520909 Cell Line S2-DRSC;Antibody H3K9ac extraction3_array1 
+GSM520910 Cell Line S2-DRSC;Antibody H3K9ac extraction4_array1 
+modencode_310: GSE20791 
+GSM520911 Cell Line ML-DmBG3-c2;Antibody H3K9me2-Ab2 (new lot) extraction1_array1 
+GSM520912 Cell Line ML-DmBG3-c2;Antibody H3K9me2-Ab2 (new lot) extraction2_array1 
+GSM520913 Cell Line ML-DmBG3-c2;Antibody H3K9me2-Ab2 (new lot) extraction3_array1 
+GSM520914 Cell Line ML-DmBG3-c2;Antibody H3K9me2-Ab2 (new lot) extraction4_array1 
+modencode_311: GSE20792 
+GSM520915 Cell Line S2-DRSC;Antibody H3K9me2 antibody2 extraction1_array1 
+GSM520916 Cell Line S2-DRSC;Antibody H3K9me2 antibody2 extraction2_array1 
+GSM520917 Cell Line S2-DRSC;Antibody H3K9me2 antibody2 extraction3_array1 
+GSM520918 Cell Line S2-DRSC;Antibody H3K9me2 antibody2 extraction4_array1 
+modencode_312: GSE20793 
+GSM520919 Cell Line ML-DmBG3-c2;Antibody H3K9me3 (new lot) extraction1_array1 
+GSM520920 Cell Line ML-DmBG3-c2;Antibody H3K9me3 (new lot) extraction2_array1 
+GSM520921 Cell Line ML-DmBG3-c2;Antibody H3K9me3 (new lot) extraction3_array1 
+GSM520922 Cell Line ML-DmBG3-c2;Antibody H3K9me3 (new lot) extraction4_array1 
+modencode_313: GSE20794 
+GSM520923 Cell Line S2-DRSC;Antibody H3K9me3 extraction1_array1 
+GSM520924 Cell Line S2-DRSC;Antibody H3K9me3 extraction2_array1 
+GSM520925 Cell Line S2-DRSC;Antibody H3K9me3 extraction3_array1 
+GSM520926 Cell Line S2-DRSC;Antibody H3K9me3 extraction4_array1 
+modencode_316: GSE20795 
+GSM520927 Cell Line ML-DmBG3-c2;Antibody H4K16ac(L) extraction1_array1 
+GSM520928 Cell Line ML-DmBG3-c2;Antibody H4K16ac(L) extraction2_array1 
+GSM520929 Cell Line ML-DmBG3-c2;Antibody H4K16ac(L) extraction3_array1 
+GSM520930 Cell Line ML-DmBG3-c2;Antibody H4K16ac(L) extraction4_array1 
+modencode_317: GSE20796 
+GSM520931 Cell Line CME-W1-Cl.8+;Antibody H4K16ac(L) extraction1_array1 
+GSM520932 Cell Line CME-W1-Cl.8+;Antibody H4K16ac(L) extraction2_array1 
+GSM520933 Cell Line CME-W1-Cl.8+;Antibody H4K16ac(L) extraction3_array1 
+GSM520934 Cell Line CME-W1-Cl.8+;Antibody H4K16ac(L) extraction4_array1 
+modencode_318: GSE20797 
+GSM520935 Cell Line Kc167;Antibody H4K16ac(L) extraction1_array1 
+GSM520936 Cell Line Kc167;Antibody H4K16ac(L) extraction2_array1 
+GSM520937 Cell Line Kc167;Antibody H4K16ac(L) extraction3_array1 
+GSM520938 Cell Line Kc167;Antibody H4K16ac(L) extraction4_array1 
+modencode_319: GSE20798 
+GSM520939 Cell Line S2-DRSC;Antibody H4K16ac(L) extraction1_array1 
+GSM520940 Cell Line S2-DRSC;Antibody H4K16ac(L) extraction2_array1 
+GSM520941 Cell Line S2-DRSC;Antibody H4K16ac(L) extraction3_array1 
+GSM520942 Cell Line S2-DRSC;Antibody H4K16ac(L) extraction4_array1 
+modencode_320: GSE20799 
+GSM520943 Cell Line S2-DRSC;Antibody H4K16ac(M) extraction1_array1 
+GSM520944 Cell Line S2-DRSC;Antibody H4K16ac(M) extraction2_array1 
+GSM520945 Cell Line S2-DRSC;Antibody H4K16ac(M) extraction3_array1 
+GSM520946 Cell Line S2-DRSC;Antibody H4K16ac(M) extraction4_array1 
+modencode_321: GSE20800 
+GSM520947 Cell Line S2-DRSC;Antibody H4K5ac extraction1_array1 
+GSM520948 Cell Line S2-DRSC;Antibody H4K5ac extraction2_array1 
+GSM520949 Cell Line S2-DRSC;Antibody H4K5ac extraction3_array1 
+GSM520950 Cell Line S2-DRSC;Antibody H4K5ac extraction4_array1 
+modencode_322: GSE20801 
+GSM520951 Cell Line S2-DRSC;Antibody H4K8ac extraction1_array1 
+GSM520952 Cell Line S2-DRSC;Antibody H4K8ac extraction2_array1 
+GSM520953 Cell Line S2-DRSC;Antibody H4K8ac extraction3_array1 
+GSM520954 Cell Line S2-DRSC;Antibody H4K8ac extraction4_array1 
+modencode_324: GSE20802 
+GSM520955 Cell Line ML-DmBG3-c2;Antibody mod2.2-VC extraction1_array1 
+GSM520956 Cell Line ML-DmBG3-c2;Antibody mod2.2-VC extraction2_array1 
+GSM520957 Cell Line ML-DmBG3-c2;Antibody mod2.2-VC extraction3_array1 
+GSM520958 Cell Line ML-DmBG3-c2;Antibody mod2.2-VC extraction4_array1 
+modencode_325: GSE20803 
+GSM520959 Cell Line ML-DmBG3-c2;Antibody Pc extraction1_array1 
+GSM520960 Cell Line ML-DmBG3-c2;Antibody Pc extraction2_array1 
+GSM520961 Cell Line ML-DmBG3-c2;Antibody Pc extraction3_array1 
+GSM520962 Cell Line ML-DmBG3-c2;Antibody Pc extraction4_array1 
+modencode_326: GSE20804 
+GSM520963 Cell Line S2-DRSC;Antibody Pc extraction1_array1 
+GSM520964 Cell Line S2-DRSC;Antibody Pc extraction2_array1 
+GSM520965 Cell Line S2-DRSC;Antibody Pc extraction3_array1 
+GSM520966 Cell Line S2-DRSC;Antibody Pc extraction4_array1 
+modencode_327: GSE20805 
+GSM520967 Cell Line CME-W1-Cl.8+;Antibody RNA pol II (ALG) extraction1_array1 
+GSM520968 Cell Line CME-W1-Cl.8+;Antibody RNA pol II (ALG) extraction2_array1 
+GSM520969 Cell Line CME-W1-Cl.8+;Antibody RNA pol II (ALG) extraction3_array1 
+GSM520970 Cell Line CME-W1-Cl.8+;Antibody RNA pol II (ALG) extraction4_array1 
+modencode_328: GSE20806 
+GSM520971 Cell Line Kc167;Antibody RNA pol II (ALG) extraction1_array1 
+GSM520972 Cell Line Kc167;Antibody RNA pol II (ALG) extraction2_array1 
+GSM520973 Cell Line Kc167;Antibody RNA pol II (ALG) extraction3_array1 
+GSM520974 Cell Line Kc167;Antibody RNA pol II (ALG) extraction4_array1 
+modencode_329: GSE20807 
+GSM520975 Cell Line S2-DRSC;Antibody RNA pol II (ALG) extraction1_array1 
+GSM520976 Cell Line S2-DRSC;Antibody RNA pol II (ALG) extraction2_array1 
+GSM520977 Cell Line S2-DRSC;Antibody RNA pol II (ALG) extraction3_array1 
+GSM520978 Cell Line S2-DRSC;Antibody RNA pol II (ALG) extraction4_array1 
+modencode_330: GSE20808 
+GSM520979 Cell Line S2-DRSC;Antibody SU(HW)-HB extraction1_array1 
+GSM520980 Cell Line S2-DRSC;Antibody SU(HW)-HB extraction2_array1 
+GSM520981 Cell Line S2-DRSC;Antibody SU(HW)-HB extraction3_array1 
+GSM520982 Cell Line S2-DRSC;Antibody SU(HW)-HB extraction4_array1 
+modencode_331: GSE20809 
+GSM520983 Cell Line S2-DRSC;Antibody Su(Hw)-VC extraction1_array1 
+GSM520984 Cell Line S2-DRSC;Antibody Su(Hw)-VC extraction2_array1 
+GSM520985 Cell Line S2-DRSC;Antibody Su(Hw)-VC extraction3_array1 
+GSM520986 Cell Line S2-DRSC;Antibody Su(Hw)-VC extraction4_array1 
+modencode_332: GSE20810 
+GSM520987 Cell Line S2-DRSC;Antibody Trx-C extraction1_array1 
+GSM520988 Cell Line S2-DRSC;Antibody Trx-C extraction2_array1 
+GSM520989 Cell Line S2-DRSC;Antibody Trx-C extraction3_array1 
+GSM520990 Cell Line S2-DRSC;Antibody Trx-C extraction4_array1 
+modencode_921: GSE20811 
+GSM520991 Cell Line ML-DmBG3-c2;Antibody BEAF-70 extraction1_array1 
+GSM520992 Cell Line ML-DmBG3-c2;Antibody BEAF-70 extraction2_array1 
+GSM520993 Cell Line ML-DmBG3-c2;Antibody BEAF-70 extraction3_array1 
+GSM520994 Cell Line ML-DmBG3-c2;Antibody BEAF-70 extraction4_array1 
+modencode_922: GSE20812 
+GSM520995 Cell Line S2-DRSC;Antibody BEAF-70 extraction1_array1 
+GSM520996 Cell Line S2-DRSC;Antibody BEAF-70 extraction2_array1 
+GSM520997 Cell Line S2-DRSC;Antibody BEAF-70 extraction3_array1 
+GSM520998 Cell Line S2-DRSC;Antibody BEAF-70 extraction4_array1 
+modencode_923: GSE20813 
+GSM520999 Cell Line S2-DRSC;Antibody BRE1 Q2539 extraction1_array1 
+GSM521000 Cell Line S2-DRSC;Antibody BRE1 Q2539 extraction2_array1 
+GSM521001 Cell Line S2-DRSC;Antibody BRE1 Q2539 extraction3_array1 
+GSM521002 Cell Line S2-DRSC;Antibody BRE1 Q2539 extraction4_array1 
+modencode_924: GSE20814 
+GSM521003 Cell Line ML-DmBG3-c2;Antibody CP190-HB extraction1_array1 
+GSM521004 Cell Line ML-DmBG3-c2;Antibody CP190-HB extraction2_array1 
+GSM521005 Cell Line ML-DmBG3-c2;Antibody CP190-HB extraction3_array1 
+GSM521006 Cell Line ML-DmBG3-c2;Antibody CP190-HB extraction4_array1 
+modencode_925: GSE20815 
+GSM521007 Cell Line S2-DRSC;Antibody CP190-HB extraction1_array1 
+GSM521008 Cell Line S2-DRSC;Antibody CP190-HB extraction2_array1 
+GSM521009 Cell Line S2-DRSC;Antibody CP190-HB extraction3_array1 
+GSM521010 Cell Line S2-DRSC;Antibody CP190-HB extraction4_array1 
+modencode_926: GSE20816 
+GSM521011 Cell Line S2-DRSC;Antibody dMi-2 Q2626 extraction1_array1 
+GSM521012 Cell Line S2-DRSC;Antibody dMi-2 Q2626 extraction2_array1 
+GSM521013 Cell Line S2-DRSC;Antibody dMi-2 Q2626 extraction3_array1 
+GSM521014 Cell Line S2-DRSC;Antibody dMi-2 Q2626 extraction4_array1 
+modencode_927: GSE20817 
+GSM521015 Cell Line ML-DmBG3-c2;Antibody dRING Q3200 extraction1_array1 
+GSM521016 Cell Line ML-DmBG3-c2;Antibody dRING Q3200 extraction2_array1 
+GSM521017 Cell Line ML-DmBG3-c2;Antibody dRING Q3200 extraction3_array1 
+GSM521018 Cell Line ML-DmBG3-c2;Antibody dRING Q3200 extraction4_array1 
+modencode_928: GSE20818 
+GSM521019 Cell Line S2-DRSC;Antibody dRING Q3200 extraction1_array1 
+GSM521020 Cell Line S2-DRSC;Antibody dRING Q3200 extraction2_array1 
+GSM521021 Cell Line S2-DRSC;Antibody dRING Q3200 extraction3_array1 
+GSM521022 Cell Line S2-DRSC;Antibody dRING Q3200 extraction4_array1 
+modencode_930: GSE20819 
+GSM521023 Cell Line CME-W1-Cl.8+;Antibody H3K18Ac (new lot) extraction1_array1 
+GSM521024 Cell Line CME-W1-Cl.8+;Antibody H3K18Ac (new lot) extraction2_array1 
+GSM521025 Cell Line CME-W1-Cl.8+;Antibody H3K18Ac (new lot) extraction3_array1 
+GSM521026 Cell Line CME-W1-Cl.8+;Antibody H3K18Ac (new lot) extraction4_array1 
+modencode_937: GSE20820 
+GSM521027 Cell Line CME-W1-Cl.8+;Antibody H3K9me2-Ab2 (new lot) extraction1_array1 
+GSM521028 Cell Line CME-W1-Cl.8+;Antibody H3K9me2-Ab2 (new lot) extraction2_array1 
+GSM521029 Cell Line CME-W1-Cl.8+;Antibody H3K9me2-Ab2 (new lot) extraction3_array1 
+GSM521030 Cell Line CME-W1-Cl.8+;Antibody H3K9me2-Ab2 (new lot) extraction4_array1 
+modencode_938: GSE20821 
+GSM521031 Cell Line Kc167;Antibody H3K9me2-Ab2 (new lot) extraction1_array1 
+GSM521032 Cell Line Kc167;Antibody H3K9me2-Ab2 (new lot) extraction2_array1 
+GSM521033 Cell Line Kc167;Antibody H3K9me2-Ab2 (new lot) extraction3_array1 
+GSM521034 Cell Line Kc167;Antibody H3K9me2-Ab2 (new lot) extraction4_array1 
+modencode_940: GSE20822 
+GSM521035 Cell Line CME-W1-Cl.8+;Antibody H3K9me3 (new lot) extraction1_array1 
+GSM521036 Cell Line CME-W1-Cl.8+;Antibody H3K9me3 (new lot) extraction2_array1 
+GSM521037 Cell Line CME-W1-Cl.8+;Antibody H3K9me3 (new lot) extraction3_array1 
+GSM521038 Cell Line CME-W1-Cl.8+;Antibody H3K9me3 (new lot) extraction4_array1 
+modencode_941: GSE20823 
+GSM521039 Cell Line S2-DRSC;Antibody HP1b (Henikoff) extraction1_array1 
+GSM521040 Cell Line S2-DRSC;Antibody HP1b (Henikoff) extraction2_array1 
+GSM521041 Cell Line S2-DRSC;Antibody HP1b (Henikoff) extraction3_array1 
+GSM521042 Cell Line S2-DRSC;Antibody HP1b (Henikoff) extraction4_array1 
+modencode_942: GSE20824 
+GSM521043 Cell Line ML-DmBG3-c2;Antibody HP1c (MO 462) extraction1_array1 
+GSM521044 Cell Line ML-DmBG3-c2;Antibody HP1c (MO 462) extraction2_array1 
+GSM521045 Cell Line ML-DmBG3-c2;Antibody HP1c (MO 462) extraction3_array1 
+GSM521046 Cell Line ML-DmBG3-c2;Antibody HP1c (MO 462) extraction4_array1 
+modencode_943: GSE20825 
+GSM521047 Cell Line S2-DRSC;Antibody HP1c (MO 462) extraction1_array1 
+GSM521048 Cell Line S2-DRSC;Antibody HP1c (MO 462) extraction2_array1 
+GSM521049 Cell Line S2-DRSC;Antibody HP1c (MO 462) extraction3_array1 
+GSM521050 Cell Line S2-DRSC;Antibody HP1c (MO 462) extraction4_array1 
+modencode_944: GSE20826 
+GSM521051 Cell Line S2-DRSC;Antibody HP2 (Ab2-90) extraction1_array1 
+GSM521052 Cell Line S2-DRSC;Antibody HP2 (Ab2-90) extraction2_array1 
+GSM521053 Cell Line S2-DRSC;Antibody HP2 (Ab2-90) extraction3_array1 
+GSM521054 Cell Line S2-DRSC;Antibody HP2 (Ab2-90) extraction4_array1 
+modencode_945: GSE20827 
+GSM521055 Cell Line S2-DRSC;Antibody JIL1 Q3433 extraction1_array1 
+GSM521056 Cell Line S2-DRSC;Antibody JIL1 Q3433 extraction2_array1 
+GSM521057 Cell Line S2-DRSC;Antibody JIL1 Q3433 extraction3_array1 
+GSM521058 Cell Line S2-DRSC;Antibody JIL1 Q3433 extraction4_array1 
+modencode_946: GSE20828 
+GSM521059 Cell Line S2-DRSC;Antibody MBD-R2 Q2567 extraction1_array1 
+GSM521060 Cell Line S2-DRSC;Antibody MBD-R2 Q2567 extraction2_array1 
+GSM521061 Cell Line S2-DRSC;Antibody MBD-R2 Q2567 extraction3_array1 
+GSM521062 Cell Line S2-DRSC;Antibody MBD-R2 Q2567 extraction4_array1 
+modencode_947: GSE20829 
+GSM521063 Cell Line S2-DRSC;Antibody NURF301 Q2602 extraction1_array1 
+GSM521064 Cell Line S2-DRSC;Antibody NURF301 Q2602 extraction2_array1 
+GSM521065 Cell Line S2-DRSC;Antibody NURF301 Q2602 extraction3_array1 
+GSM521066 Cell Line S2-DRSC;Antibody NURF301 Q2602 extraction4_array1 
+modencode_948: GSE20830 
+GSM521067 Cell Line ML-DmBG3-c2;Antibody PCL Q3412 extraction1_array1 
+GSM521068 Cell Line ML-DmBG3-c2;Antibody PCL Q3412 extraction2_array1 
+GSM521069 Cell Line ML-DmBG3-c2;Antibody PCL Q3412 extraction3_array1 
+GSM521070 Cell Line ML-DmBG3-c2;Antibody PCL Q3412 extraction4_array1 
+modencode_949: GSE20831 
+GSM521071 Cell Line Kc167;Antibody PIWI-Q2569 extraction1_array1 
+GSM521072 Cell Line Kc167;Antibody PIWI-Q2569 extraction2_array1 
+GSM521073 Cell Line Kc167;Antibody PIWI-Q2569 extraction3_array1 
+GSM521074 Cell Line Kc167;Antibody PIWI-Q2569 extraction4_array1 
+GSM521075 Cell Line Kc167;Antibody PIWI-Q2569 extraction5_array1 
+modencode_950: GSE20832 
+GSM521076 Cell Line ML-DmBG3-c2;Antibody RNA pol II (ALG) extraction1_array1 
+GSM521077 Cell Line ML-DmBG3-c2;Antibody RNA pol II (ALG) extraction2_array1 
+GSM521078 Cell Line ML-DmBG3-c2;Antibody RNA pol II (ALG) extraction3_array1 
+GSM521079 Cell Line ML-DmBG3-c2;Antibody RNA pol II (ALG) extraction4_array1 
+modencode_951: GSE20833 
+GSM521080 Cell Line ML-DmBG3-c2;Antibody SU(HW)-HB extraction1_array1 
+GSM521081 Cell Line ML-DmBG3-c2;Antibody SU(HW)-HB extraction2_array1 
+GSM521082 Cell Line ML-DmBG3-c2;Antibody SU(HW)-HB extraction3_array1 
+GSM521083 Cell Line ML-DmBG3-c2;Antibody SU(HW)-HB extraction4_array1 
+modencode_952: GSE20834 
+GSM521084 Cell Line ML-DmBG3-c2;Antibody Su(var)3-9 extraction1_array1 
+GSM521085 Cell Line ML-DmBG3-c2;Antibody Su(var)3-9 extraction2_array1 
+GSM521086 Cell Line ML-DmBG3-c2;Antibody Su(var)3-9 extraction3_array1 
+GSM521087 Cell Line ML-DmBG3-c2;Antibody Su(var)3-9 extraction4_array1 
+modencode_953: GSE20835 
+GSM521088 Cell Line S2-DRSC;Antibody WDS Q2691 extraction1_array1 
+GSM521089 Cell Line S2-DRSC;Antibody WDS Q2691 extraction2_array1 
+GSM521090 Cell Line S2-DRSC;Antibody WDS Q2691 extraction3_array1 
+GSM521091 Cell Line S2-DRSC;Antibody WDS Q2691 extraction4_array1 
+modencode_963: GSE20836 
+GSM521092 Cell Line S2-DRSC;Antibody H3K79Me1 extraction1_array1 
+GSM521093 Cell Line S2-DRSC;Antibody H3K79Me1 extraction2_array1 
+GSM521094 Cell Line S2-DRSC;Antibody H3K79Me1 extraction3_array1 
+GSM521095 Cell Line S2-DRSC;Antibody H3K79Me1 extraction4_array1 
+modencode_964: GSE20837 
+GSM521096 Cell Line CME-W1-Cl.8+;Antibody H3K9ac extraction1_array1 
+GSM521097 Cell Line CME-W1-Cl.8+;Antibody H3K9ac extraction2_array1 
+GSM521098 Cell Line CME-W1-Cl.8+;Antibody H3K9ac extraction3_array1 
+GSM521099 Cell Line CME-W1-Cl.8+;Antibody H3K9ac extraction4_array1 
+modencode_965: GSE20838 
+GSM521100 Cell Line S2-DRSC;Antibody H3K4me2 extraction1_array1 
+GSM521101 Cell Line S2-DRSC;Antibody H3K4me2 extraction2_array1 
+GSM521102 Cell Line S2-DRSC;Antibody H3K4me2 extraction3_array1 
+GSM521103 Cell Line S2-DRSC;Antibody H3K4me2 extraction4_array1 
+modencode_967: GSE20839 
+GSM521104 Cell Line ML-DmBG3-c2;Antibody H3K4me3 (ab8580 lot1) extraction1_array1 
+GSM521105 Cell Line ML-DmBG3-c2;Antibody H3K4me3 (ab8580 lot1) extraction2_array1 
+GSM521106 Cell Line ML-DmBG3-c2;Antibody H3K4me3 (ab8580 lot1) extraction3_array1 
+GSM521107 Cell Line ML-DmBG3-c2;Antibody H3K4me3 (ab8580 lot1) extraction4_array1 
+modencode_1024 GSE18508 GSM461207 GSM461208 
+GSM461207 S2_DRSC_CG3249_RNAi-1 
+GSM461208 S2_DRSC_CG3249_RNAi-2 
+modencode_1033 GSE18508 GSM461209 
+GSM461209 S2_DRSC_CG7878_RNAi-1 
+GSM461210 S2_DRSC_CG7878_RNAi-2 
+modencode_910 GSE18508 GSM461181 GSM461180 
+GSM461180 S2_DRSC_CG8144_RNAi-3 
+GSM461181 S2_DRSC_CG8144_RNAi-4 
+modencode_983 GSE18508 GSM461176 GSM461177 GSM461178 
+GSM461176 S2_DRSC_Untreated-1 
+GSM461177 S2_DRSC_Untreated-3 
+GSM461178 S2_DRSC_Untreated-4 
+modencode_50 GSE16272 
+GSM409479 GM2 (Celniker/RNA:8) extraction1_array1 
+GSM409480 GM2 (Celniker/RNA:10) extraction2_array1 
+GSM409481 GM2 (Celniker/RNA:12) extraction3_array1 
