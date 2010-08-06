@@ -49,17 +49,23 @@ sub set_all {
 	my $set_func = "set_" . $parameter;
 	$self->$set_func();	
     }
+    print "normal ", scalar(@{$normalized_slots{ident $self}->[0]});
+    print "denormal ", scalar(@{$denorm_slots{ident $self}->[0]});
     my $aff = $self->affiliate_submission;
     if (scalar @$aff) {
-	my $trans_self_normalized_slots = _trans($self->get_normalized_slots);
+	print "aff ", scalar @$aff, "\n";
+	#my $trans_self_normalized_slots = _trans($self->get_normalized_slots);
 	my $trans_self_denorm_slots = _trans($self->get_denorm_slots); #like sdrf now
 	my $reporters = {};
 	for (my $i=0; $i<scalar @$aff; $i++) {
 	    my $attr = $aff->[$i]->[0];
-	    my ($id, ) = split ':', $attr->get_value;
+	    my @fields = split ':', $attr->get_value;
+	    my $id = $fields[0];
+	    print $id, "\n";
 	    my $datum = $aff->[$i]->[1];
 	    print "affiliate extract is ", $datum->get_value;
 	    my $row = $aff->[$i]->[2]; #the row in self sdrf
+	    print "row at self is $row\n";
 	    my $reporter;
 	    if ( exists $reporters->{$id} ) {
 		$reporter = $reporters->{$id}->[0];
@@ -71,13 +77,15 @@ sub set_all {
 	    my $ap_row = $reporter->get_ap_row_by_data($datum->get_name, $datum->get_value); #the row in reporter sdrf
 	    print "the row of extract in affiliate submission is $ap_row\n";
 	    #merge row from reporter and row from self
-	    $trans_self_normalized_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_normalized_slots->[$row]}];
+	    print "ref of affiliate ", ref($reporters->{$id}->[1]->[$ap_row]), "\n";
+	    #print "ref of self ", ref($trans_self_normalized_slots->[$row]), "\n";
+	    #$trans_self_normalized_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_normalized_slots->[$row]}];
 	    $trans_self_denorm_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_denorm_slots->[$row]}];
 	}
-	$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
+	#$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
-	print "normalized slots::", scalar @{$normalized_slots{ident $self}};
-	print "first slot has ", scalar @{$normalized_slots{ident $self}->[0]};
+	#print "normalized slots::", scalar @{$normalized_slots{ident $self}};
+	#print "first slot has ", scalar @{$normalized_slots{ident $self}->[0]};
 	print "denorm slots::", scalar @{$denorm_slots{ident $self}};
     }        
     for my $parameter (qw[num_of_rows ap_slots project lab contributors factors organism strain cellline devstage tgt_gene antibody tissue genotype sex transgene]) {
@@ -145,6 +153,7 @@ sub affiliate_submission {
 	for my $datum (@{$ap->get_input_data()}) {
 	    for my $attr (@{$datum->get_attributes()}) {
 		if (lc($attr->get_type()->get_name()) eq 'reference' && lc($attr->get_type()->get_cv()->get_name()) eq 'modencode') {
+		    print join(" ", ($datum->get_value, $attr->get_value, $i, "\n"));
 		    push @$aff, [$attr, $datum, $i]; #attr has affiliate submission id, datum has affiliate submission relevant row value, $i is row in self.
 		}
 	    }

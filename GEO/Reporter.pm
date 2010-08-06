@@ -68,11 +68,32 @@ sub set_all {
 	my $set_func = "set_" . $parameter;
 	$self->$set_func();	
     }
+    my $reporters = {};
+    my $aff_norm = $self->affiliate_submission_norm;
+    if (scalar @$aff_norm) {
+	my $trans_self_normalized_slots = _trans($self->get_normalized_slots);
+	for (my $i=0; $i<scalar @$aff_norm; $i++) {
+            my $attr = $aff_norm->[$i]->[0];
+            my ($id, ) = split ':', $attr->get_value;
+            my $datum = $aff_norm->[$i]->[1];
+            print "affiliate extract is ", $datum->get_value;
+            my $row = $aff_norm->[$i]->[2]; #the row in self sdrf                                                                                                                     
+            my $reporter;
+            if ( exists $reporters->{$id} ) {
+                $reporter = $reporters->{$id}->[0];
+            } else {
+                $reporter = $self->affiliate_submission_reporter($id);
+                $reporters->{$id}->[0] = $reporter;
+                $reporters->{$id}->[1] = _trans($reporter->get_denorm_slots);
+            }
+            my $ap_row = $reporter->get_ap_row_by_data($datum->get_name, $datum->get_value); #the row in reporter sdrf 
+            #merge row from reporter and row from self                                                                                                             
+            $trans_self_normalized_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_normalized_slots->[$row]}]; 
+    }
     my $aff = $self->affiliate_submission;
     if (scalar @$aff) {
-	my $trans_self_normalized_slots = _trans($self->get_normalized_slots);
+	#my $trans_self_normalized_slots = _trans($self->get_normalized_slots);
 	my $trans_self_denorm_slots = _trans($self->get_denorm_slots); #like sdrf now
-	my $reporters = {};
 	for (my $i=0; $i<scalar @$aff; $i++) {
 	    my $attr = $aff->[$i]->[0];
 	    my ($id, ) = split ':', $attr->get_value;
@@ -89,13 +110,13 @@ sub set_all {
 	    }
 	    my $ap_row = $reporter->get_ap_row_by_data($datum->get_name, $datum->get_value); #the row in reporter sdrf
 	    #merge row from reporter and row from self
-	    $trans_self_normalized_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_normalized_slots->[$row]}];
+	    #$trans_self_normalized_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_normalized_slots->[$row]}];
 	    $trans_self_denorm_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_denorm_slots->[$row]}];
 	}
-	$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
+	#$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
-	print "normalized slots::", scalar @{$normalized_slots{ident $self}};
-	print "first slot has ", scalar @{$normalized_slots{ident $self}->[0]};
+	#print "normalized slots::", scalar @{$normalized_slots{ident $self}};
+	#print "first slot has ", scalar @{$normalized_slots{ident $self}->[0]};
 	print "denorm slots::", scalar @{$denorm_slots{ident $self}};
     }        
     for my $parameter (qw[num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene lib_strategy lib_selection]) {
@@ -177,6 +198,21 @@ sub affiliate_submission_reporter {
     return $reporter;
 }
 
+sub affiliate_submission_norm {
+    my $self = shift;
+    my $aff = [];
+    for (my $i=0; $i<scalar @{$normalized_slots{ident $self}->[0]}; $i++) {
+        my $ap = $normalized_slots{ident $self}->[0]->[$i];
+        for my $datum (@{$ap->get_input_data()}) {
+            for my $attr (@{$datum->get_attributes()}) {
+                if (lc($attr->get_type()->get_name()) eq 'reference' && lc($attr->get_type()->get_cv()->get_name()) eq 'modencode') {
+                    push @$aff, [$attr, $datum, $i]; #attr has affiliate submission id, datum has affiliate submission relevant row value, $i is row in self.                    
+                }
+            }
+        }
+    }
+    return $aff;
+}
 
 sub affiliate_submission {
     my $self = shift;
