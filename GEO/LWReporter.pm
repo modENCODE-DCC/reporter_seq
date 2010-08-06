@@ -69,6 +69,7 @@ sub set_all {
 		$reporters->{$id}->[1] = _trans($reporter->get_denorm_slots);
 	    }
 	    my $ap_row = $reporter->get_ap_row_by_data($datum->get_name, $datum->get_value); #the row in reporter sdrf
+	    print "the row of extract in affiliate submission is $ap_row\n";
 	    #merge row from reporter and row from self
 	    $trans_self_normalized_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_normalized_slots->[$row]}];
 	    $trans_self_denorm_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_denorm_slots->[$row]}];
@@ -189,6 +190,12 @@ sub get_geo_ids {
     my $self = shift;
     my @geo_ids = ();
     print "normalization ap slot is ", $ap_slots{ident $self}->{'normalization'}, "\n";
+    for my $ap (@{$denorm_slots{ident $self}->[$ap_slots{ident $self}->{'seq'}]}) {
+        for my $datum (@{$ap->get_output_data()}) {
+            my ($type, $heading, $value) = ($datum->get_type(), $datum->get_heading(), $datum->get_value());
+            push @geo_ids, $value and last if ($type->get_name() =~ /^geo_record$/i and $value !~ /^\s*$/) ;
+        }
+    }
     for my $ap (@{$denorm_slots{ident $self}->[$ap_slots{ident $self}->{'normalization'}]}) {
 	for my $datum (@{$ap->get_output_data()}) {
             my ($type, $heading, $value) = ($datum->get_type(), $datum->get_heading(), $datum->get_value());
