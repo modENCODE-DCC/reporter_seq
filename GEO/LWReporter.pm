@@ -202,13 +202,13 @@ sub get_geo_ids {
     for my $ap (@{$denorm_slots{ident $self}->[$ap_slots{ident $self}->{'seq'}]}) {
         for my $datum (@{$ap->get_output_data()}) {
             my ($type, $heading, $value) = ($datum->get_type(), $datum->get_heading(), $datum->get_value());
-            push @geo_ids, $value and last if ($type->get_name() =~ /^geo_record$/i and $value !~ /^\s*$/) ;
+            push @geo_ids, $value and last if ($type->get_name() =~ /^geo_record$/i and $value =~ /^GS[EM]\d+$/) ;
         }
     }
     for my $ap (@{$denorm_slots{ident $self}->[$ap_slots{ident $self}->{'normalization'}]}) {
 	for my $datum (@{$ap->get_output_data()}) {
             my ($type, $heading, $value) = ($datum->get_type(), $datum->get_heading(), $datum->get_value());
-	    push @geo_ids, $value and last if ($type->get_name() =~ /^geo_record$/i and $value !~ /^\s*$/) ;
+	    push @geo_ids, $value and last if ($type->get_name() =~ /^geo_record$/i and $value =~ /^GS[EM]\d+$/) ;
 	}
     }
     return @geo_ids;
