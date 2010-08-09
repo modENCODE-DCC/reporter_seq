@@ -89,6 +89,8 @@ sub set_all {
             my $ap_row = $reporter->get_ap_row_by_data($datum->get_name, $datum->get_value); #the row in reporter sdrf 
             #merge row from reporter and row from self                                                                                                             
             $trans_self_normalized_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_normalized_slots->[$row]}]; 
+	}
+	normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
     }
     my $aff = $self->affiliate_submission;
     if (scalar @$aff) {
