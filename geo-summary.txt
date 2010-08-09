@@ -1,0 +1,6 @@
+as of Aug 9, 2010.
+
+                  released            unreleased              total
+platform         3                           0                          3
+samples        929                        154                      1083
+series            288                        33                        321
