@@ -1905,29 +1905,43 @@ sub get_slotnum_extract {
 		    return $aps[0];
 		}
 	    } elsif (scalar(@aps) == 0) {#oops, we have no protocol with protocol type equals regex to 'biosample_preparation_protocol'
-		my @itypes = ('whole_organism', 'multi-cellular organism', 'organism_part', 'DNA', 'genomic_DNA');
-		my @iaps;
-		for my $type (@itypes) {
-		    my @xaps = $self->get_slotnum_by_datum_property('input', 0, 'type', undef, $type);
-		    @iaps = merge_two_lists(\@iaps, \@xaps);
-		}
-		my @otypes = ('DNA', 'genomic_DNA', 'chromatin', 'mRNA', '\s*RNA');
-		my @oaps;
-		for my $type (@otypes) {
-		    my @xaps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
-		    @oaps = merge_two_lists(\@oaps, \@xaps);
-		}
-		my @aps = union_two_lists(\@iaps, \@oaps);
+		my $type = 'organism_purification_protocol';
+		my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
 		if (scalar(@aps) > 1) {
 		    if ($option eq 'group') {
 			return $self->check_complexity(\@aps);
 		    } elsif ($option eq 'protocol') {
 			return $aps[0];
 		    }
-		} elsif (scalar(@aps) == 1) {
+		}
+		elsif (scalar(@aps) == 1) {
 		    return $aps[0];
-		} else {
-		    croak("Every experiment must have at least one extraction protocol. Maybe you omitted this protocol in SDRF?");
+		}
+		else {
+		    my @itypes = ('whole_organism', 'multi-cellular organism', 'organism_part', 'DNA', 'genomic_DNA');
+		    my @iaps;
+		    for my $type (@itypes) {
+			my @xaps = $self->get_slotnum_by_datum_property('input', 0, 'type', undef, $type);
+			@iaps = merge_two_lists(\@iaps, \@xaps);
+		    }
+		    my @otypes = ('DNA', 'genomic_DNA', 'chromatin', 'mRNA', '\s*RNA');
+		    my @oaps;
+		    for my $type (@otypes) {
+			my @xaps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
+			@oaps = merge_two_lists(\@oaps, \@xaps);
+		    }
+		    my @aps = union_two_lists(\@iaps, \@oaps);
+		    if (scalar(@aps) > 1) {
+			if ($option eq 'group') {
+			    return $self->check_complexity(\@aps);
+			} elsif ($option eq 'protocol') {
+			    return $aps[0];
+			}
+		    } elsif (scalar(@aps) == 1) {
+			return $aps[0];
+		    } else {
+			croak("Every experiment must have at least one extraction protocol. Maybe you omitted this protocol in SDRF?");
+		    }
 		}
 	    } else {#found 'biosample_preparation_protocol'
 		return $aps[0];
@@ -2456,7 +2470,13 @@ sub get_protocol_text {
 	    $title = $1;
 	} 
       	$title =~ s/_/ /g;
-	return $title . " protocol; " . decode_entities($self->_get_full_protocol_text($url));
+	my $txt = decode_entities($self->_get_full_protocol_text($url));
+	my $stxt = $protocol->get_description();
+	if ( length($txt) > length($stxt) ) {
+	    return $title . " protocol; " . $txt;
+	} else {
+	    return $stxt;
+	}
     }
     else {
 	if (my $txt = $protocol->get_description()) {
