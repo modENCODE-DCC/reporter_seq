@@ -90,7 +90,7 @@ sub set_all {
             #merge row from reporter and row from self                                                                                                             
             $trans_self_normalized_slots->[$row] = [@{$reporters->{$id}->[1]->[$ap_row]}, @{$trans_self_normalized_slots->[$row]}]; 
 	}
-	normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
+	$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
     }
     my $aff = $self->affiliate_submission;
     if (scalar @$aff) {
@@ -890,7 +890,7 @@ sub set_lab {
 					    $property->get_value(), 
 					    $property->get_rank(), 
 					    $property->get_type());
-	print "lab: ", $value, "\n" and $lab{ident $self} = $value if ($name =~ /^\s*Lab\s*$/i); 
+	print "lab: ", $value, "\n" and $lab{ident $self} = $value if ($name =~ /^\s*Lab\s*$/i && $value); 
     }    
 }
 
