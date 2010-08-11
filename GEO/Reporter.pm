@@ -618,6 +618,9 @@ sub set_lib_strategy {
     if (defined($ap_slots{ident $self}->{'immunoprecipitation'}) and $ap_slots{ident $self}->{'immunoprecipitation'} != -1) {
 	$strategy = "ChIP-Seq";
     }
+    elsif ($molecule_type{ident $self} =~ /rna/i) {
+	$strategy = 'RNA-Seq';
+    }
     else {#default, whole genome shotgun
 	$strategy = "WGS";
     }
@@ -701,8 +704,9 @@ sub write_normalized_data_dup {
 	    unless (scalar grep {$path eq $_} @$exist_normalize_datafiles) {
 		if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		my $type;
-		$type = 'WIG' if ($path =~ /\.wig$/i);
+		$type = 'WIG' if ($path =~ /\.wig\./i);
 		$type = 'GFF3' if ($path =~ /\.gff3$/i);
+		$type = 'SAM' if ($path =~ /\.sam\./i);
 		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
 		print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
 		$num_processed_data+=1;
@@ -738,8 +742,9 @@ sub write_raw_data {
 		my ($file, $dir, $suffix) = fileparse($path);
 		print $sampleFH "!Sample_raw_file_", "$num_raw_data = ", $file . $suffix, "\n";
 		my $type;
-		$type = 'FASTQ' if $file =~ /\.fastq/i;
-		$type = 'WIG' if $file =~ /\.wig/i;
+		$type = 'FASTQ' if $file =~ /\.fastq\./i;
+		$type = 'WIG' if $file =~ /\.wig\./i;
+		$type = 'SAM' if ($path =~ /\.sam\./i);
 		print $sampleFH "!Sample_raw_file_type_", "$num_raw_data = ", $type, "\n";
 		$num_raw_data += 1;
 	    }
@@ -782,8 +787,9 @@ sub write_normalized_data {
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		my ($file, $dir, $suffix) = fileparse($path);
 		my $type;
-		$type = 'WIG' if ($file =~ /\.wig$/i);
+		$type = 'WIG' if ($file =~ /\.wig\./i);
 		$type = 'GFF3' if ($file =~ /\.gff3$/i);
+		$type = 'SAM' if ($path =~ /\.sam\./i);
 		#print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $file . $suffix, "\n";
 		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
 		print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
@@ -1815,8 +1821,9 @@ sub set_ap_slots {
     print "found scanning protocol at slot $slots{'scanning'}...\n" if defined($slots{'scanning'});
     $slots{'normalization'} = $self->get_slotnum_normalize();
     print "found normalization protocol at slot $slots{'normalization'}...\n" if defined($slots{'normalization'});
-    $slots{'raw'} = $self->get_slotnum_raw();
+    eval { $slots{'raw'} = $self->get_slotnum_raw(); };
     print "found raw protocol at slot $slots{'raw'}...\n" if defined($slots{'raw'}) and $slots{'raw'} != -1;
+    $slots{raw} = $slots{seq} unless defined($slots{'raw'}) and $slots{'raw'} != -1;
     $slots{'immunoprecipitation'} = $self->get_slotnum_ip();
     print "found ip protocol at slot $slots{'immunoprecipitation'}...\n" if defined($slots{'immunoprecipitation'});
     $slots{'rip'} = $self->get_slotnum_rip();
