@@ -26,6 +26,7 @@ my %ap_slots               :ATTR( :get<ap_slots>               :default<undef>);
 my %sample_name_ap_slot    :ATTR( :get<sample_name_ap_slot>    :default<undef>);
 my %source_name_ap_slot    :ATTR( :get<source_name_ap_slot>    :default<undef>);
 my %extract_name_ap_slot   :ATTR( :get<extract_name_ap_slot>   :default<undef>);
+my %hybridization_name_ap_slot :ATTR( :get<hybridization_name_ap_slot>   :default<undef>);
 my %replicate_group_ap_slot :ATTR( :get<replicate_group_ap_slot>    :default<undef>);
 my %first_extraction_slot  :ATTR( :get<first_extraction_slot>  :deafult<undef>);
 my %last_extraction_slot   :ATTR( :get<last_extraction_slot>   :deafult<undef>);
@@ -121,11 +122,11 @@ sub set_all {
 	#print "first slot has ", scalar @{$normalized_slots{ident $self}->[0]};
 	print "denorm slots::", scalar @{$denorm_slots{ident $self}};
     }        
-    for my $parameter (qw[num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene lib_strategy lib_selection]) {
+    for my $parameter (qw[num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot hybridization_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene lib_strategy lib_selection]) {
 	my $set_func = "set_" . $parameter;
 	$self->$set_func();
     }
-    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene lib_strategy lib_selection]) {
+    for my $parameter (qw[normalized_slots denorm_slots num_of_rows organism ap_slots source_name_ap_slot sample_name_ap_slot extract_name_ap_slot hybridization_name_ap_slot replicate_group_ap_slot first_extraction_slot last_extraction_slot groups project lab contributors factors experiment_design experiment_type strain cellline devstage genotype transgene tissue sex molecule_type antibody tgt_gene lib_strategy lib_selection]) {
 	my $get_func = "get_" . $parameter;
 	print "find $parameter ";
 	print $self->$get_func();
@@ -1683,6 +1684,11 @@ sub set_source_name_ap_slot {
     $source_name_ap_slot{ident $self} = $aps[0] if scalar(@aps);
 }
 
+sub set_hybridization_name_ap_slot {
+    my $self = shift;
+    my @aps = $self->get_slotnum_by_datum_property('input', 0, 'heading', undef, 'Hybridization\s*Name');
+    $hybridization_name_ap_slot{ident $self} = $aps[0] if scalar(@aps);
+}
 sub set_extract_name_ap_slot {
     my $self = shift;
     my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Extract\s*Name');
@@ -2069,7 +2075,7 @@ sub get_slotnum_normalize_seq {
 sub get_slotnum_normalize_array {
     my $self = shift;
     #first search by output data type, such as modencode-helper:Signal_Graph_File [sig gr]
-    my @types = ('Signal_Graph_File', 'Signal_Graph_File [sig gr]', 'normalized data', 'scaled data');
+    my @types = ('Signal_Graph_File', 'Signal_Graph_File [sig gr]', 'normalized data', 'scaled data', 'WIG', 'WIG [signal intensities]');
     for my $type (@types) {
 	my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
 	#even there are more than 1 normalization protocols, choose the first one since it is the nearest to hyb protocol
@@ -2132,7 +2138,22 @@ sub ap_slot_without_real_data {
 sub set_replicate_group_ap_slot {
     my $self = shift;
     my $text = 'replicate[\s_]*group';
-    $replicate_group_ap_slot{ident $self} = $self->get_ap_slot_by_attr_info('input', 'name', $text);
+    my $slot;
+    $slot = $self->get_ap_slot_by_attr_info('input', 'name', $text);
+    $replicate_group_ap_slot{ident $self} = $slot if defined($slot);
+    $replicate_group_ap_slot{ident $self} = $self->get_ap_slot_by_protocol_attr('name', $text) unless defined($slot);
+}
+
+sub get_ap_slot_by_protocol_attr {
+    my ($self, $field, $fieldtext) = @_;
+    for (my $i=0; $i<scalar(@{$denorm_slots{ident $self}}); $i++) {
+	my $ap = $denorm_slots{ident $self}->[$i]->[0];
+	for my $attr (@{$ap->get_protocol->get_attributes()}) {
+	    my $func = "get_$field";
+	    return $i if $attr->$func =~ /$fieldtext/i ;
+	}
+    }
+    return undef;
 }
 
 sub set_sample_name_ap_slot {
@@ -2193,34 +2214,38 @@ sub group_by_this_ap_slot {
     my $sample_name_col = $sample_name_ap_slot{ident $self};
     my $source_name_col = $source_name_ap_slot{ident $self};
     my $raw_data_col = $ap_slots{ident $self}->{'raw'};
+    my $hybridization_name_col = $hybridization_name_ap_slot{ident $self};
     print "replicate group slot $replicate_group_col\n";
     print "extract name slot $extract_name_col\n";
     print "sample name slot $sample_name_col\n";
     print "source name slot $source_name_col\n";
     print 'last extraction slot is ', $last_extraction_slot{ident $self};
-    if ( defined($replicate_group_col) && (defined($hyb_col) and $hyb_col>=0) ) {
-	print "I will use ap slot $replicate_group_col (replicate group) to group\n";
-	return [$replicate_group_col, 'replicate[\s_]*group'] if defined($replicate_group_col);
-    }
-    if ( defined($replicate_group_col) && (defined($seq_col) and $seq_col>=0)) {
-	return [$source_name_col, 'Source\s*Name'] if ($replicate_group_col == $source_name_col);
-	return [$sample_name_col, 'Sample\s*Name'] if ($replicate_group_col == $sample_name_col);
-    }
+    print "hybridization name slot is $hybridization_name_col\n";
 
-    print "I will use ap slot $extract_name_col (extract name) to group\n" and return [$extract_name_col, 'Extract\s*Name'] if ( defined($extract_name_col) and $last_extraction_slot{ident $self} <= $extract_name_col );
-
-    print "I will use ap slot $last_extraction_slot{ident $self} (last extraction slot) to group\n" and return [$last_extraction_slot{ident $self}, 'protocol'] if ( defined($extract_name_col) and $last_extraction_slot{ident $self} > $extract_name_col );
-
-    if ( !defined($extract_name_col) ) {
-	print "I will use ap slot $source_name_col (source name) to group\n" and return [$source_name_col, 'Source\s*Name'] if defined($source_name_col);
-	print "I will use ap slot $sample_name_col (sample name) to group\n" and return [$sample_name_col, 'Sample\s*Name'] if defined($sample_name_col);
-	if ( $self->ap_slot_without_real_data($last_extraction_slot{ident $self}) ) {
-	    print "I will use raw data ap slot $raw_data_col (raw data) to group.\n" and return [$raw_data_col, 'raw']; 
-	    #croak("suspicious submission, extraction protocol has only anonymous data, AND no protocol has Extract Name, Sample Name, Source(Hybrid) Name.");
+    if (defined($replicate_group_col)) {
+	print "I will use ap slot $replicate_group_col (replicate group) to group\n" and return [$replicate_group_col, 'replicate[\s_]*group'];
+    } else {
+	if (defined($extract_name_col)) {
+	    if ($last_extraction_slot{ident $self} <= $extract_name_col) {
+		print "I will use ap slot $extract_name_col (extract name) to group\n" and return [$extract_name_col, 'Extract\s*Name']; 
+	    }
+	} else {
+	    if (defined($sample_name_col)) {
+		print "I will use ap slot $sample_name_col (sample name) to group\n" and return [$sample_name_col, 'Sample\s*Name'];
+	    }
+	    if (defined($source_name_col)) {
+                print "I will use ap slot $source_name_col (source name) to group\n" and return [$source_name_col, 'Source\s*Name'];
+	    }
+	    if (defined($hybridization_name_col) && $hybridization_name_col == 0) {
+                print "I will use ap slot $hybridization_name_col (hybridization name) which is slot 0 to group\n" and return [$hybridization_name_col, 'Hybridization\s*Name'];
+            }
 	}
     }
-    print "ok with extraction.";
-    print "I will use ap slot $last_extraction_slot{ident $self} (last choice) to group\n" and return [$last_extraction_slot{ident $self}, 'protocol'];
+    if ( $self->ap_slot_without_real_data($last_extraction_slot{ident $self}) ) {
+	print "I will use raw data ap slot $raw_data_col (raw data) to group.\n" and return [$raw_data_col, 'raw'];
+    } else {
+	print "I will use ap slot $last_extraction_slot{ident $self} (last choice) to group\n" and return [$last_extraction_slot{ident $self}, 'protocol'];
+    }
 }
 
 sub set_groups {
@@ -2243,7 +2268,8 @@ sub set_groups_seq {
 	($nr_grp, $all_grp) = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
     } else {
 	if ($method eq 'replicate[\s_]*group') {
-	    $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method);
+	   eval { $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method) };
+	   $all_grp = group_applied_protocols_by_protocol_attr($denorm_slots->[$last_extraction_slot], 'name', $method) unless defined($all_grp);
 	}
 	elsif ($method eq 'Source\s*Name') {
 	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);
@@ -2329,7 +2355,8 @@ sub set_groups_array {
 	($nr_grp, $all_grp) = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
     } else {
 	if ($method eq 'replicate[\s_]*group') {
-	    $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method);
+	    eval { $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method) };
+	    $all_grp = $self->group_applied_protocols_by_protocol_attr($denorm_slots->[$last_extraction_slot], 'name', $method) unless defined($all_grp);
 	}
 	elsif ($method eq 'Source\s*Name') {
 	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);
@@ -2399,6 +2426,19 @@ sub group_applied_protocols_by_data {
 #    print $direction, $field, $fieldtext, "\n";
     my $data = _get_data_by_info($ap_slot, $direction, $field, $fieldtext);
     return _group($data, $rtn);
+}
+
+sub group_applied_protocols_by_protocol_attr {
+    my ($self, $ap_slot, $field, $fieldtext, $rtn) = @_;
+    my @attrs;
+    my $get_func = "get_$field";
+    for my $ap (@$ap_slot) {
+	for my $attr (@{$ap->get_protocol->get_attributes}) {
+	    print $attr->to_string, "\n" and push @attrs, $attr if $attr->$get_func() =~ /$fieldtext/;
+	}
+    }
+    croak("can not get applied protocol that has PROTOCOL attribute with field $field equals to fieldtext $fieldtext") unless scalar @attrs;
+    return _group(\@attrs, $rtn);
 }
 
 sub group_applied_protocols_by_attr {
