@@ -647,7 +647,12 @@ sub set_lib_selection {
     my ($self) = @_;
     my $selection;
     if (defined($ap_slots{ident $self}->{'immunoprecipitation'}) and $ap_slots{ident $self}->{'immunoprecipitation'} != -1) {
-	$selection = "ChIP";   
+	if ($molecule_type{ident $self} =~ /rna/i) {
+	    $selection = 'RIP';
+	}
+	if ($molecule_type{ident $self} =~ /dna/i) {
+	    $selection = "ChIP";
+	}	
     }
     else { #default random shearing only
 	$selection = "RANDOM";
