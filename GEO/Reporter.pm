@@ -474,10 +474,20 @@ sub write_sample_description {
 	    if ( $check == 1 ) { #real antibody or antibody with Comment[IP]=0 column
 		my $double_check = have_comment_IP_0($antibody);
 		if ( $double_check == 0 ) {
-		    $str .= "channel ch$ch is ChIP DNA; Antibody information listed below: ";
+		    if ($molecule_type{ident $self} =~ /rna/i) {
+			$str .= "channel ch$ch is RIP RNA; Antibody information listed below: "
+		    }
+		    if ($molecule_type{ident $self} =~ /dna/i) {
+			$str .= "channel ch$ch is ChIP DNA; Antibody information listed below: ";
+		    }
 		    $str .= write_dbfield_info($info, \@output_antibody_dbfields);
 		} else {
-		    $str .= "channel ch$ch is input DNA;";
+		    if ($molecule_type{ident $self} =~ /dna/i) {
+			$str .= "channel ch$ch is input DNA;";
+		    }
+		    if ($molecule_type{ident $self} =~ /rna/i) {
+			$str .= "channel ch$ch is input RNA;";
+		    }
 		}
 	    }
 	    elsif ( $check == 0 ) { #negative control
@@ -617,7 +627,12 @@ sub set_lib_strategy {
     my ($self) = @_;
     my $strategy;
     if (defined($ap_slots{ident $self}->{'immunoprecipitation'}) and $ap_slots{ident $self}->{'immunoprecipitation'} != -1) {
-	$strategy = "ChIP-Seq";
+	if ($molecule_type{ident $self} =~ /rna/i) {
+	    $strategy = 'RIP-Seq';
+	}
+	if ($molecule_type{ident $self} =~ /dna/i) {
+	    $strategy = "ChIP-Seq";
+	}
     }
     elsif ($molecule_type{ident $self} =~ /rna/i) {
 	$strategy = 'RNA-Seq';
