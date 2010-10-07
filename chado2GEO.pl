@@ -38,10 +38,12 @@ my $send_to_geo = 0;
 my $long_protocol_text = 0;
 my $split_seq_group = 1; #splicate the pair of one manipulation-control biological replicate into 2 gsm records
 my $split_arr_group = 0; #split array replicates
+my $seq_exp;
 my $option = GetOptions ("unique_id=s"     => \$unique_id,
 			 "out=s"           => \$output_dir,
 			 "config=s"        => \$config,
 			 "long_protocol_text=s" => \$long_protocol_text,
+			 "seq=s" => \$seq_exp,
 			 "split_seq_group=s" => \$split_seq_group,
 			 "split_arr_group=s" => \$split_arr_group,
 			 "use_existent_metafile=s" => \$use_existent_metafile,
@@ -69,6 +71,7 @@ $samplefile = $report_dir . $unique_name . '_sample.txt';
 $chado_datafiles = $report_dir . $unique_name . '_chado_datafiles.txt';
 $metafile = $unique_name . '.soft';
 
+my ($reader, $experiment, $reporter);
 if (($use_existent_metafile == 0) && ($use_existent_tarball == 0)) {
     #what is the database for this dataset? 
     my $dbname = $ini{database}{dbname};
@@ -80,7 +83,7 @@ if (($use_existent_metafile == 0) && ($use_existent_tarball == 0)) {
 
     #start read chado
     print "connecting to database ...";
-    my $reader = new ModENCODE::Parser::LWChado({
+    $reader = new ModENCODE::Parser::LWChado({
 	'dbname' => $dbname,
 	'host' => $dbhost,
 	'username' => $dbusername,
@@ -90,13 +93,13 @@ if (($use_existent_metafile == 0) && ($use_existent_tarball == 0)) {
     print "database connected.\n";
     print "loading experiment ...";
     $reader->load_experiment($experiment_id);
-    my $experiment = $reader->get_experiment();
+    $experiment = $reader->get_experiment();
     print "done.\n";
 
     open my $seriesFH, ">", $seriesfile;
     open my $sampleFH, ">", $samplefile;
     open my $chado_datafilesFH, ">", $chado_datafiles;    
-    my $reporter = new GEO::Reporter({
+    $reporter = new GEO::Reporter({
         'config' => \%ini,
         'unique_id' => $unique_id,
         'sampleFH' => $sampleFH,
@@ -250,7 +253,11 @@ if (($tarball_made || $use_existent_tarball) && $send_to_geo) {
     my $ftp = Net::FTP->new($ftp_host);
     my $success = $ftp->login($ftp_username, $ftp_password);
     die $ftp->message unless $success;
-    my $success1 = $ftp->cwd($ini{ftp}{dir});
+    my $dir;
+    $dir = $reporter->get_experiment_type =~ /seq/ ? $ini{ftp}{seq_dir} : $ini{ftp}{array_dir} if $reporter;
+    $dir = $seq_exp ? $ini{ftp}{seq_dir} : $ini{ftp}{array_dir} if defined($seq_exp);
+    print $dir, "\n";
+    my $success1 = $ftp->cwd($dir);
     die "FTP error changing to directory: " . $ftp->message unless $success1;
     $ftp->binary;
     my $success2 = $ftp->put($tarballfile);
@@ -358,7 +365,7 @@ sub unzipp {
 }
 
 sub usage {
-    my $usage = qq[$0 -unique_id <unique_submission_id> -out <output_dir> [-config <config_file>] [-use_existent_metafile <0|1>] [-make_tarball <0|1>] [-use_existent_tarball <0|1>] [-send_to_geo <0|1>] [-long_protocol_text <0|1>] [-split_seq_group <0|1>]];
+    my $usage = qq[$0 -unique_id <unique_submission_id> -out <output_dir> [-config <config_file>] [-use_existent_metafile <0|1>] [-make_tarball <0|1>] [-use_existent_tarball <0|1>] [-send_to_geo <0|1>] [-long_protocol_text <0|1>] [-split_seq_group <0|1>] [-seq <0|1>]];
     print "Usage: $usage\n";
     print "example 1, generate soft file but no tarball, $0 -unique_id id -out dir \n";
     print "example 2, generate tarball using existent soft file, $0 -unique_id id -out dir -use_existent_metafile 1 -make_tarball 1 \n";
@@ -371,5 +378,6 @@ sub usage {
     print "optional yet important parameter: send_to_geo, default is 0 for NOT sending crappy results to geo. must set both make_tarball and send_to_geo to 1 for sending submission to geo happen.\n";
     print "optional parameter: long_protocol_text, default 0 for using protocol wiki dbfield short description for protocol text, 1 for using protocol wiki text itself, this is an experimental feature since the code does a screen scrap/massage of wiki html, the wiki database is not open yet.\n";
     print "optional parameter: split_seq_group, default 1 for splitting ChIP-control in one biological replicate to report 2 individual GSM records. 0 for NOT split. seq experiments of ChIP-control generally required to report ChIP and control separately.\n";
+    print "optional parameter: seq, boolean, indicate whether the experiment is an array-based or seq-based. used ONLY when use_existent_metafile or use_existent_tarball is 1.\n";
     exit 2;
 }
