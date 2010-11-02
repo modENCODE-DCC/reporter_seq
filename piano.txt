@@ -1,11 +1,26 @@
-2821
-2822
-2823
-2825
-2826
-2827
-2828
-2829
-2830
-2831
-2832
+2821 GSM510086
+2822 GSM510087
+2823 GSM510089
+2825 GSM510088
+2826 GSM510085
+2827 GSM509929
+2828 GSM509930
+2829 GSM509932
+2830 GSM510090
+2831 GSM509931
+2832 GSM509933
+
+#the following GSM experiments might never be submitted to DCC
+GSM547249 whole worm mix stages RACE D
+GSM547252 whole worm mix stages RACE G
+GSM547240 whole worm mix stages C
+GSM547243 whole worm mix stages G
+GSM547250 whole worm mix stages RACE E
+GSM547253 whole worm mix stages RACE H
+GSM547242 whole worm mix stages F
+GSM547248 whole worm mix stages RACE C
+GSM547251 whole worm mix stages RACE F
+GSM547241 whole worm mix stages D
+GSM547244 whole worm mix stages H
+GSM547247 whole worm mix stages RACE B
+
