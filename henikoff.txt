@@ -1,0 +1,43 @@
+#never processed by DCC
+GSM333833 H3.3_150_(3L_185168-2)
+GSM333845 cDNA_(TR-33Con_237369)
+GSM333860 H3.3_bulk_(2-33E_269900)
+GSM333868 H3.3_80-600_(3.3_600bd_271145)
+GSM333869 H3.3_80_(33_80_271147)
+GSM333870 H3.3deltaN_80_(dN_80_271145)
+GSM333871 H3.3_150-600_(33-6_185167-1)
+GSM344843 cDNA_(H33_Control_Affymetrix)
+
+#never submit to geo
+"Fly_embryos_1-3_hr_150_mM_Salt_Extracted_Chromatin"    2507                 
+"Fly_embryos_1-3_hr_600_mM_Salt_Extracted_Chromatin"    2508                 
+"Fly_embryos_1-3_hr_600_mM_Salt_Extracted_Chromatin_Pellet"     2509                 
+"Fly_embryos_4-6_hr_150_mM_Salt_Extracted_Chromatin"    2510                 
+"Fly_embryos_4-6_hr_600_mM_Salt_Extracted_Chromatin"    2511                 
+"Fly_embryos_4-6_hr_600_mM_Salt_Extracted_Chromatin_Pellet"     2512                 
+"Fly_wing_disc_150_mM_Salt_Extracted_Chromatin" 2514                 
+"Fly_wing_disc_600_mM_Salt_Extracted_Chromatin" 2515                 
+"Fly_wing_disc_600_mM_Salt_Extracted_Chromatin_Pellet"  2516                 
+"Fly_wing_disc_80_mM_Salt_Extracted_Chromatin"  2513              
+
+#missing according to Y4Q1, found by Marc by manually mapping to figures in a published paper by Henikoff et. al.
+2404 GSM391381 H2Av_bulk_(C2.2AVIPD_237448)
+2502 GSM333866 Pellet_2_(508pell_271518)
+2502 GSM333867 Pellet_3_(516pell_271522)
+2502 GSM387598 Pellet_4_(C3H2A_vs_VPN_277877-2)
+2503 150_fraction_3_(11LN_237468-1)
+2503 GSM333839 150_fraction_2_(9LN_138960-3)
+2504 GSM387597 H2Av_bulk_(C3H2A_vs_VPDINP_276912-2)
+2505 GSM387596 H2A_bulk_(C3H2A_vs_PDINP_277408-2)
+2505 GSM391380 H2A_bulk_(C2.2AIPD_237467)
+2506 GSM333840 Nucl_dens_2_(9NG_185156-3)
+2506 Nucl_dens_3_(11NG_237467-1)
+2517 GSM387600 80_fraction_10_(C4_vs_80N_138967-5)
+2518 80_fraction_1_(4NV80_237371)
+2519 GSM333858 80_fraction_7_(1-AvN0.8_271522)
+2520 80_fraction_6_(833N8_138377)
+2520 GSM333855 80_fraction_5_(8D3N8_185156)
+2523 GSM333854 80-600_fraction_1_(8D3N6_138961)
+2525 150-600_fraction_3_(116N_237448-1)
+2525 GSM333838 150-600_fraction_2_(96N_138961-3)
+
