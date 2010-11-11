@@ -469,7 +469,7 @@ sub write_sample_description {
 	for my $antibody (@$antibodies) {
 	    my $str = "!Sample_description = ";
 	    my $info = get_dbfield_info($antibody);
-	    
+	    print "###########antibody ", Dumper($info);
 	    my $check = is_antibody($antibody);
 	    if ( $check == 1 ) { #real antibody or antibody with Comment[IP]=0 column
 		my $double_check = have_comment_IP_0($antibody);
@@ -725,9 +725,9 @@ sub write_normalized_data_dup {
 	    unless (scalar grep {$path eq $_} @$exist_normalize_datafiles) {
 		if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		my $type;
-		$type = 'WIG' if ($path =~ /\.wig\./i);
+		$type = 'WIG' if ($path =~ /\.wig\.?/i);
 		$type = 'GFF3' if ($path =~ /\.gff3$/i);
-		$type = 'SAM' if ($path =~ /\.sam\./i);
+		$type = 'SAM' if ($path =~ /\.sam\.?/i);
 		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
 		print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
 		$num_processed_data+=1;
@@ -763,9 +763,9 @@ sub write_raw_data {
 		my ($file, $dir, $suffix) = fileparse($path);
 		print $sampleFH "!Sample_raw_file_", "$num_raw_data = ", $file . $suffix, "\n";
 		my $type;
-		$type = 'FASTQ' if $file =~ /\.fastq\./i;
-		$type = 'WIG' if $file =~ /\.wig\./i;
-		$type = 'SAM' if ($path =~ /\.sam\./i);
+		$type = 'FASTQ' if $file =~ /\.fastq\.?/i;
+		$type = 'WIG' if $file =~ /\.wig\.?/i;
+		$type = 'SAM' if ($path =~ /\.sam\.?/i);
 		print $sampleFH "!Sample_raw_file_type_", "$num_raw_data = ", $type, "\n";
 		$num_raw_data += 1;
 	    }
@@ -808,9 +808,9 @@ sub write_normalized_data {
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		my ($file, $dir, $suffix) = fileparse($path);
 		my $type;
-		$type = 'WIG' if ($file =~ /\.wig\./i);
+		$type = 'WIG' if ($file =~ /\.wig\.?/i);
 		$type = 'GFF3' if ($file =~ /\.gff3$/i);
-		$type = 'SAM' if ($path =~ /\.sam\./i);
+		$type = 'SAM' if ($path =~ /\.sam\.?/i);
 		#print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $file . $suffix, "\n";
 		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
 		print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
@@ -1606,6 +1606,7 @@ sub write_dbfield_info {
     my ($info, $fields) = @_;
     my $str;
     for my $fld (@$fields) {
+	print $info->{$fld};
 	$str .= $fld . ": " . $info->{$fld} . ";" if exists($info->{$fld});
     }
     return $str;
