@@ -959,8 +959,9 @@ sub get_real_factors {
 	    push @rfactors, $rfactor if defined($gene);
 	}
 	else {
-	    my $factor_name = $self->get_value_by_info(0, 'name', $factors->{$rank}->[0]);
-	    my $rfactor = "$type $factor_name";
+	    my $factor_name = $factors->{$rank}->[0];
+	    my $factor_value = $self->get_value_by_info(0, 'name', $factors->{$rank}->[0]);
+	    my $rfactor = "$factor_name ($type) $factor_value";
 	    push @rfactors, $rfactor if defined($rfactor);
 	}
 	#$rfactor = 'Strain ' . $strain{ident $self} if $type =~ /strain/i ;
@@ -2603,10 +2604,24 @@ sub get_value_by_info {
 	    for my $datum (@{$ap->$func()}) {
 		my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
 		if ($field eq 'name') {
-		    return $value if $name =~ /$fieldtext/;
+		    if ($name =~ /$fieldtext/) {
+			my $v = $value;
+			for my $attr (@{$datum->get_attributes()}) {
+			    my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+			    $v .= " $avalue" if lc($aheading) eq 'unit';
+			}
+			return $v;
+		    }
 		}
 		if ($field eq 'heading') {
-		    return $value if $heading =~ /$fieldtext/;
+		    if ($heading =~ /$fieldtext/) {
+			my $v =$value;
+			for my $attr (@{$datum->get_attributes()}) {
+                            my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+                            $v .= " $avalue" if lc($aheading) eq 'unit';
+                        }
+			return $v;
+		    }
 		}
 		for my $attr (@{$datum->get_attributes()}) {
 		    my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
