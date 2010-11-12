@@ -1225,17 +1225,7 @@ sub set_strain {
 
 sub get_strain_row {
     my ($self, $row) = @_;
-    my %dbfields = ('official name' => 1, 
-		    'genotype' => 1, 
-		    'transgenic type' => 1, 
-		    'gene target' => 1, 
-		    'mutagen' => 1, 
-		    'tag' => 1, 
-		    'description' => 1, 
-		    'made_by' => 1, 
-		    'outcross' => 1, 
-		    'transgene' => 1, 
-		    'tags' => 1);
+    my @dbfields = ('official name', 'genotype', 'transgenic type', 'gene target', 'mutagen', 'tag', 'description', 'made_by', 'outcross', 'transgene', 'tags');
     my $strain;
     for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
@@ -1259,10 +1249,13 @@ sub get_strain_row {
 		    $tmp =~ s/_/ /g;
 		    $strain .= $tmp;
 		}
+		my $df = '(';
 		for my $attr (@{$datum->get_attributes()}) {
-		    my ($aname, $aheading, $avalue, $atype) = ($attr->get_name(), $attr->get_heading(), $attr->get_value(), $attr->get_type());
-		    $strain .= " $aheading $avalue;" if exists $dbfields{lc(aheading)};
+		    my ($aname, $aheading, $avalue, $atype) = ($attr->get_name(), lc($attr->get_heading()), $attr->get_value(), $attr->get_type());
+		    $df .= "$aheading : $avalue " if scalar grep(/$aheading/, @dbfields);
 		}
+		$df .= ')';
+		$strain .= $df if $df ne '()';
 	    }
 	    for my $attr (@{$datum->get_attributes()}) {
 		my ($aname, $aheading, $avalue, $atype) = ($attr->get_name(), $attr->get_heading(), $attr->get_value(), $attr->get_type());
@@ -1285,7 +1278,7 @@ sub get_strain_row {
 			$strain .= $tmp;			
 		    }
 		}
-		$strain .= " $aheading $avalue;" if exists $dbfields{lc(aheading)};
+		#$strain .= " $aheading $avalue;" if exists $dbfields{lc($aheading)};
 	    }
 	}
     }
