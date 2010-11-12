@@ -208,11 +208,15 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
 		$filename_in_tarball = $filename and last if substr($filename, $chars) eq $datafile;
 	    }
 	    print $filename_in_tarball, " in pipeline\n";
+	    $filename_in_tarball =~ s/\(/\\\(/;
+	    $filename_in_tarball =~ s/\)/\\\)/;
 	    system("tar xzf $pipeline_tarball $filename_in_tarball") == 0 || die "can not extract a datafile $filename_in_tarball from download tarball $pipeline_tarball";
 	    #if it is compressed ......right now only allows one level of compression
 	    #if it is multiple levels of compression, GEO will still get compressed files in tarball, they will complain and we will fix.
 	    my $zipsuffix = iszip($filename_in_tarball);
 	    print $zipsuffix, " zip suffix\n";
+	    $myfile =~ s/\(/\\\(/;
+	    $myfile =~ s/\)/\\\)/;
 	    if ($zipsuffix) {
 		#unzip and remove the original compressed file
 		#my $filename_no_zip = do_unzip($filename_in_tarball, $zipsuffix);
