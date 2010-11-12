@@ -274,7 +274,7 @@ if (($tarball_made || $use_existent_tarball) && $send_to_geo) {
 	From => $ini{email}{from},
 	To   => $ini{email}{to},
 	CC   => $ini{email}{cc},
-	Subject => 'ftp upload',
+	Subject => 'modencode: ftp upload',
 		  });
     print $mailer "userid: $submitter\n";
     print $mailer "file: $tarballfile\n";
