@@ -1225,13 +1225,24 @@ sub set_strain {
 
 sub get_strain_row {
     my ($self, $row) = @_;
-    my ($strain, $tgt_gene, $tag);
+    my %dbfields = ('official name' => 1, 
+		    'genotype' => 1, 
+		    'transgenic type' => 1, 
+		    'gene target' => 1, 
+		    'mutagen' => 1, 
+		    'tag' => 1, 
+		    'description' => 1, 
+		    'made_by' => 1, 
+		    'outcross' => 1, 
+		    'transgene' => 1, 
+		    'tags' => 1);
+    my $strain;
     for (my $i=0; $i<=$last_extraction_slot{ident $self}; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
 	for my $datum (@{$ap->get_input_data()}) {
 	    my ($name, $heading, $value, $type) = ($datum->get_name(), $datum->get_heading(), $datum->get_value(), $datum->get_type());
 	    if (lc($name) =~ /^\s*strain\s*$/ || $type->get_name() eq 'strain_or_line') {
-		if ($value =~ /[Ss]train:(.*)&/) {
+		if ($value =~ /[Fly|Worm]?[Ss]train:(.*)&/) {
 		    my $name = $1;
 		    if ($name =~ /(.*?):/) {
 			my $tmp = uri_unescape($1);
@@ -1248,11 +1259,15 @@ sub get_strain_row {
 		    $tmp =~ s/_/ /g;
 		    $strain .= $tmp;
 		}
+		for my $attr (@{$datum->get_attributes()}) {
+		    my ($aname, $aheading, $avalue, $atype) = ($attr->get_name(), $attr->get_heading(), $attr->get_value(), $attr->get_type());
+		    $strain .= " $aheading $avalue;" if exists $dbfields{lc(aheading)};
+		}
 	    }
 	    for my $attr (@{$datum->get_attributes()}) {
 		my ($aname, $aheading, $avalue, $atype) = ($attr->get_name(), $attr->get_heading(), $attr->get_value(), $attr->get_type());
 		if (lc($aname) =~ /^\s*strain\s*$/ || lc($atype->get_name()) eq 'strain_or_line') {
-		    if ( $avalue =~ /[Ss]train:(.*)&/ ) {
+		    if ( $avalue =~ /[Fly|Worm]?[Ss]train:(.*)&/ ) {
 			my $name = $1;
 			if ($name =~ /(.*?):/) {
 			    my $tmp = uri_unescape($1);
@@ -1270,18 +1285,11 @@ sub get_strain_row {
 			$strain .= $tmp;			
 		    }
 		}
-		if (lc($aheading =~ /^target\s*id$/)) {
-		    $tgt_gene = uri_unescape($avalue);
-		}
-		if (lc($aheading =~ /^\s*tags\s*$/)) {
-		    $tag = uri_unescape($avalue);
-		}		
+		$strain .= " $aheading $avalue;" if exists $dbfields{lc(aheading)};
 	    }
 	}
     }
     if ( defined($strain) ) {
-	$strain .= " (engineered, target gene $tgt_gene" if defined($tgt_gene);
-	$strain .= " tagged by $tag)" if defined($tag);
 	$strain{ident $self} = $strain;
     }
 }
