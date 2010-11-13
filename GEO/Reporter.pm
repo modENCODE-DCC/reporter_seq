@@ -316,7 +316,7 @@ sub chado2sample {
 		print "ok with write_sample_organism\n";
 		$self->write_characteristics($row, $channel);
 		print "ok with write_sample_characteristics\n";
-		$self->write_sample_description($row, $channel);
+		my $is_chip_row = $self->write_sample_description($row, $channel);
 		print "ok with write_sample_description\n";
 		$self->write_sample_growth($row, $channel);
 		print "ok with write_sample_growth\n";
@@ -327,7 +327,24 @@ sub chado2sample {
 			#print "labeling protocol defined\n";
 			$self->write_sample_label($row, $channel);
 		    } else {
-			$self->write_sample_label_without_labeling_protocol($row, $channel);
+			if ($project{ident $self} eq 'Kevin White') {
+			    my $array = $self->get_array_row($row, 1);
+			    my $platform;
+			    for my $attr (@{$array->[0]->get_attributes()}) {
+				$platform = lc($attr->get_value()) if (($attr->get_heading() =~ /platform/) and (defined($attr->get_value())));
+			    }
+			    if ($platform eq 'agilent') {
+				my $ch = $channel+1;
+				my $sampleFh = $sampleFH{ident $self};
+				if ($is_chip_row) {
+				    print $sampleFh "!Sample_label_ch$ch = cy3\n";
+				} else {
+				    print $sampleFh "!Sample_label_ch$ch = cy5\n";
+				}
+			    }
+			} else {
+			    $self->write_sample_label_without_labeling_protocol($row, $channel);
+			}
 		    }
 		    print "ok with write_sample_labeling\n";
 		}
@@ -454,6 +471,7 @@ sub write_sample_description {
     my $sampleFH = $sampleFH{ident $self};
     my $ip_ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'immunoprecipitation'}]->[$row];
     my $antibodies;
+    my $is_chip_row=0;
     eval { $antibodies = _get_datum_by_info($ip_ap, 'input', 'name', 'antibody') };
     my $ch=$channel+1;
     if ($antibodies) {
@@ -465,6 +483,7 @@ sub write_sample_description {
 	    if ( $check == 1 ) { #real antibody or antibody with Comment[IP]=0 column
 		my $double_check = have_comment_IP_0($antibody);
 		if ( $double_check == 0 ) {
+		    $is_chip_row = 1;
 		    if ($molecule_type{ident $self} =~ /rna/i) {
 			$str .= "channel ch$ch is RIP RNA; Antibody information listed below: "
 		    }
@@ -491,6 +510,7 @@ sub write_sample_description {
 	    print $sampleFH $str, "\n";
 	}
     }
+    return $is_chip_row;
 }
 
 sub write_sample_growth {
@@ -559,6 +579,7 @@ sub write_sample_label_without_labeling_protocol {
     for my $attr (@{$array->[0]->get_attributes()}) {
   	$platform = $attr->get_value() if (($attr->get_heading() =~ /platform/) and (defined($attr->get_value())));
     }
+    my $label;
     unless (lc($platform) eq 'affymetrix') {
 	die "this is not an affymetrix array experiment, yet there is no labeling protocol. suspicious submission.\n"
     }
@@ -1514,13 +1535,15 @@ sub get_molecule_type_row {
 
 sub set_antibody {
     my $self = shift;
+    my %abs;
     if ($ap_slots{ident $self}->{'immunoprecipitation'}) {
 	if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {
 	    for my $row (@{$groups{ident $self}->{0}->{0}}) {
 		my $ab = $self->get_antibody_row($row);
 		if ($ab) {
-		    if ( is_antibody($ab) != -1 ) { #negative control or real antibody 
-			$antibody{ident $self} = $ab;
+		    my $x = is_antibody($ab);
+		    if ( $x != -1 ) { #negative control or real antibody
+			$abs{$x} = $ab;
 		    }
 		}
 	    }
@@ -1529,12 +1552,18 @@ sub set_antibody {
 	    for my $row (0..$num_of_rows{ident $self}-1) {
 		my $ab = $self->get_antibody_row($row);
 		if ($ab) {
-		    if ( is_antibody($ab) != -1 ) { #negative control or real antibody
-			$antibody{ident $self} = $ab;
+		    my $x = is_antibody($ab);
+		    if ( $x != -1 ) { #negative control or real antibody
+			$abs{$x} = $ab;
 		    }
 		}
 	    }	    
 	}
+    }
+    if (exists $abs{1}) {
+	$antibody{ident $self} = $abs{1};
+    } elsif (exists $abs{0}) {
+	$antibody{ident $self} = $abs{0};
     }
 }
 
@@ -1545,7 +1574,7 @@ sub is_antibody {
     $antibody =~ /[Aa][Bb]:([\w ]*?):/;
     $antibody = $1;
     $antibody =~ s/ +/ /g;
-    my @special_antibodies = ('No Antibody Control', 'AB46540_NIgG');
+    my @special_antibodies = ('No Antibody Control', 'No_Antibody_Control', 'AB46540_NIgG');
     my $is_control = 0;
     for my $control (@special_antibodies) {
 	$is_control = 1 and last if $antibody eq $control;
@@ -2145,6 +2174,7 @@ sub set_sample_name_ap_slot {
 	$sample_name_ap_slot{ident $self} = $slot;
     } else { #fly groups tend to use sample name instead of source name for the beginning material since it is produced
 	#by bloomington subgroup
+	my $text = 'Sample|Hybridization]\s*Name';
 	my $islot = $self->get_ap_slot_by_datum_info('input', 'heading', $text);
 	if ( defined($islot) and $islot == 0 ) {
 	    $sample_name_ap_slot{ident $self} = $islot;
@@ -2196,15 +2226,15 @@ sub group_by_this_ap_slot {
     my $source_name_col = $source_name_ap_slot{ident $self};
     my $raw_data_col = $ap_slots{ident $self}->{'raw'};
     my $hybridization_name_col = $hybridization_name_ap_slot{ident $self};
-    #print "replicate group slot $replicate_group_col\n";
-    #print "extract name slot $extract_name_col\n";
-    #print "sample name slot $sample_name_col\n";
-    #print "source name slot $source_name_col\n";
-    #print 'last extraction slot is ', $last_extraction_slot{ident $self};
-    #print "hybridization name slot is $hybridization_name_col\n";
-
+    print "replicate group slot $replicate_group_col\n";
+    print "extract name slot $extract_name_col\n";
+    print "sample name slot $sample_name_col\n";
+    print "source name slot $source_name_col\n";
+    print 'last extraction slot is ', $last_extraction_slot{ident $self};
+    print "hybridization name slot is $hybridization_name_col\n";
+    
     if (defined($replicate_group_col)) {
-	print "I will use ap slot $replicate_group_col (replicate group) to group\n" and return [$replicate_group_col, 'replicate[\s_]*group'];
+	#print "I will use ap slot $replicate_group_col (replicate group) to group\n" and return [$replicate_group_col, 'replicate[\s_]*group'];
     } else {
 	if (defined($extract_name_col)) {
 	    if ($last_extraction_slot{ident $self} <= $extract_name_col) {
@@ -2212,7 +2242,7 @@ sub group_by_this_ap_slot {
 	    }
 	} else {
 	    if (defined($sample_name_col)) {
-		print "I will use ap slot $sample_name_col (sample name) to group\n" and return [$sample_name_col, 'Sample\s*Name'];
+		print "I will use ap slot $sample_name_col (sample name) to group\n" and return [$sample_name_col, '[Sample|Hybridization]\s*Name'];
 	    }
 	    if (defined($source_name_col)) {
                 print "I will use ap slot $source_name_col (source name) to group\n" and return [$source_name_col, 'Source\s*Name'];
