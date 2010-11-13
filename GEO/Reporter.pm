@@ -2047,7 +2047,7 @@ sub get_slotnum_raw_array {
     my $self = shift;
     #first search by output data type, such as modencode-helper:nimblegen_microarray_data_file (pair) [pair]
     #or modencode-helper:CEL [Array Data File], or agilent_raw_microarray_data_file (TXT)
-    my @types = ('nimblegen_microarray_data_file (pair)', 'CEL', 'agilent_raw_microarray_data_file');
+    my @types = ('nimblegen_microarray_data_file (pair)', 'CEL', 'agilent_raw_microarray_data_file', 'raw_microarray_data_file');
     for my $type (@types) {
 	my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
 	#even there are more than 1 raw-data-generating protocols, choose the first one since it is the nearest to hyb protocol
@@ -2397,7 +2397,7 @@ sub set_groups_array {
 	    for my $that_row (@{$combined_grp{$extract_grp}{$array_grp}}) {
                 my $that_extract_ap = $denorm_slots->[$last_extraction_slot]->[$that_row];
                 my $that_hyb_ap = $denorm_slots->[$ap_slots->{'hybridization'}]->[$that_row];
-                $ignore = 1 and $duplicate{$that_row} = $row and print "ignored $row!\n" and last if ($this_extract_ap->equals_except_anonymous($that_extract_ap) && $this_hyb_ap->equals_except_anonymous($that_hyb_ap));
+                #$ignore = 1 and $duplicate{$that_row} = $row and print "ignored $row!\n" and last if ($this_extract_ap->equals_except_anonymous($that_extract_ap) && $this_hyb_ap->equals_except_anonymous($that_hyb_ap));
 	    }
 	    push @{$combined_grp{$extract_grp}{$array_grp}}, $row unless $ignore;
 	} else {
