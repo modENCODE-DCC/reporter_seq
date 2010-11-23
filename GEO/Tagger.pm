@@ -20,11 +20,13 @@ my %organism               :ATTR( :get<organism>               :default<undef>);
 my %project                :ATTR( :get<project>                :default<undef>);
 my %lab                    :ATTR( :get<lab>                    :default<undef>);
 my %factors                :ATTR( :get<factors>                :default<undef>);
+my %data_type              :ATTR( :get<data_type>              :default<undef>);
+my %assay_type             :ATTR( :get<assay_type>             :default<undef>);
 my %hyb_slot               :ATTR( :get<hyb_slot>               :default<undef>);
 my %seq_slot               :ATTR( :get<seq_slot>               :default<undef>);
 my %ip_slot                :ATTR( :get<ip_slot>                :default<undef>);
 my %raw_slot               :ATTR( :get<raw_slot>               :default<undef>);
-my %normalize_slot         :ATTR( :get<normalize_slot>         :default<undef>);
+my %norm_slot              :ATTR( :get<norm_slot>              :default<undef>);
 my %strain                 :ATTR( :get<strain>                 :default<undef>);
 my %cellline               :ATTR( :get<cellline>               :default<undef>);
 my %devstage               :ATTR( :get<devstage>               :default<undef>);
@@ -77,7 +79,7 @@ sub set_all {
 	#$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }        
-    for my $parameter (qw[num_of_rows project lab factors hyb_slot seq_slot ip_slot raw_slot normalize_slot strain cellline devstage tissue sex antibody]) {
+    for my $parameter (qw[num_of_rows project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot strain cellline devstage tissue sex antibody]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
@@ -214,8 +216,9 @@ sub set_project {
                                             $property->get_value(), 
                                             $property->get_rank(), 
                                             $property->get_type());
-        if ($name =~ /project/i) {
+        if (lc($name) eq 'project' && defined($value) && $value ne '') {
             $project{ident $self} = $projects{lc($value)};
+	    last;
         }
     }
 }
@@ -227,8 +230,10 @@ sub set_lab {
                                             $property->get_value(), 
                                             $property->get_rank(), 
                                             $property->get_type());
-	
-        $lab{ident $self} = $value if ($name =~ /lab/i); 
+	if (lc($name) eq 'lab' && defined($value) && $value ne '') {
+	    $lab{ident $self} = $value;
+	    last;
+	}
     }    
 }
 
@@ -252,6 +257,34 @@ sub set_factors {
 	}
     }
     $factors{ident $self} = \%factor;
+}
+
+sub set_data_type {
+    my ($self, $experiment) = @_;
+    foreach my $property (@{$experiment{ident $self}->get_properties()}) {
+        my ($name, $value, $rank, $type) = ($property->get_name(),
+                                            $property->get_value(),
+                                            $property->get_rank(),
+                                            $property->get_type());
+        if (lc($name) eq 'data type' && defined($value) && $value ne '') {
+            $data_type{ident $self} = $value;
+            last;
+        }
+    }
+}
+
+sub set_assay_type {
+    my ($self, $experiment) = @_;
+    foreach my $property (@{$experiment{ident $self}->get_properties()}) {
+        my ($name, $value, $rank, $type) = ($property->get_name(),
+                                            $property->get_value(),
+                                            $property->get_rank(),
+                                            $property->get_type());
+        if (lc($name) eq 'assay type' && defined($value) && $value ne '') {
+            $assay_type{ident $self} = $value;
+            last;
+        }
+    }
 }
 
 sub set_hyb_slot {
@@ -281,9 +314,9 @@ sub set_raw_slot {
     }
 }
 
-sub set_normalize_slot {
+sub set_norm_slot {
     my $self = shift;
-    $normalize_slot{ident $self} = $self->get_slotnum_normalize();
+    $norm_slot{ident $self} = $self->get_slotnum_normalize();
 }
 
 sub set_strain {
@@ -403,7 +436,7 @@ sub get_slotnum_normalize {
         my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
         return $aps[0] if scalar(@aps);
     }
-    croak("can not find the normalization protocol"); #normalize file goes to gbrowse, so they must exist in SDRF.
+    return undef; #RT-PCR
 }
 
 sub get_strain_row {
