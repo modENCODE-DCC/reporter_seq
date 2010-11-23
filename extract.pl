@@ -60,7 +60,7 @@ my $tagger = new GEO::Tagger({
       'unique_id' => $unique_id,
       'reader' => $reader,
       'experiment' => $experiment,
-      'config' => $config,
+      'config' => \%ini,
 });
 $tagger->set_all();
 
