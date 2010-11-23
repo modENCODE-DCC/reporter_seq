@@ -67,4 +67,5 @@ $tagger->set_all();
 sub usage {
     my $usage = qq[$0 -unique_id <unique_submission_id> -out <output_dir> [-config <config_file>]];
     print "Usage: $usage\n";
+    exit 2;
 } 
