@@ -11,6 +11,7 @@ BEGIN {
 
 use Config::IniFiles;
 use Getopt::Long;
+use File::Spec;
 use ModENCODE::Parser::LWChado;
 use GEO::Tagger;
 
@@ -25,6 +26,15 @@ my $option = GetOptions ("unique_id=s"     => \$unique_id,
 usage() if (!$unique_id or !$output_dir);
 usage() unless -w $output_dir;
 usage() unless -e $config;
+
+#get config
+my %ini;
+tie %ini, 'Config::IniFiles', (-file => $config);
+
+#report directory
+$output_dir = File::Spec->rel2abs($output_dir);
+#make sure $report_dir ends with '/'
+$output_dir .= '/' unless $output_dir =~ /\/$/;
 
 my $dbname = $ini{database}{dbname};
 my $dbhost = $ini{database}{host};
