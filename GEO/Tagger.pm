@@ -325,7 +325,7 @@ sub set_sex {
 
 sub set_antibody {
     my $self = shift;
-    if ($ap_slots{ident $self}->{'immunoprecipitation'}) {
+    if ($ip_slot{ident $self}) {
 	for my $row ((0..$num_of_rows{ident $self}-1)) {	    
             my $ab = $self->get_antibody_row($row);
 	    if ($ab) {
@@ -699,115 +699,4 @@ sub _get_datum_by_info {
 ################################################################################################
 # end of helper functions for extracting information from denorm_slots.                        # 
 ################################################################################################
-
-
-
-
-
-
-
-
-sub get_value_by_info {
-    my ($self, $row, $field, $fieldtext) = @_;
-    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
-	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
-	for my $direction (('input', 'output')) {
-	    my $func = "get_" . $direction . "_data";
-	    for my $datum (@{$ap->$func()}) {
-		my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
-		if ($field eq 'name') {
-		    return $value if $name =~ /$fieldtext/;
-		}
-		if ($field eq 'heading') {
-		    return $value if $heading =~ /$fieldtext/;
-		}
-		for my $attr (@{$datum->get_attributes()}) {
-		    my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
-		    if ($field eq 'name') {
-			return $avalue if $aname =~ /$fieldtext/;		    
-		    }
-		    if ($field eq 'heading') {
-			return $avalue if $aheading =~ /$fieldtext/;
-		    }	    
-		}
-	    }
-	}
-    }
-    return undef;
-}
-
-
-
-
-
-
-sub get_genotype_row {
-    my ($self, $row) = @_;
-    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
-	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
-	for my $datum (@{$ap->get_input_data()}) {
-	    for my $attr (@{$datum->get_attributes()}) {
-		my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
-		if (lc($aheading) =~ /^\s*genotype\s*$/) {
-		    my $tmp = uri_unescape($avalue);
-		    $tmp =~ s/_/ /g;
-		    return $tmp;
-		}
-	    }
-	}
-    }
-    return undef;
-}
-sub get_transgene_row {
-    my ($self, $row) = @_;
-    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
-        my $ap = $denorm_slots{ident $self}->[$i]->[$row];
-        for my $datum (@{$ap->get_input_data()}) {
-            for my $attr (@{$datum->get_attributes()}) {
-                my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
-                if (lc($aheading) =~ /^\s*transgene\s*$/) {
-		    my $tmp = uri_unescape($avalue);
-		    $tmp =~ s/_/ /g;
-		    return $tmp;
-                }
-            }
-        }
-    }
-    return undef;
-}
-
-
-sub set_genotype {
-    my $self = shift;
-    for my $row ((0..$num_of_rows{ident $self}-1)) {
-	my $genotype = $self->get_genotype_row($row);
-	print "$genotype\n" and $genotype{ident $self} = $genotype and last if defined($genotype);
-    }
-}
-sub set_transgene {
-    my $self = shift;
-    for my $row ((0..$num_of_rows{ident $self}-1)) {
-	my $transgene = $self->get_transgene_row($row);
-	print "$transgene\n" and $transgene{ident $self} = $transgene and last if defined($transgene);
-    }
-}
-
-sub get_transgene_row {
-    my ($self, $row) = @_;
-    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
-        my $ap = $denorm_slots{ident $self}->[$i]->[$row];
-        for my $datum (@{$ap->get_input_data()}) {
-            for my $attr (@{$datum->get_attributes()}) {
-                my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
-                if (lc($aheading) =~ /^\s*transgene\s*$/) {
-		    my $tmp = uri_unescape($avalue);
-		    $tmp =~ s/_/ /g;
-		    return $tmp;
-                }
-            }
-        }
-    }
-    return undef;
-}
-
 1;
