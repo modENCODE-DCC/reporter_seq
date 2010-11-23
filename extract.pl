@@ -12,9 +12,9 @@ BEGIN {
 use Config::IniFiles;
 use Getopt::Long;
 use ModENCODE::Parser::LWChado;
+use ModENCODE::Tagger;
 
 print "initializing...\n";
-
 #parse command-line parameters
 my ($unique_id, $output_dir, $config);
 #default config
@@ -46,8 +46,13 @@ $reader->load_experiment($experiment_id);
 $experiment = $reader->get_experiment();
 print "done.\n";
 
-
-
+my $tagger = new GEO::Tagger({
+     'unique_id' => $unique_id,
+     'reader' => $reader,
+     'experiment' => $experiment,
+     'config' => $config,
+});
+$tagger->set_all();
 
 sub usage {
     my $usage = qq[$0 -unique_id <unique_submission_id> -out <output_dir> [-config <config_file>]];
