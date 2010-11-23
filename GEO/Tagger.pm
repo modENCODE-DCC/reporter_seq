@@ -152,12 +152,12 @@ sub affiliate_submission_reporter {
     print "loading experiment ...";
     $reader->load_experiment($experiment_id);
     my $experiment = $reader->get_experiment();
-    my $reporter = new GEO::Reporter({
+    my $reporter = new GEO::Tagger({
         'config' => $ini,
         'unique_id' => $id,
         'reader' => $reader,
         'experiment' => $experiment,
-				     });
+				 });
     for my $parameter (qw[normalized_slots denorm_slots]) {
         my $set_func = "set_" . $parameter;
         $reporter->$set_func();
