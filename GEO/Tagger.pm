@@ -81,7 +81,7 @@ sub set_all {
         my $set_func = "set_" . $parameter;
         print "try to find $parameter ...";
         $self->$set_func();
-        print " done\n";
+        print $self->get_func(), " done\n";
     }
 }
 
