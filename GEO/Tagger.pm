@@ -79,9 +79,12 @@ sub set_all {
     }        
     for my $parameter (qw[num_of_rows project lab factors hyb_slot seq_slot ip_slot raw_slot normalize_slot strain cellline devstage tissue sex antibody]) {
         my $set_func = "set_" . $parameter;
+	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
         $self->$set_func();
-        print $self->get_func(), " done\n";
+	my $t = $self->$get_func();
+        print "$t done\n" if defined($t);
+	print "NA done\n" unless defined($t);
     }
 }
 
