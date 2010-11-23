@@ -12,7 +12,7 @@ BEGIN {
 use Config::IniFiles;
 use Getopt::Long;
 use ModENCODE::Parser::LWChado;
-use ModENCODE::Tagger;
+use GEO::Tagger;
 
 print "initializing...\n";
 #parse command-line parameters
