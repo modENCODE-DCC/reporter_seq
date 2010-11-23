@@ -43,24 +43,24 @@ my $dbpassword = $ini{database}{password};
 #search path for this dataset, this is fixed by modencode chado db
 my $schema = $ini{database}{pathprefix}. $unique_id . $ini{database}{pathsuffix} . ',' . $ini{database}{schema};
 print "connecting to database ...";
-$reader = new ModENCODE::Parser::LWChado({
-    'dbname' => $dbname,
-    'host' => $dbhost,
-    'username' => $dbusername,
-    'password' => $dbpassword,
+my $reader = new ModENCODE::Parser::LWChado({
+      'dbname' => $dbname,
+      'host' => $dbhost,
+      'username' => $dbusername,
+      'password' => $dbpassword,
 });
 my $experiment_id = $reader->set_schema($schema);
 print "database connected.\n";
 print "loading experiment ...";
 $reader->load_experiment($experiment_id);
-$experiment = $reader->get_experiment();
+my $experiment = $reader->get_experiment();
 print "done.\n";
 
 my $tagger = new GEO::Tagger({
-     'unique_id' => $unique_id,
-     'reader' => $reader,
-     'experiment' => $experiment,
-     'config' => $config,
+      'unique_id' => $unique_id,
+      'reader' => $reader,
+      'experiment' => $experiment,
+      'config' => $config,
 });
 $tagger->set_all();
 
