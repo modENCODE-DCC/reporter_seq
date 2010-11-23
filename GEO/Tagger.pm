@@ -687,9 +687,9 @@ sub _get_attr_value {
 sub _get_datum_by_info { 
     my ($ap, $direction, $field, $fieldtext) = @_;
     my @data = ();
-    my $f = "get_$direction_data";
+    my $f = "get_" . $direction . "_data";
     for my $datum (@{$ap->$f}) {
-	my $of = "get_$field";
+	my $of = "get_" . $field;
 	push @data, $datum if $datum->$of =~ /$fieldtext/i;
     }
     croak("can not find data that has fieldtext like $fieldtext in field $field in chado.data table") unless (scalar @data);
