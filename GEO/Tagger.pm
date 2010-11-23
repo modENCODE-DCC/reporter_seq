@@ -16,6 +16,7 @@ my %experiment             :ATTR( :name<experiment>            :default<undef>);
 my %normalized_slots       :ATTR( :get<normalized_slots>       :default<undef>);
 my %denorm_slots           :ATTR( :get<denorm_slots>           :default<undef>);
 my %num_of_rows            :ATTR( :get<num_of_rows>            :default<undef>);
+my %num_of_cols            :ATTR( :get<num_of_cols>            :default<undef>);
 my %organism               :ATTR( :get<organism>               :default<undef>);
 my %project                :ATTR( :get<project>                :default<undef>);
 my %lab                    :ATTR( :get<lab>                    :default<undef>);
@@ -79,7 +80,7 @@ sub set_all {
 	#$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }        
-    for my $parameter (qw[num_of_rows project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot strain cellline devstage tissue sex antibody]) {
+    for my $parameter (qw[num_of_rows num_of_cols project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot strain cellline devstage tissue sex antibody]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
@@ -189,6 +190,11 @@ sub get_ap_row_by_data {
 sub set_num_of_rows {
     my $self = shift;
     $num_of_rows{ident $self} = scalar @{$denorm_slots{ident $self}->[0]};
+}
+
+sub set_num_of_cols {
+    my $self = shift;
+    $num_of_cols{ident $self} = scalar @{$denorm_slots{ident $self}};
 }
 
 sub set_organism {
@@ -421,7 +427,7 @@ sub get_slotnum_raw_array {
 
 sub get_slotnum_raw_seq {
     my $self = shift;
-    my @types = ('FASTQ');
+    my @types = ('FASTQ', 'SFF', 'QSEQ');
     for my $type (@types) {
         my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
         return $aps[0] if scalar(@aps);
@@ -431,7 +437,7 @@ sub get_slotnum_raw_seq {
 
 sub get_slotnum_normalize {
     my $self = shift;
-    my @types = ('WIG', 'BED', 'Sequence_Alignment/Map (SAM)');
+    my @types = ('WIG', 'BED', 'Sequence_Alignment/Map (SAM)', 'Signal_Graph_File');
     for my $type (@types) {
         my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
         return $aps[0] if scalar(@aps);
@@ -621,6 +627,58 @@ sub is_antibody {
     return 1;
 }
 
+sub get_raw_data {
+    my $self = shift;
+    my @raw_files = ();
+    my @types = ('nimblegen_microarray_data_file (pair)', 
+		 'CEL', 
+		 'agilent_raw_microarray_data_file', 
+		 'raw_microarray_data_file',
+		 'fastq',
+		 'sff',
+		 'qseq');
+    my @nr;
+    for my $col (0..$num_of_cols{ident $self}) {
+	for my $ap (@{$denorm_slots{ident $self}->[$col]}) {
+	    for my $datum (@{$ap->get_output_data()}) {
+		my ($value, $type) = ($datum->get_value(), $datum->get_type());
+		push @raw_files, $value and push @nr, $value if $value !~ /^\s*$/ && map {$type->get_name() eq $_} @types  && !map {$value eq $_} @nr;
+	    }
+	}
+    }
+    return @raw_files;
+}
+
+sub get_intermediate_data {
+    my $self = shift;
+    my @int_files = ();
+    my @types =  ('WIG', 'BED', 'Sequence_Alignment/Map (SAM)', 'Signal_Graph_File');
+    my @nr;
+    for my $col (0..$num_of_cols{ident $self}) {
+	for my $ap (@{$denorm_slots{ident $self}->[$col]}) {
+	    for my $datum (@{$ap->get_output_data()}) {
+		my ($value, $type) = ($datum->get_value(), $datum->get_type());
+		push @int_files, $value and push @nr, $value if $value !~ /^\s*$/ && map {$type->get_name() eq $_} @types  && !map {$value eq $_} @nr;
+	}
+    }
+    return @int_files;    
+}
+
+sub get_interprete_data {
+    my $self = shift;
+    my @ip_files = ();
+    my @types =  ('GFF3', 'GFF');
+    my @nr;
+    for my $col (0..$num_of_cols{ident $self}) {
+	for my $ap (@{$denorm_slots{ident $self}->[$col]}) {
+	    for my $datum (@{$ap->get_output_data()}) {
+		my ($value, $type) = ($datum->get_value(), $datum->get_type());
+		push @ip_files, $value and push @nr, $value if $value !~ /^\s*$/ && map {$type->get_name() eq $_} @types  && !map {$value eq $_} @nr;
+	}
+    }
+    return @ip_files;       
+}
+
 ################################################################################################
 # the following are helper functions for extracting information from denorm_slots, which is    #
 # a representation of regenerated SDRF from chado database.                                    #
@@ -735,4 +793,19 @@ sub _get_datum_by_info {
 ################################################################################################
 # end of helper functions for extracting information from denorm_slots.                        # 
 ################################################################################################
+
+sub get_wiggle_files {
+    my $self = shift;
+    my @wiggle_files = ();
+    for my $ap (@{$denorm_slots{ident $self}->[$ap_slots{ident $self}->{'normalization'}]}) {
+	for my $datum (@{$ap->get_output_data()}) {
+            my ($value, $type) = ($datum->get_value(), $datum->get_type());
+	    push @wiggle_files, $value and last if ($type->get_name() eq 'WIG') ;
+	}
+    }
+    return @wiggle_files;    
+}
+
+
+
 1;
