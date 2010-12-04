@@ -63,6 +63,54 @@ my $tagger = new GEO::Tagger({
       'config' => \%ini,
 });
 $tagger->set_all();
+my @raw = $tagger->get_raw_data();
+my @inm = $tagger->get_intermediate_data();
+my @inp = $tagger->get_interprete_data();
+my @dfs = (@raw, @inm, @inp);
+for my $df (@dfs) {
+    $df, $unique_id, $tagger->get_data_type, $tagger->get_assay_type
+}
+
+sub level1 {
+    my $tagger = shift;
+    my $org = $tagger->get_organism();
+    return $org;
+#    if ($org eq 'Caenorhabditis elegans') {
+#	return 'Cele_WS190';
+#    } elsif ($org eq 'Drosophila melanogaster') {
+#	return 'Dmel_r5.4';
+#    } elsif ($org eq 'Drosophila pseudoobscura') {
+#	return 'Dpse_r2.4';
+#    } elsif ($org eq 'Drosophila mojavensis') {
+#	return 'Dmoj_r1.3';
+#    }
+}
+
+sub level3 {
+    my $tagger = shift;
+    my %map = ('Alignment' => 'Alignment',
+	       'Assay' => 'Assay',
+	       'CAGE' => 'CAGE',
+	       'cDNA sequencing' => 'cDNA sequencing',
+	       'ChIP-chip' => 'ChIP-chip',
+	       'ChIP-seq' => 'ChIP-seq',
+	       'Computational annotation' => 'integrated-gene-model',
+	       'DNA-seq' => 'DNA-seq',
+	       'Mass spec' => 'Mass-spec', 
+	       'RACE' => 'RACE',
+	       'RNA-seq' => 'RNA-seq',
+	       'RNA-seq, RNAi' =>
+	       'RTPCR' => 'RT-PCR',
+	       #'Sample creation' =>
+	       #'sample creation' =>
+	       'tiling array: DNA' => 'DNA-tiling-array',
+	       'tiling array: RNA' => 'RNA-tiling-array',
+	);
+    my $at = $tagger->get_assay_type;
+    if (defined($at)) {
+	return $map{$at} if exists $map{$at};
+    }
+}
 
 sub usage {
     my $usage = qq[$0 -unique_id <unique_submission_id> -out <output_dir> [-config <config_file>]];
