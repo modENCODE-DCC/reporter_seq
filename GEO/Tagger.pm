@@ -794,18 +794,5 @@ sub _get_datum_by_info {
 # end of helper functions for extracting information from denorm_slots.                        # 
 ################################################################################################
 
-sub get_wiggle_files {
-    my $self = shift;
-    my @wiggle_files = ();
-    for my $ap (@{$denorm_slots{ident $self}->[$ap_slots{ident $self}->{'normalization'}]}) {
-	for my $datum (@{$ap->get_output_data()}) {
-            my ($value, $type) = ($datum->get_value(), $datum->get_type());
-	    push @wiggle_files, $value and last if ($type->get_name() eq 'WIG') ;
-	}
-    }
-    return @wiggle_files;    
-}
-
-
 
 1;
