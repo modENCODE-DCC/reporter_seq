@@ -659,6 +659,7 @@ sub get_intermediate_data {
 	    for my $datum (@{$ap->get_output_data()}) {
 		my ($value, $type) = ($datum->get_value(), $datum->get_type());
 		push @int_files, $value and push @nr, $value if $value !~ /^\s*$/ && map {$type->get_name() eq $_} @types  && !map {$value eq $_} @nr;
+	    }
 	}
     }
     return @int_files;    
@@ -674,6 +675,7 @@ sub get_interprete_data {
 	    for my $datum (@{$ap->get_output_data()}) {
 		my ($value, $type) = ($datum->get_value(), $datum->get_type());
 		push @ip_files, $value and push @nr, $value if $value !~ /^\s*$/ && map {$type->get_name() eq $_} @types  && !map {$value eq $_} @nr;
+	    }
 	}
     }
     return @ip_files;       
