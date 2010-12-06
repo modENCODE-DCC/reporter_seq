@@ -1,8 +1,5 @@
 2549	CAGE	RNA profiling
-896	3'UTR 454 sequencing pilot - Level 1	Piano	Piano	RACE	raw sequ
-ences			Caenorhabditis elegans		N2	whole organism	
-mixed: L1 larva, L2 larva, L3 larva, L4 larva, adult, embryo	9/4/09	11/4/09
-released		GSM443959
+896	3'UTR 454 sequencing pilot - Level 1	Piano	Piano	RACE	raw sequences			Caenorhabditis elegans		N2	whole organism	mixed: L1 larva, L2 larva, L3 larva, L4 larva, adult, embryo	9/4/09	11/4/09	released		GSM443959
 214	RTPCR	gene model
 582	ChIP-seq	chromatin	Target=pha-4;AbName=eGFP
 586	ChIP-seq	chromatin	Target=pha-4;AbName=RNA Polymerase II
