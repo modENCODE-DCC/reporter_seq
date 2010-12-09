@@ -34,6 +34,7 @@ my %devstage               :ATTR( :get<devstage>               :default<undef>);
 my %tissue                 :ATTR( :get<tissue>                 :default<undef>);
 my %sex                    :ATTR( :get<sex>                    :default<undef>);
 my %antibody               :ATTR( :get<antibody>               :default<undef>);
+my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
@@ -80,14 +81,25 @@ sub set_all {
 	#$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }        
-    for my $parameter (qw[num_of_rows num_of_cols project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot strain cellline devstage tissue sex antibody]) {
+    for my $parameter (qw[num_of_rows num_of_cols project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot strain cellline devstage tissue sex antibody tgt_gene]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
         $self->$set_func();
 	my $t = $self->$get_func();
-        print "$t done\n" if defined($t);
-	print "NA done\n" unless defined($t);
+	if ( defined($t) ) {
+	    if ($parameter eq 'antibody') {
+		my @ab = grep {$_->get_heading() eq 'target name'} @{$t->get_attributes()};
+		print $ab[0]->get_value();
+	    } elsif ($parameter eq 'factors') {
+		map {print $t->{$_}->[0], " "} (keys %$t);
+	    } else {
+		print $t;
+	    }
+	} else {
+	    print "NA";
+	}
+	print " done\n";
     }
 }
 
@@ -368,7 +380,7 @@ sub set_sex {
 sub set_antibody {
     my $self = shift;
     if ($ip_slot{ident $self}) {
-	for my $row ((0..$num_of_rows{ident $self}-1)) {	    
+	for my $row (0..$num_of_rows{ident $self}-1) {	    
             my $ab = $self->get_antibody_row($row);
 	    if ($ab) {
 		if (is_antibody($ab) != -1) {
@@ -377,6 +389,20 @@ sub set_antibody {
 		}
 	    }
         }
+    }
+}
+
+sub set_tgt_gene {
+    my $self = shift;
+    my $factors = $factors{ident $self};
+    my $header;
+    for my $rank (keys %$factors) {
+        my $type = $factors->{$rank}->[1];
+        $header = $factors->{$rank}->[0] and last if $type eq 'gene';
+    }
+    if ($header) {
+        my $tgt_gene = $self->_get_value_by_info(0, 'name', $header);
+        $tgt_gene{ident $self} = $tgt_gene;
     }
 }
 
@@ -416,7 +442,7 @@ sub get_slotnum_ip {
 
 sub get_slotnum_raw_array {
     my $self = shift;
-    my @types = ('nimblegen_microarray_data_file (pair)', 'CEL', 'agilent_raw_microarray_data_file', 'raw_microarray_data_file');
+    my @types = ('nimblegen_microarray_data_file (pair)', 'CEL', 'agilent_raw_microarray_data_file', 'agilent_raw_microarray_data_file (TXT)', 'raw_microarray_data_file');
     for my $type (@types) {
         my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
         #even there are more than 1 raw-data-generating protocols, choose the first one since it is the nearest to hyb protocol
@@ -606,7 +632,7 @@ sub get_antibody_row { #keep it as a datum object
     my $ip_ap = $denorm_slots->[$ip]->[$row];
     my $antibodies;
     eval { $antibodies = _get_datum_by_info($ip_ap, 'input', 'name', 'antibody') } ;
-    return $antibodies->[0] unless $@;
+    return $antibodies->[0] unless $@ && $antibodies->[0]->get_value();
     return undef;
 }
 
@@ -618,7 +644,7 @@ sub is_antibody {
     $antibody = $1;
     $antibody =~ s/ +/ /g;
     $antibody =~ s/ /_/g;
-    my @special_antibodies = ('No_Antibody_Control', 'AB46540_NIgG');
+    my @special_antibodies = ('No Antibody Control', 'No_Antibody_Control', 'AB46540_NIgG');
     my $is_control = 0;
     for my $control (@special_antibodies) {
 	$is_control = 1 and last if $antibody eq $control;
@@ -679,6 +705,20 @@ sub get_interprete_data {
 	}
     }
     return @ip_files;       
+}
+
+sub get_other_factors {
+    my $self = shift;
+    my $f = $factors{ident $self};
+    my %of;
+    my @exclude_types = ('strain', 'cell[\s_-]*line', '[developmental]*[\s_-]*stage', 'tissue', 'organism_part', 'sex', 'antibody');
+    for my $rank (keys %$f) {
+        my $type = $f->{$rank}->[1];
+	unless ( scalar grep {/$type/} @exclude_types ) {
+            my $factor_name = $f->{$rank}->[0];
+            my $factor_value = $self->_get_value_by_info(0, 'name', $f->{$rank}->[0]);
+	    $of{$factor_name} = $factor_value;
+	}
 }
 
 ################################################################################################
@@ -790,6 +830,50 @@ sub _get_datum_by_info {
     }
     croak("can not find data that has fieldtext like $fieldtext in field $field in chado.data table") unless (scalar @data);
     return \@data;
+}
+
+#called by get_other_factors, set_tgt_gene
+sub _get_value_by_info {
+    my ($self, $row, $field, $fieldtext) = @_;
+    for (my $i=0; $i<$num_of_col{ident $self}; $i++) {
+        my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+        for my $direction (('input', 'output')) {
+            my $func = "get_" . $direction . "_data";
+            for my $datum (@{$ap->$func()}) {
+                my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
+                if ($field eq 'name') {
+                    if ($name =~ /$fieldtext/) {
+                        my $v = $value;
+                        for my $attr (@{$datum->get_attributes()}) {
+                            my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+                            $v .= " $avalue" if lc($aheading) eq 'unit';
+                        }
+                        return $v;
+                    }
+                }
+                if ($field eq 'heading') {
+                    if ($heading =~ /$fieldtext/) {
+                        my $v =$value;
+                        for my $attr (@{$datum->get_attributes()}) {
+                            my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+                            $v .= " $avalue" if lc($aheading) eq 'unit';
+                        }
+                        return $v;
+                    }
+                }
+                for my $attr (@{$datum->get_attributes()}) {
+                    my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
+                    if ($field eq 'name') {
+                        return $avalue if $aname =~ /$fieldtext/;                   
+                    }
+                    if ($field eq 'heading') {
+                        return $avalue if $aheading =~ /$fieldtext/;
+                    }       
+                }
+            }
+        }
+    }
+    return undef;
 }
 
 ################################################################################################
