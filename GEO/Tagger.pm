@@ -92,7 +92,9 @@ sub set_all {
 		my @ab = grep {$_->get_heading() eq 'target name'} @{$t->get_attributes()};
 		print $ab[0]->get_value();
 	    } elsif ($parameter eq 'factors') {
-		map {print $t->{$_}->[0], " "} (keys %$t);
+		#map {print $t->{$_}->[0], " "} (keys %$t);
+		my %of = $self->get_other_factors();
+		while (my ($k, $v) = each %of) {print " $k : $v"}
 	    } else {
 		print $t;
 	    }
@@ -711,14 +713,16 @@ sub get_other_factors {
     my $self = shift;
     my $f = $factors{ident $self};
     my %of;
-    my @exclude_types = ('strain', 'cell[\s_-]*line', '[developmental]*[\s_-]*stage', 'tissue', 'organism_part', 'sex', 'antibody');
+    my @exclude_types = ('strain', 'strain_or_line', 'cell line', '[developmental_stage', 'tissue', 'organism_part', 'sex', 'antibody', 'gene');
     for my $rank (keys %$f) {
         my $type = $f->{$rank}->[1];
-	unless ( scalar grep {/$type/} @exclude_types ) {
+	unless ( scalar grep {/$type/i} @exclude_types ) {
             my $factor_name = $f->{$rank}->[0];
             my $factor_value = $self->_get_value_by_info(0, 'name', $f->{$rank}->[0]);
 	    $of{$factor_name} = $factor_value;
 	}
+    }
+    return %of;
 }
 
 ################################################################################################
@@ -835,7 +839,7 @@ sub _get_datum_by_info {
 #called by get_other_factors, set_tgt_gene
 sub _get_value_by_info {
     my ($self, $row, $field, $fieldtext) = @_;
-    for (my $i=0; $i<$num_of_col{ident $self}; $i++) {
+    for (my $i=0; $i<$num_of_cols{ident $self}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $direction (('input', 'output')) {
             my $func = "get_" . $direction . "_data";
