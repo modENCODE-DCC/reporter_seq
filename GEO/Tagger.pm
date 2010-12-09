@@ -17,6 +17,8 @@ my %normalized_slots       :ATTR( :get<normalized_slots>       :default<undef>);
 my %denorm_slots           :ATTR( :get<denorm_slots>           :default<undef>);
 my %num_of_rows            :ATTR( :get<num_of_rows>            :default<undef>);
 my %num_of_cols            :ATTR( :get<num_of_cols>            :default<undef>);
+my %title                  :ATTR( :get<title>                  :default<undef>);
+my %description            :ATTR( :get<description>            :default<undef>);
 my %organism               :ATTR( :get<organism>               :default<undef>);
 my %project                :ATTR( :get<project>                :default<undef>);
 my %lab                    :ATTR( :get<lab>                    :default<undef>);
@@ -81,7 +83,7 @@ sub set_all {
 	#$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }        
-    for my $parameter (qw[num_of_rows num_of_cols project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot strain cellline devstage tissue sex antibody tgt_gene]) {
+    for my $parameter (qw[num_of_rows num_of_cols title description project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot strain cellline devstage tissue sex antibody tgt_gene]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
@@ -209,6 +211,22 @@ sub set_num_of_rows {
 sub set_num_of_cols {
     my $self = shift;
     $num_of_cols{ident $self} = scalar @{$denorm_slots{ident $self}};
+}
+
+sub set_title {
+    my $self = shift;
+    foreach my $property (@{$experiment{ident $self}->get_properties()}) {
+        my ($name, $value) = ($property->get_name(), $property->get_value());
+	$title{ident $self} = $value and last if $name eq 'Investigation Title';
+    }
+}
+
+sub set_description {
+    my $self = shift;
+    foreach my $property (@{$experiment{ident $self}->get_properties()}) {
+        my ($name, $value) = ($property->get_name(), $property->get_value());
+        $description{ident $self} = $value and last if $name eq 'Experiment Description';
+    }
 }
 
 sub set_organism {
