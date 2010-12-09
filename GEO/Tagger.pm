@@ -652,7 +652,11 @@ sub get_antibody_row { #keep it as a datum object
     my $ip_ap = $denorm_slots->[$ip]->[$row];
     my $antibodies;
     eval { $antibodies = _get_datum_by_info($ip_ap, 'input', 'name', 'antibody') } ;
-    return $antibodies->[0] unless $@ && $antibodies->[0]->get_value();
+    unless ($@) {
+	if (defined($antibodies)) {
+	    return $antibodies->[0] if $antibodies->[0]->get_value();
+	}
+    }
     return undef;
 }
 
