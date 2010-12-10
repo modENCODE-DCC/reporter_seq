@@ -37,6 +37,9 @@ my %tissue                 :ATTR( :get<tissue>                 :default<undef>);
 my %sex                    :ATTR( :get<sex>                    :default<undef>);
 my %antibody               :ATTR( :get<antibody>               :default<undef>);
 my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
+my %level1                 :ATTR( :get<level1>                 :default<undef>);
+my %level2                 :ATTR( :get<level2>                 :default<undef>);
+my %level3                 :ATTR( :get<level3>                 :default<undef>);
 
 sub BUILD {
     my ($self, $ident, $args) = @_;
@@ -83,7 +86,7 @@ sub set_all {
 	#$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }        
-    for my $parameter (qw[num_of_rows num_of_cols title description project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot strain cellline devstage tissue sex antibody tgt_gene]) {
+    for my $parameter (qw[num_of_rows num_of_cols title description project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
@@ -685,7 +688,7 @@ sub get_data {
         for my $ap (@{$denorm_slots{ident $self}->[$col]}) {
             for my $datum (@{$ap->get_output_data()}) {
                 my ($value, $type) = ($datum->get_value(), $datum->get_type());
-		print $value, " ", $type->get_name(), "\n" if $value ne '';
+		#print $value, " ", $type->get_name(), "\n" if $value ne '';
                 push @files, $value and push @nr, $value if $value ne '' && scalar(grep {$type->get_name() eq $_} @$types) && !scalar(grep {$value eq $_} @nr);
             }
         }
@@ -895,5 +898,76 @@ sub _get_value_by_info {
 # end of helper functions for extracting information from denorm_slots.                        # 
 ################################################################################################
 
+sub set_level1 {
+    my $self = shift;
+    my $org = $self->get_organism();
+    my $s;
+    if ($org eq 'Caenorhabditis elegans') {
+	$s = 'Cele_WS190';    
+    } elsif ($org eq 'Drosophila melanogaster') {
+	$s = 'Dmel_r5.4';    
+    } elsif ($org eq 'Drosophila pseudoobscura') {
+	$s = 'Dpse_r2.4';    
+    } elsif ($org eq 'Drosophila mojavensis') { 
+	$s = 'Dmoj_r1.3';
+    }
+    $level1{ident $self} = $s;
+}
+
+ub level2 {
+    my $self = shift;
+    my $at = $self->get_assay_type();
+    my $dt = $self->get_data_type();
+    my $project = $self->get_project();
+    my $s;
+    unless ( defined($at) && defined($dt) ) {
+        $s =  'mRNA' if $dt eq 'Gene Structure - mRNA';
+        $s =  'mRNA' if $dt eq 'RNA expression profiling' and $project eq 'Susan Celniker';
+        $s =  'Transcriptional-Factor' if $dt eq 'TF binding sites';
+        $s =  'Histone-Modification' if $dt eq 'Histone modification and replacement';
+        $s =  'non-TF-Chromatin-binding-factor' if $dt eq 'Other chromatin binding sites';
+        $s =  'DNA-Replication' if $dt eq 'Replication Factors' || $dt eq 'Replication Timing' || $dt eq 'Origins of Replication';
+        $s =  'Chromatin-Structure' if $dt eq 'Chromatin structure';
+        $s =  'small-RNA' if $dt eq 'RNA expression profiling' and $project eq 'Eric Lai';
+        $s =  'Copy-Number-Variation' if $dt eq 'Copy Number Variation';
+    }
+    $level2{ident $self} = $s;
+}
+
+sub level3 {
+    my $self = shift;
+    my %map = (#'Alignment' => 'Alignment',
+               #'Assay' => 'Assay',
+               'CAGE' => 'CAGE',
+               'cDNA sequencing' => 'cDNA-sequencing',
+               'ChIP-chip' => 'ChIP-chip',
+               'ChIP-seq' => 'ChIP-seq',
+               'Computational annotation' => 'integrated-gene-model',
+               'DNA-seq' => 'DNA-seq',
+               'Mass spec' => 'Mass-spec',
+               'RACE' => 'RACE',
+               'RNA-seq' => 'RNA-seq',
+               'RNA-seq, RNAi' => 'RNA-seq',
+               'RTPCR' => 'RT-PCR',
+               #'Sample creation' => 
+               #'sample creation' =>
+               'tiling array: DNA' => 'DNA-tiling-array',
+               'tiling array: RNA' => 'RNA-tiling-array',
+        );
+    my $at = $self->get_assay_type;
+    if (defined($at)) {
+        $level3{ident $self} = $map{$at} if exists $map{$at};
+    }
+}
+
+sub factor {
+    my $self = shift;
+    my $l2 = 
+    my $dt = $self->get_data_type();
+    if 
+}
+
+sub condition {
+}
 
 1;

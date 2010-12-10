@@ -64,12 +64,11 @@ my $tagger = new GEO::Tagger({
 });
 $tagger->set_all();
 my @raw = $tagger->get_raw_data();
-my @inm = $tagger->get_intermediate_data();
-my @inp = $tagger->get_interprete_data();
-my @dfs = (@raw, @inm, @inp);
-for my $df (@dfs) {
-#    $df, $unique_id, $tagger->get_data_type, $tagger->get_assay_type
-}
+map {print "raw: ", $_, "\n"} @raw;
+my @im = $tagger->get_intermediate_data();
+map {print "intermediate: ", $_, "\n"} @im;
+my @ip = $tagger->get_interprete_data();
+map {print "interpret: ", $_, "\n"} @ip;
 
 sub level1 {
     my $tagger = shift;
