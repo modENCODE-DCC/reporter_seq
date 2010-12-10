@@ -677,58 +677,47 @@ sub is_antibody {
     return 1;
 }
 
+sub get_data {
+    my ($self, $types) = @_;
+    my @files = ();
+    my @nr = ();
+    for my $col (0..$num_of_cols{ident $self}) {
+        for my $ap (@{$denorm_slots{ident $self}->[$col]}) {
+            for my $datum (@{$ap->get_output_data()}) {
+                my ($value, $type) = ($datum->get_value(), $datum->get_type());
+		print $value, " ", $type->get_name(), "\n" if $value ne '';
+                push @files, $value and push @nr, $value if $value ne '' && scalar(grep {$type->get_name() eq $_} @$types) && !scalar(grep {$value eq $_} @nr);
+            }
+        }
+    }
+    return @files;
+}
+
 sub get_raw_data {
     my $self = shift;
-    my @raw_files = ();
     my @types = ('nimblegen_microarray_data_file (pair)', 
 		 'CEL', 
 		 'agilent_raw_microarray_data_file', 
 		 'raw_microarray_data_file',
 		 'fastq',
 		 'sff',
-		 'qseq');
-    my @nr;
-    for my $col (0..$num_of_cols{ident $self}) {
-	for my $ap (@{$denorm_slots{ident $self}->[$col]}) {
-	    for my $datum (@{$ap->get_output_data()}) {
-		my ($value, $type) = ($datum->get_value(), $datum->get_type());
-		push @raw_files, $value and push @nr, $value if $value !~ /^\s*$/ && map {$type->get_name() eq $_} @types  && !map {$value eq $_} @nr;
-	    }
-	}
-    }
-    return @raw_files;
+		 'qseq',
+		 'GEO_record',
+		 'ShortReadArchive_project_ID (SRA)',
+		 'TraceArchive_record');
+    return $self->get_data(\@types);
 }
 
 sub get_intermediate_data {
     my $self = shift;
-    my @int_files = ();
-    my @types =  ('WIG', 'BED', 'Sequence_Alignment/Map (SAM)', 'Signal_Graph_File');
-    my @nr;
-    for my $col (0..$num_of_cols{ident $self}) {
-	for my $ap (@{$denorm_slots{ident $self}->[$col]}) {
-	    for my $datum (@{$ap->get_output_data()}) {
-		my ($value, $type) = ($datum->get_value(), $datum->get_type());
-		push @int_files, $value and push @nr, $value if $value !~ /^\s*$/ && map {$type->get_name() eq $_} @types  && !map {$value eq $_} @nr;
-	    }
-	}
-    }
-    return @int_files;    
+    my @types =  ('WIG', 'BED', 'Sequence_Alignment/Map (SAM)', 'Signal_Graph_File', 'GEO_record');
+    return $self->get_data(\@types);    
 }
 
 sub get_interprete_data {
     my $self = shift;
-    my @ip_files = ();
     my @types =  ('GFF3', 'GFF');
-    my @nr;
-    for my $col (0..$num_of_cols{ident $self}) {
-	for my $ap (@{$denorm_slots{ident $self}->[$col]}) {
-	    for my $datum (@{$ap->get_output_data()}) {
-		my ($value, $type) = ($datum->get_value(), $datum->get_type());
-		push @ip_files, $value and push @nr, $value if $value !~ /^\s*$/ && map {$type->get_name() eq $_} @types  && !map {$value eq $_} @nr;
-	    }
-	}
-    }
-    return @ip_files;       
+    return $self->get_data(\@types);       
 }
 
 sub get_other_factors {
