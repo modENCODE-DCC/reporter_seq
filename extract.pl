@@ -68,7 +68,7 @@ my @inm = $tagger->get_intermediate_data();
 my @inp = $tagger->get_interprete_data();
 my @dfs = (@raw, @inm, @inp);
 for my $df (@dfs) {
-    $df, $unique_id, $tagger->get_data_type, $tagger->get_assay_type
+#    $df, $unique_id, $tagger->get_data_type, $tagger->get_assay_type
 }
 
 sub level1 {
@@ -86,12 +86,31 @@ sub level1 {
 #    }
 }
 
+sub level2 {
+    my $tagger = shift;
+    my $at = $tagger->get_assay_type();
+    my $dt = $tagger->get_data_type();
+    my $project = $tagger->get_project();
+    unless ( defined($at) && defined($dt) ) {
+	return 'mRNA' if $dt eq 'Gene Structure - mRNA';
+	return 'mRNA' if $dt eq 'RNA expression profiling' and $project eq 'Susan Celniker';
+	return 'Transcriptional-Factor' if $dt eq 'TF binding sites';
+	return 'Histone-Modification' if $dt eq 'Histone modification and replacement';
+	return 'non-TF-Chromatin-binding-factor' if $dt eq 'Other chromatin binding sites';
+	return 'DNA-Replication' if $dt eq 'Replication Factors' || $dt eq 'Replication Timing' || $dt eq 'Origins of Replication';
+	return 'Chromatin-Structure' if $dt eq 'Chromatin structure';
+	return 'small-RNA' if $dt eq 'RNA expression profiling' and $project eq 'Eric Lai';
+	return 'Copy-Number-Variation' if $dt eq 'Copy Number Variation';
+    }
+    return undef;
+}
+
 sub level3 {
     my $tagger = shift;
     my %map = ('Alignment' => 'Alignment',
 	       'Assay' => 'Assay',
 	       'CAGE' => 'CAGE',
-	       'cDNA sequencing' => 'cDNA sequencing',
+	       'cDNA sequencing' => 'cDNA-sequencing',
 	       'ChIP-chip' => 'ChIP-chip',
 	       'ChIP-seq' => 'ChIP-seq',
 	       'Computational annotation' => 'integrated-gene-model',
@@ -99,7 +118,7 @@ sub level3 {
 	       'Mass spec' => 'Mass-spec', 
 	       'RACE' => 'RACE',
 	       'RNA-seq' => 'RNA-seq',
-	       'RNA-seq, RNAi' =>
+	       'RNA-seq, RNAi' => 'RNA-seq',
 	       'RTPCR' => 'RT-PCR',
 	       #'Sample creation' =>
 	       #'sample creation' =>
@@ -110,6 +129,13 @@ sub level3 {
     if (defined($at)) {
 	return $map{$at} if exists $map{$at};
     }
+    return undef;
+}
+
+sub factor {
+}
+
+sub condition {
 }
 
 sub usage {
