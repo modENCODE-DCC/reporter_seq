@@ -681,46 +681,59 @@ sub is_antibody {
 }
 
 sub get_data {
-    my ($self, $types) = @_;
+    my ($self, $type_map) = @_;
     my @files = ();
+    my @file_types = ();
     my @nr = ();
+    my @types = keys %{$type_map};
     for my $col (0..$num_of_cols{ident $self}) {
         for my $ap (@{$denorm_slots{ident $self}->[$col]}) {
             for my $datum (@{$ap->get_output_data()}) {
                 my ($value, $type) = ($datum->get_value(), $datum->get_type());
 		#print $value, " ", $type->get_name(), "\n" if $value ne '';
-                push @files, $value and push @nr, $value if $value ne '' && scalar(grep {$type->get_name() eq $_} @$types) && !scalar(grep {$value eq $_} @nr);
+		if ( $value ne '' && scalar(grep {$type->get_name() eq $_} @types) && !scalar(grep {$value eq $_} @nr) ) {
+		    push @file_types, $type_map->{$type->get_name()}; 
+		    push @files, $value;
+		    push @nr, $value;
+		}
             }
         }
     }
-    return @files;
+    return (\@files, \@file_types);
 }
 
 sub get_raw_data {
     my $self = shift;
-    my @types = ('nimblegen_microarray_data_file (pair)', 
-		 'CEL', 
-		 'agilent_raw_microarray_data_file', 
-		 'raw_microarray_data_file',
-		 'fastq',
-		 'sff',
-		 'qseq',
-		 'GEO_record',
-		 'ShortReadArchive_project_ID (SRA)',
-		 'TraceArchive_record');
-    return $self->get_data(\@types);
+    my %type_map = ('nimblegen_microarray_data_file (pair)' => 'raw-arrayfile_CEL', 
+		    'CEL' => 'raw-arrayfile_pair',
+		    'agilent_raw_microarray_data_file' => 'raw-arrayfile-agilent_txt', 
+		    'raw_microarray_data_file' => 'raw-arrayfile-agilent_txt',
+		    'fastq' => 'raw-seqfile_fastq',
+		    'sff' => 'raw-seqfile_sff',
+		    'qseq'=> 'raw-seqfile_qseq',
+		    'prb' => 'raw-seqfile_prb',
+		    'seq' => 'raw-seqfile_seq',
+		    'GEO_record' => 'GEO_record',
+		    'ShortReadArchive_project_ID (SRA)' => 'ShortReadArchive_record',
+		    'TraceArchive_record' => 'TraceArchive_record');
+    return $self->get_data(\%type_map);
 }
 
 sub get_intermediate_data {
     my $self = shift;
-    my @types =  ('WIG', 'BED', 'Sequence_Alignment/Map (SAM)', 'Signal_Graph_File', 'GEO_record');
-    return $self->get_data(\@types);    
+    my %type_map =  ('WIG' => $self->get_hyb_slot() ? 'normalized-arrayfile_wig' : 'coverage-graph_wiggle',
+		     'BED' => $self->get_hyb_slot() ? 'normalized-arrayfile_bed' : 'coverage-graph_bed', 
+		     'Sequence_Alignment/Map (SAM)' => 'alignment_sam', 
+		     'Signal_Graph_File' => 'normalized-arrayfile_wiggle', 
+		     'GEO_record' => 'GEO_record');
+    return $self->get_data(\%type_map);    
 }
 
 sub get_interprete_data {
     my $self = shift;
-    my @types =  ('GFF3', 'GFF');
-    return $self->get_data(\@types);       
+    my %type_map =  ('GFF3' => $self->get_ip_slot() ? 'computed-peaks_gff3' : 'gene-model_gff3', 
+		  'GFF' => $self->get_ip_slot() ? 'computed-peaks_gff3' : 'gene-model_gff3');
+    return $self->get_data(\%type_map);       
 }
 
 sub get_other_factors {
@@ -859,7 +872,8 @@ sub _get_value_by_info {
             my $func = "get_" . $direction . "_data";
             for my $datum (@{$ap->$func()}) {
                 my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
-                if ($field eq 'name') {
+                if ($fieif $value ne '' && scalar(grep {$type->get_name() eq $_} @types) &\
+& !scalar(grep {$value eq $_} @nr);ld eq 'name') {
                     if ($name =~ /$fieldtext/) {
                         my $v = $value;
                         for my $attr (@{$datum->get_attributes()}) {
@@ -960,14 +974,36 @@ sub level3 {
     }
 }
 
-sub factor {
+sub lvl4_factor {
     my $self = shift;
-    my $l2 = 
-    my $dt = $self->get_data_type();
+    my $p = $self->get_project();
+    my $desc = $self->get_description();
+    my $l2 = $self->get_level2();
+    my $l3 = $self->get_level3();
+    my @mol = ('mRNA', 'small-RNA');
+    #my @tech = ('CAGE', 'cDNA-sequencing', 'Mass-spec', 'RACE', 'RNA-seq', 'RT-PCR', 'RNA-tiling-array', 'integrated-gene-model');
+    if (scalar grep {$l2 eq $_} @mol) {
+	return '5-prime-UTR' if $l3 eq 'CAGE';
+	return '3-prime-UTR' if $p eq 'Fabio Piano';
+	return 'UTR' if ($l3 eq 'cDNA-sequencing' || $l3 eq 'RACE') && $p eq 'Susan Celniker';
+	return 'small-RNA' if $l2 eq 'small-RNA' && $p eq 'Eric Lai';
+	if ($l3 eq 'integrated-gene-model') {
+	    if ( $desc =~ /splice[\s_-]*junction/ ) {
+		return 'splice-junction';
+	    } else {
+		return 'transcript';
+	    }
+	}
+	if 
+	return 'transfrag';
+    }
     if 
 }
 
-sub condition {
+sub lvl4_condition {
+}
+
+sub lvl4_filetype {
 }
 
 1;
