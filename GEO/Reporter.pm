@@ -297,7 +297,7 @@ sub chado2sample {
     my @raw_datafiles, ;
     my @normalize_datafiles;
     my @more_datafiles;
-
+    my $rdup = reverse_hash(\%{$dup{ident $self}});
     for my $extraction (sort keys %combined_grp) {
 	for my $array (sort keys %{$combined_grp{$extraction}}) {
 	    sort @{$combined_grp{$extraction}{$array}};
@@ -390,13 +390,22 @@ sub chado2sample {
 	    my @these_normalize_datafiles = $self->write_normalized_data($row);
 	    push @normalize_datafiles, @these_normalize_datafiles;
 	    print "ok with write_normalized_data with row $row\n";
-	    if ($dup{ident $self}->{$row}) {
-		my $that_row = $dup{ident $self}->{$row};
-		print "get duplicated row $that_row\n";
-		my @those_normalize_datafiles = $self->write_normalized_data_dup($that_row, \@these_normalize_datafiles);
-		push @normalize_datafiles, @those_normalize_datafiles;
+	    if ($rdup->{$row}) {
+		for my $that_row (@{$rdup->{$row}}) {
+		    print "write_normalized_data_dup called since I get duplicated row $that_row\n";
+		    my @those_normalize_datafiles = $self->write_normalized_data_dup($that_row, \@these_normalize_datafiles);
+		    push @normalize_datafiles, @those_normalize_datafiles;
+		}
 	    }
-	    push @more_datafiles, $self->get_more_data($row);
+	    my @these_more_datafiles = $self->get_more_data($row);
+	    push @more_datafiles, @these_more_datafiles;
+	    if ($rdup->{$row}) {
+		for my $that_row (@{$rdup->{$row}}) {
+                    print "get_more_data_dup called since I get duplicated row $that_row\n";
+                    my @those_more_datafiles = $self->get_more_data_dup($that_row, \@these_more_datafiles);
+                    push @more_datafiles, @those_more_datafiles;
+		}
+            }
 	}
     }
     return (\@raw_datafiles, \@normalize_datafiles, \@more_datafiles);
@@ -816,6 +825,7 @@ sub write_normalized_data {
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		my ($file, $dir, $suffix) = fileparse($path);
 		my $type;
+		print "normalized file path is $path\n";
 		$type = 'WIG' if ($file =~ /\.wig\.?/i);
 		$type = 'GFF3' if ($file =~ /\.gff3$/i);
 		$type = 'SAM' if ($path =~ /\.sam\.?/i);
@@ -842,7 +852,9 @@ sub write_normalized_data {
 
 sub get_more_data {
      my ($self, $row) = @_;
+     my $sampleFH = $sampleFH{ident $self};
      my @more_datafiles;
+     #$dup{ident $self}->{$row};
      my $start_slot = $ap_slots{ident $self}->{'normalization'};
      $start_slot -= 1 if $start_slot == scalar($denorm_slots{ident $self})-1;
      for (my $i=$start_slot; $i<scalar(@{$denorm_slots{ident $self}}); $i++) {
@@ -850,11 +862,47 @@ sub get_more_data {
 	 for my $datum (@{$ap->get_output_data()}) {
 	     if ($datum->get_heading() =~ /Result\s*File/i) {
 		 my $path = $datum->get_value();
+		 my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
+		 print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
 		 push @more_datafiles, $path;
 	     }
 	 }
      }
      return @more_datafiles;
+}
+
+sub get_more_data_dup {
+    my ($self, $row, $exist_more_datafiles) = @_;
+    my $sampleFH = $sampleFH{ident $self};
+    my $normalization_ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'normalization'}]->[$row];
+    my $num_processed_data = scalar @$exist_normalize_datafiles + 1;
+    my @suffixs = ('.bz2', '.z', '.gz', '.zip', '.rar');
+    for my $datum (@{$normalization_ap->get_output_data()}) {
+        if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
+            my $path = $datum->get_value();
+            unless (scalar grep {$path eq $_} @$exist_normalize_datafiles) {
+                if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
+		    my $type;
+		    $type = 'WIG' if ($path =~ /\.wig\.?/i);
+		    $type = 'GFF3' if ($path =~ /\.gff3$/i);
+		    $type = 'SAM' if ($path =~ /\.sam\.?/i);
+		    print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
+		    print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
+		    $num_processed_data+=1;
+                }
+                else {
+                    my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
+                    if (scalar grep {lc($suffix) eq $_} @suffixs) {
+                        print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+                    #print $sampleFH "!Sample_supplementary_file = ", $path, "\n";                                                                                               
+                    } else {
+                        print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+                    #print $sampleFH "!Sample_supplementary_file = ", $path, "\n";                                                                                               
+                    }
+                }
+            }
+        }
+    }
 }
 
 sub get_overall_design {
@@ -948,7 +996,9 @@ sub get_real_factors {
     for my $rank (keys %$factors) {
 	my $type = $factors->{$rank}->[1];
 	my $rfactor = undef;
+	print "#######type ", $type, "\n";
 	if ($type =~ /strain/i) {
+	    print "called here ############", $strain{ident $self}, "\n";
 	    my $rfactor = 'Strain ' . $strain{ident $self};
 	    push @rfactors, $rfactor if defined($strain{ident $self});
 	}
@@ -980,6 +1030,7 @@ sub get_real_factors {
 	    push @rfactors, $rfactor if defined($gene);
 	}
 	else {
+	    
 	    my $factor_name = $factors->{$rank}->[0];
 	    my $factor_value = $self->get_value_by_info(0, 'name', $factors->{$rank}->[0]);
 	    my $rfactor = "$factor_name ($type) $factor_value";
@@ -1680,6 +1731,7 @@ sub get_array_row {
 	my $ok2 = eval { $attr = _get_attr_by_info($array->[0], 'heading', '\s*adf\s*') } ;
 	if ($ok2) {
 	    $gpl = $1 if $attr->[0]->get_value() =~ /(GPL\d*)\s*$/;
+	    $gpl = $attr->[0]->get_value() if $attr->[0]->get_value() =~ /Agilent AE/;
 	} else {
 	    croak("can not find the array dbfield heading adf, probably dbfields did not populate correctly.");
 	}
@@ -1766,17 +1818,17 @@ sub get_sample_sourcename_row {
     my $autogenerate = 0;
     $ok1 = eval { $sample_data = _get_datum_by_info($extract_ap, 'input', 'heading', '[Extract|Sample]\s*Name') } ;
     if ($ok1) {
-	#print "name ok1\n";
+	print "name ok1\n";
         @sample_names = map {$_->get_value()} @$sample_data;
 	return ($sample_names[0], $autogenerate);
     } else {
         $ok2 = eval { $sample_data = _get_datum_by_info($extract_ap, 'output', 'heading', 'Result') };
 	if ($ok2) {
-	    #print "name ok2\n";
+	    print "name ok2\n";
 	    @sample_names = map {$_->get_value()} @$sample_data;
 	    $ok21 = eval { $sample_attributes = _get_attr_by_info($sample_data->[0], 'heading', 'Cell\s*Type') } ;
 	    if ($ok21) {
-		#print "name ok21\n";
+		print "name ok21\n";
 		@more_sample_names = map {$_->get_value()} @$sample_attributes;
 		my $tmp = join(",", @more_sample_names);
 		$tmp = uri_unescape($tmp);
@@ -1789,21 +1841,21 @@ sub get_sample_sourcename_row {
 	}
     }
     
-    if  ($first_extraction_slot{ident $self} != 0) {
+    if  ($first_extraction_slot{ident $self} == 0) {
 	$ok3 = eval { $source_data = _get_datum_by_info($first_ap, 'input', 'heading', '[Hybrid|Source][A-Za-z]*\s*Name') };
 	if ($ok3) {
-	    #print "name ok3\n";
+	    print "name ok3\n";
             @source_names = map {$_->get_value()} @$source_data;
 	    return ($source_names[0], $autogenerate);
 	}
 	else {
 	    $ok4 = eval { $source_data = _get_datum_by_info($first_ap, 'output', 'heading', 'Result') };
 	    if ($ok4) {
-		#print "name ok4\n";
+		print "name ok4\n";
 		@source_names = map {$_->get_value()} @$source_data;
 		$ok41 = eval { $source_attributes = _get_attr_by_info($source_data->[0], 'heading', 'Cell\s*Type') } ;
 		if ($ok41) {
-		    #print "name ok41\n";
+		    print "name ok41\n";
 		    @more_source_names = map {$_->get_value()} @$source_attributes;
 		    my $tmp = join(",", @more_sample_names);
 		    $tmp = uri_unescape($tmp);
@@ -2174,7 +2226,7 @@ sub set_sample_name_ap_slot {
 	$sample_name_ap_slot{ident $self} = $slot;
     } else { #fly groups tend to use sample name instead of source name for the beginning material since it is produced
 	#by bloomington subgroup
-	my $text = 'Sample|Hybridization]\s*Name';
+	my $text = '[Sample|Hybridization]\s*Name';
 	my $islot = $self->get_ap_slot_by_datum_info('input', 'heading', $text);
 	if ( defined($islot) and $islot == 0 ) {
 	    $sample_name_ap_slot{ident $self} = $islot;
@@ -2233,8 +2285,11 @@ sub group_by_this_ap_slot {
     print 'last extraction slot is ', $last_extraction_slot{ident $self};
     print "hybridization name slot is $hybridization_name_col\n";
     
+    if (defined($sample_name_col)) {
+                print "I will use ap slot $sample_name_col (sample name) to group\n" and return [$sample_name_col, '[Sample|Hybridization]\s*Name'];
+    }
     if (defined($replicate_group_col)) {
-	#print "I will use ap slot $replicate_group_col (replicate group) to group\n" and return [$replicate_group_col, 'replicate[\s_]*group'];
+	print "I will use ap slot $replicate_group_col (replicate group) to group\n" and return [$replicate_group_col, 'replicate[\s_]*group'];
     } else {
 	if (defined($extract_name_col)) {
 	    if ($last_extraction_slot{ident $self} <= $extract_name_col) {
@@ -2281,7 +2336,7 @@ sub set_groups_seq {
 	}
 	elsif ($method eq 'Source\s*Name') {
 	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);
-	} elsif ($method eq 'Sample\s*Name'){
+	} elsif ($method eq '[Sample|Hybridization]\s*Name'){
 	    if ($last_extraction_slot == 0) {
 		$all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);
 	    } else {
@@ -2315,8 +2370,9 @@ sub set_groups_seq {
     #print Dumper($all_grp_by_seq);
 
     my %combined_grp;
-    my %duplicate;
-    while (my ($row, $extract_grp) = each %$all_grp) {
+    my %dupicate;
+    foreach my $row (sort {$a<=>$b} keys %$all_grp) {
+	my $extract_grp = $all_grp->{$row};
 	my $seq_grp = $all_grp_by_seq->{$row};
 	if (exists $combined_grp{$extract_grp}{$seq_grp}) {
 	    my $this_extract_ap = $denorm_slots->[$last_extraction_slot]->[$row];
@@ -2329,8 +2385,8 @@ sub set_groups_seq {
                 my $that_seq_ap = $denorm_slots->[$ap_slots->{'seq'}]->[$that_row];
 		if ($this_extract_ap->equals_except_anonymous($that_extract_ap) && $this_seq_ap->equals_except_anonymous($that_seq_ap)) {
 		    $same = 1; 
-		    print "duplicated row $row!\n";
-		    $duplicate{$that_row} = $row; 
+		    print "row $that_row duplicated row $row!\n";
+		    $duplicate{$row} = $that_row; 
 		    last; 
 		}
 	    }
@@ -2343,7 +2399,7 @@ sub set_groups_seq {
     print Dumper(%combined_grp);
     $groups{ident $self} = \%combined_grp;
     print "duplicates...\n";
-    print Dumper(%duplicate);
+    map {print $_, ":", $duplicate{$_}, "\n"} keys %duplicate;
     $dup{ident $self} = \%duplicate;
 }
 
@@ -2367,7 +2423,7 @@ sub set_groups_array {
 	}
 	elsif ($method eq 'Source\s*Name') {
 	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);
-	} elsif ($method eq 'Sample\s*Name'){
+	} elsif ($method eq '[Sample|Hybridization]\s*Name'){
 	    if ($last_extraction_slot == 0) {
 		$all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);
 	    } else {
@@ -2388,7 +2444,9 @@ sub set_groups_array {
 
     my %combined_grp;
     my %duplicate;
-    while (my ($row, $extract_grp) = each %$all_grp) {
+    foreach my $row (sort {$a<=>$b} keys %$all_grp) {
+	print $row, "\n";
+	my $extract_grp = $all_grp->{$row};
 	my $array_grp = $all_grp_by_array->{$row};
 	if (exists $combined_grp{$extract_grp}{$array_grp}) {
             my $this_extract_ap = $denorm_slots->[$last_extraction_slot]->[$row];
@@ -2397,7 +2455,7 @@ sub set_groups_array {
 	    for my $that_row (@{$combined_grp{$extract_grp}{$array_grp}}) {
                 my $that_extract_ap = $denorm_slots->[$last_extraction_slot]->[$that_row];
                 my $that_hyb_ap = $denorm_slots->[$ap_slots->{'hybridization'}]->[$that_row];
-                #$ignore = 1 and $duplicate{$that_row} = $row and print "ignored $row!\n" and last if ($this_extract_ap->equals_except_anonymous($that_extract_ap) && $this_hyb_ap->equals_except_anonymous($that_hyb_ap));
+                $ignore = 1 and $duplicate{$row} = $that_row and print "ignored $row!\n" and last if ($this_extract_ap->equals_except_anonymous($that_extract_ap) && $this_hyb_ap->equals_except_anonymous($that_hyb_ap));
 	    }
 	    push @{$combined_grp{$extract_grp}{$array_grp}}, $row unless $ignore;
 	} else {
@@ -2405,11 +2463,15 @@ sub set_groups_array {
 	}
     }
     #print Dumper($denorm_slots);
+    print "all groups by bio...\n";
+    print Dumper($all_grp);
+    print "all groups by array...\n";
+    print Dumper($all_grp_by_array);
     print "final groups...\n";
     print Dumper(%combined_grp);
     $groups{ident $self} = \%combined_grp;
     print "duplicates...\n";
-    print Dumper(%duplicate);
+    map {print $_, ":", $duplicate{$_}, "\n"} keys %duplicate;
     $dup{ident $self} = \%duplicate;
 }
 
@@ -2790,6 +2852,19 @@ sub ap_has_datatype {
     }
     return 1 if $sign == 1;
     return 0 if $sign == 0;
+}
+
+sub _reverse_hash {
+    my $h = shift;
+    my $nh = {[]};
+    while(my ($k, $v) = each %$h) {
+	if (exists $nh->{$v}) {
+	    push @{$nh->{$v}}, $k;
+	} else {
+	    $nh->{$v} = [$k];
+	}
+    }
+    return $nh;
 }
 
 1;
