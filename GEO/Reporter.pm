@@ -297,7 +297,7 @@ sub chado2sample {
     my @raw_datafiles, ;
     my @normalize_datafiles;
     my @more_datafiles;
-    my $rdup = reverse_hash(\%{$dup{ident $self}});
+    my $rdup = _reverse_hash(\%{$dup{ident $self}});
     for my $extraction (sort keys %combined_grp) {
 	for my $array (sort keys %{$combined_grp{$extraction}}) {
 	    sort @{$combined_grp{$extraction}{$array}};
@@ -377,13 +377,13 @@ sub chado2sample {
 		$self->write_sample_scan($row);
 		print "ok with write_sample_scan\n";
 	    }
-	    unless ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) {
-		$self->write_sample_normalization($row);
-		print "ok with write_sample_normalization\n";
-	    }
+	    #unless ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) {
+		#$self->write_sample_normalization($row);
+		#print "ok with write_sample_normalization1\n";
+	    #}
 	    if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {
                 $self->write_sample_normalization($row);
-                print "ok with write_sample_normalization\n";	    
+                print "ok with write_sample_normalization2\n";	    
 		$self->write_platform($row);
 		print "ok with write_platform\n";
 	    }
@@ -740,10 +740,12 @@ sub write_normalized_data_dup {
     my $normalization_ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'normalization'}]->[$row];
     my $num_processed_data = scalar @$exist_normalize_datafiles + 1;
     my @suffixs = ('.bz2', '.z', '.gz', '.zip', '.rar');
+    my @new_datafiles;
     for my $datum (@{$normalization_ap->get_output_data()}) {
         if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
             my $path = $datum->get_value();
 	    unless (scalar grep {$path eq $_} @$exist_normalize_datafiles) {
+		push @new_datafiles, $path;
 		if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		my $type;
 		$type = 'WIG' if ($path =~ /\.wig\.?/i);
@@ -765,7 +767,8 @@ sub write_normalized_data_dup {
 		}
 	    }
 	}
-    }  
+    }
+    return @new_datafiles;
 }
 
 sub write_raw_data {
@@ -874,35 +877,40 @@ sub get_more_data {
 sub get_more_data_dup {
     my ($self, $row, $exist_more_datafiles) = @_;
     my $sampleFH = $sampleFH{ident $self};
-    my $normalization_ap = $denorm_slots{ident $self}->[$ap_slots{ident $self}->{'normalization'}]->[$row];
-    my $num_processed_data = scalar @$exist_normalize_datafiles + 1;
+    my $start_slot = $ap_slots{ident $self}->{'normalization'};
+    my $num_processed_data = scalar @$exist_more_datafiles + 1;
+    $start_slot -= 1 if $start_slot == scalar($denorm_slots{ident $self})-1;
     my @suffixs = ('.bz2', '.z', '.gz', '.zip', '.rar');
-    for my $datum (@{$normalization_ap->get_output_data()}) {
-        if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
-            my $path = $datum->get_value();
-            unless (scalar grep {$path eq $_} @$exist_normalize_datafiles) {
-                if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
-		    my $type;
-		    $type = 'WIG' if ($path =~ /\.wig\.?/i);
-		    $type = 'GFF3' if ($path =~ /\.gff3$/i);
-		    $type = 'SAM' if ($path =~ /\.sam\.?/i);
-		    print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
-		    print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
-		    $num_processed_data+=1;
-                }
-                else {
-                    my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
-                    if (scalar grep {lc($suffix) eq $_} @suffixs) {
-                        print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
-                    #print $sampleFH "!Sample_supplementary_file = ", $path, "\n";                                                                                               
-                    } else {
-                        print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
-                    #print $sampleFH "!Sample_supplementary_file = ", $path, "\n";                                                                                               
-                    }
-                }
-            }
-        }
+    my @new_datafiles;
+    for (my $i=$start_slot; $i<scalar(@{$denorm_slots{ident $self}}); $i++) {
+	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+	for my $datum (@{$ap->get_output_data()}) {
+	    if ($datum->get_heading() =~ /Result\s*File/i) {
+		my $path = $datum->get_value();
+		unless (scalar grep {$path eq $_} @$exist_more_datafiles) {
+		    push @new_datafiles, $path;
+		    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
+			my $type;
+			$type = 'WIG' if ($path =~ /\.wig\.?/i);
+			$type = 'GFF3' if ($path =~ /\.gff3$/i);
+			$type = 'SAM' if ($path =~ /\.sam\.?/i);
+			print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
+			print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
+			$num_processed_data+=1;
+		    }
+		    else {
+			my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
+			if (scalar grep {lc($suffix) eq $_} @suffixs) {
+			    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+			} else {
+			    print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+			}
+		    }
+		}
+	    }
+	}
     }
+    return @new_datafiles;
 }
 
 sub get_overall_design {
@@ -2370,7 +2378,7 @@ sub set_groups_seq {
     #print Dumper($all_grp_by_seq);
 
     my %combined_grp;
-    my %dupicate;
+    my %duplicate;
     foreach my $row (sort {$a<=>$b} keys %$all_grp) {
 	my $extract_grp = $all_grp->{$row};
 	my $seq_grp = $all_grp_by_seq->{$row};
