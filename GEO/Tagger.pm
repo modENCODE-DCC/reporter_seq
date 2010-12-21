@@ -744,9 +744,9 @@ sub get_other_factors {
     for my $rank (keys %$f) {
         my $type = $f->{$rank}->[1];
 	unless ( scalar grep {/$type/i} @exclude_types ) {
-            my $factor_name = $f->{$rank}->[0];
+            my $factor_type = $f->{$rank}->[1];
             my $factor_value = $self->_get_value_by_info(0, 'name', $f->{$rank}->[0]);
-	    $of{$factor_name} = $factor_value;
+	    $of{$factor_type} = $factor_value;
 	}
     }
     return %of;
@@ -993,19 +993,43 @@ sub lvl4_factor {
 	    if ( $desc =~ /splice[\s_-]*junction/ ) {
 		return 'splice-junction';
 	    } else {
-		return 'transcript';
+		return 'transfrag';
 	    }
 	}
 	#if () {#polyA
 	#}
-	return 'transfrag';
+	return 'total-RNA';
     }
     else {
-	if defined($tgt_gene{ident $self
+	if ( defined($gene) ) {
+	    return $gene;
+	}
+	if ( defined($ab) ) {
+	    my @attr = grep {lc($_->get_heading()) eq 'target name'} @{$ab->get_attributes()};
+	    my $x = $attr[0]->get_value();
+	    $x =~ s/ /-/g;
+	    return $x;
+	}
     }
 }
 
 sub lvl4_condition {
+    my $self = shift;
+    my $strain = $self->get_strain();
+    my $cellline = $self->get_cellline();
+    my $devstage = $self->get_devstage();
+    my $tissue = $self->get_tissue();
+    my %of = $self->get_other_factors();
+    @c = ();
+    push @c, 'Strain_' . $strain if defined($strain);
+    push @c, 'Cell-Line_' . $cellline if defined($cellline);
+    push @c, 'Tissue_' . $tissue if defined($tissue);
+    push @c, 'Development-Stage_' . $devstage if defined($devstage);
+    for my $k (sort keys %of) {
+	$k =~ s/ /-/g;
+	push @c, $k . '_' . $of{$k};
+    }
+    return join('_', @c);
 }
 
 sub lvl4_filetype {
