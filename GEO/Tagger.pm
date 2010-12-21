@@ -928,7 +928,7 @@ sub set_level1 {
     $level1{ident $self} = $s;
 }
 
-ub level2 {
+sub set_level2 {
     my $self = shift;
     my $at = $self->get_assay_type();
     my $dt = $self->get_data_type();
@@ -948,7 +948,7 @@ ub level2 {
     $level2{ident $self} = $s;
 }
 
-sub level3 {
+sub set_level3 {
     my $self = shift;
     my %map = (#'Alignment' => 'Alignment',
                #'Assay' => 'Assay',
@@ -980,6 +980,8 @@ sub lvl4_factor {
     my $desc = $self->get_description();
     my $l2 = $self->get_level2();
     my $l3 = $self->get_level3();
+    my $gene = $self->get_tgt_gene();
+    my $ab = $self->get_antibody();
     my @mol = ('mRNA', 'small-RNA');
     #my @tech = ('CAGE', 'cDNA-sequencing', 'Mass-spec', 'RACE', 'RNA-seq', 'RT-PCR', 'RNA-tiling-array', 'integrated-gene-model');
     if (scalar grep {$l2 eq $_} @mol) {
@@ -994,10 +996,13 @@ sub lvl4_factor {
 		return 'transcript';
 	    }
 	}
-	if 
+	#if () {#polyA
+	#}
 	return 'transfrag';
     }
-    if 
+    else {
+	if defined($tgt_gene{ident $self
+    }
 }
 
 sub lvl4_condition {
