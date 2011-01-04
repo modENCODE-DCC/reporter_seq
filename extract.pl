@@ -20,9 +20,9 @@ print "initializing...\n";
 my ($unique_id, $output_dir, $config);
 #default config
 $config = $root_dir . 'chado2GEO.ini';
-my $option = GetOptions ("unique_id=s"     => \$unique_id,
-                         "out=s"           => \$output_dir,
-                         "config=s"        => \$config) or usage();
+my $option = GetOptions ("id=s"     => \$unique_id,
+                         "o=s"      => \$output_dir,
+                         "cfg=s"    => \$config) or usage();
 usage() if (!$unique_id or !$output_dir);
 usage() unless -w $output_dir;
 usage() unless -e $config;
@@ -70,75 +70,8 @@ map {print "intermediate: ", $_, "\n"} @im;
 my @ip = $tagger->get_interprete_data();
 map {print "interpret: ", $_, "\n"} @ip;
 
-sub level1 {
-    my $tagger = shift;
-    my $org = $tagger->get_organism();
-    return $org;
-#    if ($org eq 'Caenorhabditis elegans') {
-#	return 'Cele_WS190';
-#    } elsif ($org eq 'Drosophila melanogaster') {
-#	return 'Dmel_r5.4';
-#    } elsif ($org eq 'Drosophila pseudoobscura') {
-#	return 'Dpse_r2.4';
-#    } elsif ($org eq 'Drosophila mojavensis') {
-#	return 'Dmoj_r1.3';
-#    }
-}
-
-sub level2 {
-    my $tagger = shift;
-    my $at = $tagger->get_assay_type();
-    my $dt = $tagger->get_data_type();
-    my $project = $tagger->get_project();
-    unless ( defined($at) && defined($dt) ) {
-	return 'mRNA' if $dt eq 'Gene Structure - mRNA';
-	return 'mRNA' if $dt eq 'RNA expression profiling' and $project eq 'Susan Celniker';
-	return 'Transcriptional-Factor' if $dt eq 'TF binding sites';
-	return 'Histone-Modification' if $dt eq 'Histone modification and replacement';
-	return 'non-TF-Chromatin-binding-factor' if $dt eq 'Other chromatin binding sites';
-	return 'DNA-Replication' if $dt eq 'Replication Factors' || $dt eq 'Replication Timing' || $dt eq 'Origins of Replication';
-	return 'Chromatin-Structure' if $dt eq 'Chromatin structure';
-	return 'small-RNA' if $dt eq 'RNA expression profiling' and $project eq 'Eric Lai';
-	return 'Copy-Number-Variation' if $dt eq 'Copy Number Variation';
-    }
-    return undef;
-}
-
-sub level3 {
-    my $tagger = shift;
-    my %map = ('Alignment' => 'Alignment',
-	       'Assay' => 'Assay',
-	       'CAGE' => 'CAGE',
-	       'cDNA sequencing' => 'cDNA-sequencing',
-	       'ChIP-chip' => 'ChIP-chip',
-	       'ChIP-seq' => 'ChIP-seq',
-	       'Computational annotation' => 'integrated-gene-model',
-	       'DNA-seq' => 'DNA-seq',
-	       'Mass spec' => 'Mass-spec', 
-	       'RACE' => 'RACE',
-	       'RNA-seq' => 'RNA-seq',
-	       'RNA-seq, RNAi' => 'RNA-seq',
-	       'RTPCR' => 'RT-PCR',
-	       #'Sample creation' =>
-	       #'sample creation' =>
-	       'tiling array: DNA' => 'DNA-tiling-array',
-	       'tiling array: RNA' => 'RNA-tiling-array',
-	);
-    my $at = $tagger->get_assay_type;
-    if (defined($at)) {
-	return $map{$at} if exists $map{$at};
-    }
-    return undef;
-}
-
-sub factor {
-}
-
-sub condition {
-}
-
 sub usage {
-    my $usage = qq[$0 -unique_id <unique_submission_id> -out <output_dir> [-config <config_file>]];
+    my $usage = qq[$0 -id <unique_submission_id> -o <output_dir> [-cfg <config_file>]];
     print "Usage: $usage\n";
     exit 2;
 } 
