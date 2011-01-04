@@ -872,8 +872,7 @@ sub _get_value_by_info {
             my $func = "get_" . $direction . "_data";
             for my $datum (@{$ap->$func()}) {
                 my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
-                if ($fieif $value ne '' && scalar(grep {$type->get_name() eq $_} @types) &\
-& !scalar(grep {$value eq $_} @nr);ld eq 'name') {
+		if ($field eq 'name') {
                     if ($name =~ /$fieldtext/) {
                         my $v = $value;
                         for my $attr (@{$datum->get_attributes()}) {
