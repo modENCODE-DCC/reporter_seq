@@ -703,7 +703,7 @@ sub get_data {
 }
 
 sub get_raw_data {
-    my $self = shift;
+    my ($self, $rpt_ncbi_id) = @_;
     my %type_map = ('nimblegen_microarray_data_file (pair)' => 'raw-arrayfile_CEL', 
 		    'CEL' => 'raw-arrayfile_pair',
 		    'agilent_raw_microarray_data_file' => 'raw-arrayfile-agilent_txt', 
@@ -712,20 +712,22 @@ sub get_raw_data {
 		    'sff' => 'raw-seqfile_sff',
 		    'qseq'=> 'raw-seqfile_qseq',
 		    'prb' => 'raw-seqfile_prb',
-		    'seq' => 'raw-seqfile_seq',
-		    'GEO_record' => 'GEO_record',
-		    'ShortReadArchive_project_ID (SRA)' => 'ShortReadArchive_record',
-		    'TraceArchive_record' => 'TraceArchive_record');
+		    'seq' => 'raw-seqfile_seq');
+    my %ncbi_id = ('GEO_record' => 'GEO_record',
+		   'ShortReadArchive_project_ID (SRA)' => 'ShortReadArchive_record',
+		   'TraceArchive_record' => 'TraceArchive_record');
+    %type_map = (%type_map, %ncbi_id) if $rpt_ncbi_id;
     return $self->get_data(\%type_map);
 }
 
 sub get_intermediate_data {
-    my $self = shift;
+    my ($self, $rpt_ncbi_id) = @_;
     my %type_map =  ('WIG' => $self->get_hyb_slot() ? 'normalized-arrayfile_wig' : 'coverage-graph_wiggle',
 		     'BED' => $self->get_hyb_slot() ? 'normalized-arrayfile_bed' : 'coverage-graph_bed', 
 		     'Sequence_Alignment/Map (SAM)' => 'alignment_sam', 
-		     'Signal_Graph_File' => 'normalized-arrayfile_wiggle', 
-		     'GEO_record' => 'GEO_record');
+		     'Signal_Graph_File' => 'normalized-arrayfile_wiggle');
+    my %ncbi_id = ('GEO_record' => 'GEO_record');
+    %type_map = (%type_map, %ncbi_id) if $rpt_ncbi_id;
     return $self->get_data(\%type_map);    
 }
 
