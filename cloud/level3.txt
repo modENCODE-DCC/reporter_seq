@@ -1,0 +1,28 @@
+2549	CAGE	RNA profiling
+896	3'UTR 454 sequencing pilot - Level 1	Piano	Piano	RACE	raw sequences			Caenorhabditis elegans		N2	whole organism	mixed: L1 larva, L2 larva, L3 larva, L4 larva, adult, embryo	9/4/09	11/4/09	released		GSM443959
+214	RTPCR	gene model
+582	ChIP-seq	chromatin	Target=pha-4;AbName=eGFP
+586	ChIP-seq	chromatin	Target=pha-4;AbName=RNA Polymerase II
+777	ChIP-seq	chromatin modification	Target=H3K4Me1;AbName=H3K4Me1
+846	ChIP-seq	chromatin	Target=RNA Polymerase II;AbName=Covance_8WG16:14861301
+2416	ChIP-seq	chromatin	Target=dpy-27;AbName=eGFP
+2755	ChIP-seq	replication factors	Target=Orc2;AbName=dORC2
+2638	ChIP-seq	chromatin	Target=CTCF;AbName=CTCF-N
+2628	ChIP-seq	chromatin	Target=HDAC4;AbName=HDAC4a-493
+43	ChIP-chip	chromatin	Target=htz-1;AbName=HTZ-1;Array=86bp;ArrayPlatform=Nimblegen
+279	ChIP-chip	chromatin	Target=Chro;AbName=Chro(Chriz)WR;Array=38bp;ArrayPlatform=Affymetrix
+317	ChIP-chip	chromatin modification	Target=H4K16Ac;AbName=H4K16Ac L;Array=38bp;ArrayPlatform=Affymetrix
+2525	ChIP-chip	chromatin	SaltConcentration=150-600mM ;Array=65bp;ArrayPlatform=Nimblegen
+668	tiling array: DNA	replication timing	Array=470bp;ArrayPlatform=Agilent
+709	tiling array: DNA	origins of replication	Array=470bp;ArrayPlatform=Agilent
+2384	tiling array: DNA	copy number variation	Array=470bp;ArrayPlatform=Agilent
+539	tiling array: RNA	transcription	Array=38bp;ArrayPlatform=Affymetrix
+2741	RNA-seq	RNA profiling
+2744	RNA-seq	RNA profiling	Target=Ago1;AbName=Ago1
+2551	S2 Copy Number Variation	MacAlpine	MacAlpine	DNA-seq	copy number variation			Drosophila melanogaster	S2-DRSC				12/22/09	1/5/10	released		GSE19956, GSM498668, GSM498669
+910	RNAi CG8144 S2-DRSC RNA-Seq Bowtie	Celniker	Graveley	RNA-seq, RNAi	RNA profiling		RNAiTarget=ps	Drosophila melanogaster	S2-DRSC		9/4/09	10/8/09	approved		GSM461179
+2557	mass-spec_091015	Waterston	MacCoss	Mass spec	RNA profiling			Caenorhabditis elegans		CB1489, N2	whole organism	mixed: L1 larva, L2 larva, L3 larva, L4 larva, adult, dauer larva, embryo, larva, newly molted young adult hermaphrodite	1/1/10	9/27/10	approved	mass_spec_091015.gff3,	
+2688	Splice Junction Annotation Embryo 0-2h	Celniker	Graveley	Computational annotation	gene model			Drosophila melanogaster		y; cn bw sp	whole organism	embryo: embryonic stage, pre-blastoderm stage, embryonic stage 1-2	1/27/10	2/15/10	released	BS40_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	SRR023199, SRR023659, SRR023663, SRR023671, SRR023747, SRR023755, SRR024013, SRR027110
+2967	MB9	Celniker	Brent	Computational annotation	gene model			Drosophila melanogaster					6/4/10	10/4/10	released	dm3_run12_withTSS_v3.gff3, MB9_v3.gff3, MB8/models/MB08.gff3	
+2745	UTRome_V2_3UTRs_multiple_evidences	Piano	Piano	Computational annotation	gene model			Caenorhabditis elegans				1/29/10	2/18/10	released	CEUP_UTRs.gff3	GSM446652
+2550	Directed cDNA Full Insert Sequencing	Celniker	Celniker	cDNA sequencing	RNA profiling	Sequences=1055		Drosophila melanogaster		Oregon-R-P2, y; cn bw sp	adult, adult head, embryo	mixed: adult stage, embryonic stage, larval stage, prepupal stage, pupal stage, embryonic stage 17	12/18/09	2/15/10	released	MIP.gff
