@@ -1019,11 +1019,11 @@ sub lvl4_condition {
     my $devstage = $self->get_devstage();
     my $tissue = $self->get_tissue();
     my %of = $self->get_other_factors();
-    @c = ();
+    my @c = ();
     push @c, 'Strain_' . $strain if defined($strain);
     push @c, 'Cell-Line_' . $cellline if defined($cellline);
     push @c, 'Tissue_' . $tissue if defined($tissue);
-    push @c, 'Development-Stage_' . $devstage if defined($devstage);
+    push @c, 'Developmental-Stage_' . $devstage if defined($devstage);
     for my $k (sort keys %of) {
 	$k =~ s/ /-/g;
 	push @c, $k . '_' . $of{$k};
