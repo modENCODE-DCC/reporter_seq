@@ -63,12 +63,12 @@ my $tagger = new GEO::Tagger({
       'config' => \%ini,
 });
 $tagger->set_all();
-my @raw = $tagger->get_raw_data();
-map {print "raw: ", $_, "\n"} @raw;
-my @im = $tagger->get_intermediate_data();
-map {print "intermediate: ", $_, "\n"} @im;
-my @ip = $tagger->get_interprete_data();
-map {print "interpret: ", $_, "\n"} @ip;
+my ($raw, $raw_type) = $tagger->get_raw_data();
+map {print "raw: ", $_, "\n"} @$raw;
+my ($im, $im_type) = $tagger->get_intermediate_data();
+map {print "intermediate: ", $_, "\n"} @$im;
+my ($ip, $ip_type) = $tagger->get_interprete_data();
+map {print "interpret: ", $_, "\n"} @$ip;
 
 sub usage {
     my $usage = qq[$0 -id <unique_submission_id> -o <output_dir> [-cfg <config_file>]];
