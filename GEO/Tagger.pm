@@ -742,9 +742,10 @@ sub get_other_factors {
     my $self = shift;
     my $f = $factors{ident $self};
     my %of;
-    my @exclude_types = ('strain', 'strain_or_line', 'cell line', '[developmental_stage', 'tissue', 'organism_part', 'sex', 'antibody', 'gene');
+    my @exclude_types = ('strain', 'strain_or_line', 'cell line', 'cell_line', 'developmental_stage', 'tissue', 'organism_part', 'sex', 'antibody', 'gene');
     for my $rank (keys %$f) {
         my $type = $f->{$rank}->[1];
+	print $type, "\n";
 	unless ( scalar grep {/$type/i} @exclude_types ) {
             my $factor_type = $f->{$rank}->[1];
             my $factor_value = $self->_get_value_by_info(0, 'name', $f->{$rank}->[0]);
