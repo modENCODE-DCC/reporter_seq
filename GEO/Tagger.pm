@@ -935,7 +935,7 @@ sub set_level2 {
     my $dt = $self->get_data_type();
     my $project = $self->get_project();
     my $s;
-    unless ( defined($at) && defined($dt) ) {
+    if ( defined($at) && defined($dt) ) {
         $s =  'mRNA' if $dt eq 'Gene Structure - mRNA';
         $s =  'mRNA' if $dt eq 'RNA expression profiling' and $project eq 'Susan Celniker';
         $s =  'Transcriptional-Factor' if $dt eq 'TF binding sites';
@@ -951,8 +951,7 @@ sub set_level2 {
 
 sub set_level3 {
     my $self = shift;
-    my %map = (#'Alignment' => 'Alignment',
-               #'Assay' => 'Assay',
+    my %map = ('Alignment' => 'RNA-seq',
                'CAGE' => 'CAGE',
                'cDNA sequencing' => 'cDNA-sequencing',
                'ChIP-chip' => 'ChIP-chip',
@@ -964,8 +963,6 @@ sub set_level3 {
                'RNA-seq' => 'RNA-seq',
                'RNA-seq, RNAi' => 'RNA-seq',
                'RTPCR' => 'RT-PCR',
-               #'Sample creation' => 
-               #'sample creation' =>
                'tiling array: DNA' => 'DNA-tiling-array',
                'tiling array: RNA' => 'RNA-tiling-array',
         );
@@ -1031,9 +1028,6 @@ sub lvl4_condition {
 	push @c, $k . '_' . $of{$k};
     }
     return join('_', @c);
-}
-
-sub lvl4_filetype {
 }
 
 1;
