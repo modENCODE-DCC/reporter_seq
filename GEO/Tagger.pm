@@ -373,6 +373,7 @@ sub strain {
     for my $row ((0..$num_of_rows{ident $self}-1)) {
         my $s = $self->get_strain_row($row, 1);
 	return $s and last if defined($s);
+    }
 }
 
 sub set_cellline {
