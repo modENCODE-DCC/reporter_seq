@@ -368,11 +368,26 @@ sub set_strain {
     }
 }
 
+sub strain {
+    my $self = shift;
+    for my $row ((0..$num_of_rows{ident $self}-1)) {
+        my $s = $self->get_strain_row($row, 1);
+	return $s and last if defined($s);
+}
+
 sub set_cellline {
     my $self = shift;
     for my $row ((0..$num_of_rows{ident $self}-1)) {
         my $c = $self->get_cellline_row($row);
 	$cellline{ident $self} = $c and last if defined($c);
+    }
+}
+
+sub cellline {
+    my $self = shift;
+    for my $row ((0..$num_of_rows{ident $self}-1)) {
+        my $c = $self->get_cellline_row($row, 1);
+	return $c and last if defined($c);
     }
 }
 
@@ -417,6 +432,8 @@ sub set_antibody {
 
 sub set_tgt_gene {
     my $self = shift;
+    my $found = 0;
+    #from IDF Experimental Factors
     my $factors = $factors{ident $self};
     my $header;
     for my $rank (keys %$factors) {
@@ -426,6 +443,16 @@ sub set_tgt_gene {
     if ($header) {
         my $tgt_gene = $self->_get_value_by_info(0, 'name', $header);
         $tgt_gene{ident $self} = $tgt_gene;
+	$found = 1;
+    }
+    unless ($found) {
+	#from Strain dbfield info.
+    }
+    unless ($found) {
+	#from Cell line dbfield info
+    }
+    unless ($found) {
+	#from antibody dbfield info
     }
 }
 
@@ -495,12 +522,13 @@ sub get_slotnum_normalize {
 }
 
 sub get_strain_row {
-    my ($self, $row) = @_;
+    my ($self, $row, $rpt_obj) = @_;
     for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
             my ($name, $heading, $value, $type) = ($datum->get_name(), $datum->get_heading(), $datum->get_value(), $datum->get_type());
             if (lc($name) =~ /^\s*strain\s*$/ || $type->get_name() eq 'strain_or_line') {
+		return $datum if $rpt_obj;
                 if ($value =~ /[Fly|Worm]?[Ss]train:(.*)&/) {
                     my $name = $1;
                     if ($name =~ /(.*?):/) {
@@ -518,11 +546,11 @@ sub get_strain_row {
                     $tmp =~ s/_/ /g;
                     return $tmp;
                 }
-		
             }
             for my $attr (@{$datum->get_attributes()}) {
                 my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
                 if (lc($aname) =~ /^\s*strain\s*$/) {
+		    return $datum if $rpt_obj;
                     if ( $avalue =~ /[Ss]train:(.*)&/ ) {
                         my $name = $1;
                         if ($name =~ /(.*?):/) {
@@ -544,12 +572,13 @@ sub get_strain_row {
 }
 
 sub get_cellline_row {
-    my ($self, $row) = @_;
+    my ($self, $row, $rpt_obj) = @_;
     for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
         my $ap = $denorm_slots{ident $self}->[$i]->[$row];
         for my $datum (@{$ap->get_input_data()}) {
             my ($name, $heading, $value, $type) = ($datum->get_name(), $datum->get_heading(), $datum->get_value(), $datum->get_type());
             if (lc($name) =~ /^\s*cell[_\s]*line\s*$/ || $type->get_name() eq 'cell_line') {
+		return $datum if $rpt_obj;
                 if ( $value =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
                     my $tmp = uri_unescape($1);
                     $tmp =~ s/_/ /g;
@@ -559,6 +588,7 @@ sub get_cellline_row {
             for my $attr (@{$datum->get_attributes()}) {
                 my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
                 if (lc($aname) =~ /^cell[_\s]*line/) {
+		    return $datum if $rpt_obj;
                     if ( $avalue =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
                         my $tmp = uri_unescape($1);
                         $tmp =~ s/_/ /g;
