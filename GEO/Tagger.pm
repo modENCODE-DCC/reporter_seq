@@ -979,7 +979,9 @@ sub lvl4_factor {
     my $l2 = $self->get_level2();
     my $l3 = $self->get_level3();
     my $gene = $self->get_tgt_gene();
+    print "gene is ", $gene, "\n";
     my $ab = $self->get_antibody();
+    print "antibody is ", $ab, "\n";
     my @mol = ('mRNA', 'small-RNA');
     #my @tech = ('CAGE', 'cDNA-sequencing', 'Mass-spec', 'RACE', 'RNA-seq', 'RT-PCR', 'RNA-tiling-array', 'integrated-gene-model');
     if (scalar grep {$l2 eq $_} @mol) {
@@ -999,6 +1001,7 @@ sub lvl4_factor {
 	return 'total-RNA';
     }
     else {
+	print "come here######\n";
 	if ( defined($gene) ) {
 	    return $gene;
 	}
@@ -1024,8 +1027,10 @@ sub lvl4_condition {
     push @c, 'Tissue_' . $tissue if defined($tissue);
     push @c, 'Developmental-Stage_' . $devstage if defined($devstage);
     for my $k (sort keys %of) {
-	$k =~ s/ /-/g;
-	push @c, $k . '_' . $of{$k};
+	my $v = $of{$k};
+	$k =~ s/_/-/g;
+	$v =~ s/_/-/g;
+	push @c, $k . '_' . $v;
     }
     return join('_', @c);
 }
