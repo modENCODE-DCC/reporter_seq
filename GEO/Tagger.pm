@@ -435,6 +435,9 @@ sub set_tgt_gene {
     my $found = 0;
     #from IDF Experimental Factors
     my $factors = $factors{ident $self};
+    my $strain = $self->strain();
+    my $cellline = $self->cellline();
+    my $ab = $self->get_antibody();
     my $header;
     for my $rank (keys %$factors) {
         my $type = $factors->{$rank}->[1];
@@ -447,12 +450,26 @@ sub set_tgt_gene {
     }
     unless ($found) {
 	#from Strain dbfield info.
+	if ( defined($strain) ) {
+	    my @attr = grep {lc($_->get_heading()) eq 'target id'} @{$strain->get_attributes()};
+	    my $x = $attr[0]->get_value();	
+	    $tgt_gene{ident $self} = $x;	    
+	}	
     }
     unless ($found) {
 	#from Cell line dbfield info
+	if ( defined($cellline) ) {
+	    my @attr = grep {lc($_->get_heading()) eq 'target id'} @{$cellline->get_attributes()};
+	    my $x = $attr[0]->get_value();	
+	    $tgt_gene{ident $self} = $x;	    
+	}
     }
     unless ($found) {
 	#from antibody dbfield info
+	if ( defined($ab) ) {
+	    my @attr = grep {lc($_->get_heading()) eq 'target name'} @{$ab->get_attributes()};
+	    my $x = $attr[0]->get_value();	
+	    $tgt_gene{ident $self} = $x;
     }
 }
 
@@ -622,6 +639,10 @@ sub get_devstage_row {
                         $tmp =~ s/_/ /g;
                         return $tmp;
                     }
+		    else {
+			$avalue =~ s/_/ /g;
+			return $avalue;
+		    }
                 }               
             }
         }
@@ -1033,13 +1054,8 @@ sub lvl4_factor {
     else {
 	print "come here######\n";
 	if ( defined($gene) ) {
+	    $gene =~ s/_/-/g;
 	    return $gene;
-	}
-	if ( defined($ab) ) {
-	    my @attr = grep {lc($_->get_heading()) eq 'target name'} @{$ab->get_attributes()};
-	    my $x = $attr[0]->get_value();
-	    $x =~ s/ /-/g;
-	    return $x;
 	}
     }
 }
