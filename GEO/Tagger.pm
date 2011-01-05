@@ -374,6 +374,7 @@ sub strain {
         my $s = $self->get_strain_row($row, 1);
 	return $s and last if defined($s);
     }
+    return undef;
 }
 
 sub set_cellline {
@@ -390,6 +391,7 @@ sub cellline {
         my $c = $self->get_cellline_row($row, 1);
 	return $c and last if defined($c);
     }
+    return undef;
 }
 
 sub set_devstage {
