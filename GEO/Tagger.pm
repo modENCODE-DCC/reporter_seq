@@ -97,7 +97,6 @@ sub set_all {
 		my @ab = grep {$_->get_heading() eq 'target name'} @{$t->get_attributes()};
 		print $ab[0]->get_value();
 	    } elsif ($parameter eq 'factors') {
-		#map {print $t->{$_}->[0], " "} (keys %$t);
 		my %of = $self->get_other_factors();
 		while (my ($k, $v) = each %of) {print " $k : $v"}
 	    } else {
@@ -573,7 +572,7 @@ sub get_strain_row {
             }
             for my $attr (@{$datum->get_attributes()}) {
                 my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
-                if (lc($aname) =~ /^\s*strain\s*$/) {
+                if (lc($aname) =~ /^\s*strain\s*$/ || lc($aheading) =~ /^\s*strain\s*$/) {
 		    return $datum if $rpt_obj;
                     if ( $avalue =~ /[Ss]train:(.*)&/ ) {
                         my $name = $1;
@@ -611,7 +610,7 @@ sub get_cellline_row {
             }
             for my $attr (@{$datum->get_attributes()}) {
                 my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
-                if (lc($aname) =~ /^cell[_\s]*line/) {
+                if (lc($aname) =~ /^cell[_\s]*line/ || lc($aheading) =~ /^cell[_\s]*line/) {
 		    return $datum if $rpt_obj;
                     if ( $avalue =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
                         my $tmp = uri_unescape($1);
@@ -640,7 +639,7 @@ sub get_devstage_row {
             }
             for my $attr (@{$datum->get_attributes()}) {
                 my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
-                if (lc($aname) =~ /dev.*stage/) {
+                if (lc($aname) =~ /dev.*stage/ || lc($aheading) =~ /dev.*stage/) {
                     if ( $avalue =~ /[Dd]ev[Ss]tage(Worm|Fly)?:(.*?):/ ) {
                         my $tmp = uri_unescape($2);
                         $tmp =~ s/_/ /g;
@@ -665,7 +664,6 @@ sub get_tissue_row {
             my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
             if (lc($name) =~ /^\s*tissue\s*$/) {
                 if ( $value =~ /[Tt]issue:(.*?):/ ) {
-		    print "regex is $1";
                     my $tmp = uri_unescape($1);
                     $tmp =~ s/_/ /g;
                     return $tmp;
@@ -748,7 +746,6 @@ sub get_data {
         for my $ap (@{$denorm_slots{ident $self}->[$col]}) {
             for my $datum (@{$ap->get_output_data()}) {
                 my ($value, $type) = ($datum->get_value(), $datum->get_type());
-		#print $value, " ", $type->get_name(), "\n" if $value ne '';
 		if ( $value ne '' && scalar(grep {$type->get_name() eq $_} @types) && !scalar(grep {$value eq $_} @nr) ) {
 		    push @file_types, $type_map->{$type->get_name()}; 
 		    push @files, $value;
@@ -1037,9 +1034,7 @@ sub lvl4_factor {
     my $l2 = $self->get_level2();
     my $l3 = $self->get_level3();
     my $gene = $self->get_tgt_gene();
-    print "gene is ", $gene, "\n";
     my $ab = $self->get_antibody();
-    print "antibody is ", $ab, "\n";
     my @mol = ('mRNA', 'small-RNA');
     #my @tech = ('CAGE', 'cDNA-sequencing', 'Mass-spec', 'RACE', 'RNA-seq', 'RT-PCR', 'RNA-tiling-array', 'integrated-gene-model');
     if (scalar grep {$l2 eq $_} @mol) {
@@ -1059,7 +1054,6 @@ sub lvl4_factor {
 	return 'total-RNA';
     }
     else {
-	print "come here######\n";
 	if ( defined($gene) ) {
 	    $gene =~ s/_/-/g;
 	    return $gene;
