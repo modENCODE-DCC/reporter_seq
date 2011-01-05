@@ -35,6 +35,7 @@ tie %ini, 'Config::IniFiles', (-file => $config);
 $output_dir = File::Spec->rel2abs($output_dir);
 #make sure $report_dir ends with '/'
 $output_dir .= '/' unless $output_dir =~ /\/$/;
+$output_file = $output_dir . $unique_id .'_tag.csv';
 
 my $dbname = $ini{database}{dbname};
 my $dbhost = $ini{database}{host};
@@ -63,12 +64,35 @@ my $tagger = new GEO::Tagger({
       'config' => \%ini,
 });
 $tagger->set_all();
+my $id = $tagger->get_unique_id();
+my $title = $tagger->get_title();
+my $lvl1 = $tagger->get_level1();
+my $lvl2 = $tagger->get_level2();
+my $lvl3 = $tagger->get_level3();
+my $lvl4_factor = $tagger->lvl4_factor();
+my $lvl4_condition = $tagger->lvl4_condition();
+my $lvl4_algorithm = '';
+my $replicatesetnum = '';
+my @tags = ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $lvl4_algorithm, $replicatesetnum);
+ 
+open my $tagfh, "<", $output_file;
 my ($raw, $raw_type) = $tagger->get_raw_data();
-map {print "raw: ", $_, "\n"} @$raw;
+print_tag_spreadsheet($tagfh, $raw, $raw_type, @tags);
 my ($im, $im_type) = $tagger->get_intermediate_data();
-map {print "intermediate: ", $_, "\n"} @$im;
+print_tag_spreadsheet($tagfh, $im, $im_type, @tags);
 my ($ip, $ip_type) = $tagger->get_interprete_data();
-map {print "interpret: ", $_, "\n"} @$ip;
+print_tag_spreadsheet($tagfh, $ip, $ip_type, @tags);
+close $tagfh;
+
+sub print_tag_spreadsheet {
+    my ($tagfh, $data, $data_type, $id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $lvl4_algorithm, $replicatesetnum) = @_;
+    for (my $i=0; $i<scalar @$data; $i++) {
+	print $tagfh join("\t", ($id, $title, $data->[$i], $lvl1, $lvl2, $lvl3, $data_type->[$i], $lvl4_factor, $lvl4_condition, $lvl3, $lvl4_algorithm, $replicatesetnum, $lvl1));
+	print "\t";
+	printf $tagfh '%s%5d', 'MDENC', $id;
+	print "\n";
+    } 
+}
 
 sub usage {
     my $usage = qq[$0 -id <unique_submission_id> -o <output_dir> [-cfg <config_file>]];
