@@ -35,7 +35,8 @@ tie %ini, 'Config::IniFiles', (-file => $config);
 $output_dir = File::Spec->rel2abs($output_dir);
 #make sure $report_dir ends with '/'
 $output_dir .= '/' unless $output_dir =~ /\/$/;
-$output_file = $output_dir . $unique_id .'_tag.csv';
+my $output_file = $output_dir . $unique_id .'_tag.csv';
+print "output file is $output_file\n";
 
 my $dbname = $ini{database}{dbname};
 my $dbhost = $ini{database}{host};

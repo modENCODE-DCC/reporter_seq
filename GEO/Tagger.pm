@@ -86,7 +86,7 @@ sub set_all {
 	#$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }        
-    for my $parameter (qw[num_of_rows num_of_cols title description project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
+    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
@@ -745,7 +745,6 @@ sub get_other_factors {
     my @exclude_types = ('strain', 'strain_or_line', 'cell line', 'cell_line', 'developmental_stage', 'tissue', 'organism_part', 'sex', 'antibody', 'gene');
     for my $rank (keys %$f) {
         my $type = $f->{$rank}->[1];
-	print $type, "\n";
 	unless ( scalar grep {/$type/i} @exclude_types ) {
             my $factor_type = $f->{$rank}->[1];
             my $factor_value = $self->_get_value_by_info(0, 'name', $f->{$rank}->[0]);
@@ -946,8 +945,8 @@ sub set_level2 {
         $s =  'Chromatin-Structure' if $dt eq 'Chromatin structure';
         $s =  'small-RNA' if $dt eq 'RNA expression profiling' and $project eq 'Eric Lai';
         $s =  'Copy-Number-Variation' if $dt eq 'Copy Number Variation';
+	$level2{ident $self} = $s;
     }
-    $level2{ident $self} = $s;
 }
 
 sub set_level3 {
