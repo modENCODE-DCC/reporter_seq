@@ -454,7 +454,8 @@ sub set_tgt_gene {
 	if ( defined($strain) ) {
 	    my @attr = grep {lc($_->get_heading()) eq 'target id'} @{$strain->get_attributes()};
 	    my $x = $attr[0]->get_value();	
-	    $tgt_gene{ident $self} = $x;	    
+	    $tgt_gene{ident $self} = $x;
+	    $found = 1;
 	}	
     }
     unless ($found) {
@@ -462,7 +463,8 @@ sub set_tgt_gene {
 	if ( defined($cellline) ) {
 	    my @attr = grep {lc($_->get_heading()) eq 'target id'} @{$cellline->get_attributes()};
 	    my $x = $attr[0]->get_value();	
-	    $tgt_gene{ident $self} = $x;	    
+	    $tgt_gene{ident $self} = $x;
+	    $found = 1;
 	}
     }
     unless ($found) {
@@ -471,6 +473,8 @@ sub set_tgt_gene {
 	    my @attr = grep {lc($_->get_heading()) eq 'target name'} @{$ab->get_attributes()};
 	    my $x = $attr[0]->get_value();	
 	    $tgt_gene{ident $self} = $x;
+	    $found = 1;
+	}
     }
 }
 
