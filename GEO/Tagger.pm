@@ -746,6 +746,7 @@ sub get_data {
     my ($self, $type_map) = @_;
     my @files = ();
     my @file_types = ();
+    my @clean_files = ();
     my @nr = ();
     my @types = keys %{$type_map};
     for my $col (0..$num_of_cols{ident $self}) {
@@ -760,7 +761,12 @@ sub get_data {
             }
         }
     }
-    return (\@files, \@file_types);
+
+    for my $path (@files) {
+	my ($file, $dir, $suffix) = fileparse($path);
+	push @clean_files, $file . $suffix;
+    }
+    return (\@clean_files, \@file_types);
 }
 
 sub get_raw_data {
@@ -995,6 +1001,7 @@ sub set_level2 {
     my $at = $self->get_assay_type();
     my $dt = $self->get_data_type();
     my $project = $self->get_project();
+    my $desc = $self->get_description();
     my $s;
     if ( defined($at) && defined($dt) ) {
         $s =  'mRNA' if $dt eq 'Gene Structure - mRNA';
@@ -1006,8 +1013,11 @@ sub set_level2 {
         $s =  'Chromatin-Structure' if $dt eq 'Chromatin structure';
         $s =  'small-RNA' if $dt eq 'RNA expression profiling' and $project eq 'Eric Lai';
         $s =  'Copy-Number-Variation' if $dt eq 'Copy Number Variation';
-	$level2{ident $self} = $s;
     }
+    else {
+	$s = 'Copy-Number-Variation' if $desc =~ /comparative genomic hybridization/;
+    }
+    $level2{ident $self} = $s;
 }
 
 sub set_level3 {
@@ -1028,19 +1038,21 @@ sub set_level3 {
                'tiling array: RNA' => 'RNA-tiling-array',
         );
     my $at = $self->get_assay_type;
+    my $l2 = $self->get_level2();
     if (defined($at)) {
         $level3{ident $self} = $map{$at} if exists $map{$at};
     }
+    $level3{ident $self} = 'CGH' if $l2 eq 'Copy-Number-Variation';
 }
 
 sub lvl4_factor {
     my $self = shift;
     my $p = $self->get_project();
     my $desc = $self->get_description();
+    my $dt = $self->get_data_type();
     my $l2 = $self->get_level2();
     my $l3 = $self->get_level3();
     my $gene = $self->get_tgt_gene();
-    my $ab = $self->get_antibody();
     my @mol = ('mRNA', 'small-RNA');
     #my @tech = ('CAGE', 'cDNA-sequencing', 'Mass-spec', 'RACE', 'RNA-seq', 'RT-PCR', 'RNA-tiling-array', 'integrated-gene-model');
     if (scalar grep {$l2 eq $_} @mol) {
@@ -1065,6 +1077,9 @@ sub lvl4_factor {
 	    return $gene;
 	}
     }
+    return 'Replication-Timing' if $dt eq 'Replication Timing';
+    return 'Replication-Origin' if $dt eq 'Origins of Replication';
+    return 'Replication-Copy-Number' if $l2 eq 'Copy-Number-Variation';
 }
 
 sub lvl4_condition {
@@ -1074,12 +1089,14 @@ sub lvl4_condition {
     my $devstage = $self->get_devstage();
     my $tissue = $self->get_tissue();
     my %of = $self->get_other_factors();
+    my @exclude_factors = ('CellLine');
     my @c = ();
     push @c, 'Strain_' . $strain if defined($strain);
     push @c, 'Cell-Line_' . $cellline if defined($cellline);
     push @c, 'Tissue_' . $tissue if defined($tissue);
     push @c, 'Developmental-Stage_' . $devstage if defined($devstage);
     for my $k (sort keys %of) {
+	next if scalar map {$k eq $_} @exclude_factors;
 	my $v = $of{$k};
 	$k =~ s/_/-/g;
 	$v =~ s/_/-/g;
