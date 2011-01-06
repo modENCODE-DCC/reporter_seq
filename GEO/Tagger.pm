@@ -647,7 +647,7 @@ sub get_devstage_row {
                     }
 		    else {
 			$avalue =~ s/_/ /g;
-			return $avalue;
+			return uri_unescape($avalue);
 		    }
                 }               
             }
@@ -803,7 +803,7 @@ sub get_other_factors {
 	unless ( scalar grep {/$type/i} @exclude_types ) {
             my $factor_type = $f->{$rank}->[1];
             my $factor_value = $self->_get_value_by_info(0, 'name', $f->{$rank}->[0]);
-	    $of{$factor_type} = $factor_value;
+	    $of{$factor_type} = uri_unescape($factor_value);
 	}
     }
     return %of;

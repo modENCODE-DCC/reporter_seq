@@ -78,7 +78,8 @@ my $lvl4_algorithm = '';
 my $replicatesetnum = '';
 my @tags = ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $lvl4_algorithm, $replicatesetnum);
  
-open my $tagfh, "<", $output_file;
+open my $tagfh, ">", $output_file;
+print $tagfh join("\t", ('DCC id', 'Title', 'Data File', 'Level 1 <organism>', 'Level 2 <Target>', 'Level 3 <Technique>', 'Level 4 <File Format>', 'Filename <Factor>', 'Filename <Condition>', 'Filename <Technique>', 'Filename <Algorithm>', 'Filename <ReplicateSetNum>', 'Filename <Build>', 'Filename <Modencode ID>')), "\n";
 my ($raw, $raw_type) = $tagger->get_raw_data();
 print_tag_spreadsheet($tagfh, $raw, $raw_type, @tags);
 my ($im, $im_type) = $tagger->get_intermediate_data();
@@ -91,9 +92,9 @@ sub print_tag_spreadsheet {
     my ($tagfh, $data, $data_type, $id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $lvl4_algorithm, $replicatesetnum) = @_;
     for (my $i=0; $i<scalar @$data; $i++) {
 	print $tagfh join("\t", ($id, $title, $data->[$i], $lvl1, $lvl2, $lvl3, $data_type->[$i], $lvl4_factor, $lvl4_condition, $lvl3, $lvl4_algorithm, $replicatesetnum, $lvl1));
-	print "\t";
+	print $tagfh "\t";
 	printf $tagfh '%s%5d', 'MDENC', $id;
-	print "\n";
+	print $tagfh "\n";
     } 
 }
 
