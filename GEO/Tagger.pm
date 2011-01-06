@@ -1007,6 +1007,8 @@ sub set_level2 {
     my $dt = $self->get_data_type();
     my $project = $self->get_project();
     my $desc = $self->get_description();
+    my $gene = $self->get_tgt_gene();
+    my @histone_variants = ('HTZ-1');
     my $s;
     if ( defined($at) && defined($dt) ) {
         $s =  'mRNA' if $dt eq 'Gene Structure - mRNA';
@@ -1021,6 +1023,7 @@ sub set_level2 {
     }
     else {
 	$s = 'Copy-Number-Variation' if $desc =~ /comparative genomic hybridization/;
+	$s = 'Chromatin-Structure' if scalar grep {$gene eq $_} @histone_variants;
     }
     $level2{ident $self} = $s;
 }
