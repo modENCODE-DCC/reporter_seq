@@ -93,7 +93,7 @@ sub print_tag_spreadsheet {
     for (my $i=0; $i<scalar @$data; $i++) {
 	print $tagfh join("\t", ($id, $title, $data->[$i], $lvl1, $lvl2, $lvl3, $data_type->[$i], $lvl4_factor, $lvl4_condition, $lvl3, $lvl4_algorithm, $replicatesetnum, $lvl1));
 	print $tagfh "\t";
-	printf $tagfh '%s%5d', 'MDENC', $id;
+	printf $tagfh '%s%05s', 'MDENC', $id;
 	print $tagfh "\n";
     } 
 }
