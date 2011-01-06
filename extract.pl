@@ -17,12 +17,13 @@ use GEO::Tagger;
 
 print "initializing...\n";
 #parse command-line parameters
-my ($unique_id, $output_dir, $config);
+my ($unique_id, $output_dir, $config, $rpt_ncbi_id);
 #default config
 $config = $root_dir . 'chado2GEO.ini';
 my $option = GetOptions ("id=s"     => \$unique_id,
                          "o=s"      => \$output_dir,
-                         "cfg=s"    => \$config) or usage();
+                         "cfg=s"    => \$config,
+			 "e=s"      => \$rpt_ncbi_id) or usage();
 usage() if (!$unique_id or !$output_dir);
 usage() unless -w $output_dir;
 usage() unless -e $config;
@@ -80,7 +81,12 @@ my @tags = ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $lv
  
 open my $tagfh, ">", $output_file;
 print $tagfh join("\t", ('DCC id', 'Title', 'Data File', 'Level 1 <organism>', 'Level 2 <Target>', 'Level 3 <Technique>', 'Level 4 <File Format>', 'Filename <Factor>', 'Filename <Condition>', 'Filename <Technique>', 'Filename <Algorithm>', 'Filename <ReplicateSetNum>', 'Filename <Build>', 'Filename <Modencode ID>')), "\n";
-my ($raw, $raw_type) = $tagger->get_raw_data();
+my ($raw, $raw_type);
+if ($rpt_ncbi_id) {
+    ($raw, $raw_type) = $tagger->get_raw_data(1);
+} else {
+    ($raw, $raw_type) = $tagger->get_raw_data();
+}
 print_tag_spreadsheet($tagfh, $raw, $raw_type, @tags);
 my ($im, $im_type) = $tagger->get_intermediate_data();
 print_tag_spreadsheet($tagfh, $im, $im_type, @tags);
@@ -99,7 +105,8 @@ sub print_tag_spreadsheet {
 }
 
 sub usage {
-    my $usage = qq[$0 -id <unique_submission_id> -o <output_dir> [-cfg <config_file>]];
+    my $usage = qq[$0 -id <unique_submission_id> -o <output_dir> [-cfg <config_file>] [-e <0|1>]];
     print "Usage: $usage\n";
+    print "option e: use geo/sra id instead of filename for raw data.\n";
     exit 2;
 } 
