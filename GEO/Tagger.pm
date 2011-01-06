@@ -419,17 +419,25 @@ sub set_sex {
 
 sub set_antibody {
     my $self = shift;
+    my $real_ab = 0;
+    my $probable_ab = undef;
     if ($ip_slot{ident $self}) {
 	for my $row (0..$num_of_rows{ident $self}-1) {	    
             my $ab = $self->get_antibody_row($row);
 	    if ($ab) {
-		if (is_antibody($ab) != -1) {
+		my $is_ab = is_antibody($ab);
+		if ($is_ab == 1) {
 		    $antibody{ident $self} = $ab;
+		    $real_ab = 1;
 		    last;
+		}
+		if ($is_ab == 0) {
+		    $probable_ab = $ab;
 		}
 	    }
         }
     }
+    $antibody{ident $self} = $probable_ab if $real_ab == 0 && defined($probable_ab);
 }
 
 sub set_tgt_gene {
@@ -733,12 +741,9 @@ sub is_antibody {
     $antibody = $1;
     $antibody =~ s/ +/ /g;
     $antibody =~ s/ /_/g;
-    my @special_antibodies = ('No Antibody Control', 'No_Antibody_Control', 'AB46540_NIgG');
-    my $is_control = 0;
-    for my $control (@special_antibodies) {
-	$is_control = 1 and last if $antibody eq $control;
-    }
-    return 0 if $is_control;
+    print "antibody is $antibody\n";
+    my @special_antibodies = ('No_Antibody_Control', 'AB46540_NIgG');
+    return 0 if scalar grep {$antibody eq $_} @special_antibodies;
     return 1;
 }
 
