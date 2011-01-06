@@ -1014,7 +1014,13 @@ sub set_level2 {
         $s =  'mRNA' if $dt eq 'Gene Structure - mRNA';
         $s =  'mRNA' if $dt eq 'RNA expression profiling' and $project eq 'Susan Celniker';
         $s =  'Transcriptional-Factor' if $dt eq 'TF binding sites';
-        $s =  'Histone-Modification' if $dt eq 'Histone modification and replacement';
+	if ($dt eq 'Histone modification and replacement') {
+	    if (scalar grep {$gene eq $_} @histone_variants) {
+		$s = 'Chromatin-Structure'; 
+	    } else {
+		$s =  'Histone-Modification';
+	    }
+	}
         $s =  'non-TF-Chromatin-binding-factor' if $dt eq 'Other chromatin binding sites';
         $s =  'DNA-Replication' if $dt eq 'Replication Factors' || $dt eq 'Replication Timing' || $dt eq 'Origins of Replication';
         $s =  'Chromatin-Structure' if $dt eq 'Chromatin structure';
@@ -1023,7 +1029,6 @@ sub set_level2 {
     }
     else {
 	$s = 'Copy-Number-Variation' if $desc =~ /comparative genomic hybridization/;
-	$s = 'Chromatin-Structure' if scalar grep {$gene eq $_} @histone_variants;
     }
     $level2{ident $self} = $s;
 }
