@@ -1109,7 +1109,7 @@ sub lvl4_condition {
     push @c, 'Tissue_' . $tissue if defined($tissue);
     push @c, 'Developmental-Stage_' . $devstage if defined($devstage);
     for my $k (sort keys %of) {
-	next if scalar map {$k eq $_} @exclude_factors;
+	next if scalar grep {$k eq $_} @exclude_factors;
 	my $v = $of{$k};
 	$k =~ s/_/-/g;
 	$v =~ s/_/-/g;

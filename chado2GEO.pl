@@ -38,7 +38,7 @@ my $send_to_geo = 0;
 my $long_protocol_text = 0;
 my $split_seq_group = 1; #splicate the pair of one manipulation-control biological replicate into 2 gsm records
 my $split_arr_group = 0; #split array replicates
-my $seq_exp;
+my $seq_exp = 0; #default is array experiment
 my $option = GetOptions ("unique_id=s"     => \$unique_id,
 			 "out=s"           => \$output_dir,
 			 "config=s"        => \$config,
@@ -174,6 +174,7 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
     open my $chado_datafilesFH, "<", $chado_datafiles;
     while (<$chado_datafilesFH>) {
 	chomp;
+	next if $_ =~ /^\s*$/;
 	push @datafiles, $_;
     }
     close $chado_datafiles;
