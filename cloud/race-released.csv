@@ -24,5 +24,5 @@
 2463	3' UTR Staged 454 Sequencing - daf-9 - sequences	Piano	Piano	RACE	raw sequences			Caenorhabditis elegans		DR2281	whole organism	larva: dauer larva	10/18/09	11/4/09	released		GSM446660
 2464	3' UTR Staged 454 Sequencing - daf-11 - sequences	Piano	Piano	RACE	raw sequences			Caenorhabditis elegans		DR47	whole organism	larva: dauer larva	10/18/09	11/4/09	released		GSM446661
 2465	3' UTR Staged 454 Sequencing - embryo - sequences	Piano	Piano	RACE	raw sequences			Caenorhabditis elegans		N2	whole organism	embryo: embryo	10/19/09	11/6/09	released		GSM446651
-2501	3' UTRome sample pools	Piano	Piano	RACE				Caenorhabditis elegans		N2	whole organism	mixed: L1 larva, L2 larva, L3 larva, L4 larva, adult, embryo, larva	11/9/09	11/19/09	released		
+#2501	3' UTRome sample pools	Piano	Piano	RACE				Caenorhabditis elegans		N2	whole organism	mixed: L1 larva, L2 larva, L3 larva, L4 larva, adult, embryo, larva	11/9/09	11/19/09	released		
 2720	SL Acceptor Site Confirmation 2010-01-28	Waterston	Green	RACE	gene model	Reactions=1405		Caenorhabditis elegans		N2	whole organism	mixed: L1 larva, L2 larva, L3 larva, L4 larva, adult, all stages, dauer larva, embryo	1/28/10	2/17/10	released	set.20100203.2_3_2_2_4_3_3_2_3_3.ws180.gff	
