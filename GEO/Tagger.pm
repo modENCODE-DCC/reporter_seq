@@ -363,7 +363,7 @@ sub set_norm_slot {
 sub set_platform {
     my $self = shift;
     for my $row ((0..$num_of_rows{ident $self}-1)) {
-	$p = $self->get_platform_row($row);
+	my $p = $self->get_platform_row($row);
 	$platform{ident $self} = $p and last if defined($p);
     }
 }
@@ -750,7 +750,7 @@ sub is_antibody {
     $antibody = $1;
     $antibody =~ s/ +/ /g;
     $antibody =~ s/ /_/g;
-    print "antibody is $antibody\n";
+    #print "antibody is $antibody\n";
     my @special_antibodies = ('No_Antibody_Control', 'AB46540_NIgG');
     return 0 if scalar grep {$antibody eq $_} @special_antibodies;
     return 1;
@@ -798,9 +798,9 @@ sub get_seqmachine_row {
     my $machine;
     eval {
         $machine = _get_datum_by_info($seq_ap, 'input', 'name', '\s*sequencing\s*platform\s*');
-    }
+    };
     if ($@) {
-	my $p = $ap->get_protocol();
+	my $p = $seq_ap->get_protocol();
 	#print "protocol name: ", $p->get_name(), "\n";
 	#print "protocol description: ", $p->get_description(), "\n";
 	#for my $data (@{$ap->get_input_data()}) {
@@ -1059,7 +1059,7 @@ sub set_level1 {
 	$s = 'Cele_WS190';    
     } elsif ($org eq 'Drosophila melanogaster') {
 	$s = 'Dmel_r5.4';    
-    } elsif ($org eq 'Drosophila pseudoobscura') {
+    } elsif ($org =~ /Drosophila\s*pseudoobscura/) {
 	$s = 'Dpse_r2.4';    
     } elsif ($org eq 'Drosophila mojavensis') { 
 	$s = 'Dmoj_r1.3';
