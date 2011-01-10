@@ -12,6 +12,7 @@ BEGIN {
 use Config::IniFiles;
 use Getopt::Long;
 use File::Spec;
+use File::Basename;
 use ModENCODE::Parser::LWChado;
 use GEO::Tagger;
 
@@ -97,7 +98,9 @@ close $tagfh;
 sub print_tag_spreadsheet {
     my ($tagfh, $data, $data_type, $id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $lvl4_algorithm, $replicatesetnum) = @_;
     for (my $i=0; $i<scalar @$data; $i++) {
-	print $tagfh join("\t", ($id, $title, $data->[$i], $lvl1, $lvl2, $lvl3, $data_type->[$i], $lvl4_factor, $lvl4_condition, $lvl3, $lvl4_algorithm, $replicatesetnum, $lvl1));
+	my ($file, $dir, $suffix) = fileparse($data->[$i]);
+	my $t = $file . $suffix;
+	print $tagfh join("\t", ($id, $title, $t, $lvl1, $lvl2, $lvl3, $data_type->[$i], $lvl4_factor, $lvl4_condition, $lvl3, $lvl4_algorithm, $replicatesetnum, $lvl1));
 	print $tagfh "\t";
 	printf $tagfh '%s%05s', 'MDENC', $id;
 	print $tagfh "\n";

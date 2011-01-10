@@ -817,7 +817,6 @@ sub get_data {
     my ($self, $type_map) = @_;
     my @files = ();
     my @file_types = ();
-    my @clean_files = ();
     my @nr = ();
     my @types = keys %{$type_map};
     for my $col (0..$num_of_cols{ident $self}) {
@@ -832,12 +831,7 @@ sub get_data {
             }
         }
     }
-
-    for my $path (@files) {
-	my ($file, $dir, $suffix) = fileparse($path);
-	push @clean_files, $file . $suffix;
-    }
-    return (\@clean_files, \@file_types);
+    return (\@files, \@file_types);
 }
 
 sub get_raw_data {
