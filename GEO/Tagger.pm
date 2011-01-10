@@ -1068,11 +1068,12 @@ sub set_level2 {
     my $project = $self->get_project();
     my $desc = $self->get_description();
     my $gene = $self->get_tgt_gene();
-    my @histone_variants = ('HTZ-1');
+    my @histone_variants = ('HTZ-1', 'HCP-3');
     my $s;
+    my @mrna_groups = ('Susan Celniker', 'Kevin White');
     if ( defined($at) && defined($dt) ) {
         $s =  'mRNA' if $dt eq 'Gene Structure - mRNA';
-        $s =  'mRNA' if $dt eq 'RNA expression profiling' and $project eq 'Susan Celniker';
+        $s =  'mRNA' if $dt eq 'RNA expression profiling' and scalar grep {$project eq $_} @mrna_groups;
         $s =  'Transcriptional-Factor' if $dt eq 'TF binding sites';
 	if ($dt eq 'Histone modification and replacement') {
 	    if (scalar grep {$gene eq $_} @histone_variants) {
@@ -1140,8 +1141,9 @@ sub lvl4_factor {
 		return 'transfrag';
 	    }
 	}
-	#if () {#polyA
-	#}
+	if ($desc =~ /polyA[-_\s]?rna/i) {#polyA
+	    return 'PolyA-RNA';
+	}
 	return 'total-RNA';
     }
     else {
