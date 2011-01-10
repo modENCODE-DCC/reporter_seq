@@ -30,6 +30,7 @@ my %seq_slot               :ATTR( :get<seq_slot>               :default<undef>);
 my %ip_slot                :ATTR( :get<ip_slot>                :default<undef>);
 my %raw_slot               :ATTR( :get<raw_slot>               :default<undef>);
 my %norm_slot              :ATTR( :get<norm_slot>              :default<undef>);
+my %platform               :ATTR( :get<platform>               :default<undef>);
 my %strain                 :ATTR( :get<strain>                 :default<undef>);
 my %cellline               :ATTR( :get<cellline>               :default<undef>);
 my %devstage               :ATTR( :get<devstage>               :default<undef>);
@@ -86,7 +87,7 @@ sub set_all {
 	#$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }        
-    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
+    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
@@ -357,6 +358,14 @@ sub set_raw_slot {
 sub set_norm_slot {
     my $self = shift;
     $norm_slot{ident $self} = $self->get_slotnum_normalize();
+}
+
+sub set_platform {
+    my $self = shift;
+    for my $row ((0..$num_of_rows{ident $self}-1)) {
+	$p = $self->get_platform_row($row);
+	$platform{ident $self} = $p and last if defined($p);
+    }
 }
 
 sub set_strain {
@@ -747,6 +756,63 @@ sub is_antibody {
     return 1;
 }
 
+sub get_platform_row {
+    my ($self, $row) = @_;
+    my $hyb_slot = $self->get_hyb_slot();
+    my $seq_slot = $self->get_seq_slot();
+    if ( defined($hyb_slot) ) {
+	return $self->get_array_row($row);
+    }
+    if ( defined($seq_slot) ) {
+	return $self->get_seqmachine_row($row);
+    }
+}
+
+sub get_array_row {
+    my ($self, $row, $return_object) = @_;
+    my $hyb_ap = $denorm_slots{ident $self}->[$hyb_slot{ident $self}]->[$row];
+    my $array;
+    #this shall be replaced by type checking instead of name checking
+    my $ok1 = eval { $array = _get_datum_by_info($hyb_ap, 'input', 'name', '\s*a
+rray\s*') } ;
+    my $platform;
+    if (not $ok1) {
+        $array = _get_datum_by_info($hyb_ap, 'input', 'name', '\s*adf\s*');
+    }
+    if (scalar(@$array)) {
+        my $attr;
+        my $ok2 = eval { $attr = _get_attr_by_info($array->[0], 'heading', '\s*platform\s*') } ;
+        if ($ok2) {
+	    $platform = $attr->get_value();
+        } else {
+            croak("can not find the array dbfield heading platform, probably dbfields did not populate correctly.");
+        }
+    }
+    return $array if $return_object;
+    return $platform;
+}
+
+sub get_seqmachine_row {
+    my ($self, $row, $return_object) = @_;
+    my $seq_ap = $denorm_slots{ident $self}->[$seq_slot{ident $self}]->[$row];
+    my $machine;
+    eval {
+        $machine = _get_datum_by_info($seq_ap, 'input', 'name', '\s*sequencing\s*platform\s*');
+    }
+    if ($@) {
+	my $p = $ap->get_protocol();
+	#print "protocol name: ", $p->get_name(), "\n";
+	#print "protocol description: ", $p->get_description(), "\n";
+	#for my $data (@{$ap->get_input_data()}) {
+	    
+	#}
+	return 'Illumina' if $p->get_name() =~ /illumina/i || $p->get_description =~ /illumina/i;
+    } 
+    else {
+	return $machine->[0]->get_value();
+    }
+}
+
 sub get_data {
     my ($self, $type_map) = @_;
     my @files = ();
@@ -1118,4 +1184,7 @@ sub lvl4_condition {
     return join('_', @c);
 }
 
+sub lvl4_algorithm {
+    
+}
 1;
