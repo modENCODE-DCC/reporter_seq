@@ -60,7 +60,7 @@ sub set_all {
 	$self->$set_func();	
     }
 
-    my $aff = $self->affiliate_submission;
+    my $aff = $self->affiliate_submission();
     if (scalar @$aff) {
 	#my $trans_self_normalized_slots = _trans($self->get_normalized_slots);
 	my $trans_self_denorm_slots = _trans($self->get_denorm_slots); #like sdrf now
@@ -86,7 +86,8 @@ sub set_all {
 	}
 	#$normalized_slots{ident $self} = _trans($trans_self_normalized_slots);
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
-    }        
+    }
+        
     for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
@@ -127,10 +128,10 @@ sub set_denorm_slots {
 # begin of helpers...                                                                          #
 ################################################################################################
 sub affiliate_submission {
-    my $self = shift;
+    my $reporter = shift;
     my $aff = [];
-    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}->[0]}; $i++) {
-        my $ap = $denorm_slots{ident $self}->[0]->[$i];
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $reporter}->[0]}; $i++) {
+        my $ap = $denorm_slots{ident $reporter}->[0]->[$i];
 	for my $datum (@{$ap->get_input_data()}) {
 	    for my $attr (@{$datum->get_attributes()}) {
 		if (lc($attr->get_type()->get_name()) eq 'reference' && lc($attr->get_type()->get_cv()->get_name()) eq 'modencode') {
@@ -191,8 +192,8 @@ sub affiliate_submission_reporter {
 }
 
 sub get_ap_row_by_data {
-    my ($self, $name, $value) = @_;
-    my $last_ap_slot = $self->get_denorm_slots->[-1];
+    my ($reporter, $name, $value) = @_;
+    my $last_ap_slot = $reporter->get_denorm_slots->[-1];
     for (my $i=0; $i<scalar @$last_ap_slot; $i++) {
 	my $ap = $last_ap_slot->[$i];
 	for my $data (@{$ap->get_output_data()}) {
@@ -494,8 +495,9 @@ sub set_tgt_gene {
 	if ( defined($ab) ) {
 	    my @attr = grep {lc($_->get_heading()) eq 'target name'} @{$ab->get_attributes()};
 	    if (scalar @attr) {
-		my $x = $attr[0]->get_value();	
+		my $x = $attr[0]->get_value();
 		$tgt_gene{ident $self} = $x;
+		$tgt_gene{ident $self} = 'No Antibody Control' if $x eq 'Not Appicable';
 		$found = 1;
 	    }
 	}
@@ -771,25 +773,20 @@ sub get_platform_row {
 sub get_array_row {
     my ($self, $row, $return_object) = @_;
     my $hyb_ap = $denorm_slots{ident $self}->[$hyb_slot{ident $self}]->[$row];
-    my $array;
-    #this shall be replaced by type checking instead of name checking
-    my $ok1 = eval { $array = _get_datum_by_info($hyb_ap, 'input', 'name', '\s*a
-rray\s*') } ;
-    my $platform;
-    if (not $ok1) {
-        $array = _get_datum_by_info($hyb_ap, 'input', 'name', '\s*adf\s*');
+    my ($array, $platform);
+    for my $data (@{$hyb_ap->get_input_data()}) {
+	if ($data->get_type()->get_name() eq 'ADF') {
+	    $array = $data;
+	    last;
+	}
     }
-    if (scalar(@$array)) {
-        my $attr;
-        my $ok2 = eval { $attr = _get_attr_by_info($array->[0], 'heading', '\s*platform\s*') } ;
-        if ($ok2) {
-	    $platform = $attr->get_value();
-        } else {
-            croak("can not find the array dbfield heading platform, probably dbfields did not populate correctly.");
-        }
+    if ( defined($array) ) {
+	for my $attr (@{$array->get_attributes()}) {
+	    return $return_object ? $array : $attr->get_value() if $attr->get_heading() eq 'platform';
+	}
+    } else {
+	croak("could not find array info for a hybridization experiment.");
     }
-    return $array if $return_object;
-    return $platform;
 }
 
 sub get_seqmachine_row {
@@ -1069,29 +1066,36 @@ sub set_level2 {
     my $desc = $self->get_description();
     my $gene = $self->get_tgt_gene();
     my @histone_variants = ('HTZ-1', 'HCP-3');
-    my $s;
-    my @mrna_groups = ('Susan Celniker', 'Kevin White');
+    my @dosage_compensation = ('DPY-27');
+    my @mrna_groups = ('Susan Celniker', 'Kevin White', 'Robert Waterston');
     if ( defined($at) && defined($dt) ) {
-        $s =  'mRNA' if $dt eq 'Gene Structure - mRNA';
-        $s =  'mRNA' if $dt eq 'RNA expression profiling' and scalar grep {$project eq $_} @mrna_groups;
-        $s =  'Transcriptional-Factor' if $dt eq 'TF binding sites';
+        $level2{ident $self} =  'mRNA' if $dt eq 'Gene Structure - mRNA';
+        $level2{ident $self} =  'mRNA' if $dt eq 'RNA expression profiling' and scalar grep {$project eq $_} @mrna_groups;
+        $level2{ident $self} =  'Transcriptional-Factor' if $dt eq 'TF binding sites';
 	if ($dt eq 'Histone modification and replacement') {
 	    if (scalar grep {$gene eq $_} @histone_variants) {
-		$s = 'Chromatin-Structure'; 
+		$level2{ident $self} = 'Chromatin-Structure'; 
+	    } elsif (scalar grep {$gene eq $_} @dosage_compensation) {
+                $level2{ident $self} = 'non-TF-Chromatin-binding-factor';
 	    } else {
-		$s =  'Histone-Modification';
+		$level2{ident $self} =  'Histone-Modification';
 	    }
 	}
-        $s =  'non-TF-Chromatin-binding-factor' if $dt eq 'Other chromatin binding sites';
-        $s =  'DNA-Replication' if $dt eq 'Replication Factors' || $dt eq 'Replication Timing' || $dt eq 'Origins of Replication';
-        $s =  'Chromatin-Structure' if $dt eq 'Chromatin structure';
-        $s =  'small-RNA' if $dt eq 'RNA expression profiling' and $project eq 'Eric Lai';
-        $s =  'Copy-Number-Variation' if $dt eq 'Copy Number Variation';
+        $level2{ident $self} =  'non-TF-Chromatin-binding-factor' if $dt eq 'Other chromatin binding sites';
+        $level2{ident $self} =  'DNA-Replication' if $dt eq 'Replication Factors' || $dt eq 'Replication Timing' || $dt eq 'Origins of Replication';
+        $level2{ident $self} =  'Chromatin-Structure' if $dt eq 'Chromatin structure';
+        $level2{ident $self} =  'small-RNA' if $dt eq 'RNA expression profiling' and $project eq 'Eric Lai' || $project eq 'Fabio Piano';
+        $level2{ident $self} =  'Copy-Number-Variation' if $dt eq 'Copy Number Variation';
+	$level2{ident $self} =  'small-RNA' if $dt eq 'RNA expression profiling' and $project eq 'Robert Waterston' and $desc =~ /mirna/i and $desc =~/small rna/i;
     }
     else {
-	$s = 'Copy-Number-Variation' if $desc =~ /comparative genomic hybridization/;
+	$level2{ident $self} = 'Copy-Number-Variation' if $desc =~ /comparative genomic hybridization/;
+	if ( !defined($at) and !defined($dt) ) {
+	    $level2{ident $self} = 'mRNA' if $project eq 'Robert Waterston';
+	    $level2{ident $self} = 'mRNA' if $project eq 'Fabio Piano';
+	}
     }
-    $level2{ident $self} = $s;
+
 }
 
 sub set_level3 {
@@ -1113,8 +1117,12 @@ sub set_level3 {
         );
     my $at = $self->get_assay_type;
     my $l2 = $self->get_level2();
+    my $project = $self->get_project();
     if (defined($at)) {
         $level3{ident $self} = $map{$at} if exists $map{$at};
+	$level3{ident $self} = 'DNA-tiling-array' if $at eq 'ChIP-chip' and $project eq 'Steven Henikoff';
+    } else {
+	$level3{ident $self} = 'RACE' if $project eq 'Fabio Piano';
     }
     $level3{ident $self} = 'CGH' if $l2 eq 'Copy-Number-Variation';
 }
@@ -1131,9 +1139,12 @@ sub lvl4_factor {
     #my @tech = ('CAGE', 'cDNA-sequencing', 'Mass-spec', 'RACE', 'RNA-seq', 'RT-PCR', 'RNA-tiling-array', 'integrated-gene-model');
     if (scalar grep {$l2 eq $_} @mol) {
 	return '5-prime-UTR' if $l3 eq 'CAGE';
-	return '3-prime-UTR' if $p eq 'Fabio Piano';
+	if ( $p eq 'Fabio Piano') {
+	    return 'small-RNA' if $l2 eq 'small-RNA';
+	    return '3-prime-UTR';
+	}
 	return 'UTR' if ($l3 eq 'cDNA-sequencing' || $l3 eq 'RACE') && $p eq 'Susan Celniker';
-	return 'small-RNA' if $l2 eq 'small-RNA' && $p eq 'Eric Lai';
+	return 'small-RNA' if $l2 eq 'small-RNA';
 	if ($l3 eq 'integrated-gene-model') {
 	    if ( $desc =~ /splice[\s_-]*junction/ ) {
 		return 'splice-junction';
@@ -1150,6 +1161,8 @@ sub lvl4_factor {
 	if ( defined($gene) ) {
 	    $gene =~ s/_/-/g;
 	    return $gene;
+	} else {
+	    return 'Nucleosome' if $p eq 'Steven Henikoff';
 	}
     }
     return 'Replication-Timing' if $dt eq 'Replication Timing';
