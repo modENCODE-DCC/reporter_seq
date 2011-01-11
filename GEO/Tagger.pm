@@ -128,10 +128,10 @@ sub set_denorm_slots {
 # begin of helpers...                                                                          #
 ################################################################################################
 sub affiliate_submission {
-    my $reporter = shift;
+    my $self = shift;
     my $aff = [];
-    for (my $i=0; $i<scalar @{$denorm_slots{ident $reporter}->[0]}; $i++) {
-        my $ap = $denorm_slots{ident $reporter}->[0]->[$i];
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}->[0]}; $i++) {
+        my $ap = $denorm_slots{ident $self}->[0]->[$i];
 	for my $datum (@{$ap->get_input_data()}) {
 	    for my $attr (@{$datum->get_attributes()}) {
 		if (lc($attr->get_type()->get_name()) eq 'reference' && lc($attr->get_type()->get_cv()->get_name()) eq 'modencode') {
@@ -192,8 +192,8 @@ sub affiliate_submission_reporter {
 }
 
 sub get_ap_row_by_data {
-    my ($reporter, $name, $value) = @_;
-    my $last_ap_slot = $reporter->get_denorm_slots->[-1];
+    my ($self, $name, $value) = @_;
+    my $last_ap_slot = $self->get_denorm_slots->[-1];
     for (my $i=0; $i<scalar @$last_ap_slot; $i++) {
 	my $ap = $last_ap_slot->[$i];
 	for my $data (@{$ap->get_output_data()}) {
