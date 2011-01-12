@@ -1,95 +1,95 @@
-     34        5' RACE (mixed-stage embryos)
-     214       DMG1 RTPCR
-     215       DMG2 RTPCR
-     339       DMG3 RTPCR
-     340       DMG4 RTPCR
-     445       C. elegans Intron Identification.set.20090106.2_3_2_2_3_2_2_2_2
-     446       C. elegans Intron Identification set.20090106.2_3_2_2_4_4_3_2_2
-     447       C. elegans Intron Identification set.20090106.2_3_2_2_5_3_3_2_2
-     448       C. elegans Intron Identification set.20090106.2_3_2_2_4_3_3_2_2
-     515       3'UTRome CEUP1 sequences, alignments, annotation
-     555       Cell line Total RNA samples
-     559       Cell line Nuclear RNA samples
-     560       Cell line polyA RNA samples
-     574       Dev Timecourse TotalRNA isolation
-     577       Dev Timecourse polyA RNA samples
-     585       Snyder_PHA4_GFP_FedL1
-     587       Snyder_PHA4_POLII_FedL1
-     594       Snyder_MAB5_POLII_L3
-     771       E0-4_H3K4me3 new
-     900       E0-4_CBP
-     904       L2_8wg16 ChIP-chip
-     1040      5'RACE 454 sequencing - pool 1
-     1042      5'RACE 454 sequencing - pool 3
-     1043      5'RACE 454 sequencing - pool 4
-     1044      5'RACE 454 sequencing - pool 5
-     2270      MB6 RTPCR
-     2304      Intron Confirmation Chromosome II 2009-09-21
-     2403      Tissue totalRNA isolation
-     2429      Snyder_LIN-11_GFP_L2
-     2430      Snyder_UNC-130_GFP_L1
-     2431      Snyder_HLH-1_GFP_emb
-     2432      Snyder_LIN-39_GFP_L3
-     2433      Snyder_NHR-6_GFP_L2
-     2435      Snyder_N2_POLII_eemb
-     2436      Snyder_N2_POLII_lemb
-     2437      Snyder_N2_POLII_L1
-     2438      Snyder_N2_POLII_L2
-     2439      Snyder_N2_POLII_L3
-     2440      Snyder_N2_POLII_L4
-     2441      Snyder_N2_POLII_YA
-     2451      Snyder_GEI11_GFP_L4
-     2501      3' UTRome sample pools
-     2539      Ahringer_L3_Worm_Samples_1
-     2540      Ahringer_L3_Worm_Samples_2
-     2557      mass-spec_091015
-     2585      ISO1_8-16_Ez
-     2597      Snyder_HLH-8_POLII_L3
-     2598      Snyder_PHA4_GFP_lemb
-     2600      Snyder_MEP-1_GFP_emb
-     2601      Snyder_MDL-1_GFP_L1
-     2602      ISO1_8-16_mod_mdg4
-     2603      R13_1-6_eve-GFP
-     2610      Snyder_LIN-15B_GFP_L3
-     2612      Snyder_BLMP-1_GFP_L1
-     2613      Snyder_LIN-13_GFP_emb
-     2614      Snyder_ELT-3_GFP_L1
-     2617      Snyder_NHR-105_GFP_L3
-     2620      Snyder_CEH-30_GFP_lemb
-     2621      Snyder_EGL-27_GFP_L1
-     2622      Snyder_SKN-1_GFP_L1
-     2623      Snyder_PQM-1_GFP_L3
-     2647      RNAseq - 0911 aggregate fourteen stages - non-redundant exons
-     2675      MB8 gene models
-     2718      Intron Confirmation Chromosome I 2010-01-28
-     2720      SL Acceptor Site Confirmation 2010-01-28
-     2850      Adult spe-9 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2851      Young Adult N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2852      dauer daf-2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2853      dauer entry daf-2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2854      dauer exit daf-2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2855      early embryo N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2856      embryo him-8 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2857      late embryo N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2858      L1 lin-35(n745) integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, and wormbase splice junctions
-     2859      L4 male integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2860      L1 N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2861      L2 N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2862      L3 N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2863      L4 N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
-     2929      Stranded RACE TSS tracks
-     2946      Classes_of_Insulator_Binding_Sites
-     2958      RNAseq - mid-L4 25dC 34.25hrs post-L1 genelets revised 100320
-     2967      MB9
-     2979      MCM S2 July 2010
-     3201      Cl8 CNV
-     3207      Tissue TotalRNA isolation
-     3247      24h Embryo Orc ChIP-Seq
-     3251      0-24h Embryo PolII ChIP-Seq
-     3253      SG Orc ChIP-Seq
-     3275      Directed cDNA Full Insert Sequencing v3
-     3277      FB_CGH
-     3278      MG_CGH
-     3305      Drosophila Cell Line and Developmental Stage Gene and Exon Scores
-     3312      Transcription Start Site Confirmation 2010-11-24
-     3316      Capped smallRNA (&lt;200nt) PolyA-tail samples
+34	RACE (mixed-stage embryos)	5'
+214	RTPCR	DMG1
+215	RTPCR	DMG2
+339	RTPCR	DMG3
+340	RTPCR	DMG4
+445	elegans Intron Identification.set.20090106.2_3_2_2_3_2_2_2_2	C.
+446	elegans Intron Identification set.20090106.2_3_2_2_4_4_3_2_2	C.
+447	elegans Intron Identification set.20090106.2_3_2_2_5_3_3_2_2	C.
+448	elegans Intron Identification set.20090106.2_3_2_2_4_3_3_2_2	C.
+515	CEUP1 sequences,alignments,annotation	3'UTRome
+555	line Total RNA samples	Cell
+559	line Nuclear RNA samples	Cell
+560	line polyA RNA samples	Cell
+574	Timecourse TotalRNA isolation	Dev
+577	Timecourse polyA RNA samples	Dev
+585		Snyder_PHA4_GFP_FedL1
+587		Snyder_PHA4_POLII_FedL1
+594		Snyder_MAB5_POLII_L3
+771	new	E0-4_H3K4me3
+900		E0-4_CBP
+904	ChIP-chip	L2_8wg16
+1040	454 sequencing - pool 1	5'RACE
+1042	454 sequencing - pool 3	5'RACE
+1043	454 sequencing - pool 4	5'RACE
+1044	454 sequencing - pool 5	5'RACE
+2270	RTPCR	MB6
+2304	Confirmation Chromosome II 2009-09-21	Intron
+2403	totalRNA isolation	Tissue
+2429		Snyder_LIN-11_GFP_L2
+2430		Snyder_UNC-130_GFP_L1
+2431		Snyder_HLH-1_GFP_emb
+2432		Snyder_LIN-39_GFP_L3
+2433		Snyder_NHR-6_GFP_L2
+2435		Snyder_N2_POLII_eemb
+2436		Snyder_N2_POLII_lemb
+2437		Snyder_N2_POLII_L1
+2438		Snyder_N2_POLII_L2
+2439		Snyder_N2_POLII_L3
+2440		Snyder_N2_POLII_L4
+2441		Snyder_N2_POLII_YA
+2451		Snyder_GEI11_GFP_L4
+2501	UTRome sample pools	3'
+2539		Ahringer_L3_Worm_Samples_1
+2540		Ahringer_L3_Worm_Samples_2
+2557		mass-spec_091015
+2585		ISO1_8-16_Ez
+2597		Snyder_HLH-8_POLII_L3
+2598		Snyder_PHA4_GFP_lemb
+2600		Snyder_MEP-1_GFP_emb
+2601		Snyder_MDL-1_GFP_L1
+2602		ISO1_8-16_mod_mdg4
+2603		R13_1-6_eve-GFP
+2610		Snyder_LIN-15B_GFP_L3
+2612		Snyder_BLMP-1_GFP_L1
+2613		Snyder_LIN-13_GFP_emb
+2614		Snyder_ELT-3_GFP_L1
+2617		Snyder_NHR-105_GFP_L3
+2620		Snyder_CEH-30_GFP_lemb
+2621		Snyder_EGL-27_GFP_L1
+2622		Snyder_SKN-1_GFP_L1
+2623		Snyder_PQM-1_GFP_L3
+2647	- 0911 aggregate fourteen stages - non-redundant exons	RNAseq
+2675	gene models	MB8
+2718	Confirmation Chromosome I 2010-01-28	Intron
+2720	Acceptor Site Confirmation 2010-01-28	SL
+2850	spe-9 integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	Adult
+2851	Adult N2 integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	Young
+2852	daf-2 integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	dauer
+2853	entry daf-2 integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	dauer
+2854	exit daf-2 integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	dauer
+2855	embryo N2 integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	early
+2856	him-8 integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	embryo
+2857	embryo N2 integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	late
+2858	lin-35(n745) integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,and wormbase splice junctions	L1
+2859	male integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	L4
+2860	N2 integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	L1
+2861	N2 integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	L2
+2862	N2 integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	L3
+2863	N2 integrated transcripts from RNA-seq,mRNA/EST,RTPCR,mass-spec,polyA sites,and SLs	L4
+2929	RACE TSS tracks	Stranded
+2946		Classes_of_Insulator_Binding_Sites
+2958	- mid-L4 25dC 34.25hrs post-L1 genelets revised 100320	RNAseq
+2967		MB9
+2979	S2 July 2010	MCM
+3201	CNV	Cl8
+3207	TotalRNA isolation	Tissue
+3247	Embryo Orc ChIP-Seq	24h
+3251	Embryo PolII ChIP-Seq	0-24h
+3253	Orc ChIP-Seq	SG
+3275	cDNA Full Insert Sequencing v3	Directed
+3277		FB_CGH
+3278		MG_CGH
+3305	Cell Line and Developmental Stage Gene and Exon Scores	Drosophila
+3312	Start Site Confirmation 2010-11-24	Transcription
+3316	smallRNA (&lt;200nt) PolyA-tail samples	Capped
