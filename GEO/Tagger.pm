@@ -838,8 +838,8 @@ sub get_data {
 
 sub get_raw_data {
     my ($self, $rpt_ncbi_id) = @_;
-    my %type_map = ('nimblegen_microarray_data_file (pair)' => 'raw-arrayfile_CEL', 
-		    'CEL' => 'raw-arrayfile_pair',
+    my %type_map = ('nimblegen_microarray_data_file (pair)' => 'raw-arrayfile_pair', 
+		    'CEL' => 'raw-arrayfile_CEL',
 		    'agilent_raw_microarray_data_file' => 'raw-arrayfile-agilent_txt', 
 		    'raw_microarray_data_file' => 'raw-arrayfile-agilent_txt',
 		    'fastq' => 'raw-seqfile_fastq',
