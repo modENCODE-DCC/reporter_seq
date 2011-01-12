@@ -1,0 +1,1139 @@
+     21        GSM409067       E0-12_BEAF 32 ChIP-chip
+     22        GSM409068       E0-12_CP190 ChIP-chip
+     23        GSM409071       Embryo 0-12h GAF ChIP-chip
+     24        GSM409072       Embryo 0-12h Mod(mdg4) ChIP-chip
+     27        GSM409073       Embryo 0-12h SuHw ChIP-chip
+     40        GSE16269, GSM409470, GSM409471, GSM409472       Dm_1182-4H_TotalRNA_p200_038-040-042_38bp
+     43        GSM257465       HTZ-1_N2_Mixed_Embryos (BK00001_HTZ1_N2_MXEMB)
+     44        GSM257637       POL-2_N2_Mixed_Embryos (CVMMS126R_8WG16_N2_MXEMB)
+     48        GSE16270, GSM409473, GSM409474, GSM409475       Dm_CME-L1_TotalRNA_p200_086-088-090_38bp
+     49        GSE16271, GSM409476, GSM409477, GSM409478       Dm_CME-W1-Cl.8p_TotalRNA_p200_060-062-064_38bp
+     50        GSE16272, GSM409479, GSM409479, GSM409480, GSM409481    Dm_GM2_TotalRNA_p200_008-010-012_38bp
+     51        GSE16273, GSM409482, GSM409483, GSM409484       Dm_Kc167_TotalRNA_p200_002-004-006_38bp
+     52        GSE16274, GSM409485, GSM409486, GSM409487       Dm_ML-DmBG1-c2_TotalRNA_p200_116-118-120_38bp
+     53        GSE16275, GSM409488, GSM409489, GSM409490       Dm_ML-DmBG3-c2_TotalRNA_p200_122-124-126_38bp
+     54        GSE16276, GSM409491, GSM409492, GSM409493       Dm_ML-DmD11_TotalRNA_p200_170-172-174_38bp
+     55        GSE16277, GSM409494, GSM409495, GSM409496       Dm_DmD17-c3_TotalRNA_p200_194-196-198_38bp
+     56        GSE16278, GSM409497, GSM409498, GSM409499       Dm_DmD20-c2_TotalRNA_p200_182-184-186_38bp
+     57        GSE16279, GSM409500, GSM409501, GSM409502       Dm_DmD20-c5_TotalRNA_p200_188-190-192_38bp
+     58        GSE16280, GSM409503, GSM409504, GSM409505       Dm_DmD21_TotalRNA_p200_050-052-054_38bp
+     59        GSE16281, GSM409506, GSM409507, GSM409508       Dm_DmD32_TotalRNA_p200_164-166-168_38bp
+     60        GSE16282, GSM409509, GSM409510, GSM409511       Dm_DmD4-c1_TotalRNA_p200_140-142-144_38bp
+     61        GSE16283, GSM409512, GSM409513, GSM409514       Dm_DmD8_TotalRNA_p200_206-208-210_38bp
+     62        GSE16284, GSM409515, GSM409516, GSM409517       Dm_DmD9_TotalRNA_p200_072-074-076_38bp
+     63        GSE16285, GSM409518, GSM409519, GSM409520       Dm_S1_TotalRNA_p200_026-028-030_38bp
+     64        GSE16286, GSM409521, GSM409522, GSM409523       Dm_S2-DRSC_TotalRNA_p200_014-016-018_38bp
+     65        GSE16287, GSM409524, GSM409525, GSM409526       Dm_S2Rp_TotalRNA_p200_020-022-024_38bp
+     66        GSE16288, GSM409527, GSM409528, GSM409529       Dm_S3_TotalRNA_p200_104-106-108_38bp
+     67        GSE16289, GSM409530, GSM409531, GSM409532       Dm_Sg4_TotalRNA_p200_200-202-204_38bp
+     69        GSE16290, GSM409533, GSM409534, GSM409535       Dm_DmD16-c3_TotalRNA_p200_138-136-138_38bp
+     90        GSM147959       DPY-27_N2_Mixed_Embryos (JL00001_DPY27_N2_MXEMB)
+     93        GSE16292, GSM409538, GSM409539, GSM409540       Dm_y[1]cn[1] bw[1] sp[1]_larval_L1_TotalRNA_p200_284-286-288_38bp
+     94        GSE16293, GSM409541, GSM409542, GSM409543       Dm_y[1]cn[1] bw[1] sp[1]_larval_L2_TotalRNA_p200_290-292-294_38bp
+     95        GSE16294, GSM409544, GSM409545, GSM409546       Dm_y[1]cn[1] bw[1] sp[1]_prepupa_WhitePrePupae_TotalRNA_p200_326-328-330_38bp
+     96        GSE16295, GSM409547, GSM409548, GSM409549       Dm_y[1]cn[1] bw[1] sp[1]_adult_Female_1dayPostEclosion_TotalRNA_p200_374-376-378_38bp
+     97        GSE16296, GSM409550, GSM409551, GSM409552       Dm_y[1]cn[1] bw[1] sp[1]_adult_Female_5dayPostEclosion_TotalRNA_p200_386-388-390_38bp
+     98        GSE16297, GSM409553, GSM409554, GSM409555       Dm_y[1]cn[1] bw[1] sp[1]_adult_Male_1dayPostEclosion_TotalRNA_p200_368-370-372_38bp
+     99        GSE16298, GSM409556, GSM409557, GSM409558       Dm_y[1]cn[1] bw[1] sp[1]_adult_Male_5dayPostEclosion_TotalRNA_p200_380-382-384_38bp
+     100       GSE16299, GSM409559, GSM409560, GSM409561       Dm_y[1]cn[1] bw[1] sp[1]_larval_L3_gut_stage1_TotalRNA_p200_440-442-444_38bp
+     101       GSE16300, GSM409562, GSM409563, GSM409564       Dm_y[1]cn[1] bw[1] sp[1]_embryo_0-2h_TotalRNA_p200_212-214-216_38bp
+     102       GSE16301, GSM409565, GSM409566, GSM409567       Dm_y[1]cn[1] bw[1] sp[1]_embryo_0-2h_poly-Ap_p200_403-404-405_38bp
+     103       GSE16302, GSM409568, GSM409569, GSM409570       Dm_y[1]cn[1] bw[1] sp[1]_embryo_8-10h_TotalRNA_p200_236-238-240_38bp
+     104       GSE16303, GSM409571, GSM409572, GSM409573       Dm_y[1]cn[1] bw[1] sp[1]_embryo_8-10h_poly-Ap_p200_415-416-417_38bp
+     105       GSE16304, GSM409574, GSM409575, GSM409576       Dm_y[1]cn[1] bw[1] sp[1]_embryo_10-12h_TotalRNA_p200_242-244-246_38bp
+     106       GSE16305, GSM409577, GSM409578, GSM409579       Dm_y[1]cn[1] bw[1] sp[1]_embryo_10-12h_poly-Ap_p200_418-419-420_38bp
+     107       GSE16306, GSM409580, GSM409581, GSM409582       Dm_y[1]cn[1] bw[1] sp[1]_embryo_12-14h_TotalRNA_p200_248-250-252_38bp
+     108       GSE16307, GSM409583, GSM409584, GSM409585       Dm_y[1]cn[1] bw[1] sp[1]_embryo_12-14h_poly-Ap_p200_421-422-423_38bp
+     109       GSE16308, GSM409586, GSM409587, GSM409588       Dm_y[1]cn[1] bw[1] sp[1]_embryo_14-16h_TotalRNA_p200_254-256-258_38bp
+     110       GSE16309, GSM409589, GSM409590  Dm_y[1]cn[1] bw[1] sp[1]_embryo_14-16h_poly-Ap_p200_424-425_38bp
+     111       GSE16310, GSM409591, GSM409592, GSM409593       Dm_y[1]cn[1] bw[1] sp[1]_embryo_16-18h_TotalRNA_p200_260-262-264_38bp
+     112       GSE16311, GSM409594, GSM409595, GSM409596       Dm_y[1]cn[1] bw[1] sp[1]_embryo_16-18h_poly-Ap_p200_427-428-429_38bp
+     113       GSE16312, GSM409597, GSM409598, GSM409599       Dm_y[1]cn[1] bw[1] sp[1]_embryo_18-20h_TotalRNA_p200_266-268-270_38bp
+     114       GSE16313, GSM409600, GSM409601  Dm_y[1]cn[1] bw[1] sp[1]_embryo_18-20h_poly-Ap_p200_431-432_38bp
+     115       GSE16314, GSM409602, GSM409603, GSM409604       Dm_y[1]cn[1] bw[1] sp[1]_embryo_20-22h_poly-Ap_p200_433-434-435_38bp
+     116       GSE16315, GSM409605, GSM409606  Dm_y[1]cn[1] bw[1] sp[1]_embryo_20-22h_TotalRNA_p200_274-276_38bp
+     117       GSE16316, GSM409607, GSM409608, GSM409609       Dm_y[1]cn[1] bw[1] sp[1]_embryo_22-24h_TotalRNA_p200_278-280-282_38bp
+     118       GSE16317, GSM409610, GSM409611, GSM409612       Dm_y[1]cn[1] bw[1] sp[1]_embryo_2-4h_TotalRNA_p200_218-220-222_38bp
+     119       GSE16318, GSM409613, GSM409614, GSM409615       Dm_y[1]cn[1] bw[1] sp[1]_embryo_2-4h_poly-Ap_p200_406-407-408_38bp
+     120       GSE16319, GSM409616, GSM409617, GSM409618       Dm_y[1]cn[1] bw[1] sp[1]_embryo_4-6h_TotalRNA_p200_224-226-228_38bp
+     121       GSE23219, GSM571093, GSM571093, GSM571094, GSM571095    Dm_y[1]cn[1] bw[1] sp[1]_embryo_4-6h_poly-Ap_p200_409-410-411_38bp
+     122       GSE16320, GSM409619, GSM409620, GSM409621       Dm_y[1]cn[1] bw[1] sp[1]_embryo_6-8h_poly-Ap_p200_412-413-414_38bp
+     127       GSM147967       SDC-3_N2_Mixed_Embryos_(JL00002_SDC3_N2_MXEMB)
+     139       GSE16321, GSM409622, GSM409623, GSM409624       Dm_mbn2_TotalRNA_p200_044-046-048_38bp
+     140       GSE16322, GSM409625, GSM409626, GSM409627       Dm_CME_W2_TotalRNA_p200_460-462-464_38bp
+     174       GSE22669, GSM562194, GSM562195, GSM562196, GSM562197, GSM562198, GSM562199    POL-2_CTD_Mixed_Embryos (ABAB5408_4H8_N2_MXEMB)
+     175       GSE22670, GSM562200, GSM562201, GSM562202       Histone_H3K36me3_from_N2_L3_larvae_(AB9050_H3K36ME3_N2_L3)
+     176       GSE22697, GSM562582, GSM562583, GSM562584       Histone_H3K4me3_from_N2_L3_larvae_(AR0169_H3K4me3_N2_L3)
+     179       GSE22698, GSM562585, GSM562586, GSM562587       Negative_control_antibody_from_N2_L3_larvae_(JA00002_IGG_N2_L3)
+     188       GSE22699, GSM562588, GSM562589, GSM562590       Histone_H3K9me3_from_N2_L3_larvae_(UP07442_H3K9ME3_N2_L3)
+     194       GSE15064, GSM376935, GSM376936, GSM376937, GSM376938, GSM376939, GSM376940, GSM376941, GSM376942, GSM376943   HCP-3_CENP-A_Mixed_Embryos_(OD00001_HCP3_N2_MXEMB)
+     195       GSE16133, GSM403975, GSM403976, GSM403977, GSM403978, GSM403979, GSM403980, GSM403981, GSM403982, GSM403983   MES-4_FLAG_Early_Embryos_(SGF3165_FLAG_MES4FLAG_EEMB)
+     201       GSE20759, GSM520775, GSM520775, GSM520776, GSM520777, GSM520778, GSM520779      H4AcTetra.S2
+     202       GSE22700, GSM562591, GSM562592, GSM562593, GSM562594, GSM562595, GSM562596    NA_MES4FLAG_EEMB
+     267       GSE16323, GSM409628, GSM409629, GSM409630       Dm_Kc167_nuclearRNA_p200_475-476-477_38bp
+     268       GSE16324, GSM409631, GSM409632, GSM409633       Dm_Kc167_polyApRNA_p200_145-146-147_38bp
+     274       GSE20760, GSM520780, GSM520780, GSM520781, GSM520782, GSM520783 BEAF-HB.S2
+     275       GSE20761, GSM520784, GSM520784, GSM520785, GSM520786, GSM520787 Chro(Chriz)BR.BG3
+     276       GSE20762, GSM520788, GSM520788, GSM520789, GSM520790, GSM520791 Chro(Chriz)BR.Clone_8
+     277       GSE20763, GSM520792, GSM520792, GSM520793, GSM520794, GSM520795 Chro(Chriz)BR.Kc
+     278       GSE20764, GSM520796, GSM520796, GSM520797, GSM520798, GSM520799 Chro(Chriz)BR.S2
+     279       GSE20765, GSM520800, GSM520800, GSM520801, GSM520802, GSM520803 Chro(Chriz)WR.S2
+     280       GSE20766, GSM520804, GSM520804, GSM520805, GSM520806, GSM520807 CP190-VC.S2
+     282       GSE20767, GSM520808, GSM520808, GSM520809, GSM520810, GSM520811 CTCF-VC.BG3
+     283       GSE20768, GSM520812, GSM520812, GSM520813, GSM520814, GSM520815 CTCF-VC.S2
+     284       GSE20769, GSM520816, GSM520816, GSM520817, GSM520818, GSM520819, GSM520820, GSM520821   Ez.S2
+     285       GSE20770, GSM520822, GSM520822, GSM520823, GSM520824, GSM520825 GAF.S2
+     288       GSE20771, GSM520826, GSM520826, GSM520827, GSM520828, GSM520829 H2B-ubiq (NRO3).BG3
+     289       GSE20772, GSM520830, GSM520830, GSM520831, GSM520832, GSM520833 H2B-ubiq (NRO3).Kc
+     290       GSE20773, GSM520834, GSM520834, GSM520835, GSM520836, GSM520837 H2B-ubiq (NRO3).S2
+     291       GSE20774, GSM520838, GSM520838, GSM520839, GSM520840, GSM520841 H3K18ac.BG3
+     292       GSE20775, GSM520842, GSM520842, GSM520843, GSM520844, GSM520845 H3K18ac.S2
+     293       GSE20776, GSM520846, GSM520846, GSM520847, GSM520848, GSM520849 H3K23ac.BG3
+     294       GSE20777, GSM520850, GSM520850, GSM520851, GSM520852, GSM520853, GSM520854      H3K23ac.S2
+     295       GSE20778, GSM520855, GSM520855, GSM520856, GSM520857, GSM520858 H3K27Ac.BG3
+     296       GSE20779, GSM520859, GSM520859, GSM520860, GSM520861, GSM520862 H3K27Ac.S2
+     297       GSE20780, GSM520863, GSM520863, GSM520864, GSM520865, GSM520866 H3K27Me3 (Abcam2).BG3
+     298       GSE20781, GSM520867, GSM520867, GSM520868, GSM520869, GSM520870 H3K27me3 (Abcam2).S2
+     299       GSE20782, GSM520871, GSM520871, GSM520872, GSM520873, GSM520874 H3K36me1.BG3
+     301       GSE20783, GSM520875, GSM520875, GSM520876, GSM520877, GSM520878 H3K36me3.BG3
+     302       GSE20784, GSM520879, GSM520879, GSM520880, GSM520881, GSM520882 H3K36me3.Kc
+     303       GSE20785, GSM520883, GSM520883, GSM520884, GSM520885, GSM520886 H3K36me3.S2
+     304       GSE20786, GSM520887, GSM520887, GSM520888, GSM520889, GSM520890, GSM520891, GSM520892   H3K4me1.S2
+     305       GSE20787, GSM520893, GSM520893, GSM520894, GSM520895, GSM520896, GSM520897, GSM520898   H3K4Me3(LP).S2
+     306       GSE20788, GSM520899, GSM520899, GSM520900, GSM520901, GSM520902 H3K79Me2.BG3
+     307       GSE20789, GSM520903, GSM520903, GSM520904, GSM520905, GSM520906 H3K79Me2.S2
+     309       GSE20790, GSM520907, GSM520907, GSM520908, GSM520909, GSM520910 H3K9ac.S2
+     310       GSE20791, GSM520911, GSM520911, GSM520912, GSM520913, GSM520914 H3K9me2-Ab2 (new lot).BG3
+     311       GSE20792, GSM520915, GSM520915, GSM520916, GSM520917, GSM520918 H3K9me2 antibody2.S2
+     312       GSE20793, GSM520919, GSM520919, GSM520920, GSM520921, GSM520922 H3K9me3 (new lot).BG3
+     313       GSE20794, GSM520923, GSM520923, GSM520924, GSM520925, GSM520926 H3K9me3.S2
+     316       GSE20795, GSM520927, GSM520927, GSM520928, GSM520929, GSM520930 H4K16ac(L).BG3
+     317       GSE20796, GSM520931, GSM520931, GSM520932, GSM520933, GSM520934 H4K16ac(L).Clone_8
+     318       GSE20797, GSM520935, GSM520935, GSM520936, GSM520937, GSM520938 H4K16ac(L).Kc
+     319       GSE20798, GSM520939, GSM520939, GSM520940, GSM520941, GSM520942 H4K16ac(L).S2
+     320       GSE20799, GSM520943, GSM520943, GSM520944, GSM520945, GSM520946 H4K16ac(M).S2
+     321       GSE20800, GSM520947, GSM520947, GSM520948, GSM520949, GSM520950 H4K5ac.S2
+     322       GSE20801, GSM520951, GSM520951, GSM520952, GSM520953, GSM520954 H4K8ac.S2
+     324       GSE20802, GSM520955, GSM520955, GSM520956, GSM520957, GSM520958 mod2.2-VC.BG3
+     325       GSE20803, GSM520959, GSM520959, GSM520960, GSM520961, GSM520962 Pc.BG3
+     326       GSE20804, GSM520963, GSM520963, GSM520964, GSM520965, GSM520966 Pc.S2
+     327       GSE20805, GSM520967, GSM520967, GSM520968, GSM520969, GSM520970 RNA pol II (ALG).Clone_8
+     328       GSE20806, GSM520971, GSM520971, GSM520972, GSM520973, GSM520974 RNA pol II (ALG).Kc
+     329       GSE20807, GSM520975, GSM520975, GSM520976, GSM520977, GSM520978 RNA pol II (ALG).S2
+     330       GSE20808, GSM520979, GSM520979, GSM520980, GSM520981, GSM520982 SU(HW)-HB.S2
+     331       GSE20809, GSM520983, GSM520983, GSM520984, GSM520985, GSM520986 Su(Hw)-VC.S2
+     332       GSE20810, GSM520987, GSM520987, GSM520988, GSM520989, GSM520990 Trx-C.S2
+     334       GSE16132, GSM403972, GSM403972, GSM403973, GSM403974    DPY-26_N2_Mixed_Embryos_(JL00003_DPY26_N2_MXEMB)
+     336       GSE16268, GSM409467, GSM409467, GSM409468, GSM409469    MIX-1_N2_Mixed_Embryos_(JL00004_MIX1_N2_MXEMB)
+     337       GSE16325, GSM409634, GSM409635, GSM409636       Dm_ML-DmBG2-c2_TotalRNA_p200_470-472-474_38bp
+     338       GSE22701, GSM562597, GSM562598, GSM562599     SDC-2_N2_Mixed_Embryos (JL00005_SDC2_N2_MXEMB)
+     342       GSM451119       Dm Kc167 Poly-Ap p200 467 C-tailed RNA-Seq Nexalign
+     343       GSM439966       Dm embryo 16-18h C-tailed RNA-Seq NexAlign
+     346       GSM442006       Adult_Female_H3K27Me3
+     358       GSM442389       L3_H3K9me3
+     359       GSM385341       L3_H3K27Me3
+     360       GSM451044       Dm Kc167 m200 Tap RiboM C-tailed RNA-Seq NexAlign
+     362       GSM451127       Dm S2-DRSC m200 Tap RiboM C-tailed RNA-Seq NexAlign
+     364       GSM451031       Dm Cl.8 m200 Tap RiboM C-tailed RNA-Seq NexAlign
+     366       GSM450972       Dm BG3-c2 m200 Tap RiboM C-tailed RNA-Seq NexAlign
+     370       GSM384807       E20_24_H3K27me3 ChIP-chip
+     371       GSM384826       L2_H3K27me3
+     372       GSE25946, GSM637599, GSM637599, GSM637600, GSM637601, GSM637602, GSM637603, GSM637604, GSM637605, GSM637606, GSM637607  AdultMale-H3K27me3
+     373       GSM384817       L1_H3K27Me3
+     374       GSM384750       L1_H3K9Me3
+     375       GSM384760       L2_H3K9Me3
+     376       GSM384797       E-16-20h_H3K27Me3
+     377       GSM384741       E-20-24h-H3K9Me3
+     381       GSM442326       Pupae_H3K9Ac
+     382       GSM442287       Pupae_H3K4me3
+     383       GSM442233       Pupae_H3K4me1
+     384       GSM441995       Pupae_H3K27ac
+     386       GSM442335       L3_H3K9ac
+     387       GSM442302       L3_H3K4me3
+     388       GSM442242       L3_H3K4me1
+     389       GSM441943       L3_H3K27ac
+     391       GSM386158       L2-H3K9AC
+     392       GSM386125       L2-H3K4Me3
+     393       GSM442251       L2_H3K4me1
+     394       GSM441933       L2_H3K27ac
+     396       GSM386148       L1-H3K9AC
+     397       GSM386115       L1-H3K4Me3
+     398       GSM442260       L1_H3K4me1
+     399       GSM441446       L1_H3K27ac
+     401       GSM442353       E4-8_H3K9ac
+     402       GSM386088       E-4-8h-H3K4Me3
+     403       GSM386042       E-4-8h-H3K4Me1
+     404       GSM386216       E-4-8h-H3K27AC
+     406       GSM442344       E20-24_H3K9ac
+     407       GSM386106       E-20-24h-H3K4Me3
+     408       GSM386069       E-20-24h-H3K4Me1
+     409       GSM441437       E20-24_H3K27ac
+     410       GSM384732       E16-20_H3K9me3
+     411       GSE25947, GSM637608, GSM637608, GSM637609, GSM637610, GSM637611, GSM637612, GSM637613, GSM637614, GSM637615, GSM637616  E16-20_H3K9Ac ChIP-chip
+     412       GSM386097       E-16-20h-H3K4Me3
+     413       GSM386060       E-16-20h-H3K4Me1
+     414       GSM441420       E16-20_H3K27ac
+     415       GSM382158       E12-16_H3K9me3
+     416       GSM386138       E-12-16h-H3K9AC
+     417       GSM385397       E-12-16h-H3K4Me3
+     418       GSM386051       E-12-16h-H3K4Me1
+     419       GSM441411       E12-16_H3K27ac
+     420       GSM384690       E0-4_H3K9me3
+     421       GSM442362       E0-4_H3K9ac
+     422       GSM386032       E0-4_H3K4me3
+     423       GSM442224       E-0-4h-H3K4Me1
+     424       GSM386179       E-0-4h-H3K27Ac ChIP-chip
+     425       GSM442371       AdMale_H3K9me3
+     426       GSM442317       AdMale_H3K9ac
+     427       GSM386996       AdultMale H3K4Me3 ChIP-chip
+     428       GSM442269       AdultMale-H3K4Me1
+     429       GSE25948, GSM637617, GSM637617, GSM637618, GSM637619, GSM637620, GSM637621, GSM637622, GSM637623, GSM637624, GSM637625  AdFem_H3K9me3
+     430       GSM386168       AdultFemale-H3K9AC
+     431       GSM442293       AdFem_H3K4me3
+     432       GSM442278       AdFem_H3K4me1
+     455       GSE23245, GSM571416, GSM571416, GSM571417, GSM571418    embryo panneural tiling array
+     456       GSE23246, GSM571419, GSM571419, GSM571420, GSM571421    embryo all cells reference tiling array
+     457       GSE23247, GSM571422, GSM571422, GSM571423, GSM571424    embryo intestine tiling array
+     458       GSE23248, GSM571425, GSM571425, GSM571426, GSM571427    embryo coelomocytes tiling array
+     459       GSE23249, GSM571428, GSM571428, GSM571429, GSM571430    embryo AVA neurons tiling array
+     460       GSE23250, GSM571431, GSM571431, GSM571432, GSM571433    L3-L4 PVD & OLL neurons tiling array
+     461       GSE23251, GSM571434, GSM571434, GSM571435, GSM571436    L2 reference (mockIP) tiling array
+     462       GSE23252, GSM571437, GSM571437, GSM571438, GSM571439    L2 panneural tiling array
+     463       GSE23253, GSM571440, GSM571440, GSM571441, GSM571442    L2 intestine tiling array
+     464       GSE23254, GSM571443, GSM571443, GSM571444, GSM571445    L2 excretory cell tiling array
+     465       GSE23255, GSM571446, GSM571446, GSM571447, GSM571448    L2 body wall muscle tiling array
+     466       GSE23256, GSM571449, GSM571449, GSM571450, GSM571451    L2 GABA neurons tiling array
+     467       GSE23257, GSM571452, GSM571452, GSM571453, GSM571454    embryo dopaminergic neurons tiling array
+     468       GSE23258, GSM571455, GSM571455, GSM571456, GSM571457    embryo GABA motor neurons tiling array
+     469       GSE23259, GSM571458, GSM571458, GSM571459, GSM571460    L2 A-class neuron tiling array
+     470       GSE23260, GSM571461, GSM571461, GSM571462, GSM571463    embryo body wall muscle tiling array (v2)
+     472       GSE23261, GSM571464, GSM571464, GSM571465, GSM571466    L2 25dC 14hrs post-L1 N2 tiling array
+     473       GSE23262, GSM571467, GSM571467, GSM571468, GSM571469    L4 25dC 36hrs post-L1 N2 tiling array
+     474       GSE23263, GSM571470, GSM571470, GSM571471, GSM571472    L3 25dC 25hrs post-L1 N2 tiling array
+     475       GSE23264, GSM571473, GSM571473, GSM571474, GSM571475    young adult 25dC 42hrs post-L1 N2 tiling array
+     476       GSE23265, GSM571476, GSM571476, GSM571477, GSM571478    early embryo 20dC 0-4hrs post-fertilization N2 tiling array
+     477       GSE23266, GSM571479, GSM571479, GSM571480       L2 polyA enriched 20dC 14hrs post-L1 N2 tiling array
+     478       GSE23267, GSM571481, GSM571481, GSM571482, GSM571483    male L4 25dC 36hrs post-L1 CB4689 tiling array
+     479       GSE23268, GSM571484, GSM571484, GSM571485, GSM571486    late embryo 20dC 6-12hrs post-fertilization N2 tiling array
+     481       GSE23269, GSM571487, GSM571487, GSM571488, GSM571489    gonad from young adult 20dC 42hrs post-L1 N2 tiling array
+     484       GSE23270, GSM571490, GSM571490, GSM571491, GSM571492    L1 20dC 0hrs post-L1 N2 tiling array
+     485       GSE23271, GSM571493, GSM571493, GSM571494, GSM571495    soma-only mid-L4 25dC 36hrs post-L1 JK1107 tiling array
+     486       GSE23272, GSM571496, GSM571496, GSM571497, GSM571498    pathogen Pluminscens 25dC 24hr exposure post-adulthood N2 tiling array
+     487       GSE23273, GSM571499, GSM571499, GSM571500       pathogen Efaecalis 25dC 24hr exposure post-adulthood N2 tiling array
+     488       GSE23274, GSM571501, GSM571501, GSM571502, GSM571503    pathogen Smarcescens 25dC 48hr exposure post-adulthood N2 tiling array
+     489       GSE23275, GSM571504, GSM571504, GSM571505, GSM571506    pathogen Smarcescens 25dC 24hr exposure post-adulthood N2 tiling array
+     490       GSE23276, GSM571507, GSM571507, GSM571508, GSM571509    pathogen control OP50 25dC 48hr exposure post-adulthood N2 tiling array
+     491       GSE23277, GSM571510, GSM571510, GSM571511, GSM571512    pathogen control OP50 25dC 24hr exposure post-adulthood N2 tiling array
+     513       GSE16326, GSM409637, GSM409638, GSM409639       Dm_OregonR_embryo_2-4h_totalRNA_p200_127-128-129_38bp
+     514       GSE16327, GSM409640, GSM409641, GSM409642       Dm_OregonR_embryo_14-16h_totalRNA_p200_130-131-132_38bp
+     526       GSM280083       Dm Dcr-2[L811fsX] Ovary smallRNA RNA-Seq
+     538       GSE23220, GSM571096, GSM571096, GSM571097, GSM571098    Dro2_AS_Dm_L3-12hr_larvae
+     539       GSE23221, GSM571099, GSM571099, GSM571100, GSM571101    Dro2_AS_L3-larvae-clear
+     540       GSE23222, GSM571102, GSM571102, GSM571103, GSM571104    Dro2_AS_L3-larvae-light-blue
+     541       GSE23223, GSM571105, GSM571105, GSM571106, GSM571107    Dro2_AS_Dm_WPP+2days
+     542       GSE16328, GSM409643, GSM409644, GSM409645       Dm_y[1]cn[1] bw[1] sp[1]_pupa_WhitePrePupaep3day_TotalRNA_p200_350-352-354_38bp
+     543       GSE16329, GSM409646, GSM409647, GSM409648       Dro2_AS_Dm_WPP+4days
+     544       GSE23224, GSM571108, GSM571108, GSM571109, GSM571110    Dm_y[1]cn[1] bw[1] sp[1]_prepupa_WhitePrePupap12h_TotalRNA_p200_332-334-336_38bp
+     545       GSE16330, GSM409649, GSM409650, GSM409651       Dro2_AS_Dm_WPP+24hr
+     553       GSE22702, GSM562600   SDC-3_N2_MXEMB_1A_(JL00002_SDC3_N2_MXEMB_1_A)
+     575       GSE22703, GSM562601   SDC-3_N2_MXEMB_1B_(JL00002_SDC3_N2_MXEMB_1_B)
+     578       GSE22704, GSM562602   DPY-27_N2_MXEMB_1A_(JL00001_DPY27_N2_MXEMB_1_A)
+     581       GSE25949, GSM637626, GSM637626, GSM637627, GSM637628, GSM637629, GSM637630, GSM637631, GSM637632, GSM637633, GSM637634  AdFem_H3K9ac
+     582       GSM363861       Snyder_PHA4_GFP_emb
+     584       GSM363863       Snyder_PHA4_StarvedL1_GFP
+     586       GSM363861       Snyder_PHA4_POLII_emb
+     588       GSM363863       Snyder_PHA4_StarvedL1_POLII
+     589       GSM389310       Snyder_AMA1_GFP_L4YA
+     590       GSM389310       Snyder_AMA1_POLII_L4YA
+     591       GSM389648       Snyder_DAF16_GFP_L4YA
+     592       GSM389648       Snyder_DAF16_POLII_L4YA
+     593       GSM391227       Snyder_MAB5_GFP_L3
+     597       GSM400373       E0-12 GROAviva ChIP-chip
+     599       GSE22705, GSM562603, GSM562604, GSM562605, GSM562606, GSM562607       POL-2_N2_L4_(CVMMS126R_8WG16_N2_L4)
+     601       GSM400394       Pupae-snr1 ChIP-chip
+     602       GSM400395       pupae-brm ChIP-chip
+     603       GSM400392       Embryo 3-8h UBX7701 ChIP-chip
+     604       GSM400372       Embryo 0-12h ZFH1 ChIP-chip
+     605       GSM400364       E-0-12h-INV7657
+     606       GSM400202       E-0-12h-dll
+     607       GSM400192       E-0-12h-dCtBP7667
+     608       GSM400173       Embryo 0-12h chinmo ChIP-chip
+     609       GSM400172       E-0-12h-bks
+     610       GSM402169       Embryo 7-24h gsbnpurif ChIP-chip
+     611       GSM400393       Embryo 7-24h end300 ChIP-chip
+     612       GSM400391       Embryo 3-8h UBX2 ChIP-chip
+     613       GSM400390       Embryo 3-8h UBX1 ChIP-chip
+     614       GSM400371       E0-12h-UBX7701
+     615       GSM400369       E0-12h-TTK
+     616       GSM400368       E0-12h-Stat92E
+     617       GSM400367       E0-12h-RUN7659
+     618       GSM400366       E0-12h-KN
+     619       GSM400365       Embryo 0-12h INV-GFP ChIP-chip
+     620       GSM400361       E0-12h-H3K36me3
+     621       GSM400363       E0-12h-H3K9me3
+     622       GSM409075       E0-12h-H3K4me3
+     623       GSM400360       E0-12h-Gro3
+     624       GSM400204       E0-12h-FTZ-F1
+     625       GSM400203       E0-12h-ENserum
+     626       GSM399633       E0-12h-D
+     627       GSM399627       E0-12h-CNC
+     628       GSM399407       E0-12h-bab1
+     630       GSE22706, GSM562608, GSM562609, GSM562610, GSM562611  DPY-27_N2_L4(JL00001_DPY27_N2_L4)
+     633       GSM390059       Dm Kc167 polyA 002-004 PE RNA-Seq Bowtie
+     634       GSM336052       small RNA N2 embryos RNA-seq
+     635       GSM336055       small RNA N2 mid-L1 RNA-seq
+     636       GSM336056       small RNA N2 mid-L2 RNA-seq
+     637       GSM336058       small RNA N2 mid-L3 RNA-seq
+     638       GSM336059       small RNA N2 mid-L4 RNA-seq
+     639       GSM336060       small RNA N2 young adult RNA-seq
+     640       GSM336086       small RNA him-8 males RNA-seq
+     643       GSM386279       E-20-24h-CBP
+     644       GSE22708, GSM562684, GSM562685        DPY-28_N2_MXEMB_(JL00012_DPY28_N2_MXEMB)
+     645       GSE22709, GSM562686, GSM562687, GSM562688     SDC-2_N2_MXEMB_(SDQ3146_SDC2_N2_MXEMB)
+     650       GSM390063       Dm S2-DRSC polyA 014-016 PE RNA-Seq Bowtie
+     651       GSM390065       Dm ML-DmBG3-c2 polyA 122-124 PE RNA-Seq Bowtie
+     652       GSM390061       Dm CME_W1_Cl.8+ polyA 060-062 PE RNA-Seq Bowtie
+     654       GSE23278, GSM571513, GSM571513, GSM571514, GSM571515    embryo A-class motor neurons tiling array
+     655       GSE23279, GSM571516, GSM571516, GSM571517, GSM571518    L3-L4 dopaminergic neuron tiling array
+     656       GSE23280, GSM571519, GSM571519, GSM571520, GSM571521    Young Adult reference (mockIP) tiling array
+     657       GSE23281, GSM571522, GSM571522, GSM571523, GSM571524    L2 coelomocytes tiling array
+     658       GSE23282, GSM571525, GSM571525, GSM571526, GSM571527    L2 glutamate receptor expressing neurons tiling array
+     659       GSE23283, GSM571528, GSM571528, GSM571529, GSM571530    L3-L4 reference (mockIP) tiling array
+     660       GSE23284, GSM571531, GSM571531, GSM571532, GSM571533    Young Adult Cephalic sheath (CEPsh) tiling array
+     661       GSE23285, GSM571534, GSM571534, GSM571535, GSM571536    embryo germline precursor cells tiling array
+     662       GSE23286, GSM571537, GSM571537, GSM571538, GSM571539    embryo hypodermal cells tiling array
+     663       GSE22710, GSM562689, GSM562690, GSM562691     Pol_II_CTD_N2_EEMB_(ABAB817_8WG16_N2_EEMB)
+     668       GSE17279, GSM432694, GSM432695, GSM432696       Kc167 Replication Timing
+     669       GSE17280, GSM432697, GSM432698, GSM432699       S2 Replication Timing
+     670       GSE17281, GSM432701, GSM432702, GSM432703       Bg3 Replication Timing
+     674       GSE17282, GSM432704, GSM432705, GSM432706, GSM432707, GSM432708, GSM432709, GSM432710, GSM432711        pre-RC complexes ORC Kc
+     675       GSE17283, GSM432712, GSM432713, GSM432714, GSM432715, GSM432716, GSM432717, GSM432718, GSM432719        pre-RC complexes MCM_cycE Kc
+     691       GSE22711, GSM562692, GSM562693, GSM562694     Histone_H3K9me3_N2_EEMB_1_(UP07442_H3K9ME3_N2_EEMB)
+     693       GSE22712, GSM562695, GSM562696        DPY27_11DH(I;X)_MXEMB(JL00001_DPY27_11DH_MXEMB)
+     695       GSE22713, GSM562697, GSM562698        DPY27_YPT41(II;X)_MXEMB(JL00001_DPY27_YPT41_MXEMB)
+     696       GSE22714, GSM562699, GSM562700, GSM562701     DPY27_YPT47(V;X)_MXEMB(JL00001_DPY27_YPT47_MXEMB)
+     701       GSE22715, GSM562702, GSM562703        SDC3_YPT47(V;X)_MXEMB(JL00002_SDC3_YPT47_MXEMB)
+     709       GSE17285, GSM432725, GSM432726, GSM432727, GSM432728    Kc167 Replication Origins
+     710       GSE17286, GSM432729, GSM432730, GSM432731       S2 Replication Origins
+     711       GSE17287, GSM432732, GSM432733, GSM432734       Bg3 Replication Origins
+     712       GSM339263       Dm Dm adult whole_fly 057 RNASeq Bowtie
+     713       GSE23225, GSM571111, GSM571111, GSM571112, GSM571113    Dm_ML_BG3-c2_polyApRNA_p200_485-486-487_38bp
+     715       GSE23226, GSM571114, GSM571114, GSM571115, GSM571116    Dm_S2-DRSC_nuclearRNA_p200_482-483-484_38bp
+     716       GSE23227, GSM571117, GSM571117, GSM571118, GSM571119    Dm_Bg3-c2_nuclearRNA_p200_488_489_490_38bp
+     717       GSE23228, GSM571120, GSM571120, GSM571121, GSM571122    Dm_C1.8_polyApRNA_p200_491_492_493_38bp
+     718       GSE23229, GSM571123, GSM571123, GSM571124, GSM571125    Dm_S2-DRSC_polyApRNA_p200_479-480-481_38bp
+     725       GSE17292, GSM432743, GSM432744  CGH S2-DRSC
+     734       GSM435293       Snyder_CEH-14_GFP_L2
+     737       GSM240749       Dm Canton-S Adult Female Head smallRNA RNA-Seq
+     738       GSM272653       Kc167 smallRNA RNA-Seq
+     739       GSM286602       Dm Canton-S Adult Male Body smallRNA RNA-Seq
+     740       GSM286605       Dm Canton-S Embryo 2-6h smallRNA RNA-Seq
+     741       GSM272651       S2/Kc167 + Ecdysone exposure smallRNA RNA-Seq
+     742       GSM275691       Dm Canton-S Imaginal Disk smallRNA RNA-Seq
+     743       GSM286603       Dm Canton-S Adult Female Body smallRNA RNA-Seq
+     745       GSM286613       Dm Canton-S Embryo 0-1h smallRNA RNA-Seq (2)
+     746       GSM272652       S2-DRSC smallRNA RNA-Seq
+     747       GSM286601       Dm Canton-S Adult Male Head smallRNA RNA-Seq
+     748       GSM322208       Dm Canton-S 3rd Instar Larvae smallRNA RNA-Seq
+     749       GSM322245       Dm Canton-S 3rd Instar Larvae smallRNA RNA-Seq (2)
+     750       GSM322533       Dm Canton-S Adult Female Head smallRNA RNA-Seq (2)
+     751       GSM322543       Dm Canton-S Adult Male Head smallRNA RNA-Seq (2)
+     752       GSM286606       Dm Canton-S Embryo 2-6h smallRNA RNA-Seq (2)
+     753       GSM286611       Dm Canton-S Embryo 6-10h smallRNA RNA-Seq (2)
+     754       GSM286607       Dm Canton-S Embryo 6-10h smallRNA RNA-Seq
+     755       GSM286604       Dm Canton-S Embryo 0-1h smallRNA RNA-Seq
+     757       GSM322219       Dm Canton-S Pupae 2-4d smallRNA RNA-Seq
+     758       GSM322338       Dm Canton-S Pupae 2-4d smallRNA RNA-Seq (2)
+     762       GSM360256       Dm Canton-S 1st Instar Larvae smallRNA RNA-Seq
+     763       GSE23230, GSM571126, GSM571126, GSM571127       Dm_y[1]cn[1] bw[1] sp[1]_embryo_6-8h_TotalRNA_p200_230-232_38bp
+     764       GSM384723       E4-8_H3K9Me3
+     765       GSM442380       Pupae_H3K9Me3
+     767       GSM384787       E12-16_H3K27Me3
+     768       GSM384778       E4-8_H3K27Me3
+     769       GSM409069       E0-12_dCTCF C-term ChIP-chip
+     770       GSM409070       E0-12_dCTCF N-term ChIP-chip
+     772       GSM280085       Dm Oregon-R Adult Male Testis smallRNA RNA-Seq
+     773       GSM280082       Dm y[1]; cn[1] bw[1] sp[1] Ovary smallRNA RNA-Seq
+     774       GSM280084       Dm Loqs[f00791] Ovary smallRNA RNA-Seq
+     777       GSM401409       E0-4_H3K4Me1_chip-seq
+     778       GSM401406       E4-8_H3K4Me1_chip-seq
+     779       GSM432593       E8-12_H3K4Me1_chip-seq
+     780       GSM432591       E12-16_H3K4Me1_chip-seq
+     781       GSM401403       E16-20_H3K4Me1_chip-seq
+     782       GSM439464       E20-24_H3K4Me1_chip-seq
+     783       GSM432588       L1_H3K4Me1_chip-seq
+     784       GSM401421       L2_H3K4Me1_chip-seq
+     785       GSM401418       L3_H3K4Me1_chip-seq
+     786       GSM401415       Pupae_H3K4Me1_chip-seq
+     787       GSM439465       AdultFemale_H3K4Me1_chip-seq
+     788       GSM401411       AdultMale_H3K4Me1_chip-seq
+     789       GSM400656       E0-4_H3K4Me3_chip-seq
+     790       GSM400674       E4-8_H3K4Me3_chip-seq
+     791       GSM432585       E8-12_H3K4Me3_chip-seq
+     792       GSM432580       E12-16_H3K4Me3_chip-seq
+     793       GSM400658       E16-20_H3K4Me3_chip-seq
+     794       GSM400672       E20-24_H3K4Me3_chip-seq
+     795       GSM400662       L1_H3K4Me3_chip-seq
+     796       GSM400668       L2_H3K4Me3_chip-seq
+     797       GSM400660       L3_H3K4Me3_chip-seq
+     798       GSM400664       Pupae_H3K4Me3_chip-seq
+     799       GSM400670       AdultFemale_H3K4Me3_chip-seq
+     800       GSM400666       AdultMale_H3K4Me3_chip-seq
+     801       GSM439457       E0-4_H3K9Me3_chip-seq
+     802       GSM439456       E4-8_H3K9Me3_chip-seq
+     803       GSM439455       E8-12_H3K9Me3_chip-seq
+     804       GSM439454       E12-16_H3K9Me3_chip-seq
+     805       GSM439453       E16-20_H3K9Me3_chip-seq
+     806       GSM439452       E20-24_H3K9Me3_chip-seq
+     807       GSM439451       L1_H3K9Me3_chip-seq
+     808       GSM439450       L2_H3K9Me3_chip-seq
+     809       GSM439449       Pupae_H3K9Me3_chip-seq
+     810       GSM439448       E0-4_H3K27Me3_chip-seq
+     811       GSM439447       E4-8_H3K27Me3_chip-seq
+     812       GSM439446       E8-12_H3K27Me3_chip-seq
+     813       GSM439445       E12-16_H3K27Me3_chip-seq
+     814       GSM439444       E16-20_H3K27Me3_chip-seq
+     815       GSM439443       E20-24_H3K27Me3_chip-seq
+     816       GSM439442       L1_H3K27Me3_chip-seq
+     817       GSM439441       L2_H3K27Me3_chip-seq
+     818       GSM439440       L3_H3K27Me3_chip-seq
+     819       GSM439439       Pupae_H3K27Me3_chip-seq
+     820       GSM439438       AdultMale_H3K27Me3_chip-seq
+     821       GSM401408       E0-4_H3K9Ac_chip-seq
+     822       GSM401405       E4-8_H3K9Ac_chip-seq
+     823       GSM432592       E8-12_H3K9Ac_chip-seq
+     824       GSM439458       E12-16_H3K9Ac_chip-seq
+     825       GSM401402       E16-20_H3K9Ac_chip-seq
+     826       GSM401424       E20-24_H3K9Ac_chip-seq
+     827       GSM401422       L1_H3K9Ac_chip-seq
+     828       GSM401420       L2_H3K9Ac_chip-seq
+     829       GSM401417       L3_H3K9Ac_chip-seq
+     830       GSM401414       Pupae_H3K9Ac_chip-seq
+     831       GSM439459       AdultFemale_H3K9Ac_chip-seq
+     832       GSM432579       AdultMale_H3K9Ac_chip-seq
+     834       GSM401407       E0-4_H3K27Ac_chip-seq
+     835       GSM401404       E4-8_H3K27Ac_chip-seq
+     836       GSM432583       E8-12_H3K27Ac_chip-seq
+     837       GSM432582       E12-16_H3K27Ac_chip-seq
+     838       GSM401401       E16-20_H3K27Ac_chip-seq
+     839       GSM401423       E20-24_H3K27Ac_chip-seq
+     840       GSM432581       L1_H3K27Ac_chip-seq
+     841       GSM401419       L2_H3K27Ac_chip-seq
+     842       GSM401416       L3_H3K27Ac_chip-seq
+     843       GSM401413       Pupae_H3K27Ac_chip-seq
+     844       GSM401412       AdultFemale_H3K27Ac_chip-seq
+     845       GSM401410       AdultMale_H3K27Ac_chip-seq
+     846       GSM432578       E4-8_PolII_chip-seq
+     847       GSM432594       E8-12_PolII_chip-seq
+     848       GSM439461       E12-16_PolII_chip-seq
+     849       GSM432584       E16-20_Pol_II_chip-seq
+     850       GSM439460       E20-24_PolII_chip-seq
+     851       GSM432589       L1_PolII_chip-seq
+     852       GSM432587       L3_PolII_chip-seq
+     853       GSM432586       Pupae_PolII_chip-seq
+     854       GSM439463       E0-4_CBP_chip-seq
+     855       GSM408988       E4-8_CBP_chip-seq
+     856       GSM408986       E12-16_CBP_chip-seq
+     857       GSM432584       E16-20_CBP_chip-seq
+     858       GSM439462       E20-24_CBP_chip-seq
+     859       GSM408990       L1_CBP_chip-seq
+     860       GSM408992       L3_CBP_chip-seq
+     861       GSM408994       Pupae_CBP_chip-seq
+     862       GSM408982       AdultFemale_CBP_chip-seq
+     863       GSM408984       AdultMale_CBP_chip-seq
+     864       GSM418275       E8-12_H3K4Me1 ChIP-chip
+     865       GSM418254       E8-12_H3K4Me3 ChIP-chip
+     866       GSM418216       E8-12_H3K9Me3 ChIP-chip
+     867       GSM384769       E0-4_H3K27Me3 ChIP-chip
+     868       GSM418239       E8-12_H3K27Me3 ChIP-chip
+     869       GSM418225       AdultMale_H3K27Me3 ChIP-chip Set2
+     870       GSM442311       E8-12_H3K9Ac ChIP-chip
+     871       GSM442317       AdultMale_H3K9Ac ChIP-chip set2
+     872       GSM441405       E8-12_H3K27Ac ChIP-chip
+     873       GSM418501       AdultMale_H3K27Ac ChIP-chip
+     874       GSM441984       AdultMale_H3K27Ac ChIP-chip Set2
+     875       GSM442425       E0-4_CBP ChIP-chip
+     876       GSM386269       E4-8_CBP ChIP-chip
+     877       GSM418335       E16-20_CBP ChIP-chip
+     878       GSM443119       L1_CBP ChIP-chip
+     879       GSM418454       L3_CBP ChIP-chip
+     880       GSM418463       Pupae_CBP ChIP-chip
+     881       GSM418309       AdultFemale_CBP ChIP-chip
+     882       GSM418318       AdultMale_CBP ChIP-chip
+     883       GSM442398       L2_PolII ChIP-chip
+     884       GSM442407       L3_PolII ChIP-chip
+     885       GSM418567       E0-4_8wg16 ChIP-chip
+     886       GSM442416       E4-8 PolII set2 (8wg16) ChIP-chip
+     887       GSM418580       E4-8_8wg16 ChIP-chip
+     888       GSM443110       E16-20_8wg16 ChIP-chip
+     889       GSM442407       L3_8wg16 ChIP-chip
+     890       GSM418514       Pupae_8wg16 ChIP-chip
+     891       GSM418549       AdultFemale_8wg16 ChIP-chip
+     895       GSM401419       L2_H3K27Ac (s2) ChIP-seq
+     896       GSM443959       3'UTR 454 sequencing pilot - Level 1
+     897       GSE22716, GSM562704, GSM562705, GSM562706     MRG-1_N2_EEMB_(SDQ0790_MRG1_N2_EEMB)
+     898       GSM621326       E0-8_Kr-D2 ChIP-chip
+     899       GSM409077       E0-12_PolII
+     901       GSM409073       E0-12_Su(Hw)PG
+     902       GSM621340       E0-4_GFP_7T ChIP-chip
+     903       GSE25950, GSM637635, GSM637635, GSM637636, GSM637637, GSM637638, GSM637639, GSM637640, GSM637641, GSM637642, GSM637643  E8-12_CBP_Set2
+     905       GSE25951, GSM637644, GSM637644, GSM637645, GSM637646    E12-16_CBP ChIP-chip
+     906       GSE25952, GSM637647, GSM637647, GSM637648, GSM637649, GSM637650, GSM637651, GSM637652, GSM637653, GSM637654, GSM637655  E12-16_Pol_II ChIP-chip
+     908       GSM409079       Kc167_CTCF-N ChIP-chip
+     909       , GSE22717, GSM562707, GSM562708        Histone_H3K36me2_N2_EEMB_(HK00012_H3K36ME22C3_N2_EEMB)
+     911       , GSE22718, GSM562709, GSM562710, GSM562711     MES-4_N2_EEMB_(SDQ0791_MES4_N2_EEMB)
+     912       GSM409458       H3K4me3_Kc167 ChIP-chip
+     913       GSM409078       CTCF-N_S2 ChIP-chip
+     914       GSM409457       H3K4me3_S2 ChIP-chip
+     918       GSM409080       TotalRNA_E0-12h
+     919       GSM409076       E0-12_H3K27me3 ChIP-chip
+     921       GSE20811, GSM520991, GSM520991, GSM520992, GSM520993, GSM520994 BEAF-70.BG3
+     922       GSE20812, GSM520995, GSM520995, GSM520996, GSM520997, GSM520998 BEAF-70.S2
+     923       GSE20813, GSM520999, GSM520999, GSM521000, GSM521001, GSM521002 BRE1_Q2539.S2
+     924       GSE20814, GSM521003, GSM521003, GSM521004, GSM521005, GSM521006 CP190-HB.BG3
+     925       GSE20815, GSM521007, GSM521007, GSM521008, GSM521009, GSM521010 CP190-HB.S2
+     926       GSE20816, GSM521011, GSM521011, GSM521012, GSM521013, GSM521014 dMi-2_Q2626.S2
+     927       GSE20817, GSM521015, GSM521015, GSM521016, GSM521017, GSM521018 dRING Q3200.BG3
+     928       GSE20818, GSM521019, GSM521019, GSM521020, GSM521021, GSM521022 dRING Q3200.S2
+     930       GSE20819, GSM521023, GSM521023, GSM521024, GSM521025, GSM521026 H3K18Ac (new lot).Clone_8
+     931       GSE23457, GSM575364, GSM575364, GSM575365, GSM575366, GSM575367 H3K36me3.14-16 hr OR embryo
+     932       GSE23458, GSM575368, GSM575368, GSM575369, GSM575370, GSM575371 H3K36me3.2-4 hr OR embryo
+     936       GSE25359, GSM624620, GSM624620, GSM624621, GSM624622, GSM624623 H3K9me2-Ab2 (new lot).2-4 hr OR embryo
+     937       GSE20820, GSM521027, GSM521027, GSM521028, GSM521029, GSM521030 H3K9me2-Ab2 (new lot).Clone_8
+     938       GSE20821, GSM521031, GSM521031, GSM521032, GSM521033, GSM521034 H3K9me2-Ab2 (new lot).Kc
+     940       GSE20822, GSM521035, GSM521035, GSM521036, GSM521037, GSM521038 H3K9me3 (new lot).Clone_8
+     941       GSE20823, GSM521039, GSM521039, GSM521040, GSM521041, GSM521042 HP1b (Henikoff).S2
+     942       GSE20824, GSM521043, GSM521043, GSM521044, GSM521045, GSM521046 HP1c (MO 462).BG3
+     943       GSE20825, GSM521047, GSM521047, GSM521048, GSM521049, GSM521050 HP1c (MO 462).S2
+     944       GSE20826, GSM521051, GSM521051, GSM521052, GSM521053, GSM521054 HP2 (Ab2-90).S2
+     945       GSE20827, GSM521055, GSM521055, GSM521056, GSM521057, GSM521058 JIL1_Q3433.S2
+     946       GSE20828, GSM521059, GSM521059, GSM521060, GSM521061, GSM521062 MBD-R2_Q2567.S2
+     947       GSE20829, GSM521063, GSM521063, GSM521064, GSM521065, GSM521066 NURF301_Q2602.S2
+     948       GSE20830, GSM521067, GSM521067, GSM521068, GSM521069, GSM521070 PCL Q3412.BG3
+     949       GSE20831, GSM521071, GSM521071, GSM521072, GSM521073, GSM521074, GSM521075      PIWI-Q2569.Kc
+     950       GSE20832, GSM521076, GSM521076, GSM521077, GSM521078, GSM521079 RNA pol II (ALG).BG3
+     951       GSE20833, GSM521080, GSM521080, GSM521081, GSM521082, GSM521083 SU(HW)-HB.BG3
+     952       GSE20834, GSM521084, GSM521084, GSM521085, GSM521086, GSM521087 Su(var)3-9.BG3
+     953       GSE20835, GSM521088, GSM521088, GSM521089, GSM521090, GSM521091 WDS_Q2691.S2
+     954       GSE23459, GSM575372, GSM575372, GSM575373, GSM575374, GSM575375 H3K4me2.OR Head Nuclei
+     955       GSE23460, GSM575376, GSM575376, GSM575377, GSM575378, GSM575379 HP1 wa191.D.mel 3rd Instar Larvae Nuclei
+     956       GSE25360, GSM624624, GSM624624, GSM624625, GSM624626, GSM624627 H3K9me2 antibody2.D.mel 3rd Instar Larvae Nuclei
+     957       GSE23461, GSM575380, GSM575380, GSM575381, GSM575382, GSM575383 HP1 wa191.OR Head Nuclei
+     958       GSE23462, GSM575384, GSM575384, GSM575385, GSM575386, GSM575387 H3K9me3 (new lot).D.mel 3rd Instar Larvae Nuclei
+     963       GSE20836, GSM521092, GSM521092, GSM521093, GSM521094, GSM521095 H3K79Me.S2
+     964       GSE20837, GSM521096, GSM521096, GSM521097, GSM521098, GSM521099 H3K9ac.Clone_8
+     965       GSE20838, GSM521100, GSM521100, GSM521101, GSM521102, GSM521103 H3K4me2.ab.S2
+     966       GSE23463, GSM575388, GSM575388, GSM575389, GSM575390    H3K4Me3(LP).2-4 hr OR embryo
+     967       GSE20839, GSM521104, GSM521104, GSM521105, GSM521106, GSM521107 H3K4me3.BG3
+     970       GSE25953, GSM637656, GSM637656, GSM637657, GSM637658, GSM637659, GSM637660, GSM637661, GSM637662, GSM637663, GSM637664  E0-4_H3K27Ac - Set 2
+     971       GSE25954, GSM637665, GSM637665, GSM637666, GSM637667, GSM637668, GSM637669, GSM637670, GSM637671, GSM637672, GSM637673  E0-4_H3K9Me3 - Set 2
+     973       , GSE22719, GSM562712, GSM562713, GSM562714     Histone_H3K36me3_N2_EEMB_(HK00001_H3K36ME313C9_N2_EEMB)
+     978       GSM621342       E4-8_sens
+     979       GSM621343       E4-8_GFP-sens
+     982       , GSE22720, GSM562715, GSM562716        Histone_H3K9me3_N2_EEMB_2_(HK00009_H3K9ME32F3_N2_EEMB)
+     983       GSM461176       RNAi Untreated (control) S2-DRSC RNA-Seq Bowtie
+     984       GSM432589       L2_PolII ChIP-seq
+     985       GSM451802       E8-12_CBP_Set2-chip-seq
+     992       GSM443959       3' UTR 454 sequencing pilot - alignments
+     1011      GSM461201       RNAi CG10128 S2-DRSC RNA-Seq Bowtie
+     1012      GSM461195       RNAi CG10203 S2-DRSC RNA-Seq Bowtie
+     1013      GSM461198       RNAi CG10851 S2-DRSC RNA-Seq Bowtie
+     1014      GSM461187       RNAi CG12749 S2-DRSC RNA-Seq Bowtie
+     1015      GSM461190       RNAi CG13425 S2-DRSC RNA-Seq Bowtie
+     1016      GSM461204       RNAi CG1559 S2-DRSC RNA-Seq Bowtie
+     1017      GSM461189       RNAi CG16901 S2-DRSC RNA-Seq Bowtie
+     1018      GSM461196       RNAi CG17136 S2-DRSC RNA-Seq Bowtie
+     1019      GSM461188       RNAi CG17838 S2-DRSC RNA-Seq Bowtie
+     1020      GSM461199       RNAi CG18426 S2-DRSC RNA-Seq Bowtie
+     1021      GSM461194       RNAi CG1987 S2-DRSC RNA-Seq Bowtie
+     1022      GSM461191       RNAi CG30122 S2-DRSC RNA-Seq Bowtie
+     1023      GSM461202       RNAi CG31000 S2-DRSC RNA-Seq Bowtie
+     1024      GSM461207       RNAi CG3249 S2-DRSC RNA-Seq Bowtie
+     1025      GSM461192       RNAi CG4602 S2-DRSC RNA-Seq Bowtie
+     1026      GSM461185       RNAi CG5099 S2-DRSC RNA-Seq Bowtie
+     1027      GSM461197       RNAi CG5442 S2-DRSC RNA-Seq Bowtie
+     1028      GSM461193       RNAi CG5655 S2-DRSC RNA-Seq Bowtie
+     1029      GSM461205       RNAi CG5821 S2-DRSC RNA-Seq Bowtie
+     1030      GSM461206       RNAi CG5836 S2-DRSC RNA-Seq Bowtie
+     1031      GSM461183       RNAi CG6946 S2-DRSC RNA-Seq Bowtie
+     1032      GSM461203       RNAi CG7437 S2-DRSC RNA-Seq Bowtie
+     1033      GSM461209       RNAi CG7878 S2-DRSC RNA-Seq Bowtie
+     1034      GSM461200       RNAi CG7971 S2-DRSC RNA-Seq Bowtie
+     2002      , GSE24298, GSM609217   Lai_MLDmD20c5/BS16
+     2003      , GSE24299, GSM609218   Lai_Sg4/BS35
+     2004      , GSE24300, GSM609219   Lai_GM2cell/BS32
+     2005      , GSE24301, GSM609220   Lai_ML-DmD21cell/BS90
+     2006      , GSE24302, GSM609221   Lai_1182-4Hcell/BS23
+     2007      , GSE24303, GSM609222   Lai_ML-DmBG1c1/BS176
+     2008      , GSE24304, GSM609223   Lai_one day adult male-ENCODE/BS149
+     2009      , GSE24305, GSM609224   Lai_one day adult female-ENCODE/BS152
+     2010      GSM451806       E0-4_TotalRNA_RNAseq
+     2019      GSM451809       E4-8_TotalRNA_RNAseq
+     2020      GSM451808       E8-12_TotalRNA_RNAseq
+     2021      GSM451803       E12-16_TotalRNA_RNAseq
+     2022      GSM451807       E16-20_TotalRNA_RNAseq
+     2023      GSM451810       E20-24_TotalRNA_RNAseq
+     2024      GSM451811       L1_TotalRNA_RNAseq
+     2025      GSM453867       L2_TotalRNA_RNAseq
+     2026      GSM451805       AdultFemale_TotalRNA_RNAseq
+     2027      GSM451804       AdultMale_TotalRNA_RNAseq
+     2029      GSM451812       L3_TotalRNA_RNAseq
+     2030      GSM451813       Pupae_TotalRNA_RNAseq
+     2301      GSM461186       RNAi CG9983 S2-DRSC RNA-Seq Bowtie
+     2302      GSM461184       RNAi CG9373 S2-DRSC RNA-Seq Bowtie
+     2305      GSM461182       RNAi Untreated-B (control) S2-DRSC RNA-Seq Bowtie
+     2312      , GSE22722, GSM562719, GSM562720, GSM562721     Histone_H3_N2_EEMB_1_(AR0144_H3144_N2_EEMB)
+     2313      , GSE22723, GSM562722, GSM562723        Histone_H3_N2_EEMB_2_(AB1791_H3609253_N2_EEMB)
+     2321      SRX004863, SRX004864    RNAseq - early embryo sequences & alignments
+     2324      SRX004865, SRX004866    RNAseq - late embryo 20dC 4.5hrs post-early embryo sequences & alignments
+     2325      SRX004868       RNAseq - male mid-L4 dpy28(y1);him-8(e1489) 25dC 30hrs post-L1 sequences & alignments
+     2326      SRX004867       RNAseq - mid-L1 20dC 4hrs post-L1 sequences & alignments
+     2327      GSM446652       3' UTR Staged 454 Sequencing - L1 - alignments
+     2328      GSM446653       3' UTR Staged 454 Sequencing - L2 - alignments
+     2329      GSM446654       3' UTR Staged 454 Sequencing - L3 - alignments
+     2330      GSM446655       3' UTR Staged 454 Sequencing - L4 - alignments
+     2331      GSM446651       3' UTR Staged 454 Sequencing - embryo - alignments
+     2332      GSM446656       3' UTR Staged 454 Sequencing - hermaphrodite adult - alignments
+     2333      GSM446657       3' UTR Staged 454 Sequencing - male adult - alignments
+     2334      GSM446661       3' UTR Staged 454 Sequencing - daf-11 - alignments
+     2335      GSM446658       3' UTR Staged 454 Sequencing - daf-2 - alignments
+     2336      GSM446659       3' UTR Staged 454 Sequencing - daf-7 - alignments
+     2337      GSM446660       3' UTR Staged 454 Sequencing - daf-9 - alignments
+     2338      , GSE22724, GSM562724   Histone_H3K36me2_N2_EEMB_(AB9049_H3K36ME2608457_N2_EEMB)
+     2339      , GSE22725, GSM562725   Histone_H3K9me3_N2_EEMB_2_(AB8898_H3K9ME3339901_N2_EEMB)
+     2340      GSE23231, GSM571128, GSM571128, GSM571129       Dm_4dFMatedOvary_TotalRNA_531_532_38bp
+     2341      GSE23232, GSM571130, GSM571130, GSM571131       Dm_1dFVirginHead_TotalRNA_497_498_38bp
+     2342      GSE23233, GSM571132, GSM571132, GSM571133       Dm_4dFVirginHead_TotalRNA_515_516_38bp
+     2343      SRX004869       RNAseq - lin-35(n745) mid-L1 25dC 4.0hrs post-L1 sequences & alignments
+     2345      SRX008136       RNAseq - Adult spe-9 23dC 8days post-L4 molt sequences & alignment
+     2346      SRX011569       RNAseq - embryo him-8 20dC post-L1 sequences & alignments
+     2347      SRX008138       RNAseq - dauer daf-2 25dC 91hrs post-L1 sequences & alignments
+     2349      SRX008140       RNAseq - dauer exit daf-2 25dC 91hrs 15dC 12hrs post-L1 sequences & alignments
+     2351      SRX001872       RNAseq - mid-L2 25dC 14 hrs post-L1 sequences & alignments
+     2352      SRX001875       RNAseq - mid-L3 25dC 25hrs post-L1 sequences & alignments
+     2353      SRX001874       RNAseq - mid-L4 25dC 36hrs post-L1 sequences & alignments
+     2354      SRX001873       RNAseq - Young Adult 25dC 46hrs post-L1 sequences & alignment
+     2364      , GSE22726, GSM562726, GSM562727        Negative_control_No_Antibody_N2_EEMB_(NA_N2_EEMB)
+     2374      GSM399110       Lai_GSM399110_Kc
+     2375      GSM371638       Lai_GSM371638_S2-NP
+     2376      GSM399105       Lai_GSM399105_imaginal-disc
+     2379      GSM280087       Lai_GSM280087_S2cells_Ago2IP
+     2380      GSM280088       Lai_GSM280088_S2cells_Ago1IP
+     2381      GSM280086       Lai_GSM280086_adult_ovaries_AGO2IP
+     2382      , GSE22727, GSM562728, GSM562729        Negative_control_Antibody_N2_EEMB_(SS00050_IGG_N2_EEMB)
+     2384      GSM432739       CGH Follicle OregonR-mod
+     2385      GSM432742       CGH Follicle Cells Orr-Weaver
+     2387      SRX008139       RNAseq - dauer entry daf-2 25dC 48hrs post-L1 sequences & alignments
+     2398      , GSE22728, GSM562730, GSM562731        Histone_H3K9me3_N2_L3_(HK00009_H3K9ME32F3_N2_L3)
+     2399      , GSE22729, GSM562732, GSM562733        Histone_H3K36me2_N2_L3_(HK00012_H3K36ME22C3_N2_L3)
+     2400      , GSE22730, GSM562734, GSM562735        Histone_H3K27me3_N2_L3_(HK00013_H3K27ME31E7_N2_L3)
+     2401      , GSE22731, GSM562736, GSM562737        Histone_H3K36me3_N2_L3_(HK00001_H3K36ME313C9_N2_L3)
+     2402      , GSE22732, GSM562738, GSM562739        Histone_H3K4me2_N2_L3_(WA30834809_H3K4ME2_N2_L3)
+     2406      , GSE22733, GSM562740, GSM562741        Histone_H3K9me2_N2_L3_(HK00008_H3K9ME26D11_N2_L3)
+     2407      , GSE22734, GSM562742, GSM562743        Histone_H3_N2_L3_2_(AR0144_H3144_N2_L3)
+     2408      GSE22735, GSM562744, GSM562745, GSM562746       Histone_H3_N2_L3_1_(AR0144_H3144_N2_L3_LM)
+     2409      , GSE22736, GSM562747, GSM562748        Histone_H3_N2_L3_(AB1791_H3_N2_L3_new)
+     2410      , GSE22737, GSM562749, GSM562750        Histone_H3K79me1_N2_EEMB_(AB2886_H3K79ME1361912_N2_EEMB)
+     2416      GSM388727       Snyder_DPY27_GFP_emb
+     2418      GSM435317       Snyder_HLH-8_GFP_L3
+     2442      , GSE22738, GSM562751, GSM562752        Histone_H3K79me2_N2_EEMB_(AB3594_H3K79ME2346021_N2_EEMB)
+     2443      , GSE22739, GSM562753, GSM562754        Histone_H3K79me3_N2_EEMB_(AB2621_H3K79ME3361576_N2_EEMB)
+     2444      , GSE22740, GSM562755, GSM562756        Histone_H3K9me2_N2_EEMB_(HK00008_H3K9ME26D11_N2_EEMB)
+     2446      , GSE22742, GSM562759, GSM562760, GSM562761, GSM562762, GSM562763, GSM562764, GSM562765, GSM562766, GSM562767, GSM562768        HCP-3_CENP-A_N2_MXEMB_(OD00079_HCP3_N2_MXEMB)
+     2454      GSE23287, GSM571540, GSM571540, GSM571541, GSM571542    L3-L4 hypodermal cells tiling array
+     2455      GSM446652       3' UTR Staged 454 Sequencing - L1 - sequences
+     2456      GSM446653       3' UTR Staged 454 Sequencing - L2 - sequences
+     2457      GSM446654       3' UTR Staged 454 Sequencing - L3 - sequences
+     2458      GSM446655       3' UTR Staged 454 Sequencing - L4 - sequences
+     2459      GSM446657       3' UTR Staged 454 Sequencing - male adult - sequences
+     2460      GSM446656       3' UTR Staged 454 Sequencing - hermaphrodite adult - sequences
+     2461      GSM446658       3' UTR Staged 454 Sequencing - daf-2 - sequences
+     2462      GSM446659       3' UTR Staged 454 Sequencing - daf-7 - sequences
+     2463      GSM446660       3' UTR Staged 454 Sequencing - daf-9 - sequences
+     2464      GSM446661       3' UTR Staged 454 Sequencing - daf-11 - sequences
+     2465      GSM446651       3' UTR Staged 454 Sequencing - embryo - sequences
+     2482      GSM469976       3' UTRome 454 sequencing & alignment
+     2483      GSM427346       smallRNA from mixed-stage embryos (GSM427346)
+     2484      GSM469439       3' UTRome Solexa sequencing & alignment
+     2485      GSM427297       smallRNAs from two-to-four cell C. elegans embryos (GSM427297)
+     2486      GSM427301       smallRNAs from one cell stage C. elegans embryos (GSM427301)
+     2487      GSM427332       smallRNAs from post-gastrulation C. elegans embryos (GSM427332)
+     2488      GSM427344       smallRNAs from older, fixed C. elegans embryos (GSM427344)
+     2489      GSM427345       small RNAs from living one cell C. elegans embryos (GSM427345)
+     2499      GSE23769, GSM586712, GSM586713, GSM586714       embryo_BAG_neurons_tiling_array
+     2500      GSE25349, GSM624415, GSM624415, GSM624416, GSM624417    embryo_PVC_neurons_tiling_array
+     2502      GSM333864       600_mM_Salt_Extracted_Chromatin_Pellet
+     2503      GSM333836       150_mM_Salt_Extracted_Chromatin
+     2504      GSM333849       H2Av_EDTA
+     2505      GSM333848       H2A_EDTA
+     2506      GSM333835       Nucleosome_Density_S2
+     2507      GSE25375, GSM624859, GSM624859, GSM624860, GSM624861    Fly_embryos_1-3_hr_150_mM_Salt_Extracted_Chromatin
+     2508      GSE25376, GSM624862, GSM624862, GSM624863       Fly_embryos_1-3_hr_600_mM_Salt_Extracted_Chromatin
+     2509      GSE25377, GSM624864, GSM624864, GSM624865       Fly_embryos_1-3_hr_600_mM_Salt_Extracted_Chromatin_Pellet
+     2510      GSE25378, GSM624866, GSM624866, GSM624867       Fly_embryos_4-6_hr_150_mM_Salt_Extracted_Chromatin
+     2511      GSE25379, GSM624868, GSM624868, GSM624869       Fly_embryos_4-6_hr_600_mM_Salt_Extracted_Chromatin
+     2512      GSE25380, GSM624870, GSM624870, GSM624871, GSM624872    Fly_embryos_4-6_hr_600_mM_Salt_Extracted_Chromatin_Pellet
+     2513      GSE25381, GSM624873, GSM624873, GSM624874       Fly_wing_disc_80_mM_Salt_Extracted_Chromatin
+     2514      GSE25382, GSM624875, GSM624875, GSM624876       Fly_wing_disc_150_mM_Salt_Extracted_Chromatin
+     2515      GSE25383, GSM624877, GSM624877, GSM624878       Fly_wing_disc_600_mM_Salt_Extracted_Chromatin
+     2516      GSE25384, GSM624879, GSM624879, GSM624880       Fly_wing_disc_600_mM_Salt_Extracted_Chromatin_Pellet
+     2517      GSM387595       80_mM_Salt_Extracted_Chromatin_S2
+     2518      GSM333846       80_mM_Salt_Extracted_Chromatin_H2A
+     2519      GSM333851       80_mM_Salt_Extracted_Chromatin_H2Av
+     2520      GSM333850       80_mM_Salt_Extracted_Chromatin_H3.3
+     2521      GSM333859       80-150_mM_Salt_Extracted_Chromatin_H2Av
+     2522      GSM387593       80-150_mM_Salt_Extracted_Chromatin_S2
+     2523      GSM333852       80-600_mM_Salt_Extracted_Chromatin_H3.3
+     2524      GSM333856       80-600_mM_Salt_Extracted_Chromatin_H2Av
+     2525      GSM333832       150-600_mM_Salt_Extracted_Chromatin_H2Av
+     2526      GSM333834       150-600_mM_Salt_Extracted_Chromatin_H3.3
+     2527      GSM387594       150-600_mM_Salt_Extracted_Chromatin_S2
+     2528      GSM333837       Mononucleosomes_H3.3
+     2529      GSM333841       Mononucleosomes_H2Av
+     2531      GSM468561       80_mM_Embryonic_Salt_Extracted_Chromatin
+     2532      GSM468562       600_mM_Embryonic_Salt_Extracted_Chromatin
+     2533      GSM468571       600_mM_Embryonic_Salt_Extracted_Chromatin_Pellet
+     2534      GSM468564       H3.3_80_mM_Salt_Extracted_Chromatin
+     2535      GSM468560       H3.3_350_mM_Salt_Extracted_Chromatin
+     2536      GSM468563       H3.3_600_mM_Salt_Extracted_Chromatin
+     2537      GSM468574       Embryonic_Mononucleosomes
+     2538      GSM468565       Adult_Mononucleosomes
+     2541      , GSE22743, GSM562769, GSM562770, GSM562771     HCP-3_CENP-A_N2_EEMB_(OD00079_HCP3_N2_EEMB)
+     2543      GSM360260       Lai_GSM360260_0_1day_pupae
+     2544      GSM432735       CGH Salivary Y cn bw sp
+     2545      GSM432737       CGH Salivary OregonR-Orr-Weaver
+     2546      GSM360257       Lai_GSM360257_1st_instar_larvae
+     2548      GSE23770, GSM586715, GSM586716, GSM586717       embryo_pharyngeal_muscle_tiling_array
+     2549      SRX015329       CAGE sequencing of mixed embryo 5' ends
+     2551      GSE19956, GSM498668, GSM498669  S2 Copy Number Variation
+     2552      GSE19957, GSM498670, GSM498671  KC Copy Number Variation
+     2553      GSE19958, GSM498672, GSM498673  BG3 Copy Number Variation
+     2554      GSM399107       Lai_GSM399107_male-body
+     2555      GSM399106       Lai_GSM399106_female-body
+     2556      GSM360262       Lai_GSM360262_0-2day_pupae
+     2558      GSE25955, GSM637674, GSM637674, GSM637675, GSM637676, GSM637677, GSM637678, GSM637679   E0-12h_HDAC11-494
+     2559      GSE25956, GSM637680, GSM637680, GSM637681, GSM637682, GSM637683, GSM637684, GSM637685   E0-12h_HDAC1-500
+     2560      GSE25957, GSM637686, GSM637686, GSM637687, GSM637688, GSM637689, GSM637690, GSM637691   E0-12h_HDAC1-501
+     2561      GSE25958, GSM637692, GSM637692, GSM637693, GSM637694, GSM637695, GSM637696, GSM637697   E0-12h_HDAC3-498
+     2562      GSE25959, GSM637698, GSM637698, GSM637699, GSM637700, GSM637701, GSM637702, GSM637703   E0-12h_HDAC3-499
+     2563      GSE25960, GSM637704, GSM637704, GSM637705, GSM637706, GSM637707, GSM637708, GSM637709   E0-12h_HDAC4a-492
+     2564      GSE25961, GSM637710, GSM637710, GSM637711, GSM637712, GSM637713, GSM637714, GSM637715   E0-12h_HDAC4a-493
+     2565      GSE25962, GSM637716, GSM637716, GSM637717, GSM637718, GSM637719, GSM637720, GSM637721   E0-12h_HDAC6-496
+     2566      GSE25963, GSM637722, GSM637722, GSM637723, GSM637724, GSM637725, GSM637726, GSM637727   E0-12h_HDAC6-497
+     2567      GSE25964, GSM637728, GSM637728, GSM637729, GSM637730, GSM637731, GSM637732, GSM637733   E0-12h_HDAC11-495
+     2568      GSM621327       Kc167_Trl
+     2569      GSM621328       E-0-4h_bks
+     2570      GSM621329       E0-4h_cad
+     2571      GSM621330       E0-8_D
+     2572      GSM621331       E0-8h_disco
+     2573      GSM621332       E0-8h_GATAe
+     2574      GSM621333       E0-8h_h
+     2575      GSM621334       E0-8h_hkb
+     2576      GSM621335       E0-8h_jumu
+     2577      GSM621336       E4-8h_sens
+     2580      SRX014006       RNA-Seq - pathogen Harposporium 25dC 24hr exposure post-adulthood N2 sequences & alignments
+     2581      SRX014007       RNA-Seq - pathogen Harposporium control OP50 25dC 24hr exposure post-adulthood N2 sequences & alignments
+     2582      SRX014008       RNA-seq - pathogen Smacescens 25dC 24hr exposure post-adulthood N2 sequences & alignment
+     2583      SRX014010       RNA-seq - soma-only mid-L4 25dC 36hrs post-L1 JK1107 sequences & alignments
+     2584      SRX014009       RNA-Seq - pathogen Smacescens control OP50 25dC 24hr exposure post-adulthood N2 sequences & alignments
+     2586      SRX003840, SRX003841    Cell Line RNA-seq S2_DRSC multimapped reads
+     2587      SRX014006       RNA-Seq - pathogen Harposporium 25dC 24hr exposure post-adulthood N2 genelets
+     2588      SRX014007       RNA-Seq - pathogen Harposporium control OP50 25dC 24hr exposure post-adulthood N2 genelets
+     2589      SRX014008       RNA-seq - pathogen Smacescens 25dC 24hr exposure post-adulthood N2 genelets
+     2590      SRX014010       RNA-seq - soma-only mid-L4 25dC 36hrs post-L1 JK1107 genelets
+     2591      SRX014009       RNA-Seq - pathogen Smacescens control OP50 25dC 24hr exposure post-adulthood N2 genelets
+     2592      SRX003834, SRX003835    Cell Line RNA-seq CME_W1_CI.8+ multimapped reads
+     2593      SRX003836, SRX003837    Cell Line RNA-seq Kc167 multimapped reads
+     2594      SRX003838, SRX003839    Cell Line RNA-seq ML-DmBG3-c2 multimapped reads
+     2604      , GSE22744, GSM562772, GSM562773        Histone_H3K36me1_N2_EEMB_(AB9048_H3K36ME1206009_N2_EEMB)
+     2605      GSM385744       Lai_OvarySomaticSheet_smallRNA_4replicates
+     2606      GSM399100       Lai_Kc167_2rep
+     2608      GSM343832       Lai_S2R+_2rep
+     2625      GSM499631       A-Female_7T_ChIP-seq
+     2626      GSM499644       E0-4h_7T_ChIP-seq
+     2627      GSM499633       E0-12_HDAC-492_ChIP-seq
+     2628      GSM499635       E0-12_HDAC-493_ChIP-seq
+     2629      GSM499636       E0-12_HDAC-494_ChIP-seq
+     2630      GSM499637       E0-12_HDAC-495_ChIP-seq
+     2631      GSM499638       E0-12_HDAC-496_ChIP-seq
+     2632      GSM499639       E0-12_HDAC-497_ChIP-seq
+     2633      GSM499640       E0-12_HDAC-498_ChIP-seq
+     2634      GSM499641       E0-12_HDAC-499_ChIP-seq
+     2635      GSM499642       E0-12_HDAC-500_ChIP-seq
+     2636      GSM499643       E0-12_HDAC-501_ChIP-seq
+     2637      GSM499647       E4-8h_7T_ChIP-seq
+     2638      GSM499649       S2_CTCF200_ChIP-seq
+     2639      GSM499651       S2_CTCF500_ChIP-seq
+     2640      GSM499661       W3L_EcRGFP_ChIP_seq
+     2641      GSM499657       WPP_EcR_GFP_ChIP-seq
+     2642      GSM499653       WPP30-33_EcR_GFP_ChIP-seq
+     2646      , GSE22746, GSM562775, GSM562776        Histone_H3K9me1_N2_EEMB_(AB9045_H3K9ME1291918_N2_EEMB)
+     2648      GSE23464, GSM575391, GSM575391, GSM575392, GSM575393, GSM575394, GSM575395, GSM575396, GSM575397, GSM575398     Chro(Chriz)BR.14-16_hr_OR_embryo
+     2650      GSE23465, GSM575399, GSM575399, GSM575400, GSM575401, GSM575402 Ez.BG3
+     2651      GSE23466, GSM575403, GSM575403, GSM575404, GSM575405, GSM575406 GAF.BG3
+     2652      GSE23467, GSM575407, GSM575407, GSM575408, GSM575409, GSM575410 H3K18Ac_(new_lot).2-4_hr_OR_embryo
+     2653      GSE23468, GSM575411, GSM575411, GSM575412, GSM575413, GSM575414 H3K4me1.BG3
+     2654      GSE23469, GSM575415, GSM575415, GSM575416, GSM575417, GSM575418 H3K4me2-Millipore.BG3
+     2655      GSE23470, GSM575419, GSM575419, GSM575420, GSM575421, GSM575422 H3K4me2-Millipore.S2
+     2656      GSE23471, GSM575423, GSM575423, GSM575424, GSM575425, GSM575426 H3K4me2.14-16_hr_OR_embryo
+     2657      GSE23472, GSM575427, GSM575427, GSM575428, GSM575429, GSM575430, GSM575431, GSM575432   H3K4me2.D.mel_3rd_Instar_Larvae_Nuclei
+     2658      GSE23473, GSM575433, GSM575433, GSM575434, GSM575435, GSM575436 H3K79me1.S2
+     2659      GSE23474, GSM575437, GSM575437, GSM575438, GSM575439, GSM575440, GSM575441      H3K9acS10P_(new_lot).BG3
+     2660      GSE23475, GSM575442, GSM575442, GSM575443, GSM575444, GSM575445, GSM575446, GSM575447   H3K9acS10P_(new_lot).S2
+     2661      GSE23476, GSM575448, GSM575448, GSM575449, GSM575450, GSM575451, GSM575452, GSM575453   H3K9me2-Ab2_(new_lot).14-16_hr_OR_embryo
+     2662      GSE23477, GSM575454, GSM575454, GSM575455, GSM575456, GSM575457, GSM575458, GSM575459, GSM575460, GSM575461     H3K9me2-Ab2_(new_lot).2-4_hr_OR_embryo
+     2663      GSE23478, GSM575462, GSM575462, GSM575463, GSM575464, GSM575465, GSM575466, GSM575467, GSM575468        H3K9me3_(new_lot).14-16_hr_OR_embryo
+     2664      GSE23479, GSM575469, GSM575469, GSM575470, GSM575471, GSM575472 H3K9me3_(new_lot).OR_Head_Nuclei
+     2665      GSE23480, GSM575473, GSM575473, GSM575474, GSM575475, GSM575476 HP1_wa191.2-4_hr_OR_embryo
+     2666      GSE23481, GSM575477, GSM575477, GSM575478, GSM575479, GSM575480, GSM575481, GSM575482   HP1_wa191.BG3
+     2667      GSE23482, GSM575483, GSM575483, GSM575484, GSM575485, GSM575486, GSM575487      HP1_wa191.Clone_8
+     2668      GSE23483, GSM575488, GSM575488, GSM575489, GSM575490, GSM575491 HP1a_wa184.S2
+     2669      GSE23484, GSM575492, GSM575492, GSM575493, GSM575494, GSM575495 HP1c_(MO 462).Clone_8
+     2670      GSE23485, GSM575496, GSM575496, GSM575497, GSM575498, GSM575499 HP1c_(MO_462).Kc
+     2671      GSE23486, GSM575500, GSM575500, GSM575501, GSM575502, GSM575503 Su(var)3-7-Q3448.BG3
+     2672      GSE23487, GSM575504, GSM575504, GSM575505, GSM575506, GSM575507 Su(var)3-7-Q3448.S2
+     2673      GSE23488, GSM575508, GSM575508, GSM575509, GSM575510, GSM575511, GSM575512, GSM575513   Su(var)3-9.S2
+     2674      GSE23489, GSM575514, GSM575514, GSM575515, GSM575516, GSM575517 mod2.2-VC.S2
+     2676      SRX015641       D.melanogaster 0-2hr embryo, SOLiD total RNA-seq
+     2677      SRX015642       D.melanogaster 2-4hr embryo, SOLiD total RNA-seq
+     2678      SRX015643       D.melanogaster 4-6hr embryo, SOLiD total RNA-seq
+     2679      SRX015644       D.melanogaster 6-8hr embryo, SOLiD total RNA-seq
+     2680      SRX015645       D.melanogaster 8-10hr embryo, SOLiD total RNA-seq
+     2681      SRX015646       D.melanogaster 10-12hr embryo, SOLiD total RNA-seq
+     2682      SRX015647       D.melanogaster 12-14hr embryo, SOLiD total RNA-seq
+     2683      SRX015648       D.melanogaster 14-16hr embryo, SOLiD total RNA-seq
+     2684      SRX015649       D.melanogaster 16-18hr embryo, SOLiD total RNA-seq
+     2685      SRX015650       D.melanogaster 18-20hr embryo, SOLiD total RNA-seq
+     2686      SRX015651       D.melanogaster 20-22hr embryo, SOLiD total RNA-seq
+     2687      SRX015652       D.melanogaster 22-24hr embryo, SOLiD total RNA-seq
+     2688      SRR023199, SRR023659, SRR023663, SRR023671, SRR023747, SRR023755, SRR024013, SRR027110  Splice Junction Annotation Embryo 0-2h
+     2689      SRR023502, SRR023660, SRR023705, SRR023722, SRR023745, SRR027112        Splice Junction Annotation Embryo 2-4h
+     2690      SRR023539, SRR023669, SRR023696, SRR023746, SRR023836, SRR024014, SRR035220     Splice Junction Annotation Embryo 4-6h
+     2691      SRR023504, SRR023654, SRR023668, SRR023688, SRR023691, SRR023732, SRR024009, SRR024217, SRR027113       Splice Junction Annotation Embryo 6-8h
+     2692      SRR023549, SRR023596, SRR023603, SRR023657, SRR023701, SRR023749, SRR023750, SRR023754, SRR023759, SRR024219    Splice Junction Annotation Embryo 8-10h
+     2693      SRR023604, SRR023644, SRR023694, SRR023727, SRR023831, SRR024010, SRR024221     Splice Junction Annotation Embryo 10-12h
+     2694      SRR023602, SRR023643, SRR023703, SRR023724, SRR023832, SRR024012, SRR035221     Splice Junction Annotation Embryo 12-14h
+     2695      SRR023540, SRR023641, SRR023725, SRR023734, SRR023736, SRR023822, SRR024011     Splice Junction Annotation Embryo 14-16h
+     2696      SRR023600, SRR023707, SRR023715, SRR023720, SRR023751, SRR023826        Splice Junction Annotation Embryo 16-18h
+     2697      SRR023503, SRR023599, SRR023673, SRR023682, SRR023686, SRR023699, SRR023700, SRR024215, SRR027114, SRR035222    Splice Junction Annotation Embryo 18-20h
+     2698      SRR023506, SRR023665, SRR023684, SRR023718, SRR023728, SRR027109        Splice Junction Annotation Embryo 20-22h
+     2699      SRR023538, SRR023685, SRR023711, SRR023733, SRR023834, SRR024015        Splice Junction Annotation Embryo 22-24h
+     2700      SRR023597, SRR023646, SRR023661, SRR023666, SRR023706, SRR023835        Splice Junction Annotation Larvae L1
+     2701      SRR023542, SRR023670, SRR023719, SRR023761, SRR023824, SRR024016, SRR035223     Splice Junction Annotation Larvae L2
+     2702      SRR023507, SRR023649, SRR023677, SRR023731, SRR023760, SRR027111        Splice Junction Annotation Larvae L3 12hr post-molt
+     2703      SRR023546, SRR023608, SRR023638, SRR023640, SRR023697, SRR023726, SRR023758     Splice Junction Annotation Larvae L3, dark blue gut PS1-2
+     2704      SRR023505, SRR023676, SRR023683, SRR023690, SRR023692, SRR023742, SRR027108     Splice Junction Annotation Larvae L3, light blue gut PS3-6
+     2705      SRR023729, SRR023739, SRR023782, SRR023865, SRR026433, SRR035219        Splice Junction Annotation Larvae L3, clear gut PS7-9
+     2706      SRR023687, SRR023695, SRR023704, SRR023784, SRR023837, SRR026432, SRR035217     Splice Junction Annotation White Prepupae
+     2707      SRR023544, SRR023639, SRR023647, SRR023689, SRR023716, SRR023833        Splice Junction Annotation White Prepupae, WPP + 12hr
+     2708      SRR023541, SRR023656, SRR023708, SRR023756, SRR023830   Splice Junction Annotation White Prepupae, WPP + 24hr
+     2709      SRR023667, SRR023721, SRR023743, SRR023785, SRR023829, SRR026431        Splice Junction Annotation Pupae, WPP + 2d
+     2710      SRR023738, SRR023744, SRR023748, SRR023783, SRR024216, SRR026430, SRR035218     Splice Junction Annotation Pupae, WPP + 3d
+     2711      SRR023609, SRR023653, SRR023723, SRR023735, SRR023740, SRR023827        Splice Junction Annotation Pupae, WPP + 4d
+     2712      SRR023595, SRR023662, SRR023680, SRR023702, SRR023737, SRR023828, SRR024220     Splice Junction Annotation Adult Female, eclosion + 1d
+     2713      SRR023543, SRR023648, SRR023664, SRR023678, SRR023741, SRR023825        Splice Junction Annotation Adult Male, eclosion + 1d
+     2714      SRR023547, SRR023607, SRR023645, SRR023651, SRR023717, SRR023730, SRR029230, SRR029234  Splice Junction Annotation Adult Female, eclosion + 5d
+     2715      SRR023550, SRR023605, SRR023606, SRR023642, SRR023658, SRR023672, SRR023679, SRR023713, SRR029176, SRR029231, SRR029233, SRR029235      Splice Junction Annotation Adult Male, eclosion + 5d
+     2716      SRR023548, SRR023598, SRR023674, SRR023681, SRR023712, SRR023757, SRR029232, SRR029236  Splice Junction Annotation Adult Female, eclosion + 30d
+     2717      SRR023601, SRR023650, SRR023698, SRR023714, SRR023752, SRR023823, SRR024218     Splice Junction Annotation Adult Male, eclosion + 30d
+     2719      , GSE24306, GSM609225   Lai_ML-DmBG3-C2_BS179
+     2721      , GSE24307, GSM609226, GSM609227        Lai_CMEW1_Cl_8
+     2722      , GSE24308, GSM609228   Lai_S2-DRSC-BS11
+     2725      GSM361908       Lai_GSM361908_s2
+     2726      , GSE22747, GSM562777, GSM562778        Histone_H3K4me1_N2_EEMB_(AB8895_H3K4ME1733246_N2_EEMB)
+     2729      , GSE22750, GSM562783, GSM562784, GSM562785, GSM562786  LEM-2_N2_MXEMB_(SDQ3891_LEM2_N2_MXEMB)
+     2730      GSM463029       Day0_spe-9 Solexa Raw Data SOAP-aligned
+     2732      GSM463026       Day5_spe-9 Solexa Raw Data SOAP-aligned
+     2733      GSM463030       Day8_spe-9 Solexa Raw Data SOAP-aligned
+     2734      GSM463028       Day12_spe-9 Solexa Raw Data SOAP-aligned
+     2738      , GSE22751, GSM562787, GSM562788, GSM562789     NPP-13_N2_MXEMB_(SDQ3897_NPP13_N2_MXEMB)
+     2739      , GSE22752, GSM562790   Histone_H3K9me1_N2_EEMB_(AB8896_H3K9ME1104560_N2_EEMB)
+     2740      , GSE22753, GSM562791   Histone_H3K27ac_N2_EEMB_(AB4729_H3K27AC361571_N2_EEMB)
+     2741      GSM364902       Dm Canton-S Embryo 12-24h smallRNA RNA-Seq
+     2742      , GSE24309, GSM609229   Lai_embryo_14-24hr_Bs61-64-67-73
+     2743      , GSE24539, GSM609238   Lai_embryo_2-6hr_BS43-46
+     2744      , GSE24310, GSM609230   Lai_CantonS_ovary_Ago1IP
+     2745      GSM446652       UTRome_V2_3UTRs_multiple_evidences
+     2746      , GSE24311, GSM609231   Lai_Ago2-414_ovary_Ago1IP
+     2749      , GSE24313, GSM609233   Lai_r2d2_ovary_Ago1IP
+     2751      , GSE24314, GSM609234   Lai_CantonS_male
+     2753      GSE20887, GSM522353, GSM522353, GSM522354, GSM522355    Orc2 S2 ChIP-Seq
+     2754      GSE20888, GSM522356, GSM522356, GSM522357, GSM522358    Orc2 BG3 ChIP-Seq
+     2755      GSE20889, GSM522359, GSM522359, GSM522360, GSM522361    Orc2 KC ChIP-Seq
+     2756      GSE25385, GSM624881, GSM624881, GSM624882       Kc_600_mM_Salt_Extracted_Chromatin
+     2757      GSE25386, GSM624883, GSM624883, GSM624884       Kc_600_mM_Salt_Extracted_Chromatin_Pellet
+     2758      GSE25387, GSM624885, GSM624885, GSM624886       Kc_RNA_Expression_Tiling_Array
+     2759      GSE25388, GSM624887, GSM624887, GSM624888       Kc_H2Av_Knockdown_600_mM_Salt_Extracted_Chromatin
+     2760      GSE25389, GSM624889, GSM624889, GSM624890       Kc_H2Av_Knockdown_600_mM_Salt_Extracted_Chromatin_Pellet
+     2761      GSE25390, GSM624891, GSM624891, GSM624892       Kc_H2Av_Knockdown_RNA_Expression_Tiling_Array
+     2762      GSE25391, GSM624893, GSM624893, GSM624894       N2_Worm_Embryo_mRNA_Expression
+     2763      GSE20136        Mononucleosomes_N2_MXEMB
+     2764      GSE20136        Mononucleosomes_JK1107_AD
+     2765      , GSE22754, GSM562792, GSM562793        Histone_H3K20me1_N2_EEMB_(AB9051_H4K20ME1104513_N2_EEMB)
+     2766      , GSE22755, GSM562794, GSM562795        Histone_H4_Tetra_ac_N2_EEMB_(LPAR109_H4TETRAAC109_N2_EEMB)
+     2767      , GSE22756, GSM562796, GSM562797, GSM562798, GSM562799  CBP-1_N2_MXEMB_(SDQ3582_CBP1_N2_MXEMB)
+     2768      GSE25352, GSM624426, GSM624426, GSM624427       Histone_H4_N2_L3_(MP05858_H4DAM1636076_N2_L3)
+     2769      GSE25392, GSM624895, GSM624895, GSM624896, GSM624897    S2_RNA_Expression_Tiling_Array
+     2770      GSE25353, GSM624428, GSM624428, GSM624429       Histone_H3K9me1_N2_L3_(AB9045_H3K9ME1291918_N2_L3)
+     2771      GSE25354, GSM624430, GSM624430, GSM624431       Histone_H3K27ac_N2_L3_(AB4729_H3K27AC361571_N2_L3)
+     2773      GSE25355, GSM624432, GSM624432, GSM624433       Histone_H3K27ac_N2_L3_(WA30634849_H3K27AC_N2_L3)
+     2774      GSE25356, GSM624434, GSM624434, GSM624435       Histone_H4K8ac_N2_L3_(AB15823_H4K8AC487128_N2_L3)
+     2775      GSE25357, GSM624436, GSM624436, GSM624437       Histone_H3K4me1_N2_L3_(AB8895_H3K4ME1733246_N2_L3)
+     2776      GSM336052       Embryo_miRNA_expression_change
+     2777      GSM336055       mid-L1_miRNA_expression_change
+     2778      GSM336056       mid-L2_miRNA_expression_change
+     2779      GSM336058       mid-L3_miRNA_expression_change
+     2780      GSM336059       mid-L4_miRNA_expression_change
+     2781      GSM336060       young-adult_miRNA_expression_change
+     2782      GSM336086       male-yAd_miRNA_expression_change
+     2783      GSE20890, GSM522362, GSM522362, GSM522363, GSM522364    MCM KC ChIP-Seq
+     2784      GSE25358, GSM624438, GSM624438, GSM624439       Histone_H4K20me1_N2_L3_(AB9051_H4K20ME1104513_N2_L3)
+     2785      GSM463029       Day0_spe-9_23dC_miRNA_expression_change
+     2786      GSM463026       Day5_spe-9_23dC_miRNA_expression_change
+     2787      GSM463030       Day8_spe-9_23dC_miRNA_expression_change
+     2788      GSM463028       Day12_spe-9_23dC_miRNA_expression_change
+     2820      , GSE24315, GSM609235   Lai_CMEL1_BS28
+     2821      GSM510086       small RNA Illumina sequencing of eri-1(mg366)
+     2822      GSM510087       small RNA Illumina sequencing of glp-4(bn2)
+     2823      GSM510089       small RNA Illumina sequencing of him-8 sperm
+     2825      GSM510088       small RNA Illumina sequencing of N2 whole worms
+     2826      GSM510085       small RNA Illumina sequencing of N2 embryos
+     2827      GSM509929       small RNA 454 sequencing of eri-1(mg366)
+     2828      GSM509930       small RNA 454 sequencing of glp-4(bn2)
+     2829      GSM509932       small RNA 454 sequencing of him-8 sperm
+     2830      GSM510090       small RNA Illumina sequencing of fer-1 unfertilized oocytes
+     2831      GSM509931       small RNA 454 sequencing of N2 young adults
+     2832      GSM509933       small RNA 454 sequencing of fer-1 unfertilized oocytes
+     2833      , GSE24316, GSM609236   Lai_Dcr-2_L811fsX_ovary_Ago1IP
+     2835      SRX008136       RNAseq - Adult spe-9 23dC 8days post-L4 molt genelets revised
+     2836      SRX001873       RNAseq - Young Adult 25dC 46hrs post-L1 genelets revised
+     2837      SRX008138       RNAseq - dauer daf-2 25dC 91hrs post-L1 genelets revised
+     2838      SRX008139       RNAseq - dauer entry daf-2 25dC 48hrs post-L1 genelets revised
+     2839      SRX008140       RNAseq - dauer exit daf-2 25dC 91hrs 15dC 12hrs post-L1 genelets revised
+     2840      SRX004863, SRX004864    RNAseq - early embryo genelets revised
+     2841      SRX011569       RNAseq - embryo him-8 20dC post-L1 genelets revised
+     2842      SRX004865, SRX004866    RNAseq - late embryo 20dC 4.5hrs post-early embryo genelets revised
+     2843      SRX004869       RNAseq - lin-35(n745) mid-L1 25dC 4.0hrs post-L1 genelets revised
+     2844      SRX004868       RNAseq - male mid-L4 dpy28(y1);him-8(e1489) 25dC 30hrs post-L1 genelets revised
+     2845      SRX004867       RNAseq - mid-L1 20dC 4hrs post-L1 genelets revised
+     2846      SRX001872       RNAseq - mid-L2 25dC 14hrs post-L1 genelets revised
+     2847      SRX001875       RNAseq - mid-L3 25dC 25hrs post-L1 genelets revised
+     2848      SRX001874       RNAseq - mid-L4 25dC 36hrs post-L1 genelets revised
+     2866      SRR023595, SRR023662, SRR023680, SRR023702, SRR023737, SRR023828, SRR024220, SRR035393  100222 Dev Timecourse Adult Female Eclosure+1d RNA-Seq multimapped reads
+     2867      SRR023548, SRR023598, SRR023674, SRR023681, SRR023712, SRR023757, SRR029232, SRR029236  100222 Dev Timecourse Adult Female Eclosure+30d RNA-Seq multimapped reads
+     2868      SRR023547, SRR023607, SRR023645, SRR023651, SRR023717, SRR023730, SRR029230, SRR029234  100222 Dev Timecourse Adult Female Eclosure+5d RNA-Seq multimapped reads
+     2869      SRR023543, SRR023648, SRR023664, SRR023678, SRR023741, SRR023825, SRR035394     100222 Dev Timecourse Adult Male Eclosure+1d RNA-Seq multimapped reads
+     2870      SRR023601, SRR023650, SRR023698, SRR023714, SRR023752, SRR023823, SRR024218, SRR035395  100222 Dev Timecourse Adult Male Eclosure+30d RNA-Seq multimapped reads
+     2871      SRR023550, SRR023605, SRR023606, SRR023642, SRR023658, SRR023672, SRR023679, SRR023713, SRR029176, SRR029231, SRR029233, SRR029235      100222 Dev Timecourse Adult Male Eclosure+5d RNA-Seq multimapped reads
+     2872      SRR023597, SRR023646, SRR023661, SRR023666, SRR023706, SRR023835, SRR035410     100222 Dev Timecourse Larvae L1 RNA-Seq multimapped reads
+     2873      SRR023542, SRR023670, SRR023719, SRR023761, SRR023824, SRR024016, SRR035223, SRR035411, SRR035412       100222 Dev Timecourse Larvae L2 RNA-Seq multimapped reads
+     2874      SRR023507, SRR023649, SRR023677, SRR023731, SRR023760, SRR027111        100222 Dev Timecourse Larvae L3 + 12hr RNA-Seq multimapped reads
+     2875      SRR023546, SRR023608, SRR023638, SRR023640, SRR023697, SRR023726, SRR023758, SRR035413  100222 Dev Timecourse Larvae L3 PS1-2 RNA-Seq multimapped reads
+     2876      SRR023505, SRR023676, SRR023683, SRR023690, SRR023692, SRR023742, SRR027108     100222 Dev Timecourse Larvae L3 PS3-6 RNA-Seq multimapped reads
+     2877      SRR023729, SRR023739, SRR023782, SRR023865, SRR026433, SRR035219, SRR035392     100222 Dev Timecourse Larvae L3 PS7-9 RNA-Seq multimapped reads
+     2878      SRR023687, SRR023695, SRR023704, SRR023784, SRR023837, SRR026432, SRR035217     100222 Dev Timecourse White Pre-pupae RNA-Seq multimapped reads
+     2879      SRR023544, SRR023639, SRR023647, SRR023689, SRR023716, SRR023833, SRR035414     100222 Dev Timecourse White Pre-pupae + 12hr RNA-Seq multimapped reads
+     2880      SRR023541, SRR023656, SRR023708, SRR023756, SRR023830, SRR035415        100222 Dev Timecourse White Pre-pupae + 24hr RNA-Seq multimapped reads
+     2881      SRR023667, SRR023721, SRR023743, SRR023785, SRR023829, SRR026431        100222 Dev Timecourse White Pre-pupae + 2days RNA-Seq multimapped reads
+     2882      SRR023738, SRR023744, SRR023748, SRR023783, SRR024216, SRR026430, SRR035218, SRR035391  100222 Dev Timecourse White Pre-pupae + 3days RNA-Seq multimapped reads
+     2883      SRR023609, SRR023653, SRR023723, SRR023735, SRR023740, SRR023827, SRR035416     100222 Dev Timecourse White Pre-pupae + 4days RNA-Seq multimapped reads
+     2884      SRR023199, SRR023659, SRR023663, SRR023671, SRR023747, SRR023755, SRR024013, SRR027110, SRR035417, SRR035418    100222 Dev Timecourse Embryo 0-2h RNA-Seq multimapped reads
+     2885      SRR023502, SRR023660, SRR023705, SRR023722, SRR023745, SRR027112        100222 Dev Timecourse Embryo 2-4h RNA-Seq multimapped reads
+     2886      SRR023539, SRR023669, SRR023696, SRR023746, SRR023836, SRR024014, SRR035220, SRR035405, SRR035406       100222 Dev Timecourse Embryo 4-6h RNA-Seq multimapped reads
+     2887      SRR023504, SRR023654, SRR023668, SRR023688, SRR023691, SRR023732, SRR024009, SRR024217, SRR027113, SRR035407, SRR035408 100222 Dev Timecourse Embryo 6-8h RNA-Seq multimapped reads
+     2888      SRR023549, SRR023596, SRR023603, SRR023657, SRR023701, SRR023749, SRR023750, SRR023754, SRR023759, SRR024219, SRR035409 100222 Dev Timecourse Embryo 8-10h RNA-Seq multimapped reads
+     2889      SRR023604, SRR023644, SRR023694, SRR023727, SRR023831, SRR024010, SRR024221, SRR035396, SRR035397       100222 Dev Timecourse Embryo 10-12h RNA-Seq multimapped reads
+     2890      SRR023602, SRR023643, SRR023703, SRR023724, SRR023832, SRR024012, SRR035221, SRR035398, SRR035399       100222 Dev Timecourse Embryo 12-14h RNA-Seq multimapped reads
+     2891      SRR023540, SRR023641, SRR023725, SRR023734, SRR023736, SRR023822, SRR024011, SRR035400, SRR035401       100222 Dev Timecourse Embryo 14-16h RNA-Seq multimapped reads
+     2892      SRR023600, SRR023707, SRR023715, SRR023720, SRR023751, SRR023826, SRR035402     100222 Dev Timecourse Embryo 16-18h RNA-Seq multimapped reads
+     2893      SRR023503, SRR023599, SRR023673, SRR023682, SRR023686, SRR023699, SRR023700, SRR024215, SRR027114, SRR035222, SRR035403 100222 Dev Timecourse Embryo 18-20h RNA-Seq multimapped reads
+     2894      SRR023506, SRR023665, SRR023684, SRR023718, SRR023728, SRR027109        100222 Dev Timecourse Embryo 20-22h RNA-Seq multimapped reads
+     2895      SRR023538, SRR023685, SRR023711, SRR023733, SRR023834, SRR024015, SRR035404     100222 Dev Timecourse Embryo 22-24h RNA-Seq multimapped reads
+     2896      GSE23234, GSM571134, GSM571134, GSM571135, GSM571136    Dm_y[1]cn[1] bw[1] sp[1]_adult_Female_30dayPostEclosion_TotalRNA_p200_398-400-402_38bp
+     2897      GSE23235, GSM571137, GSM571137, GSM571138, GSM571139    Dm_y[1]cn[1] bw[1] sp[1]_adult_Male_30dayPostEclosion_TotalRNA_p200_392-394-396_38bp
+     2898      , SRR023199, SRR023659, SRR023663, SRR023671, SRR023747, SRR023755, SRR024013, SRR027110, SRR035417, SRR035418  Dev Timecourse Embryo 0-2h RNA-Seq uniquely mapped reads
+     2899      , SRR023502, SRR023660, SRR023705, SRR023722, SRR023745, SRR027112      Dev Timecourse Embryo 2-4h RNA-Seq uniquely mapped reads
+     2900      , SRR023539, SRR023669, SRR023696, SRR023746, SRR023836, SRR024014, SRR035220, SRR035405, SRR035406     Dev Timecourse Embryo 4-6h RNA-Seq uniquely mapped reads
+     2901      , SRR023504, SRR023654, SRR023668, SRR023688, SRR023691, SRR023732, SRR024009, SRR024217, SRR027113, SRR035407, SRR035408       Dev Timecourse Embryo 6-8h RNA-Seq uniquely mapped reads
+     2902      , SRR023549, SRR023596, SRR023603, SRR023657, SRR023701, SRR023749, SRR023750, SRR023754, SRR023759, SRR024219, SRR035409       Dev Timecourse Embryo 8-10h RNA-Seq uniquely mapped reads
+     2903      , SRR023604, SRR023644, SRR023694, SRR023727, SRR023831, SRR024010, SRR024221, SRR035396, SRR035397     Dev Timecourse Embryo 10-12h RNA-Seq uniquely mapped reads
+     2904      , SRR023602, SRR023643, SRR023703, SRR023724, SRR023832, SRR024012, SRR035221, SRR035398, SRR035399     Dev Timecourse Embryo 12-14h RNA-Seq uniquely mapped reads
+     2905      , SRR023540, SRR023641, SRR023725, SRR023734, SRR023736, SRR023822, SRR024011, SRR035400, SRR035401     Dev Timecourse Embryo 14-16h RNA-Seq uniquely mapped reads
+     2906      , SRR023600, SRR023707, SRR023715, SRR023720, SRR023751, SRR023826, SRR035402   Dev Timecourse Embryo 16-18h RNA-Seq uniquely mapped reads
+     2907      , SRR023503, SRR023599, SRR023673, SRR023682, SRR023686, SRR023699, SRR023700, SRR024215, SRR027114, SRR035222, SRR035403       Dev Timecourse Embryo 18-20h RNA-Seq uniquely mapped reads
+     2908      , SRR023506, SRR023665, SRR023684, SRR023718, SRR023728, SRR027109      Dev Timecourse Embryo 20-22h RNA-Seq uniquely mapped reads
+     2909      , SRR023538, SRR023685, SRR023711, SRR023733, SRR023834, SRR024015, SRR035404   Dev Timecourse Embryo 22-24h RNA-Seq uniquely mapped reads
+     2910      , SRR023542, SRR023670, SRR023719, SRR023761, SRR023824, SRR024016, SRR035223, SRR035411, SRR035412     Dev Timecourse Larvae L2 RNA-Seq uniquely mapped reads
+     2911      , SRR023507, SRR023649, SRR023677, SRR023731, SRR023760, SRR027111      Dev Timecourse Larvae L3 + 12hr RNA-Seq uniquely mapped reads
+     2912      , SRR023729, SRR023739, SRR023782, SRR023865, SRR026433, SRR035219, SRR035392   Dev Timecourse Larvae L3 PS7-9 RNA-Seq uniquely mapped reads
+     2913      , SRR023595, SRR023662, SRR023680, SRR023702, SRR023737, SRR023828, SRR024220, SRR035393        Dev Timecourse Adult Female Eclosure+1d RNA-Seq uniquely mapped reads
+     2914      , SRR023548, SRR023598, SRR023674, SRR023681, SRR023712, SRR023757, SRR029232, SRR029236        Dev Timecourse Adult Female Eclosure+30d RNA-Seq uniquely mapped reads
+     2915      , SRR023547, SRR023607, SRR023645, SRR023651, SRR023717, SRR023730, SRR029230, SRR029234        Dev Timecourse Adult Female Eclosure+5d RNA-Seq uniquely mapped reads
+     2916      , SRR023543, SRR023648, SRR023664, SRR023678, SRR023741, SRR023825, SRR035394   Dev Timecourse Adult Male Eclosure+1d RNA-Seq uniquely mapped reads
+     2917      , SRR023601, SRR023650, SRR023698, SRR023714, SRR023752, SRR023823, SRR024218, SRR035395        Dev Timecourse Adult Male Eclosure+30d RNA-Seq uniquely mapped reads
+     2918      , SRR023550, SRR023605, SRR023606, SRR023642, SRR023658, SRR023672, SRR023679, SRR023713, SRR029176, SRR029231, SRR029233, SRR029235    Dev Timecourse Adult Male Eclosure+5d RNA-Seq uniquely mapped reads
+     2919      , SRR023597, SRR023646, SRR023661, SRR023666, SRR023706, SRR023835, SRR035410   Dev Timecourse Larvae L1 RNA-Seq uniquely mapped reads
+     2920      , SRR023546, SRR023608, SRR023638, SRR023640, SRR023697, SRR023726, SRR023758, SRR035413        Dev Timecourse Larvae L3 PS1-2 RNA-Seq uniquely mapped reads
+     2921      , SRR023505, SRR023676, SRR023683, SRR023690, SRR023692, SRR023742, SRR027108   Dev Timecourse Larvae L3 PS3-6 RNA-Seq uniquely mapped reads
+     2922      , SRR023544, SRR023639, SRR023647, SRR023689, SRR023716, SRR023833, SRR035414   Dev Timecourse White Pre-pupae + 12hr RNA-Seq uniquely mapped reads
+     2923      , SRR023541, SRR023656, SRR023708, SRR023756, SRR023830, SRR035415      Dev Timecourse White Pre-pupae + 24hr RNA-Seq uniquely mapped reads
+     2924      , SRR023667, SRR023721, SRR023743, SRR023785, SRR023829, SRR026431      Dev Timecourse White Pre-pupae + 2days RNA-Seq uniquely mapped reads
+     2925      , SRR023738, SRR023744, SRR023748, SRR023783, SRR024216, SRR026430, SRR035218, SRR035391        Dev Timecourse White Pre-pupae + 3days RNA-Seq uniquely mapped reads
+     2926      , SRR023609, SRR023653, SRR023723, SRR023735, SRR023740, SRR023827, SRR035416   Dev Timecourse White Pre-pupae + 4days RNA-Seq uniquely mapped reads
+     2927      , SRR023687, SRR023695, SRR023704, SRR023784, SRR023837, SRR026432, SRR035217   Dev Timecourse White Pre-pupae RNA-Seq uniquely mapped reads
+     2928      SRR034309       Mixed Embryo RNA-Seq multimapped reads
+     2947      SRX008136       RNAseq - Adult spe-9 23dC 8days post-L4 molt genelets revised 100320
+     2948      SRX008138       RNAseq - dauer daf-2 25dC 91hrs post-L1 genelets revised 100320
+     2949      SRX008139       RNAseq - dauer entry daf-2 25dC 48hrs post-L1 genelets revised 100320
+     2950      SRX008140       RNAseq - dauer exit daf-2 25dC 91hrs 15dC 12hrs post-L1 genelets revised 100320
+     2951      SRX004863, SRX004864    RNAseq - early embryo genelets revised 100320
+     2952      SRX011569       RNAseq - embryo him-8 20dC post-L1 genelets revised 100320
+     2954      SRX004869       RNAseq - lin-35(n745) mid-L1 25dC 4.0hrs post-L1 genelets revised 100320
+     2955      SRX004867       RNAseq - mid-L1 20dC 4hrs post-L1 genelets revised 100320
+     2956      SRX001872       RNAseq - mid-L2 25dC 17.75hrs post-L1 genelets revised 100320
+     2959      SRX004868       RNAseq - male mid-L4 dpy28(y1);him-8(e1489) 25dC 30hrs post-L1 genelets revised 100320
+     2960      SRX001873       RNAseq - Young Adult 25dC 46hrs post-L1 genelets revised 100320
+     2961      SRX014007, SRX014007    RNAseq - Adult Harposporium control EcoliOP50 exposed 2 24hrs genelets revised 100320
+     2962      SRX014006       RNAseq - Adult Harposporium exposed 2 24hrs genelets revised 100320
+     2963      SRX014009       RNAseq - Adult S macescens Db10 control EcoliOP50_exposed 1 24hrs genelets revised 100320
+     2964      SRX014008       RNAseq - Adult S macescens Db10 exposed 1 24hrs genelets revised 100320
+     2965      SRX014010       RNAseq - L4 soma JK1107 no DNaseI genelets revised 100320
+     2971      GSE24540, GSE24540, GSM609239   Lai_CantonS_Embryo_Non-irradiated
+     2972      GSE24541, GSE24541, GSM609240   Lai_CantonS_Embryo_Irradiated
+     2973      GSE24542, GSE24542, GSM609241, GSM609242        Lai_S2_Rubin_Ecdysone
+     2974      GSE24543, GSE24543, GSM609243, GSM609244        Lai_Kc_Rubin_Ecdysone
+     2975      GSE24544, GSE24544, GSM609245   Lai_Dcr-2_L811fsX_ovary
+     2976      GSE24545, GSE24545, GSM609246   Lai_CantonS_ovary
+     2980      GSM499403       D. pseudoobscura female heads mRNA-seq revised
+     2984      GSE25361, GSM624628, GSM624628, GSM624629, GSM624630, GSM624631 ASH1 Q4177.S2
+     3008      GSE25362, GSM624632, GSM624632, GSM624633, GSM624634, GSM624635 H3K9acS10P (new abcam lot).D.mel 3rd Instar Larvae Nuclei
+     3009      GSE25363, GSM624636, GSM624636, GSM624637, GSM624638, GSM624639 H3K9acS10P (new abcam lot).Kc
+     3010      GSE25364, GSM624640, GSM624640, GSM624641, GSM624642, GSM624643 H3K9acS10P (new lot).Clone_8
+     3045      GSE25365, GSM624644, GSM624644, GSM624645, GSM624646, GSM624647 MRG15_Q2481.BG3
+     3046      GSE25366, GSM624648, GSM624648, GSM624649, GSM624650, GSM624651 MRG15_Q2481.Kc
+     3047      GSE25367, GSM624652, GSM624652, GSM624653, GSM624654, GSM624655 MRG15_Q2481.S2
+     3050      GSE25368, GSM624656, GSM624656, GSM624657, GSM624658, GSM624659 PIWI-Q2569.Clone_8
+     3051      GSE25369, GSM624660, GSM624660, GSM624661, GSM624662, GSM624663 PIWI-Q2569.D.mel 3rd Instar Larvae Nuclei
+     3055      GSE25370, GSM624664, GSM624664, GSM624665, GSM624666, GSM624667 Psc.BG3
+     3056      GSE25371, GSM624668, GSM624668, GSM624669, GSM624670, GSM624671 Psc.S2
+     3058      GSE25372, GSM624672, GSM624672, GSM624673, GSM624674, GSM624675 SPT16_Q2583.S2
+     3064      GSE25373, GSM624676, GSM624676, GSM624677, GSM624678, GSM624679 ZW5.BG3
+     3083      GSM515636       D. melanogaster female heads mRNA-seq
+     3084      GSM515637       D. melanogaster male heads mRNA-seq
+     3085      GSM499404       D. pseudoobscura male heads mRNA-seq revised
+     3086      GSM522268       D. mojavensis male heads mRNA-seq
+     3087      GSM522266       D. mojavensis female heads mRNA-seq
+     3170      GSE25374, GSM624680, GSM624680, GSM624681, GSM624682, GSM624683 H3K36me1.S2
+     3172      GSE25350, GSM624418, GSM624418, GSM624419, GSM624420    embryo_0hr_reference_tiling_array
+     3173      GSE25351, GSM624421, GSM624421, GSM624422, GSM624423    embryo_AVE_neurons_tiling_array
+     3190      GSE24604, GSM609247, GSM609247  Lai_Female_Head_HeatShocked_V007
+     3192      GSE24605, GSM609248, GSM609248  Lai_MLDmD9_V029
+     3193      GSE24606, GSM609249, GSM609249  Lai_MLDmD21_V027
+     3194      GSE24607, GSM609250, GSM609250  Lai_MLDmD32_V035
+     3195      GSE24608, GSM609251, GSM609251  Lai_Female_Head_Aged_V013
+     3248      GSE25347, GSM624330, GSM624330, GSM624331, GSM624332, GSM624333, GSM624334, GSM624335, GSM624336, GSM624337, GSM624338, GSM624339, GSM624340, GSM624341, GSM624342, GSM624343, GSM624344        Dm_y[1]cn[1] bw[1] sp[1]_embryo_4-6h_TotalRNA_p200_224-226-228_7bp
+     3250      GSE25348, GSM624345, GSM624345, GSM624346, GSM624347, GSM624348, GSM624349, GSM624350, GSM624351, GSM624352, GSM624353, GSM624354, GSM624355, GSM624356, GSM624357, GSM624358, GSM624359        Dm_y[1]cn[1] bw[1] sp[1]_embryo_4-6h_Poly-Ap_p200_409-410-411_7bp
+     3326      GSM632210, SRR077254    Untreated_Control_Day1_wt
+     3327      GSM632211, SRR077255    Heatshock_Day1_wt_32dC6hrs smallRNA-seq
+     3328      GSM632212, SRR077256    PA14_Day1_wt_12hrs
+     3329      GSM632213, SRR077257    L1_arrest_wt_48hrs
+
+------ Projects without GEO or SRA IDs ------
+
+Project ID      Name
+
+     34        5' RACE (mixed-stage embryos)
+     214       DMG1 RTPCR
+     215       DMG2 RTPCR
+     339       DMG3 RTPCR
+     340       DMG4 RTPCR
+     445       C. elegans Intron Identification.set.20090106.2_3_2_2_3_2_2_2_2
+     446       C. elegans Intron Identification set.20090106.2_3_2_2_4_4_3_2_2
+     447       C. elegans Intron Identification set.20090106.2_3_2_2_5_3_3_2_2
+     448       C. elegans Intron Identification set.20090106.2_3_2_2_4_3_3_2_2
+     515       3'UTRome CEUP1 sequences, alignments, annotation
+     555       Cell line Total RNA samples
+     559       Cell line Nuclear RNA samples
+     560       Cell line polyA RNA samples
+     574       Dev Timecourse TotalRNA isolation
+     577       Dev Timecourse polyA RNA samples
+     585       Snyder_PHA4_GFP_FedL1
+     587       Snyder_PHA4_POLII_FedL1
+     594       Snyder_MAB5_POLII_L3
+     771       E0-4_H3K4me3 new
+     900       E0-4_CBP
+     904       L2_8wg16 ChIP-chip
+     1040      5'RACE 454 sequencing - pool 1
+     1042      5'RACE 454 sequencing - pool 3
+     1043      5'RACE 454 sequencing - pool 4
+     1044      5'RACE 454 sequencing - pool 5
+     2270      MB6 RTPCR
+     2304      Intron Confirmation Chromosome II 2009-09-21
+     2403      Tissue totalRNA isolation
+     2429      Snyder_LIN-11_GFP_L2
+     2430      Snyder_UNC-130_GFP_L1
+     2431      Snyder_HLH-1_GFP_emb
+     2432      Snyder_LIN-39_GFP_L3
+     2433      Snyder_NHR-6_GFP_L2
+     2435      Snyder_N2_POLII_eemb
+     2436      Snyder_N2_POLII_lemb
+     2437      Snyder_N2_POLII_L1
+     2438      Snyder_N2_POLII_L2
+     2439      Snyder_N2_POLII_L3
+     2440      Snyder_N2_POLII_L4
+     2441      Snyder_N2_POLII_YA
+     2451      Snyder_GEI11_GFP_L4
+     2501      3' UTRome sample pools
+     2539      Ahringer_L3_Worm_Samples_1
+     2540      Ahringer_L3_Worm_Samples_2
+     2557      mass-spec_091015
+     2585      ISO1_8-16_Ez
+     2597      Snyder_HLH-8_POLII_L3
+     2598      Snyder_PHA4_GFP_lemb
+     2600      Snyder_MEP-1_GFP_emb
+     2601      Snyder_MDL-1_GFP_L1
+     2602      ISO1_8-16_mod_mdg4
+     2603      R13_1-6_eve-GFP
+     2610      Snyder_LIN-15B_GFP_L3
+     2612      Snyder_BLMP-1_GFP_L1
+     2613      Snyder_LIN-13_GFP_emb
+     2614      Snyder_ELT-3_GFP_L1
+     2617      Snyder_NHR-105_GFP_L3
+     2620      Snyder_CEH-30_GFP_lemb
+     2621      Snyder_EGL-27_GFP_L1
+     2622      Snyder_SKN-1_GFP_L1
+     2623      Snyder_PQM-1_GFP_L3
+     2647      RNAseq - 0911 aggregate fourteen stages - non-redundant exons
+     2675      MB8 gene models
+     2718      Intron Confirmation Chromosome I 2010-01-28
+     2720      SL Acceptor Site Confirmation 2010-01-28
+     2850      Adult spe-9 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2851      Young Adult N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2852      dauer daf-2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2853      dauer entry daf-2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2854      dauer exit daf-2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2855      early embryo N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2856      embryo him-8 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2857      late embryo N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2858      L1 lin-35(n745) integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, and wormbase splice junctions
+     2859      L4 male integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2860      L1 N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2861      L2 N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2862      L3 N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2863      L4 N2 integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs
+     2929      Stranded RACE TSS tracks
+     2946      Classes_of_Insulator_Binding_Sites
+     2958      RNAseq - mid-L4 25dC 34.25hrs post-L1 genelets revised 100320
+     2967      MB9
+     2979      MCM S2 July 2010
+     3201      Cl8 CNV
+     3207      Tissue TotalRNA isolation
+     3247      24h Embryo Orc ChIP-Seq
+     3251      0-24h Embryo PolII ChIP-Seq
+     3253      SG Orc ChIP-Seq
+     3275      Directed cDNA Full Insert Sequencing v3
+     3277      FB_CGH
+     3278      MG_CGH
+     3305      Drosophila Cell Line and Developmental Stage Gene and Exon Scores
+     3312      Transcription Start Site Confirmation 2010-11-24
+     3316      Capped smallRNA (&lt;200nt) PolyA-tail samples
