@@ -96,8 +96,7 @@ sub set_all {
 	my $t = $self->$get_func();
 	if ( defined($t) ) {
 	    if ($parameter eq 'antibody') {
-		my @ab = grep {$_->get_heading() eq 'target name'} @{$t->get_attributes()};
-		print $ab[0]->get_value();
+		print antibody_to_string($t);
 	    } elsif ($parameter eq 'factors') {
 		my %of = $self->get_other_factors();
 		while (my ($k, $v) = each %of) {print " $k : $v"}
@@ -758,6 +757,12 @@ sub is_antibody {
     return 1;
 }
 
+sub antibody_to_string {
+    my $ab = shift;
+    my @t = grep {$_->get_heading() eq 'target name'} @{$ab->get_attributes()};
+    return $t[0]->get_value();
+}
+
 sub get_platform_row {
     my ($self, $row) = @_;
     my $hyb_slot = $self->get_hyb_slot();
@@ -1063,14 +1068,20 @@ sub set_level2 {
     my $at = $self->get_assay_type();
     my $dt = $self->get_data_type();
     my $project = $self->get_project();
+    my $lab = $self->get_lab();
     my $desc = $self->get_description();
     my $gene = $self->get_tgt_gene();
     my @histone_variants = ('HTZ-1', 'HCP-3');
     my @dosage_compensation = ('DPY-27');
-    my @mrna_groups = ('Susan Celniker', 'Kevin White', 'Robert Waterston');
+    my @histone_modification = ('H3K27Ac', 'H3K27me3', 'H3K9me2');
+    my @non_tf_factor = ('nejire', 'RNA Polymerase II');
+    my @mrna_groups = ('Susan Celniker', 'Kevin White', 'Robert Waterston', 'Steven Henikoff');
+    my $l1 = $self->get_level1();
     if ( defined($at) && defined($dt) ) {
         $level2{ident $self} =  'mRNA' if $dt eq 'Gene Structure - mRNA';
+	$level2{ident $self} = 'small-RNA' if $dt eq 'Gene Structure - ncRNA';
         $level2{ident $self} =  'mRNA' if $dt eq 'RNA expression profiling' and scalar grep {$project eq $_} @mrna_groups;
+	$level2{ident $self} =  'mRNA' if $dt eq 'RNA expression profiling' and ($l1 eq 'Dpse_r2.4' || $l1 eq 'Dmoj_r1.3' || $lab eq 'Oliver');
         $level2{ident $self} =  'Transcriptional-Factor' if $dt eq 'TF binding sites';
 	if ($dt eq 'Histone modification and replacement') {
 	    if (scalar grep {$gene eq $_} @histone_variants) {
@@ -1093,6 +1104,8 @@ sub set_level2 {
 	if ( !defined($at) and !defined($dt) ) {
 	    $level2{ident $self} = 'mRNA' if $project eq 'Robert Waterston';
 	    $level2{ident $self} = 'mRNA' if $project eq 'Fabio Piano';
+	    $level2{ident $self} = 'Histone-Modification' if $project eq 'Kevin White' and $self->get_hyb_slot() > 0 and defined($self->get_antibody()) and scalar grep {antibody_to_string($self->get_antibody()) eq $_} @histone_modification;
+	    $level2{ident $self} = 'non-TF-Chromatin-binding-factor' if $project eq 'Kevin White' and $self->get_hyb_slot() > 0 and defined($self->get_antibody()) and scalar grep {antibody_to_string($self->get_antibody()) eq $_} @non_tf_factor;
 	}
     }
 
@@ -1114,6 +1127,7 @@ sub set_level3 {
                'RTPCR' => 'RT-PCR',
                'tiling array: DNA' => 'DNA-tiling-array',
                'tiling array: RNA' => 'RNA-tiling-array',
+	       'tiling array:RNA' => 'RNA-tiling-array',
         );
     my $at = $self->get_assay_type;
     my $l2 = $self->get_level2();
@@ -1125,6 +1139,8 @@ sub set_level3 {
 	$level3{ident $self} = 'RACE' if $project eq 'Fabio Piano';
     }
     $level3{ident $self} = 'CGH' if $l2 eq 'Copy-Number-Variation';
+    $level3{ident $self} = 'RNA-seq' if $l2 eq 'mRNA' and $self->get_seq_slot() > 0;
+    $level3{ident $self} = 'ChIP-chip' if $project eq 'Kevin White' and $self->get_hyb_slot() > 0 and defined($self->get_antibody()); 
 }
 
 sub lvl4_factor {
@@ -1139,12 +1155,11 @@ sub lvl4_factor {
     #my @tech = ('CAGE', 'cDNA-sequencing', 'Mass-spec', 'RACE', 'RNA-seq', 'RT-PCR', 'RNA-tiling-array', 'integrated-gene-model');
     if (scalar grep {$l2 eq $_} @mol) {
 	return '5-prime-UTR' if $l3 eq 'CAGE';
+	return 'small-RNA' if $l2 eq 'small-RNA';
 	if ( $p eq 'Fabio Piano') {
-	    return 'small-RNA' if $l2 eq 'small-RNA';
 	    return '3-prime-UTR';
 	}
 	return 'UTR' if ($l3 eq 'cDNA-sequencing' || $l3 eq 'RACE') && $p eq 'Susan Celniker';
-	return 'small-RNA' if $l2 eq 'small-RNA';
 	if ($l3 eq 'integrated-gene-model') {
 	    if ( $desc =~ /splice[\s_-]*junction/ ) {
 		return 'splice-junction';
@@ -1152,7 +1167,7 @@ sub lvl4_factor {
 		return 'transfrag';
 	    }
 	}
-	if ($desc =~ /polyA[-_\s]?rna/i) {#polyA
+	if ($desc =~ /poly[ ]?a[+]?[-_\s]?rna/i) {#polyA
 	    return 'PolyA-RNA';
 	}
 	return 'total-RNA';
