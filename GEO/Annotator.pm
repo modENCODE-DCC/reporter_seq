@@ -12,6 +12,8 @@ my %unique_id              :ATTR( :name<unique_id>             :default<undef>);
 my %seriesFH               :ATTR( :name<seriesFH>              :default<undef>);
 my %reader                 :ATTR( :name<reader>                :default<undef>);
 my %experiment             :ATTR( :name<experiment>            :default<undef>);
+my %normalized_slots       :ATTR( :get<normalized_slots>       :default<undef>);
+my %denorm_slots           :ATTR( :get<denorm_slots>           :default<undef>);
 my %project                :ATTR( :get<project>                :default<undef>);
 my %lab                    :ATTR( :get<lab>                    :default<undef>);
 my %contributors           :ATTR( :get<contributors>           :default<undef>);
@@ -88,13 +90,84 @@ sub chado2series {
     }
 }
 
+sub set_normalized_slots {
+    my $self = shift;
+    $normalized_slots{ident $self} = $reader{ident $self}->get_normalized_protocol_slots();
+}
+
+sub set_denorm_slots {
+    my $self = shift;
+    $denorm_slots{ident $self} = $reader{ident $self}->get_denormalized_protocol_slots();
+}
+
+sub set_project {
+    my $self = shift;
+    my %projects = ('lieb' => 'Jason Lieb',
+                   'celniker' => 'Susan Celniker',
+                   'henikoff' => 'Steven Henikoff',
+                   'karpen' => 'Gary Karpen',
+                   'lai' => 'Eric Lai',
+                   'macalpine' => 'David MacAlpine',
+                   'piano' => 'Fabio Piano',
+                   'snyder' => 'Michael Snyder',
+                   'waterston' => 'Robert Waterston',
+		    'white' => 'Kevin White');   
+    foreach my $property (@{$experiment{ident $self}->get_properties()}) {
+        my ($name, $value, $rank, $type) = ($property->get_name(), 
+                                            $property->get_value(), 
+                                            $property->get_rank(), 
+                                            $property->get_type());
+        if (lc($name) eq 'project' && defined($value) && $value ne '') {
+            $project{ident $self} = $projects{lc($value)};
+            last;
+        }
+    }
+}
+
+sub set_lab {
+    my ($self, $experiment) = @_;
+    foreach my $property (@{$experiment{ident $self}->get_properties()}) {
+        my ($name, $value, $rank, $type) = ($property->get_name(), 
+                                            $property->get_value(), 
+                                            $property->get_rank(), 
+                                            $property->get_type());
+        if (lc($name) eq 'lab' && defined($value) && $value ne '') {
+            $lab{ident $self} = $value;
+            last;
+        }
+    }    
+}
+
+sub set_contributors {
+    my $self = shift;    
+    my %person;
+    foreach my $property (@{$experiment{ident $self}->get_properties()}) {
+        my ($name, $value, $rank, $type) = ($property->get_name(), 
+                                            $property->get_value(), 
+                                            $property->get_rank(), 
+                                            $property->get_type());
+        
+        $person{$rank}{'affiliation'} = $value if $name =~ /Person\s*Affiliation/i;
+        $person{$rank}{'address'} = $value if $name =~ /Person\s*Address/i;
+        $person{$rank}{'phone'} = $value if $name =~ /Person\s*Phone/i;
+        $person{$rank}{'first'} = $value if $name =~ /Person\s*First\s*Name/i;
+        $person{$rank}{'last'} = $value if $name =~ /Person\s*Last\s*Name/i;
+        $person{$rank}{'middle'} = $value if $name =~ /Person\s*Mid\s*Initials/i;
+        $person{$rank}{'email'} = $value if $name =~ /Person\s*Email/i;
+        $person{$rank}{'roles'} = $value if $name =~ /Person\s*Roles/i;
+    }
+    $contributors{ident $self} = \%person;
+}
+
 sub get_overall_design {
     my $self = shift;
     my $overall_design = '';
     for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[0];
 	my $desc = $ap->get_protocol->get_description;
-	$desc =~ s/\\n/ /;
+	$desc =~ s/\s+/_/g;
+	$desc =~ s/\W+/ /;
+	$desc =~ s/_/ /g;
 	$overall_design .= $desc . " ";
     }
     return $overall_design;
@@ -103,9 +176,13 @@ sub get_overall_design {
 sub get_geo_id {
     my $self = shift;
     my @affiliates = $self->get_affiliate_submissions();
+    map {print "affiliate submission $_\n"} @affiliates;
     my %geo = $self->get_all_geo_id();
     my @ids;
-    map {push @ids, $geo{$_} } @affiliates;
+    for my $aff (@affiliates) {
+	print $aff, ":", @{$geo{$aff}}, "\n";
+	push @ids, grep {$_ =~ /^GSM/} @{$geo{$aff}};
+    }
     return @ids;
 }
 
@@ -129,16 +206,20 @@ sub get_affiliate_submissions {
 
 sub get_all_geo_id {
     my $self = shift;
-    my %geo;
-    while(my $line = <$geo{ident $self}>) {
+    my %idh;
+    my $fh = $geo{ident $self};
+    while(my $line = <$fh>) {
 	chomp $line;
 	next if $line =~ /^\s*$/;
 	next if $line =~ /^#/;
-	my @fields = split "\t", $line;
-	my @ids = split /,\s*/, $fields[1];
-	$geo{$fields[0]} = \@ids;
+	my @fields = split /\t/, $line;
+	my @ids = split /,\s*/, $fields[2];
+	#print "submission " . $fields[0] . " has geo id ";
+	#map {print $_} @ids;
+	#print "\n";
+	$idh{$fields[0]} = \@ids;
     }
-    return %geo;
+    return %idh;
 }
 
 1;

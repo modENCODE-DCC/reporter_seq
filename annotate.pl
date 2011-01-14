@@ -37,7 +37,7 @@ tie %ini, 'Config::IniFiles', (-file => $config);
 $output_dir = File::Spec->rel2abs($output_dir);
 #make sure $report_dir ends with '/'
 $output_dir .= '/' unless $output_dir =~ /\/$/;
-my $output_file = $output_dir . $unique_id .'soft';
+my $output_file = $output_dir . $unique_id . '.soft';
 print "output file is $output_file\n";
 
 my $dbname = $ini{database}{dbname};
@@ -60,6 +60,7 @@ $reader->load_experiment($experiment_id);
 my $experiment = $reader->get_experiment();
 print "done.\n";
 
+print "generate soft file ...";
 open my $seriesFH, ">", $output_file;
 open my $geoFH, "<", $geo_id_file || die;
 my $annotator = new GEO::Annotator({
@@ -75,6 +76,7 @@ $annotator->set_all();
 $annotator->chado2series();
 close $seriesFH;
 close $geoFH;
+print "done\n";
 
 sub usage {
     my $usage = qq[$0 -id <unique_submission_id> -o <output_dir> -g <geo_id_file> [-cfg <config_file>]];
