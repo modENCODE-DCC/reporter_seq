@@ -521,7 +521,8 @@ sub get_slotnum_seq {
     my $type = "sequencing";
     my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
     if (scalar(@aps) > 1) {
-        croak("you confused me with more than 1 sequencing protocols.");
+        #croak("you confused me with more than 1 sequencing protocols.");
+	return $aps[-1];
     } elsif (scalar(@aps) == 0) {
         return -1;
     } else {
@@ -882,6 +883,7 @@ sub get_other_factors {
 	unless ( scalar grep {/$type/i} @exclude_types ) {
             my $factor_type = $f->{$rank}->[1];
             my $factor_value = $self->_get_value_by_info(0, 'name', $f->{$rank}->[0]);
+	    $factor_value =~ s/&\S*//g;
 	    $of{$factor_type} = uri_unescape($factor_value);
 	}
     }
@@ -1132,14 +1134,16 @@ sub set_level3 {
     my $at = $self->get_assay_type;
     my $l2 = $self->get_level2();
     my $project = $self->get_project();
+    my $found = 0;
     if (defined($at)) {
-        $level3{ident $self} = $map{$at} if exists $map{$at};
+        $found = 1 and $level3{ident $self} = $map{$at} if exists $map{$at};
 	$level3{ident $self} = 'DNA-tiling-array' if $at eq 'ChIP-chip' and $project eq 'Steven Henikoff';
     } else {
 	$level3{ident $self} = 'RACE' if $project eq 'Fabio Piano';
     }
-    $level3{ident $self} = 'CGH' if $l2 eq 'Copy-Number-Variation';
-    $level3{ident $self} = 'RNA-seq' if $l2 eq 'mRNA' and $self->get_seq_slot() > 0;
+    $level3{ident $self} = 'CGH' if $l2 eq 'Copy-Number-Variation' and defined($self->get_hyb_slot);
+    $level3{ident $self} = 'CNV-seq' if $l2 eq 'Copy-Number-Variation' and defined($self->get_seq_slot);
+    $level3{ident $self} = 'RNA-seq' if $l2 eq 'mRNA' and $self->get_seq_slot() > 0 and $found = 0;
     $level3{ident $self} = 'ChIP-chip' if $project eq 'Kevin White' and $self->get_hyb_slot() > 0 and defined($self->get_antibody()); 
 }
 
@@ -1177,7 +1181,7 @@ sub lvl4_factor {
 	    $gene =~ s/_/-/g;
 	    return $gene;
 	} else {
-	    return 'Nucleosome' if $p eq 'Steven Henikoff';
+	    return 'Nucleosome' if $p eq 'Steven Henikoff' || $p eq 'Jason Lieb';
 	}
     }
     return 'Replication-Timing' if $dt eq 'Replication Timing';
