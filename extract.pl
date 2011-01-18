@@ -18,13 +18,12 @@ use GEO::Tagger;
 
 print "initializing...\n";
 #parse command-line parameters
-my ($unique_id, $output_dir, $config, $rpt_ncbi_id);
+my ($unique_id, $output_dir, $config);
 #default config
 $config = $root_dir . 'chado2GEO.ini';
 my $option = GetOptions ("id=s"     => \$unique_id,
                          "o=s"      => \$output_dir,
-                         "cfg=s"    => \$config,
-			 "e=s"      => \$rpt_ncbi_id) or usage();
+                         "cfg=s"    => \$config) or usage();
 usage() if (!$unique_id or !$output_dir);
 usage() unless -w $output_dir;
 usage() unless -e $config;
@@ -81,9 +80,9 @@ my $replicatesetnum = '';
 my @tags = ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $lvl4_algorithm, $replicatesetnum);
  
 open my $tagfh, ">", $output_file;
-print $tagfh join("\t", ('DCC id', 'Title', 'Data File', 'Level 1 <organism>', 'Level 2 <Target>', 'Level 3 <Technique>', 'Level 4 <File Format>', 'Filename <Factor>', 'Filename <Condition>', 'Filename <Technique>', 'Filename <Algorithm>', 'Filename <ReplicateSetNum>', 'Filename <Build>', 'Filename <Modencode ID>')), "\n";
+print $tagfh join("\t", ('DCC id', 'Title', 'Data File', 'Data Filepath', 'Level 1 <organism>', 'Level 2 <Target>', 'Level 3 <Technique>', 'Level 4 <File Format>', 'Filename <Factor>', 'Filename <Condition>', 'Filename <Technique>', 'Filename <Algorithm>', 'Filename <ReplicateSetNum>', 'Filename <Build>', 'Filename <Modencode ID>')), "\n";
 my ($raw, $raw_type);
-if ($rpt_ncbi_id) {
+if (defined($tagger->get_seq_slot)) {
     ($raw, $raw_type) = $tagger->get_raw_data(1);
 } else {
     ($raw, $raw_type) = $tagger->get_raw_data();
@@ -100,7 +99,7 @@ sub print_tag_spreadsheet {
     for (my $i=0; $i<scalar @$data; $i++) {
 	my ($file, $dir, $suffix) = fileparse($data->[$i]);
 	my $t = $file . $suffix;
-	print $tagfh join("\t", ($id, $title, $t, $lvl1, $lvl2, $lvl3, $data_type->[$i], $lvl4_factor, $lvl4_condition, $lvl3, $lvl4_algorithm, $replicatesetnum, $lvl1));
+	print $tagfh join("\t", ($id, $title, $t, $data->[$i], $lvl1, $lvl2, $lvl3, $data_type->[$i], $lvl4_factor, $lvl4_condition, $lvl3, $lvl4_algorithm, $replicatesetnum, $lvl1));
 	print $tagfh "\t";
 	printf $tagfh '%s%05s', 'MDENC', $id;
 	print $tagfh "\n";
@@ -108,7 +107,7 @@ sub print_tag_spreadsheet {
 }
 
 sub usage {
-    my $usage = qq[$0 -id <unique_submission_id> -o <output_dir> [-cfg <config_file>] [-e <0|1>]];
+    my $usage = qq[$0 -id <unique_submission_id> -o <output_dir> [-cfg <config_file>]];
     print "Usage: $usage\n";
     print "option e: use geo/sra id instead of filename for raw data.\n";
     exit 2;
