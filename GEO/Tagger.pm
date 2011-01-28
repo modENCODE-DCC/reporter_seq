@@ -1191,10 +1191,10 @@ sub lvl4_factor {
 
 sub lvl4_condition {
     my $self = shift;
-    my $strain = $self->get_strain();
-    my $cellline = $self->get_cellline();
-    my $devstage = $self->get_devstage();
-    my $tissue = $self->get_tissue();
+    my $strain = $self->get_strain(); $strain =~ s/_/-/g; 
+    my $cellline = $self->get_cellline(); $cellline =~ s/_/-/g;
+    my $devstage = $self->get_devstage(); $devstage =~ s/_/-/g;
+    my $tissue = $self->get_tissue(); $tissue =~ s/_/-/g;
     my %of = $self->get_other_factors();
     my @exclude_factors = ('CellLine');
     my @c = ();
