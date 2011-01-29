@@ -32,17 +32,51 @@ while(my $line = <$fh>) {
 	$rep,
 	$build,
 	$std_id) = split "\t", $line;
-    next unless defined($factor); # a few ones that has two hop of submissions
     ($lvl1_dir, $lvl2_dir, $lvl3_dir, $lvl4_dir) = ($organism, $target, $tech, $format);
-    $condition =~ s/_/-/g; $condition =~ s/ /-/g;
-    
-    my $bio_dir = gen_bio_dir($factor, $condition);
-    my $leaf_dir = ln_dir(P_dir, Slink_dir, $lvl1_dir, $lvl2_dir, $lvl3_dir, $bio_dir, $lvl4_dir);
+    $factor = universal_factor($factor);
+    my ($strain, $cellline, $devstage, $tissue) = parse_condition($condition);
+    #print "$id Strain: $strain Cell Line: $cellline Devstage: $devstage Tissue: $tissue\n";
+    #unless (defined($strain) || defined($cellline) || defined($devstage) || defined($tissue)) {
+	#print $id, "\n";
+    #}
+    my @bio_dir = gen_bio_dir($factor, $strain, $cellline, $devstage, $tissue);
+    my $leaf_dir = ln_dir(P_dir, Slink_dir, $lvl1_dir, $lvl2_dir, $lvl3_dir, $lvl4_dir, @bio_dir);
+    $algo = "" unless defined($algo);
+    $rep = "" unless defined($rep);
+    my $universal_filename = join(":", ($factor, $condition, $tech, $algo, $rep, $build, $std_id));
+    $universal_filename = format_dirname($universal_filename);
+    my $ln_file = $leaf_dir . $universal_filename;
+    chdir P_dir;
+    mkdir(Data_dir);
+    my $data_file = Data_dir . "/". $filename;
+    symlink($rel_path, $data_file);  
+    symlink($data_file, $ln_file);
 }
 
 sub gen_bio_dir {
-    my ($factor, $condition) = @_;
-    
+    my ($factor, $strain, $cellline, $devstage, $tissue) = @_;
+    my @rna = ('5-prime-utr', 'small-rna', '3-prime-utr', 'utr', 'splice-junction', 'transfrag', 'polya-rna', 'total-rna');
+    if (scalar grep {$_ eq $factor} @rna) {
+	if (defined($cellline)) {
+	    #print $cellline, "\n";
+	    $cellline = universal_cellline($cellline);
+	    return ($cellline);
+	} else {
+	    if (defined($tissue)) {
+		#print $tissue, "\n";
+		$tissue = universal_tissue($tissue);
+		return ($tissue);
+	    } else {
+		#print $strain, "\n";
+		#print $devstage, "\n";
+		$strain = universal_strain($strain);
+		$devstage = universal_devstage($devstage);
+		return ($strain, $devstage);
+	    }
+	}
+    } else {
+	return ($factor, $devstage);
+    }
 }
 
 sub universal_factor {
@@ -83,27 +117,65 @@ sub universal_factor {
     return $factor;
 }
 
+sub format_dirname {
+    my $dir = shift;
+    $dir =~ s/\(//g;
+    $dir =~ s/\)//g;
+    $dir =~ s/,//g;
+    $dir =~ s/ +/-/g;
+    return $dir;
+}
+
 sub parse_condition {
     my $condition = shift;
     $condition =~ s/^\s*//g; $condition =~ s/\s*$//g;
-    my ($strain, $cellline, $devstage, $tissue);
-    $strain = $1 if $condition =~ /STRAIN_(.*)?_/;
-    $cellline = $1 if $condition =~ /Cell-Line_(.*)?_/;
-    $devstage = $1 if $condition =~ /Developmental-Stage_(.*)?_/;
-    $tissue = $1 if $condition =~ /Tissue_(.*)?_/;
+    my %map = split("_", $condition);
+    my ($strain, $cellline, $devstage, $tissue) = (
+	$map{'Strain'}, 
+	$map{'Cell-Line'}, 
+	$map{'Developmental-Stage'},
+	$map{'Tissue'},
+	);
+    #$strain = $1 if $condition =~ /Strain_(.*?)_/;
+    #$cellline = $1 if $condition =~ /Cell-Line_(.*?)_/;
+    #$devstage = $1 if $condition =~ /Developmental-Stage_(.*?)_/;
+    #$tissue = $1 if $condition =~ /Tissue_(.*?)_/;
     return ($strain, $cellline, $devstage, $tissue);
 }
 
 sub universal_strain {
+    my $strain = shift;
+    return $strain;
 }
 
 sub universal_cellline {
+    my $cellline = shift;
+    return $cellline;
 }
 
 sub universal_devstage {
+    my $devstage = shift;
+    my %map = (
+	'E0-4' => 'Embryo 0-4h',
+	'E12-16' => 'Embryo 12-16h',
+	'E16-20' => 'Embryo 16-20h',
+	'E20-24' => 'Embryo 20-24h',
+	'E4-8' => 'Embryo 4-8h',
+	'E8-12' => 'Embryo 8-12h',
+	'Embryo 22-24hSC' => 'Embryo 22-24h',
+	'L1 stage larvae' => 'L1',
+	'L2 stage larvae' => 'L2',
+	);
+    if ( exists $map{$devstage} ) {
+	return $map{$devstage};
+    } else {
+	return $devstage;
+    }
 }
 
 sub universal_tissue {
+    my $tissue = shift;
+    return $tissue;
 }
 
 sub ln_dir {
@@ -114,7 +186,8 @@ sub ln_dir {
     for (my $i=0; $i<scalar @dirs; $i++) {
 	my $tdir = '';
 	for (my $j=0; $j<=$i; $j++) {
-	    $tdir .= "/" . $dirs[$j];
+	    my $t = format_dirname($dirs[$j]);
+	    $tdir .= $t . "/";
 	}
 	mkdir($tdir) unless -e $tdir;
 	$dir = $tdir;
