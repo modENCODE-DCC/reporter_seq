@@ -359,8 +359,31 @@ sub chado2sample {
 		    print "ok with write_sample_lib_selection\n";
 		    $self->write_sample_instrument_model($row);
 		    print "ok with write_sample_instrument_model\n";
-		    if ($split_seq_group{ident $self} == 1) {
-			$self->write_sample_normalization($row);
+		    #if ($split_seq_group{ident $self} == 1) {
+			#$self->write_sample_normalization($row);
+		    #}
+		    if ($ap_slots{ident $self}->{seq} >= 0) {
+			$self->write_sample_normalization($row); 
+			print "ok with write_sample_normalization1\n";
+			my @these_normalize_datafiles = $self->write_normalized_data($row);
+			push @normalize_datafiles, @these_normalize_datafiles;
+			print "ok with write_normalized_data with row $row\n";
+			if ($rdup->{$row}) {
+			    for my $that_row (@{$rdup->{$row}}) {
+				print "write_normalized_data_dup called since I get duplicated row $that_row\n";
+				my @those_normalize_datafiles = $self->write_normalized_data_dup($that_row, \@these_normalize_datafiles);
+				push @normalize_datafiles, @those_normalize_datafiles;
+			    }
+			}
+			my @these_more_datafiles = $self->get_more_data($row, \@these_normalize_datafiles);
+			push @more_datafiles, @these_more_datafiles;
+			if ($rdup->{$row}) {
+			    for my $that_row (@{$rdup->{$row}}) {
+				print "get_more_data_dup called since I get duplicated row $that_row\n";
+				my @those_more_datafiles = $self->get_more_data_dup($that_row, \@these_more_datafiles);
+				push @more_datafiles, @those_more_datafiles;
+			    }
+			}
 		    }
 		}
 		push @raw_datafiles, $self->write_raw_data($row, $channel);
@@ -377,7 +400,7 @@ sub chado2sample {
 		$self->write_sample_scan($row);
 		print "ok with write_sample_scan\n";
 	    }
-	    #unless ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) {
+	    #if ($ap_slots{ident $self}->{seq} >= 0) {
 		#$self->write_sample_normalization($row);
 		#print "ok with write_sample_normalization1\n";
 	    #}
@@ -387,25 +410,27 @@ sub chado2sample {
 		$self->write_platform($row);
 		print "ok with write_platform\n";
 	    }
-	    my @these_normalize_datafiles = $self->write_normalized_data($row);
-	    push @normalize_datafiles, @these_normalize_datafiles;
-	    print "ok with write_normalized_data with row $row\n";
-	    if ($rdup->{$row}) {
-		for my $that_row (@{$rdup->{$row}}) {
-		    print "write_normalized_data_dup called since I get duplicated row $that_row\n";
-		    my @those_normalize_datafiles = $self->write_normalized_data_dup($that_row, \@these_normalize_datafiles);
-		    push @normalize_datafiles, @those_normalize_datafiles;
+	    if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {
+		my @these_normalize_datafiles = $self->write_normalized_data($row);
+		push @normalize_datafiles, @these_normalize_datafiles;
+		print "ok with write_normalized_data with row $row\n";
+		if ($rdup->{$row}) {
+		    for my $that_row (@{$rdup->{$row}}) {
+			print "write_normalized_data_dup called since I get duplicated row $that_row\n";
+			my @those_normalize_datafiles = $self->write_normalized_data_dup($that_row, \@these_normalize_datafiles);
+			push @normalize_datafiles, @those_normalize_datafiles;
+		    }
+		}
+		my @these_more_datafiles = $self->get_more_data($row, \@these_normalize_datafiles);
+		push @more_datafiles, @these_more_datafiles;
+		if ($rdup->{$row}) {
+		    for my $that_row (@{$rdup->{$row}}) {
+			print "get_more_data_dup called since I get duplicated row $that_row\n";
+			my @those_more_datafiles = $self->get_more_data_dup($that_row, \@these_more_datafiles);
+			push @more_datafiles, @those_more_datafiles;
+		    }
 		}
 	    }
-	    my @these_more_datafiles = $self->get_more_data($row);
-	    push @more_datafiles, @these_more_datafiles;
-	    if ($rdup->{$row}) {
-		for my $that_row (@{$rdup->{$row}}) {
-                    print "get_more_data_dup called since I get duplicated row $that_row\n";
-                    my @those_more_datafiles = $self->get_more_data_dup($that_row, \@these_more_datafiles);
-                    push @more_datafiles, @those_more_datafiles;
-		}
-            }
 	}
     }
     return (\@raw_datafiles, \@normalize_datafiles, \@more_datafiles);
@@ -781,6 +806,7 @@ sub write_raw_data {
     for my $datum (@{$ap->get_output_data()}) {
 	if (($datum->get_heading() =~ /Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
 	    my $path = $datum->get_value();
+	    print $path, "\n";
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {#assume there is just one fastq file per channel
 		my ($file, $dir, $suffix) = fileparse($path);
 		print $sampleFH "!Sample_raw_file_", "$num_raw_data = ", $file . $suffix, "\n";
@@ -832,8 +858,8 @@ sub write_normalized_data {
 		$type = 'WIG' if ($file =~ /\.wig\.?/i);
 		$type = 'GFF3' if ($file =~ /\.gff3$/i);
 		$type = 'SAM' if ($path =~ /\.sam\.?/i);
-		#print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $file . $suffix, "\n";
-		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
+		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $file . $suffix, "\n";
+		#print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
 		print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
 		$num_processed_data+=1;
 	    } 
@@ -854,21 +880,38 @@ sub write_normalized_data {
 }
 
 sub get_more_data {
-     my ($self, $row) = @_;
+     my ($self, $row, $normalized_data) = @_;
      my $sampleFH = $sampleFH{ident $self};
      my @more_datafiles;
+     my $num_processed_data = scalar @$normalized_data + 1;
      #$dup{ident $self}->{$row};
      my $start_slot = $ap_slots{ident $self}->{'normalization'};
      $start_slot -= 1 if $start_slot == scalar($denorm_slots{ident $self})-1;
      for (my $i=$start_slot; $i<scalar(@{$denorm_slots{ident $self}}); $i++) {
 	 my $ap = $denorm_slots{ident $self}->[$i]->[$row];
+	 my $i=1;
 	 for my $datum (@{$ap->get_output_data()}) {
 	     if ($datum->get_heading() =~ /Result\s*File/i) {
 		 my $path = $datum->get_value();
-		 my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
-		 print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
-		 push @more_datafiles, $path;
+		 unless (scalar grep {$_ eq $path} @$normalized_data) {
+		     my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
+		     if ($ap_slots{ident $self}->{seq} >= 0) {
+			 my $type;
+			 $type = 'WIG' if ($path =~ /\.wig\.?/i);
+			 $type = 'GFF3' if ($path =~ /\.gff3$/i);
+			 $type = 'SAM' if ($path =~ /\.sam\.?/i);
+			 print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $file.$suffix, "\n";
+			 print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
+			 $num_processed_data+=1;
+		     }
+		     elsif($ap_slots{ident $self}->{hyb} >= 0) {
+			 print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+		     }
+		     push @more_datafiles, $path;
+		     $i++;
+		 }
 	     }
+		 
 	 }
      }
      return @more_datafiles;
@@ -2128,12 +2171,12 @@ sub get_slotnum_normalize_seq {
     my $slot;
     for my $type (@types) {
 	my @aps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
-	sort @aps;
+	#sort @aps;
 	if (scalar(@aps)) {
 	    if (defined($slot)) {
-		$slot = $aps[-1] if ($aps[-1] > $slot);
+		$slot = $aps[0] if ($aps[-1] < $slot);
 	    } else {
-		$slot = $aps[-1];
+		$slot = $aps[0];
 	    }
 	}
     }
