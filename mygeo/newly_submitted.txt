@@ -37,7 +37,19 @@ modencode_3171:  GSE26180
 modencode_3179:  GSE26178
 modencode_3321:  GSE26182
 modencode_3322:  GSE26183
+Everett submissions:
+GSM596154 	seq-AB46540_NIgG_N2_MXemb_2_A_EE1432
+GSM596155 	seq-SDQ3891_LEM2_N2_MXemb_1_A_EE8_KI021
+GSM596156 	seq-NA_N2_MXemb_3_A_EE1432
+GSM599723 	seq-NA_N2_MXemb_5_EE6
+GSM599724 	seq-NA_N2_MXemb_6_EE8
+GSM599725 	seq-WA30534819_H3K4me3_N2_MXemb_1
+GSM599726 	seq-WA30534819_H3K4me3_N2_MXemb_2
 
+####################
+MacAlpine submissions:
+modENCODE_3277:
+modENCODE_3278:
 ####################
 meta-analysis
 modencode_2946: GSE26905
