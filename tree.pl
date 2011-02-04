@@ -32,7 +32,11 @@ while(my $line = <$fh>) {
 	$rep,
 	$build,
 	$std_id) = split "\t", $line;
-    ($lvl1_dir, $lvl2_dir, $lvl3_dir, $lvl4_dir) = ($organism, $target, $tech, $format);
+    next unless (defined($target) && $target !~ /^\s*$/);
+    next unless (defined($tech) && $tech !~ /^\s*$/);
+    my ($lvl1_dir, $lvl2_dir, $lvl3_dir, $lvl4_dir) = ($organism, $target, $tech, $format);
+
+    
     $factor = universal_factor($factor);
     my ($strain, $cellline, $devstage, $tissue) = parse_condition($condition);
     #print "$id Strain: $strain Cell Line: $cellline Devstage: $devstage Tissue: $tissue\n";
