@@ -53,6 +53,7 @@ while(my $line = <$fh>) {
     my $ln_file = $leaf_dir . $universal_filename;
     chdir P_dir;
     mkdir(Data_dir);
+    $filename .= '.' . suffix($format);
     my $data_file = Data_dir . "/". $filename;
     symlink($rel_path, $data_file);  
     symlink($data_file, $ln_file);
@@ -198,4 +199,10 @@ sub ln_dir {
 	$dir = $tdir;
     }
     return $dir;
+}
+
+sub suffix {
+    my $format = shift;
+    my ($category, $suffix) = split("_", $format);
+    return $suffix;    
 }
