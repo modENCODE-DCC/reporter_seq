@@ -8,6 +8,9 @@ use File::Basename;
 use URI::Escape;
 use HTML::Entities;
 use ModENCODE::Parser::LWChado;
+use constant Filename_separator = ';';
+use constant Filename_separator_replacement = ' ';
+use constant Tag_value_separator = '_';
 
 my %config                 :ATTR( :name<config>                :default<undef>);
 my %unique_id              :ATTR( :name<unique_id>             :default<undef>);
@@ -581,17 +584,17 @@ sub get_strain_row {
                     my $name = $1;
                     if ($name =~ /(.*?):/) {
                         my $tmp = uri_unescape($1);
-                        $tmp =~ s/_/ /g;
+                        #$tmp =~ s/_/ /g;
                         return $tmp;
                     } else {
                         my $tmp = uri_unescape($name);    
-                        $tmp =~ s/_/ /g;
+                        #$tmp =~ s/_/ /g;
                         return $tmp;
                     }
                 } else { #old fly strain info
                     $value =~ /(.*)&/ ;
                     my $tmp = uri_unescape($1);
-                    $tmp =~ s/_/ /g;
+                    #$tmp =~ s/_/ /g;
                     return $tmp;
                 }
             }
@@ -603,13 +606,13 @@ sub get_strain_row {
                         my $name = $1;
                         if ($name =~ /(.*?):/) {
                             my $tmp = uri_unescape($1);
-                            $tmp =~ s/_/ /g;
+                            #$tmp =~ s/_/ /g;
                             return $tmp;
                         }
                     } else {
                         $value =~ /(.*)&/ ;
                         my $tmp = uri_unescape($1);
-                        $tmp =~ s/_/ /g;
+                        #$tmp =~ s/_/ /g;
                         return $tmp;                        
                     }
                 }
@@ -629,7 +632,7 @@ sub get_cellline_row {
 		return $datum if $rpt_obj;
                 if ( $value =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
                     my $tmp = uri_unescape($1);
-                    $tmp =~ s/_/ /g;
+                    #$tmp =~ s/_/ /g;
                     return $tmp;
                 }
             }
@@ -639,7 +642,7 @@ sub get_cellline_row {
 		    return $datum if $rpt_obj;
                     if ( $avalue =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
                         my $tmp = uri_unescape($1);
-                        $tmp =~ s/_/ /g;
+                        #$tmp =~ s/_/ /g;
                         return $tmp;
                     }
                 }
@@ -658,7 +661,7 @@ sub get_devstage_row {
             if (lc($name) =~ /^\s*stage\s*$/ || $type->get_name() eq 'developmental_stage') {
                 if ( $value =~ /[Dd]ev[Ss]tage(Worm|Fly)?:(.*?):/ ) {
                     my $tmp = uri_unescape($2);
-                    $tmp =~ s/_/ /g;
+                    #$tmp =~ s/_/ /g;
                     return $tmp;
                 }
             }
@@ -667,11 +670,11 @@ sub get_devstage_row {
                 if (lc($aname) =~ /dev.*stage/ || lc($aheading) =~ /dev.*stage/) {
                     if ( $avalue =~ /[Dd]ev[Ss]tage(Worm|Fly)?:(.*?):/ ) {
                         my $tmp = uri_unescape($2);
-                        $tmp =~ s/_/ /g;
+                        #$tmp =~ s/_/ /g;
                         return $tmp;
                     }
 		    else {
-			$avalue =~ s/_/ /g;
+			#$avalue =~ s/_/ /g;
 			return uri_unescape($avalue);
 		    }
                 }               
@@ -690,7 +693,7 @@ sub get_tissue_row {
             if (lc($name) =~ /^\s*tissue\s*$/) {
                 if ( $value =~ /[Tt]issue:(.*?):/ ) {
                     my $tmp = uri_unescape($1);
-                    $tmp =~ s/_/ /g;
+                    #$tmp =~ s/_/ /g;
                     return $tmp;
                 }
             }
@@ -698,7 +701,7 @@ sub get_tissue_row {
                 my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
                 if (lc($aheading) =~ /^\s*tissue\s*$/) {
 		    my $tmp = uri_unescape($avalue);
-		    $tmp =~ s/_/ /g;
+		    #$tmp =~ s/_/ /g;
 		    return $tmp;
                 }
 	    }
@@ -1178,7 +1181,7 @@ sub lvl4_factor {
     }
     else {
 	if ( defined($gene) ) {
-	    $gene =~ s/_/-/g;
+	    #$gene =~ s/_/-/g;
 	    return $gene;
 	} else {
 	    return 'Nucleosome' if $p eq 'Steven Henikoff' || $p eq 'Jason Lieb';
@@ -1198,21 +1201,44 @@ sub lvl4_condition {
     my %of = $self->get_other_factors();
     my @exclude_factors = ('CellLine');
     my @c = ();
-    push @c, 'Strain_' . $strain if defined($strain);
-    push @c, 'Cell-Line_' . $cellline if defined($cellline);
-    push @c, 'Tissue_' . $tissue if defined($tissue);
-    push @c, 'Developmental-Stage_' . $devstage if defined($devstage);
+    if ( defined($strain) ) {
+	$strain =~ s/Filename_separator/Filename_separator_replacement/g;
+	push @c, 'Strain' . Tag_value_separator . $strain;
+    }
+    if ( defined($cellline) ) {
+	$cellline =~ s/Filename_separator/Filename_separator_replacement/g;
+	push @c, 'Cell-Line' . Tag_value_separator . $cellline;
+    }
+    if ( defined($tissue) ) {
+	$tissue =~ s/Filename_separator/Filename_separator_replacement/g;
+	push @c, 'Tissue' . Tag_value_separator . $tissue;
+    }
+    if ( defined($devstage) ) {
+	$devstage =~  s/Filename_separator/Filename_separator_replacement/g;
+	push  @c, 'Developmental-Stage' . Tag_value_separator . $devstage;
+    }
+    #push @c, 'Strain_' . $strain if defined($strain);
+    #push @c, 'Cell-Line_' . $cellline if defined($cellline);
+    #push @c, 'Tissue_' . $tissue if defined($tissue);
+    #push @c, 'Developmental-Stage_' . $devstage if defined($devstage);
     for my $k (sort keys %of) {
 	next if scalar grep {$k eq $_} @exclude_factors;
 	my $v = $of{$k};
-	$k =~ s/_/-/g;
-	$v =~ s/_/-/g;
-	push @c, $k . '_' . $v;
+	$k =~ s/Filename_separator/Filename_separator_replacement/g;
+	$v =~ s/Filename_separator/Filename_separator_replacement/g; 
+	#$k =~ s/_/-/g;
+	#$v =~ s/_/-/g;
+	push @c, $k . Tag_value_separator . $v;
     }
-    return join('_', @c);
+    return join(Filename_separator, @c);
 }
 
 sub lvl4_algorithm {
     
 }
 1;
+
+sub well_format {
+    my $s = shift;
+    
+}

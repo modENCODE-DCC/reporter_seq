@@ -12,6 +12,7 @@ my $spreadsheet = $ARGV[0];
 use constant P_dir => '/home/zzha/my_modENCODE';
 use constant Data_dir => 'all_data';
 use constant Slink_dir => 'symbolic_links';
+use constant Filename_separator => ';';
 my ($lvl1_dir, $lvl2_dir, $lvl3_dir, $lvl4_dir);
 open my $fh, "<", $spreadsheet;
 <$fh>; #header 
@@ -47,7 +48,7 @@ while(my $line = <$fh>) {
     my $leaf_dir = ln_dir(P_dir, Slink_dir, $lvl1_dir, $lvl2_dir, $lvl3_dir, $lvl4_dir, @bio_dir);
     $algo = "" unless defined($algo);
     $rep = "" unless defined($rep);
-    my $universal_filename = join(":", ($factor, $condition, $tech, $algo, $rep, $build, $std_id));
+    my $universal_filename = join(Filename_separator, ($factor, $condition, $tech, $algo, $rep, $build, $std_id));
     $universal_filename = format_dirname($universal_filename);
     my $ln_file = $leaf_dir . $universal_filename;
     chdir P_dir;
