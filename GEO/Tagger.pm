@@ -40,6 +40,7 @@ my %devstage               :ATTR( :get<devstage>               :default<undef>);
 my %tissue                 :ATTR( :get<tissue>                 :default<undef>);
 my %sex                    :ATTR( :get<sex>                    :default<undef>);
 my %antibody               :ATTR( :get<antibody>               :default<undef>);
+my %groups                 :ATTR( :get<groups>                 :default<undef>);
 my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
 my %level1                 :ATTR( :get<level1>                 :default<undef>);
 my %level2                 :ATTR( :get<level2>                 :default<undef>);
@@ -91,7 +92,7 @@ sub set_all {
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }
         
-    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
+    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform strain cellline devstage tissue sex antibody groups tgt_gene level1 level2 level3]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
@@ -823,21 +824,24 @@ sub get_data {
     my ($self, $type_map) = @_;
     my @files = ();
     my @file_types = ();
+    my @file_rows = ();
     my @nr = ();
     my @types = keys %{$type_map};
     for my $col (0..$num_of_cols{ident $self}) {
-        for my $ap (@{$denorm_slots{ident $self}->[$col]}) {
+	for my $row (0..$num_of_rows{ident $self}) {
+	    my $ap = $denorm_slots{ident $self}->[$col]->[$row];
             for my $datum (@{$ap->get_output_data()}) {
                 my ($value, $type) = ($datum->get_value(), $datum->get_type());
 		if ( $value ne '' && scalar(grep {$type->get_name() eq $_} @types) && !scalar(grep {$value eq $_} @nr) ) {
 		    push @file_types, $type_map->{$type->get_name()}; 
 		    push @files, $value;
+		    push @file_row, $row;
 		    push @nr, $value;
 		}
             }
         }
     }
-    return (\@files, \@file_types);
+    return (\@files, \@file_types, \@file_rows);
 }
 
 sub get_raw_data {
@@ -1236,9 +1240,22 @@ sub lvl4_condition {
 sub lvl4_algorithm {
     
 }
-1;
+
 
 sub well_format {
     my $s = shift;
     
 }
+
+
+sub _data_groups {
+    my ($groups, $rows) = @_;
+    my @data_groups;
+    for my $row (@$rows) {
+	push @data_groups, $groups->{$row};
+    }
+    return \@data_groups;
+}
+
+
+1;

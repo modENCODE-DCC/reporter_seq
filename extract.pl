@@ -75,31 +75,32 @@ my $lvl4_factor = $tagger->lvl4_factor();
 print "level4 factor is ", $lvl4_factor, "\n";
 my $lvl4_condition = $tagger->lvl4_condition();
 print "level4 condition is ", $lvl4_condition, "\n";
-my $lvl4_algorithm = '';
-my $replicatesetnum = '';
-my @tags = ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $lvl4_algorithm, $replicatesetnum);
+#my $lvl4_algorithm = '';
+#my $replicatesetnum = '';
+#my @tags = ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $lvl4_algorithm, $replicatesetnum);
+my @tags = ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition);
  
 open my $tagfh, ">", $output_file;
-print $tagfh join("\t", ('DCC id', 'Title', 'Data File', 'Data Filepath', 'Level 1 <organism>', 'Level 2 <Target>', 'Level 3 <Technique>', 'Level 4 <File Format>', 'Filename <Factor>', 'Filename <Condition>', 'Filename <Technique>', 'Filename <Algorithm>', 'Filename <ReplicateSetNum>', 'Filename <Build>', 'Filename <Modencode ID>')), "\n";
-my ($raw, $raw_type);
+print $tagfh join("\t", ('DCC id', 'Title', 'Data File', 'Data Filepath', 'Level 1 <organism>', 'Level 2 <Target>', 'Level 3 <Technique>', 'Level 4 <File Format>', 'Filename <Factor>', 'Filename <Condition>', 'Filename <Technique>', 'Filename <ReplicateSetNum>', 'Filename <Build>', 'Filename <Modencode ID>')), "\n";
+my ($raw, $raw_type, $raw_row);
 if (defined($tagger->get_seq_slot)) {
-    ($raw, $raw_type) = $tagger->get_raw_data(1);
+    ($raw, $raw_type, $raw_groups) = $tagger->get_raw_data(1);
 } else {
-    ($raw, $raw_type) = $tagger->get_raw_data();
+    ($raw, $raw_type, $raw_groups) = $tagger->get_raw_data();
 }
-print_tag_spreadsheet($tagfh, $raw, $raw_type, @tags);
-my ($im, $im_type) = $tagger->get_intermediate_data();
-print_tag_spreadsheet($tagfh, $im, $im_type, @tags);
-my ($ip, $ip_type) = $tagger->get_interprete_data();
-print_tag_spreadsheet($tagfh, $ip, $ip_type, @tags);
+my ($im, $im_type, $im_groups) = $tagger->get_intermediate_data();
+my ($ip, $ip_type, $ip_groups) = $tagger->get_interprete_data();
+print_tag_spreadsheet($tagfh, $raw, $raw_type, $raw_groups, @tags);
+print_tag_spreadsheet($tagfh, $im, $im_type, $im_groups, @tags);
+print_tag_spreadsheet($tagfh, $ip, $ip_type, $ip_groups, @tags);
 close $tagfh;
 
 sub print_tag_spreadsheet {
-    my ($tagfh, $data, $data_type, $id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $lvl4_algorithm, $replicatesetnum) = @_;
+    my ($tagfh, $data, $data_type, $data_groups, $id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition) = @_;
     for (my $i=0; $i<scalar @$data; $i++) {
 	my ($file, $dir, $suffix) = fileparse($data->[$i]);
 	my $t = $file . $suffix;
-	print $tagfh join("\t", ($id, $title, $t, $data->[$i], $lvl1, $lvl2, $lvl3, $data_type->[$i], $lvl4_factor, $lvl4_condition, $lvl3, $lvl4_algorithm, $replicatesetnum, $lvl1));
+	print $tagfh join("\t", ($id, $title, $t, $data->[$i], $lvl1, $lvl2, $lvl3, $data_type->[$i], $lvl4_factor, $lvl4_condition, $lvl3, $data_groups->[$i], $lvl1));
 	print $tagfh "\t";
 	print $tagfh, 'modENCODE', $id;
 	#printf $tagfh '%s%05s', 'MDENC', $id;
