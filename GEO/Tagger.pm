@@ -8,9 +8,9 @@ use File::Basename;
 use URI::Escape;
 use HTML::Entities;
 use ModENCODE::Parser::LWChado;
-use constant Filename_separator = ';';
-use constant Filename_separator_replacement = ' ';
-use constant Tag_value_separator = '_';
+use constant Filename_separator => ';';
+use constant Filename_separator_replacement => ' ';
+use constant Tag_value_separator => '_';
 
 my %config                 :ATTR( :name<config>                :default<undef>);
 my %unique_id              :ATTR( :name<unique_id>             :default<undef>);
@@ -98,7 +98,8 @@ sub set_all {
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }
         
-    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot strain cellline devstage tissue sex antibody groups tgt_gene level1 level2 level3]) {
+#    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot strain cellline devstage tissue sex antibody groups tgt_gene level1 level2 level3]) {
+    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
@@ -484,14 +485,15 @@ sub set_groups {
     }
 
     my $all_grp_by_seq_array;
+    my %all_grp_by_seq_array;
     if ( defined ($self->get_seq_slot()) ) {
-	my %all_grp_by_seq_array = map {$_ => 0} (0..$num_of_rows{ident $self}-1);
+	%all_grp_by_seq_array = map {$_ => 0} (0..$num_of_rows{ident $self}-1);
 	$all_grp_by_seq_array = \%all_grp_by_seq_array;
     }
     if ( defined( $self->get_hyb_slot() ) ) {
 	eval { %all_grp_by_seq_array = $self->group_applied_protocols_by_data($denorm_slots->[$self->get_hyb_slot()], 'input', 'name', '\s*array\s*')};
 	if ($@) {
-	    $all_grp_by_array = $self->group_applied_protocols_by_data($denorm_slots->[$self->get_hyb_slot()], 'input', 'name', 'adf');
+	    $all_grp_by_seq_array = $self->group_applied_protocols_by_data($denorm_slots->[$self->get_hyb_slot()], 'input', 'name', 'adf');
 	}
     }	
     my %combined_grp;
@@ -901,15 +903,15 @@ sub get_data {
     my @file_rows = ();
     my @nr = ();
     my @types = keys %{$type_map};
-    for my $col (0..$num_of_cols{ident $self}) {
-	for my $row (0..$num_of_rows{ident $self}) {
+    for my $col (0..$num_of_cols{ident $self}-1) {
+	for my $row (0..$num_of_rows{ident $self}-1) {
 	    my $ap = $denorm_slots{ident $self}->[$col]->[$row];
             for my $datum (@{$ap->get_output_data()}) {
                 my ($value, $type) = ($datum->get_value(), $datum->get_type());
 		if ( $value ne '' && scalar(grep {$type->get_name() eq $_} @types) && !scalar(grep {$value eq $_} @nr) ) {
 		    push @file_types, $type_map->{$type->get_name()}; 
 		    push @files, $value;
-		    push @file_row, $row;
+		    push @file_rows, $row;
 		    push @nr, $value;
 		}
             }
@@ -1130,10 +1132,10 @@ sub group_by_this_ap_slot {
     my $self = shift;
     my $hyb_col = $self->get_hyb_slot();
     my $seq_col = $self->get_seq_slot();
-    my $replicate_group_col = $replicate_group_ap_slot{ident $self};
-    my $source_name_col = $source_name_ap_slot{ident $self};
-    my $sample_name_col = $sample_name_ap_slot{ident $self};
-    my $extract_name_col = $extract_name_ap_slot{ident $self};
+    my $replicate_group_col = $replicate_group_slot{ident $self};
+    my $source_name_col = $source_name_slot{ident $self};
+    my $sample_name_col = $sample_name_slot{ident $self};
+    my $extract_name_col = $extract_name_slot{ident $self};
     
 }
 
@@ -1186,6 +1188,27 @@ sub get_ap_slot_by_datum_info {
 	eval { _get_datum_by_info($ap, $direction, $field, $fieldtext) };
  	return $i unless $@;
 	next if $@;
+    }
+    return undef;
+}
+
+sub get_ap_slot_by_attr_info {
+    my ($self, $direction, $field, $fieldtext) = @_;
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
+        my $ap = $denorm_slots{ident $self}->[$i]->[0];
+        if ( $direction eq 'input' ) {
+            for my $datum (@{$ap->get_input_data()}) {
+                eval { _get_attr_by_info($datum, $field, $fieldtext) };
+                return $i unless $@;
+                next if $@;
+            }
+        } else {
+            for my $datum (@{$ap->get_output_data()}) {
+                eval { _get_attr_by_info($datum, $field, $fieldtext) };
+                return $i unless $@;
+                next if $@;
+            }
+        }
     }
     return undef;
 }

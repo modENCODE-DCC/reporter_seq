@@ -82,7 +82,7 @@ my @tags = ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition);
  
 open my $tagfh, ">", $output_file;
 print $tagfh join("\t", ('DCC id', 'Title', 'Data File', 'Data Filepath', 'Level 1 <organism>', 'Level 2 <Target>', 'Level 3 <Technique>', 'Level 4 <File Format>', 'Filename <Factor>', 'Filename <Condition>', 'Filename <Technique>', 'Filename <ReplicateSetNum>', 'Filename <Build>', 'Filename <Modencode ID>')), "\n";
-my ($raw, $raw_type, $raw_row);
+my ($raw, $raw_type, $raw_groups);
 if (defined($tagger->get_seq_slot)) {
     ($raw, $raw_type, $raw_groups) = $tagger->get_raw_data(1);
 } else {
@@ -102,7 +102,7 @@ sub print_tag_spreadsheet {
 	my $t = $file . $suffix;
 	print $tagfh join("\t", ($id, $title, $t, $data->[$i], $lvl1, $lvl2, $lvl3, $data_type->[$i], $lvl4_factor, $lvl4_condition, $lvl3, $data_groups->[$i], $lvl1));
 	print $tagfh "\t";
-	print $tagfh, 'modENCODE', $id;
+	print $tagfh 'modENCODE_', $id;
 	#printf $tagfh '%s%05s', 'MDENC', $id;
 	print $tagfh "\n";
     } 
