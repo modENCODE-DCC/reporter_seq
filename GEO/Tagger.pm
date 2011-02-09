@@ -34,6 +34,11 @@ my %ip_slot                :ATTR( :get<ip_slot>                :default<undef>);
 my %raw_slot               :ATTR( :get<raw_slot>               :default<undef>);
 my %norm_slot              :ATTR( :get<norm_slot>              :default<undef>);
 my %platform               :ATTR( :get<platform>               :default<undef>);
+my %sample_name_slot       :ATTR( :get<sample_name_slot>       :default<undef>);
+my %source_name_slot       :ATTR( :get<source_name_slot>       :default<undef>);
+my %extract_name_slot      :ATTR( :get<extract_name_slot>   :default<undef>);
+my %hybridization_name_slot :ATTR( :get<hybridization_name_slot>   :default<undef>);
+my %replicate_group_slot :ATTR( :get<replicate_group_slot>    :default<undef>);
 my %strain                 :ATTR( :get<strain>                 :default<undef>);
 my %cellline               :ATTR( :get<cellline>               :default<undef>);
 my %devstage               :ATTR( :get<devstage>               :default<undef>);
@@ -41,6 +46,7 @@ my %tissue                 :ATTR( :get<tissue>                 :default<undef>);
 my %sex                    :ATTR( :get<sex>                    :default<undef>);
 my %antibody               :ATTR( :get<antibody>               :default<undef>);
 my %groups                 :ATTR( :get<groups>                 :default<undef>);
+my %dup                    :ATTR( :get<dup>                    :default<undef>);
 my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
 my %level1                 :ATTR( :get<level1>                 :default<undef>);
 my %level2                 :ATTR( :get<level2>                 :default<undef>);
@@ -92,7 +98,7 @@ sub set_all {
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }
         
-    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform strain cellline devstage tissue sex antibody groups tgt_gene level1 level2 level3]) {
+    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot strain cellline devstage tissue sex antibody groups tgt_gene level1 level2 level3]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
@@ -451,6 +457,74 @@ sub set_antibody {
         }
     }
     $antibody{ident $self} = $probable_ab if $real_ab == 0 && defined($probable_ab);
+}
+
+sub set_groups {
+    my $self = shift;
+    my $denorm_slots = $denorm_slots{ident $self};
+    my ($nr_grp, $all_grp);
+    my ($last_extraction_slot, $method) = @{$self->group_by_this_ap_slot()};
+    if ( $method eq 'protocol' ) {
+	($nr_grp, $all_grp) = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
+    } elsif ($method eq 'replicate[\s_]*group') {
+	eval { $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method) };
+	$all_grp = group_applied_protocols_by_protocol_attr($denorm_slots->[$last_extraction_slot], 'name', $method) unless defined($all_grp);
+    } elsif  ($method eq 'Source\s*Name') {
+	$all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);
+    } elsif ($method eq '[Sample|Hybridization]\s*Name'){
+	if ($last_extraction_slot == 0) {
+	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);
+	} else {
+	    $all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'output', 'heading', $method);
+	}
+    } elsif ($method eq 'Extract\s*Name') {
+	$all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'output', 'heading', $method);
+    } elsif ($method eq 'raw') {
+	$all_grp = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
+    }
+
+    my $all_grp_by_seq_array;
+    if ( defined ($self->get_seq_slot()) ) {
+	my %all_grp_by_seq_array = map {$_ => 0} (0..$num_of_rows{ident $self}-1);
+	$all_grp_by_seq_array = \%all_grp_by_seq_array;
+    }
+    if ( defined( $self->get_hyb_slot() ) ) {
+	eval { %all_grp_by_seq_array = $self->group_applied_protocols_by_data($denorm_slots->[$self->get_hyb_slot()], 'input', 'name', '\s*array\s*')};
+	if ($@) {
+	    $all_grp_by_array = $self->group_applied_protocols_by_data($denorm_slots->[$self->get_hyb_slot()], 'input', 'name', 'adf');
+	}
+    }	
+    my %combined_grp;
+    my %duplicate;
+    foreach my $row (sort {$a<=>$b} keys %$all_grp) {
+	my $extract_grp = $all_grp->{$row};
+	my $array_grp = $all_grp_by_seq_array->{$row};
+	if (exists $combined_grp{$extract_grp}{$array_grp}) {
+            my $this_extract_ap = $denorm_slots->[$last_extraction_slot]->[$row];
+            my $this_hyb_seq_ap;
+	    if (defined($self->get_hyb_slot())) {
+		$this_hyb_seq_ap = $denorm_slots->[$self->get_hyb_slot()]->[$row];
+	    } elsif (defined($self->get_seq_slot())) {
+		$this_hyb_seq_ap = $denorm_slots->[$self->get_seq_slot()]->[$row];
+	    }
+	    my $ignore = 0; #possible validator bug might cause repeats of rows in denormalized ap slots
+	    for my $that_row (@{$combined_grp{$extract_grp}{$array_grp}}) {
+                my $that_extract_ap = $denorm_slots->[$last_extraction_slot]->[$that_row];
+                my $that_hyb_seq_ap;
+		if (defined($self->get_hyb_slot())) {
+		    $that_hyb_seq_ap = $denorm_slots->[$self->get_hyb_slot()]->[$that_row];
+		} elsif (defined($self->get_seq_slot())) {
+		    $that_hyb_seq_ap = $denorm_slots->[$self->get_seq_slot()]->[$that_row];
+		}
+                $ignore = 1 and $duplicate{$row} = $that_row and print "ignored $row!\n" and last if ($this_extract_ap->equals_except_anonymous($that_extract_ap) && $this_hyb_seq_ap->equals_except_anonymous($that_hyb_seq_ap));
+	    }
+	    push @{$combined_grp{$extract_grp}{$array_grp}}, $row unless $ignore;
+	} else {
+	    $combined_grp{$extract_grp}{$array_grp} = [$row]; 
+	}
+    }
+    $groups{ident $self} = \%combined_grp;    
+    $dup{ident $self} = \%duplicate;
 }
 
 sub set_tgt_gene {
@@ -1052,6 +1126,159 @@ sub _get_value_by_info {
     return undef;
 }
 
+sub group_by_this_ap_slot {
+    my $self = shift;
+    my $hyb_col = $self->get_hyb_slot();
+    my $seq_col = $self->get_seq_slot();
+    my $replicate_group_col = $replicate_group_ap_slot{ident $self};
+    my $source_name_col = $source_name_ap_slot{ident $self};
+    my $sample_name_col = $sample_name_ap_slot{ident $self};
+    my $extract_name_col = $extract_name_ap_slot{ident $self};
+    
+}
+
+sub set_replicate_group_slot {
+    my $self = shift;
+    my $text = 'replicate[\s_]*group';
+    my $slot;
+    $slot = $self->get_ap_slot_by_attr_info('input', 'name', $text);
+    $replicate_group_slot{ident $self} = $slot if defined($slot);
+    $replicate_group_slot{ident $self} = $self->get_ap_slot_by_protocol_attr('name', $text) unless defined($slot);
+}
+
+sub get_ap_slot_by_protocol_attr {
+    my ($self, $field, $fieldtext) = @_;
+    for (my $i=0; $i<scalar(@{$denorm_slots{ident $self}}); $i++) {
+	my $ap = $denorm_slots{ident $self}->[$i]->[0];
+	for my $attr (@{$ap->get_protocol->get_attributes()}) {
+	    my $func = "get_$field";
+	    return $i if $attr->$func =~ /$fieldtext/i ;
+	}
+    }
+    return undef;
+}
+
+sub set_source_name_slot {
+    my $self = shift;
+    my @aps = $self->get_slotnum_by_datum_property('input', 0, 'heading', undef, 'Source\s*Name');
+    $source_name_slot{ident $self} = $aps[0] if scalar(@aps);
+}
+
+sub set_sample_name_slot {
+    my $self = shift;
+    my $text = 'Sample\s*Name';
+    my $slot = $self->get_ap_slot_by_datum_info('output', 'heading', $text);
+    if ( defined($slot) and $slot > 0 ) {
+	$sample_name_slot{ident $self} = $slot;
+    } else {
+	my $text = '[Sample|Hybridization]\s*Name';
+	my $islot = $self->get_ap_slot_by_datum_info('input', 'heading', $text);
+	if ( defined($islot) and $islot == 0 ) {
+	    $sample_name_slot{ident $self} = $islot;
+	}
+    }
+}
+
+sub get_ap_slot_by_datum_info {
+    my ($self, $direction, $field, $fieldtext) = @_;
+    for (my $i=0; $i<scalar @{$denorm_slots{ident $self}}; $i++) {
+	my $ap = $denorm_slots{ident $self}->[$i]->[0];
+	eval { _get_datum_by_info($ap, $direction, $field, $fieldtext) };
+ 	return $i unless $@;
+	next if $@;
+    }
+    return undef;
+}
+
+sub set_extract_name_slot {
+    my $self = shift;
+    my @aps = $self->get_slotnum_by_datum_property('output', 0, 'heading', undef, 'Extract\s*Name');
+    $extract_name_slot{ident $self} = $aps[0] if scalar(@aps);
+}
+
+sub set_hybridization_name_slot {
+    my $self = shift;
+    my @aps = $self->get_slotnum_by_datum_property('input', 0, 'heading', undef, 'Hybridization\s*Name');
+    $hybridization_name_slot{ident $self} = $aps[0] if scalar(@aps);
+}
+
+sub group_applied_protocols {
+    my ($self, $ap_slot, $rtn) = @_; #these applied protocols are simple obj from AppliedProtocol.pm
+    return _group($ap_slot, $rtn);
+}
+
+sub group_applied_protocols_by_data {
+    my ($self, $ap_slot, $direction, $field, $fieldtext, $rtn) = @_;
+    my $data = _get_data_by_info($ap_slot, $direction, $field, $fieldtext);
+    return _group($data, $rtn);
+}
+
+sub group_applied_protocols_by_protocol_attr {
+    my ($self, $ap_slot, $field, $fieldtext, $rtn) = @_;
+    my @attrs;
+    my $get_func = "get_$field";
+    for my $ap (@$ap_slot) {
+	for my $attr (@{$ap->get_protocol->get_attributes}) {
+	    push @attrs, $attr if $attr->$get_func() =~ /$fieldtext/;
+	}
+    }
+    croak("can not get applied protocol that has PROTOCOL attribute with field $field equals to fieldtext $fieldtext") unless scalar @attrs;
+    return _group(\@attrs, $rtn);
+}
+
+sub group_applied_protocols_by_attr {
+    my ($self, $ap_slot, $field, $fieldtext, $rtn) = @_;
+    my @attrs;
+    my $get_func = "get_$field";
+    for my $ap (@$ap_slot) {
+        for my $datum (@{$ap->get_input_data}) {
+	    for my $attr (@{$datum->get_attributes()}) {
+		push @attrs, $attr if $attr->$get_func() =~ /$fieldtext/;
+            }
+        }
+	for my $datum (@{$ap->get_output_data}) {
+            for my $attr (@{$datum->get_attributes()}) {
+                push @attrs, $attr if $attr->$get_func() =~ /$fieldtext/;
+            }
+        }
+    }
+    croak("can not get applied protocol that has attribute with field $field equals to fieldtext $fieldtext") unless scalar @attrs;
+    return _group(\@attrs, $rtn);
+}
+
+sub _group {
+    my ($alist, $rtn) = @_;
+    my $x = $alist->[0];
+
+    my @nr = (0);
+    my %grp = ();
+    for (my $i=0; $i<scalar(@$alist); $i++) {
+	my $o = $alist->[$i];
+	my $found = 0;
+	for (my $j=0; $j<scalar(@nr); $j++) {
+	    my $nro = $alist->[$nr[$j]];
+	    if (ref($o)) {
+		if ($o->equals($nro)) {
+		    $grp{$i} = $j;
+		    $found = 1;
+		    last;
+		}
+	    } else {
+		if ($o == $nro) {
+		    $grp{$i} = $j;
+		    $found = 1;
+		    last;		    
+		}
+	    }
+	}
+	if (! $found) {
+	    push @nr, $i;
+	    $grp{$i} = $#nr; 
+	}		
+    }
+    return (\@nr, \%grp) if $rtn;
+    return \%grp;    
+}
 ################################################################################################
 # end of helper functions for extracting information from denorm_slots.                        # 
 ################################################################################################
