@@ -34,7 +34,10 @@ http://www.modencode.org/Lai.shtml
 
 11. Dr. Brian Oliver lead his group working on cross-species validation of function of Drosophila transcriptome using comparative genomics method.  a brief description of their research goal can be found at: http://www.modencode.org/Oliver.shtml
 
-cutting edge techniques are used by each individual group when they see best fit. At the very beginning of the project, most groups plan to use tiling array except for the group of Dr. Michael Snyder on worm transcriptional factor analysis using ChIp-seq. As time goes by, and mature of high thoroughput sequencing technology, quite a few projects switched to this new technology. Other tech, such as CAGE, RACE, CGH are also used and combined with either tiling array or sequencing. In a specific experiment, a technique used is called a protocol. DCC keeps a detailed description of every protocol for each experiment. a portal to these protocols could be: http://www.modencode.org/Protocols.shtml
+Techniques used in modENCODE projects
+cutting edge techniques are used by each individual group when they see best fit. At the very beginning of the project, most groups plan to use tiling array except for the group of Dr. Michael Snyder on worm transcriptional factor analysis using ChIp-seq. As time goes by, with mature of high thoroughput sequencing technology, quite a few projects switched to this new technology. 
+For transcriptome analysis, including studies on small-rna, rna-tiling array or rna-seq methods was most commonly used. For analysis of transcriptional factors, genome proteins (including histone modifications, insulators, nucleosome, histone variants, chromosome modification enzymes, other chromsome-binding proteins), replication complex, etc., ChIP-chip or ChIP-seq was most commonly used. Other tech, such as CAGE, RACE, CGH are also used and combined with either tiling array or sequencing. 
+In a specific experiment, a technique used is called a protocol. DCC keeps a detailed description of every protocol for each experiment using a wiki page. a portal to these protocols could be: http://www.modencode.org/Protocols.shtml
 you also could search the technique name at modMine by typing in the search box.
 
 below is a list of technique used (as in examples):
@@ -44,15 +47,23 @@ CAGE (Cap Analysis gene expression) is a technology commonly used to detect comp
 
 CGH or CNV-seq as in submission 3277,
 http://intermine.modencode.org/release-21/objectDetails.do?id=935000110
-Comparative Genome Hybridization is a typical method to study copy number variation in 
-
+Comparative Genome Hybridization is a typical method to study copy number variation in genome. tiling array-based CGH analysis and CNV-seq further increased resolution.
 
 ChIP-chip as in submission 2585,
 http://intermine.modencode.org/release-21/objectDetails.do?id=938000321
-
 ChIP-seq as in submission 2429,
 http://intermine.modencode.org/release-21/objectDetails.do?id=937000029
+Chromatin Immunoprecipitation (ChIP) is commonly used for chromosome-protein-binding profile analysis. Generally, in ChIP protocol, an antibody to interested protein was used to pull down chromatin fragment that the protein binds on. Then either array (chip) or sequencing (seq) is used to detect the bases and the genomic locations of the dna fragments.
 
+RACE as in submission 2327,
+http://intermine.modencode.org/release-21/objectDetails.do?id=974032108
+RACE (Rapid Amplification of cDNA Ends) is used to detect 5-prime end and 3-prime end.
+
+rna-tiling-array as in submission 40,
+http://intermine.modencode.org/release-21/objectDetails.do?id=941007106
+In this case, total rna were extracted and cdna library was built before hybridized to a tiling array.
+dna-tiling-array as in submission 668,
+http://intermine.modencode.org/release-21/objectDetails.do?id=935000118
 
  
 Processed File Formats
