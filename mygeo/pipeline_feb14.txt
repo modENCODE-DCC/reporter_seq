@@ -1,0 +1,150 @@
+34  race validation 
+214 gene model rt-pcr 
+215 gene model rt-pcr
+339 gene model rt-pcr
+340 gene model rt-pcr
+445 intron identification by rt-pcr, in TraceArchive
+446 intron identification by rt-pcr
+447 intron identification by rt-pcr
+448 intron identification by rt-pcr
+515 race validation
+555 sample creation
+559 sample creation
+560 sample creation
+574 sample creation
+577 sample creation
+585 Snyder_PHA4_GFP_FedL1, not done yet, need transform alignment to fastq
+587 Snyder_PHA4_POLII_FedL1, not done yet, neet transform alignment to fastq
+594 Snyder_MAB5_POLII_L3, done
+771 GSM386032 GSM386033 GSM386034 GSM386035 GSM386036 GSM386037 GSM386038 GSM386039 GSM386040
+900 GSM442425 GSM442426 GSM442427 GSM442428 GSM442429 GSM442430 GSM442431 GSM442432 GSM442433
+904 GSM442398 GSM442399 GSM442400 GSM442401 GSM442402 GSM442403 GSM442404 GSM442405 GSM442406
+1040 race+454seq, already in SRA
+1041 race+454seq, already in SRA
+1042 race+454seq, already in SRA
+1043 race+454seq, already in SRA
+1044 race+454seq, already in SRA
+2270 gene model rt-pcr
+2304 intron identification by rt-pcr, in TraceArchive
+2403 sample creation
+2429 Snyder_LIN-11_GFP_L2, done
+2430 Snyder_UNC-130_GFP_L1, done
+2431 Snyder_HLH-1_GFP_emb, done
+2432 Snyder_LIN-39_GFP_L3, done
+2435 Snyder_N2_POLII_eemb, done
+2436 Snyder_N2_POLII_lemb, done
+2437 Snyder_N2_POLII_L1, done
+2438 Snyder_N2_POLII_L2, done
+2439 Snyder_N2_POLII_L3, done
+2440 Snyder_N2_POLII_L4, done
+2441 Snyder_N2_POLII_YA, done
+2451 Snyder_GEI11_GFP_L4, done
+2501 sample creation
+2539 sample creation
+2540 sample creation
+2557 mass-spec, in Peptidome
+2585 GSE26219 (temporary)
+2597 Snyder_HLH-8_POLII_L3, done
+2598 Snyder_PHA4_GFP_lemb, done
+2600 Snyder_MEP-1_GFP_emb, done
+2601 Snyder_MDL-1_GFP_L1, done
+2602 GSE26220 (temporary)
+2603 GSE26221 (temporary)
+2610 Snyder_LIN-15B_GFP_L3, done
+2612 Snyder_BLMP-1_GFP_L1, done
+2613 Snyder_LIN-13_GFP_emb, done
+2614 Snyder_ELT-3_GFP_L1, done
+2620 Snyder_CEH-30_GFP_lemb, done
+2621 Snyder_EGL-27_GFP_L1, done
+2622 Snyder_SKN-1_GFP_L1, done
+2623 Snyder_PQM-1_GFP_L3, done
+2647 Computational annotation
+2675 Computational annotation
+2718 intron identification by rt-pcr
+2720 SL Acceptor Site Confirmation by race
+2850 Computational annotation
+2851 Computational annotation
+2852 Computational annotation
+2853 Computational annotation
+2854 Computational annotation
+2855 Computational annotation
+2856 Computational annotation
+2857 Computational annotation
+2858 Computational annotation
+2859 Computational annotation
+2860 Computational annotation
+2861 Computational annotation
+2862 Computational annotation
+2863 Computational annotation, data from RNA-seq, mRNA/EST, RTPCR, mass-spec, polyA sites, and SLs, not sure good for GEO, will ask
+2929 race to histogram of TSS, high level analysis, not good for GEO
+2958 genelets creation, not good for GEO
+2967 gene model creation, not good for GEO
+2969 
+2979 
+2986 
+2987 
+2988 
+2991 
+2994 
+2996 
+2998 
+2999 
+3000 
+3002 
+3003 
+3004 
+3007 
+3011 
+3013 
+3014 
+3017 
+3019 
+3020 
+3026 
+3027 
+3029 
+3030 
+3031 
+3032 
+3033 
+3035 
+3036 
+3037 
+3038 
+3039 
+3040 
+3041 
+3042 
+3043 
+3044 
+3048 
+3049 
+3052 
+3054 
+3057 
+3060 
+3061 
+3062 
+3151 
+3155 
+3156 
+3157 
+3158 
+3159 
+3196 
+3201 
+3204 
+3207 
+3247 
+3251 
+3253 
+3275 
+3277 
+3278 
+3305 
+3312 
+3316 
+3320 
+3330 
+3361 
+3389 
