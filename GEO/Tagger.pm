@@ -38,7 +38,8 @@ my %sample_name_slot       :ATTR( :get<sample_name_slot>       :default<undef>);
 my %source_name_slot       :ATTR( :get<source_name_slot>       :default<undef>);
 my %extract_name_slot      :ATTR( :get<extract_name_slot>   :default<undef>);
 my %hybridization_name_slot :ATTR( :get<hybridization_name_slot>   :default<undef>);
-my %replicate_group_slot :ATTR( :get<replicate_group_slot>    :default<undef>);
+my %replicate_group_slot   :ATTR( :get<replicate_group_slot>    :default<undef>);
+my %last_extraction_slot   :ATTR( :get<last_extraction_slot>   :deafult<undef>);
 my %strain                 :ATTR( :get<strain>                 :default<undef>);
 my %cellline               :ATTR( :get<cellline>               :default<undef>);
 my %devstage               :ATTR( :get<devstage>               :default<undef>);
@@ -98,8 +99,8 @@ sub set_all {
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }
         
-#    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot strain cellline devstage tissue sex antibody groups tgt_gene level1 level2 level3]) {
-    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
+    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot last_extraction_slot strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
+#    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot last_extraction_slot strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
@@ -658,39 +659,42 @@ sub get_strain_row {
             if (lc($name) =~ /^\s*strain\s*$/ || $type->get_name() eq 'strain_or_line') {
 		return $datum if $rpt_obj;
                 if ($value =~ /[Fly|Worm]?[Ss]train:(.*)&/) {
+		    return $value;
                     my $name = $1;
                     if ($name =~ /(.*?):/) {
                         my $tmp = uri_unescape($1);
                         #$tmp =~ s/_/ /g;
-                        return $tmp;
+                        #return $tmp;
                     } else {
                         my $tmp = uri_unescape($name);    
                         #$tmp =~ s/_/ /g;
-                        return $tmp;
+                        #return $tmp;
                     }
                 } else { #old fly strain info
+		    return $value;
                     $value =~ /(.*)&/ ;
                     my $tmp = uri_unescape($1);
                     #$tmp =~ s/_/ /g;
-                    return $tmp;
+                    #return $tmp;
                 }
             }
             for my $attr (@{$datum->get_attributes()}) {
                 my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
                 if (lc($aname) =~ /^\s*strain\s*$/ || lc($aheading) =~ /^\s*strain\s*$/) {
 		    return $datum if $rpt_obj;
+		    return $avalue;
                     if ( $avalue =~ /[Ss]train:(.*)&/ ) {
                         my $name = $1;
                         if ($name =~ /(.*?):/) {
                             my $tmp = uri_unescape($1);
                             #$tmp =~ s/_/ /g;
-                            return $tmp;
+                            #return $tmp;
                         }
                     } else {
                         $value =~ /(.*)&/ ;
                         my $tmp = uri_unescape($1);
                         #$tmp =~ s/_/ /g;
-                        return $tmp;                        
+                        #return $tmp;                        
                     }
                 }
             }
@@ -707,20 +711,22 @@ sub get_cellline_row {
             my ($name, $heading, $value, $type) = ($datum->get_name(), $datum->get_heading(), $datum->get_value(), $datum->get_type());
             if (lc($name) =~ /^\s*cell[_\s]*line\s*$/ || $type->get_name() eq 'cell_line') {
 		return $datum if $rpt_obj;
-                if ( $value =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
+		return $value;
+		if ( $value =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
                     my $tmp = uri_unescape($1);
                     #$tmp =~ s/_/ /g;
-                    return $tmp;
+                    #return $tmp;
                 }
             }
             for my $attr (@{$datum->get_attributes()}) {
                 my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
                 if (lc($aname) =~ /^cell[_\s]*line/ || lc($aheading) =~ /^cell[_\s]*line/) {
 		    return $datum if $rpt_obj;
+		    return $avalue;
                     if ( $avalue =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
                         my $tmp = uri_unescape($1);
                         #$tmp =~ s/_/ /g;
-                        return $tmp;
+                        #return $tmp;
                     }
                 }
             }
@@ -739,7 +745,8 @@ sub get_devstage_row {
                 if ( $value =~ /[Dd]ev[Ss]tage(Worm|Fly)?:(.*?):/ ) {
                     my $tmp = uri_unescape($2);
                     #$tmp =~ s/_/ /g;
-                    return $tmp;
+                    #return $tmp;
+		    return uri_unescape($value);
                 }
             }
             for my $attr (@{$datum->get_attributes()}) {
@@ -748,8 +755,9 @@ sub get_devstage_row {
                     if ( $avalue =~ /[Dd]ev[Ss]tage(Worm|Fly)?:(.*?):/ ) {
                         my $tmp = uri_unescape($2);
                         #$tmp =~ s/_/ /g;
-                        return $tmp;
-                    }
+                        #return $tmp;
+			return uri_unescape($avalue);
+                   }
 		    else {
 			#$avalue =~ s/_/ /g;
 			return uri_unescape($avalue);
@@ -768,10 +776,11 @@ sub get_tissue_row {
         for my $datum (@{$ap->get_input_data()}) {
             my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
             if (lc($name) =~ /^\s*tissue\s*$/) {
+		return $value;
                 if ( $value =~ /[Tt]issue:(.*?):/ ) {
                     my $tmp = uri_unescape($1);
                     #$tmp =~ s/_/ /g;
-                    return $tmp;
+                    #return $tmp;
                 }
             }
             for my $attr (@{$datum->get_attributes()}) {
@@ -840,8 +849,9 @@ sub is_antibody {
 
 sub antibody_to_string {
     my $ab = shift;
-    my @t = grep {$_->get_heading() eq 'target name'} @{$ab->get_attributes()};
-    return $t[0]->get_value();
+    return $ab->get_value();
+    #my @t = grep {$_->get_heading() eq 'target name'} @{$ab->get_attributes()};
+    #return $t[0]->get_value();
 }
 
 sub get_platform_row {
@@ -1302,6 +1312,116 @@ sub _group {
     return (\@nr, \%grp) if $rtn;
     return \%grp;    
 }
+
+sub set_last_extraction_slot {
+    my $self = shift;
+    $last_extraction_slot{ident $self} = $self->get_slotnum_extract('group');
+}
+
+sub get_slotnum_extract {
+    my ($self, $option) = @_;
+    my $type = "extract";
+    my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
+    if (scalar(@aps) > 1) {
+        if ($option eq 'group') { #report this one to group rows in SDRF to GEO samples=extraction+array
+            return $self->check_complexity(\@aps);
+        } elsif ($option eq 'protocol') { #report this one to write out all extraction protocols and in between
+            if (defined($extract_name_slot{ident $self}) and $extract_name_slot{ident $self} != -1) {
+                return $aps[0] > $extract_name_slot{ident $self} ? $extract_name_slot{ident $self} : $aps[0] ;
+            } else {
+                return $aps[0];
+            }
+        }
+    } elsif (scalar(@aps) == 0) { #oops, we have no protocol with protocol type equals regex to 'extract'
+        my $type = "purify";
+        my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
+        if (scalar(@aps) > 1) {
+            if ($option eq 'group') {
+                return $self->check_complexity(\@aps);
+            } elsif ($option eq 'protocol') {#tricky SDRF error could cause extract name ap slot < real extraction protocol defined by protocol type
+                return $aps[0];
+            }
+        }
+        elsif (scalar(@aps) == 0) { #oops, we have no protocol with protocol type equals regex to 'purify'
+            my $type = 'biosample_preparation_protocol';
+            my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
+            if (scalar(@aps) > 1) {
+                if ($option eq 'group') {
+                    return $self->check_complexity(\@aps);
+                } elsif ($option eq 'protocol') {
+                    return $aps[0];
+                }
+            } elsif (scalar(@aps) == 0) {#oops, we have no protocol with protocol type equals regex to 'biosample_preparation_protocol'
+                my $type = 'organism_purification_protocol';
+                my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
+                if (scalar(@aps) > 1) {
+                    if ($option eq 'group') {
+                        return $self->check_complexity(\@aps);
+                    } elsif ($option eq 'protocol') {
+                        return $aps[0];
+                    }
+                }
+                elsif (scalar(@aps) == 1) {
+                    return $aps[0];
+                }
+                else {
+                    my @itypes = ('whole_organism', 'multi-cellular organism', 'organism_part', 'DNA', 'genomic_DNA');
+                    my @iaps;
+                    for my $type (@itypes) {
+                        my @xaps = $self->get_slotnum_by_datum_property('input', 0, 'type', undef, $type);
+                        @iaps = merge_two_lists(\@iaps, \@xaps);
+                    }
+                    my @otypes = ('DNA', 'genomic_DNA', 'chromatin', 'mRNA', '\s*RNA');
+                    my @oaps;
+                    for my $type (@otypes) {
+                        my @xaps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
+                        @oaps = merge_two_lists(\@oaps, \@xaps);
+                    }
+                    my @aps = union_two_lists(\@iaps, \@oaps);
+                    if (scalar(@aps) > 1) {
+                        if ($option eq 'group') {
+                            return $self->check_complexity(\@aps);
+                        } elsif ($option eq 'protocol') {
+                            return $aps[0];
+                        }
+                    } elsif (scalar(@aps) == 1) {
+                        return $aps[0];
+                    } else {
+                        croak("Every experiment must have at least one extraction protocol. Maybe you omitted this protocol in SDRF?");
+                    }
+                }
+            } else {#found 'biosample_preparation_protocol'
+                return $aps[0];
+            }
+        } 
+        else {#found 'purify'
+            return $aps[0];
+        }
+    } else {#found 'extract'
+        return $aps[0];
+    }
+}
+
+sub check_complexity {
+    my ($self, $slots) = @_;
+    my $xap_slots = $normalized_slots{ident $self};
+    my $slot = $slots->[0];
+    my $num_norm_ap = scalar @{$xap_slots->[$slot]};
+    for my $aslot (@$slots) {
+        my $this_num_norm_ap = scalar @{$xap_slots->[$aslot]};
+        if ( $this_num_norm_ap > $num_norm_ap) {
+            $num_norm_ap = $this_num_norm_ap;
+            $slot = $aslot;
+        } elsif ($this_num_norm_ap == $num_norm_ap) {
+            if ($aslot > $slot) {
+                $num_norm_ap = $this_num_norm_ap;
+                $slot = $aslot;
+            }
+        }
+    }
+    return $slot;
+}
+
 ################################################################################################
 # end of helper functions for extracting information from denorm_slots.                        # 
 ################################################################################################
