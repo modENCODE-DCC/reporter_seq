@@ -79,7 +79,7 @@
 2929 race to histogram of TSS, high level analysis, not good for GEO
 2958 genelets creation, not good for GEO
 2967 gene model creation, not good for GEO
-2969 
+2969 see feb14 datasets, same as of following 
 2979 
 2986 
 2987 
@@ -126,25 +126,25 @@
 3061 
 3062 
 3151 
-3155 
-3156 
-3157 
-3158 
-3159 
+#3155 Michael Snyder Identification of Transcription Factor EOR-1::GFP Binding Regions in L3  GSE17456 GSM435300 GSM435301 GSM435302 GSM435303
+#3156 Michael Snyder Identification of Transcription Factor ALR-1::GFP Binding Regions in L2
+#3157 Michael Snyder Identification of Transcription Factor PES-1::GFP Binding Regions in L4
+#3158 Michael Snyder Identification of Transcription Factor PHA-4::GFP Binding Regions in L2
+#3159 Michael Snyder Identification of Transcription Factor EGL-5::GFP Binding Regions in L3
 3196 
 3201 
 3204 
-3207 
+#3207 sample preparation 
 3247 
 3251 
 3253 
-3275 
-3277 
-3278 
-3305 
-3312 
-3316 
+#3275 cdna slip sequencing, in trace archive 
+#3277 macalpine, done
+#3278 macalpine, done
+#3305 high level analysis
+#3312 tss annotation
+#3316 sample preparation
 3320 
-3330 
+#3330 peak ranger calls 
 3361 
 3389 
