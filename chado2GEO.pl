@@ -36,7 +36,7 @@ my $make_tarball = 0;
 my $use_existent_tarball = 0;
 my $send_to_geo = 0;
 my $long_protocol_text = 0;
-my $split_seq_group = 1; #splicate the pair of one manipulation-control biological replicate into 2 gsm records
+my $split_seq_group = 1; # do we need to splicate the pair of one manipulation-control biological replicate into 2 gsm records
 my $split_arr_group = 0; #split array replicates
 my $seq_exp = 0; #default is array experiment
 my $option = GetOptions ("unique_id=s"     => \$unique_id,
@@ -202,22 +202,27 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
 	    #replace / with _ , use it to match the filenames in downloaded tarball
 	    $datafile =~ s/\//_/g;	
 	    my $chars = 0 - length($datafile);
+	    print $chars, "\n";
 	    my $filename_in_tarball;
 	    for my $filename (@pipeline_filenames) {
 		# the filenames in pipeline provided tarball are of pattern extracted_maindirectory_subdirectory_datafilename(_compression_suffix),
 		# the filenames in chado are of pattern subdirectory_datafilenames(_compression_suffix) 
+		print $filename, "\n";
 		$filename_in_tarball = $filename and last if substr($filename, $chars) eq $datafile;
 	    }
 	    print $filename_in_tarball, " in pipeline\n";
-	    $filename_in_tarball =~ s/\(/\\\(/;
-	    $filename_in_tarball =~ s/\)/\\\)/;
+	    $filename_in_tarball =~ s/\(/\\\(/g;
+	    $filename_in_tarball =~ s/\)/\\\)/g;
+	    #1 while ($filename_in_tarball =~ s/\(/\\\(/g);
+	    #1 while ($filename_in_tarball =~ s/\)/\\\)/g);
+	    print $filename_in_tarball, " tar commandline filename\n";
 	    system("tar xzf $pipeline_tarball $filename_in_tarball") == 0 || die "can not extract a datafile $filename_in_tarball from download tarball $pipeline_tarball";
 	    #if it is compressed ......right now only allows one level of compression
 	    #if it is multiple levels of compression, GEO will still get compressed files in tarball, they will complain and we will fix.
 	    my $zipsuffix = iszip($filename_in_tarball);
 	    print $zipsuffix, " zip suffix\n";
-	    $myfile =~ s/\(/\\\(/;
-	    $myfile =~ s/\)/\\\)/;
+	    $myfile =~ s/\(/\\\(/g;
+	    $myfile =~ s/\)/\\\)/g;
 	    if ($zipsuffix) {
 		#unzip and remove the original compressed file
 		#my $filename_no_zip = do_unzip($filename_in_tarball, $zipsuffix);
