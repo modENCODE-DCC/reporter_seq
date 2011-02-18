@@ -1453,6 +1453,17 @@ sub union_two_lists {
     return @c;
 }
 
+sub _get_attr_by_info {
+    my ($obj, $field, $fieldtext) = @_;
+    my @attributes = ();
+    my $func = "get_$field";
+    for my $attr (@{$obj->get_attributes()}) {
+        push @attributes, $attr if $attr->$func() =~ /$fieldtext/i;
+    }
+    croak("can not find attribute with field $field like $fieldtext.") unless (scalar @attributes);
+    return \@attributes;
+}
+
 ################################################################################################
 # end of helper functions for extracting information from denorm_slots.                        # 
 ################################################################################################
