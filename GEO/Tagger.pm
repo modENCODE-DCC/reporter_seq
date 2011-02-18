@@ -1365,13 +1365,13 @@ sub get_slotnum_extract {
                     return $aps[0];
                 }
                 else {
-                    my @itypes = ('whole_organism', 'multi-cellular organism', 'organism_part', 'DNA', 'genomic_DNA');
+                    my @itypes = ('whole_organism', 'multi-cellular organism', 'organism_part', 'DNA', 'genomic_DNA'); #input type of a protocol
                     my @iaps;
                     for my $type (@itypes) {
                         my @xaps = $self->get_slotnum_by_datum_property('input', 0, 'type', undef, $type);
                         @iaps = merge_two_lists(\@iaps, \@xaps);
                     }
-                    my @otypes = ('DNA', 'genomic_DNA', 'chromatin', 'mRNA', '\s*RNA');
+                    my @otypes = ('DNA', 'genomic_DNA', 'chromatin', 'mRNA', '\s*RNA'); #output type of a protocol
                     my @oaps;
                     for my $type (@otypes) {
                         my @xaps = $self->get_slotnum_by_datum_property('output', 0, 'type', undef, $type);
@@ -1387,6 +1387,7 @@ sub get_slotnum_extract {
                     } elsif (scalar(@aps) == 1) {
                         return $aps[0];
                     } else {
+			# I paniced, obviously no protocol with type like extract.
                         croak("Every experiment must have at least one extraction protocol. Maybe you omitted this protocol in SDRF?");
                     }
                 }
@@ -1420,6 +1421,36 @@ sub check_complexity {
         }
     }
     return $slot;
+}
+
+
+sub merge_two_lists {#stupid one
+    my ($a, $b) = @_;
+    my @c;
+    for my $y (@$b) {
+        push @c, $y;
+    }
+    for my $x (@$a) {
+        my $in = 0;
+        for my $z (@c) {
+            $in = 1 and last if $x == $z;
+        }
+        push @c, $x unless $in;
+    }
+    sort @c;
+    return @c;
+}
+
+sub union_two_lists {
+    my ($a, $b) = @_;
+    my @c;
+    for my $x (@$a) {
+        for my $y (@$b) {
+            push @c, $x if $x == $y;
+        }
+    }
+    sort @c;
+    return @c;
 }
 
 ################################################################################################
