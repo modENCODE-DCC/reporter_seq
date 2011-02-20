@@ -1488,6 +1488,36 @@ sub _get_attr_by_info {
     return \@attributes;
 }
 
+sub _get_data_by_info {
+    my ($aps, $direction, $field, $fieldtext) = @_;
+    my @data = ();
+    for my $ap (@$aps) {
+        push @data, @{_get_datum_by_info($ap, $direction, $field, $fieldtext)};
+    }
+    croak("can not find data with field $field and fieldtext $fieldtext") unless scalar @data;
+    return \@data;
+}
+
+sub _get_datum_by_info { 
+    my ($ap, $direction, $field, $fieldtext) = @_;
+    my @data = ();
+
+    if ($direction eq 'input') {
+        for my $datum (@{$ap->get_input_data()}) {
+            if ($field eq 'name') {push @data, $datum if $datum->get_name() =~ /$fieldtext/i;}
+            if ($field eq 'heading') {push @data, $datum if $datum->get_heading() =~ /$fieldtext/i;}        
+        }
+    }
+    if ($direction eq 'output') {
+        for my $datum (@{$ap->get_output_data()}) {
+            if ($field eq 'name') {push @data, $datum if $datum->get_name() =~ /$fieldtext/i;}
+            if ($field eq 'heading') {push @data, $datum if $datum->get_heading() =~ /$fieldtext/i;}
+        }
+    }
+    croak("can not find data that has fieldtext like $fieldtext in field $field in chado.data table") unless (scalar @data);
+    return \@data;
+}
+
 ################################################################################################
 # end of helper functions for extracting information from denorm_slots.                        # 
 ################################################################################################
