@@ -470,7 +470,7 @@ sub set_groups {
 	($nr_grp, $all_grp) = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
     } elsif ($method eq 'replicate[\s_]*group') {
 	eval { $all_grp = $self->group_applied_protocols_by_attr($denorm_slots->[$last_extraction_slot], 'name', $method) };
-	$all_grp = group_applied_protocols_by_protocol_attr($denorm_slots->[$last_extraction_slot], 'name', $method) unless defined($all_grp);
+	$all_grp = $self->group_applied_protocols_by_protocol_attr($denorm_slots->[$last_extraction_slot], 'name', $method) unless defined($all_grp);
     } elsif  ($method eq 'Source\s*Name') {
 	$all_grp = $self->group_applied_protocols_by_data($denorm_slots->[$last_extraction_slot], 'input', 'heading', $method);
     } elsif ($method eq '[Sample|Hybridization]\s*Name'){
