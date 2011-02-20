@@ -912,7 +912,7 @@ sub get_data {
     my $all_grps = $self->get_groups();
     my @files = ();
     my @file_types = ();
-    my @file_rows = ();
+    #my @file_rows = ();
     my @grps = ();
     my @nr = ();
     my @types = keys %{$type_map};
@@ -925,14 +925,14 @@ sub get_data {
 		if ( $value ne '' && scalar(grep {$type->get_name() eq $_} @types) && !scalar(grep {$value eq $_} @nr) ) {
 		    push @file_types, $type_map->{$type->get_name()}; 
 		    push @files, $value;
-		    push @file_rows, $row;
+		    #push @file_rows, $row;
 		    push @grps, $grp;
 		    push @nr, $value;
 		}
             }
         }
     }
-    return (\@files, \@file_types, \@file_rows, \@grps);
+    return (\@files, \@file_types, \@grps);
 }
 
 sub get_raw_data {

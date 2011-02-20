@@ -82,25 +82,27 @@ my @tags = ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition);
  
 open my $tagfh, ">", $output_file;
 print $tagfh join("\t", ('DCC id', 'Title', 'Data File', 'Data Filepath', 'Level 1 <organism>', 'Level 2 <Target>', 'Level 3 <Technique>', 'Level 4 <File Format>', 'Filename <Factor>', 'Filename <Condition>', 'Filename <Technique>', 'Filename <ReplicateSetNum>', 'Filename <Build>', 'Filename <Modencode ID>')), "\n";
-my ($raw, $raw_type, $raw_groups);
+my ($raw, $raw_type, $raw_row, $raw_group);
 if (defined($tagger->get_seq_slot)) {
-    ($raw, $raw_type, $raw_groups) = $tagger->get_raw_data(1);
+    ($raw, $raw_type, $raw_group) = $tagger->get_raw_data(1);
 } else {
-    ($raw, $raw_type, $raw_groups) = $tagger->get_raw_data();
+    ($raw, $raw_type, $raw_group) = $tagger->get_raw_data();
 }
-my ($im, $im_type, $im_groups) = $tagger->get_intermediate_data();
-my ($ip, $ip_type, $ip_groups) = $tagger->get_interprete_data();
-print_tag_spreadsheet($tagfh, $raw, $raw_type, $raw_groups, @tags);
-print_tag_spreadsheet($tagfh, $im, $im_type, $im_groups, @tags);
-print_tag_spreadsheet($tagfh, $ip, $ip_type, $ip_groups, @tags);
+my ($im, $im_type, $im_group) = $tagger->get_intermediate_data();
+my ($ip, $ip_type, $ip_group) = $tagger->get_interprete_data();
+print_tag_spreadsheet(@tags, $tagfh, $raw, $raw_type, $raw_group);
+print_tag_spreadsheet(@tags, $tagfh, $im, $im_type, $im_group);
+print_tag_spreadsheet(@tags, $tagfh, $ip, $ip_type);
 close $tagfh;
 
 sub print_tag_spreadsheet {
     my ($tagfh, $data, $data_type, $data_groups, $id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition) = @_;
+    my ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $tagfh, $data, $data_type, $data_groups);
     for (my $i=0; $i<scalar @$data; $i++) {
 	my ($file, $dir, $suffix) = fileparse($data->[$i]);
 	my $t = $file . $suffix;
-	print $tagfh join("\t", ($id, $title, $t, $data->[$i], $lvl1, $lvl2, $lvl3, $data_type->[$i], $lvl4_factor, $lvl4_condition, $lvl3, $data_groups->[$i], $lvl1));
+	my $u = defined($data_groups) ? $data_groups->[$i] : 'all';
+	print $tagfh join("\t", ($id, $title, $t, $data->[$i], $lvl1, $lvl2, $lvl3, $data_type->[$i], $lvl4_factor, $lvl4_condition, $lvl3, $u, $lvl1));
 	print $tagfh "\t";
 	print $tagfh 'modENCODE_', $id;
 	#printf $tagfh '%s%05s', 'MDENC', $id;
