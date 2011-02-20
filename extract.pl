@@ -89,14 +89,18 @@ if (defined($tagger->get_seq_slot)) {
 } else {
     ($raw, $raw_type, $raw_group, $raw_ab, $raw_label) = $tagger->get_raw_data();
 }
+print_tag_spreadsheet(@tags, $tagfh, $raw, $raw_type, $raw_group, $raw_ab, $raw_label);
 print "done.\ntry to get intermediate data...";
 my ($im, $im_type, $im_group, $im_ab) = $tagger->get_intermediate_data();
+if ($tagger->get_level3() eq 'ChIP-seq') {
+    print_tag_spreadsheet(@tags, $tagfh, $im, $im_type, $im_group, $im_ab);    
+} else {
+    print_tag_spreadsheet(@tags, $tagfh, $im, $im_type, $im_group);
+}
 print "done\ntry to get interpret data...";
 my ($ip, $ip_type, $ip_group) = $tagger->get_interprete_data();
-print "done\n";
-print_tag_spreadsheet(@tags, $tagfh, $raw, $raw_type, $raw_group, $raw_ab, $raw_label);
-print_tag_spreadsheet(@tags, $tagfh, $im, $im_type, $im_group, $im_ab);
 print_tag_spreadsheet(@tags, $tagfh, $ip, $ip_type);
+print "done\n";
 close $tagfh;
 
 sub print_tag_spreadsheet {
