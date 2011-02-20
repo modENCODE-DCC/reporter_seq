@@ -96,8 +96,8 @@ print_tag_spreadsheet(@tags, $tagfh, $ip, $ip_type);
 close $tagfh;
 
 sub print_tag_spreadsheet {
-    my ($tagfh, $data, $data_type, $data_groups, $id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition) = @_;
-    my ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $tagfh, $data, $data_type, $data_groups);
+    #my ($tagfh, $data, $data_type, $data_groups, $id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition) = @_;
+    my ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, $tagfh, $data, $data_type, $data_groups) = @_;
     for (my $i=0; $i<scalar @$data; $i++) {
 	my ($file, $dir, $suffix) = fileparse($data->[$i]);
 	my $t = $file . $suffix;
