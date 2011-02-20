@@ -660,42 +660,42 @@ sub get_strain_row {
             if (lc($name) =~ /^\s*strain\s*$/ || $type->get_name() eq 'strain_or_line') {
 		return $datum if $rpt_obj;
                 if ($value =~ /[Fly|Worm]?[Ss]train:(.*)&/) {
-		    return $value;
+		    #return $value;
                     my $name = $1;
                     if ($name =~ /(.*?):/) {
                         my $tmp = uri_unescape($1);
-                        #$tmp =~ s/_/ /g;
-                        #return $tmp;
+                        $tmp =~ s/_/ /g;
+                        return $tmp;
                     } else {
                         my $tmp = uri_unescape($name);    
-                        #$tmp =~ s/_/ /g;
-                        #return $tmp;
+                        $tmp =~ s/_/ /g;
+                        return $tmp;
                     }
                 } else { #old fly strain info
-		    return $value;
+		    #return $value;
                     $value =~ /(.*)&/ ;
                     my $tmp = uri_unescape($1);
-                    #$tmp =~ s/_/ /g;
-                    #return $tmp;
+                    $tmp =~ s/_/ /g;
+                    return $tmp;
                 }
             }
             for my $attr (@{$datum->get_attributes()}) {
                 my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
                 if (lc($aname) =~ /^\s*strain\s*$/ || lc($aheading) =~ /^\s*strain\s*$/) {
 		    return $datum if $rpt_obj;
-		    return $avalue;
+		    #return $avalue;
                     if ( $avalue =~ /[Ss]train:(.*)&/ ) {
                         my $name = $1;
                         if ($name =~ /(.*?):/) {
                             my $tmp = uri_unescape($1);
-                            #$tmp =~ s/_/ /g;
-                            #return $tmp;
+                            $tmp =~ s/_/ /g;
+                            return $tmp;
                         }
                     } else {
                         $value =~ /(.*)&/ ;
                         my $tmp = uri_unescape($1);
-                        #$tmp =~ s/_/ /g;
-                        #return $tmp;                        
+                        $tmp =~ s/_/ /g;
+                        return $tmp;                        
                     }
                 }
             }
@@ -712,22 +712,22 @@ sub get_cellline_row {
             my ($name, $heading, $value, $type) = ($datum->get_name(), $datum->get_heading(), $datum->get_value(), $datum->get_type());
             if (lc($name) =~ /^\s*cell[_\s]*line\s*$/ || $type->get_name() eq 'cell_line') {
 		return $datum if $rpt_obj;
-		return $value;
+		#return $value;
 		if ( $value =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
                     my $tmp = uri_unescape($1);
-                    #$tmp =~ s/_/ /g;
-                    #return $tmp;
+                    $tmp =~ s/_/ /g;
+                    return $tmp;
                 }
             }
             for my $attr (@{$datum->get_attributes()}) {
                 my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
                 if (lc($aname) =~ /^cell[_\s]*line/ || lc($aheading) =~ /^cell[_\s]*line/) {
 		    return $datum if $rpt_obj;
-		    return $avalue;
+		    #return $avalue;
                     if ( $avalue =~ /[Cc]ell[Ll]ine:(.*?):/ ) {
                         my $tmp = uri_unescape($1);
-                        #$tmp =~ s/_/ /g;
-                        #return $tmp;
+                        $tmp =~ s/_/ /g;
+                        return $tmp;
                     }
                 }
             }
@@ -745,9 +745,9 @@ sub get_devstage_row {
             if (lc($name) =~ /^\s*stage\s*$/ || $type->get_name() eq 'developmental_stage') {
                 if ( $value =~ /[Dd]ev[Ss]tage(Worm|Fly)?:(.*?):/ ) {
                     my $tmp = uri_unescape($2);
-                    #$tmp =~ s/_/ /g;
-                    #return $tmp;
-		    return uri_unescape($value);
+                    $tmp =~ s/_/ /g;
+                    return $tmp;
+		    #return uri_unescape($value);
                 }
             }
             for my $attr (@{$datum->get_attributes()}) {
@@ -755,12 +755,12 @@ sub get_devstage_row {
                 if (lc($aname) =~ /dev.*stage/ || lc($aheading) =~ /dev.*stage/) {
                     if ( $avalue =~ /[Dd]ev[Ss]tage(Worm|Fly)?:(.*?):/ ) {
                         my $tmp = uri_unescape($2);
-                        #$tmp =~ s/_/ /g;
-                        #return $tmp;
-			return uri_unescape($avalue);
+                        $tmp =~ s/_/ /g;
+                        return $tmp;
+			#return uri_unescape($avalue);
                    }
 		    else {
-			#$avalue =~ s/_/ /g;
+			$avalue =~ s/_/ /g;
 			return uri_unescape($avalue);
 		    }
                 }               
@@ -777,18 +777,18 @@ sub get_tissue_row {
         for my $datum (@{$ap->get_input_data()}) {
             my ($name, $heading, $value) = ($datum->get_name(), $datum->get_heading(), $datum->get_value());
             if (lc($name) =~ /^\s*tissue\s*$/) {
-		return $value;
+		#return $value;
                 if ( $value =~ /[Tt]issue:(.*?):/ ) {
                     my $tmp = uri_unescape($1);
-                    #$tmp =~ s/_/ /g;
-                    #return $tmp;
+                    $tmp =~ s/_/ /g;
+                    return $tmp;
                 }
             }
             for my $attr (@{$datum->get_attributes()}) {
                 my ($aname, $aheading, $avalue) = ($attr->get_name(), $attr->get_heading(), $attr->get_value());
                 if (lc($aheading) =~ /^\s*tissue\s*$/) {
 		    my $tmp = uri_unescape($avalue);
-		    #$tmp =~ s/_/ /g;
+		    $tmp =~ s/_/ /g;
 		    return $tmp;
                 }
 	    }
