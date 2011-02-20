@@ -909,15 +909,18 @@ sub get_seqmachine_row {
 
 sub get_data {
     my ($self, $type_map) = @_;
+    my $ip = $self->get_ip_slot();
     my $all_grps = $self->get_groups();
     my @files = ();
     my @file_types = ();
     #my @file_rows = ();
     my @grps = ();
+    my @anti = ();
     my @nr = ();
     my @types = keys %{$type_map};
     for my $row (0..$num_of_rows{ident $self}-1) {
 	my $grp = $all_grps->{$row};
+	my $ab = $self->get_antibody_row($row);
 	for my $col (0..$num_of_cols{ident $self}-1) {
 	    my $ap = $denorm_slots{ident $self}->[$col]->[$row];
             for my $datum (@{$ap->get_output_data()}) {
@@ -928,11 +931,18 @@ sub get_data {
 		    #push @file_rows, $row;
 		    push @grps, $grp;
 		    push @nr, $value;
+		    if (defined($ip)) {
+			if (is_antibody($self->get_antibody_row($row))) {
+			    push @anti, 'ChIP';
+			} else {
+			    push @anti, 'input';
+			}
+		    } 
 		}
             }
         }
     }
-    return (\@files, \@file_types, \@grps);
+    return (\@files, \@file_types, \@grps, \@anti);
 }
 
 sub get_raw_data {
@@ -1175,9 +1185,9 @@ sub group_by_this_ap_slot {
 	print "group by extract name.\n" and return [$extract_name_col, 'Extract\s*Name'];
     }
     if ($project eq 'Kevin White') {
-	#if (defined($extract_name_col)) {
-	#    print "group by extract name.\n" and return [$extract_name_col, 'Extract\s*Name'];
-	#}
+	if (defined($extract_name_col)) {
+	    print "group by extract name.\n" and return [$extract_name_col, 'Extract\s*Name'];
+	}
 	print "group by Sample/Hyb name.\n" and return [$sample_name_col, '[Sample|Hybridization]\s*Name'] if defined($sample_name_col);
 	print "group by Hyb name.\n" and return [$hyb_name_col, 'Hybridization\s*Name'] if defined($hyb_name_col);
     }
