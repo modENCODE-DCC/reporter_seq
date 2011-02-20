@@ -917,7 +917,7 @@ sub get_data {
     my @nr = ();
     my @types = keys %{$type_map};
     for my $row (0..$num_of_rows{ident $self}-1) {
-	my $grp = $all_grps->[$row];
+	my $grp = $all_grps->{$row};
 	for my $col (0..$num_of_cols{ident $self}-1) {
 	    my $ap = $denorm_slots{ident $self}->[$col]->[$row];
             for my $datum (@{$ap->get_output_data()}) {
