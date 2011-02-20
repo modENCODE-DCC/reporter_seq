@@ -484,7 +484,7 @@ sub set_groups {
     } elsif ($method eq 'raw') {
 	$all_grp = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
     }
-
+    print Dumper($all_grp);
 #    my $all_grp_by_seq_array;
 #    my %all_grp_by_seq_array;
 #    if ( defined ($self->get_seq_slot()) ) {
@@ -1155,21 +1155,31 @@ sub group_by_this_ap_slot {
     my $extract_name_col = $extract_name_slot{ident $self};
     my $hyb_name_col = $hybridization_name_slot{ident $self};
     my $last_extract_col = $last_extraction_slot{ident $self};
-    if (defined($replicate_group_col)) {
-	return [$replicate_group_col, 'replicate[\s_]*group'];
-    }
+    #if (defined($replicate_group_col)) {
+	#print "group by replicate group info.\n" and return [$replicate_group_col, 'replicate[\s_]*group'];
+    #}
     if ($project eq 'Susan Celniker' || $project eq 'Eric Lai' || $project eq 'Fabio Piano' || $project eq 'Robert Waterston' || $lab eq 'Oliver') {
-	return [$last_extract_col, 'protocol'];
+	print "group by last extraction protocol.\n" and return [$last_extract_col, 'protocol'];
     } 
-    if ($project eq 'Gary Karpen' || $project eq 'Jason Lieb' || $project eq 'Michael Snyder' || $project eq 'David MacAlpine') {
-	return [$sample_name_col, 'Sample\s*Name'];
+    if ($project eq 'Jason Lieb') {
+	if (defined($replicate_group_col)) {
+	    print "group by replicate group info.\n" and return [$replicate_group_col, 'replicate[\s_]*group'];
+	} else {
+	    print "group by sample name.\n" and return [$sample_name_col, 'Sample\s*Name'];
+	}
+    }
+    if ($project eq 'Gary Karpen' || $project eq 'Michael Snyder' || $project eq 'David MacAlpine') {
+	print "group by sample name.\n" and return [$sample_name_col, 'Sample\s*Name'];
     }
     if ($project eq 'Steve Henikoff') {
-	return [$extract_name_col, 'Extract\s*Name'];
+	print "group by extract name.\n" and return [$extract_name_col, 'Extract\s*Name'];
     }
     if ($project eq 'Kevin White') {
-	return [$sample_name_col, '[Sample|Hybridization]\s*Name'] if defined($sample_name_col);
-	return [$hyb_name_col, 'Hybridization\s*Name'] if defined($hyb_name_col);
+	#if (defined($extract_name_col)) {
+	#    print "group by extract name.\n" and return [$extract_name_col, 'Extract\s*Name'];
+	#}
+	print "group by Sample/Hyb name.\n" and return [$sample_name_col, '[Sample|Hybridization]\s*Name'] if defined($sample_name_col);
+	print "group by Hyb name.\n" and return [$hyb_name_col, 'Hybridization\s*Name'] if defined($hyb_name_col);
     }
 }
 
