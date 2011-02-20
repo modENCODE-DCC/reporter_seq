@@ -31,6 +31,7 @@ my %assay_type             :ATTR( :get<assay_type>             :default<undef>);
 my %hyb_slot               :ATTR( :get<hyb_slot>               :default<undef>);
 my %seq_slot               :ATTR( :get<seq_slot>               :default<undef>);
 my %ip_slot                :ATTR( :get<ip_slot>                :default<undef>);
+my %label_slot             :ATTR( :get<label_slot>             :default<undef>);
 my %raw_slot               :ATTR( :get<raw_slot>               :default<undef>);
 my %norm_slot              :ATTR( :get<norm_slot>              :default<undef>);
 my %platform               :ATTR( :get<platform>               :default<undef>);
@@ -99,8 +100,8 @@ sub set_all {
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }
         
-#    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot last_extraction_slot strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
-    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot last_extraction_slot groups strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
+#    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot label_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot last_extraction_slot strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
+    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot label_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot last_extraction_slot groups strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
@@ -356,6 +357,12 @@ sub set_ip_slot {
     my $self = shift;
     my $slot = $self->get_slotnum_ip();
     $ip_slot{ident $self} = $slot if defined($slot) && $slot != -1;
+}
+
+sub set_label_slot {
+    my $self = shift;
+    my $slot = $self->get_slotnum_label();
+    $label_slot{ident $self} = $slot if defined($slot);
 }
 
 sub set_raw_slot {
@@ -629,6 +636,14 @@ sub get_slotnum_raw_array {
         return $aps[0] if scalar(@aps);
     }
     croak("can not find the protocol that generates raw data"); #raw array data must have been given to us.
+}
+
+sub get_slotnum_label {
+    my $self = shift;
+    my $type = "label";
+    my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
+    return $aps[-1] if scalar(@aps);
+    return undef;
 }
 
 sub get_slotnum_raw_seq {
@@ -907,15 +922,30 @@ sub get_seqmachine_row {
     }
 }
 
+sub get_label_row {
+    my ($self, $row) = @_;   
+    my $denorm_slots = $denorm_slots{ident $self} ;
+    my $label_slot = $label_slot{ident $self};
+    my $label_ap = $denorm_slots->[$label_slot]->[$row];
+    my $labels;
+    eval { $labels = _get_datum_by_info($label_ap, 'input', 'name', '\s*label\s*') } ;
+    return undef if ($@ && !defined($labels));
+    return $labels->[0];
+}
+
 sub get_data {
     my ($self, $type_map) = @_;
     my $ip = $self->get_ip_slot();
+    my $label_slot = $self->get_label_slot();
+    my $project = $self->get_project();
+    my $platform = $self->get_platform();
     my $all_grps = $self->get_groups();
     my @files = ();
     my @file_types = ();
     #my @file_rows = ();
     my @grps = ();
     my @anti = ();
+    my @label = ();
     my @nr = ();
     my @types = keys %{$type_map};
     for my $row (0..$num_of_rows{ident $self}-1) {
@@ -932,17 +962,36 @@ sub get_data {
 		    push @grps, $grp;
 		    push @nr, $value;
 		    if (defined($ip)) {
-			if (is_antibody($self->get_antibody_row($row))) {
-			    push @anti, 'ChIP';
+			if (defined($ab)) {
+			    if (is_antibody($ab)) {
+				push @anti, 'ChIP';
+			    } else {
+				push @anti, 'input';
+			    }
 			} else {
 			    push @anti, 'input';
 			}
-		    } 
+		    }
+		    if (defined($label_slot)) {
+			my $t = $self->get_label_row($row);
+			if (defined($t)) {
+			    push @label, $t->get_value();
+			}
+			else {
+			    if ($project eq 'Kevin White' && lc($platform) eq 'agilent') {
+				if (defined($ab) && is_antibody($ab)) {
+				    push @label, 'cy3';
+				} else {
+				    push @label, 'cy5';
+				}
+			    }
+			}
+		    }
 		}
             }
         }
     }
-    return (\@files, \@file_types, \@grps, \@anti);
+    return (\@files, \@file_types, \@grps, \@anti, \@label);
 }
 
 sub get_raw_data {
