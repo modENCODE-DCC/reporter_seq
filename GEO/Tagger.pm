@@ -47,7 +47,7 @@ my %tissue                 :ATTR( :get<tissue>                 :default<undef>);
 my %sex                    :ATTR( :get<sex>                    :default<undef>);
 my %antibody               :ATTR( :get<antibody>               :default<undef>);
 my %groups                 :ATTR( :get<groups>                 :default<undef>);
-my %dup                    :ATTR( :get<dup>                    :default<undef>);
+#my %dup                    :ATTR( :get<dup>                    :default<undef>);
 my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
 my %level1                 :ATTR( :get<level1>                 :default<undef>);
 my %level2                 :ATTR( :get<level2>                 :default<undef>);
@@ -99,8 +99,8 @@ sub set_all {
 	$denorm_slots{ident $self} = _trans($trans_self_denorm_slots);
     }
         
-    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot last_extraction_slot strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
 #    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot last_extraction_slot strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
+    for my $parameter (qw[num_of_rows num_of_cols title description organism project lab factors data_type assay_type hyb_slot seq_slot ip_slot raw_slot norm_slot platform sample_name_slot source_name_slot extract_name_slot hybridization_name_slot replicate_group_slot last_extraction_slot groups strain cellline devstage tissue sex antibody tgt_gene level1 level2 level3]) {
         my $set_func = "set_" . $parameter;
 	my $get_func = "get_" . $parameter;
         print "try to find $parameter ...";
@@ -485,49 +485,50 @@ sub set_groups {
 	$all_grp = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
     }
 
-    my $all_grp_by_seq_array;
-    my %all_grp_by_seq_array;
-    if ( defined ($self->get_seq_slot()) ) {
-	%all_grp_by_seq_array = map {$_ => 0} (0..$num_of_rows{ident $self}-1);
-	$all_grp_by_seq_array = \%all_grp_by_seq_array;
-    }
-    if ( defined( $self->get_hyb_slot() ) ) {
-	eval { %all_grp_by_seq_array = $self->group_applied_protocols_by_data($denorm_slots->[$self->get_hyb_slot()], 'input', 'name', '\s*array\s*')};
-	if ($@) {
-	    $all_grp_by_seq_array = $self->group_applied_protocols_by_data($denorm_slots->[$self->get_hyb_slot()], 'input', 'name', 'adf');
-	}
-    }	
-    my %combined_grp;
-    my %duplicate;
-    foreach my $row (sort {$a<=>$b} keys %$all_grp) {
-	my $extract_grp = $all_grp->{$row};
-	my $array_grp = $all_grp_by_seq_array->{$row};
-	if (exists $combined_grp{$extract_grp}{$array_grp}) {
-            my $this_extract_ap = $denorm_slots->[$last_extraction_slot]->[$row];
-            my $this_hyb_seq_ap;
-	    if (defined($self->get_hyb_slot())) {
-		$this_hyb_seq_ap = $denorm_slots->[$self->get_hyb_slot()]->[$row];
-	    } elsif (defined($self->get_seq_slot())) {
-		$this_hyb_seq_ap = $denorm_slots->[$self->get_seq_slot()]->[$row];
-	    }
-	    my $ignore = 0; #possible validator bug might cause repeats of rows in denormalized ap slots
-	    for my $that_row (@{$combined_grp{$extract_grp}{$array_grp}}) {
-                my $that_extract_ap = $denorm_slots->[$last_extraction_slot]->[$that_row];
-                my $that_hyb_seq_ap;
-		if (defined($self->get_hyb_slot())) {
-		    $that_hyb_seq_ap = $denorm_slots->[$self->get_hyb_slot()]->[$that_row];
-		} elsif (defined($self->get_seq_slot())) {
-		    $that_hyb_seq_ap = $denorm_slots->[$self->get_seq_slot()]->[$that_row];
-		}
-                $ignore = 1 and $duplicate{$row} = $that_row and print "ignored $row!\n" and last if ($this_extract_ap->equals_except_anonymous($that_extract_ap) && $this_hyb_seq_ap->equals_except_anonymous($that_hyb_seq_ap));
-	    }
-	    push @{$combined_grp{$extract_grp}{$array_grp}}, $row unless $ignore;
-	} else {
-	    $combined_grp{$extract_grp}{$array_grp} = [$row]; 
-	}
-    }
-    $groups{ident $self} = \%combined_grp;    
-    $dup{ident $self} = \%duplicate;
+#    my $all_grp_by_seq_array;
+#    my %all_grp_by_seq_array;
+#    if ( defined ($self->get_seq_slot()) ) {
+#	%all_grp_by_seq_array = map {$_ => 0} (0..$num_of_rows{ident $self}-1);
+#	$all_grp_by_seq_array = \%all_grp_by_seq_array;
+#    }
+#    if ( defined( $self->get_hyb_slot() ) ) {
+#	eval { %all_grp_by_seq_array = $self->group_applied_protocols_by_data($denorm_slots->[$self->get_hyb_slot()], 'input', 'name', '\s*array\s*')};
+#	if ($@) {
+#	    $all_grp_by_seq_array = $self->group_applied_protocols_by_data($denorm_slots->[$self->get_hyb_slot()], 'input', 'name', 'adf');
+#	}
+#    }	
+#    my %combined_grp;
+#    my %duplicate;
+#    foreach my $row (sort {$a<=>$b} keys %$all_grp) {
+#	my $extract_grp = $all_grp->{$row};
+#	my $array_grp = $all_grp_by_seq_array->{$row};
+#	if (exists $combined_grp{$extract_grp}{$array_grp}) {
+#            my $this_extract_ap = $denorm_slots->[$last_extraction_slot]->[$row];
+#            my $this_hyb_seq_ap;
+#	    if (defined($self->get_hyb_slot())) {
+#		$this_hyb_seq_ap = $denorm_slots->[$self->get_hyb_slot()]->[$row];
+#	    } elsif (defined($self->get_seq_slot())) {
+#		$this_hyb_seq_ap = $denorm_slots->[$self->get_seq_slot()]->[$row];
+#	    }
+#	    my $ignore = 0; #possible validator bug might cause repeats of rows in denormalized ap slots
+#	    for my $that_row (@{$combined_grp{$extract_grp}{$array_grp}}) {
+#                my $that_extract_ap = $denorm_slots->[$last_extraction_slot]->[$that_row];
+#                my $that_hyb_seq_ap;
+#		if (defined($self->get_hyb_slot())) {
+#		    $that_hyb_seq_ap = $denorm_slots->[$self->get_hyb_slot()]->[$that_row];
+#		} elsif (defined($self->get_seq_slot())) {
+#		    $that_hyb_seq_ap = $denorm_slots->[$self->get_seq_slot()]->[$that_row];
+#		}
+#                $ignore = 1 and $duplicate{$row} = $that_row and print "ignored $row!\n" and last if ($this_extract_ap->equals_except_anonymous($that_extract_ap) && $this_hyb_seq_ap->equals_except_anonymous($that_hyb_seq_ap));
+#	    }
+#	    push @{$combined_grp{$extract_grp}{$array_grp}}, $row unless $ignore;
+#	} else {
+#	    $combined_grp{$extract_grp}{$array_grp} = [$row]; 
+#	}
+#    }
+#    $groups{ident $self} = \%combined_grp;    
+#    $dup{ident $self} = \%duplicate;
+    $groups{ident $self} = $all_grp;
 }
 
 sub set_tgt_gene {
@@ -908,13 +909,16 @@ sub get_seqmachine_row {
 
 sub get_data {
     my ($self, $type_map) = @_;
+    my $all_grps = $self->get_groups();
     my @files = ();
     my @file_types = ();
     my @file_rows = ();
+    my @grps = ();
     my @nr = ();
     my @types = keys %{$type_map};
-    for my $col (0..$num_of_cols{ident $self}-1) {
-	for my $row (0..$num_of_rows{ident $self}-1) {
+    for my $row (0..$num_of_rows{ident $self}-1) {
+	my $grp = $all_grps->[$row];
+	for my $col (0..$num_of_cols{ident $self}-1) {
 	    my $ap = $denorm_slots{ident $self}->[$col]->[$row];
             for my $datum (@{$ap->get_output_data()}) {
                 my ($value, $type) = ($datum->get_value(), $datum->get_type());
@@ -922,12 +926,13 @@ sub get_data {
 		    push @file_types, $type_map->{$type->get_name()}; 
 		    push @files, $value;
 		    push @file_rows, $row;
+		    push @grps, $grp;
 		    push @nr, $value;
 		}
             }
         }
     }
-    return (\@files, \@file_types, \@file_rows);
+    return (\@files, \@file_types, \@file_rows, \@grps);
 }
 
 sub get_raw_data {
@@ -1142,11 +1147,30 @@ sub group_by_this_ap_slot {
     my $self = shift;
     my $hyb_col = $self->get_hyb_slot();
     my $seq_col = $self->get_seq_slot();
+    my $project = $self->get_project();
+    my $lab = $self->get_lab();
     my $replicate_group_col = $replicate_group_slot{ident $self};
     my $source_name_col = $source_name_slot{ident $self};
     my $sample_name_col = $sample_name_slot{ident $self};
     my $extract_name_col = $extract_name_slot{ident $self};
-    
+    my $hyb_name_col = $hybridization_name_slot{ident $self};
+    my $last_extract_col = $last_extraction_slot{ident $self};
+    if (defined($replicate_group_col)) {
+	return [$replicate_group_col, 'replicate[\s_]*group'];
+    }
+    if ($project eq 'Susan Celniker' || $project eq 'Eric Lai' || $project eq 'Fabio Piano' || $project eq 'Robert Waterston' || $lab eq 'Oliver') {
+	return [$last_extract_col, 'protocol'];
+    } 
+    if ($project eq 'Gary Karpen' || $project eq 'Jason Lieb' || $project eq 'Michael Snyder' || $project eq 'David MacAlpine') {
+	return [$sample_name_col, 'Sample\s*Name'];
+    }
+    if ($project eq 'Steve Henikoff') {
+	return [$extract_name_col, 'Extract\s*Name'];
+    }
+    if ($project eq 'Kevin White') {
+	return [$sample_name_col, '[Sample|Hybridization]\s*Name'] if defined($sample_name_col);
+	return [$hyb_name_col, 'Hybridization\s*Name'] if defined($hyb_name_col);
+    }
 }
 
 sub set_replicate_group_slot {
