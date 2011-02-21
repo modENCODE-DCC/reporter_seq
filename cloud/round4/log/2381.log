@@ -1,0 +1,48 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2381_tag.csv
+connecting to database ...schema is modencode_experiment_2381_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...1 done
+try to find num_of_cols ...5 done
+try to find title ...Adult ovaries Ago2-HA Immunoprecipitation done
+try to find description ...We plan to generate a comprehensive catalog of expressed and functional microRNAs, and generate biological evidence for their regulatory activity. We plan also to delineate the primary transcription units of microRNA genes. Finally, we plan to annotate other classes of non-miRNA expressed small RNAs, as least some of which may define novel classes of small RNA genes. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Eric Lai done
+try to find lab ...Hannon done
+try to find factors ... done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...RNA-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...3 done
+try to find ip_slot ...1 done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...4 done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...0 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '0' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...Y cn bw sp done
+try to find cellline ...NA done
+try to find devstage ...Adult done
+try to find tissue ...Adult ovaries done
+try to find sex ...Unknown done
+try to find antibody ...Ab:Anti-HA-Peroxidase:EL:1&oldid=24444 done
+try to find tgt_gene ...HA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...small-RNA done
+try to find level3 ...RNA-seq done
+level4 factor is small-RNA
+level4 condition is Strain_Y cn bw sp;Tissue_Adult ovaries;Developmental-Stage_Adult
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

@@ -1,0 +1,4 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2681	D.melanogaster 10-12hr embryo, SOLiD total RNA-seq	SRX015646	SRX015646	Dmel_r5.4	mRNA	RNA-seq	ShortReadArchive_record	total-RNA	Strain_Y cn bw sp;Developmental-Stage_Embryo 10-12h	RNA-seq	0			Dmel_r5.4	modENCODE_2681
+2681	D.melanogaster 10-12hr embryo, SOLiD total RNA-seq	BC6_plus.wig	BC6_plus.wig	Dmel_r5.4	mRNA	RNA-seq	coverage-graph_wiggle	total-RNA	Strain_Y cn bw sp;Developmental-Stage_Embryo 10-12h	RNA-seq	0			Dmel_r5.4	modENCODE_2681
+2681	D.melanogaster 10-12hr embryo, SOLiD total RNA-seq	BC6_minus.wig	BC6_minus.wig	Dmel_r5.4	mRNA	RNA-seq	coverage-graph_wiggle	total-RNA	Strain_Y cn bw sp;Developmental-Stage_Embryo 10-12h	RNA-seq	0			Dmel_r5.4	modENCODE_2681

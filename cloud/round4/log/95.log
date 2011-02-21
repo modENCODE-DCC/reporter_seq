@@ -1,0 +1,55 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/95_tag.csv
+connecting to database ...schema is modencode_experiment_95_data,public
+database connected.
+loading experiment ...done.
+Celniker/RNA:326 574 0 
+Celniker/RNA:328 574 1 
+Celniker/RNA:330 574 2 
+connecting to database ...schema is modencode_experiment_574_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...3 done
+try to find num_of_cols ...10 done
+try to find title ...Dm_y[1]cn[1] bw[1] sp[1]_prepupa_WhitePrePupae_TotalRNA_p200_326-328-330_38bp done
+try to find description ...We will generate over 600 RNA samples in biological triplicate and use them to generate expression profile maps detailing the sites of transcription across the fly genome using whole genome tiling arrays at 38 bp resolution as a broad survey of the transcriptome and 7 bp arrays resolution to identify at high resolution transcripts ends, splice sites, and small RNAs. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Gingeras done
+try to find factors ... done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...tiling array: RNA done
+try to find hyb_slot ...5 done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...4 done
+try to find raw_slot ...6 done
+try to find norm_slot ...8 done
+try to find platform ...Affymetrix done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...2 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '1' => '1',
+          '0' => 0,
+          '2' => '2'
+        };
+HASH(0xe7ad90) done
+try to find strain ...Y cn bw sp done
+try to find cellline ...NA done
+try to find devstage ...White prepupae (WPP) done
+try to find tissue ...NA done
+try to find sex ...NA done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...mRNA done
+try to find level3 ...RNA-tiling-array done
+level4 factor is total-RNA
+level4 condition is Strain_Y cn bw sp;Developmental-Stage_White prepupae (WPP)
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

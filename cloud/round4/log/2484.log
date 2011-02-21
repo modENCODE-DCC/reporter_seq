@@ -1,0 +1,121 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2484_tag.csv
+connecting to database ...schema is modencode_experiment_2484_data,public
+database connected.
+loading experiment ...done.
+A 2501:A 0 
+A 2501:A 1 
+A 2501:A 2 
+A 2501:A 3 
+A 2501:A 4 
+A 2501:A 5 
+C 2501:C 6 
+C 2501:C 7 
+C 2501:C 8 
+C 2501:C 9 
+C 2501:C 10 
+C 2501:C 11 
+D 2501:D 12 
+D 2501:D 13 
+D 2501:D 14 
+D 2501:D 15 
+D 2501:D 16 
+D 2501:D 17 
+F 2501:F 18 
+F 2501:F 19 
+F 2501:F 20 
+F 2501:F 21 
+F 2501:F 22 
+F 2501:F 23 
+G 2501:G 24 
+G 2501:G 25 
+G 2501:G 26 
+G 2501:G 27 
+G 2501:G 28 
+G 2501:G 29 
+H 2501:H 30 
+H 2501:H 31 
+H 2501:H 32 
+H 2501:H 33 
+H 2501:H 34 
+H 2501:H 35 
+connecting to database ...schema is modencode_experiment_2501_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...36 done
+try to find num_of_cols ...6 done
+try to find title ...Mixed-stage 3'RACE Solexa sequencing & alignment done
+try to find description ...The 3' untranslated region (3'UTR) constitutes a major site of post-transcriptional regulation of gene expression. Sequence elements in the 3'UTR interact with trans-acting regulators such as microRNAs that affect translation and stability. The overall aim is to use a 3'RACE cloning-sequencing stragety to identify the 3'UTRs of C. elegans transcripts and explore their heterogeneity in different developmental stages and tissues. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Fabio Piano done
+try to find lab ...Piano done
+try to find factors ... temperature : 25 degree celsius done
+try to find data_type ...NA done
+try to find assay_type ...NA done
+try to find hyb_slot ...NA done
+try to find seq_slot ...4 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...5 done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...0 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '33' => 0,
+          '32' => 0,
+          '21' => 0,
+          '7' => 0,
+          '26' => 0,
+          '17' => 0,
+          '2' => 0,
+          '1' => 0,
+          '18' => 0,
+          '30' => 0,
+          '16' => 0,
+          '27' => 0,
+          '25' => 0,
+          '28' => 0,
+          '20' => 0,
+          '14' => 0,
+          '24' => 0,
+          '10' => 0,
+          '31' => 0,
+          '35' => 0,
+          '11' => 0,
+          '22' => 0,
+          '0' => 0,
+          '13' => 0,
+          '23' => 0,
+          '29' => 0,
+          '6' => 0,
+          '3' => 0,
+          '9' => 0,
+          '12' => 0,
+          '15' => 0,
+          '8' => 0,
+          '4' => 0,
+          '34' => 0,
+          '19' => 0,
+          '5' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...N2 done
+try to find cellline ...NA done
+try to find devstage ...Mixed Population Worms done
+try to find tissue ...NA done
+try to find sex ...Unknown done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...mRNA done
+try to find level3 ...RACE done
+level4 factor is 3-prime-UTR
+level4 condition is Strain_N2;Developmental-Stage_Mixed Population Worms;temperature_25 degree celsius
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

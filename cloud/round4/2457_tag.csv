@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2457	3'RACE polyA-capture L3 454 sequencing	GSM446654	GSM446654	Cele_WS190	mRNA	RACE	GEO_record	3-prime-UTR	Strain_N2;Developmental-Stage_L3 20dC 30hr post-L1;temperature_20 degree celsius	RACE	0			Cele_WS190	modENCODE_2457

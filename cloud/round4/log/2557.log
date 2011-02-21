@@ -1,0 +1,64 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2557_tag.csv
+connecting to database ...schema is modencode_experiment_2557_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...8 done
+try to find num_of_cols ...4 done
+try to find title ...Mass Spectrometric Validation of Sort ORFs round 1 done
+try to find description ...A significant challenge is validating our list of putative small genes with short ORFs or transcripts with potentially short ORFs that, based on all available data, we cannot confidently assign as protein coding. For example, if a region has an ORF of 200 amino acids and is conserved with C. briggsae, we can be confident it is a gene. However, if we have a 75 amino acid ORF not confirmed in other nematodes, then we need another type of confirmation. For this we employ the hSRM approach, prioritizing testing of candidate genes by their length, conservation in other nematodes and expression level.  The candidate protein coding genes are analyzed as described below. 
+
+Method Overview. We will confirm the translation of selected protein sequences using a targeted mass spectrometry approach.  Using the putative protein sequences provided for mass spectrometry confirmation, we will i) derive proteotypic tryptic peptide sequences for analysis (Kuster et al. 2005), ii) generate a standard for each peptide, and iii) monitor the precursor and a product ion for each proteotypic peptide using hSRM on a triple quadrupole mass spectrometer.  With an hSRM based assay, only molecules that have the same precursor m/z (mass of the peptide divided by charge) and product m/z (a sequence specific fragment) will be transmitted to the detector ? producing a very selective measurement that minimizes contaminating matrix interferences.  The presence of the peptide within the C. elegans lysate is confirmed by the detection of a peak in the hSRM chromatogram with signal-to-noise >5 within a retention time of <1% relative error of the peak observed using the peptide standard.
+
+The steps are as follows:
+1) Prediction of proteotypic peptide sequences
+2) Generation of proteotypic peptide standards
+3) Sample Preparation
+4) Measurement of Proteotypic Peptides in Complex mixtures by nanoLC-MS/MS using highly selective reaction monitoring (hSRM)
+5) Data analysis of hSRM Chromatograms done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Robert Waterston done
+try to find lab ...MacCoss done
+try to find factors ... temperature : 20 degree celsius done
+try to find data_type ...Gene Structure - mRNA done
+try to find assay_type ...Mass spec done
+try to find hyb_slot ...NA done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '6' => 1,
+          '4' => '1',
+          '1' => 0,
+          '3' => 0,
+          '0' => 0,
+          '7' => 1,
+          '2' => 0,
+          '5' => 1
+        };
+HASH(0xe7ad90) done
+try to find strain ...N2 done
+try to find cellline ...NA done
+try to find devstage ...Mass spec done
+try to find tissue ...NA done
+try to find sex ...mixed Male and Hermaphrodite population done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...mRNA done
+try to find level3 ...Mass-spec done
+level4 factor is total-RNA
+level4 condition is Strain_N2;Developmental-Stage_Mass spec;temperature_20 degree celsius
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

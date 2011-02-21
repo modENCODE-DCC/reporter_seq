@@ -1,0 +1,7 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2569	E-0-4h_bks	0-4h_bks_1.CEL	0-4h_bks_1.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	Brakeless	Developmental-Stage_E0-4	ChIP-chip	0	ChIP		Dmel_r5.4	modENCODE_2569
+2569	E-0-4h_bks	0-4h_bks_2.CEL	0-4h_bks_2.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	Brakeless	Developmental-Stage_E0-4	ChIP-chip	1	ChIP		Dmel_r5.4	modENCODE_2569
+2569	E-0-4h_bks	0-4h_bks_3.CEL	0-4h_bks_3.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	Brakeless	Developmental-Stage_E0-4	ChIP-chip	2	ChIP		Dmel_r5.4	modENCODE_2569
+2569	E-0-4h_bks	0-4h_Input.CEL	0-4h_Input.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	Brakeless	Developmental-Stage_E0-4	ChIP-chip	3	input		Dmel_r5.4	modENCODE_2569
+2569	E-0-4h_bks	E0-4_bks_signal.bar.txt_IGB.wig	E0-4_bks_signal.bar.txt_IGB.wig	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	normalized-arrayfile_wig	Brakeless	Developmental-Stage_E0-4	ChIP-chip	0			Dmel_r5.4	modENCODE_2569
+2569	E-0-4h_bks	E0-4_bks_pvalue_Dm_BDGPv5.bed.gff	E0-4_bks_pvalue_Dm_BDGPv5.bed.gff	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	computed-peaks_gff3	Brakeless	Developmental-Stage_E0-4	ChIP-chip	all			Dmel_r5.4	modENCODE_2569

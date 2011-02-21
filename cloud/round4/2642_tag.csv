@@ -1,0 +1,7 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2642	WPP30-33_EcR_GFP_ChIP-seq	GSM499653	GSM499653	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	GEO_record	eGFP	Strain_EcR-GFP;Developmental-Stage_DevStageFly	ChIP-seq	0	ChIP		Dmel_r5.4	modENCODE_2642
+2642	WPP30-33_EcR_GFP_ChIP-seq	GSM499654	GSM499654	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	GEO_record	eGFP	Strain_EcR-GFP;Developmental-Stage_DevStageFly	ChIP-seq	3	input		Dmel_r5.4	modENCODE_2642
+2642	WPP30-33_EcR_GFP_ChIP-seq	GSM499655	GSM499655	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	GEO_record	eGFP	Strain_EcR-GFP;Developmental-Stage_DevStageFly	ChIP-seq	4	input		Dmel_r5.4	modENCODE_2642
+2642	WPP30-33_EcR_GFP_ChIP-seq	GSM499656	GSM499656	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	GEO_record	eGFP	Strain_EcR-GFP;Developmental-Stage_DevStageFly	ChIP-seq	5	input		Dmel_r5.4	modENCODE_2642
+2642	WPP30-33_EcR_GFP_ChIP-seq	WPP30-33_density.wig	WPP30-33_density.wig	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	coverage-graph_wiggle	eGFP	Strain_EcR-GFP;Developmental-Stage_DevStageFly	ChIP-seq	0	ChIP		Dmel_r5.4	modENCODE_2642
+2642	WPP30-33_EcR_GFP_ChIP-seq	WPP30-33_density.bed.gff3	WPP30-33_density.bed.gff3	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	computed-peaks_gff3	eGFP	Strain_EcR-GFP;Developmental-Stage_DevStageFly	ChIP-seq	all			Dmel_r5.4	modENCODE_2642

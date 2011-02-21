@@ -1,0 +1,42 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2715_tag.csv
+connecting to database ...schema is modencode_experiment_2715_data,public
+database connected.
+loading experiment ...done.
+SRR023713 2791:SRR023713 0 
+SRR023679 2791:SRR023679 1 
+SRR023658 2791:SRR023658 2 
+SRR023642 2791:SRR023642 3 
+SRR023672 2791:SRR023672 4 
+SRR029176 2791:SRR029176 5 
+SRR029233 2791:SRR029233 6 
+SRR029235 2791:SRR029235 7 
+SRR029231 2791:SRR029231 8 
+SRR023606 2791:SRR023606 9 
+SRR023550 2791:SRR023550 10 
+SRR023605 2791:SRR023605 11 
+connecting to database ...schema is modencode_experiment_2791_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...12 done
+try to find num_of_cols ...5 done
+try to find title ...Splice Junction Annotation D. melanogaster Adult Male, eclosion + 5d done
+try to find description ...For the final scoring of the junctions all of the developmental RNA-Seq data was aligned to a bowtie index containing both the genome and the 79,514 splice junctions.  For single reads, the alignments were performed with the following parameters to report uniquely mapped reads [-m 1 -v 2 -y --best].  For paired-end reads, the data was aligned using the following parameters [-m 10 -v 10 -y --best] after which spa was used to to identify unique instances of mate-pairs in which both reads map on the same chromosome, within 200 kb of one another and oriented towards one another.  The remaining reads were further filtered to identify cases in which there were multiple potential mapping positions of a mate pair within 200 kb of one another.  In this case, the closest of multiple mate pair mapping positions was retained.  Finally, for mate pairs in which only one read could be mapped, if the remaining read was mapped uniquely, it was retained.  Junctions were scored using both the total number of reads and the entropy score. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Graveley done
+try to find factors ... done
+try to find data_type ...Gene Structure - mRNA done
+try to find assay_type ...Computational Annotation done
+try to find hyb_slot ...NA done
+try to find seq_slot ...2 done
+try to find ip_slot ...NA done
+try to find label_slot ...1 done
+try to find raw_slot ...2 done
+try to find norm_slot ...3 done
+try to find platform ...Illumina done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...

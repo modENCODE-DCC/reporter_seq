@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+668	Kc167 Replication Timing	Kc_timing.wig	timing/Kc/Kc_timing.wig	Dmel_r5.4	DNA-Replication	DNA-tiling-array	normalized-arrayfile_wig	Replication-Timing	Cell-Line_Kc167;Tissue_embryo-derived cell-line;Developmental-Stage_late embryonic stage	DNA-tiling-array				Dmel_r5.4	modENCODE_668

@@ -1,0 +1,5 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+784	L2_H3K4Me1 ChIP-seq	GSM401421	GSM401421	Dmel_r5.4	Histone-Modification	ChIP-seq	GEO_record	H3K4me1	Strain_Y cn bw sp;Developmental-Stage_L2	ChIP-seq	0	ChIP		Dmel_r5.4	modENCODE_784
+784	L2_H3K4Me1 ChIP-seq	GSM400669	GSM400669	Dmel_r5.4	Histone-Modification	ChIP-seq	GEO_record	H3K4me1	Strain_Y cn bw sp;Developmental-Stage_L2	ChIP-seq	1	input		Dmel_r5.4	modENCODE_784
+784	L2_H3K4Me1 ChIP-seq	L2_H3K4Me1_density.wig	L2_H3K4Me1_density.wig	Dmel_r5.4	Histone-Modification	ChIP-seq	coverage-graph_wiggle	H3K4me1	Strain_Y cn bw sp;Developmental-Stage_L2	ChIP-seq	0	ChIP		Dmel_r5.4	modENCODE_784
+784	L2_H3K4Me1 ChIP-seq	L2_H3K4Me1_Input_tag36_mfold4_250_peaks_1fdr_filtered.bed.gff3	L2_H3K4Me1_Input_tag36_mfold4_250_peaks_1fdr_filtered.bed.gff3	Dmel_r5.4	Histone-Modification	ChIP-seq	computed-peaks_gff3	H3K4me1	Strain_Y cn bw sp;Developmental-Stage_L2	ChIP-seq	all			Dmel_r5.4	modENCODE_784

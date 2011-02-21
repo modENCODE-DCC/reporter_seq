@@ -1,0 +1,12 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+878	L1_CBP	L1-CBP-1-251918410315.txt	L1-CBP-1-251918410315.txt	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_L1	ChIP-chip	0	ChIP	cy3	Dmel_r5.4	modENCODE_878
+878	L1_CBP	L1-CBP-1-251918210330.txt	L1-CBP-1-251918210330.txt	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_L1	ChIP-chip	0	ChIP	cy3	Dmel_r5.4	modENCODE_878
+878	L1_CBP	L1-CBP-1-251918310391.txt	L1-CBP-1-251918310391.txt	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_L1	ChIP-chip	0	ChIP	cy3	Dmel_r5.4	modENCODE_878
+878	L1_CBP	L1-CBP-2-251918210329.txt	L1-CBP-2-251918210329.txt	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_L1	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_878
+878	L1_CBP	L1-CBP-3-251918210328.txt	L1-CBP-3-251918210328.txt	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_L1	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_878
+878	L1_CBP	L1-CBP-2-251918410314.txt	L1-CBP-2-251918410314.txt	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_L1	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_878
+878	L1_CBP	L1-CBP-3-251918410313.txt	L1-CBP-3-251918410313.txt	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_L1	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_878
+878	L1_CBP	L1-CBP-3-251918310389.txt	L1-CBP-3-251918310389.txt	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_L1	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_878
+878	L1_CBP	L1-CBP-2-251918310390.txt	L1-CBP-2-251918310390.txt	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_L1	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_878
+878	L1_CBP	L1_CBP_DCC_merged.wig	L1_CBP_DCC_merged.wig	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	normalized-arrayfile_wig	nejire	Developmental-Stage_L1	ChIP-chip	0			Dmel_r5.4	modENCODE_878
+878	L1_CBP	L1_CBP_dcc.gff	L1_CBP_dcc.gff	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	computed-peaks_gff3	nejire	Developmental-Stage_L1	ChIP-chip	all			Dmel_r5.4	modENCODE_878

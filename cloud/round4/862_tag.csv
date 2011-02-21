@@ -1,0 +1,5 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+862	AdultFemale_CBP ChIP-seq	GSM408982	GSM408982	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	GEO_record	nejire	Strain_Y cn bw sp;Developmental-Stage_Adult Female	ChIP-seq	0	ChIP		Dmel_r5.4	modENCODE_862
+862	AdultFemale_CBP ChIP-seq	GSM408983	GSM408983	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	GEO_record	nejire	Strain_Y cn bw sp;Developmental-Stage_Adult Female	ChIP-seq	1	input		Dmel_r5.4	modENCODE_862
+862	AdultFemale_CBP ChIP-seq	AdultFemale_CBP_density.wig	AdultFemale_CBP_density.wig	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	coverage-graph_wiggle	nejire	Strain_Y cn bw sp;Developmental-Stage_Adult Female	ChIP-seq	0	ChIP		Dmel_r5.4	modENCODE_862
+862	AdultFemale_CBP ChIP-seq	AdultFemale_CBP_peaks.bed.gff3	AdultFemale_CBP_peaks.bed.gff3	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	computed-peaks_gff3	nejire	Strain_Y cn bw sp;Developmental-Stage_Adult Female	ChIP-seq	all			Dmel_r5.4	modENCODE_862

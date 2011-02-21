@@ -1,0 +1,214 @@
+Introduction to modENCODE project
+
+The National Human Genome Research Institute (NHGRI) model organism ENCyclopedia Of DNA Elements (modENCODE) Project will try to identify all of the sequence-based functional elements in the Caenorhabditis elegans and Drosophila melanogaster genomes. This project is described in Nature 2009 Jun 18;459(7249):927-30. 
+modENCODE is run as a Research Network and data is publicly available, with some restrictions on its use for 9 months following publication.
+
+modENCODE Data Coordinate Center (DCC) is led by Dr. Lincoln Stein. our role is to track the data, integrate it with other information sources, and make it available to the research community in a timely and open fashion. DCC provided following website from which community members can fetch information. they are:
+major modENCODE website: http://www.modencode.org/
+a portal to viewing all modENCODE data in Gbrowse: http://www.modencode.org/Genomes.shtml where the chromosome kayotype is clickable to bring you to Gbrowse.
+a sophiscated integration tool of retriving data:
+http://intermine.modencode.org/
+ 
+there are other eleven research groups that generate data. they are:
+1. transcriptome analysis on C. elegans, led by Dr. Robert Waterston. a brief description of their research goal can be found at: http://www.modencode.org/Waterston.shtml
+
+2. chromatin function analysis on C. elegans, led by Dr. Jason Lieb. a brief description of their research goal can be found at: http://www.modencode.org/Lieb.shtml
+
+3. Dr. Steven Henikoff works on both C. elegans and D. melanogaster. His research is focused on histone variants and nucleosome. a brief description of their research goal can be found at: http://www.modencode.org/Henikoff.shtml
+
+4. Dr. Michael Snyder works on transcriptional factor binding profiling on C. elegans. a brief description of their research goal can be found at: http://www.modencode.org/Snyder.shtml
+
+5. Dr. Fabio Piano lead his group research on 3' UTR of genes in C. elegan.  a brief description of their research goal can be found at: http://www.modencode.org/Piano.shtml
+
+6. D. malanogaster transcriptome analysis is the research focus of Dr. Susan Celniker group. a brief description of their research goal can be found at: http://www.modencode.org/Celniker.shtml
+
+7. Similar as what Dr. Michael Snyder do, Dr. Kevin White group focuses on transcriptional factor binding profiling on D. malanogaster. a brief description of their research goal can be found at: http://www.modencode.org/White.shtml
+
+8. Dr. Gary Karpen lead the project of mapping chromosome proteins on the genome of D. malanogaster. a brief description of their research goal can be found at:
+http://www.modencode.org/Karpen.shtml
+
+9. Dr. Eric Lai lead the small and micro-RNA detection and annotation on the genome of fly. a brief description of their research goal can be found at:
+http://www.modencode.org/Lai.shtml
+
+10. Dr. David MacAlpine is interested in Replication Origins in Drosophila. a brief description of their research goal can be found at: http://www.modencode.org/MacAlpine.shtml
+
+11. Dr. Brian Oliver lead his group working on cross-species validation of function of Drosophila transcriptome using comparative genomics method.  a brief description of their research goal can be found at: http://www.modencode.org/Oliver.shtml
+
+cutting edge techniques are used by each individual group when they see best fit. At the very beginning of the project, most groups plan to use tiling array except for the group of Dr. Michael Snyder on worm transcriptional factor analysis using ChIp-seq. As time goes by, and mature of high thoroughput sequencing technology, quite a few projects switched to this new technology. Other tech, such as CAGE, RACE, CGH are also used and combined with either tiling array or sequencing. In a specific experiment, a technique used is called a protocol. DCC keeps a detailed description of every protocol for each experiment. a portal to these protocols could be: http://www.modencode.org/Protocols.shtml
+you also could search the technique name at modMine by typing in the search box.
+
+below is a list of technique used (as in examples):
+CAGE as in submission 2549, 
+http://wiki.modencode.org/project/index.php?title=CAGE_library_preparation:SC:1&oldid=26380
+
+CGH or CNV-seq as in submission 3277,
+http://intermine.modencode.org/release-21/objectDetails.do?id=935000110
+
+ChIP-chip as in submission 2585,
+http://intermine.modencode.org/release-21/objectDetails.do?id=938000321
+
+ChIP-seq as in submission 2429,
+http://intermine.modencode.org/release-21/objectDetails.do?id=937000029
+
+
+ 
+Processed File Formats
+
+.GFF & .GFF3 
+GFF = Generic Feature Format, and GFF3 is the most recent version. GFF3 files are plain text tab-delimited files used to represent genomic data. GFF3 files are commonly used to represent alignments, transcripts, genes, operons and numerous other features. There is a standardized format for columns, definitions and metadata that make a GFF3 file. More detailed information about GFF3 is available at
+    • gmod.org/wiki/GFF3
+    • www.sequenceontology.org/gff3.shtml
+
+
+.bed format
+BED = browser extendible display format. BED files are used to display genomic annotations in a track format. They have a minimum of 3 required fields for chromosome location and an additional 9 optional fields to customize the feature representation. More details about .bed format is available at 
+http://genome.ucsc.edu/FAQ/FAQformat.html#format1
+
+.wig format
+WIG = wiggle track format. WIG files are used to display genomic data in a track format. WIG files are commonly used to display transcriptome data, GC percent and probability scores as values for a genomic position. More detailed information about WIG format files is available at
+    • gmod.org/wiki/GBrowse/Uploading_Wiggle_Tracks
+    • genome.ucsc.edu/goldenPath/help/wiggle.html
+
+
+.sam format
+SAM = Sequence Alignment Map. These files are used for mapping sequence reads to genomic co-ordinates. The sam format allows nucleotide sequences and the corresponding genomic location to which it maps for each line. More information about sam format can be found at 
+http://samtools.sourceforge.net/
+
+DevStage:0-2_day_old_pupae:EL:1&oldid=26221
+DevStage:1st_instar_larvae:EL:1&oldid=19561
+DevStage:2-4_day_old_pupae:EL:1&oldid=19977
+DevStage:3rd_instar_larvae:EL:1&oldid=19967
+DevStage:Adult_female,_eclosion_+_1_day:SC:1&oldid=19748
+DevStage:Adult_female,_eclosion_+_30_days:SC:1&oldid=19603
+DevStage:Adult_female,_eclosion_+_5_days:SC:1&oldid=19605
+DevStage:Adult_Female:KW:1&oldid=15423
+DevStage:Adult_male,_eclosion_+_1_day:SC:1&oldid=19608
+DevStage:Adult_male,_eclosion_+_30_days:SC:1&oldid=19610
+DevStage:Adult_male,_eclosion_+_5_days:SC:1&oldid=19612
+DevStage:Adult_Male:KW:1&oldid=19570
+DevStage:E0-4:KW:1&oldid=23066
+DevStage:E12-16:KW:1&oldid=23068
+DevStage:E16-20:KW:1&oldid=23062
+DevStage:E20-24:KW:1&oldid=13293
+DevStage:E20-24:KW:1&oldid=23064
+DevStage:E4-8:KW:1&oldid=23065
+DevStage:E8-12:KW:1&oldid=23069
+DevStage:early_embryo:RW:Reinke&oldid=19885
+DevStage:Embryo_0-12h:KW:1&oldid=13282
+DevStage:Embryo_0-12h:KW:1&oldid=15420
+DevStage:Embryo_0-12h:KW:1&oldid=24490
+DevStage:Embryo_0-1h:EL:1&oldid=14283
+DevStage:Embryo_0-4h:DM:1&oldid=22873
+DevStage:Embryo_0-4h:DM:1&oldid=24375
+DevStage:Embryo_10-12h:SC:1&oldid=19623
+DevStage:Embryo_12-14h:SC:1&oldid=19630
+DevStage:Embryo_12-24h:EL:1&oldid=19632
+DevStage:Embryo_14-16h:SC:1&oldid=19640
+DevStage:Embryo_16-18h:SC:1&oldid=19637
+DevStage:Embryo_18-20h:SC:1&oldid=19635
+DevStage:Embryo_20-22h:SC:1&oldid=19645
+DevStage:Embryo_22-24hSC:1&oldid=19647
+DevStage:Embryo_2-4h:SC:1&oldid=19643
+DevStage:Embryo_2-6h:EL:1&oldid=14284
+DevStage:Embryo_4-6h:SC:1&oldid=19649
+DevStage:Embryo_6-10h:EL:1&oldid=19963
+DevStage:Embryo_6-8h:SC:1&oldid=19658
+DevStage:Embryo_8-10h:SC:1&oldid=19660
+DevStageFly:0-1_day_old_pupae:EL:1&oldid=26223
+DevStageFly:2-18hr_embryo:EL:1&oldid=30277
+DevStageFly:3rd_Instar_Larvae:GK:1&oldid=23670
+DevStageFly:Adult:EL:1&oldid=22056
+DevStageFly:Adult_female_eclosion+4_day:SC:1&oldid=24519
+DevStageFly:Adult_Female:EL:1&oldid=19944
+DevStageFly:Adult_male:EL:1&oldid=19980
+DevStageFly:DevStageFly:Pupae,_WPP_30-33h:KW:1&oldid=26807
+DevStageFly:Dmel_Adult_Female_8_days:BO:1&oldid=32456
+DevStageFly:Dmel_Adult_male_8_days:BO:1&oldid=32458
+DevStageFly:Dmoj_Adult_Female:BO:1&oldid=31350
+DevStageFly:Dmoj_Adult_Male:BO:1&oldid=31358
+DevStageFly:Dpse_Adult_Female:BO:1&oldid=31382
+DevStageFly:Dpse_Adult_Male:BO:1&oldid=31386
+DevStageFly:E3-8h:KW:1&oldid=24482
+DevStageFly:E7-24h:KW:1&oldid=24485
+DevStageFly:Embryo_0-2h:SC:1&oldid=20054
+DevStageFly:Embryo_0-8:KW:1&oldid=24486
+DevStageFly:Embryo_14-16hr_OR:GK:1&oldid=23437
+DevStageFly:Embryo_1-6h:KW:1&oldid=26594
+DevStageFly:Embryo_2-4hr_OR:GK:1&oldid=23313
+DevStageFly:Embryo_8-16h:KW:1&oldid=26603
+DevStageFly:Mixed_Adult_7-11_day:SC:1&oldid=18687
+DevStageFly:Mixed_Adult:GK:1&oldid=27623
+DevStageFly:Pupae,_WPP_10-11h:KW:1&oldid=26804
+DevStage:L1:KW:1&oldid=19704
+DevStage:L1_stage_larvae:SC:1&oldid=19664
+DevStage:L2:KW:1&oldid=23043
+DevStage:L2_stage_larvae:SC:1&oldid=19666
+DevStage:L3:KW:1&oldid=19707
+DevStage:L3_stage_larvae,_12_hr_post-molt:SC:1&oldid=19668
+DevStage:L3_stage_larvae,_clear_gut_PS(7-9)_stage:SC:1&oldid=20063
+DevStage:L3_stage_larvae,_dark_blue_gut_PS(1-2)_stage:SC:1&oldid=19683
+DevStage:L3_stage_larvae,_light_blue_gut_PS(3-6)_stage:SC:1&oldid=19685
+DevStage:larva_mid-L1_25dC_4.0_hrs_post-L1:RW:Reinke&oldid=19714
+DevStage:larva_mid-L2_25dC_17.75_hrs_post-L1:RW:Reinke&oldid=22298
+DevStage:larva_mid-L3_25dC_26.75_hrs_post-L1:RW:Reinke&oldid=22366
+DevStage:larva_mid-L4_25dC_34.25_hrs_post-L1:RW:Reinke&oldid=22306
+DevStage:late_embryo_20dC_4.5_hrs_post-early_embryo:RW:Reinke&oldid=19886
+DevStage:Lin-35(n745)_larva_mid-L1_25dC_4.0_hrs_post-L1:RW:Reinke&oldid=25193
+DevStage:Male_larva_mid-L4_25dC_30_hrs_post-L1:RW:Reinke&oldid=17918
+DevStage:mid-L1_20dC_4hrs_post-L1:RW:Slack&oldid=22160
+DevStage:mid-L2_20dC_14hrs_post-L1:RW:Slack&oldid=22251
+DevStage:mid-L3_20dC_25hrs_post-L1:RW:Slack&oldid=22252
+DevStage:mid-L4_20dC_36hrs_post-L1:RW:Slack&oldid=22253
+DevStage:Mixed_Embryos_0-24h:SC:1&oldid=19687
+DevStage:Mixed_Population_Worms:FP:1&oldid=19422
+DevStage:Mixed_stage_of_embryos_20dC:RW:Slack&oldid=22113
+DevStage:Pupae:KW:1&oldid=19710
+DevStage:Pupae,_WPP_+_2_days:SC:1&oldid=19690
+DevStage:Pupae,_WPP_+_3_days:SC:1&oldid=19692
+DevStage:Pupae,_WPP_+_4_days:SC:1&oldid=19695
+DevStage:White_prepupae_(WPP):SC:1&oldid=19702
+DevStageWorm:Adult_20dC_70hr_post-L1:FP:1&oldid=23283
+DevStageWorm:Adult_23dC_12_days_post-L4:RW:1&oldid=27452
+DevStageWorm:Adult_23dC_5_days_post-L4:RW:1&oldid=27450
+DevStageWorm:Adult_males_20dC_70hr_post-L1:FP:1&oldid=24951
+DevStageWorm:Adult_spe-9(hc88)_23dC_8_days_post-L4_molt:RW:1&oldid=22198
+DevStageWorm:Adult_spe-9(hc88)_23dC_8_days_post-L4_molt:RW:1&oldid=27453
+DevStageWorm:dauer_daf-2(el370)_25dC_91hrs_post-L1:RW:1&oldid=22180
+DevStageWorm:dauer_entry_daf-2(el370)_25dC_48_hrs_post-L1:RW:1&oldid=25186
+DevStageWorm:dauer_exit_daf-2(el370)_25dC_91hrs_15dC_12hrs_post-L1:RW:1&oldid=25188
+DevStageWorm:Dauer_Larvae:FP:1&oldid=19596
+DevStageWorm:Early_Embryo:JL:1&oldid=25201
+DevStageWorm:embryo_him-8(e1480)_20dC:RW:1&oldid=22193
+DevStageWorm:embryo:MS:1&oldid=19065
+DevStageWorm:fed_L1:MS:1&oldid=20167
+DevStageWorm:L1_20dC_8hr_post-L1:FP:1&oldid=23647
+DevStageWorm:L2_20dC_20hr_post-L1:FP:1&oldid=23648
+DevStageWorm:L2:MS:1&oldid=22953
+DevStageWorm:L3_20dC_30hr_post-L1:FP:1&oldid=23649
+DevStageWorm:L3-L4_larva_20dC_22h_23dC_24hr_post-L1:RW:1&oldid=25417
+DevStageWorm:L3_Larva:JL:1&oldid=25204
+DevStageWorm:L3:MS:1&oldid=19069
+DevStageWorm:L4_20dC_45hr_post-L1:FP:1&oldid=23650
+DevStageWorm:L4_Larva:JL:1&oldid=25207
+DevStageWorm:L4:MS:1&oldid=24810
+DevStageWorm:L4-Young_Adult:MS:1&oldid=19737
+DevStageWorm:larva_mid-L2_20dC_22h_post-L1:RW:Miller&oldid=25392
+DevStageWorm:late_embryo:MS:1&oldid=27008
+DevStageWorm:Mass_spec:Shotgun_mixed_stage:RW:1&oldid=27336
+DevStageWorm:Mixed_Embryo:JL:1&oldid=25198
+DevStageWorm:Mixed_embryos_20dC:FP:1&oldid=23651
+DevStageWorm:Older_embryos_(12-cell+_stage):FP:1&oldid=25592
+DevStageWorm:one_cell_stage_embryos:FP:1&oldid=25583
+DevStageWorm:post-gastrulation_embryos:FP:1&oldid=25586
+DevStageWorm:starved_L1:MS:1&oldid=19067
+DevStageWorm:two-to-four_cell_stage_embryos:FP:1&oldid=25580
+DevStageWorm:Young_Adult_20dC_42_hrs_post-L1:RW:Reinke&oldid=22846
+DevStageWorm:Young_Adult_20dC_72hr_post-L1:RW:Miller&oldid=25420
+DevStageWorm:young_Adult_25dC:FP:1&oldid=27250
+DevStageWorm:Young_Adult:MS:1&oldid=24812
+DevStage:WPP_+_12_hr:SC:1&oldid=19698
+DevStage:WPP_+_24_hr:SC:1&oldid=19700
+DevStage:yAdult_20dC_48hrs_post-L1:RW:Slack&oldid=22255
+DevStage:yAdult_23dC_DAY0post-L4_molt:RW:Slack&oldid=22257
+DevStage:yAdult_Males_23dC:RW:Slack&oldid=22263
+DevStage:Young_Adult_(pre-gravid)_25dC_46_hrs_post-L1:RW:Reinke&oldid=19474

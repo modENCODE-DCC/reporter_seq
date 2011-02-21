@@ -1,0 +1,9 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2573	E0-8h_GATAe	0-8h_gatae_B1.CEL	0-8h_gatae_B1.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	GATAe	Developmental-Stage_Embryo 0-8	ChIP-chip	0	ChIP		Dmel_r5.4	modENCODE_2573
+2573	E0-8h_GATAe	0-8h_gatae_B2.CEL	0-8h_gatae_B2.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	GATAe	Developmental-Stage_Embryo 0-8	ChIP-chip	1	ChIP		Dmel_r5.4	modENCODE_2573
+2573	E0-8h_GATAe	ISO1_0-8_GATAe.CEL	ISO1_0-8_GATAe.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	GATAe	Developmental-Stage_Embryo 0-8	ChIP-chip	2	ChIP		Dmel_r5.4	modENCODE_2573
+2573	E0-8h_GATAe	ISO1_0-8_Input_B.CEL	ISO1_0-8_Input_B.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	GATAe	Developmental-Stage_Embryo 0-8	ChIP-chip	3	input		Dmel_r5.4	modENCODE_2573
+2573	E0-8h_GATAe	ISO1_0-8_Input_A.CEL	ISO1_0-8_Input_A.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	GATAe	Developmental-Stage_Embryo 0-8	ChIP-chip	3	input		Dmel_r5.4	modENCODE_2573
+2573	E0-8h_GATAe	Input_0-8h_B.CEL	Input_0-8h_B.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	GATAe	Developmental-Stage_Embryo 0-8	ChIP-chip	3	input		Dmel_r5.4	modENCODE_2573
+2573	E0-8h_GATAe	E0-8_GATAe_signal.bar.txt_IGB.wig	E0-8_GATAe_signal.bar.txt_IGB.wig	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	normalized-arrayfile_wig	GATAe	Developmental-Stage_Embryo 0-8	ChIP-chip	0			Dmel_r5.4	modENCODE_2573
+2573	E0-8h_GATAe	E0-8_GATAe_pvalue_Dm_BDGPv5.bed.gff	E0-8_GATAe_pvalue_Dm_BDGPv5.bed.gff	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	computed-peaks_gff3	GATAe	Developmental-Stage_Embryo 0-8	ChIP-chip	all			Dmel_r5.4	modENCODE_2573

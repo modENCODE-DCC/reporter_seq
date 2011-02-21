@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2743	Lai_embryo_2-6hr_BS43-46	V081.sam.gz	V081.sam.gz	Dmel_r5.4	small-RNA	RNA-seq	alignment_sam	small-RNA	Strain_Y cn bw sp;Developmental-Stage_Embryo 2-4h	RNA-seq	0			Dmel_r5.4	modENCODE_2743

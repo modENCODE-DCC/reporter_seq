@@ -1,0 +1,48 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2305_tag.csv
+connecting to database ...schema is modencode_experiment_2305_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...1 done
+try to find num_of_cols ...6 done
+try to find title ...RNAi Control (untreated-B) in S2-DRSC RNA-Seq done
+try to find description ...The goal of these experiments are to identify splicing events that are regulated by specific RNA binding proteins in Drosophila S2 cells.  From this collection of regulated exons, we will identify motifs that are enriched in and/or around the regulated exons and are therefore the best candidates for being recognized by the RNA binding protein.  To do this, we are using RNAi to deplete individual RNA binding protein mRNAs from Drosophila S2-DRSC cells and then using RNA-Seq to characterize the resulting transcriptome.  Comparison of the transcriptome from depleted cells to that of un-depleted cells will allow us to identify regulated splicing events. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Graveley done
+try to find factors ... RNAi_reagent : Untreated_(RNAi_control) done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...RNA-seq, RNAi done
+try to find hyb_slot ...NA done
+try to find seq_slot ...4 done
+try to find ip_slot ...NA done
+try to find label_slot ...3 done
+try to find raw_slot ...4 done
+try to find norm_slot ...5 done
+try to find platform ...Illumina done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '0' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...NA done
+try to find cellline ...S2-DRSC done
+try to find devstage ...late embryonic stage done
+try to find tissue ...embryo-derived cell-line done
+try to find sex ...Male done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...mRNA done
+try to find level3 ...RNA-seq done
+level4 factor is total-RNA
+level4 condition is Cell-Line_S2-DRSC;Tissue_embryo-derived cell-line;Developmental-Stage_late embryonic stage;RNAi_reagent_Untreated_(RNAi_control)
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

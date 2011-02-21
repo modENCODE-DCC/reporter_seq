@@ -1,0 +1,46 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/725_tag.csv
+connecting to database ...schema is modencode_experiment_725_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...4 done
+try to find num_of_cols ...7 done
+try to find title ...CGH S2-DRSC Cells done
+try to find description ...Analysis of copy number variation across modENCODE Drosophila cell line by comparative genomic hybridization (CGH).  We observe numerous copy number variations for the different cell lines, with each cell line having a distinct ploidy signature. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...David MacAlpine done
+try to find lab ...MacAlpine done
+try to find factors ... CellLine : CellLine:S2-DRSC:SC:1 done
+try to find data_type ...Copy Number Variation done
+try to find assay_type ...tiling array: DNA done
+try to find hyb_slot ...3 done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...2 done
+try to find raw_slot ...4 done
+try to find norm_slot ...5 done
+try to find platform ...Agilent done
+try to find sample_name_slot ...0 done
+try to find source_name_slot ...0 done
+try to find extract_name_slot ...0 done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...0 done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by sample name.
+$VAR1 = undef;
+NA done
+try to find strain ...w1118 done
+try to find cellline ...S2-DRSC done
+try to find devstage ...Embryo 0-4h done
+try to find tissue ...embryo-derived cell-line done
+try to find sex ...Male done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...Copy-Number-Variation done
+try to find level3 ...CGH done
+level4 factor is Replication-Copy-Number
+level4 condition is Strain_w1118;Cell-Line_S2-DRSC;Tissue_embryo-derived cell-line;Developmental-Stage_Embryo 0-4h
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

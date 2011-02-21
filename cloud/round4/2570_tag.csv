@@ -1,0 +1,7 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2570	E0-4h_cad	ISO1_0-4_cad_A.CEL	ISO1_0-4_cad_A.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	Caudal	Developmental-Stage_E0-4	ChIP-chip	0	ChIP		Dmel_r5.4	modENCODE_2570
+2570	E0-4h_cad	ISO1_0-4_cad_B.CEL	ISO1_0-4_cad_B.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	Caudal	Developmental-Stage_E0-4	ChIP-chip	1	ChIP		Dmel_r5.4	modENCODE_2570
+2570	E0-4h_cad	ISO1_0-4_cad_C.CEL	ISO1_0-4_cad_C.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	Caudal	Developmental-Stage_E0-4	ChIP-chip	2	ChIP		Dmel_r5.4	modENCODE_2570
+2570	E0-4h_cad	ISO1_0-4_Input.CEL	ISO1_0-4_Input.CEL	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	raw-arrayfile_CEL	Caudal	Developmental-Stage_E0-4	ChIP-chip	3	input		Dmel_r5.4	modENCODE_2570
+2570	E0-4h_cad	E0-4h_cad_signal.bar.txt_IGB.wig	E0-4h_cad_signal.bar.txt_IGB.wig	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	normalized-arrayfile_wig	Caudal	Developmental-Stage_E0-4	ChIP-chip	0			Dmel_r5.4	modENCODE_2570
+2570	E0-4h_cad	E0-4h_cad_pvalue_Dm_BDGPv5.bed.gff	E0-4h_cad_pvalue_Dm_BDGPv5.bed.gff	Dmel_r5.4	Transcriptional-Factor	ChIP-chip	computed-peaks_gff3	Caudal	Developmental-Stage_E0-4	ChIP-chip	all			Dmel_r5.4	modENCODE_2570

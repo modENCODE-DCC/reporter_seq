@@ -1,0 +1,51 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2782_tag.csv
+connecting to database ...schema is modencode_experiment_2782_data,public
+database connected.
+loading experiment ...done.
+GSM336086 640:GSM336086 0 
+connecting to database ...schema is modencode_experiment_640_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...1 done
+try to find num_of_cols ...6 done
+try to find title ...miRNA expression change dpy-5;him-8 young adult male done
+try to find description ...We report a significant number of miRNAs and other non-coding small RNAs show dramatic changes in expression during aging in C. elegans. RNAs were prepared from four diffrent timepoints during adulthood of C. elegans hermaphrodites, Day 0, 5, 8 and 12 post-L4 molt, and used for making cDNA libraries for small RNAs. Each library was sequenced using recent advances in high-throughput sequencing technology, Solexa. This study should lead to a better understanding of the aging process and age-related diseases. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Robert Waterston done
+try to find lab ...Slack done
+try to find factors ... done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...RNA-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...3 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...4 done
+try to find platform ...Illumina done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...2 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '0' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...dpy28(y1);him-8(e1489) done
+try to find cellline ...NA done
+try to find devstage ...yAdult Males 23dC done
+try to find tissue ...NA done
+try to find sex ...Male done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...small-RNA done
+try to find level3 ...RNA-seq done
+level4 factor is small-RNA
+level4 condition is Strain_dpy28(y1);him-8(e1489);Developmental-Stage_yAdult Males 23dC
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

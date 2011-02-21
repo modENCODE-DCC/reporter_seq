@@ -1,0 +1,4 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2777	miRNA expression change spe-9 N2 L1 larvae	GSM336055	GSM336055	Cele_WS190	small-RNA	RNA-seq	GEO_record	small-RNA	Strain_N2;Developmental-Stage_mid-L1 20dC 4hrs post-L1	RNA-seq	0			Cele_WS190	modENCODE_2777
+2777	miRNA expression change spe-9 N2 L1 larvae	L1_s_5.S-3.WS180.soap.sam	L1_s_5.S-3.WS180.soap.sam	Cele_WS190	small-RNA	RNA-seq	alignment_sam	small-RNA	Strain_N2;Developmental-Stage_mid-L1 20dC 4hrs post-L1	RNA-seq	0			Cele_WS190	modENCODE_2777
+2777	miRNA expression change spe-9 N2 L1 larvae	mid-L1_miRNA_0210.gff3	mid-L1_miRNA_0210.gff3	Cele_WS190	small-RNA	RNA-seq	gene-model_gff3	small-RNA	Strain_N2;Developmental-Stage_mid-L1 20dC 4hrs post-L1	RNA-seq	all			Cele_WS190	modENCODE_2777

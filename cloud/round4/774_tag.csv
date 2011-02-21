@@ -1,0 +1,3 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+774	Dm Loqs[f00791] Ovary smallRNA RNA-Seq	GSM280084	GSM280084	Dmel_r5.4	small-RNA	RNA-seq	GEO_record	small-RNA	Strain_Loqs f00791;Tissue_Adult ovaries;Developmental-Stage_Adult Female	RNA-seq	0			Dmel_r5.4	modENCODE_774
+774	Dm Loqs[f00791] Ovary smallRNA RNA-Seq	GSM280084.gff.sam	GSM280084.gff.sam	Dmel_r5.4	small-RNA	RNA-seq	alignment_sam	small-RNA	Strain_Loqs f00791;Tissue_Adult ovaries;Developmental-Stage_Adult Female	RNA-seq	0			Dmel_r5.4	modENCODE_774

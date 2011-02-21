@@ -1,0 +1,80 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/43_tag.csv
+connecting to database ...schema is modencode_experiment_43_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...32 done
+try to find num_of_cols ...8 done
+try to find title ...HTZ-1_N2_Mixed_Embryos (BK00001_HTZ1_N2_MXEMB) done
+try to find description ...The focus of our analysis will be elements that specify nucleosome positioning and occupancy, control domains of gene expression, induce repression of the X chromosome, guide mitotic segregation and genome duplication, govern homolog pairing and recombination during meiosis, and organize chromosome positioning within the nucleus. 126 strategically selected targets include key histone modifications, histone variants, RNA polymerase II isoforms, dosage-compensation proteins, centromere components, homolog-pairing facilitators, recombination markers, and nuclear-envelope constituents.
+We will integrate information generated with existing knowledge on the biology of the targets, perform ChIP-chip analysis on mutant and RNAi extracts lacking selected target proteins, use extrachromosomal arrays to assess the ability of candidate identified sequence motifs to recruit targets in vivo, identify tissue-specific patterns of selected targets, and create integrated, quantitative models of transcription and whole-chromosome functions. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Jason Lieb done
+try to find lab ...Lieb done
+try to find factors ... temperature : 20 degree celsius done
+try to find data_type ...Histone modification and replacement done
+try to find assay_type ...ChIP-chip done
+try to find hyb_slot ...4 done
+try to find seq_slot ...NA done
+try to find ip_slot ...2 done
+try to find label_slot ...4 done
+try to find raw_slot ...5 done
+try to find norm_slot ...6 done
+try to find platform ...Nimblegen done
+try to find sample_name_slot ...0 done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...1 done
+try to find hybridization_name_slot ...4 done
+try to find replicate_group_slot ...0 done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by replicate group info.
+$VAR1 = {
+          '11' => 1,
+          '21' => 2,
+          '7' => 0,
+          '26' => 3,
+          '17' => 2,
+          '2' => 0,
+          '22' => 2,
+          '1' => 0,
+          '18' => 2,
+          '0' => 0,
+          '30' => 3,
+          '23' => 2,
+          '16' => '2',
+          '13' => 1,
+          '29' => 3,
+          '27' => 3,
+          '25' => 3,
+          '6' => 0,
+          '28' => 3,
+          '3' => 0,
+          '9' => 1,
+          '12' => 1,
+          '20' => 2,
+          '14' => 1,
+          '15' => 1,
+          '8' => '1',
+          '4' => 0,
+          '24' => '3',
+          '19' => 2,
+          '10' => 1,
+          '31' => 3,
+          '5' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...NA done
+try to find cellline ...NA done
+try to find devstage ...Mixed Embryo done
+try to find tissue ...NA done
+try to find sex ...mixed Male and Hermaphrodite population done
+try to find antibody ...Ab:HTZ-1:JL:BK0001&oldid=26722 done
+try to find tgt_gene ...HTZ-1 done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...Chromatin-Structure done
+try to find level3 ...ChIP-chip done
+level4 factor is HTZ-1
+level4 condition is Developmental-Stage_Mixed Embryo;temperature_20 degree celsius
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

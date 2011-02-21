@@ -1,0 +1,63 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/364_tag.csv
+connecting to database ...schema is modencode_experiment_364_data,public
+database connected.
+loading experiment ...done.
+Celniker/RNA:59 555 0 
+Celniker/RNA:59 555 1 
+Celniker/RNA:59 555 2 
+Celniker/RNA:61 555 3 
+Celniker/RNA:61 555 4 
+Celniker/RNA:61 555 5 
+Celniker/RNA:61 555 6 
+connecting to database ...schema is modencode_experiment_555_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...7 done
+try to find num_of_cols ...5 done
+try to find title ...Dm_CME_W1_Cl.8+_059-061_C-tailed_RNA-Seq done
+try to find description ...We are using C-tailed RNA-Seq to characterize the transcriptome in various Drosophila cell lines. We then sequence each library using an Illumina Genome Analyzer II. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Gingeras done
+try to find factors ... done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...RNA-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...3 done
+try to find ip_slot ...NA done
+try to find label_slot ...2 done
+try to find raw_slot ...3 done
+try to find norm_slot ...4 done
+try to find platform ...Illumina done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '6' => 1,
+          '4' => 1,
+          '1' => 0,
+          '3' => '1',
+          '0' => 0,
+          '2' => 0,
+          '5' => 1
+        };
+HASH(0xe7ad90) done
+try to find strain ...NA done
+try to find cellline ...CME-W1-Cl.8+ done
+try to find devstage ...third instar larval stage done
+try to find tissue ...dorsal mesothoracic disc done
+try to find sex ...Male done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...mRNA done
+try to find level3 ...RNA-seq done
+level4 factor is total-RNA
+level4 condition is Cell-Line_CME-W1-Cl.8+;Tissue_dorsal mesothoracic disc;Developmental-Stage_third instar larval stage
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

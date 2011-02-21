@@ -1,0 +1,5 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2637	E4-8h_7T	GSM499647	GSM499647	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	GEO_record	cad	Strain_7T-CAD;Developmental-Stage_E4-8	ChIP-seq	0	ChIP		Dmel_r5.4	modENCODE_2637
+2637	E4-8h_7T	GSM499648	GSM499648	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	GEO_record	cad	Strain_7T-CAD;Developmental-Stage_E4-8	ChIP-seq	1	input		Dmel_r5.4	modENCODE_2637
+2637	E4-8h_7T	E4-8h_7T_density.wig	E4-8h_7T_density.wig	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	coverage-graph_wiggle	cad	Strain_7T-CAD;Developmental-Stage_E4-8	ChIP-seq	0	ChIP		Dmel_r5.4	modENCODE_2637
+2637	E4-8h_7T	E4-8h_7T_peaks.bed.gff3	E4-8h_7T_peaks.bed.gff3	Dmel_r5.4	Transcriptional-Factor	ChIP-seq	computed-peaks_gff3	cad	Strain_7T-CAD;Developmental-Stage_E4-8	ChIP-seq	all			Dmel_r5.4	modENCODE_2637

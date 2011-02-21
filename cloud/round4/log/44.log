@@ -1,0 +1,56 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/44_tag.csv
+connecting to database ...schema is modencode_experiment_44_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...8 done
+try to find num_of_cols ...7 done
+try to find title ...POL-2_N2_Mixed_Embryos (CVMMS126R_8WG16_N2_MXEMB) done
+try to find description ...The focus of our analysis will be elements that specify nucleosome positioning and occupancy, control domains of gene expression, induce repression of the X chromosome, guide mitotic segregation and genome duplication, govern homolog pairing and recombination during meiosis, and organize chromosome positioning within the nucleus. 126 strategically selected targets include key histone modifications, histone variants, RNA polymerase II isoforms, dosage-compensation proteins, centromere components, homolog-pairing facilitators, recombination markers, and nuclear-envelope constituents.
+We will integrate information generated with existing knowledge on the biology of the targets, perform ChIP-chip analysis on mutant and RNAi extracts lacking selected target proteins, use extrachromosomal arrays to assess the ability of candidate identified sequence motifs to recruit targets in vivo, identify tissue-specific patterns of selected targets, and create integrated, quantitative models of transcription and whole-chromosome functions. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Jason Lieb done
+try to find lab ...Lieb done
+try to find factors ... temperature : 20 degree celsius done
+try to find data_type ...Other chromatin binding sites done
+try to find assay_type ...ChIP-chip done
+try to find hyb_slot ...4 done
+try to find seq_slot ...NA done
+try to find ip_slot ...2 done
+try to find label_slot ...4 done
+try to find raw_slot ...5 done
+try to find norm_slot ...6 done
+try to find platform ...Nimblegen done
+try to find sample_name_slot ...0 done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...1 done
+try to find hybridization_name_slot ...4 done
+try to find replicate_group_slot ...0 done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by replicate group info.
+$VAR1 = {
+          '6' => 1,
+          '4' => '1',
+          '1' => 0,
+          '3' => 0,
+          '0' => 0,
+          '7' => 1,
+          '2' => 0,
+          '5' => 1
+        };
+HASH(0xe7ad90) done
+try to find strain ...NA done
+try to find cellline ...NA done
+try to find devstage ...Mixed Embryo done
+try to find tissue ...NA done
+try to find sex ...mixed Male and Hermaphrodite population done
+try to find antibody ...Ab:8WG16:JL:CVMMS126R&oldid=21898 done
+try to find tgt_gene ...RNA polII CTD domain unphosophorylated done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...non-TF-Chromatin-binding-factor done
+try to find level3 ...ChIP-chip done
+level4 factor is RNA polII CTD domain unphosophorylated
+level4 condition is Developmental-Stage_Mixed Embryo;temperature_20 degree celsius
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

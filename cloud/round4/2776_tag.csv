@@ -1,0 +1,4 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2776	miRNA expression change N2 embryos	GSM336052	GSM336052	Cele_WS190	small-RNA	RNA-seq	GEO_record	small-RNA	Strain_N2;Developmental-Stage_Mixed stage of embryos 20dC	RNA-seq	0			Cele_WS190	modENCODE_2776
+2776	miRNA expression change N2 embryos	Egg_s_3.S-3.WS180.soap.sam	Egg_s_3.S-3.WS180.soap.sam	Cele_WS190	small-RNA	RNA-seq	alignment_sam	small-RNA	Strain_N2;Developmental-Stage_Mixed stage of embryos 20dC	RNA-seq	0			Cele_WS190	modENCODE_2776
+2776	miRNA expression change N2 embryos	embryo_miRNA_0210.gff3	embryo_miRNA_0210.gff3	Cele_WS190	small-RNA	RNA-seq	gene-model_gff3	small-RNA	Strain_N2;Developmental-Stage_Mixed stage of embryos 20dC	RNA-seq	all			Cele_WS190	modENCODE_2776

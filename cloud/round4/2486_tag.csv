@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2486	smallRNAs from one cell stage C. elegans embryos (GSM427301)	GSM427301	GSM427301	Cele_WS190	small-RNA	RNA-seq	GEO_record	small-RNA	Strain_TX189;Developmental-Stage_one cell stage embryos;Compound_methanol;temperature_20 degree celsius	RNA-seq	0			Cele_WS190	modENCODE_2486

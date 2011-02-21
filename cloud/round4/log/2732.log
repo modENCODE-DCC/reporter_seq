@@ -1,0 +1,48 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2732_tag.csv
+connecting to database ...schema is modencode_experiment_2732_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...1 done
+try to find num_of_cols ...5 done
+try to find title ...spe-9 adult hermaphrodite 5days post-L4 small ncRNA RNA-Seq done
+try to find description ...We report a significant number of miRNAs and other non-coding small RNAs show dramatic changes in expression during aging in C. elegans. RNAs were prepared from four diffrent timepoints during adulthood of C. elegans hermaphrodites, Day 0, 5, 8 and 12 post-L4 molt, and used for making cDNA libraries for small RNAs. Each library was sequenced using recent advances in high-throughput sequencing technology, Solexa. This study should lead to a better understanding of the aging process and age-related diseases. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Robert Waterston done
+try to find lab ...Slack done
+try to find factors ... temperature : 23 degree celsius done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...RNA-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...3 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...4 done
+try to find platform ...Illumina done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...2 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '0' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...spe-9(hc88) done
+try to find cellline ...NA done
+try to find devstage ...Adult 23dC 5 days post-L4 done
+try to find tissue ...NA done
+try to find sex ...Hermaphrodite done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...small-RNA done
+try to find level3 ...RNA-seq done
+level4 factor is small-RNA
+level4 condition is Strain_spe-9(hc88);Developmental-Stage_Adult 23dC 5 days post-L4;temperature_23 degree celsius
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

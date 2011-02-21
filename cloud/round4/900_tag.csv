@@ -1,0 +1,8 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+900	E0-4_rbCBP	E-0-4h_cbp-1_Test1.CEL	E-0-4h_cbp-1_Test1.CEL	Dmel_r5.4		ChIP-chip	raw-arrayfile_CEL	nejire	Developmental-Stage_E0-4	ChIP-chip	0	ChIP		Dmel_r5.4	modENCODE_900
+900	E0-4_rbCBP	E-0-4h_cbp-2_Test2.CEL	E-0-4h_cbp-2_Test2.CEL	Dmel_r5.4		ChIP-chip	raw-arrayfile_CEL	nejire	Developmental-Stage_E0-4	ChIP-chip	1	ChIP		Dmel_r5.4	modENCODE_900
+900	E0-4_rbCBP	E-0-4h_0-4h-cbp_Test3.CEL	E-0-4h_0-4h-cbp_Test3.CEL	Dmel_r5.4		ChIP-chip	raw-arrayfile_CEL	nejire	Developmental-Stage_E0-4	ChIP-chip	2	ChIP		Dmel_r5.4	modENCODE_900
+900	E0-4_rbCBP	E-0-4h_Input-0-4h_Ctl1.CEL	E-0-4h_Input-0-4h_Ctl1.CEL	Dmel_r5.4		ChIP-chip	raw-arrayfile_CEL	nejire	Developmental-Stage_E0-4	ChIP-chip	3	input		Dmel_r5.4	modENCODE_900
+900	E0-4_rbCBP	E-0-4h_0-4h-Input_Ctl2.CEL	E-0-4h_0-4h-Input_Ctl2.CEL	Dmel_r5.4		ChIP-chip	raw-arrayfile_CEL	nejire	Developmental-Stage_E0-4	ChIP-chip	4	input		Dmel_r5.4	modENCODE_900
+900	E0-4_rbCBP	MAT_rbCBP_E-0-4h.Dm_tiling2_MR_v01_dm3.NR.bpmap_matscore.bar.txt_IGB.wig	MAT_rbCBP_E-0-4h.Dm_tiling2_MR_v01_dm3.NR.bpmap_matscore.bar.txt_IGB.wig	Dmel_r5.4		ChIP-chip	normalized-arrayfile_wig	nejire	Developmental-Stage_E0-4	ChIP-chip	0			Dmel_r5.4	modENCODE_900
+900	E0-4_rbCBP	MAT_rbCBP_E-0-4h.bed_dcc.gff	MAT_rbCBP_E-0-4h.bed_dcc.gff	Dmel_r5.4		ChIP-chip	computed-peaks_gff3	nejire	Developmental-Stage_E0-4	ChIP-chip	all			Dmel_r5.4	modENCODE_900

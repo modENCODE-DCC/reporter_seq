@@ -1,0 +1,49 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2918_tag.csv
+connecting to database ...schema is modencode_experiment_2918_data,public
+database connected.
+loading experiment ...done.
+SRR023679 2871:SRR023679 0 
+SRR023658 2871:SRR023658 1 
+SRR023713 2871:SRR023713 2 
+SRR023642 2871:SRR023642 3 
+SRR023672 2871:SRR023672 4 
+SRR029176 2871:SRR029176 5 
+SRR029176 2871:SRR029176 6 
+SRR029233 2871:SRR029233 7 
+SRR029233 2871:SRR029233 8 
+SRR023605 2871:SRR023605 9 
+SRR023605 2871:SRR023605 10 
+SRR023550 2871:SRR023550 11 
+SRR023550 2871:SRR023550 12 
+SRR029235 2871:SRR029235 13 
+SRR029235 2871:SRR029235 14 
+SRR029231 2871:SRR029231 15 
+SRR029231 2871:SRR029231 16 
+SRR023606 2871:SRR023606 17 
+SRR023606 2871:SRR023606 18 
+connecting to database ...schema is modencode_experiment_2871_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...19 done
+try to find num_of_cols ...5 done
+try to find title ...Dm adult male, eclosion + 5 days RNA-Seq, unique mappers done
+try to find description ...RNA-seq analysis was performed on poly(A)+ RNA from 30 developmental stages spanning the life cycle of D. melanogaster, from 0-2hr embryos through 30-day male and female adults. Total RNA was isolated by the Peter Cherbas group. Isolation of poly(A)+ RNA and library construction were performed in the Brenton Graveley lab. Libraries were distributed among 5 labs in the Drosophila Transcriptome group for sequencing.  The Susan Celniker lab performed paired-end sequencing exclusively (2x76 nt) .  The Brenton Graveley, Tom Gingeras and Michael Brent labs performed single-end sequencing exclusively (1x76 nt).  The Brian Oliver lab performed both single- and paired-end sequencing.  All labs used the same Illumina GAII platform and called bases using the Illumina processing pipeline.  Fastaq files were generated using pipeline version 1.3 before 5/07/09 and using version 1.4 after that date. Reads were aligned to the genome sequence using Tophat v.1.0.10. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Graveley done
+try to find factors ... done
+try to find data_type ...NA done
+try to find assay_type ...NA done
+try to find hyb_slot ...NA done
+try to find seq_slot ...2 done
+try to find ip_slot ...NA done
+try to find label_slot ...1 done
+try to find raw_slot ...2 done
+try to find norm_slot ...3 done
+try to find platform ...Illumina done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...

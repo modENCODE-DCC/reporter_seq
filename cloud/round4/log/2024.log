@@ -1,0 +1,48 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2024_tag.csv
+connecting to database ...schema is modencode_experiment_2024_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...1 done
+try to find num_of_cols ...5 done
+try to find title ...L1 RNA-seq done
+try to find description ...RNA-seq was performed on polyA-RNA for developmental stages of Drosophila melanogaster on which ChIP-chip or ChIP-seq has been performed. The RNA was isolated from the same material used for ChIP experiments and, after purification and production of the Solexa libraries, sequenced (single-end) at Argonne National Lab. For RNA-seq, 2 lanes per sample are bieng run. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Kevin White done
+try to find lab ...White done
+try to find factors ... done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...RNA-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...3 done
+try to find ip_slot ...NA done
+try to find label_slot ...2 done
+try to find raw_slot ...3 done
+try to find norm_slot ...4 done
+try to find platform ... done
+try to find sample_name_slot ...0 done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by Sample/Hyb name.
+$VAR1 = {
+          '0' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...Y cn bw sp done
+try to find cellline ...NA done
+try to find devstage ...L1 done
+try to find tissue ...NA done
+try to find sex ...Unknown done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...mRNA done
+try to find level3 ...RNA-seq done
+level4 factor is PolyA-RNA
+level4 condition is Strain_Y cn bw sp;Developmental-Stage_L1
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

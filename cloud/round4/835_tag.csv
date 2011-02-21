@@ -1,0 +1,4 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+835	E4-8_H3K27Ac	GSM401404	GSM401404	Dmel_r5.4	Histone-Modification	ChIP-seq	GEO_record	H3K27Ac	Strain_Y cn bw sp;Developmental-Stage_E4-8	ChIP-seq	0	ChIP		Dmel_r5.4	modENCODE_835
+835	E4-8_H3K27Ac	E4-8_H3K27Ac_density.wig	E4-8_H3K27Ac_density.wig	Dmel_r5.4	Histone-Modification	ChIP-seq	coverage-graph_wiggle	H3K27Ac	Strain_Y cn bw sp;Developmental-Stage_E4-8	ChIP-seq	0	ChIP		Dmel_r5.4	modENCODE_835
+835	E4-8_H3K27Ac	E4-8_H3K27Ac_input_tag36_mfold4_250_peaks_1fdr_filtered.bed.gff3	E4-8_H3K27Ac_input_tag36_mfold4_250_peaks_1fdr_filtered.bed.gff3	Dmel_r5.4	Histone-Modification	ChIP-seq	computed-peaks_gff3	H3K27Ac	Strain_Y cn bw sp;Developmental-Stage_E4-8	ChIP-seq	all			Dmel_r5.4	modENCODE_835

@@ -1,0 +1,3 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+737	Dm Canton-S Adult Female Head smallRNA RNA-Seq	GSM240749	GSM240749	Dmel_r5.4	small-RNA	RNA-seq	GEO_record	small-RNA	Strain_Canton S;Tissue_Female heads;Developmental-Stage_Adult Female	RNA-seq	0			Dmel_r5.4	modENCODE_737
+737	Dm Canton-S Adult Female Head smallRNA RNA-Seq	GSM240749.gff.sam	GSM240749.gff.sam	Dmel_r5.4	small-RNA	RNA-seq	alignment_sam	small-RNA	Strain_Canton S;Tissue_Female heads;Developmental-Stage_Adult Female	RNA-seq	0			Dmel_r5.4	modENCODE_737

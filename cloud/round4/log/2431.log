@@ -1,0 +1,46 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2431_tag.csv
+connecting to database ...schema is modencode_experiment_2431_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...4 done
+try to find num_of_cols ...6 done
+try to find title ...Identification of Transcription Factor HLH-1::GFP Binding Regions in Embryos done
+try to find description ...We are identifying the DNA binding sites for 300 transcription factors in C. elegans. Each transcription factor gene is tagged with the same GFP fusion protein, permitting validation of the gene's correct spatio-temporal expression pattern in transgenic animals.  Chromatin immunoprecipitation on each strain is peformed using an anti-GFP antibody, and any bound DNA is deep-sequenced using Solexa GA2 technology. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Michael Snyder done
+try to find lab ...Snyder done
+try to find factors ... temperature : 20 degree celsius done
+try to find data_type ...TF binding sites done
+try to find assay_type ...ChIP-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...2 done
+try to find ip_slot ...1 done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...3 done
+try to find platform ...Illumina done
+try to find sample_name_slot ...0 done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...0 done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...0 done
+try to find groups ...group by sample name.
+$VAR1 = undef;
+NA done
+try to find strain ...OP64 done
+try to find cellline ...NA done
+try to find devstage ...embryo done
+try to find tissue ...NA done
+try to find sex ...Hermaphrodite done
+try to find antibody ...Ab:Anti-eGFP:MS:1&oldid=17974 done
+try to find tgt_gene ...hlh-1 done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...Transcriptional-Factor done
+try to find level3 ...ChIP-seq done
+level4 factor is hlh-1
+level4 condition is Strain_OP64;Developmental-Stage_embryo;temperature_20 degree celsius
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

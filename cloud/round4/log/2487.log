@@ -1,0 +1,48 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2487_tag.csv
+connecting to database ...schema is modencode_experiment_2487_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...1 done
+try to find num_of_cols ...5 done
+try to find title ...smallRNAs from post-gastrulation C. elegans embryos (GSM427332) done
+try to find description ...We devised a method to collect various staged C. elegans embryos by fluorescence-activated cell sorting (eFACS).  We combined eFACS with second-generation sequencing to profile the embryonic expression of small, noncoding RNAs.   We aim to discover complex changes in the expression between and within almost all classes of small rnAs, including micrornAs and 26G-RNAs, during embryogenesis. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Fabio Piano done
+try to find lab ...Rajewsky done
+try to find factors ... Compound : water temperature : 20 degree celsius done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...RNA-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...4 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ...Illumina done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...2 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '0' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...TX189 done
+try to find cellline ...NA done
+try to find devstage ...post-gastrulation embryos done
+try to find tissue ...NA done
+try to find sex ...Hermaphrodite done
+try to find antibody ...NA done
+try to find tgt_gene ...oma-1 done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...small-RNA done
+try to find level3 ...RNA-seq done
+level4 factor is small-RNA
+level4 condition is Strain_TX189;Developmental-Stage_post-gastrulation embryos;Compound_water;temperature_20 degree celsius
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

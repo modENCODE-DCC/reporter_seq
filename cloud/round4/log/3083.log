@@ -1,0 +1,57 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/3083_tag.csv
+connecting to database ...schema is modencode_experiment_3083_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...10 done
+try to find num_of_cols ...7 done
+try to find title ...D. melanogaster Oregon-R female headsmRNA-seq done
+try to find description ...To provide biological validation of D. melanogaster transcript models, we will generate RNA-Seq profiles for other members of the genus, using timepoints and tissue samples matching those being generated for D. melanogaster.  Evolutionary conservation of expression will be valuable support for annotation efforts. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...NA done
+try to find lab ...Oliver done
+try to find factors ... done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...RNA-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...5 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...5 done
+try to find norm_slot ...6 done
+try to find platform ...Illumina done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...2 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '6' => 0,
+          '3' => 0,
+          '7' => 0,
+          '9' => 0,
+          '2' => 0,
+          '8' => 0,
+          '1' => 0,
+          '4' => 0,
+          '0' => 0,
+          '5' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...Oregon-R done
+try to find cellline ...NA done
+try to find devstage ...Dmel Adult Female 8 days done
+try to find tissue ...Dmel Female heads done
+try to find sex ...Female done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...mRNA done
+try to find level3 ...RNA-seq done
+level4 factor is total-RNA
+level4 condition is Strain_Oregon-R;Tissue_Dmel Female heads;Developmental-Stage_Dmel Adult Female 8 days
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

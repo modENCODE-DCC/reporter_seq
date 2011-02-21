@@ -1,0 +1,29 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2536_tag.csv
+connecting to database ...schema is modencode_experiment_2536_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...4 done
+try to find num_of_cols ...6 done
+try to find title ...H3.3_600_mM_Salt_Extracted_Chromatin done
+try to find description ...We applied genome-wide profiling to successive salt-extracted fractions of micrococcal nuclease-treated C. elegans chromatin.  Chromatin fractions extracted with 80 mM or 350 mM NaCl after digestion contain predominantly mononucleosomes and represent classical active chromatin. Profiles of these low-salt soluble fractions display phased nucleosomes over transcriptionally active genes that are locally depleted of histone H3.3 and correspond closely to profiles of histone H2Av (H2A.Z) and RNA polymerase II. This correspondence suggests that transcription can result in loss of H3.3+H2Av nucleosomes and generate low-salt soluble nucleosomes.  Nearly quantitative recovery of chromatin is obtained with 600 mM NaCl; however, the remaining insoluble chromatin is enriched in actively transcribed regions.  Salt-insoluble chromatin likely represents oligonucleosomes that are attached to large protein complexes. Both low-salt extracted and insoluble chromatin are rich in sequences that correspond to epigenetic regulatory elements genome-wide. The presence of active chromatin at both extremes of salt solubility suggests that these salt fractions capture bound and unbound intermediates in active processes, thus providing a simple, powerful strategy for mapping epigenome dynamics. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Steven Henikoff done
+try to find lab ...Henikoff done
+try to find factors ... Compound : 600 mM sampling_time_point : 18 hours extract : soluble fraction done
+try to find data_type ...Chromatin structure done
+try to find assay_type ...ChIP-chip done
+try to find hyb_slot ...3 done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...2 done
+try to find raw_slot ...4 done
+try to find norm_slot ...5 done
+try to find platform ...Nimblegen done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...1 done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...1 done
+try to find last_extraction_slot ...1 done
+try to find groups ...

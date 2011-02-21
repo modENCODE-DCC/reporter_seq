@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2009	Lai-one day adult female/BS152	V084.sam	V084/V084.sam	Dmel_r5.4	small-RNA	RNA-seq	alignment_sam	small-RNA	Strain_Y cn bw sp;Developmental-Stage_Adult female, eclosion + 1 day	RNA-seq	0			Dmel_r5.4	modENCODE_2009

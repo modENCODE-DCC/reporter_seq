@@ -1,0 +1,9 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+22	E0-12 CP190 ChIP-chip	CP190_6.CEL	CP190_6.CEL	Dmel_r5.4	non-TF-Chromatin-binding-factor	ChIP-chip	raw-arrayfile_CEL	CP190	Developmental-Stage_Embryo 0-12h	ChIP-chip	0	ChIP		Dmel_r5.4	modENCODE_22
+22	E0-12 CP190 ChIP-chip	Input_1.CEL	Input_1.CEL	Dmel_r5.4	non-TF-Chromatin-binding-factor	ChIP-chip	raw-arrayfile_CEL	CP190	Developmental-Stage_Embryo 0-12h	ChIP-chip	0	input		Dmel_r5.4	modENCODE_22
+22	E0-12 CP190 ChIP-chip	CP190_12.CEL	CP190_12.CEL	Dmel_r5.4	non-TF-Chromatin-binding-factor	ChIP-chip	raw-arrayfile_CEL	CP190	Developmental-Stage_Embryo 0-12h	ChIP-chip	1	ChIP		Dmel_r5.4	modENCODE_22
+22	E0-12 CP190 ChIP-chip	Input_2.CEL	Input_2.CEL	Dmel_r5.4	non-TF-Chromatin-binding-factor	ChIP-chip	raw-arrayfile_CEL	CP190	Developmental-Stage_Embryo 0-12h	ChIP-chip	1	input		Dmel_r5.4	modENCODE_22
+22	E0-12 CP190 ChIP-chip	CP190_17.CEL	CP190_17.CEL	Dmel_r5.4	non-TF-Chromatin-binding-factor	ChIP-chip	raw-arrayfile_CEL	CP190	Developmental-Stage_Embryo 0-12h	ChIP-chip	2	ChIP		Dmel_r5.4	modENCODE_22
+22	E0-12 CP190 ChIP-chip	Input_3.CEL	Input_3.CEL	Dmel_r5.4	non-TF-Chromatin-binding-factor	ChIP-chip	raw-arrayfile_CEL	CP190	Developmental-Stage_Embryo 0-12h	ChIP-chip	2	input		Dmel_r5.4	modENCODE_22
+22	E0-12 CP190 ChIP-chip	E0-12_CP190_restpeak_affy_1.fc.bar.txt_IGB.wig	E0-12_CP190_restpeak_affy_1.fc.bar.txt_IGB.wig	Dmel_r5.4	non-TF-Chromatin-binding-factor	ChIP-chip	normalized-arrayfile_wig	CP190	Developmental-Stage_Embryo 0-12h	ChIP-chip	0			Dmel_r5.4	modENCODE_22
+22	E0-12 CP190 ChIP-chip	CP190_1fdr.gff	CP190_1fdr.gff	Dmel_r5.4	non-TF-Chromatin-binding-factor	ChIP-chip	computed-peaks_gff3	CP190	Developmental-Stage_Embryo 0-12h	ChIP-chip	all			Dmel_r5.4	modENCODE_22

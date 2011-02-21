@@ -1,0 +1,53 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2549_tag.csv
+connecting to database ...schema is modencode_experiment_2549_data,public
+database connected.
+loading experiment ...done.
+Celniker/RNA:83 574:Celniker/RNA:83 0 
+Celniker/RNA:83 574:Celniker/RNA:83 1 
+connecting to database ...schema is modencode_experiment_574_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...2 done
+try to find num_of_cols ...7 done
+try to find title ...CAGE sequencing of mixed embryo 5' ends done
+try to find description ...To map transcription start sites (TSSs) genome-wide, we perform CAGE (Cap Analysis of Gene Expression). These CAGE tags are 27-nt sequences that are derived from mRNAs and other long capped transcripts in the vicinity of the 5' cap site. Their mapping onto the genome sequence defines TSSs. CAGE libraries are constructed from first-strand cDNA selected through a biotinylated cap. Second-strand synthesis is dependent upon ligation to the first-strand full-length cDNA of a primer that contains a restriction site for a type II endonuclease allowing the cleavage of 5' 27-bp tags from the resulting cDNA. These short fragments are sequenced using the Illumina GA platform. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Celniker done
+try to find factors ... done
+try to find data_type ...Gene Structure - mRNA done
+try to find assay_type ...CAGE done
+try to find hyb_slot ...NA done
+try to find seq_slot ...4 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...6 done
+try to find platform ...Illumina done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...2 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '1' => 0,
+          '0' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...Y cn bw sp done
+try to find cellline ...NA done
+try to find devstage ...Mixed Embryos 0-24h done
+try to find tissue ...NA done
+try to find sex ...NA done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...mRNA done
+try to find level3 ...CAGE done
+level4 factor is 5-prime-UTR
+level4 condition is Strain_Y cn bw sp;Developmental-Stage_Mixed Embryos 0-24h
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

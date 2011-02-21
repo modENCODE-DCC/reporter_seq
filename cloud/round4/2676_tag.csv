@@ -1,0 +1,4 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2676	Dm embryos, 0-2 hr after egg laying SOLiD RNA-Seq	SRX015641	SRX015641	Dmel_r5.4	mRNA	RNA-seq	ShortReadArchive_record	total-RNA	Strain_Y cn bw sp;Developmental-Stage_Embryo 0-2h	RNA-seq	0			Dmel_r5.4	modENCODE_2676
+2676	Dm embryos, 0-2 hr after egg laying SOLiD RNA-Seq	BC1_minus.wig	BC1_minus.wig	Dmel_r5.4	mRNA	RNA-seq	coverage-graph_wiggle	total-RNA	Strain_Y cn bw sp;Developmental-Stage_Embryo 0-2h	RNA-seq	0			Dmel_r5.4	modENCODE_2676
+2676	Dm embryos, 0-2 hr after egg laying SOLiD RNA-Seq	BC1_plus.wig	BC1_plus.wig	Dmel_r5.4	mRNA	RNA-seq	coverage-graph_wiggle	total-RNA	Strain_Y cn bw sp;Developmental-Stage_Embryo 0-2h	RNA-seq	0			Dmel_r5.4	modENCODE_2676

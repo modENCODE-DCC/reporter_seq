@@ -1,0 +1,50 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/468_tag.csv
+connecting to database ...schema is modencode_experiment_468_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...3 done
+try to find num_of_cols ...9 done
+try to find title ...embryo_GABA_motor_neurons_tiling_array done
+try to find description ...Our experiments are designed to detect all C. elegans transcripts by hybridizing RNA to commerically available genome tiling arrays. To maximize the chances of detecting rare transcripts with limited expression in specific cells, we are extracting RNA from selected embryonic cells isolated by FACS and from postembryonic cells by use of the mRNA tagging method. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Robert Waterston done
+try to find lab ...Miller done
+try to find factors ... temperature : 20 degree celsius done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...tiling array: RNA done
+try to find hyb_slot ...5 done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...4 done
+try to find raw_slot ...5 done
+try to find norm_slot ...6 done
+try to find platform ...Affymetrix done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...3 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '1' => 0,
+          '0' => 0,
+          '2' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...CZ1200 done
+try to find cellline ...NA done
+try to find devstage ...Mixed stage of embryos 20dC done
+try to find tissue ...GABA neurons (embryonic) done
+try to find sex ...Hermaphrodite done
+try to find antibody ...NA done
+try to find tgt_gene ...unc-25 done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...mRNA done
+try to find level3 ...RNA-tiling-array done
+level4 factor is total-RNA
+level4 condition is Strain_CZ1200;Tissue_GABA neurons (embryonic);Developmental-Stage_Mixed stage of embryos 20dC;temperature_20 degree celsius
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

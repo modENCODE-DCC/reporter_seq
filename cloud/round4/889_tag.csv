@@ -1,0 +1,12 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+889	L3_8wg16	L3-8WG16-1-251918410057.txt	L3-8WG16-1-251918410057.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	RNA Polymerase II	Developmental-Stage_L3	ChIP-chip	0	ChIP	cy3	Dmel_r5.4	modENCODE_889
+889	L3_8wg16	L3-8WG16-1-251918310005.txt	L3-8WG16-1-251918310005.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	RNA Polymerase II	Developmental-Stage_L3	ChIP-chip	0	ChIP	cy3	Dmel_r5.4	modENCODE_889
+889	L3_8wg16	L3-8WG16-1-251918210210.txt	L3-8WG16-1-251918210210.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	RNA Polymerase II	Developmental-Stage_L3	ChIP-chip	0	ChIP	cy3	Dmel_r5.4	modENCODE_889
+889	L3_8wg16	L3-8WG16-2-251918210211.txt	L3-8WG16-2-251918210211.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	RNA Polymerase II	Developmental-Stage_L3	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_889
+889	L3_8wg16	L3-8WG16-3-251918210212.txt	L3-8WG16-3-251918210212.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	RNA Polymerase II	Developmental-Stage_L3	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_889
+889	L3_8wg16	L3-8WG16-2-251918310006.txt	L3-8WG16-2-251918310006.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	RNA Polymerase II	Developmental-Stage_L3	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_889
+889	L3_8wg16	L3-8WG16-3-251918310008.txt	L3-8WG16-3-251918310008.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	RNA Polymerase II	Developmental-Stage_L3	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_889
+889	L3_8wg16	L3-8wg16-3-251918410065.txt	L3-8wg16-3-251918410065.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	RNA Polymerase II	Developmental-Stage_L3	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_889
+889	L3_8wg16	L3-8WG16-2-251918410058.txt	L3-8WG16-2-251918410058.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	RNA Polymerase II	Developmental-Stage_L3	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_889
+889	L3_8wg16	L3_8wg16_DCC_merged.wig	L3_8wg16_DCC_merged.wig	Dmel_r5.4		ChIP-chip	normalized-arrayfile_wig	RNA Polymerase II	Developmental-Stage_L3	ChIP-chip	0			Dmel_r5.4	modENCODE_889
+889	L3_8wg16	L3_8wg16_agilent_dmel3_merged_dcc.gff	L3_8wg16_agilent_dmel3_merged_dcc.gff	Dmel_r5.4		ChIP-chip	computed-peaks_gff3	RNA Polymerase II	Developmental-Stage_L3	ChIP-chip	all			Dmel_r5.4	modENCODE_889

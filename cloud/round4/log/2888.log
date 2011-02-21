@@ -1,0 +1,71 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2888_tag.csv
+connecting to database ...schema is modencode_experiment_2888_data,public
+database connected.
+loading experiment ...done.
+Celniker/RNA:240 574:Celniker/RNA:240 0 
+Celniker/RNA:240 574:Celniker/RNA:240 1 
+Celniker/RNA:240 574:Celniker/RNA:240 2 
+Celniker/RNA:240 574:Celniker/RNA:240 3 
+Celniker/RNA:240 574:Celniker/RNA:240 4 
+Celniker/RNA:240 574:Celniker/RNA:240 5 
+Celniker/RNA:240 574:Celniker/RNA:240 6 
+Celniker/RNA:240 574:Celniker/RNA:240 7 
+Celniker/RNA:240 574:Celniker/RNA:240 8 
+Celniker/RNA:240 574:Celniker/RNA:240 9 
+Celniker/RNA:240 574:Celniker/RNA:240 10 
+connecting to database ...schema is modencode_experiment_574_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...11 done
+try to find num_of_cols ...7 done
+try to find title ...Dm embryos, 8-10 hr after egg laying RNA-Seq, multi mappers done
+try to find description ...RNA-seq analysis was performed on poly(A)+ RNA from 30 developmental stages spanning the life cycle of D. melanogaster, from 0-2hr embryos through 30-day male and female adults. Total RNA was isolated by the Peter Cherbas group. Isolation of poly(A)+ RNA and library construction were performed in the Brenton Graveley lab. Libraries were distributed among 5 labs in the Drosophila Transcriptome group for sequencing.  The Susan Celniker lab performed paired-end sequencing exclusively (2x76 nt) .  The Brenton Graveley, Tom Gingeras and Michael Brent labs performed single-end sequencing exclusively (1x76 nt).  The Brian Oliver lab performed both single- and paired-end sequencing.  All labs used the same Illumina GAII platform and called bases using the Illumina processing pipeline.  Fastaq files were generated using pipeline version 1.3 before 5/07/09 and using version 1.4 after that date. Reads were aligned to the genome sequence using Tophat v.1.0.10. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Celniker done
+try to find factors ... done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...RNA-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...5 done
+try to find ip_slot ...NA done
+try to find label_slot ...4 done
+try to find raw_slot ...5 done
+try to find norm_slot ...6 done
+try to find platform ...Illumina done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...2 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '6' => 0,
+          '3' => 0,
+          '7' => 0,
+          '9' => 0,
+          '2' => 0,
+          '8' => 0,
+          '1' => 0,
+          '4' => 0,
+          '0' => 0,
+          '10' => 0,
+          '5' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...Y cn bw sp done
+try to find cellline ...NA done
+try to find devstage ...Embryo 8-10h done
+try to find tissue ...NA done
+try to find sex ...Unknown done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...mRNA done
+try to find level3 ...RNA-seq done
+level4 factor is total-RNA
+level4 condition is Strain_Y cn bw sp;Developmental-Stage_Embryo 8-10h
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

@@ -1,0 +1,46 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/709_tag.csv
+connecting to database ...schema is modencode_experiment_709_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...8 done
+try to find num_of_cols ...9 done
+try to find title ...Kc167 Replication Origins done
+try to find description ...Early origins of replication were identified by treating cells with hydroxyurea (HU), a potent inhibitor of nucleotide synthesis, in the presence of the nucleotide analogue BrdU.  Treatment of synchronized cells with HU stalls replication forks and activates the intra S-phase checkpoint, thereby limiting BrdU incorporation to those sequences immediately adjacent to early activating replication origins. BrdU enriched sequences surrounding early origins of replication are then enriched by immunoprecipitation with an anti-BrdU antibody.  Early origins are then detected by hybridization to Agilent genomic tiling arrays. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...David MacAlpine done
+try to find lab ...MacAlpine done
+try to find factors ... CellLine : CellLine:Kc167:SC:1 done
+try to find data_type ...Origins of Replication done
+try to find assay_type ...tiling array: DNA done
+try to find hyb_slot ...5 done
+try to find seq_slot ...NA done
+try to find ip_slot ...3 done
+try to find label_slot ...4 done
+try to find raw_slot ...6 done
+try to find norm_slot ...8 done
+try to find platform ...Agilent done
+try to find sample_name_slot ...0 done
+try to find source_name_slot ...0 done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...5 done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...2 done
+try to find groups ...group by sample name.
+$VAR1 = undef;
+NA done
+try to find strain ...NA done
+try to find cellline ...Kc167 done
+try to find devstage ...late embryonic stage done
+try to find tissue ...embryo-derived cell-line done
+try to find sex ...Female done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...DNA-Replication done
+try to find level3 ...DNA-tiling-array done
+level4 factor is Replication-Origin
+level4 condition is Cell-Line_Kc167;Tissue_embryo-derived cell-line;Developmental-Stage_late embryonic stage
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

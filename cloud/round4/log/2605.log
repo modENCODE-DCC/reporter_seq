@@ -1,0 +1,51 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2605_tag.csv
+connecting to database ...schema is modencode_experiment_2605_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...4 done
+try to find num_of_cols ...5 done
+try to find title ...Lai_OvarySomaticSheet_smallRNA_4rep done
+try to find description ...We plan to generate a comprehensive catalog of expressed and functional microRNAs, and generate biological evidence for their regulatory activity. We plan also to delineate the primary transcription units of microRNA genes. Finally, we plan to annotate other classes of non-miRNA expressed small RNAs, as least some of which may define novel classes of small RNA genes. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Eric Lai done
+try to find lab ...Lai done
+try to find factors ... done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...RNA-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...3 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...4 done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '1' => '1',
+          '3' => '3',
+          '0' => 0,
+          '2' => '2'
+        };
+HASH(0xe7ad90) done
+try to find strain ...NA done
+try to find cellline ...OvarySomaticSheet done
+try to find devstage ...adult stage done
+try to find tissue ...ovary done
+try to find sex ...Female done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...small-RNA done
+try to find level3 ...RNA-seq done
+level4 factor is small-RNA
+level4 condition is Cell-Line_OvarySomaticSheet;Tissue_ovary;Developmental-Stage_adult stage
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

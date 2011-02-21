@@ -1,0 +1,12 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+643	E20-24_CBP	20-24-cbp-1-251918310074.txt	20-24-cbp-1-251918310074.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E20-24	ChIP-chip	0	ChIP	cy3	Dmel_r5.4	modENCODE_643
+643	E20-24_CBP	20-24-cbp-1-251918410139.txt	20-24-cbp-1-251918410139.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E20-24	ChIP-chip	0	ChIP	cy3	Dmel_r5.4	modENCODE_643
+643	E20-24_CBP	20-24-cbp-1-251918210178.txt	20-24-cbp-1-251918210178.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E20-24	ChIP-chip	0	ChIP	cy3	Dmel_r5.4	modENCODE_643
+643	E20-24_CBP	20-24-cbp-3-251918410140.txt	20-24-cbp-3-251918410140.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E20-24	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_643
+643	E20-24_CBP	20-24-cbp-2-251918410135.txt	20-24-cbp-2-251918410135.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E20-24	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_643
+643	E20-24_CBP	20-24-cbp-2-251918210020.txt	20-24-cbp-2-251918210020.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E20-24	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_643
+643	E20-24_CBP	20-24-cbp-3-251918210179.txt	20-24-cbp-3-251918210179.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E20-24	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_643
+643	E20-24_CBP	20-24-cbp-3-251918310075.txt	20-24-cbp-3-251918310075.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E20-24	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_643
+643	E20-24_CBP	20-24-cbp-2-251918310070.txt	20-24-cbp-2-251918310070.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E20-24	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_643
+643	E20-24_CBP	E20-24h-CBP_DCC_merged.wig	E20-24h-CBP_DCC_merged.wig	Dmel_r5.4		ChIP-chip	normalized-arrayfile_wig	nejire	Developmental-Stage_E20-24	ChIP-chip	0			Dmel_r5.4	modENCODE_643
+643	E20-24_CBP	E20-24h-CBP_agilent_dmel3_merged_dcc.gff	E20-24h-CBP_agilent_dmel3_merged_dcc.gff	Dmel_r5.4		ChIP-chip	computed-peaks_gff3	nejire	Developmental-Stage_E20-24	ChIP-chip	all			Dmel_r5.4	modENCODE_643

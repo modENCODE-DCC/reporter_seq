@@ -1,0 +1,48 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2827_tag.csv
+connecting to database ...schema is modencode_experiment_2827_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...1 done
+try to find num_of_cols ...6 done
+try to find title ...miRNA isolation and 454 sequencing from eri-1(mg366) young adult whole worms done
+try to find description ...In order to identify 26G endo-siRNAs that regulate spermatogenic and zygotic gene expression in C. elegans, we isolated small RNAs (18-32nt) that were expressed in purified male sperm, hermaphrodite oocytes, embryos, N2, glp-4(bn2), and eri-1(mg366) worms.  These RNAs were cloned and sequenced by 454 and Illumina high-throughput sequencing, followed by alignments to the C. elegans genome. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Fabio Piano done
+try to find lab ...Piano done
+try to find factors ... temperature : 25 degree celsius done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...RNA-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...4 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...5 done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '0' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...GR1373 done
+try to find cellline ...NA done
+try to find devstage ...young Adult 25dC done
+try to find tissue ...NA done
+try to find sex ...Hermaphrodite done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...small-RNA done
+try to find level3 ...RNA-seq done
+level4 factor is small-RNA
+level4 condition is Strain_GR1373;Developmental-Stage_young Adult 25dC;temperature_25 degree celsius
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

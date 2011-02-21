@@ -1,0 +1,5 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2634	E0-12_HDAC-499	GSM499641	GSM499641	Dmel_r5.4	non-TF-Chromatin-binding-factor	ChIP-seq	GEO_record	HDAC3	Strain_Y cn bw sp;Developmental-Stage_Embryo 0-12h	ChIP-seq	0	ChIP		Dmel_r5.4	modENCODE_2634
+2634	E0-12_HDAC-499	GSM499634	GSM499634	Dmel_r5.4	non-TF-Chromatin-binding-factor	ChIP-seq	GEO_record	HDAC3	Strain_Y cn bw sp;Developmental-Stage_Embryo 0-12h	ChIP-seq	2	input		Dmel_r5.4	modENCODE_2634
+2634	E0-12_HDAC-499	E0-12_HDAC-499_density.wig	E0-12_HDAC-499_density.wig	Dmel_r5.4	non-TF-Chromatin-binding-factor	ChIP-seq	coverage-graph_wiggle	HDAC3	Strain_Y cn bw sp;Developmental-Stage_Embryo 0-12h	ChIP-seq	0	ChIP		Dmel_r5.4	modENCODE_2634
+2634	E0-12_HDAC-499	E0-12_HDAC-499_peaks.bed.gff3	E0-12_HDAC-499_peaks.bed.gff3	Dmel_r5.4	non-TF-Chromatin-binding-factor	ChIP-seq	computed-peaks_gff3	HDAC3	Strain_Y cn bw sp;Developmental-Stage_Embryo 0-12h	ChIP-seq	all			Dmel_r5.4	modENCODE_2634

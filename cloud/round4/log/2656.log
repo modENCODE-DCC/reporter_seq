@@ -1,0 +1,46 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2656_tag.csv
+connecting to database ...schema is modencode_experiment_2656_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...4 done
+try to find num_of_cols ...9 done
+try to find title ...H3K4me2.14-16 hr OR embryo done
+try to find description ...We aim to determe the locations of 125 chromosomal proteins and histone modifications across the Drosophila melanogaster genome. The proteins and modifications under study are involved in basic chromosomal functions such as DNA replication, gene expression, gene silencing, and inheritance. We will perform Chromatin ImmunoPrecipitation (ChIP) using genomic tiling arrays. We will initially assay localizations using chromatin from three cell lines and two embryonic stages, and will then extend the analysis of a subset of proteins to four additional animal tissues/stages. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Gary Karpen done
+try to find lab ...Elgin done
+try to find factors ... done
+try to find data_type ...Histone modification and replacement done
+try to find assay_type ...ChIP-chip done
+try to find hyb_slot ...4 done
+try to find seq_slot ...NA done
+try to find ip_slot ...2 done
+try to find label_slot ...NA done
+try to find raw_slot ...5 done
+try to find norm_slot ...6 done
+try to find platform ...Affymetrix done
+try to find sample_name_slot ...0 done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by sample name.
+$VAR1 = undef;
+NA done
+try to find strain ...Oregon-R done
+try to find cellline ...NA done
+try to find devstage ...Embryo 14-16hr OR done
+try to find tissue ...NA done
+try to find sex ...NA done
+try to find antibody ...Ab:H3K4me2:GK:1&oldid=23612 done
+try to find tgt_gene ...H3K4me2 done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...Histone-Modification done
+try to find level3 ...ChIP-chip done
+level4 factor is H3K4me2
+level4 condition is Strain_Oregon-R;Developmental-Stage_Embryo 14-16hr OR
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

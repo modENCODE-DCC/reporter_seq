@@ -1,0 +1,3 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2546	Lai - small RNA from 1st instar larvae	GSM360257	GSM360257	Dmel_r5.4	small-RNA	RNA-seq	GEO_record	small-RNA	Strain_Canton S;Tissue_Whole organism;Developmental-Stage_1st instar larvae	RNA-seq	0			Dmel_r5.4	modENCODE_2546
+2546	Lai - small RNA from 1st instar larvae	GSM360257.sam	GSM360257.sam	Dmel_r5.4	small-RNA	RNA-seq	alignment_sam	small-RNA	Strain_Canton S;Tissue_Whole organism;Developmental-Stage_1st instar larvae	RNA-seq	0			Dmel_r5.4	modENCODE_2546

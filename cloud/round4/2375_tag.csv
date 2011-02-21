@@ -1,0 +1,3 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2375	Lai-S2-NP	GSM371638	GSM371638	Dmel_r5.4	small-RNA	RNA-seq	GEO_record	small-RNA	Cell-Line_S2-NP;Tissue_embryo-derived cell-line;Developmental-Stage_late embryonic stage	RNA-seq	0			Dmel_r5.4	modENCODE_2375
+2375	Lai-S2-NP	GSM371638.sam.gz	GSM371638.sam.gz	Dmel_r5.4	small-RNA	RNA-seq	alignment_sam	small-RNA	Cell-Line_S2-NP;Tissue_embryo-derived cell-line;Developmental-Stage_late embryonic stage	RNA-seq	0			Dmel_r5.4	modENCODE_2375

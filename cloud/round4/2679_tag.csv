@@ -1,0 +1,4 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2679	D.melanogaster 6-8hr embryo, SOLiD total RNA-seq	SRX015644	SRX015644	Dmel_r5.4	mRNA	RNA-seq	ShortReadArchive_record	total-RNA	Strain_Y cn bw sp;Developmental-Stage_Embryo 6-8h	RNA-seq	0			Dmel_r5.4	modENCODE_2679
+2679	D.melanogaster 6-8hr embryo, SOLiD total RNA-seq	BC4_minus.wig	BC4_minus.wig	Dmel_r5.4	mRNA	RNA-seq	coverage-graph_wiggle	total-RNA	Strain_Y cn bw sp;Developmental-Stage_Embryo 6-8h	RNA-seq	0			Dmel_r5.4	modENCODE_2679
+2679	D.melanogaster 6-8hr embryo, SOLiD total RNA-seq	BC4_plus.wig	BC4_plus.wig	Dmel_r5.4	mRNA	RNA-seq	coverage-graph_wiggle	total-RNA	Strain_Y cn bw sp;Developmental-Stage_Embryo 6-8h	RNA-seq	0			Dmel_r5.4	modENCODE_2679

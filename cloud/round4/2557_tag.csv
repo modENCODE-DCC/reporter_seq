@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2557	Mass Spectrometric Validation of Sort ORFs round 1	mass_spec_091015.gff3	mass_spec_091015.gff3	Cele_WS190	mRNA	Mass-spec	gene-model_gff3	total-RNA	Strain_N2;Developmental-Stage_Mass spec;temperature_20 degree celsius	Mass-spec	all			Cele_WS190	modENCODE_2557

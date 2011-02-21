@@ -1,0 +1,12 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+875	E0-4_CBP	0-4-cbp-1-251918410162.txt	0-4-cbp-1-251918410162.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E0-4	ChIP-chip	0	ChIP	cy3	Dmel_r5.4	modENCODE_875
+875	E0-4_CBP	0-4-cbp-1-251918210014.txt	0-4-cbp-1-251918210014.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E0-4	ChIP-chip	0	ChIP	cy3	Dmel_r5.4	modENCODE_875
+875	E0-4_CBP	0-4-cbp-1-251918310042.txt	0-4-cbp-1-251918310042.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E0-4	ChIP-chip	0	ChIP	cy3	Dmel_r5.4	modENCODE_875
+875	E0-4_CBP	0-4-cbp-3-251918410131.txt	0-4-cbp-3-251918410131.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E0-4	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_875
+875	E0-4_CBP	0-4-cbp-2-251918410132.txt	0-4-cbp-2-251918410132.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E0-4	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_875
+875	E0-4_CBP	0-4-cbp-2-251918310067.txt	0-4-cbp-2-251918310067.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E0-4	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_875
+875	E0-4_CBP	0-4-cbp-3-251918310044.txt	0-4-cbp-3-251918310044.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E0-4	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_875
+875	E0-4_CBP	0-4-cbp-2-251918210017.txt	0-4-cbp-2-251918210017.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E0-4	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_875
+875	E0-4_CBP	0-4-cbp-3-251918210016.txt	0-4-cbp-3-251918210016.txt	Dmel_r5.4		ChIP-chip	raw-arrayfile-agilent_txt	nejire	Developmental-Stage_E0-4	ChIP-chip	1	input	cy5	Dmel_r5.4	modENCODE_875
+875	E0-4_CBP	E0-4_CBP_DCC_merged.wig	E0-4_CBP_DCC_merged.wig	Dmel_r5.4		ChIP-chip	normalized-arrayfile_wig	nejire	Developmental-Stage_E0-4	ChIP-chip	0			Dmel_r5.4	modENCODE_875
+875	E0-4_CBP	E0-4_CBP_agilent_dmel3_merged_dcc.gff	E0-4_CBP_agilent_dmel3_merged_dcc.gff	Dmel_r5.4		ChIP-chip	computed-peaks_gff3	nejire	Developmental-Stage_E0-4	ChIP-chip	all			Dmel_r5.4	modENCODE_875

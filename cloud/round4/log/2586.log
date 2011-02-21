@@ -1,0 +1,53 @@
+initializing...
+output file is /home/zzha/reporter_seq/tag/2586_tag.csv
+connecting to database ...schema is modencode_experiment_2586_data,public
+database connected.
+loading experiment ...done.
+Celniker/RNA:14 555:Celniker/RNA:14 0 
+Celniker/RNA:16 555:Celniker/RNA:16 1 
+connecting to database ...schema is modencode_experiment_555_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...2 done
+try to find num_of_cols ...6 done
+try to find title ...Dm_S2-DRSC_polyA_014-016_paired_RNA-Seq multimappers done
+try to find description ...We are using Paired-end RNA-Seq to characterize the transcriptome in various Drosophila cell lines.  For each cell line, total RNA is isolated, subjected to two rounds of poly(A)+ selection, and then used to make paired-end RNA-Seq libraries.  We then sequence each library using an Illumina Genome Analyzer. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Graveley done
+try to find factors ... done
+try to find data_type ...RNA expression profiling done
+try to find assay_type ...RNA-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...4 done
+try to find ip_slot ...NA done
+try to find label_slot ...3 done
+try to find raw_slot ...4 done
+try to find norm_slot ...5 done
+try to find platform ...Illumina done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '1' => '1',
+          '0' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...NA done
+try to find cellline ...S2-DRSC done
+try to find devstage ...late embryonic stage done
+try to find tissue ...embryo-derived cell-line done
+try to find sex ...Male done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...mRNA done
+try to find level3 ...RNA-seq done
+level4 factor is total-RNA
+level4 condition is Cell-Line_S2-DRSC;Tissue_embryo-derived cell-line;Developmental-Stage_late embryonic stage
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2483	smallRNA from mixed-stage embryos (GSM427346)	GSM427346	GSM427346	Cele_WS190	small-RNA	RNA-seq	GEO_record	small-RNA	Strain_TX189;Developmental-Stage_Mixed embryos 20dC;quality_immobile;temperature_20 degree celsius	RNA-seq	0			Cele_WS190	modENCODE_2483

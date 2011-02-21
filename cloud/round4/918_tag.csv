@@ -1,0 +1,7 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+918	TotalRNA_E-0-12h	E-0-12h_dscDNA-1_Test1.CEL	E-0-12h_dscDNA-1_Test1.CEL	Dmel_r5.4			raw-arrayfile_CEL		Strain_Y cn bw sp;Developmental-Stage_Embryo 0-12h		0			Dmel_r5.4	modENCODE_918
+918	TotalRNA_E-0-12h	E-0-12h_dscDNA-2_Test2.CEL	E-0-12h_dscDNA-2_Test2.CEL	Dmel_r5.4			raw-arrayfile_CEL		Strain_Y cn bw sp;Developmental-Stage_Embryo 0-12h		1			Dmel_r5.4	modENCODE_918
+918	TotalRNA_E-0-12h	E-0-12h_RNA_Test3.CEL	E-0-12h_RNA_Test3.CEL	Dmel_r5.4			raw-arrayfile_CEL		Strain_Y cn bw sp;Developmental-Stage_Embryo 0-12h		2			Dmel_r5.4	modENCODE_918
+918	TotalRNA_E-0-12h	E-0-12h_gDNA_Ctl1.CEL	E-0-12h_gDNA_Ctl1.CEL	Dmel_r5.4			raw-arrayfile_CEL		Strain_Y cn bw sp;Developmental-Stage_Embryo 0-12h		3			Dmel_r5.4	modENCODE_918
+918	TotalRNA_E-0-12h	MAT_TotalRNA_E-0-12h.Dm_tiling2_MR_v01_dm3.NR.bpmap_matscore.bar.txt_IGB.wig	MAT_TotalRNA_E-0-12h.Dm_tiling2_MR_v01_dm3.NR.bpmap_matscore.bar.txt_IGB.wig	Dmel_r5.4			normalized-arrayfile_wig		Strain_Y cn bw sp;Developmental-Stage_Embryo 0-12h		0			Dmel_r5.4	modENCODE_918
+918	TotalRNA_E-0-12h	GSM409080_Total_RNA_Tripli_pvalue_Dm_BDGPv5.bed.gff	GSM409080_Total_RNA_Tripli_pvalue_Dm_BDGPv5.bed.gff	Dmel_r5.4			gene-model_gff3		Strain_Y cn bw sp;Developmental-Stage_Embryo 0-12h		all			Dmel_r5.4	modENCODE_918
