@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 use strict;
+use File::Path;
 my $root_dir;
 BEGIN {
   $root_dir = $0;
@@ -13,6 +14,7 @@ use constant P_dir => '/home/zzha/my_modENCODE';
 use constant Data_dir => 'all_data';
 use constant Slink_dir => 'symbolic_links';
 use constant Filename_separator => ';';
+use constant Tag_value_separator => '_';
 my ($lvl1_dir, $lvl2_dir, $lvl3_dir, $lvl4_dir);
 open my $fh, "<", $spreadsheet;
 <$fh>; #header 
@@ -29,15 +31,14 @@ while(my $line = <$fh>) {
 	$factor,
 	$condition,
 	$lvl4_tech,
-	$algo,
 	$rep,
+	$chip,
+	$label,
 	$build,
 	$std_id) = split "\t", $line;
     next unless (defined($target) && $target !~ /^\s*$/);
     next unless (defined($tech) && $tech !~ /^\s*$/);
-    my ($lvl1_dir, $lvl2_dir, $lvl3_dir, $lvl4_dir) = ($organism, $target, $tech, $format);
-
-    
+    my ($lvl1_dir, $lvl2_dir, $lvl3_dir, $lvl4_dir) = ($organism, $target, $tech, $format);    
     $factor = universal_factor($factor);
     my ($strain, $cellline, $devstage, $tissue) = parse_condition($condition);
     #print "$id Strain: $strain Cell Line: $cellline Devstage: $devstage Tissue: $tissue\n";
@@ -45,18 +46,34 @@ while(my $line = <$fh>) {
 	#print $id, "\n";
     #}
     my @bio_dir = gen_bio_dir($factor, $strain, $cellline, $devstage, $tissue);
+#    rmtree(P_dir) if -e P_dir; #why it does not work?!
     my $leaf_dir = ln_dir(P_dir, Slink_dir, $lvl1_dir, $lvl2_dir, $lvl3_dir, $lvl4_dir, @bio_dir);
-    $algo = "" unless defined($algo);
-    $rep = "" unless defined($rep);
-    my $universal_filename = join(Filename_separator, ($factor, $condition, $tech, $algo, $rep, $build, $std_id));
-    $universal_filename = format_dirname($universal_filename);
+
+    my $universal_filename = std_filename($factor, $condition, $tech, $rep, $chip, $label, $build, $std_id);
+    #$universal_filename = format_dirname($universal_filename);
+    $universal_filename .= sfx($format);
     my $ln_file = $leaf_dir . $universal_filename;
+    my $data_file = Data_dir . "/" . "$id" . "_". $filename;
     chdir P_dir;
     mkdir(Data_dir);
-    $filename .= '.' . suffix($format);
-    my $data_file = Data_dir . "/". $filename;
     symlink($rel_path, $data_file);  
     symlink($data_file, $ln_file);
+}
+
+sub std_filename {
+    my ($factor, $condition, $tech, $rep, $chip, $label, $build, $std_id) = @_ ;
+    $rep+=1; $rep = 'ReplicateSet-' . $rep;
+    my $filename = join(Filename_separator, ($factor, $condition, $tech, $rep));
+    if (defined($chip) && $chip ne '') {
+	my $t = join(Tag_value_separator, ('ChIP-or-input', $chip));
+	$filename = join(Filename_separator, ($filename, $t));
+    }
+    if (defined($label) && lc($label) ne 'biotin') {
+	my $t = join(Tag_value_separator, ('Label', $label));
+	$filename = join(Filename_separator, ($filename, $t));
+    }
+    $filename = join(Filename_separator, ($filename, $build, $std_id));
+    return $filename;
 }
 
 sub gen_bio_dir {
@@ -192,7 +209,8 @@ sub ln_dir {
     for (my $i=0; $i<scalar @dirs; $i++) {
 	my $tdir = '';
 	for (my $j=0; $j<=$i; $j++) {
-	    my $t = format_dirname($dirs[$j]);
+	    my $t = $dirs[$j];
+	    #my $t = format_dirname($dirs[$j]);
 	    $tdir .= $t . "/";
 	}
 	mkdir($tdir) unless -e $tdir;
@@ -201,8 +219,8 @@ sub ln_dir {
     return $dir;
 }
 
-sub suffix {
+sub sfx {
     my $format = shift;
-    my ($category, $suffix) = split("_", $format);
-    return $suffix;    
+    my ($category, $sfks) = split "_", $format;
+    return ".$sfks";    
 }
