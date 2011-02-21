@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use File::Path;
+use Data::Dumper;
 my $root_dir;
 BEGIN {
   $root_dir = $0;
@@ -68,7 +69,7 @@ sub std_filename {
 	my $t = join(Tag_value_separator, ('ChIP-or-input', $chip));
 	$filename = join(Filename_separator, ($filename, $t));
     }
-    if (defined($label) && lc($label) ne 'biotin') {
+    if (defined($label) && lc($label) ne 'biotin' && $label ne '') {
 	my $t = join(Tag_value_separator, ('Label', $label));
 	$filename = join(Filename_separator, ($filename, $t));
     }
@@ -105,7 +106,6 @@ sub gen_bio_dir {
 sub universal_factor {
     my $factor = shift;
     $factor =~ s/^\s*//g; $factor =~ s/\s*$//g;
-    $factor =~ s/_/-/g; $factor =~ s/ /-/g;
     my %map = (
 	'BEAF32A and B' => 'beaf-32',
         'BEAF32A and BEAF32B' => 'beaf-32',
@@ -151,8 +151,13 @@ sub format_dirname {
 
 sub parse_condition {
     my $condition = shift;
+    my %map;
     $condition =~ s/^\s*//g; $condition =~ s/\s*$//g;
-    my %map = split("_", $condition);
+    my @cds = split(Filename_separator, $condition);
+    for my $cd (@cds) {
+	my ($k, $v) = split(Tag_value_separator, $cd);
+	$map{$k} = $v;
+    }
     my ($strain, $cellline, $devstage, $tissue) = (
 	$map{'Strain'}, 
 	$map{'Cell-Line'}, 
