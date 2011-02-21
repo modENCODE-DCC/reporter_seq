@@ -1,0 +1,16 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+2701	Splice Junction Annotation D. melanogaster Larvae L2	SRR023719	SRR023719	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	SRR023670	SRR023670	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	SRR023824	SRR023824	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	SRR023761	SRR023761	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	SRR035223	SRR035223	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	SRR024016	SRR024016	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	SRR023542	SRR023542	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	accepted_hits.DCCheader.sam.gz	accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	1_accepted_hits.DCCheader.sam.gz	1_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	2_accepted_hits.DCCheader.sam.gz	2_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	3_accepted_hits.DCCheader.sam.gz	3_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	4_accepted_hits.DCCheader.sam.gz	4_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	5_accepted_hits.DCCheader.sam.gz	5_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	6_accepted_hits.DCCheader.sam.gz	6_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02701
+2701	Splice Junction Annotation D. melanogaster Larvae L2	BS111_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	BS111_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	Dmel_r5.4	mRNA		gene-model_gff3	total-RNA					Dmel_r5.4	MDENC02701

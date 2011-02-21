@@ -1,0 +1,14 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	SRR023649	SRR023649	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02702
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	SRR023677	SRR023677	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02702
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	SRR023731	SRR023731	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02702
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	SRR023760	SRR023760	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02702
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	SRR027111	SRR027111	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02702
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	SRR023507	SRR023507	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02702
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	accepted_hits.DCCheader.sam.gz	accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02702
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	1_accepted_hits.DCCheader.sam.gz	1_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02702
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	2_accepted_hits.DCCheader.sam.gz	2_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02702
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	3_accepted_hits.DCCheader.sam.gz	3_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02702
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	4_accepted_hits.DCCheader.sam.gz	4_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02702
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	5_accepted_hits.DCCheader.sam.gz	5_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02702
+2702	Splice Junction Annotation D. melanogaster Larvae L3 12hr post-molt	BS113_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	BS113_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	Dmel_r5.4	mRNA		gene-model_gff3	total-RNA					Dmel_r5.4	MDENC02702

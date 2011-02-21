@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+2461	3'RACE polyA-capture daf-2 dauer 454 sequencing	GSM446658	GSM446658	Cele_WS190	mRNA	RACE	GEO_record	3-prime-UTR	Strain_daf-2(e1370)_Developmental-Stage_Dauer Larvae_temperature_20 degree celsius	RACE			Cele_WS190	MDENC02461

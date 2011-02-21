@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+2675	MB annotation 8	dm3_run12.gff3	MB8/transcript_clusters/dm3_run12.gff3	Dmel_r5.4			gene-model_gff3						Dmel_r5.4	MDENC02675

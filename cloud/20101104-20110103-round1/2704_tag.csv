@@ -1,0 +1,16 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	SRR023676	SRR023676	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	SRR023692	SRR023692	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	SRR023690	SRR023690	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	SRR023742	SRR023742	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	SRR023683	SRR023683	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	SRR023505	SRR023505	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	SRR027108	SRR027108	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	accepted_hits.DCCheader.sam.gz	accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	1_accepted_hits.DCCheader.sam.gz	1_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	2_accepted_hits.DCCheader.sam.gz	2_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	3_accepted_hits.DCCheader.sam.gz	3_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	4_accepted_hits.DCCheader.sam.gz	4_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	5_accepted_hits.DCCheader.sam.gz	5_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	6_accepted_hits.DCCheader.sam.gz	6_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02704
+2704	Splice Junction Annotation D. melanogaster Larvae L3 light blue gut PS3-6	BS200_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	BS200_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	Dmel_r5.4	mRNA		gene-model_gff3	total-RNA					Dmel_r5.4	MDENC02704

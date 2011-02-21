@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+3275	Full-length cDNA sequencing (MIP clones)	MIP.gff	MIP.gff	Dmel_r5.4	mRNA	cDNA-sequencing	gene-model_gff3	UTR	Strain_TA pOTB7D Library_Tissue_adult_cDNA library_TA-pOTB7D-Library	cDNA-sequencing			Dmel_r5.4	MDENC03275

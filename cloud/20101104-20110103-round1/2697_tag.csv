@@ -1,0 +1,22 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	SRR023673	SRR023673	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	SRR023682	SRR023682	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	SRR023686	SRR023686	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	SRR023699	SRR023699	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	SRR023700	SRR023700	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	SRR024215	SRR024215	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	SRR035222	SRR035222	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	SRR023599	SRR023599	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	SRR027114	SRR027114	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	SRR023503	SRR023503	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	accepted_hits.DCCheader.sam.gz	accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	1_accepted_hits.DCCheader.sam.gz	1_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	2_accepted_hits.DCCheader.sam.gz	2_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	3_accepted_hits.DCCheader.sam.gz	3_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	4_accepted_hits.DCCheader.sam.gz	4_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	5_accepted_hits.DCCheader.sam.gz	5_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	6_accepted_hits.DCCheader.sam.gz	6_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	7_accepted_hits.DCCheader.sam.gz	7_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	8_accepted_hits.DCCheader.sam.gz	8_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	9_accepted_hits.DCCheader.sam.gz	9_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02697
+2697	Splice Junction Annotation D. melanogaster Embryo 18-20h	BS67_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	BS67_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	Dmel_r5.4	mRNA		gene-model_gff3	total-RNA					Dmel_r5.4	MDENC02697

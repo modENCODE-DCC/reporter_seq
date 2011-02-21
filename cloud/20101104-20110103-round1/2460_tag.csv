@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+2460	3'RACE polyA-capture adult hermaphrodite 454 sequencing	GSM446656	GSM446656	Cele_WS190	mRNA	RACE	GEO_record	3-prime-UTR	Strain_N2_Developmental-Stage_Adult 20dC 70hr post-L1_temperature_20 degree celsius	RACE			Cele_WS190	MDENC02460

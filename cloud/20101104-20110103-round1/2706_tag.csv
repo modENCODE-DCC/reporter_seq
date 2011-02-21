@@ -1,0 +1,16 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+2706	Splice Junction Annotation D. melanogaster White Prepupae	SRR023704	SRR023704	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	SRR023837	SRR023837	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	SRR023784	SRR023784	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	SRR023695	SRR023695	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	SRR023687	SRR023687	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	SRR035217	SRR035217	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	SRR026432	SRR026432	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	accepted_hits.DCCheader.sam.gz	accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	1_accepted_hits.DCCheader.sam.gz	1_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	2_accepted_hits.DCCheader.sam.gz	2_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	3_accepted_hits.DCCheader.sam.gz	3_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	4_accepted_hits.DCCheader.sam.gz	4_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	5_accepted_hits.DCCheader.sam.gz	5_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	6_accepted_hits.DCCheader.sam.gz	6_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02706
+2706	Splice Junction Annotation D. melanogaster White Prepupae	BS129_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	BS129_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	Dmel_r5.4	mRNA		gene-model_gff3	total-RNA					Dmel_r5.4	MDENC02706

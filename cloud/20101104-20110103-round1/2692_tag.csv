@@ -1,0 +1,22 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	SRR023754	SRR023754	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	SRR023657	SRR023657	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	SRR023749	SRR023749	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	SRR023701	SRR023701	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	SRR023759	SRR023759	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	SRR023750	SRR023750	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	SRR024219	SRR024219	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	SRR023603	SRR023603	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	SRR023549	SRR023549	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	SRR023596	SRR023596	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	accepted_hits.DCCheader.sam.gz	accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	1_accepted_hits.DCCheader.sam.gz	1_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	2_accepted_hits.DCCheader.sam.gz	2_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	3_accepted_hits.DCCheader.sam.gz	3_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	4_accepted_hits.DCCheader.sam.gz	4_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	5_accepted_hits.DCCheader.sam.gz	5_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	6_accepted_hits.DCCheader.sam.gz	6_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	7_accepted_hits.DCCheader.sam.gz	7_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	8_accepted_hits.DCCheader.sam.gz	8_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	9_accepted_hits.DCCheader.sam.gz	9_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02692
+2692	Splice Junction Annotation D. melanogaster Embryo 8-10h	BS54_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	BS54_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	Dmel_r5.4	mRNA		gene-model_gff3	total-RNA					Dmel_r5.4	MDENC02692

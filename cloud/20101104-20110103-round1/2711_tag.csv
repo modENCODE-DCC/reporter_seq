@@ -1,0 +1,14 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	SRR023735	SRR023735	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02711
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	SRR023827	SRR023827	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02711
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	SRR023723	SRR023723	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02711
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	SRR023740	SRR023740	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02711
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	SRR023653	SRR023653	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02711
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	SRR023609	SRR023609	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02711
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	accepted_hits.DCCheader.sam.gz	accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02711
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	1_accepted_hits.DCCheader.sam.gz	1_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02711
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	2_accepted_hits.DCCheader.sam.gz	2_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02711
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	3_accepted_hits.DCCheader.sam.gz	3_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02711
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	4_accepted_hits.DCCheader.sam.gz	4_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02711
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	5_accepted_hits.DCCheader.sam.gz	5_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02711
+2711	Splice Junction Annotation D. melanogaster Pupae, WPP+4d	BS143_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	BS143_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	Dmel_r5.4	mRNA		gene-model_gff3	total-RNA					Dmel_r5.4	MDENC02711

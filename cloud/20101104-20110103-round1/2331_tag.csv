@@ -1,0 +1,3 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+2331	3'RACE polyA-capture N2 embryo 454 alignments	GSM446651	GSM446651	Cele_WS190	mRNA	RACE	GEO_record	3-prime-UTR	Strain_N2_Developmental-Stage_Mixed embryos 20dC_temperature_20 degree celsius	RACE			Cele_WS190	MDENC02331
+2331	3'RACE polyA-capture N2 embryo 454 alignments	emb.ws190.sam	emb.ws190.sam	Cele_WS190	mRNA	RACE	alignment_sam	3-prime-UTR	Strain_N2_Developmental-Stage_Mixed embryos 20dC_temperature_20 degree celsius	RACE			Cele_WS190	MDENC02331

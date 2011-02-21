@@ -1,0 +1,18 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <Algorithm>	Filename <ReplicateSetNum>	Filename <Build>	Filename <Modencode ID>
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	SRR023757	SRR023757	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	SRR023712	SRR023712	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	SRR023674	SRR023674	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	SRR023681	SRR023681	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	SRR029236	SRR029236	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	SRR029232	SRR029232	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	SRR023548	SRR023548	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	SRR023598	SRR023598	Dmel_r5.4	mRNA		ShortReadArchive_record	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	accepted_hits.DCCheader.sam.gz	accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	1_accepted_hits.DCCheader.sam.gz	1_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	2_accepted_hits.DCCheader.sam.gz	2_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	3_accepted_hits.DCCheader.sam.gz	3_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	4_accepted_hits.DCCheader.sam.gz	4_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	5_accepted_hits.DCCheader.sam.gz	5_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	6_accepted_hits.DCCheader.sam.gz	6_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	7_accepted_hits.DCCheader.sam.gz	7_accepted_hits.DCCheader.sam.gz	Dmel_r5.4	mRNA		alignment_sam	total-RNA					Dmel_r5.4	MDENC02716
+2716	Splice Junction Annotation D. melanogaster Adult Female, eclosion + 30d	BS165_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	BS165_all_unique_junctions_jctn_summary_offset_entropy_histogram_.txt.GFF3	Dmel_r5.4	mRNA		gene-model_gff3	total-RNA					Dmel_r5.4	MDENC02716
