@@ -1,0 +1,40 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/2946_tag.csv
+connecting to database ...schema is modencode_experiment_2946_data,public
+database connected.
+loading experiment ...done.
+BEAF-32_1fdr.gff 21:BEAF-32_1fdr.gff 0 
+CP190_1fdr.gff 22:CP190_1fdr.gff 1 
+GAF_1fdr.gff 23:GAF_1fdr.gff 2 
+Mod(mdg4)_1fdr.gff 24:Mod(mdg4)_1fdr.gff 3 
+SuHw_1fdr.gff 27:SuHw_1fdr.gff 4 
+CTCF_C_1fdr.gff 769:CTCF_C_1fdr.gff 5 
+CTCF_N_1fdr.gff 770:CTCF_N_1fdr.gff 6 
+MAT_Su(Hw)PG_E-0-12h.bed_dcc.gff 901:MAT_Su(Hw)PG_E-0-12h.bed_dcc.gff 7 
+connecting to database ...schema is modencode_experiment_21_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_22_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_23_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_24_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_27_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_769_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_770_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_901_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...8 done
+try to find num_of_cols ...8 done
+try to find title ...Classes_of_Insulator_Binding_Sites done
+try to find description ...To classify the binding patterns of six different Drosophila insulator proteins, we used a bioinformatics approach and defined two non-overlapping categories of insulators. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Kevin White done
+try to find lab ...White done
+try to find factors ... done
+try to find data_type ...Other chromatin binding sites done
+try to find assay_type ...Computational annotation done
+try to find hyb_slot ...

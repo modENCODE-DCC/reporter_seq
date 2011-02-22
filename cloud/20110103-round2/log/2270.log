@@ -1,0 +1,1605 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/2270_tag.csv
+connecting to database ...schema is modencode_experiment_2270_data,public
+database connected.
+loading experiment ...done.
+Celniker/RNA:86 555 0 
+Celniker/RNA:86 555 1 
+Celniker/RNA:86 555 2 
+Celniker/RNA:86 555 3 
+Celniker/RNA:86 555 4 
+Celniker/RNA:86 555 5 
+Celniker/RNA:86 555 6 
+Celniker/RNA:86 555 7 
+Celniker/RNA:86 555 8 
+Celniker/RNA:86 555 9 
+Celniker/RNA:86 555 10 
+Celniker/RNA:86 555 11 
+Celniker/RNA:86 555 12 
+Celniker/RNA:86 555 13 
+Celniker/RNA:86 555 14 
+Celniker/RNA:86 555 15 
+Celniker/RNA:86 555 16 
+Celniker/RNA:86 555 17 
+Celniker/RNA:86 555 18 
+Celniker/RNA:86 555 19 
+Celniker/RNA:86 555 20 
+Celniker/RNA:86 555 21 
+Celniker/RNA:86 555 22 
+Celniker/RNA:86 555 23 
+Celniker/RNA:86 555 24 
+Celniker/RNA:86 555 25 
+Celniker/RNA:86 555 26 
+Celniker/RNA:86 555 27 
+Celniker/RNA:86 555 28 
+Celniker/RNA:86 555 29 
+Celniker/RNA:86 555 30 
+Celniker/RNA:86 555 31 
+Celniker/RNA:86 555 32 
+Celniker/RNA:86 555 33 
+Celniker/RNA:86 555 34 
+Celniker/RNA:86 555 35 
+Celniker/RNA:86 555 36 
+Celniker/RNA:86 555 37 
+Celniker/RNA:86 555 38 
+Celniker/RNA:86 555 39 
+Celniker/RNA:86 555 40 
+Celniker/RNA:86 555 41 
+Celniker/RNA:86 555 42 
+Celniker/RNA:86 555 43 
+Celniker/RNA:86 555 44 
+Celniker/RNA:86 555 45 
+Celniker/RNA:86 555 46 
+Celniker/RNA:86 555 47 
+Celniker/RNA:86 555 48 
+Celniker/RNA:86 555 49 
+Celniker/RNA:86 555 50 
+Celniker/RNA:86 555 51 
+Celniker/RNA:86 555 52 
+Celniker/RNA:86 555 53 
+Celniker/RNA:86 555 54 
+Celniker/RNA:86 555 55 
+Celniker/RNA:86 555 56 
+Celniker/RNA:86 555 57 
+Celniker/RNA:86 555 58 
+Celniker/RNA:86 555 59 
+Celniker/RNA:86 555 60 
+Celniker/RNA:86 555 61 
+Celniker/RNA:86 555 62 
+Celniker/RNA:86 555 63 
+Celniker/RNA:86 555 64 
+Celniker/RNA:86 555 65 
+Celniker/RNA:86 555 66 
+Celniker/RNA:86 555 67 
+Celniker/RNA:86 555 68 
+Celniker/RNA:86 555 69 
+Celniker/RNA:86 555 70 
+Celniker/RNA:86 555 71 
+Celniker/RNA:86 555 72 
+Celniker/RNA:86 555 73 
+Celniker/RNA:86 555 74 
+Celniker/RNA:86 555 75 
+Celniker/RNA:86 555 76 
+Celniker/RNA:86 555 77 
+Celniker/RNA:86 555 78 
+Celniker/RNA:86 555 79 
+Celniker/RNA:86 555 80 
+Celniker/RNA:86 555 81 
+Celniker/RNA:86 555 82 
+Celniker/RNA:86 555 83 
+Celniker/RNA:86 555 84 
+Celniker/RNA:86 555 85 
+Celniker/RNA:86 555 86 
+Celniker/RNA:86 555 87 
+Celniker/RNA:86 555 88 
+Celniker/RNA:86 555 89 
+Celniker/RNA:86 555 90 
+Celniker/RNA:86 555 91 
+Celniker/RNA:86 555 92 
+Celniker/RNA:86 555 93 
+Celniker/RNA:86 555 94 
+Celniker/RNA:86 555 95 
+Celniker/RNA:86 555 96 
+Celniker/RNA:86 555 97 
+Celniker/RNA:86 555 98 
+Celniker/RNA:86 555 99 
+Celniker/RNA:86 555 100 
+Celniker/RNA:86 555 101 
+Celniker/RNA:86 555 102 
+Celniker/RNA:86 555 103 
+Celniker/RNA:86 555 104 
+Celniker/RNA:86 555 105 
+Celniker/RNA:86 555 106 
+Celniker/RNA:86 555 107 
+Celniker/RNA:86 555 108 
+Celniker/RNA:86 555 109 
+Celniker/RNA:86 555 110 
+Celniker/RNA:86 555 111 
+Celniker/RNA:86 555 112 
+Celniker/RNA:86 555 113 
+Celniker/RNA:86 555 114 
+Celniker/RNA:86 555 115 
+Celniker/RNA:86 555 116 
+Celniker/RNA:86 555 117 
+Celniker/RNA:86 555 118 
+Celniker/RNA:86 555 119 
+Celniker/RNA:86 555 120 
+Celniker/RNA:86 555 121 
+Celniker/RNA:86 555 122 
+Celniker/RNA:86 555 123 
+Celniker/RNA:86 555 124 
+Celniker/RNA:86 555 125 
+Celniker/RNA:86 555 126 
+Celniker/RNA:86 555 127 
+Celniker/RNA:86 555 128 
+Celniker/RNA:86 555 129 
+Celniker/RNA:86 555 130 
+Celniker/RNA:86 555 131 
+Celniker/RNA:86 555 132 
+Celniker/RNA:86 555 133 
+Celniker/RNA:86 555 134 
+Celniker/RNA:86 555 135 
+Celniker/RNA:86 555 136 
+Celniker/RNA:86 555 137 
+Celniker/RNA:86 555 138 
+Celniker/RNA:86 555 139 
+Celniker/RNA:86 555 140 
+Celniker/RNA:86 555 141 
+Celniker/RNA:86 555 142 
+Celniker/RNA:86 555 143 
+Celniker/RNA:86 555 144 
+Celniker/RNA:86 555 145 
+Celniker/RNA:86 555 146 
+Celniker/RNA:86 555 147 
+Celniker/RNA:86 555 148 
+Celniker/RNA:86 555 149 
+Celniker/RNA:86 555 150 
+Celniker/RNA:86 555 151 
+Celniker/RNA:86 555 152 
+Celniker/RNA:86 555 153 
+Celniker/RNA:86 555 154 
+Celniker/RNA:86 555 155 
+Celniker/RNA:86 555 156 
+Celniker/RNA:86 555 157 
+Celniker/RNA:86 555 158 
+Celniker/RNA:86 555 159 
+Celniker/RNA:86 555 160 
+Celniker/RNA:86 555 161 
+Celniker/RNA:86 555 162 
+Celniker/RNA:86 555 163 
+Celniker/RNA:86 555 164 
+Celniker/RNA:86 555 165 
+Celniker/RNA:86 555 166 
+Celniker/RNA:86 555 167 
+Celniker/RNA:86 555 168 
+Celniker/RNA:86 555 169 
+Celniker/RNA:86 555 170 
+Celniker/RNA:86 555 171 
+Celniker/RNA:86 555 172 
+Celniker/RNA:86 555 173 
+Celniker/RNA:86 555 174 
+Celniker/RNA:86 555 175 
+Celniker/RNA:86 555 176 
+Celniker/RNA:86 555 177 
+Celniker/RNA:86 555 178 
+Celniker/RNA:86 555 179 
+Celniker/RNA:86 555 180 
+Celniker/RNA:86 555 181 
+Celniker/RNA:86 555 182 
+Celniker/RNA:86 555 183 
+Celniker/RNA:86 555 184 
+Celniker/RNA:86 555 185 
+Celniker/RNA:86 555 186 
+Celniker/RNA:86 555 187 
+Celniker/RNA:86 555 188 
+Celniker/RNA:86 555 189 
+Celniker/RNA:86 555 190 
+Celniker/RNA:86 555 191 
+Celniker/RNA:86 555 192 
+Celniker/RNA:86 555 193 
+Celniker/RNA:86 555 194 
+Celniker/RNA:86 555 195 
+Celniker/RNA:86 555 196 
+Celniker/RNA:86 555 197 
+Celniker/RNA:86 555 198 
+Celniker/RNA:86 555 199 
+Celniker/RNA:86 555 200 
+Celniker/RNA:86 555 201 
+Celniker/RNA:86 555 202 
+Celniker/RNA:86 555 203 
+Celniker/RNA:86 555 204 
+Celniker/RNA:86 555 205 
+Celniker/RNA:86 555 206 
+Celniker/RNA:86 555 207 
+Celniker/RNA:86 555 208 
+Celniker/RNA:86 555 209 
+Celniker/RNA:86 555 210 
+Celniker/RNA:86 555 211 
+Celniker/RNA:86 555 212 
+Celniker/RNA:86 555 213 
+Celniker/RNA:86 555 214 
+Celniker/RNA:86 555 215 
+Celniker/RNA:86 555 216 
+Celniker/RNA:86 555 217 
+Celniker/RNA:86 555 218 
+Celniker/RNA:86 555 219 
+Celniker/RNA:86 555 220 
+Celniker/RNA:86 555 221 
+Celniker/RNA:86 555 222 
+Celniker/RNA:86 555 223 
+Celniker/RNA:86 555 224 
+Celniker/RNA:86 555 225 
+Celniker/RNA:86 555 226 
+Celniker/RNA:86 555 227 
+Celniker/RNA:86 555 228 
+Celniker/RNA:86 555 229 
+Celniker/RNA:86 555 230 
+Celniker/RNA:86 555 231 
+Celniker/RNA:86 555 232 
+Celniker/RNA:86 555 233 
+Celniker/RNA:86 555 234 
+Celniker/RNA:86 555 235 
+Celniker/RNA:86 555 236 
+Celniker/RNA:86 555 237 
+Celniker/RNA:86 555 238 
+Celniker/RNA:86 555 239 
+Celniker/RNA:86 555 240 
+Celniker/RNA:86 555 241 
+Celniker/RNA:86 555 242 
+Celniker/RNA:86 555 243 
+Celniker/RNA:86 555 244 
+Celniker/RNA:86 555 245 
+Celniker/RNA:86 555 246 
+Celniker/RNA:86 555 247 
+Celniker/RNA:86 555 248 
+Celniker/RNA:86 555 249 
+Celniker/RNA:86 555 250 
+Celniker/RNA:86 555 251 
+Celniker/RNA:86 555 252 
+Celniker/RNA:86 555 253 
+Celniker/RNA:86 555 254 
+Celniker/RNA:86 555 255 
+Celniker/RNA:86 555 256 
+Celniker/RNA:86 555 257 
+Celniker/RNA:86 555 258 
+Celniker/RNA:86 555 259 
+Celniker/RNA:86 555 260 
+Celniker/RNA:86 555 261 
+Celniker/RNA:86 555 262 
+Celniker/RNA:86 555 263 
+Celniker/RNA:86 555 264 
+Celniker/RNA:86 555 265 
+Celniker/RNA:86 555 266 
+Celniker/RNA:86 555 267 
+Celniker/RNA:86 555 268 
+Celniker/RNA:86 555 269 
+Celniker/RNA:86 555 270 
+Celniker/RNA:86 555 271 
+Celniker/RNA:86 555 272 
+Celniker/RNA:86 555 273 
+Celniker/RNA:86 555 274 
+Celniker/RNA:86 555 275 
+Celniker/RNA:86 555 276 
+Celniker/RNA:86 555 277 
+Celniker/RNA:86 555 278 
+Celniker/RNA:86 555 279 
+Celniker/RNA:86 555 280 
+Celniker/RNA:86 555 281 
+Celniker/RNA:86 555 282 
+Celniker/RNA:86 555 283 
+Celniker/RNA:86 555 284 
+Celniker/RNA:86 555 285 
+Celniker/RNA:86 555 286 
+Celniker/RNA:86 555 287 
+Celniker/RNA:86 555 288 
+Celniker/RNA:86 555 289 
+Celniker/RNA:86 555 290 
+Celniker/RNA:86 555 291 
+Celniker/RNA:86 555 292 
+Celniker/RNA:86 555 293 
+Celniker/RNA:86 555 294 
+Celniker/RNA:86 555 295 
+Celniker/RNA:86 555 296 
+Celniker/RNA:86 555 297 
+Celniker/RNA:86 555 298 
+Celniker/RNA:86 555 299 
+Celniker/RNA:86 555 300 
+Celniker/RNA:86 555 301 
+Celniker/RNA:86 555 302 
+Celniker/RNA:86 555 303 
+Celniker/RNA:86 555 304 
+Celniker/RNA:86 555 305 
+Celniker/RNA:86 555 306 
+Celniker/RNA:86 555 307 
+Celniker/RNA:86 555 308 
+Celniker/RNA:86 555 309 
+Celniker/RNA:86 555 310 
+Celniker/RNA:86 555 311 
+Celniker/RNA:86 555 312 
+Celniker/RNA:86 555 313 
+Celniker/RNA:86 555 314 
+Celniker/RNA:86 555 315 
+Celniker/RNA:86 555 316 
+Celniker/RNA:86 555 317 
+Celniker/RNA:86 555 318 
+Celniker/RNA:86 555 319 
+Celniker/RNA:86 555 320 
+Celniker/RNA:86 555 321 
+Celniker/RNA:86 555 322 
+Celniker/RNA:86 555 323 
+Celniker/RNA:86 555 324 
+Celniker/RNA:86 555 325 
+Celniker/RNA:86 555 326 
+Celniker/RNA:86 555 327 
+Celniker/RNA:86 555 328 
+Celniker/RNA:86 555 329 
+Celniker/RNA:86 555 330 
+Celniker/RNA:86 555 331 
+Celniker/RNA:86 555 332 
+Celniker/RNA:86 555 333 
+Celniker/RNA:86 555 334 
+Celniker/RNA:86 555 335 
+Celniker/RNA:86 555 336 
+Celniker/RNA:86 555 337 
+Celniker/RNA:86 555 338 
+Celniker/RNA:86 555 339 
+Celniker/RNA:86 555 340 
+Celniker/RNA:86 555 341 
+Celniker/RNA:86 555 342 
+Celniker/RNA:86 555 343 
+Celniker/RNA:86 555 344 
+Celniker/RNA:86 555 345 
+Celniker/RNA:86 555 346 
+Celniker/RNA:86 555 347 
+Celniker/RNA:86 555 348 
+Celniker/RNA:86 555 349 
+Celniker/RNA:86 555 350 
+Celniker/RNA:86 555 351 
+Celniker/RNA:86 555 352 
+Celniker/RNA:86 555 353 
+Celniker/RNA:86 555 354 
+Celniker/RNA:86 555 355 
+Celniker/RNA:86 555 356 
+Celniker/RNA:86 555 357 
+Celniker/RNA:86 555 358 
+Celniker/RNA:86 555 359 
+Celniker/RNA:86 555 360 
+Celniker/RNA:86 555 361 
+Celniker/RNA:86 555 362 
+Celniker/RNA:86 555 363 
+Celniker/RNA:86 555 364 
+Celniker/RNA:86 555 365 
+Celniker/RNA:86 555 366 
+Celniker/RNA:86 555 367 
+Celniker/RNA:86 555 368 
+Celniker/RNA:86 555 369 
+Celniker/RNA:86 555 370 
+Celniker/RNA:86 555 371 
+Celniker/RNA:86 555 372 
+Celniker/RNA:86 555 373 
+Celniker/RNA:86 555 374 
+Celniker/RNA:86 555 375 
+Celniker/RNA:86 555 376 
+Celniker/RNA:86 555 377 
+Celniker/RNA:86 555 378 
+Celniker/RNA:86 555 379 
+Celniker/RNA:86 555 380 
+Celniker/RNA:86 555 381 
+Celniker/RNA:86 555 382 
+Celniker/RNA:86 555 383 
+Celniker/RNA:86 555 384 
+Celniker/RNA:86 555 385 
+Celniker/RNA:86 555 386 
+Celniker/RNA:86 555 387 
+Celniker/RNA:86 555 388 
+Celniker/RNA:86 555 389 
+Celniker/RNA:86 555 390 
+Celniker/RNA:86 555 391 
+Celniker/RNA:86 555 392 
+Celniker/RNA:86 555 393 
+Celniker/RNA:86 555 394 
+Celniker/RNA:86 555 395 
+Celniker/RNA:86 555 396 
+Celniker/RNA:86 555 397 
+Celniker/RNA:86 555 398 
+Celniker/RNA:86 555 399 
+Celniker/RNA:86 555 400 
+Celniker/RNA:86 555 401 
+Celniker/RNA:86 555 402 
+Celniker/RNA:86 555 403 
+Celniker/RNA:86 555 404 
+Celniker/RNA:86 555 405 
+Celniker/RNA:86 555 406 
+Celniker/RNA:86 555 407 
+Celniker/RNA:86 555 408 
+Celniker/RNA:86 555 409 
+Celniker/RNA:86 555 410 
+Celniker/RNA:86 555 411 
+Celniker/RNA:86 555 412 
+Celniker/RNA:86 555 413 
+Celniker/RNA:86 555 414 
+Celniker/RNA:86 555 415 
+Celniker/RNA:86 555 416 
+Celniker/RNA:86 555 417 
+Celniker/RNA:86 555 418 
+Celniker/RNA:86 555 419 
+Celniker/RNA:86 555 420 
+Celniker/RNA:86 555 421 
+Celniker/RNA:86 555 422 
+Celniker/RNA:86 555 423 
+Celniker/RNA:86 555 424 
+Celniker/RNA:86 555 425 
+Celniker/RNA:86 555 426 
+Celniker/RNA:86 555 427 
+Celniker/RNA:86 555 428 
+Celniker/RNA:86 555 429 
+Celniker/RNA:86 555 430 
+Celniker/RNA:86 555 431 
+Celniker/RNA:86 555 432 
+Celniker/RNA:86 555 433 
+Celniker/RNA:86 555 434 
+Celniker/RNA:86 555 435 
+Celniker/RNA:86 555 436 
+Celniker/RNA:86 555 437 
+Celniker/RNA:86 555 438 
+Celniker/RNA:86 555 439 
+Celniker/RNA:86 555 440 
+Celniker/RNA:86 555 441 
+Celniker/RNA:86 555 442 
+Celniker/RNA:86 555 443 
+Celniker/RNA:86 555 444 
+Celniker/RNA:86 555 445 
+Celniker/RNA:86 555 446 
+Celniker/RNA:86 555 447 
+Celniker/RNA:86 555 448 
+Celniker/RNA:86 555 449 
+Celniker/RNA:86 555 450 
+Celniker/RNA:86 555 451 
+Celniker/RNA:86 555 452 
+Celniker/RNA:86 555 453 
+Celniker/RNA:86 555 454 
+Celniker/RNA:86 555 455 
+Celniker/RNA:86 555 456 
+Celniker/RNA:86 555 457 
+Celniker/RNA:86 555 458 
+Celniker/RNA:86 555 459 
+Celniker/RNA:86 555 460 
+Celniker/RNA:86 555 461 
+Celniker/RNA:86 555 462 
+Celniker/RNA:86 555 463 
+Celniker/RNA:86 555 464 
+Celniker/RNA:86 555 465 
+Celniker/RNA:86 555 466 
+Celniker/RNA:86 555 467 
+Celniker/RNA:86 555 468 
+Celniker/RNA:86 555 469 
+Celniker/RNA:86 555 470 
+Celniker/RNA:86 555 471 
+Celniker/RNA:86 555 472 
+Celniker/RNA:86 555 473 
+Celniker/RNA:86 555 474 
+Celniker/RNA:86 555 475 
+Celniker/RNA:86 555 476 
+Celniker/RNA:86 555 477 
+Celniker/RNA:86 555 478 
+Celniker/RNA:86 555 479 
+Celniker/RNA:86 555 480 
+Celniker/RNA:86 555 481 
+Celniker/RNA:86 555 482 
+Celniker/RNA:86 555 483 
+Celniker/RNA:86 555 484 
+Celniker/RNA:86 555 485 
+Celniker/RNA:86 555 486 
+Celniker/RNA:86 555 487 
+Celniker/RNA:86 555 488 
+Celniker/RNA:86 555 489 
+Celniker/RNA:86 555 490 
+Celniker/RNA:86 555 491 
+Celniker/RNA:86 555 492 
+Celniker/RNA:86 555 493 
+Celniker/RNA:86 555 494 
+Celniker/RNA:86 555 495 
+Celniker/RNA:86 555 496 
+Celniker/RNA:86 555 497 
+Celniker/RNA:86 555 498 
+Celniker/RNA:86 555 499 
+Celniker/RNA:86 555 500 
+Celniker/RNA:86 555 501 
+Celniker/RNA:86 555 502 
+Celniker/RNA:86 555 503 
+Celniker/RNA:86 555 504 
+Celniker/RNA:86 555 505 
+Celniker/RNA:86 555 506 
+Celniker/RNA:86 555 507 
+Celniker/RNA:86 555 508 
+Celniker/RNA:86 555 509 
+Celniker/RNA:86 555 510 
+Celniker/RNA:86 555 511 
+Celniker/RNA:86 555 512 
+Celniker/RNA:86 555 513 
+Celniker/RNA:86 555 514 
+Celniker/RNA:86 555 515 
+Celniker/RNA:86 555 516 
+Celniker/RNA:86 555 517 
+Celniker/RNA:86 555 518 
+Celniker/RNA:86 555 519 
+Celniker/RNA:86 555 520 
+Celniker/RNA:86 555 521 
+Celniker/RNA:86 555 522 
+Celniker/RNA:86 555 523 
+Celniker/RNA:86 555 524 
+Celniker/RNA:86 555 525 
+Celniker/RNA:86 555 526 
+Celniker/RNA:86 555 527 
+Celniker/RNA:86 555 528 
+Celniker/RNA:86 555 529 
+Celniker/RNA:86 555 530 
+Celniker/RNA:86 555 531 
+Celniker/RNA:86 555 532 
+Celniker/RNA:86 555 533 
+Celniker/RNA:86 555 534 
+Celniker/RNA:86 555 535 
+Celniker/RNA:86 555 536 
+Celniker/RNA:86 555 537 
+Celniker/RNA:86 555 538 
+Celniker/RNA:86 555 539 
+Celniker/RNA:86 555 540 
+Celniker/RNA:86 555 541 
+Celniker/RNA:86 555 542 
+Celniker/RNA:86 555 543 
+Celniker/RNA:86 555 544 
+Celniker/RNA:86 555 545 
+Celniker/RNA:86 555 546 
+Celniker/RNA:86 555 547 
+Celniker/RNA:86 555 548 
+Celniker/RNA:86 555 549 
+Celniker/RNA:86 555 550 
+Celniker/RNA:86 555 551 
+Celniker/RNA:86 555 552 
+Celniker/RNA:86 555 553 
+Celniker/RNA:86 555 554 
+Celniker/RNA:86 555 555 
+Celniker/RNA:86 555 556 
+Celniker/RNA:86 555 557 
+Celniker/RNA:86 555 558 
+Celniker/RNA:86 555 559 
+Celniker/RNA:86 555 560 
+Celniker/RNA:86 555 561 
+Celniker/RNA:86 555 562 
+Celniker/RNA:86 555 563 
+Celniker/RNA:86 555 564 
+Celniker/RNA:86 555 565 
+Celniker/RNA:86 555 566 
+Celniker/RNA:86 555 567 
+Celniker/RNA:86 555 568 
+Celniker/RNA:86 555 569 
+Celniker/RNA:86 555 570 
+Celniker/RNA:86 555 571 
+Celniker/RNA:86 555 572 
+Celniker/RNA:86 555 573 
+Celniker/RNA:86 555 574 
+Celniker/RNA:86 555 575 
+Celniker/RNA:86 555 576 
+Celniker/RNA:86 555 577 
+Celniker/RNA:86 555 578 
+Celniker/RNA:86 555 579 
+Celniker/RNA:86 555 580 
+Celniker/RNA:86 555 581 
+Celniker/RNA:86 555 582 
+Celniker/RNA:86 555 583 
+Celniker/RNA:86 555 584 
+Celniker/RNA:86 555 585 
+Celniker/RNA:86 555 586 
+Celniker/RNA:86 555 587 
+Celniker/RNA:86 555 588 
+Celniker/RNA:86 555 589 
+Celniker/RNA:86 555 590 
+Celniker/RNA:86 555 591 
+Celniker/RNA:86 555 592 
+Celniker/RNA:86 555 593 
+Celniker/RNA:86 555 594 
+Celniker/RNA:86 555 595 
+Celniker/RNA:86 555 596 
+Celniker/RNA:86 555 597 
+Celniker/RNA:86 555 598 
+Celniker/RNA:86 555 599 
+Celniker/RNA:86 555 600 
+Celniker/RNA:86 555 601 
+Celniker/RNA:86 555 602 
+Celniker/RNA:86 555 603 
+Celniker/RNA:86 555 604 
+Celniker/RNA:86 555 605 
+Celniker/RNA:86 555 606 
+Celniker/RNA:86 555 607 
+Celniker/RNA:86 555 608 
+Celniker/RNA:86 555 609 
+Celniker/RNA:86 555 610 
+Celniker/RNA:86 555 611 
+Celniker/RNA:86 555 612 
+Celniker/RNA:86 555 613 
+Celniker/RNA:86 555 614 
+Celniker/RNA:86 555 615 
+Celniker/RNA:86 555 616 
+Celniker/RNA:86 555 617 
+Celniker/RNA:86 555 618 
+Celniker/RNA:86 555 619 
+Celniker/RNA:86 555 620 
+Celniker/RNA:86 555 621 
+Celniker/RNA:86 555 622 
+Celniker/RNA:86 555 623 
+Celniker/RNA:86 555 624 
+Celniker/RNA:86 555 625 
+Celniker/RNA:86 555 626 
+Celniker/RNA:86 555 627 
+Celniker/RNA:86 555 628 
+Celniker/RNA:86 555 629 
+Celniker/RNA:86 555 630 
+Celniker/RNA:86 555 631 
+Celniker/RNA:86 555 632 
+Celniker/RNA:86 555 633 
+Celniker/RNA:86 555 634 
+Celniker/RNA:86 555 635 
+Celniker/RNA:86 555 636 
+Celniker/RNA:86 555 637 
+Celniker/RNA:86 555 638 
+Celniker/RNA:86 555 639 
+Celniker/RNA:86 555 640 
+Celniker/RNA:86 555 641 
+Celniker/RNA:86 555 642 
+Celniker/RNA:86 555 643 
+Celniker/RNA:86 555 644 
+Celniker/RNA:86 555 645 
+Celniker/RNA:86 555 646 
+Celniker/RNA:86 555 647 
+Celniker/RNA:86 555 648 
+Celniker/RNA:86 555 649 
+Celniker/RNA:86 555 650 
+Celniker/RNA:86 555 651 
+Celniker/RNA:86 555 652 
+Celniker/RNA:86 555 653 
+Celniker/RNA:86 555 654 
+Celniker/RNA:86 555 655 
+Celniker/RNA:86 555 656 
+Celniker/RNA:86 555 657 
+Celniker/RNA:86 555 658 
+Celniker/RNA:86 555 659 
+Celniker/RNA:86 555 660 
+Celniker/RNA:86 555 661 
+Celniker/RNA:86 555 662 
+Celniker/RNA:86 555 663 
+Celniker/RNA:86 555 664 
+Celniker/RNA:86 555 665 
+Celniker/RNA:86 555 666 
+Celniker/RNA:86 555 667 
+Celniker/RNA:86 555 668 
+Celniker/RNA:86 555 669 
+Celniker/RNA:86 555 670 
+Celniker/RNA:86 555 671 
+Celniker/RNA:86 555 672 
+Celniker/RNA:86 555 673 
+Celniker/RNA:86 555 674 
+Celniker/RNA:86 555 675 
+Celniker/RNA:86 555 676 
+Celniker/RNA:86 555 677 
+Celniker/RNA:86 555 678 
+Celniker/RNA:86 555 679 
+Celniker/RNA:86 555 680 
+Celniker/RNA:86 555 681 
+Celniker/RNA:86 555 682 
+Celniker/RNA:86 555 683 
+Celniker/RNA:86 555 684 
+Celniker/RNA:86 555 685 
+Celniker/RNA:86 555 686 
+Celniker/RNA:86 555 687 
+Celniker/RNA:86 555 688 
+Celniker/RNA:86 555 689 
+Celniker/RNA:86 555 690 
+Celniker/RNA:86 555 691 
+Celniker/RNA:86 555 692 
+Celniker/RNA:86 555 693 
+Celniker/RNA:86 555 694 
+Celniker/RNA:86 555 695 
+Celniker/RNA:86 555 696 
+Celniker/RNA:86 555 697 
+Celniker/RNA:86 555 698 
+Celniker/RNA:86 555 699 
+Celniker/RNA:86 555 700 
+Celniker/RNA:86 555 701 
+Celniker/RNA:86 555 702 
+Celniker/RNA:86 555 703 
+Celniker/RNA:86 555 704 
+Celniker/RNA:86 555 705 
+Celniker/RNA:86 555 706 
+Celniker/RNA:86 555 707 
+Celniker/RNA:86 555 708 
+Celniker/RNA:86 555 709 
+Celniker/RNA:86 555 710 
+Celniker/RNA:86 555 711 
+Celniker/RNA:86 555 712 
+Celniker/RNA:86 555 713 
+Celniker/RNA:86 555 714 
+Celniker/RNA:86 555 715 
+Celniker/RNA:86 555 716 
+Celniker/RNA:86 555 717 
+Celniker/RNA:86 555 718 
+Celniker/RNA:86 555 719 
+Celniker/RNA:86 555 720 
+Celniker/RNA:86 555 721 
+Celniker/RNA:86 555 722 
+Celniker/RNA:86 555 723 
+Celniker/RNA:86 555 724 
+Celniker/RNA:86 555 725 
+Celniker/RNA:86 555 726 
+Celniker/RNA:86 555 727 
+Celniker/RNA:86 555 728 
+Celniker/RNA:86 555 729 
+Celniker/RNA:86 555 730 
+Celniker/RNA:86 555 731 
+Celniker/RNA:86 555 732 
+Celniker/RNA:86 555 733 
+Celniker/RNA:86 555 734 
+Celniker/RNA:86 555 735 
+Celniker/RNA:86 555 736 
+Celniker/RNA:86 555 737 
+Celniker/RNA:86 555 738 
+Celniker/RNA:86 555 739 
+Celniker/RNA:86 555 740 
+Celniker/RNA:86 555 741 
+Celniker/RNA:86 555 742 
+Celniker/RNA:86 555 743 
+Celniker/RNA:86 555 744 
+Celniker/RNA:86 555 745 
+Celniker/RNA:86 555 746 
+Celniker/RNA:86 555 747 
+Celniker/RNA:86 555 748 
+Celniker/RNA:86 555 749 
+Celniker/RNA:86 555 750 
+Celniker/RNA:86 555 751 
+Celniker/RNA:86 555 752 
+Celniker/RNA:86 555 753 
+Celniker/RNA:86 555 754 
+Celniker/RNA:86 555 755 
+Celniker/RNA:86 555 756 
+Celniker/RNA:86 555 757 
+Celniker/RNA:86 555 758 
+Celniker/RNA:86 555 759 
+Celniker/RNA:86 555 760 
+Celniker/RNA:86 555 761 
+Celniker/RNA:86 555 762 
+Celniker/RNA:86 555 763 
+Celniker/RNA:86 555 764 
+Celniker/RNA:86 555 765 
+Celniker/RNA:86 555 766 
+Celniker/RNA:86 555 767 
+Celniker/RNA:86 555 768 
+Celniker/RNA:86 555 769 
+Celniker/RNA:86 555 770 
+Celniker/RNA:86 555 771 
+connecting to database ...schema is modencode_experiment_555_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...772 done
+try to find num_of_cols ...6 done
+try to find title ...MB6 RTPCR done
+try to find description ...These experiments aim to annotate the genome of Drosophila melanogaster.
+
+PCR targets are selected based on existing evidence for predicted gene models.  The latest ESTs, mRNAs and experimental data (if not already in Genbank) are collapsed into clusters, aligned, processed into  multi-exon predicted transcripts, then classified into 3 main categories: known, novel, and partially novel. These categories are defined as follows:
+
+   1. Known: All introns are overlapped by EST or mRNA sequence
+   2. Partial: Some, but not all, introns are overlapped by EST or mRNA sequence
+   3. Novel: No introns are overlapped by EST or mRNA sequence 
+
+These categories may be further sub-categorized depending on whether the predicted intron/exon structure is supported, whether the overlapping ESTs are spliced, etc. PCR primers are designed to amplify regions of partially and totally novel predictions which have unverified introns.
+
+In some cases, protein homology with other species is used to prioritize novel predictions for testing. An initial test set of completely novel predictions may have 35-75% homology to proteins of other Drosophila species, for example. 
+
+PCR products are amplified by reverse transcription using Superscript III (Invitrogen) followed by standard PCR with Phusion polymerase, from pools of RNA from Cherbas et al.  Products were cycle sequenced using both F and R pcr primers performed either in-house by the standard ABI Big Dye version 3.1 protocol or outsourced.  The resulting EST is aligned to the dm3/Release 5 Drosophila genome using GMAP. An EST is considered a hit if it results in a spliced alignment with over 90 percent identity that aligns to the same locus as it was designed for, or if it aligns to a locus in the genome that is not covered by any transcript in the experiment.  Positive EST sequences are submitted to genbank. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Brent done
+try to find factors ... done
+try to find data_type ...Gene Structure - mRNA done
+try to find assay_type ...RTPCR done
+try to find hyb_slot ...NA done
+try to find seq_slot ...4 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '559' => 0,
+          '127' => 0,
+          '32' => 0,
+          '443' => 0,
+          '206' => 0,
+          '118' => 0,
+          '71' => 0,
+          '358' => 0,
+          '331' => 0,
+          '737' => 0,
+          '560' => 0,
+          '767' => 0,
+          '580' => 0,
+          '84' => 0,
+          '512' => 0,
+          '437' => 0,
+          '463' => 0,
+          '194' => 0,
+          '517' => 0,
+          '458' => 0,
+          '451' => 0,
+          '220' => 0,
+          '454' => 0,
+          '722' => 0,
+          '634' => 0,
+          '31' => 0,
+          '578' => 0,
+          '695' => 0,
+          '728' => 0,
+          '742' => 0,
+          '378' => 0,
+          '325' => 0,
+          '29' => 0,
+          '572' => 0,
+          '350' => 0,
+          '675' => 0,
+          '540' => 0,
+          '226' => 0,
+          '58' => 0,
+          '684' => 0,
+          '211' => 0,
+          '153' => 0,
+          '15' => 0,
+          '527' => 0,
+          '431' => 0,
+          '382' => 0,
+          '337' => 0,
+          '101' => 0,
+          '340' => 0,
+          '76' => 0,
+          '311' => 0,
+          '62' => 0,
+          '571' => 0,
+          '139' => 0,
+          '389' => 0,
+          '129' => 0,
+          '548' => 0,
+          '495' => 0,
+          '739' => 0,
+          '662' => 0,
+          '418' => 0,
+          '758' => 0,
+          '236' => 0,
+          '706' => 0,
+          '218' => 0,
+          '168' => 0,
+          '135' => 0,
+          '14' => 0,
+          '348' => 0,
+          '145' => 0,
+          '49' => 0,
+          '178' => 0,
+          '285' => 0,
+          '124' => 0,
+          '627' => 0,
+          '234' => 0,
+          '594' => 0,
+          '715' => 0,
+          '0' => 0,
+          '23' => 0,
+          '388' => 0,
+          '364' => 0,
+          '96' => 0,
+          '653' => 0,
+          '486' => 0,
+          '509' => 0,
+          '160' => 0,
+          '569' => 0,
+          '367' => 0,
+          '8' => 0,
+          '716' => 0,
+          '98' => 0,
+          '43' => 0,
+          '686' => 0,
+          '485' => 0,
+          '391' => 0,
+          '743' => 0,
+          '685' => 0,
+          '21' => 0,
+          '523' => 0,
+          '720' => 0,
+          '288' => 0,
+          '193' => 0,
+          '460' => 0,
+          '119' => 0,
+          '723' => 0,
+          '586' => 0,
+          '453' => 0,
+          '324' => 0,
+          '180' => 0,
+          '244' => 0,
+          '637' => 0,
+          '351' => 0,
+          '410' => 0,
+          '595' => 0,
+          '246' => 0,
+          '690' => 0,
+          '488' => 0,
+          '61' => 0,
+          '752' => 0,
+          '430' => 0,
+          '447' => 0,
+          '536' => 0,
+          '379' => 0,
+          '415' => 0,
+          '113' => 0,
+          '152' => 0,
+          '189' => 0,
+          '452' => 0,
+          '342' => 0,
+          '579' => 0,
+          '295' => 0,
+          '480' => 0,
+          '341' => 0,
+          '438' => 0,
+          '107' => 0,
+          '535' => 0,
+          '87' => 0,
+          '77' => 0,
+          '683' => 0,
+          '444' => 0,
+          '541' => 0,
+          '508' => 0,
+          '221' => 0,
+          '39' => 0,
+          '64' => 0,
+          '558' => 0,
+          '417' => 0,
+          '12' => 0,
+          '765' => 0,
+          '312' => 0,
+          '45' => 0,
+          '507' => 0,
+          '405' => 0,
+          '260' => 0,
+          '573' => 0,
+          '237' => 0,
+          '370' => 0,
+          '309' => 0,
+          '762' => 0,
+          '638' => 0,
+          '734' => 0,
+          '567' => 0,
+          '1' => 0,
+          '506' => 0,
+          '136' => 0,
+          '116' => 0,
+          '416' => 0,
+          '144' => 0,
+          '380' => 0,
+          '100' => 0,
+          '300' => 0,
+          '661' => 0,
+          '286' => 0,
+          '120' => 0,
+          '381' => 0,
+          '581' => 0,
+          '308' => 0,
+          '392' => 0,
+          '254' => 0,
+          '177' => 0,
+          '678' => 0,
+          '496' => 0,
+          '605' => 0,
+          '373' => 0,
+          '607' => 0,
+          '205' => 0,
+          '42' => 0,
+          '22' => 0,
+          '759' => 0,
+          '644' => 0,
+          '399' => 0,
+          '235' => 0,
+          '301' => 0,
+          '694' => 0,
+          '436' => 0,
+          '213' => 0,
+          '94' => 0,
+          '51' => 0,
+          '456' => 0,
+          '568' => 0,
+          '652' => 0,
+          '296' => 0,
+          '265' => 0,
+          '493' => 0,
+          '171' => 0,
+          '386' => 0,
+          '445' => 0,
+          '200' => 0,
+          '366' => 0,
+          '329' => 0,
+          '525' => 0,
+          '27' => 0,
+          '272' => 0,
+          '161' => 0,
+          '582' => 0,
+          '746' => 0,
+          '534' => 0,
+          '400' => 0,
+          '744' => 0,
+          '20' => 0,
+          '109' => 0,
+          '633' => 0,
+          '151' => 0,
+          '557' => 0,
+          '718' => 0,
+          '468' => 0,
+          '700' => 0,
+          '287' => 0,
+          '475' => 0,
+          '441' => 0,
+          '78' => 0,
+          '413' => 0,
+          '294' => 0,
+          '764' => 0,
+          '672' => 0,
+          '349' => 0,
+          '769' => 0,
+          '275' => 0,
+          '515' => 0,
+          '197' => 0,
+          '138' => 0,
+          '751' => 0,
+          '606' => 0,
+          '137' => 0,
+          '60' => 0,
+          '724' => 0,
+          '691' => 0,
+          '666' => 0,
+          '432' => 0,
+          '519' => 0,
+          '346' => 0,
+          '17' => 0,
+          '427' => 0,
+          '677' => 0,
+          '708' => 0,
+          '82' => 0,
+          '110' => 0,
+          '650' => 0,
+          '333' => 0,
+          '710' => 0,
+          '590' => 0,
+          '323' => 0,
+          '69' => 0,
+          '112' => 0,
+          '664' => 0,
+          '545' => 0,
+          '191' => 0,
+          '224' => 0,
+          '187' => 0,
+          '588' => 0,
+          '646' => 0,
+          '756' => 0,
+          '446' => 0,
+          '262' => 0,
+          '617' => 0,
+          '79' => 0,
+          '212' => 0,
+          '352' => 0,
+          '126' => 0,
+          '426' => 0,
+          '251' => 0,
+          '542' => 0,
+          '369' => 0,
+          '651' => 0,
+          '279' => 0,
+          '176' => 0,
+          '629' => 0,
+          '498' => 0,
+          '483' => 0,
+          '256' => 0,
+          '372' => 0,
+          '574' => 0,
+          '170' => 0,
+          '33' => 0,
+          '660' => 0,
+          '428' => 0,
+          '7' => 0,
+          '26' => 0,
+          '227' => 0,
+          '99' => 0,
+          '566' => 0,
+          '526' => 0,
+          '72' => 0,
+          '500' => 0,
+          '264' => 0,
+          '255' => 0,
+          '533' => 0,
+          '359' => 0,
+          '182' => 0,
+          '108' => 0,
+          '604' => 0,
+          '556' => 0,
+          '717' => 0,
+          '462' => 0,
+          '414' => 0,
+          '232' => 0,
+          '477' => 0,
+          '671' => 0,
+          '225' => 0,
+          '330' => 0,
+          '142' => 0,
+          '207' => 0,
+          '632' => 0,
+          '263' => 0,
+          '394' => 0,
+          '167' => 0,
+          '48' => 0,
+          '360' => 0,
+          '692' => 0,
+          '610' => 0,
+          '514' => 0,
+          '725' => 0,
+          '663' => 0,
+          '513' => 0,
+          '615' => 0,
+          '50' => 0,
+          '476' => 0,
+          '766' => 0,
+          '510' => 0,
+          '393' => 0,
+          '449' => 0,
+          '293' => 0,
+          '658' => 0,
+          '274' => 0,
+          '549' => 0,
+          '659' => 0,
+          '645' => 0,
+          '322' => 0,
+          '469' => 0,
+          '682' => 0,
+          '635' => 0,
+          '353' => 0,
+          '575' => 0,
+          '375' => 0,
+          '709' => 0,
+          '128' => 0,
+          '28' => 0,
+          '310' => 0,
+          '40' => 0,
+          '589' => 0,
+          '303' => 0,
+          '192' => 0,
+          '250' => 0,
+          '614' => 0,
+          '699' => 0,
+          '501' => 0,
+          '215' => 0,
+          '687' => 0,
+          '278' => 0,
+          '490' => 0,
+          '150' => 0,
+          '130' => 0,
+          '155' => 0,
+          '387' => 0,
+          '53' => 0,
+          '245' => 0,
+          '626' => 0,
+          '543' => 0,
+          '267' => 0,
+          '354' => 0,
+          '461' => 0,
+          '583' => 0,
+          '257' => 0,
+          '757' => 0,
+          '85' => 0,
+          '332' => 0,
+          '9' => 0,
+          '425' => 0,
+          '591' => 0,
+          '745' => 0,
+          '34' => 0,
+          '736' => 0,
+          '539' => 0,
+          '603' => 0,
+          '90' => 0,
+          '276' => 0,
+          '620' => 0,
+          '565' => 0,
+          '102' => 0,
+          '520' => 0,
+          '532' => 0,
+          '730' => 0,
+          '16' => 0,
+          '55' => 0,
+          '233' => 0,
+          '57' => 0,
+          '259' => 0,
+          '368' => 0,
+          '424' => 0,
+          '316' => 0,
+          '163' => 0,
+          '395' => 0,
+          '89' => 0,
+          '611' => 0,
+          '175' => 0,
+          '584' => 0,
+          '35' => 0,
+          '11' => 0,
+          '492' => 0,
+          '208' => 0,
+          '347' => 0,
+          '511' => 0,
+          '665' => 0,
+          '434' => 0,
+          '93' => 0,
+          '292' => 0,
+          '291' => 0,
+          '374' => 0,
+          '114' => 0,
+          '199' => 0,
+          '442' => 0,
+          '429' => 0,
+          '649' => 0,
+          '689' => 0,
+          '648' => 0,
+          '642' => 0,
+          '73' => 0,
+          '409' => 0,
+          '67' => 0,
+          '241' => 0,
+          '198' => 0,
+          '489' => 0,
+          '585' => 0,
+          '727' => 0,
+          '327' => 0,
+          '320' => 0,
+          '732' => 0,
+          '674' => 0,
+          '280' => 0,
+          '273' => 0,
+          '471' => 0,
+          '622' => 0,
+          '202' => 0,
+          '249' => 0,
+          '361' => 0,
+          '465' => 0,
+          '184' => 0,
+          '24' => 0,
+          '140' => 0,
+          '104' => 0,
+          '131' => 0,
+          '181' => 0,
+          '412' => 0,
+          '385' => 0,
+          '502' => 0,
+          '307' => 0,
+          '314' => 0,
+          '154' => 0,
+          '754' => 0,
+          '355' => 0,
+          '747' => 0,
+          '553' => 0,
+          '159' => 0,
+          '479' => 0,
+          '704' => 0,
+          '326' => 0,
+          '555' => 0,
+          '681' => 0,
+          '47' => 0,
+          '619' => 0,
+          '37' => 0,
+          '335' => 0,
+          '270' => 0,
+          '698' => 0,
+          '5' => 0,
+          '195' => 0,
+          '621' => 0,
+          '538' => 0,
+          '524' => 0,
+          '554' => 0,
+          '680' => 0,
+          '679' => 0,
+          '552' => 0,
+          '521' => 0,
+          '598' => 0,
+          '162' => 0,
+          '433' => 0,
+          '647' => 0,
+          '74' => 0,
+          '240' => 0,
+          '334' => 0,
+          '440' => 0,
+          '740' => 0,
+          '230' => 0,
+          '115' => 0,
+          '299' => 0,
+          '377' => 0,
+          '103' => 0,
+          '602' => 0,
+          '201' => 0,
+          '423' => 0,
+          '719' => 0,
+          '612' => 0,
+          '91' => 0,
+          '266' => 0,
+          '701' => 0,
+          '467' => 0,
+          '174' => 0,
+          '474' => 0,
+          '481' => 0,
+          '214' => 0,
+          '422' => 0,
+          '564' => 0,
+          '563' => 0,
+          '97' => 0,
+          '731' => 0,
+          '41' => 0,
+          '668' => 0,
+          '52' => 0,
+          '750' => 0,
+          '688' => 0,
+          '657' => 0,
+          '302' => 0,
+          '229' => 0,
+          '768' => 0,
+          '693' => 0,
+          '673' => 0,
+          '503' => 0,
+          '770' => 0,
+          '593' => 0,
+          '68' => 0,
+          '188' => 0,
+          '315' => 0,
+          '402' => 0,
+          '641' => 0,
+          '338' => 0,
+          '761' => 0,
+          '576' => 0,
+          '616' => 0,
+          '222' => 0,
+          '640' => 0,
+          '25' => 0,
+          '738' => 0,
+          '83' => 0,
+          '484' => 0,
+          '305' => 0,
+          '623' => 0,
+          '544' => 0,
+          '217' => 0,
+          '328' => 0,
+          '755' => 0,
+          '239' => 0,
+          '122' => 0,
+          '143' => 0,
+          '628' => 0,
+          '158' => 0,
+          '269' => 0,
+          '281' => 0,
+          '464' => 0,
+          '363' => 0,
+          '46' => 0,
+          '733' => 0,
+          '6' => 0,
+          '562' => 0,
+          '630' => 0,
+          '36' => 0,
+          '518' => 0,
+          '183' => 0,
+          '497' => 0,
+          '748' => 0,
+          '472' => 0,
+          '362' => 0,
+          '439' => 0,
+          '317' => 0,
+          '608' => 0,
+          '711' => 0,
+          '132' => 0,
+          '169' => 0,
+          '411' => 0,
+          '705' => 0,
+          '478' => 0,
+          '384' => 0,
+          '398' => 0,
+          '546' => 0,
+          '537' => 0,
+          '407' => 0,
+          '18' => 0,
+          '376' => 0,
+          '522' => 0,
+          '125' => 0,
+          '599' => 0,
+          '44' => 0,
+          '609' => 0,
+          '587' => 0,
+          '667' => 0,
+          '741' => 0,
+          '190' => 0,
+          '95' => 0,
+          '298' => 0,
+          '714' => 0,
+          '601' => 0,
+          '313' => 0,
+          '243' => 0,
+          '231' => 0,
+          '551' => 0,
+          '529' => 0,
+          '148' => 0,
+          '753' => 0,
+          '343' => 0,
+          '504' => 0,
+          '697' => 0,
+          '726' => 0,
+          '397' => 0,
+          '707' => 0,
+          '106' => 0,
+          '157' => 0,
+          '65' => 0,
+          '203' => 0,
+          '261' => 0,
+          '81' => 0,
+          '321' => 0,
+          '459' => 0,
+          '624' => 0,
+          '86' => 0,
+          '284' => 0,
+          '247' => 0,
+          '656' => 0,
+          '371' => 0,
+          '204' => 0,
+          '165' => 0,
+          '289' => 0,
+          '729' => 0,
+          '771' => 0,
+          '2' => 0,
+          '435' => 0,
+          '401' => 0,
+          '186' => 0,
+          '147' => 0,
+          '339' => 0,
+          '760' => 0,
+          '228' => 0,
+          '749' => 0,
+          '531' => 0,
+          '268' => 0,
+          '345' => 0,
+          '596' => 0,
+          '172' => 0,
+          '319' => 0,
+          '735' => 0,
+          '223' => 0,
+          '404' => 0,
+          '721' => 0,
+          '613' => 0,
+          '516' => 0,
+          '669' => 0,
+          '282' => 0,
+          '420' => 0,
+          '121' => 0,
+          '702' => 0,
+          '639' => 0,
+          '344' => 0,
+          '487' => 0,
+          '494' => 0,
+          '238' => 0,
+          '636' => 0,
+          '577' => 0,
+          '253' => 0,
+          '561' => 0,
+          '448' => 0,
+          '209' => 0,
+          '216' => 0,
+          '357' => 0,
+          '117' => 0,
+          '643' => 0,
+          '63' => 0,
+          '455' => 0,
+          '600' => 0,
+          '80' => 0,
+          '336' => 0,
+          '457' => 0,
+          '179' => 0,
+          '696' => 0,
+          '383' => 0,
+          '297' => 0,
+          '713' => 0,
+          '676' => 0,
+          '277' => 0,
+          '92' => 0,
+          '10' => 0,
+          '550' => 0,
+          '505' => 0,
+          '670' => 0,
+          '419' => 0,
+          '133' => 0,
+          '290' => 0,
+          '625' => 0,
+          '592' => 0,
+          '149' => 0,
+          '123' => 0,
+          '304' => 0,
+          '712' => 0,
+          '631' => 0,
+          '547' => 0,
+          '210' => 0,
+          '406' => 0,
+          '258' => 0,
+          '396' => 0,
+          '482' => 0,
+          '173' => 0,
+          '530' => 0,
+          '56' => 0,
+          '499' => 0,
+          '66' => 0,
+          '19' => 0,
+          '54' => 0,
+          '365' => 0,
+          '763' => 0,
+          '306' => 0,
+          '70' => 0,
+          '470' => 0,
+          '166' => 0,
+          '88' => 0,
+          '141' => 0,
+          '30' => 0,
+          '654' => 0,
+          '570' => 0,
+          '403' => 0,
+          '252' => 0,
+          '466' => 0,
+          '156' => 0,
+          '134' => 0,
+          '75' => 0,
+          '283' => 0,
+          '618' => 0,
+          '655' => 0,
+          '59' => 0,
+          '421' => 0,
+          '450' => 0,
+          '271' => 0,
+          '703' => 0,
+          '491' => 0,
+          '219' => 0,
+          '318' => 0,
+          '13' => 0,
+          '105' => 0,
+          '473' => 0,
+          '185' => 0,
+          '3' => 0,
+          '597' => 0,
+          '248' => 0,
+          '390' => 0,
+          '146' => 0,
+          '111' => 0,
+          '38' => 0,
+          '356' => 0,
+          '408' => 0,
+          '4' => 0,
+          '528' => 0,
+          '164' => 0,
+          '196' => 0,
+          '242' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...NA done
+try to find cellline ...CME-L1 done
+try to find devstage ...third instar larval stage done
+try to find tissue ...ventral prothoracic disc done
+try to find sex ...Unknown done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...mRNA done
+try to find level3 ...RT-PCR done
+level4 factor is total-RNA
+level4 condition is Cell-Line_CME-L1;Tissue_ventral prothoracic disc;Developmental-Stage_third instar larval stage
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

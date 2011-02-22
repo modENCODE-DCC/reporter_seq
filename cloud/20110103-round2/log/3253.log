@@ -1,0 +1,46 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/3253_tag.csv
+connecting to database ...schema is modencode_experiment_3253_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...16 done
+try to find num_of_cols ...8 done
+try to find title ...SG ORC ChIP-Seq experiment done
+try to find description ...We will precisely identify sequence elements that direct DNA replication by using chromatin immunoprecipitation of known replication initiation complexes.  These experiments will be conducted in multiple cell types and developmental tissues. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...David MacAlpine done
+try to find lab ...Orr-Weaver done
+try to find factors ... whole_organism : FlyStrain:SuUR_-_Orr-Weaver:DM:1 base pair : 36 base pair done
+try to find data_type ...Replication Factors done
+try to find assay_type ...ChIP-seq done
+try to find hyb_slot ...NA done
+try to find seq_slot ...5 done
+try to find ip_slot ...3 done
+try to find label_slot ...NA done
+try to find raw_slot ...5 done
+try to find norm_slot ...7 done
+try to find platform ...Illumina done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...1 done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...1 done
+try to find last_extraction_slot ...4 done
+try to find groups ...group by sample name.
+$VAR1 = undef;
+NA done
+try to find strain ...SuUR - Orr-Weaver done
+try to find cellline ...NA done
+try to find devstage ...L3 stage wandering larvae done
+try to find tissue ...salivary gland done
+try to find sex ...NA done
+try to find antibody ...Ab:dORC2:DM:1&oldid=34913 done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...DNA-Replication done
+try to find level3 ...ChIP-seq done
+level4 factor is 
+level4 condition is Strain_SuUR - Orr-Weaver;Tissue_salivary gland;Developmental-Stage_L3 stage wandering larvae;base pair_36 base pair;whole_organism_FlyStrain:SuUR_-_Orr-Weaver:DM:1
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

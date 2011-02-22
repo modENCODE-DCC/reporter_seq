@@ -1,0 +1,57 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/2403_tag.csv
+connecting to database ...schema is modencode_experiment_2403_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...10 done
+try to find num_of_cols ...3 done
+try to find title ...Cherbas Dissected Tissue RNA samples done
+try to find description ...This is not an experiment per se but contains metadata about RNA samples created at Indiana University, Bloomington by the Cherbas lab, and used in the modENCODE project. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Cherbas done
+try to find factors ... done
+try to find data_type ...Metadata only done
+try to find assay_type ...Sample creation done
+try to find hyb_slot ...NA done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...2 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '6' => 2,
+          '3' => '3',
+          '7' => 3,
+          '9' => 5,
+          '2' => '2',
+          '8' => 4,
+          '1' => '1',
+          '4' => '4',
+          '0' => 0,
+          '5' => '5'
+        };
+HASH(0xe7ad90) done
+try to find strain ...Oregon-R done
+try to find cellline ...NA done
+try to find devstage ...Adult female eclosion+4 day done
+try to find tissue ...Adult ovaries done
+try to find sex ...Female done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...NA done
+try to find level3 ...NA done
+level4 factor is 
+level4 condition is Strain_Oregon-R;Tissue_Adult ovaries;Developmental-Stage_Adult female eclosion+4 day
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

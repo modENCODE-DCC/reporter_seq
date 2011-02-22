@@ -1,0 +1,38 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/2967_tag.csv
+connecting to database ...schema is modencode_experiment_2967_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...1 done
+try to find num_of_cols ...1 done
+try to find title ...MB annotation 9 done
+try to find description ...These experiments aim to annotate the genome of Drosophila melanogaster.
+
+Genome annotation is done in cycles consisting of gene prediction, target selection and RT-PCR sequencing of the targets. 
+
+The gene prediction programs used are N-SCAN (Brent Lab) and Contrast (Sam Gross), both of which use conservation and transcription evidence. Before each round of gene prediction, new cDNAs and ESTs are downloaded from GenBank, and are clustered using the PASA pipeline developed by Brian Haas at TIGR. These clusters are then converted to an 'EST evidence track' that can be used by the program. Similarly, a conservation track is created from alignments of 'informant' species to the target genome.
+
+Predicted transcripts (models) are classified as 'supported', 'partially supported', and 'novel' based on overlap with transcripts. If all splice sites of a transcript model are present in cDNAs, this transcript is supported. Transcripts with no supported splice sites are novel.
+
+Novel and partially supported genes are targeted for PCR on reverse transcribed RNA from one or multiple tissues. Primers are designed around unsupported splices. If a spliced sequence results from the PCR it is submitted to GenBank (whether or not it supports the transcript model) and it becomes part of the EST/cDNA download for the next round of gene predictions.
+
+The cycles are numbered and prefixed "DMG". done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Brent done
+try to find factors ... done
+try to find data_type ...NA done
+try to find assay_type ...NA done
+try to find hyb_slot ...NA done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...

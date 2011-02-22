@@ -1,0 +1,48 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/2459_tag.csv
+connecting to database ...schema is modencode_experiment_2459_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...1 done
+try to find num_of_cols ...6 done
+try to find title ...3'RACE polyA-capture adult males 454 sequencing done
+try to find description ...The 3' untranslated region (3'UTR) constitutes a major site of post-transcriptional regulation of gene expression. Sequence elements in the 3'UTR interact with trans-acting regulators such as microRNAs that affect translation and stability. The overall aim is to use a 3'RACE cloning-sequencing stragety to identify the 3'UTRs of C. elegans transcripts and explore their heterogeneity in different developmental stages and tissues. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Fabio Piano done
+try to find lab ...Piano done
+try to find factors ... temperature : 20 degree celsius done
+try to find data_type ...Gene Structure - mRNA done
+try to find assay_type ...RACE done
+try to find hyb_slot ...NA done
+try to find seq_slot ...5 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '0' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...him-8(e1489) done
+try to find cellline ...NA done
+try to find devstage ...Adult males 20dC 70hr post-L1 done
+try to find tissue ...NA done
+try to find sex ...Male done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...mRNA done
+try to find level3 ...RACE done
+level4 factor is 3-prime-UTR
+level4 condition is Strain_him-8(e1489);Developmental-Stage_Adult males 20dC 70hr post-L1;temperature_20 degree celsius
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

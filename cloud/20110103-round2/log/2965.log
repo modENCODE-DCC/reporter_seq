@@ -1,0 +1,32 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/2965_tag.csv
+connecting to database ...schema is modencode_experiment_2965_data,public
+database connected.
+loading experiment ...done.
+L4_soma_JK1107_no_DNaseI.win_covg.ws170.wig 2590:L4_soma_JK1107_no_DNaseI.win_covg.ws170.wig 0 
+L4_soma_JK1107_no_DNaseI.confirmed_introns_all.gff3 2590:L4_soma_JK1107_no_DNaseI.confirmed_introns_all.gff3 0 
+connecting to database ...schema is modencode_experiment_2590_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...1 done
+try to find num_of_cols ...5 done
+try to find title ...L4 soma JK1107 no DNaseI genelets integrated transcripts from RNA-seq, mRNA/EST, RTPCR, mass-spec, and wormbase splice junctions done
+try to find description ...Using massively parallel sequencing by synthesis methods, we are surveying transcripts from various stages, tissues and conditions of the nematode C. elegans. We use novel statistical approaches to evaluate coverage of annotated features of the genome and of candidate processed transcripts.   We then provide lists of evidence of level of expression per transcript and catalogs of confirmed splice junctions, trans-spliced leader sequences, start sites, end sites, and poly-adenylation tracts for each stage/tissue/condition. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Robert Waterston done
+try to find lab ...Waterston done
+try to find factors ... done
+try to find data_type ...gene model done
+try to find assay_type ...Computational annotation done
+try to find hyb_slot ...NA done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...

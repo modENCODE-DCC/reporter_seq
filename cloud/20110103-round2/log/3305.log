@@ -1,0 +1,195 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/3305_tag.csv
+connecting to database ...schema is modencode_experiment_3305_data,public
+database connected.
+loading experiment ...done.
+Dro2_AS_1182-4H_568.gr 40:Dro2_AS_1182-4H_568.gr 0 
+Dro2_AS_CME-L1_558.gr 48:Dro2_AS_CME-L1_558.gr 1 
+Dro2_AS_CME-W1-Cl.8+_577.gr 49:Dro2_AS_CME-W1-Cl.8+_577.gr 2 
+Dro2_AS_GM2_564.gr 50:Dro2_AS_GM2_564.gr 3 
+Dro2_AS_Kc167_563.gr 51:Dro2_AS_Kc167_563.gr 4 
+Dro2_AS_ML-DmBG1-c1_581.gr 52:Dro2_AS_ML-DmBG1-c1_581.gr 5 
+Dro2_AS_ML-DmBG3-c2_732.gr 53:Dro2_AS_ML-DmBG3-c2_732.gr 6 
+Dro2_AS_ML-DmD11_560.gr 54:Dro2_AS_ML-DmD11_560.gr 7 
+Dro2_AS_ML-DmD17-c3_571.gr 55:Dro2_AS_ML-DmD17-c3_571.gr 8 
+Dro2_AS_ML-DmD20-c2_561.gr 56:Dro2_AS_ML-DmD20-c2_561.gr 9 
+Dro2_AS_ML-DmD20-c5_562.gr 57:Dro2_AS_ML-DmD20-c5_562.gr 10 
+Dro2_AS_ML-DmD21_582.gr 58:Dro2_AS_ML-DmD21_582.gr 11 
+Dro2_AS_ML-DmD32_570.gr 59:Dro2_AS_ML-DmD32_570.gr 12 
+Dro2_AS_ML-DmD4-c1_687.gr 60:Dro2_AS_ML-DmD4-c1_687.gr 13 
+Dro2_AS_ML-DmD8_572.gr 61:Dro2_AS_ML-DmD8_572.gr 14 
+Dro2_AS_ML-DmD9_580.gr 62:Dro2_AS_ML-DmD9_580.gr 15 
+Dro2_AS_S1_567.gr 63:Dro2_AS_S1_567.gr 16 
+Dro2_AS_S2-DRSC_565.gr 64:Dro2_AS_S2-DRSC_565.gr 17 
+Dro2_AS_S2R+_566.gr 65:Dro2_AS_S2R+_566.gr 18 
+Dro2_AS_S3_757.gr 66:Dro2_AS_S3_757.gr 19 
+Dro2_AS_Sg4_559.gr 67:Dro2_AS_Sg4_559.gr 20 
+Dro2_AS_ML-DmD16-c3_569.gr 69:Dro2_AS_ML-DmD16-c3_569.gr 21 
+Dro2_AS_mbn2_791.gr 139:Dro2_AS_mbn2_791.gr 22 
+Dro2_AS_CME-W2_786.gr 140:Dro2_AS_CME-W2_786.gr 23 
+Dro2_AS_ML-DmBG2-c2_882.gr 337:Dro2_AS_ML-DmBG2-c2_882.gr 24 
+Dro2_AS_Dm_emb_2h_578.gr 101:Dro2_AS_Dm_emb_2h_578.gr 25 
+Dro2_AS_Dm_emb_4h_649.gr 118:Dro2_AS_Dm_emb_4h_649.gr 26 
+Dro2_AS_Dm_emb_6h_651.gr 120:Dro2_AS_Dm_emb_6h_651.gr 27 
+Dro2_AS_Dm_emb_8h_760.gr 763:Dro2_AS_Dm_emb_8h_760.gr 28 
+Dro2_AS_Dm_emb_10h_724.gr 103:Dro2_AS_Dm_emb_10h_724.gr 29 
+Dro2_AS_Dm_emb_12h_726.gr 105:Dro2_AS_Dm_emb_12h_726.gr 30 
+Dro2_AS_Dm_emb_14h_722.gr 107:Dro2_AS_Dm_emb_14h_722.gr 31 
+Dro2_AS_Dm_emb_16h_654.gr 109:Dro2_AS_Dm_emb_16h_654.gr 32 
+Dro2_AS_Dm_emb_18h_685.gr 111:Dro2_AS_Dm_emb_18h_685.gr 33 
+Dro2_AS_Dm_emb_20h_686.gr 113:Dro2_AS_Dm_emb_20h_686.gr 34 
+Dro2_AS_Dm_emb_22h_RW_728.gr 116:Dro2_AS_Dm_emb_22h_RW_728.gr 35 
+Dro2_AS_Dm_emb_24h_658.gr 117:Dro2_AS_Dm_emb_24h_658.gr 36 
+Dro2_AS_Dm_WPP_RW_788.gr 95:Dro2_AS_Dm_WPP_RW_788.gr 37 
+Dro2_AS_Dm_WPP+12hr_876.gr 544:Dro2_AS_Dm_WPP+12hr_876.gr 38 
+Dro2_AS_Dm_WPP+24hr_877.gr 545:Dro2_AS_Dm_WPP+24hr_877.gr 39 
+Dro2_AS_Dm_WPP+2days_804.gr 541:Dro2_AS_Dm_WPP+2days_804.gr 40 
+Dro2_AS_Dm_WPP+3days_878.gr 542:Dro2_AS_Dm_WPP+3days_878.gr 41 
+Dro2_AS_Dm_WPP+4days_879.gr 543:Dro2_AS_Dm_WPP+4days_879.gr 42 
+Dro2_AS_Dm_L1_larvae_729.gr 93:Dro2_AS_Dm_L1_larvae_729.gr 43 
+Dro2_AS_Dm_L2_larvae_659.gr 94:Dro2_AS_Dm_L2_larvae_659.gr 44 
+Dro2_AS_L3-larvae-dark-blue_RW_789.gr 100:Dro2_AS_L3-larvae-dark-blue_RW_789.gr 45 
+Dro2_AS_Dm_L3-12hr_larvae_875.gr 538:Dro2_AS_Dm_L3-12hr_larvae_875.gr 46 
+Dro2_AS_L3-larvae-clear_802.gr 539:Dro2_AS_L3-larvae-clear_802.gr 47 
+Dro2_AS_L3-larvae-light-blue_790.gr 540:Dro2_AS_L3-larvae-light-blue_790.gr 48 
+Dro2_AS_DroAdF-Ecl+1day_754.gr 96:Dro2_AS_DroAdF-Ecl+1day_754.gr 49 
+Dro2_AS_DroAdF-Ecl+5day_755.gr 97:Dro2_AS_DroAdF-Ecl+5day_755.gr 50 
+Dro2_AS_DroAdF-Ecl+30day_880.gr 2896:Dro2_AS_DroAdF-Ecl+30day_880.gr 51 
+Dro2_AS_DroAdM-Ecl+1day_730.gr 98:Dro2_AS_DroAdM-Ecl+1day_730.gr 52 
+Dro2_AS_DroAdM-Ecl+5day_756.gr 99:Dro2_AS_DroAdM-Ecl+5day_756.gr 53 
+Dro2_AS_DroAdM-Ecl+30day_803.gr 2897:Dro2_AS_DroAdM-Ecl+30day_803.gr 54 
+connecting to database ...schema is modencode_experiment_40_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_48_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_49_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_50_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_51_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_52_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_53_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_54_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_55_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_56_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_57_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_58_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_59_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_60_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_61_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_62_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_63_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_64_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_65_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_66_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_67_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_69_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_139_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_140_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_337_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_101_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_118_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_120_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_763_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_103_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_105_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_107_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_109_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_111_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_113_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_116_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_117_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_95_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_544_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_545_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_541_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_542_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_543_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_93_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_94_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_100_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_538_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_539_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_540_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_96_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_97_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_2896_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_98_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_99_data,public
+database connected.
+loading experiment ...connecting to database ...schema is modencode_experiment_2897_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...55 done
+try to find num_of_cols ...9 done
+try to find title ...Drosophila Cell Line and Developmental Stage Gene and Exon Scores done
+try to find description ...Affymetrix tiling arrays were hybridized with total RNAs extracted from 25 cell lines and 30 developmental stages of Drosophila melanogaster to assay for transcription levels.  Scores for genes and exons are provided in a table format to estimate expression levels for annotated genes and exons, using signals from Affymetrix Drosophila tiling arrays. 
+ 
+The data represent the work of the fly transcriptome modENCODE project (Celniker, PI) and are publicly available from modENCODE; the calculations and compilations were done by the Bloomington sub-group. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Cherbas done
+try to find factors ... done
+try to find data_type ...Gene Structure - mRNA done
+try to find assay_type ...Computation annotation done
+try to find hyb_slot ...2 done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...1 done
+try to find raw_slot ...3 done
+try to find norm_slot ...5 done
+try to find platform ...Affymetrix done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...

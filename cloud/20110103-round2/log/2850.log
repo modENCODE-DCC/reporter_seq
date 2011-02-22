@@ -1,0 +1,5 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/2850_tag.csv
+connecting to database ...schema is modencode_experiment_2850_data,public
+database connected.
+loading experiment ...done.

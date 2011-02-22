@@ -1,0 +1,84 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/577_tag.csv
+connecting to database ...schema is modencode_experiment_577_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...37 done
+try to find num_of_cols ...3 done
+try to find title ...Cherbas Developmental Stage Embryo polyA samples done
+try to find description ...This is not an experiment per se but contains metadata about RNA samples created at Indiana University, Bloomington by the Cherbas lab, and used in the modENCODE project. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Cherbas done
+try to find factors ... done
+try to find data_type ...Metadata only done
+try to find assay_type ...Sample creation done
+try to find hyb_slot ...NA done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...2 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '33' => '33',
+          '32' => '32',
+          '21' => '21',
+          '7' => '7',
+          '26' => '26',
+          '17' => '17',
+          '2' => '2',
+          '1' => '1',
+          '18' => '18',
+          '30' => '30',
+          '16' => '16',
+          '27' => '27',
+          '25' => '25',
+          '28' => '28',
+          '20' => '20',
+          '14' => '14',
+          '24' => '24',
+          '10' => '10',
+          '31' => '31',
+          '35' => '35',
+          '11' => '11',
+          '22' => '22',
+          '0' => 0,
+          '13' => '13',
+          '23' => '23',
+          '29' => '29',
+          '6' => '6',
+          '36' => '36',
+          '3' => '3',
+          '9' => '9',
+          '12' => '12',
+          '15' => '15',
+          '8' => '8',
+          '4' => '4',
+          '34' => '34',
+          '19' => '19',
+          '5' => '5'
+        };
+HASH(0xe7ad90) done
+try to find strain ...Y cn bw sp done
+try to find cellline ...NA done
+try to find devstage ...Embryo 10-12h done
+try to find tissue ...NA done
+try to find sex ...Unknown done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...NA done
+try to find level3 ...NA done
+level4 factor is 
+level4 condition is Strain_Y cn bw sp;Developmental-Stage_Embryo 10-12h
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

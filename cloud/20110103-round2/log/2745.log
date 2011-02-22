@@ -1,0 +1,28 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/2745_tag.csv
+connecting to database ...schema is modencode_experiment_2745_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...20 done
+try to find num_of_cols ...1 done
+try to find title ...Annotation of CEUP 3' UTRs, polyA sites, and PAS sites done
+try to find description ...Multiple independent evidence sources supporting the existence of 3'UTR isoforms were collected, aligned to the genome, and curated as previously described. Four main types of data sources were used, including CEUP 3' RACE clones, CEUP polyA capture, AceView curated cDNA and EST traces from the Yuji Kohara collection, Exelixis and the NCBI Trace Archive, and GenBank entries, and Published RNAseq transcriptome profiling data from Hillier et al., Genome Res 2009. Here we annotate 3'UTRs, polyA sites, and PAS motifs. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Fabio Piano done
+try to find lab ...Piano done
+try to find factors ... done
+try to find data_type ...Gene Structure done
+try to find assay_type ...Computational annotation done
+try to find hyb_slot ...NA done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...

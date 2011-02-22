@@ -1,0 +1,81 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/446_tag.csv
+connecting to database ...schema is modencode_experiment_446_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...26 done
+try to find num_of_cols ...8 done
+try to find title ...C. elegans Intron Identification set.20090106.2_3_2_2_4_4_3_2_2 done
+try to find description ...This experiment identifies intron boundary coordinates in C. elegans
+genomic sequence. Initially, we run genefinder to predict protein-coding
+transcripts from the C. elegans chromosome sequences. We align
+existing cDNA and EST sequences to the predicted transcript sequences
+to confirm the transcript structure. Predicted splice junctions
+unconfirmed by these alignments are tested for confirmation using
+RT-PCR, DNA sequencing, and sequence alignment. These PCR experiments
+use gene-specific/gene-specific, 5' RACE/gene-specific, and
+gene-specific/3' RACE primer pairs. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Robert Waterston done
+try to find lab ...Green done
+try to find factors ... PCR_primer : TTGTCGTCCGAGAATCGGG done
+try to find data_type ...Gene Structure - mRNA done
+try to find assay_type ...RTPCR done
+try to find hyb_slot ...NA done
+try to find seq_slot ...4 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '11' => 0,
+          '21' => 0,
+          '7' => 0,
+          '17' => 0,
+          '2' => 0,
+          '22' => 0,
+          '1' => 0,
+          '18' => 0,
+          '0' => 0,
+          '23' => 0,
+          '16' => 0,
+          '13' => 0,
+          '25' => 0,
+          '6' => 0,
+          '3' => 0,
+          '9' => 0,
+          '12' => 0,
+          '20' => 0,
+          '14' => 0,
+          '15' => 0,
+          '8' => 0,
+          '4' => 0,
+          '24' => 0,
+          '19' => 0,
+          '10' => 0,
+          '5' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...N2 done
+try to find cellline ...NA done
+try to find devstage ...Mixed Larval Stages Grown 4-5 Days done
+try to find tissue ...NA done
+try to find sex ...Unknown done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...mRNA done
+try to find level3 ...RT-PCR done
+level4 factor is total-RNA
+level4 condition is Strain_N2;Developmental-Stage_Mixed Larval Stages Grown 4-5 Days;PCR_primer_TTGTCGTCCGAGAATCGGG
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

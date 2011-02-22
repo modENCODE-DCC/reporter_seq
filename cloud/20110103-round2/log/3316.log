@@ -1,0 +1,55 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/3316_tag.csv
+connecting to database ...schema is modencode_experiment_3316_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...8 done
+try to find num_of_cols ...2 done
+try to find title ...Gingeras Capped small-RNA (<200nt) PolyA-tail done
+try to find description ...This is not an experiment per se but contains metadata about RNA samples created at Indiana University, Bloomington by the Cherbas lab, and used in the modENCODE project. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Gingeras done
+try to find factors ... done
+try to find data_type ...Metadata only done
+try to find assay_type ...Sample creation done
+try to find hyb_slot ...NA done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '6' => '6',
+          '4' => '4',
+          '1' => '1',
+          '3' => '3',
+          '0' => 0,
+          '7' => '7',
+          '2' => '2',
+          '5' => '5'
+        };
+HASH(0xe7ad90) done
+try to find strain ...NA done
+try to find cellline ...ML-DmBG3-c2 done
+try to find devstage ...third instar larval stage done
+try to find tissue ...CNS-derived cell-line done
+try to find sex ...Unknown done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...NA done
+try to find level3 ...NA done
+level4 factor is 
+level4 condition is Cell-Line_ML-DmBG3-c2;Tissue_CNS-derived cell-line;Developmental-Stage_third instar larval stage
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

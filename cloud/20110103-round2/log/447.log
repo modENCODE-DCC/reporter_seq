@@ -1,0 +1,163 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/447_tag.csv
+connecting to database ...schema is modencode_experiment_447_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...108 done
+try to find num_of_cols ...8 done
+try to find title ...C. elegans Intron Identification set.20090106.2_3_2_2_5_3_3_2_2 done
+try to find description ...This experiment identifies intron boundary coordinates in C. elegans
+genomic sequence. Initially, we run genefinder to predict protein-coding
+transcripts from the C. elegans chromosome sequences. We align
+existing cDNA and EST sequences to the predicted transcript sequences
+to confirm the transcript structure. Predicted splice junctions
+unconfirmed by these alignments are tested for confirmation using
+RT-PCR, DNA sequencing, and sequence alignment. These PCR experiments
+use gene-specific/gene-specific, 5' RACE/gene-specific, and
+gene-specific/3' RACE primer pairs. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Robert Waterston done
+try to find lab ...Green done
+try to find factors ... PCR_primer : CTCGGCATTCCCGTCACC done
+try to find data_type ...Gene Structure - mRNA done
+try to find assay_type ...RTPCR done
+try to find hyb_slot ...NA done
+try to find seq_slot ...4 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '33' => 0,
+          '32' => 0,
+          '90' => 0,
+          '63' => 0,
+          '21' => 0,
+          '71' => 0,
+          '102' => 0,
+          '7' => 0,
+          '80' => 0,
+          '26' => 0,
+          '99' => 0,
+          '18' => 0,
+          '72' => 0,
+          '16' => 0,
+          '44' => 0,
+          '55' => 0,
+          '84' => 0,
+          '74' => 0,
+          '27' => 0,
+          '95' => 0,
+          '57' => 0,
+          '61' => 0,
+          '20' => 0,
+          '92' => 0,
+          '103' => 0,
+          '89' => 0,
+          '10' => 0,
+          '31' => 0,
+          '35' => 0,
+          '11' => 0,
+          '91' => 0,
+          '78' => 0,
+          '107' => 0,
+          '48' => 0,
+          '87' => 0,
+          '93' => 0,
+          '77' => 0,
+          '106' => 0,
+          '65' => 0,
+          '29' => 0,
+          '50' => 0,
+          '39' => 0,
+          '64' => 0,
+          '97' => 0,
+          '58' => 0,
+          '41' => 0,
+          '12' => 0,
+          '15' => 0,
+          '81' => 0,
+          '52' => 0,
+          '60' => 0,
+          '56' => 0,
+          '101' => 0,
+          '73' => 0,
+          '66' => 0,
+          '45' => 0,
+          '86' => 0,
+          '76' => 0,
+          '19' => 0,
+          '62' => 0,
+          '54' => 0,
+          '67' => 0,
+          '70' => 0,
+          '68' => 0,
+          '2' => 0,
+          '17' => 0,
+          '1' => 0,
+          '88' => 0,
+          '30' => 0,
+          '100' => 0,
+          '82' => 0,
+          '25' => 0,
+          '28' => 0,
+          '83' => 0,
+          '75' => 0,
+          '40' => 0,
+          '14' => 0,
+          '69' => 0,
+          '59' => 0,
+          '49' => 0,
+          '24' => 0,
+          '104' => 0,
+          '53' => 0,
+          '79' => 0,
+          '22' => 0,
+          '42' => 0,
+          '0' => 0,
+          '46' => 0,
+          '23' => 0,
+          '13' => 0,
+          '105' => 0,
+          '96' => 0,
+          '6' => 0,
+          '85' => 0,
+          '3' => 0,
+          '36' => 0,
+          '94' => 0,
+          '9' => 0,
+          '51' => 0,
+          '47' => 0,
+          '8' => 0,
+          '38' => 0,
+          '98' => 0,
+          '4' => 0,
+          '34' => 0,
+          '37' => 0,
+          '43' => 0,
+          '5' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...N2 done
+try to find cellline ...NA done
+try to find devstage ...Mixed Larval Stages Grown 4-5 Days done
+try to find tissue ...NA done
+try to find sex ...Unknown done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...mRNA done
+try to find level3 ...RT-PCR done
+level4 factor is total-RNA
+level4 condition is Strain_N2;Developmental-Stage_Mixed Larval Stages Grown 4-5 Days;PCR_primer_CTCGGCATTCCCGTCACC
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

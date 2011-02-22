@@ -1,0 +1,59 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/559_tag.csv
+connecting to database ...schema is modencode_experiment_559_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...12 done
+try to find num_of_cols ...2 done
+try to find title ...Cherbas Cell line RNA samples done
+try to find description ...This is not an experiment per se but contains metadata about RNA samples created at Indiana University, Bloomington by the Cherbas lab, and used in the modENCODE project. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Cherbas done
+try to find factors ... done
+try to find data_type ...Metadata only done
+try to find assay_type ...Sample creation done
+try to find hyb_slot ...NA done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...1 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '6' => '6',
+          '11' => '11',
+          '3' => '3',
+          '7' => '7',
+          '9' => '9',
+          '2' => '2',
+          '8' => '8',
+          '1' => '1',
+          '4' => '4',
+          '0' => 0,
+          '10' => '10',
+          '5' => '5'
+        };
+HASH(0xe7ad90) done
+try to find strain ...NA done
+try to find cellline ...Kc167 done
+try to find devstage ...late embryonic stage done
+try to find tissue ...embryo-derived cell-line done
+try to find sex ...Female done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...NA done
+try to find level3 ...NA done
+level4 factor is 
+level4 condition is Cell-Line_Kc167;Tissue_embryo-derived cell-line;Developmental-Stage_late embryonic stage
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

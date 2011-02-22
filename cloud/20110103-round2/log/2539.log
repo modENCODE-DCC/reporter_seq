@@ -1,0 +1,47 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/2539_tag.csv
+connecting to database ...schema is modencode_experiment_2539_data,public
+database connected.
+loading experiment ...done.
+try to find num_of_rows ...6 done
+try to find num_of_cols ...1 done
+try to find title ...Ahringer L3 Worm Samples_1 done
+try to find description ...The focus of our analysis will be elements that specify nucleosome positioning and occupancy, control domains of gene expression, induce repression of the X chromosome, guide mitotic segregation and genome duplication, govern homolog pairing and recombination during meiosis, and organize chromosome positioning within the nucleus. 126 strategically selected targets include key histone modifications, histone variants, RNA polymerase II isoforms, dosage-compensation proteins, centromere components, homolog-pairing facilitators, recombination markers, and nuclear-envelope constituents.
+We will integrate information generated with existing knowledge on the biology of the targets, perform ChIP-chip analysis on mutant and RNAi extracts lacking selected target proteins, use extrachromosomal arrays to assess the ability of candidate identified sequence motifs to recruit targets in vivo, identify tissue-specific patterns of selected targets, and create integrated, quantitative models of transcription and whole-chromosome functions. done
+try to find organism ...Caenorhabditis elegans done
+try to find project ...Jason Lieb done
+try to find lab ...Ahringer done
+try to find factors ... temperature : 20 degree celsius done
+try to find data_type ...NA done
+try to find assay_type ...NA done
+try to find hyb_slot ...NA done
+try to find seq_slot ...NA done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...0 done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...0 done
+try to find groups ...group by sample name.
+$VAR1 = undef;
+NA done
+try to find strain ...N2 done
+try to find cellline ...NA done
+try to find devstage ...L3 Larva done
+try to find tissue ...NA done
+try to find sex ...mixed Male and Hermaphrodite population done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Cele_WS190 done
+try to find level2 ...NA done
+try to find level3 ...NA done
+level4 factor is Nucleosome
+level4 condition is Strain_N2;Developmental-Stage_L3 Larva;temperature_20 degree celsius
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done

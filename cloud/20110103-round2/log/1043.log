@@ -1,0 +1,3779 @@
+initializing...
+output file is /home/zzha/reporter_seq/tmp/cloud/1043_tag.csv
+connecting to database ...schema is modencode_experiment_1043_data,public
+database connected.
+loading experiment ...done.
+Celniker/RNA:83 574:Celniker/RNA:83 0 
+Celniker/RNA:83 574:Celniker/RNA:83 1 
+Celniker/RNA:83 574:Celniker/RNA:83 2 
+Celniker/RNA:83 574:Celniker/RNA:83 3 
+Celniker/RNA:83 574:Celniker/RNA:83 4 
+Celniker/RNA:83 574:Celniker/RNA:83 5 
+Celniker/RNA:83 574:Celniker/RNA:83 6 
+Celniker/RNA:83 574:Celniker/RNA:83 7 
+Celniker/RNA:83 574:Celniker/RNA:83 8 
+Celniker/RNA:83 574:Celniker/RNA:83 9 
+Celniker/RNA:83 574:Celniker/RNA:83 10 
+Celniker/RNA:83 574:Celniker/RNA:83 11 
+Celniker/RNA:83 574:Celniker/RNA:83 12 
+Celniker/RNA:83 574:Celniker/RNA:83 13 
+Celniker/RNA:83 574:Celniker/RNA:83 14 
+Celniker/RNA:83 574:Celniker/RNA:83 15 
+Celniker/RNA:83 574:Celniker/RNA:83 16 
+Celniker/RNA:83 574:Celniker/RNA:83 17 
+Celniker/RNA:83 574:Celniker/RNA:83 18 
+Celniker/RNA:83 574:Celniker/RNA:83 19 
+Celniker/RNA:83 574:Celniker/RNA:83 20 
+Celniker/RNA:83 574:Celniker/RNA:83 21 
+Celniker/RNA:83 574:Celniker/RNA:83 22 
+Celniker/RNA:83 574:Celniker/RNA:83 23 
+Celniker/RNA:83 574:Celniker/RNA:83 24 
+Celniker/RNA:83 574:Celniker/RNA:83 25 
+Celniker/RNA:83 574:Celniker/RNA:83 26 
+Celniker/RNA:83 574:Celniker/RNA:83 27 
+Celniker/RNA:83 574:Celniker/RNA:83 28 
+Celniker/RNA:83 574:Celniker/RNA:83 29 
+Celniker/RNA:83 574:Celniker/RNA:83 30 
+Celniker/RNA:83 574:Celniker/RNA:83 31 
+Celniker/RNA:83 574:Celniker/RNA:83 32 
+Celniker/RNA:83 574:Celniker/RNA:83 33 
+Celniker/RNA:83 574:Celniker/RNA:83 34 
+Celniker/RNA:83 574:Celniker/RNA:83 35 
+Celniker/RNA:83 574:Celniker/RNA:83 36 
+Celniker/RNA:83 574:Celniker/RNA:83 37 
+Celniker/RNA:83 574:Celniker/RNA:83 38 
+Celniker/RNA:83 574:Celniker/RNA:83 39 
+Celniker/RNA:83 574:Celniker/RNA:83 40 
+Celniker/RNA:83 574:Celniker/RNA:83 41 
+Celniker/RNA:83 574:Celniker/RNA:83 42 
+Celniker/RNA:83 574:Celniker/RNA:83 43 
+Celniker/RNA:83 574:Celniker/RNA:83 44 
+Celniker/RNA:83 574:Celniker/RNA:83 45 
+Celniker/RNA:83 574:Celniker/RNA:83 46 
+Celniker/RNA:83 574:Celniker/RNA:83 47 
+Celniker/RNA:83 574:Celniker/RNA:83 48 
+Celniker/RNA:83 574:Celniker/RNA:83 49 
+Celniker/RNA:83 574:Celniker/RNA:83 50 
+Celniker/RNA:83 574:Celniker/RNA:83 51 
+Celniker/RNA:83 574:Celniker/RNA:83 52 
+Celniker/RNA:83 574:Celniker/RNA:83 53 
+Celniker/RNA:83 574:Celniker/RNA:83 54 
+Celniker/RNA:83 574:Celniker/RNA:83 55 
+Celniker/RNA:83 574:Celniker/RNA:83 56 
+Celniker/RNA:83 574:Celniker/RNA:83 57 
+Celniker/RNA:83 574:Celniker/RNA:83 58 
+Celniker/RNA:83 574:Celniker/RNA:83 59 
+Celniker/RNA:83 574:Celniker/RNA:83 60 
+Celniker/RNA:83 574:Celniker/RNA:83 61 
+Celniker/RNA:83 574:Celniker/RNA:83 62 
+Celniker/RNA:83 574:Celniker/RNA:83 63 
+Celniker/RNA:83 574:Celniker/RNA:83 64 
+Celniker/RNA:83 574:Celniker/RNA:83 65 
+Celniker/RNA:83 574:Celniker/RNA:83 66 
+Celniker/RNA:83 574:Celniker/RNA:83 67 
+Celniker/RNA:83 574:Celniker/RNA:83 68 
+Celniker/RNA:83 574:Celniker/RNA:83 69 
+Celniker/RNA:83 574:Celniker/RNA:83 70 
+Celniker/RNA:83 574:Celniker/RNA:83 71 
+Celniker/RNA:83 574:Celniker/RNA:83 72 
+Celniker/RNA:83 574:Celniker/RNA:83 73 
+Celniker/RNA:83 574:Celniker/RNA:83 74 
+Celniker/RNA:83 574:Celniker/RNA:83 75 
+Celniker/RNA:83 574:Celniker/RNA:83 76 
+Celniker/RNA:83 574:Celniker/RNA:83 77 
+Celniker/RNA:83 574:Celniker/RNA:83 78 
+Celniker/RNA:83 574:Celniker/RNA:83 79 
+Celniker/RNA:83 574:Celniker/RNA:83 80 
+Celniker/RNA:83 574:Celniker/RNA:83 81 
+Celniker/RNA:83 574:Celniker/RNA:83 82 
+Celniker/RNA:83 574:Celniker/RNA:83 83 
+Celniker/RNA:83 574:Celniker/RNA:83 84 
+Celniker/RNA:83 574:Celniker/RNA:83 85 
+Celniker/RNA:83 574:Celniker/RNA:83 86 
+Celniker/RNA:83 574:Celniker/RNA:83 87 
+Celniker/RNA:83 574:Celniker/RNA:83 88 
+Celniker/RNA:83 574:Celniker/RNA:83 89 
+Celniker/RNA:83 574:Celniker/RNA:83 90 
+Celniker/RNA:83 574:Celniker/RNA:83 91 
+Celniker/RNA:83 574:Celniker/RNA:83 92 
+Celniker/RNA:83 574:Celniker/RNA:83 93 
+Celniker/RNA:83 574:Celniker/RNA:83 94 
+Celniker/RNA:83 574:Celniker/RNA:83 95 
+Celniker/RNA:83 574:Celniker/RNA:83 96 
+Celniker/RNA:83 574:Celniker/RNA:83 97 
+Celniker/RNA:83 574:Celniker/RNA:83 98 
+Celniker/RNA:83 574:Celniker/RNA:83 99 
+Celniker/RNA:83 574:Celniker/RNA:83 100 
+Celniker/RNA:83 574:Celniker/RNA:83 101 
+Celniker/RNA:83 574:Celniker/RNA:83 102 
+Celniker/RNA:83 574:Celniker/RNA:83 103 
+Celniker/RNA:83 574:Celniker/RNA:83 104 
+Celniker/RNA:83 574:Celniker/RNA:83 105 
+Celniker/RNA:83 574:Celniker/RNA:83 106 
+Celniker/RNA:83 574:Celniker/RNA:83 107 
+Celniker/RNA:83 574:Celniker/RNA:83 108 
+Celniker/RNA:83 574:Celniker/RNA:83 109 
+Celniker/RNA:83 574:Celniker/RNA:83 110 
+Celniker/RNA:83 574:Celniker/RNA:83 111 
+Celniker/RNA:83 574:Celniker/RNA:83 112 
+Celniker/RNA:83 574:Celniker/RNA:83 113 
+Celniker/RNA:83 574:Celniker/RNA:83 114 
+Celniker/RNA:83 574:Celniker/RNA:83 115 
+Celniker/RNA:83 574:Celniker/RNA:83 116 
+Celniker/RNA:83 574:Celniker/RNA:83 117 
+Celniker/RNA:83 574:Celniker/RNA:83 118 
+Celniker/RNA:83 574:Celniker/RNA:83 119 
+Celniker/RNA:83 574:Celniker/RNA:83 120 
+Celniker/RNA:83 574:Celniker/RNA:83 121 
+Celniker/RNA:83 574:Celniker/RNA:83 122 
+Celniker/RNA:83 574:Celniker/RNA:83 123 
+Celniker/RNA:83 574:Celniker/RNA:83 124 
+Celniker/RNA:83 574:Celniker/RNA:83 125 
+Celniker/RNA:83 574:Celniker/RNA:83 126 
+Celniker/RNA:83 574:Celniker/RNA:83 127 
+Celniker/RNA:83 574:Celniker/RNA:83 128 
+Celniker/RNA:83 574:Celniker/RNA:83 129 
+Celniker/RNA:83 574:Celniker/RNA:83 130 
+Celniker/RNA:83 574:Celniker/RNA:83 131 
+Celniker/RNA:83 574:Celniker/RNA:83 132 
+Celniker/RNA:83 574:Celniker/RNA:83 133 
+Celniker/RNA:83 574:Celniker/RNA:83 134 
+Celniker/RNA:83 574:Celniker/RNA:83 135 
+Celniker/RNA:83 574:Celniker/RNA:83 136 
+Celniker/RNA:83 574:Celniker/RNA:83 137 
+Celniker/RNA:83 574:Celniker/RNA:83 138 
+Celniker/RNA:83 574:Celniker/RNA:83 139 
+Celniker/RNA:83 574:Celniker/RNA:83 140 
+Celniker/RNA:83 574:Celniker/RNA:83 141 
+Celniker/RNA:83 574:Celniker/RNA:83 142 
+Celniker/RNA:83 574:Celniker/RNA:83 143 
+Celniker/RNA:83 574:Celniker/RNA:83 144 
+Celniker/RNA:83 574:Celniker/RNA:83 145 
+Celniker/RNA:83 574:Celniker/RNA:83 146 
+Celniker/RNA:83 574:Celniker/RNA:83 147 
+Celniker/RNA:83 574:Celniker/RNA:83 148 
+Celniker/RNA:83 574:Celniker/RNA:83 149 
+Celniker/RNA:83 574:Celniker/RNA:83 150 
+Celniker/RNA:83 574:Celniker/RNA:83 151 
+Celniker/RNA:83 574:Celniker/RNA:83 152 
+Celniker/RNA:83 574:Celniker/RNA:83 153 
+Celniker/RNA:83 574:Celniker/RNA:83 154 
+Celniker/RNA:83 574:Celniker/RNA:83 155 
+Celniker/RNA:83 574:Celniker/RNA:83 156 
+Celniker/RNA:83 574:Celniker/RNA:83 157 
+Celniker/RNA:83 574:Celniker/RNA:83 158 
+Celniker/RNA:83 574:Celniker/RNA:83 159 
+Celniker/RNA:83 574:Celniker/RNA:83 160 
+Celniker/RNA:83 574:Celniker/RNA:83 161 
+Celniker/RNA:83 574:Celniker/RNA:83 162 
+Celniker/RNA:83 574:Celniker/RNA:83 163 
+Celniker/RNA:83 574:Celniker/RNA:83 164 
+Celniker/RNA:83 574:Celniker/RNA:83 165 
+Celniker/RNA:83 574:Celniker/RNA:83 166 
+Celniker/RNA:83 574:Celniker/RNA:83 167 
+Celniker/RNA:83 574:Celniker/RNA:83 168 
+Celniker/RNA:83 574:Celniker/RNA:83 169 
+Celniker/RNA:83 574:Celniker/RNA:83 170 
+Celniker/RNA:83 574:Celniker/RNA:83 171 
+Celniker/RNA:83 574:Celniker/RNA:83 172 
+Celniker/RNA:83 574:Celniker/RNA:83 173 
+Celniker/RNA:83 574:Celniker/RNA:83 174 
+Celniker/RNA:83 574:Celniker/RNA:83 175 
+Celniker/RNA:83 574:Celniker/RNA:83 176 
+Celniker/RNA:83 574:Celniker/RNA:83 177 
+Celniker/RNA:83 574:Celniker/RNA:83 178 
+Celniker/RNA:83 574:Celniker/RNA:83 179 
+Celniker/RNA:83 574:Celniker/RNA:83 180 
+Celniker/RNA:83 574:Celniker/RNA:83 181 
+Celniker/RNA:83 574:Celniker/RNA:83 182 
+Celniker/RNA:83 574:Celniker/RNA:83 183 
+Celniker/RNA:83 574:Celniker/RNA:83 184 
+Celniker/RNA:83 574:Celniker/RNA:83 185 
+Celniker/RNA:83 574:Celniker/RNA:83 186 
+Celniker/RNA:83 574:Celniker/RNA:83 187 
+Celniker/RNA:83 574:Celniker/RNA:83 188 
+Celniker/RNA:83 574:Celniker/RNA:83 189 
+Celniker/RNA:83 574:Celniker/RNA:83 190 
+Celniker/RNA:83 574:Celniker/RNA:83 191 
+Celniker/RNA:83 574:Celniker/RNA:83 192 
+Celniker/RNA:83 574:Celniker/RNA:83 193 
+Celniker/RNA:83 574:Celniker/RNA:83 194 
+Celniker/RNA:83 574:Celniker/RNA:83 195 
+Celniker/RNA:83 574:Celniker/RNA:83 196 
+Celniker/RNA:83 574:Celniker/RNA:83 197 
+Celniker/RNA:83 574:Celniker/RNA:83 198 
+Celniker/RNA:83 574:Celniker/RNA:83 199 
+Celniker/RNA:83 574:Celniker/RNA:83 200 
+Celniker/RNA:83 574:Celniker/RNA:83 201 
+Celniker/RNA:83 574:Celniker/RNA:83 202 
+Celniker/RNA:83 574:Celniker/RNA:83 203 
+Celniker/RNA:83 574:Celniker/RNA:83 204 
+Celniker/RNA:83 574:Celniker/RNA:83 205 
+Celniker/RNA:83 574:Celniker/RNA:83 206 
+Celniker/RNA:83 574:Celniker/RNA:83 207 
+Celniker/RNA:83 574:Celniker/RNA:83 208 
+Celniker/RNA:83 574:Celniker/RNA:83 209 
+Celniker/RNA:83 574:Celniker/RNA:83 210 
+Celniker/RNA:83 574:Celniker/RNA:83 211 
+Celniker/RNA:83 574:Celniker/RNA:83 212 
+Celniker/RNA:83 574:Celniker/RNA:83 213 
+Celniker/RNA:83 574:Celniker/RNA:83 214 
+Celniker/RNA:83 574:Celniker/RNA:83 215 
+Celniker/RNA:83 574:Celniker/RNA:83 216 
+Celniker/RNA:83 574:Celniker/RNA:83 217 
+Celniker/RNA:83 574:Celniker/RNA:83 218 
+Celniker/RNA:83 574:Celniker/RNA:83 219 
+Celniker/RNA:83 574:Celniker/RNA:83 220 
+Celniker/RNA:83 574:Celniker/RNA:83 221 
+Celniker/RNA:83 574:Celniker/RNA:83 222 
+Celniker/RNA:83 574:Celniker/RNA:83 223 
+Celniker/RNA:83 574:Celniker/RNA:83 224 
+Celniker/RNA:83 574:Celniker/RNA:83 225 
+Celniker/RNA:83 574:Celniker/RNA:83 226 
+Celniker/RNA:83 574:Celniker/RNA:83 227 
+Celniker/RNA:83 574:Celniker/RNA:83 228 
+Celniker/RNA:83 574:Celniker/RNA:83 229 
+Celniker/RNA:83 574:Celniker/RNA:83 230 
+Celniker/RNA:83 574:Celniker/RNA:83 231 
+Celniker/RNA:83 574:Celniker/RNA:83 232 
+Celniker/RNA:83 574:Celniker/RNA:83 233 
+Celniker/RNA:83 574:Celniker/RNA:83 234 
+Celniker/RNA:83 574:Celniker/RNA:83 235 
+Celniker/RNA:83 574:Celniker/RNA:83 236 
+Celniker/RNA:83 574:Celniker/RNA:83 237 
+Celniker/RNA:83 574:Celniker/RNA:83 238 
+Celniker/RNA:83 574:Celniker/RNA:83 239 
+Celniker/RNA:83 574:Celniker/RNA:83 240 
+Celniker/RNA:83 574:Celniker/RNA:83 241 
+Celniker/RNA:83 574:Celniker/RNA:83 242 
+Celniker/RNA:83 574:Celniker/RNA:83 243 
+Celniker/RNA:83 574:Celniker/RNA:83 244 
+Celniker/RNA:83 574:Celniker/RNA:83 245 
+Celniker/RNA:83 574:Celniker/RNA:83 246 
+Celniker/RNA:83 574:Celniker/RNA:83 247 
+Celniker/RNA:83 574:Celniker/RNA:83 248 
+Celniker/RNA:83 574:Celniker/RNA:83 249 
+Celniker/RNA:83 574:Celniker/RNA:83 250 
+Celniker/RNA:83 574:Celniker/RNA:83 251 
+Celniker/RNA:83 574:Celniker/RNA:83 252 
+Celniker/RNA:83 574:Celniker/RNA:83 253 
+Celniker/RNA:83 574:Celniker/RNA:83 254 
+Celniker/RNA:83 574:Celniker/RNA:83 255 
+Celniker/RNA:83 574:Celniker/RNA:83 256 
+Celniker/RNA:83 574:Celniker/RNA:83 257 
+Celniker/RNA:83 574:Celniker/RNA:83 258 
+Celniker/RNA:83 574:Celniker/RNA:83 259 
+Celniker/RNA:83 574:Celniker/RNA:83 260 
+Celniker/RNA:83 574:Celniker/RNA:83 261 
+Celniker/RNA:83 574:Celniker/RNA:83 262 
+Celniker/RNA:83 574:Celniker/RNA:83 263 
+Celniker/RNA:83 574:Celniker/RNA:83 264 
+Celniker/RNA:83 574:Celniker/RNA:83 265 
+Celniker/RNA:83 574:Celniker/RNA:83 266 
+Celniker/RNA:83 574:Celniker/RNA:83 267 
+Celniker/RNA:83 574:Celniker/RNA:83 268 
+Celniker/RNA:83 574:Celniker/RNA:83 269 
+Celniker/RNA:83 574:Celniker/RNA:83 270 
+Celniker/RNA:83 574:Celniker/RNA:83 271 
+Celniker/RNA:83 574:Celniker/RNA:83 272 
+Celniker/RNA:83 574:Celniker/RNA:83 273 
+Celniker/RNA:83 574:Celniker/RNA:83 274 
+Celniker/RNA:83 574:Celniker/RNA:83 275 
+Celniker/RNA:83 574:Celniker/RNA:83 276 
+Celniker/RNA:83 574:Celniker/RNA:83 277 
+Celniker/RNA:83 574:Celniker/RNA:83 278 
+Celniker/RNA:83 574:Celniker/RNA:83 279 
+Celniker/RNA:83 574:Celniker/RNA:83 280 
+Celniker/RNA:83 574:Celniker/RNA:83 281 
+Celniker/RNA:83 574:Celniker/RNA:83 282 
+Celniker/RNA:83 574:Celniker/RNA:83 283 
+Celniker/RNA:83 574:Celniker/RNA:83 284 
+Celniker/RNA:83 574:Celniker/RNA:83 285 
+Celniker/RNA:83 574:Celniker/RNA:83 286 
+Celniker/RNA:83 574:Celniker/RNA:83 287 
+Celniker/RNA:83 574:Celniker/RNA:83 288 
+Celniker/RNA:83 574:Celniker/RNA:83 289 
+Celniker/RNA:83 574:Celniker/RNA:83 290 
+Celniker/RNA:83 574:Celniker/RNA:83 291 
+Celniker/RNA:83 574:Celniker/RNA:83 292 
+Celniker/RNA:83 574:Celniker/RNA:83 293 
+Celniker/RNA:83 574:Celniker/RNA:83 294 
+Celniker/RNA:83 574:Celniker/RNA:83 295 
+Celniker/RNA:83 574:Celniker/RNA:83 296 
+Celniker/RNA:83 574:Celniker/RNA:83 297 
+Celniker/RNA:83 574:Celniker/RNA:83 298 
+Celniker/RNA:83 574:Celniker/RNA:83 299 
+Celniker/RNA:83 574:Celniker/RNA:83 300 
+Celniker/RNA:83 574:Celniker/RNA:83 301 
+Celniker/RNA:83 574:Celniker/RNA:83 302 
+Celniker/RNA:83 574:Celniker/RNA:83 303 
+Celniker/RNA:83 574:Celniker/RNA:83 304 
+Celniker/RNA:83 574:Celniker/RNA:83 305 
+Celniker/RNA:83 574:Celniker/RNA:83 306 
+Celniker/RNA:83 574:Celniker/RNA:83 307 
+Celniker/RNA:83 574:Celniker/RNA:83 308 
+Celniker/RNA:83 574:Celniker/RNA:83 309 
+Celniker/RNA:83 574:Celniker/RNA:83 310 
+Celniker/RNA:83 574:Celniker/RNA:83 311 
+Celniker/RNA:83 574:Celniker/RNA:83 312 
+Celniker/RNA:83 574:Celniker/RNA:83 313 
+Celniker/RNA:83 574:Celniker/RNA:83 314 
+Celniker/RNA:83 574:Celniker/RNA:83 315 
+Celniker/RNA:83 574:Celniker/RNA:83 316 
+Celniker/RNA:83 574:Celniker/RNA:83 317 
+Celniker/RNA:83 574:Celniker/RNA:83 318 
+Celniker/RNA:83 574:Celniker/RNA:83 319 
+Celniker/RNA:83 574:Celniker/RNA:83 320 
+Celniker/RNA:83 574:Celniker/RNA:83 321 
+Celniker/RNA:83 574:Celniker/RNA:83 322 
+Celniker/RNA:83 574:Celniker/RNA:83 323 
+Celniker/RNA:83 574:Celniker/RNA:83 324 
+Celniker/RNA:83 574:Celniker/RNA:83 325 
+Celniker/RNA:83 574:Celniker/RNA:83 326 
+Celniker/RNA:83 574:Celniker/RNA:83 327 
+Celniker/RNA:83 574:Celniker/RNA:83 328 
+Celniker/RNA:83 574:Celniker/RNA:83 329 
+Celniker/RNA:83 574:Celniker/RNA:83 330 
+Celniker/RNA:83 574:Celniker/RNA:83 331 
+Celniker/RNA:83 574:Celniker/RNA:83 332 
+Celniker/RNA:83 574:Celniker/RNA:83 333 
+Celniker/RNA:83 574:Celniker/RNA:83 334 
+Celniker/RNA:83 574:Celniker/RNA:83 335 
+Celniker/RNA:83 574:Celniker/RNA:83 336 
+Celniker/RNA:83 574:Celniker/RNA:83 337 
+Celniker/RNA:83 574:Celniker/RNA:83 338 
+Celniker/RNA:83 574:Celniker/RNA:83 339 
+Celniker/RNA:83 574:Celniker/RNA:83 340 
+Celniker/RNA:83 574:Celniker/RNA:83 341 
+Celniker/RNA:83 574:Celniker/RNA:83 342 
+Celniker/RNA:83 574:Celniker/RNA:83 343 
+Celniker/RNA:83 574:Celniker/RNA:83 344 
+Celniker/RNA:83 574:Celniker/RNA:83 345 
+Celniker/RNA:83 574:Celniker/RNA:83 346 
+Celniker/RNA:83 574:Celniker/RNA:83 347 
+Celniker/RNA:83 574:Celniker/RNA:83 348 
+Celniker/RNA:83 574:Celniker/RNA:83 349 
+Celniker/RNA:83 574:Celniker/RNA:83 350 
+Celniker/RNA:83 574:Celniker/RNA:83 351 
+Celniker/RNA:83 574:Celniker/RNA:83 352 
+Celniker/RNA:83 574:Celniker/RNA:83 353 
+Celniker/RNA:83 574:Celniker/RNA:83 354 
+Celniker/RNA:83 574:Celniker/RNA:83 355 
+Celniker/RNA:83 574:Celniker/RNA:83 356 
+Celniker/RNA:83 574:Celniker/RNA:83 357 
+Celniker/RNA:83 574:Celniker/RNA:83 358 
+Celniker/RNA:83 574:Celniker/RNA:83 359 
+Celniker/RNA:83 574:Celniker/RNA:83 360 
+Celniker/RNA:83 574:Celniker/RNA:83 361 
+Celniker/RNA:83 574:Celniker/RNA:83 362 
+Celniker/RNA:83 574:Celniker/RNA:83 363 
+Celniker/RNA:83 574:Celniker/RNA:83 364 
+Celniker/RNA:83 574:Celniker/RNA:83 365 
+Celniker/RNA:83 574:Celniker/RNA:83 366 
+Celniker/RNA:83 574:Celniker/RNA:83 367 
+Celniker/RNA:83 574:Celniker/RNA:83 368 
+Celniker/RNA:83 574:Celniker/RNA:83 369 
+Celniker/RNA:83 574:Celniker/RNA:83 370 
+Celniker/RNA:83 574:Celniker/RNA:83 371 
+Celniker/RNA:83 574:Celniker/RNA:83 372 
+Celniker/RNA:83 574:Celniker/RNA:83 373 
+Celniker/RNA:83 574:Celniker/RNA:83 374 
+Celniker/RNA:83 574:Celniker/RNA:83 375 
+Celniker/RNA:83 574:Celniker/RNA:83 376 
+Celniker/RNA:83 574:Celniker/RNA:83 377 
+Celniker/RNA:83 574:Celniker/RNA:83 378 
+Celniker/RNA:83 574:Celniker/RNA:83 379 
+Celniker/RNA:83 574:Celniker/RNA:83 380 
+Celniker/RNA:83 574:Celniker/RNA:83 381 
+Celniker/RNA:83 574:Celniker/RNA:83 382 
+Celniker/RNA:83 574:Celniker/RNA:83 383 
+Celniker/RNA:83 574:Celniker/RNA:83 384 
+Celniker/RNA:83 574:Celniker/RNA:83 385 
+Celniker/RNA:83 574:Celniker/RNA:83 386 
+Celniker/RNA:83 574:Celniker/RNA:83 387 
+Celniker/RNA:83 574:Celniker/RNA:83 388 
+Celniker/RNA:83 574:Celniker/RNA:83 389 
+Celniker/RNA:83 574:Celniker/RNA:83 390 
+Celniker/RNA:83 574:Celniker/RNA:83 391 
+Celniker/RNA:83 574:Celniker/RNA:83 392 
+Celniker/RNA:83 574:Celniker/RNA:83 393 
+Celniker/RNA:83 574:Celniker/RNA:83 394 
+Celniker/RNA:83 574:Celniker/RNA:83 395 
+Celniker/RNA:83 574:Celniker/RNA:83 396 
+Celniker/RNA:83 574:Celniker/RNA:83 397 
+Celniker/RNA:83 574:Celniker/RNA:83 398 
+Celniker/RNA:83 574:Celniker/RNA:83 399 
+Celniker/RNA:83 574:Celniker/RNA:83 400 
+Celniker/RNA:83 574:Celniker/RNA:83 401 
+Celniker/RNA:83 574:Celniker/RNA:83 402 
+Celniker/RNA:83 574:Celniker/RNA:83 403 
+Celniker/RNA:83 574:Celniker/RNA:83 404 
+Celniker/RNA:83 574:Celniker/RNA:83 405 
+Celniker/RNA:83 574:Celniker/RNA:83 406 
+Celniker/RNA:83 574:Celniker/RNA:83 407 
+Celniker/RNA:83 574:Celniker/RNA:83 408 
+Celniker/RNA:83 574:Celniker/RNA:83 409 
+Celniker/RNA:83 574:Celniker/RNA:83 410 
+Celniker/RNA:83 574:Celniker/RNA:83 411 
+Celniker/RNA:83 574:Celniker/RNA:83 412 
+Celniker/RNA:83 574:Celniker/RNA:83 413 
+Celniker/RNA:83 574:Celniker/RNA:83 414 
+Celniker/RNA:83 574:Celniker/RNA:83 415 
+Celniker/RNA:83 574:Celniker/RNA:83 416 
+Celniker/RNA:83 574:Celniker/RNA:83 417 
+Celniker/RNA:83 574:Celniker/RNA:83 418 
+Celniker/RNA:83 574:Celniker/RNA:83 419 
+Celniker/RNA:83 574:Celniker/RNA:83 420 
+Celniker/RNA:83 574:Celniker/RNA:83 421 
+Celniker/RNA:83 574:Celniker/RNA:83 422 
+Celniker/RNA:83 574:Celniker/RNA:83 423 
+Celniker/RNA:83 574:Celniker/RNA:83 424 
+Celniker/RNA:83 574:Celniker/RNA:83 425 
+Celniker/RNA:83 574:Celniker/RNA:83 426 
+Celniker/RNA:83 574:Celniker/RNA:83 427 
+Celniker/RNA:83 574:Celniker/RNA:83 428 
+Celniker/RNA:83 574:Celniker/RNA:83 429 
+Celniker/RNA:83 574:Celniker/RNA:83 430 
+Celniker/RNA:83 574:Celniker/RNA:83 431 
+Celniker/RNA:83 574:Celniker/RNA:83 432 
+Celniker/RNA:83 574:Celniker/RNA:83 433 
+Celniker/RNA:83 574:Celniker/RNA:83 434 
+Celniker/RNA:83 574:Celniker/RNA:83 435 
+Celniker/RNA:83 574:Celniker/RNA:83 436 
+Celniker/RNA:83 574:Celniker/RNA:83 437 
+Celniker/RNA:83 574:Celniker/RNA:83 438 
+Celniker/RNA:83 574:Celniker/RNA:83 439 
+Celniker/RNA:83 574:Celniker/RNA:83 440 
+Celniker/RNA:83 574:Celniker/RNA:83 441 
+Celniker/RNA:83 574:Celniker/RNA:83 442 
+Celniker/RNA:83 574:Celniker/RNA:83 443 
+Celniker/RNA:83 574:Celniker/RNA:83 444 
+Celniker/RNA:83 574:Celniker/RNA:83 445 
+Celniker/RNA:83 574:Celniker/RNA:83 446 
+Celniker/RNA:83 574:Celniker/RNA:83 447 
+Celniker/RNA:83 574:Celniker/RNA:83 448 
+Celniker/RNA:83 574:Celniker/RNA:83 449 
+Celniker/RNA:83 574:Celniker/RNA:83 450 
+Celniker/RNA:83 574:Celniker/RNA:83 451 
+Celniker/RNA:83 574:Celniker/RNA:83 452 
+Celniker/RNA:83 574:Celniker/RNA:83 453 
+Celniker/RNA:83 574:Celniker/RNA:83 454 
+Celniker/RNA:83 574:Celniker/RNA:83 455 
+Celniker/RNA:83 574:Celniker/RNA:83 456 
+Celniker/RNA:83 574:Celniker/RNA:83 457 
+Celniker/RNA:83 574:Celniker/RNA:83 458 
+Celniker/RNA:83 574:Celniker/RNA:83 459 
+Celniker/RNA:83 574:Celniker/RNA:83 460 
+Celniker/RNA:83 574:Celniker/RNA:83 461 
+Celniker/RNA:83 574:Celniker/RNA:83 462 
+Celniker/RNA:83 574:Celniker/RNA:83 463 
+Celniker/RNA:83 574:Celniker/RNA:83 464 
+Celniker/RNA:83 574:Celniker/RNA:83 465 
+Celniker/RNA:83 574:Celniker/RNA:83 466 
+Celniker/RNA:83 574:Celniker/RNA:83 467 
+Celniker/RNA:83 574:Celniker/RNA:83 468 
+Celniker/RNA:83 574:Celniker/RNA:83 469 
+Celniker/RNA:83 574:Celniker/RNA:83 470 
+Celniker/RNA:83 574:Celniker/RNA:83 471 
+Celniker/RNA:83 574:Celniker/RNA:83 472 
+Celniker/RNA:83 574:Celniker/RNA:83 473 
+Celniker/RNA:83 574:Celniker/RNA:83 474 
+Celniker/RNA:83 574:Celniker/RNA:83 475 
+Celniker/RNA:83 574:Celniker/RNA:83 476 
+Celniker/RNA:83 574:Celniker/RNA:83 477 
+Celniker/RNA:83 574:Celniker/RNA:83 478 
+Celniker/RNA:83 574:Celniker/RNA:83 479 
+Celniker/RNA:83 574:Celniker/RNA:83 480 
+Celniker/RNA:83 574:Celniker/RNA:83 481 
+Celniker/RNA:83 574:Celniker/RNA:83 482 
+Celniker/RNA:83 574:Celniker/RNA:83 483 
+Celniker/RNA:83 574:Celniker/RNA:83 484 
+Celniker/RNA:83 574:Celniker/RNA:83 485 
+Celniker/RNA:83 574:Celniker/RNA:83 486 
+Celniker/RNA:83 574:Celniker/RNA:83 487 
+Celniker/RNA:83 574:Celniker/RNA:83 488 
+Celniker/RNA:83 574:Celniker/RNA:83 489 
+Celniker/RNA:83 574:Celniker/RNA:83 490 
+Celniker/RNA:83 574:Celniker/RNA:83 491 
+Celniker/RNA:83 574:Celniker/RNA:83 492 
+Celniker/RNA:83 574:Celniker/RNA:83 493 
+Celniker/RNA:83 574:Celniker/RNA:83 494 
+Celniker/RNA:83 574:Celniker/RNA:83 495 
+Celniker/RNA:83 574:Celniker/RNA:83 496 
+Celniker/RNA:83 574:Celniker/RNA:83 497 
+Celniker/RNA:83 574:Celniker/RNA:83 498 
+Celniker/RNA:83 574:Celniker/RNA:83 499 
+Celniker/RNA:83 574:Celniker/RNA:83 500 
+Celniker/RNA:83 574:Celniker/RNA:83 501 
+Celniker/RNA:83 574:Celniker/RNA:83 502 
+Celniker/RNA:83 574:Celniker/RNA:83 503 
+Celniker/RNA:83 574:Celniker/RNA:83 504 
+Celniker/RNA:83 574:Celniker/RNA:83 505 
+Celniker/RNA:83 574:Celniker/RNA:83 506 
+Celniker/RNA:83 574:Celniker/RNA:83 507 
+Celniker/RNA:83 574:Celniker/RNA:83 508 
+Celniker/RNA:83 574:Celniker/RNA:83 509 
+Celniker/RNA:83 574:Celniker/RNA:83 510 
+Celniker/RNA:83 574:Celniker/RNA:83 511 
+Celniker/RNA:83 574:Celniker/RNA:83 512 
+Celniker/RNA:83 574:Celniker/RNA:83 513 
+Celniker/RNA:83 574:Celniker/RNA:83 514 
+Celniker/RNA:83 574:Celniker/RNA:83 515 
+Celniker/RNA:83 574:Celniker/RNA:83 516 
+Celniker/RNA:83 574:Celniker/RNA:83 517 
+Celniker/RNA:83 574:Celniker/RNA:83 518 
+Celniker/RNA:83 574:Celniker/RNA:83 519 
+Celniker/RNA:83 574:Celniker/RNA:83 520 
+Celniker/RNA:83 574:Celniker/RNA:83 521 
+Celniker/RNA:83 574:Celniker/RNA:83 522 
+Celniker/RNA:83 574:Celniker/RNA:83 523 
+Celniker/RNA:83 574:Celniker/RNA:83 524 
+Celniker/RNA:83 574:Celniker/RNA:83 525 
+Celniker/RNA:83 574:Celniker/RNA:83 526 
+Celniker/RNA:83 574:Celniker/RNA:83 527 
+Celniker/RNA:83 574:Celniker/RNA:83 528 
+Celniker/RNA:83 574:Celniker/RNA:83 529 
+Celniker/RNA:83 574:Celniker/RNA:83 530 
+Celniker/RNA:83 574:Celniker/RNA:83 531 
+Celniker/RNA:83 574:Celniker/RNA:83 532 
+Celniker/RNA:83 574:Celniker/RNA:83 533 
+Celniker/RNA:83 574:Celniker/RNA:83 534 
+Celniker/RNA:83 574:Celniker/RNA:83 535 
+Celniker/RNA:83 574:Celniker/RNA:83 536 
+Celniker/RNA:83 574:Celniker/RNA:83 537 
+Celniker/RNA:83 574:Celniker/RNA:83 538 
+Celniker/RNA:83 574:Celniker/RNA:83 539 
+Celniker/RNA:83 574:Celniker/RNA:83 540 
+Celniker/RNA:83 574:Celniker/RNA:83 541 
+Celniker/RNA:83 574:Celniker/RNA:83 542 
+Celniker/RNA:83 574:Celniker/RNA:83 543 
+Celniker/RNA:83 574:Celniker/RNA:83 544 
+Celniker/RNA:83 574:Celniker/RNA:83 545 
+Celniker/RNA:83 574:Celniker/RNA:83 546 
+Celniker/RNA:83 574:Celniker/RNA:83 547 
+Celniker/RNA:83 574:Celniker/RNA:83 548 
+Celniker/RNA:83 574:Celniker/RNA:83 549 
+Celniker/RNA:83 574:Celniker/RNA:83 550 
+Celniker/RNA:83 574:Celniker/RNA:83 551 
+Celniker/RNA:83 574:Celniker/RNA:83 552 
+Celniker/RNA:83 574:Celniker/RNA:83 553 
+Celniker/RNA:83 574:Celniker/RNA:83 554 
+Celniker/RNA:83 574:Celniker/RNA:83 555 
+Celniker/RNA:83 574:Celniker/RNA:83 556 
+Celniker/RNA:83 574:Celniker/RNA:83 557 
+Celniker/RNA:83 574:Celniker/RNA:83 558 
+Celniker/RNA:83 574:Celniker/RNA:83 559 
+Celniker/RNA:83 574:Celniker/RNA:83 560 
+Celniker/RNA:83 574:Celniker/RNA:83 561 
+Celniker/RNA:83 574:Celniker/RNA:83 562 
+Celniker/RNA:83 574:Celniker/RNA:83 563 
+Celniker/RNA:83 574:Celniker/RNA:83 564 
+Celniker/RNA:83 574:Celniker/RNA:83 565 
+Celniker/RNA:83 574:Celniker/RNA:83 566 
+Celniker/RNA:83 574:Celniker/RNA:83 567 
+Celniker/RNA:83 574:Celniker/RNA:83 568 
+Celniker/RNA:83 574:Celniker/RNA:83 569 
+Celniker/RNA:83 574:Celniker/RNA:83 570 
+Celniker/RNA:83 574:Celniker/RNA:83 571 
+Celniker/RNA:83 574:Celniker/RNA:83 572 
+Celniker/RNA:83 574:Celniker/RNA:83 573 
+Celniker/RNA:83 574:Celniker/RNA:83 574 
+Celniker/RNA:83 574:Celniker/RNA:83 575 
+Celniker/RNA:83 574:Celniker/RNA:83 576 
+Celniker/RNA:83 574:Celniker/RNA:83 577 
+Celniker/RNA:83 574:Celniker/RNA:83 578 
+Celniker/RNA:83 574:Celniker/RNA:83 579 
+Celniker/RNA:83 574:Celniker/RNA:83 580 
+Celniker/RNA:83 574:Celniker/RNA:83 581 
+Celniker/RNA:83 574:Celniker/RNA:83 582 
+Celniker/RNA:83 574:Celniker/RNA:83 583 
+Celniker/RNA:83 574:Celniker/RNA:83 584 
+Celniker/RNA:83 574:Celniker/RNA:83 585 
+Celniker/RNA:83 574:Celniker/RNA:83 586 
+Celniker/RNA:83 574:Celniker/RNA:83 587 
+Celniker/RNA:83 574:Celniker/RNA:83 588 
+Celniker/RNA:83 574:Celniker/RNA:83 589 
+Celniker/RNA:83 574:Celniker/RNA:83 590 
+Celniker/RNA:83 574:Celniker/RNA:83 591 
+Celniker/RNA:83 574:Celniker/RNA:83 592 
+Celniker/RNA:83 574:Celniker/RNA:83 593 
+Celniker/RNA:83 574:Celniker/RNA:83 594 
+Celniker/RNA:83 574:Celniker/RNA:83 595 
+Celniker/RNA:83 574:Celniker/RNA:83 596 
+Celniker/RNA:83 574:Celniker/RNA:83 597 
+Celniker/RNA:83 574:Celniker/RNA:83 598 
+Celniker/RNA:83 574:Celniker/RNA:83 599 
+Celniker/RNA:83 574:Celniker/RNA:83 600 
+Celniker/RNA:83 574:Celniker/RNA:83 601 
+Celniker/RNA:83 574:Celniker/RNA:83 602 
+Celniker/RNA:83 574:Celniker/RNA:83 603 
+Celniker/RNA:83 574:Celniker/RNA:83 604 
+Celniker/RNA:83 574:Celniker/RNA:83 605 
+Celniker/RNA:83 574:Celniker/RNA:83 606 
+Celniker/RNA:83 574:Celniker/RNA:83 607 
+Celniker/RNA:83 574:Celniker/RNA:83 608 
+Celniker/RNA:83 574:Celniker/RNA:83 609 
+Celniker/RNA:83 574:Celniker/RNA:83 610 
+Celniker/RNA:83 574:Celniker/RNA:83 611 
+Celniker/RNA:83 574:Celniker/RNA:83 612 
+Celniker/RNA:83 574:Celniker/RNA:83 613 
+Celniker/RNA:83 574:Celniker/RNA:83 614 
+Celniker/RNA:83 574:Celniker/RNA:83 615 
+Celniker/RNA:83 574:Celniker/RNA:83 616 
+Celniker/RNA:83 574:Celniker/RNA:83 617 
+Celniker/RNA:83 574:Celniker/RNA:83 618 
+Celniker/RNA:83 574:Celniker/RNA:83 619 
+Celniker/RNA:83 574:Celniker/RNA:83 620 
+Celniker/RNA:83 574:Celniker/RNA:83 621 
+Celniker/RNA:83 574:Celniker/RNA:83 622 
+Celniker/RNA:83 574:Celniker/RNA:83 623 
+Celniker/RNA:83 574:Celniker/RNA:83 624 
+Celniker/RNA:83 574:Celniker/RNA:83 625 
+Celniker/RNA:83 574:Celniker/RNA:83 626 
+Celniker/RNA:83 574:Celniker/RNA:83 627 
+Celniker/RNA:83 574:Celniker/RNA:83 628 
+Celniker/RNA:83 574:Celniker/RNA:83 629 
+Celniker/RNA:83 574:Celniker/RNA:83 630 
+Celniker/RNA:83 574:Celniker/RNA:83 631 
+Celniker/RNA:83 574:Celniker/RNA:83 632 
+Celniker/RNA:83 574:Celniker/RNA:83 633 
+Celniker/RNA:83 574:Celniker/RNA:83 634 
+Celniker/RNA:83 574:Celniker/RNA:83 635 
+Celniker/RNA:83 574:Celniker/RNA:83 636 
+Celniker/RNA:83 574:Celniker/RNA:83 637 
+Celniker/RNA:83 574:Celniker/RNA:83 638 
+Celniker/RNA:83 574:Celniker/RNA:83 639 
+Celniker/RNA:83 574:Celniker/RNA:83 640 
+Celniker/RNA:83 574:Celniker/RNA:83 641 
+Celniker/RNA:83 574:Celniker/RNA:83 642 
+Celniker/RNA:83 574:Celniker/RNA:83 643 
+Celniker/RNA:83 574:Celniker/RNA:83 644 
+Celniker/RNA:83 574:Celniker/RNA:83 645 
+Celniker/RNA:83 574:Celniker/RNA:83 646 
+Celniker/RNA:83 574:Celniker/RNA:83 647 
+Celniker/RNA:83 574:Celniker/RNA:83 648 
+Celniker/RNA:83 574:Celniker/RNA:83 649 
+Celniker/RNA:83 574:Celniker/RNA:83 650 
+Celniker/RNA:83 574:Celniker/RNA:83 651 
+Celniker/RNA:83 574:Celniker/RNA:83 652 
+Celniker/RNA:83 574:Celniker/RNA:83 653 
+Celniker/RNA:83 574:Celniker/RNA:83 654 
+Celniker/RNA:83 574:Celniker/RNA:83 655 
+Celniker/RNA:83 574:Celniker/RNA:83 656 
+Celniker/RNA:83 574:Celniker/RNA:83 657 
+Celniker/RNA:83 574:Celniker/RNA:83 658 
+Celniker/RNA:83 574:Celniker/RNA:83 659 
+Celniker/RNA:83 574:Celniker/RNA:83 660 
+Celniker/RNA:83 574:Celniker/RNA:83 661 
+Celniker/RNA:83 574:Celniker/RNA:83 662 
+Celniker/RNA:83 574:Celniker/RNA:83 663 
+Celniker/RNA:83 574:Celniker/RNA:83 664 
+Celniker/RNA:83 574:Celniker/RNA:83 665 
+Celniker/RNA:83 574:Celniker/RNA:83 666 
+Celniker/RNA:83 574:Celniker/RNA:83 667 
+Celniker/RNA:83 574:Celniker/RNA:83 668 
+Celniker/RNA:83 574:Celniker/RNA:83 669 
+Celniker/RNA:83 574:Celniker/RNA:83 670 
+Celniker/RNA:83 574:Celniker/RNA:83 671 
+Celniker/RNA:83 574:Celniker/RNA:83 672 
+Celniker/RNA:83 574:Celniker/RNA:83 673 
+Celniker/RNA:83 574:Celniker/RNA:83 674 
+Celniker/RNA:83 574:Celniker/RNA:83 675 
+Celniker/RNA:83 574:Celniker/RNA:83 676 
+Celniker/RNA:83 574:Celniker/RNA:83 677 
+Celniker/RNA:83 574:Celniker/RNA:83 678 
+Celniker/RNA:83 574:Celniker/RNA:83 679 
+Celniker/RNA:83 574:Celniker/RNA:83 680 
+Celniker/RNA:83 574:Celniker/RNA:83 681 
+Celniker/RNA:83 574:Celniker/RNA:83 682 
+Celniker/RNA:83 574:Celniker/RNA:83 683 
+Celniker/RNA:83 574:Celniker/RNA:83 684 
+Celniker/RNA:83 574:Celniker/RNA:83 685 
+Celniker/RNA:83 574:Celniker/RNA:83 686 
+Celniker/RNA:83 574:Celniker/RNA:83 687 
+Celniker/RNA:83 574:Celniker/RNA:83 688 
+Celniker/RNA:83 574:Celniker/RNA:83 689 
+Celniker/RNA:83 574:Celniker/RNA:83 690 
+Celniker/RNA:83 574:Celniker/RNA:83 691 
+Celniker/RNA:83 574:Celniker/RNA:83 692 
+Celniker/RNA:83 574:Celniker/RNA:83 693 
+Celniker/RNA:83 574:Celniker/RNA:83 694 
+Celniker/RNA:83 574:Celniker/RNA:83 695 
+Celniker/RNA:83 574:Celniker/RNA:83 696 
+Celniker/RNA:83 574:Celniker/RNA:83 697 
+Celniker/RNA:83 574:Celniker/RNA:83 698 
+Celniker/RNA:83 574:Celniker/RNA:83 699 
+Celniker/RNA:83 574:Celniker/RNA:83 700 
+Celniker/RNA:83 574:Celniker/RNA:83 701 
+Celniker/RNA:83 574:Celniker/RNA:83 702 
+Celniker/RNA:83 574:Celniker/RNA:83 703 
+Celniker/RNA:83 574:Celniker/RNA:83 704 
+Celniker/RNA:83 574:Celniker/RNA:83 705 
+Celniker/RNA:83 574:Celniker/RNA:83 706 
+Celniker/RNA:83 574:Celniker/RNA:83 707 
+Celniker/RNA:83 574:Celniker/RNA:83 708 
+Celniker/RNA:83 574:Celniker/RNA:83 709 
+Celniker/RNA:83 574:Celniker/RNA:83 710 
+Celniker/RNA:83 574:Celniker/RNA:83 711 
+Celniker/RNA:83 574:Celniker/RNA:83 712 
+Celniker/RNA:83 574:Celniker/RNA:83 713 
+Celniker/RNA:83 574:Celniker/RNA:83 714 
+Celniker/RNA:83 574:Celniker/RNA:83 715 
+Celniker/RNA:83 574:Celniker/RNA:83 716 
+Celniker/RNA:83 574:Celniker/RNA:83 717 
+Celniker/RNA:83 574:Celniker/RNA:83 718 
+Celniker/RNA:83 574:Celniker/RNA:83 719 
+Celniker/RNA:83 574:Celniker/RNA:83 720 
+Celniker/RNA:83 574:Celniker/RNA:83 721 
+Celniker/RNA:83 574:Celniker/RNA:83 722 
+Celniker/RNA:83 574:Celniker/RNA:83 723 
+Celniker/RNA:83 574:Celniker/RNA:83 724 
+Celniker/RNA:83 574:Celniker/RNA:83 725 
+Celniker/RNA:83 574:Celniker/RNA:83 726 
+Celniker/RNA:83 574:Celniker/RNA:83 727 
+Celniker/RNA:83 574:Celniker/RNA:83 728 
+Celniker/RNA:83 574:Celniker/RNA:83 729 
+Celniker/RNA:83 574:Celniker/RNA:83 730 
+Celniker/RNA:83 574:Celniker/RNA:83 731 
+Celniker/RNA:83 574:Celniker/RNA:83 732 
+Celniker/RNA:83 574:Celniker/RNA:83 733 
+Celniker/RNA:83 574:Celniker/RNA:83 734 
+Celniker/RNA:83 574:Celniker/RNA:83 735 
+Celniker/RNA:83 574:Celniker/RNA:83 736 
+Celniker/RNA:83 574:Celniker/RNA:83 737 
+Celniker/RNA:83 574:Celniker/RNA:83 738 
+Celniker/RNA:83 574:Celniker/RNA:83 739 
+Celniker/RNA:83 574:Celniker/RNA:83 740 
+Celniker/RNA:83 574:Celniker/RNA:83 741 
+Celniker/RNA:83 574:Celniker/RNA:83 742 
+Celniker/RNA:83 574:Celniker/RNA:83 743 
+Celniker/RNA:83 574:Celniker/RNA:83 744 
+Celniker/RNA:83 574:Celniker/RNA:83 745 
+Celniker/RNA:83 574:Celniker/RNA:83 746 
+Celniker/RNA:83 574:Celniker/RNA:83 747 
+Celniker/RNA:83 574:Celniker/RNA:83 748 
+Celniker/RNA:83 574:Celniker/RNA:83 749 
+Celniker/RNA:83 574:Celniker/RNA:83 750 
+Celniker/RNA:83 574:Celniker/RNA:83 751 
+Celniker/RNA:83 574:Celniker/RNA:83 752 
+Celniker/RNA:83 574:Celniker/RNA:83 753 
+Celniker/RNA:83 574:Celniker/RNA:83 754 
+Celniker/RNA:83 574:Celniker/RNA:83 755 
+Celniker/RNA:83 574:Celniker/RNA:83 756 
+Celniker/RNA:83 574:Celniker/RNA:83 757 
+Celniker/RNA:83 574:Celniker/RNA:83 758 
+Celniker/RNA:83 574:Celniker/RNA:83 759 
+Celniker/RNA:83 574:Celniker/RNA:83 760 
+Celniker/RNA:83 574:Celniker/RNA:83 761 
+Celniker/RNA:83 574:Celniker/RNA:83 762 
+Celniker/RNA:83 574:Celniker/RNA:83 763 
+Celniker/RNA:83 574:Celniker/RNA:83 764 
+Celniker/RNA:83 574:Celniker/RNA:83 765 
+Celniker/RNA:83 574:Celniker/RNA:83 766 
+Celniker/RNA:83 574:Celniker/RNA:83 767 
+Celniker/RNA:83 574:Celniker/RNA:83 768 
+Celniker/RNA:83 574:Celniker/RNA:83 769 
+Celniker/RNA:83 574:Celniker/RNA:83 770 
+Celniker/RNA:83 574:Celniker/RNA:83 771 
+Celniker/RNA:83 574:Celniker/RNA:83 772 
+Celniker/RNA:83 574:Celniker/RNA:83 773 
+Celniker/RNA:83 574:Celniker/RNA:83 774 
+Celniker/RNA:83 574:Celniker/RNA:83 775 
+Celniker/RNA:83 574:Celniker/RNA:83 776 
+Celniker/RNA:83 574:Celniker/RNA:83 777 
+Celniker/RNA:83 574:Celniker/RNA:83 778 
+Celniker/RNA:83 574:Celniker/RNA:83 779 
+Celniker/RNA:83 574:Celniker/RNA:83 780 
+Celniker/RNA:83 574:Celniker/RNA:83 781 
+Celniker/RNA:83 574:Celniker/RNA:83 782 
+Celniker/RNA:83 574:Celniker/RNA:83 783 
+Celniker/RNA:83 574:Celniker/RNA:83 784 
+Celniker/RNA:83 574:Celniker/RNA:83 785 
+Celniker/RNA:83 574:Celniker/RNA:83 786 
+Celniker/RNA:83 574:Celniker/RNA:83 787 
+Celniker/RNA:83 574:Celniker/RNA:83 788 
+Celniker/RNA:83 574:Celniker/RNA:83 789 
+Celniker/RNA:83 574:Celniker/RNA:83 790 
+Celniker/RNA:83 574:Celniker/RNA:83 791 
+Celniker/RNA:83 574:Celniker/RNA:83 792 
+Celniker/RNA:83 574:Celniker/RNA:83 793 
+Celniker/RNA:83 574:Celniker/RNA:83 794 
+Celniker/RNA:83 574:Celniker/RNA:83 795 
+Celniker/RNA:83 574:Celniker/RNA:83 796 
+Celniker/RNA:83 574:Celniker/RNA:83 797 
+Celniker/RNA:83 574:Celniker/RNA:83 798 
+Celniker/RNA:83 574:Celniker/RNA:83 799 
+Celniker/RNA:83 574:Celniker/RNA:83 800 
+Celniker/RNA:83 574:Celniker/RNA:83 801 
+Celniker/RNA:83 574:Celniker/RNA:83 802 
+Celniker/RNA:83 574:Celniker/RNA:83 803 
+Celniker/RNA:83 574:Celniker/RNA:83 804 
+Celniker/RNA:83 574:Celniker/RNA:83 805 
+Celniker/RNA:83 574:Celniker/RNA:83 806 
+Celniker/RNA:83 574:Celniker/RNA:83 807 
+Celniker/RNA:83 574:Celniker/RNA:83 808 
+Celniker/RNA:83 574:Celniker/RNA:83 809 
+Celniker/RNA:83 574:Celniker/RNA:83 810 
+Celniker/RNA:83 574:Celniker/RNA:83 811 
+Celniker/RNA:83 574:Celniker/RNA:83 812 
+Celniker/RNA:83 574:Celniker/RNA:83 813 
+Celniker/RNA:83 574:Celniker/RNA:83 814 
+Celniker/RNA:83 574:Celniker/RNA:83 815 
+Celniker/RNA:83 574:Celniker/RNA:83 816 
+Celniker/RNA:83 574:Celniker/RNA:83 817 
+Celniker/RNA:83 574:Celniker/RNA:83 818 
+Celniker/RNA:83 574:Celniker/RNA:83 819 
+Celniker/RNA:83 574:Celniker/RNA:83 820 
+Celniker/RNA:83 574:Celniker/RNA:83 821 
+Celniker/RNA:83 574:Celniker/RNA:83 822 
+Celniker/RNA:83 574:Celniker/RNA:83 823 
+Celniker/RNA:83 574:Celniker/RNA:83 824 
+Celniker/RNA:83 574:Celniker/RNA:83 825 
+Celniker/RNA:83 574:Celniker/RNA:83 826 
+Celniker/RNA:83 574:Celniker/RNA:83 827 
+Celniker/RNA:83 574:Celniker/RNA:83 828 
+Celniker/RNA:83 574:Celniker/RNA:83 829 
+Celniker/RNA:83 574:Celniker/RNA:83 830 
+Celniker/RNA:83 574:Celniker/RNA:83 831 
+Celniker/RNA:83 574:Celniker/RNA:83 832 
+Celniker/RNA:83 574:Celniker/RNA:83 833 
+Celniker/RNA:83 574:Celniker/RNA:83 834 
+Celniker/RNA:83 574:Celniker/RNA:83 835 
+Celniker/RNA:83 574:Celniker/RNA:83 836 
+Celniker/RNA:83 574:Celniker/RNA:83 837 
+Celniker/RNA:83 574:Celniker/RNA:83 838 
+Celniker/RNA:83 574:Celniker/RNA:83 839 
+Celniker/RNA:83 574:Celniker/RNA:83 840 
+Celniker/RNA:83 574:Celniker/RNA:83 841 
+Celniker/RNA:83 574:Celniker/RNA:83 842 
+Celniker/RNA:83 574:Celniker/RNA:83 843 
+Celniker/RNA:83 574:Celniker/RNA:83 844 
+Celniker/RNA:83 574:Celniker/RNA:83 845 
+Celniker/RNA:83 574:Celniker/RNA:83 846 
+Celniker/RNA:83 574:Celniker/RNA:83 847 
+Celniker/RNA:83 574:Celniker/RNA:83 848 
+Celniker/RNA:83 574:Celniker/RNA:83 849 
+Celniker/RNA:83 574:Celniker/RNA:83 850 
+Celniker/RNA:83 574:Celniker/RNA:83 851 
+Celniker/RNA:83 574:Celniker/RNA:83 852 
+Celniker/RNA:83 574:Celniker/RNA:83 853 
+Celniker/RNA:83 574:Celniker/RNA:83 854 
+Celniker/RNA:83 574:Celniker/RNA:83 855 
+Celniker/RNA:83 574:Celniker/RNA:83 856 
+Celniker/RNA:83 574:Celniker/RNA:83 857 
+Celniker/RNA:83 574:Celniker/RNA:83 858 
+Celniker/RNA:83 574:Celniker/RNA:83 859 
+Celniker/RNA:83 574:Celniker/RNA:83 860 
+Celniker/RNA:83 574:Celniker/RNA:83 861 
+Celniker/RNA:83 574:Celniker/RNA:83 862 
+Celniker/RNA:83 574:Celniker/RNA:83 863 
+Celniker/RNA:83 574:Celniker/RNA:83 864 
+Celniker/RNA:83 574:Celniker/RNA:83 865 
+Celniker/RNA:83 574:Celniker/RNA:83 866 
+Celniker/RNA:83 574:Celniker/RNA:83 867 
+Celniker/RNA:83 574:Celniker/RNA:83 868 
+Celniker/RNA:83 574:Celniker/RNA:83 869 
+Celniker/RNA:83 574:Celniker/RNA:83 870 
+Celniker/RNA:83 574:Celniker/RNA:83 871 
+Celniker/RNA:83 574:Celniker/RNA:83 872 
+Celniker/RNA:83 574:Celniker/RNA:83 873 
+Celniker/RNA:83 574:Celniker/RNA:83 874 
+Celniker/RNA:83 574:Celniker/RNA:83 875 
+Celniker/RNA:83 574:Celniker/RNA:83 876 
+Celniker/RNA:83 574:Celniker/RNA:83 877 
+Celniker/RNA:83 574:Celniker/RNA:83 878 
+Celniker/RNA:83 574:Celniker/RNA:83 879 
+Celniker/RNA:83 574:Celniker/RNA:83 880 
+Celniker/RNA:83 574:Celniker/RNA:83 881 
+Celniker/RNA:83 574:Celniker/RNA:83 882 
+Celniker/RNA:83 574:Celniker/RNA:83 883 
+Celniker/RNA:83 574:Celniker/RNA:83 884 
+Celniker/RNA:83 574:Celniker/RNA:83 885 
+Celniker/RNA:83 574:Celniker/RNA:83 886 
+Celniker/RNA:83 574:Celniker/RNA:83 887 
+Celniker/RNA:83 574:Celniker/RNA:83 888 
+Celniker/RNA:83 574:Celniker/RNA:83 889 
+Celniker/RNA:83 574:Celniker/RNA:83 890 
+Celniker/RNA:83 574:Celniker/RNA:83 891 
+Celniker/RNA:83 574:Celniker/RNA:83 892 
+Celniker/RNA:83 574:Celniker/RNA:83 893 
+Celniker/RNA:83 574:Celniker/RNA:83 894 
+Celniker/RNA:83 574:Celniker/RNA:83 895 
+Celniker/RNA:83 574:Celniker/RNA:83 896 
+Celniker/RNA:83 574:Celniker/RNA:83 897 
+Celniker/RNA:83 574:Celniker/RNA:83 898 
+Celniker/RNA:83 574:Celniker/RNA:83 899 
+Celniker/RNA:83 574:Celniker/RNA:83 900 
+Celniker/RNA:83 574:Celniker/RNA:83 901 
+Celniker/RNA:83 574:Celniker/RNA:83 902 
+Celniker/RNA:83 574:Celniker/RNA:83 903 
+Celniker/RNA:83 574:Celniker/RNA:83 904 
+Celniker/RNA:83 574:Celniker/RNA:83 905 
+Celniker/RNA:83 574:Celniker/RNA:83 906 
+Celniker/RNA:83 574:Celniker/RNA:83 907 
+Celniker/RNA:83 574:Celniker/RNA:83 908 
+Celniker/RNA:83 574:Celniker/RNA:83 909 
+Celniker/RNA:83 574:Celniker/RNA:83 910 
+Celniker/RNA:83 574:Celniker/RNA:83 911 
+Celniker/RNA:83 574:Celniker/RNA:83 912 
+Celniker/RNA:83 574:Celniker/RNA:83 913 
+Celniker/RNA:83 574:Celniker/RNA:83 914 
+Celniker/RNA:83 574:Celniker/RNA:83 915 
+Celniker/RNA:83 574:Celniker/RNA:83 916 
+Celniker/RNA:83 574:Celniker/RNA:83 917 
+Celniker/RNA:83 574:Celniker/RNA:83 918 
+Celniker/RNA:83 574:Celniker/RNA:83 919 
+Celniker/RNA:83 574:Celniker/RNA:83 920 
+Celniker/RNA:83 574:Celniker/RNA:83 921 
+Celniker/RNA:83 574:Celniker/RNA:83 922 
+Celniker/RNA:83 574:Celniker/RNA:83 923 
+Celniker/RNA:83 574:Celniker/RNA:83 924 
+Celniker/RNA:83 574:Celniker/RNA:83 925 
+Celniker/RNA:83 574:Celniker/RNA:83 926 
+Celniker/RNA:83 574:Celniker/RNA:83 927 
+Celniker/RNA:83 574:Celniker/RNA:83 928 
+Celniker/RNA:83 574:Celniker/RNA:83 929 
+Celniker/RNA:83 574:Celniker/RNA:83 930 
+Celniker/RNA:83 574:Celniker/RNA:83 931 
+Celniker/RNA:83 574:Celniker/RNA:83 932 
+Celniker/RNA:83 574:Celniker/RNA:83 933 
+Celniker/RNA:83 574:Celniker/RNA:83 934 
+Celniker/RNA:83 574:Celniker/RNA:83 935 
+Celniker/RNA:83 574:Celniker/RNA:83 936 
+Celniker/RNA:83 574:Celniker/RNA:83 937 
+Celniker/RNA:83 574:Celniker/RNA:83 938 
+Celniker/RNA:83 574:Celniker/RNA:83 939 
+Celniker/RNA:83 574:Celniker/RNA:83 940 
+Celniker/RNA:83 574:Celniker/RNA:83 941 
+Celniker/RNA:83 574:Celniker/RNA:83 942 
+Celniker/RNA:83 574:Celniker/RNA:83 943 
+Celniker/RNA:83 574:Celniker/RNA:83 944 
+Celniker/RNA:83 574:Celniker/RNA:83 945 
+Celniker/RNA:83 574:Celniker/RNA:83 946 
+Celniker/RNA:83 574:Celniker/RNA:83 947 
+Celniker/RNA:83 574:Celniker/RNA:83 948 
+Celniker/RNA:83 574:Celniker/RNA:83 949 
+Celniker/RNA:83 574:Celniker/RNA:83 950 
+Celniker/RNA:83 574:Celniker/RNA:83 951 
+Celniker/RNA:83 574:Celniker/RNA:83 952 
+Celniker/RNA:83 574:Celniker/RNA:83 953 
+Celniker/RNA:83 574:Celniker/RNA:83 954 
+Celniker/RNA:83 574:Celniker/RNA:83 955 
+Celniker/RNA:83 574:Celniker/RNA:83 956 
+Celniker/RNA:83 574:Celniker/RNA:83 957 
+Celniker/RNA:83 574:Celniker/RNA:83 958 
+Celniker/RNA:83 574:Celniker/RNA:83 959 
+Celniker/RNA:83 574:Celniker/RNA:83 960 
+Celniker/RNA:83 574:Celniker/RNA:83 961 
+Celniker/RNA:83 574:Celniker/RNA:83 962 
+Celniker/RNA:83 574:Celniker/RNA:83 963 
+Celniker/RNA:83 574:Celniker/RNA:83 964 
+Celniker/RNA:83 574:Celniker/RNA:83 965 
+Celniker/RNA:83 574:Celniker/RNA:83 966 
+Celniker/RNA:83 574:Celniker/RNA:83 967 
+Celniker/RNA:83 574:Celniker/RNA:83 968 
+Celniker/RNA:83 574:Celniker/RNA:83 969 
+Celniker/RNA:83 574:Celniker/RNA:83 970 
+Celniker/RNA:83 574:Celniker/RNA:83 971 
+Celniker/RNA:83 574:Celniker/RNA:83 972 
+Celniker/RNA:83 574:Celniker/RNA:83 973 
+Celniker/RNA:83 574:Celniker/RNA:83 974 
+Celniker/RNA:83 574:Celniker/RNA:83 975 
+Celniker/RNA:83 574:Celniker/RNA:83 976 
+Celniker/RNA:83 574:Celniker/RNA:83 977 
+Celniker/RNA:83 574:Celniker/RNA:83 978 
+Celniker/RNA:83 574:Celniker/RNA:83 979 
+Celniker/RNA:83 574:Celniker/RNA:83 980 
+Celniker/RNA:83 574:Celniker/RNA:83 981 
+Celniker/RNA:83 574:Celniker/RNA:83 982 
+Celniker/RNA:83 574:Celniker/RNA:83 983 
+Celniker/RNA:83 574:Celniker/RNA:83 984 
+Celniker/RNA:83 574:Celniker/RNA:83 985 
+Celniker/RNA:83 574:Celniker/RNA:83 986 
+Celniker/RNA:83 574:Celniker/RNA:83 987 
+Celniker/RNA:83 574:Celniker/RNA:83 988 
+Celniker/RNA:83 574:Celniker/RNA:83 989 
+Celniker/RNA:83 574:Celniker/RNA:83 990 
+Celniker/RNA:83 574:Celniker/RNA:83 991 
+Celniker/RNA:83 574:Celniker/RNA:83 992 
+Celniker/RNA:83 574:Celniker/RNA:83 993 
+Celniker/RNA:83 574:Celniker/RNA:83 994 
+Celniker/RNA:83 574:Celniker/RNA:83 995 
+Celniker/RNA:83 574:Celniker/RNA:83 996 
+Celniker/RNA:83 574:Celniker/RNA:83 997 
+Celniker/RNA:83 574:Celniker/RNA:83 998 
+Celniker/RNA:83 574:Celniker/RNA:83 999 
+Celniker/RNA:83 574:Celniker/RNA:83 1000 
+Celniker/RNA:83 574:Celniker/RNA:83 1001 
+Celniker/RNA:83 574:Celniker/RNA:83 1002 
+Celniker/RNA:83 574:Celniker/RNA:83 1003 
+Celniker/RNA:83 574:Celniker/RNA:83 1004 
+Celniker/RNA:83 574:Celniker/RNA:83 1005 
+Celniker/RNA:83 574:Celniker/RNA:83 1006 
+Celniker/RNA:83 574:Celniker/RNA:83 1007 
+Celniker/RNA:83 574:Celniker/RNA:83 1008 
+Celniker/RNA:83 574:Celniker/RNA:83 1009 
+Celniker/RNA:83 574:Celniker/RNA:83 1010 
+Celniker/RNA:83 574:Celniker/RNA:83 1011 
+Celniker/RNA:83 574:Celniker/RNA:83 1012 
+Celniker/RNA:83 574:Celniker/RNA:83 1013 
+Celniker/RNA:83 574:Celniker/RNA:83 1014 
+Celniker/RNA:83 574:Celniker/RNA:83 1015 
+Celniker/RNA:83 574:Celniker/RNA:83 1016 
+Celniker/RNA:83 574:Celniker/RNA:83 1017 
+Celniker/RNA:83 574:Celniker/RNA:83 1018 
+Celniker/RNA:83 574:Celniker/RNA:83 1019 
+Celniker/RNA:83 574:Celniker/RNA:83 1020 
+Celniker/RNA:83 574:Celniker/RNA:83 1021 
+Celniker/RNA:83 574:Celniker/RNA:83 1022 
+Celniker/RNA:83 574:Celniker/RNA:83 1023 
+Celniker/RNA:83 574:Celniker/RNA:83 1024 
+Celniker/RNA:83 574:Celniker/RNA:83 1025 
+Celniker/RNA:83 574:Celniker/RNA:83 1026 
+Celniker/RNA:83 574:Celniker/RNA:83 1027 
+Celniker/RNA:83 574:Celniker/RNA:83 1028 
+Celniker/RNA:83 574:Celniker/RNA:83 1029 
+Celniker/RNA:83 574:Celniker/RNA:83 1030 
+Celniker/RNA:83 574:Celniker/RNA:83 1031 
+Celniker/RNA:83 574:Celniker/RNA:83 1032 
+Celniker/RNA:83 574:Celniker/RNA:83 1033 
+Celniker/RNA:83 574:Celniker/RNA:83 1034 
+Celniker/RNA:83 574:Celniker/RNA:83 1035 
+Celniker/RNA:83 574:Celniker/RNA:83 1036 
+Celniker/RNA:83 574:Celniker/RNA:83 1037 
+Celniker/RNA:83 574:Celniker/RNA:83 1038 
+Celniker/RNA:83 574:Celniker/RNA:83 1039 
+Celniker/RNA:83 574:Celniker/RNA:83 1040 
+Celniker/RNA:83 574:Celniker/RNA:83 1041 
+Celniker/RNA:83 574:Celniker/RNA:83 1042 
+Celniker/RNA:83 574:Celniker/RNA:83 1043 
+Celniker/RNA:83 574:Celniker/RNA:83 1044 
+Celniker/RNA:83 574:Celniker/RNA:83 1045 
+Celniker/RNA:83 574:Celniker/RNA:83 1046 
+Celniker/RNA:83 574:Celniker/RNA:83 1047 
+Celniker/RNA:83 574:Celniker/RNA:83 1048 
+Celniker/RNA:83 574:Celniker/RNA:83 1049 
+Celniker/RNA:83 574:Celniker/RNA:83 1050 
+Celniker/RNA:83 574:Celniker/RNA:83 1051 
+Celniker/RNA:83 574:Celniker/RNA:83 1052 
+Celniker/RNA:83 574:Celniker/RNA:83 1053 
+Celniker/RNA:83 574:Celniker/RNA:83 1054 
+Celniker/RNA:83 574:Celniker/RNA:83 1055 
+Celniker/RNA:83 574:Celniker/RNA:83 1056 
+Celniker/RNA:83 574:Celniker/RNA:83 1057 
+Celniker/RNA:83 574:Celniker/RNA:83 1058 
+Celniker/RNA:83 574:Celniker/RNA:83 1059 
+Celniker/RNA:83 574:Celniker/RNA:83 1060 
+Celniker/RNA:83 574:Celniker/RNA:83 1061 
+Celniker/RNA:83 574:Celniker/RNA:83 1062 
+Celniker/RNA:83 574:Celniker/RNA:83 1063 
+Celniker/RNA:83 574:Celniker/RNA:83 1064 
+Celniker/RNA:83 574:Celniker/RNA:83 1065 
+Celniker/RNA:83 574:Celniker/RNA:83 1066 
+Celniker/RNA:83 574:Celniker/RNA:83 1067 
+Celniker/RNA:83 574:Celniker/RNA:83 1068 
+Celniker/RNA:83 574:Celniker/RNA:83 1069 
+Celniker/RNA:83 574:Celniker/RNA:83 1070 
+Celniker/RNA:83 574:Celniker/RNA:83 1071 
+Celniker/RNA:83 574:Celniker/RNA:83 1072 
+Celniker/RNA:83 574:Celniker/RNA:83 1073 
+Celniker/RNA:83 574:Celniker/RNA:83 1074 
+Celniker/RNA:83 574:Celniker/RNA:83 1075 
+Celniker/RNA:83 574:Celniker/RNA:83 1076 
+Celniker/RNA:83 574:Celniker/RNA:83 1077 
+Celniker/RNA:83 574:Celniker/RNA:83 1078 
+Celniker/RNA:83 574:Celniker/RNA:83 1079 
+Celniker/RNA:83 574:Celniker/RNA:83 1080 
+Celniker/RNA:83 574:Celniker/RNA:83 1081 
+Celniker/RNA:83 574:Celniker/RNA:83 1082 
+Celniker/RNA:83 574:Celniker/RNA:83 1083 
+Celniker/RNA:83 574:Celniker/RNA:83 1084 
+Celniker/RNA:83 574:Celniker/RNA:83 1085 
+Celniker/RNA:83 574:Celniker/RNA:83 1086 
+Celniker/RNA:83 574:Celniker/RNA:83 1087 
+Celniker/RNA:83 574:Celniker/RNA:83 1088 
+Celniker/RNA:83 574:Celniker/RNA:83 1089 
+Celniker/RNA:83 574:Celniker/RNA:83 1090 
+Celniker/RNA:83 574:Celniker/RNA:83 1091 
+Celniker/RNA:83 574:Celniker/RNA:83 1092 
+Celniker/RNA:83 574:Celniker/RNA:83 1093 
+Celniker/RNA:83 574:Celniker/RNA:83 1094 
+Celniker/RNA:83 574:Celniker/RNA:83 1095 
+Celniker/RNA:83 574:Celniker/RNA:83 1096 
+Celniker/RNA:83 574:Celniker/RNA:83 1097 
+Celniker/RNA:83 574:Celniker/RNA:83 1098 
+Celniker/RNA:83 574:Celniker/RNA:83 1099 
+Celniker/RNA:83 574:Celniker/RNA:83 1100 
+Celniker/RNA:83 574:Celniker/RNA:83 1101 
+Celniker/RNA:83 574:Celniker/RNA:83 1102 
+Celniker/RNA:83 574:Celniker/RNA:83 1103 
+Celniker/RNA:83 574:Celniker/RNA:83 1104 
+Celniker/RNA:83 574:Celniker/RNA:83 1105 
+Celniker/RNA:83 574:Celniker/RNA:83 1106 
+Celniker/RNA:83 574:Celniker/RNA:83 1107 
+Celniker/RNA:83 574:Celniker/RNA:83 1108 
+Celniker/RNA:83 574:Celniker/RNA:83 1109 
+Celniker/RNA:83 574:Celniker/RNA:83 1110 
+Celniker/RNA:83 574:Celniker/RNA:83 1111 
+Celniker/RNA:83 574:Celniker/RNA:83 1112 
+Celniker/RNA:83 574:Celniker/RNA:83 1113 
+Celniker/RNA:83 574:Celniker/RNA:83 1114 
+Celniker/RNA:83 574:Celniker/RNA:83 1115 
+Celniker/RNA:83 574:Celniker/RNA:83 1116 
+Celniker/RNA:83 574:Celniker/RNA:83 1117 
+Celniker/RNA:83 574:Celniker/RNA:83 1118 
+Celniker/RNA:83 574:Celniker/RNA:83 1119 
+Celniker/RNA:83 574:Celniker/RNA:83 1120 
+Celniker/RNA:83 574:Celniker/RNA:83 1121 
+Celniker/RNA:83 574:Celniker/RNA:83 1122 
+Celniker/RNA:83 574:Celniker/RNA:83 1123 
+Celniker/RNA:83 574:Celniker/RNA:83 1124 
+Celniker/RNA:83 574:Celniker/RNA:83 1125 
+Celniker/RNA:83 574:Celniker/RNA:83 1126 
+Celniker/RNA:83 574:Celniker/RNA:83 1127 
+Celniker/RNA:83 574:Celniker/RNA:83 1128 
+Celniker/RNA:83 574:Celniker/RNA:83 1129 
+Celniker/RNA:83 574:Celniker/RNA:83 1130 
+Celniker/RNA:83 574:Celniker/RNA:83 1131 
+Celniker/RNA:83 574:Celniker/RNA:83 1132 
+Celniker/RNA:83 574:Celniker/RNA:83 1133 
+Celniker/RNA:83 574:Celniker/RNA:83 1134 
+Celniker/RNA:83 574:Celniker/RNA:83 1135 
+Celniker/RNA:83 574:Celniker/RNA:83 1136 
+Celniker/RNA:83 574:Celniker/RNA:83 1137 
+Celniker/RNA:83 574:Celniker/RNA:83 1138 
+Celniker/RNA:83 574:Celniker/RNA:83 1139 
+Celniker/RNA:83 574:Celniker/RNA:83 1140 
+Celniker/RNA:83 574:Celniker/RNA:83 1141 
+Celniker/RNA:83 574:Celniker/RNA:83 1142 
+Celniker/RNA:83 574:Celniker/RNA:83 1143 
+Celniker/RNA:83 574:Celniker/RNA:83 1144 
+Celniker/RNA:83 574:Celniker/RNA:83 1145 
+Celniker/RNA:83 574:Celniker/RNA:83 1146 
+Celniker/RNA:83 574:Celniker/RNA:83 1147 
+Celniker/RNA:83 574:Celniker/RNA:83 1148 
+Celniker/RNA:83 574:Celniker/RNA:83 1149 
+Celniker/RNA:83 574:Celniker/RNA:83 1150 
+Celniker/RNA:83 574:Celniker/RNA:83 1151 
+Celniker/RNA:83 574:Celniker/RNA:83 1152 
+Celniker/RNA:83 574:Celniker/RNA:83 1153 
+Celniker/RNA:83 574:Celniker/RNA:83 1154 
+Celniker/RNA:83 574:Celniker/RNA:83 1155 
+Celniker/RNA:83 574:Celniker/RNA:83 1156 
+Celniker/RNA:83 574:Celniker/RNA:83 1157 
+Celniker/RNA:83 574:Celniker/RNA:83 1158 
+Celniker/RNA:83 574:Celniker/RNA:83 1159 
+Celniker/RNA:83 574:Celniker/RNA:83 1160 
+Celniker/RNA:83 574:Celniker/RNA:83 1161 
+Celniker/RNA:83 574:Celniker/RNA:83 1162 
+Celniker/RNA:83 574:Celniker/RNA:83 1163 
+Celniker/RNA:83 574:Celniker/RNA:83 1164 
+Celniker/RNA:83 574:Celniker/RNA:83 1165 
+Celniker/RNA:83 574:Celniker/RNA:83 1166 
+Celniker/RNA:83 574:Celniker/RNA:83 1167 
+Celniker/RNA:83 574:Celniker/RNA:83 1168 
+Celniker/RNA:83 574:Celniker/RNA:83 1169 
+Celniker/RNA:83 574:Celniker/RNA:83 1170 
+Celniker/RNA:83 574:Celniker/RNA:83 1171 
+Celniker/RNA:83 574:Celniker/RNA:83 1172 
+Celniker/RNA:83 574:Celniker/RNA:83 1173 
+Celniker/RNA:83 574:Celniker/RNA:83 1174 
+Celniker/RNA:83 574:Celniker/RNA:83 1175 
+Celniker/RNA:83 574:Celniker/RNA:83 1176 
+Celniker/RNA:83 574:Celniker/RNA:83 1177 
+Celniker/RNA:83 574:Celniker/RNA:83 1178 
+Celniker/RNA:83 574:Celniker/RNA:83 1179 
+Celniker/RNA:83 574:Celniker/RNA:83 1180 
+Celniker/RNA:83 574:Celniker/RNA:83 1181 
+Celniker/RNA:83 574:Celniker/RNA:83 1182 
+Celniker/RNA:83 574:Celniker/RNA:83 1183 
+Celniker/RNA:83 574:Celniker/RNA:83 1184 
+Celniker/RNA:83 574:Celniker/RNA:83 1185 
+Celniker/RNA:83 574:Celniker/RNA:83 1186 
+Celniker/RNA:83 574:Celniker/RNA:83 1187 
+Celniker/RNA:83 574:Celniker/RNA:83 1188 
+Celniker/RNA:83 574:Celniker/RNA:83 1189 
+Celniker/RNA:83 574:Celniker/RNA:83 1190 
+Celniker/RNA:83 574:Celniker/RNA:83 1191 
+Celniker/RNA:83 574:Celniker/RNA:83 1192 
+Celniker/RNA:83 574:Celniker/RNA:83 1193 
+Celniker/RNA:83 574:Celniker/RNA:83 1194 
+Celniker/RNA:83 574:Celniker/RNA:83 1195 
+Celniker/RNA:83 574:Celniker/RNA:83 1196 
+Celniker/RNA:83 574:Celniker/RNA:83 1197 
+Celniker/RNA:83 574:Celniker/RNA:83 1198 
+Celniker/RNA:83 574:Celniker/RNA:83 1199 
+Celniker/RNA:83 574:Celniker/RNA:83 1200 
+Celniker/RNA:83 574:Celniker/RNA:83 1201 
+Celniker/RNA:83 574:Celniker/RNA:83 1202 
+Celniker/RNA:83 574:Celniker/RNA:83 1203 
+Celniker/RNA:83 574:Celniker/RNA:83 1204 
+Celniker/RNA:83 574:Celniker/RNA:83 1205 
+Celniker/RNA:83 574:Celniker/RNA:83 1206 
+Celniker/RNA:83 574:Celniker/RNA:83 1207 
+Celniker/RNA:83 574:Celniker/RNA:83 1208 
+Celniker/RNA:83 574:Celniker/RNA:83 1209 
+Celniker/RNA:83 574:Celniker/RNA:83 1210 
+Celniker/RNA:83 574:Celniker/RNA:83 1211 
+Celniker/RNA:83 574:Celniker/RNA:83 1212 
+Celniker/RNA:83 574:Celniker/RNA:83 1213 
+Celniker/RNA:83 574:Celniker/RNA:83 1214 
+Celniker/RNA:83 574:Celniker/RNA:83 1215 
+Celniker/RNA:83 574:Celniker/RNA:83 1216 
+Celniker/RNA:83 574:Celniker/RNA:83 1217 
+Celniker/RNA:83 574:Celniker/RNA:83 1218 
+Celniker/RNA:83 574:Celniker/RNA:83 1219 
+Celniker/RNA:83 574:Celniker/RNA:83 1220 
+Celniker/RNA:83 574:Celniker/RNA:83 1221 
+Celniker/RNA:83 574:Celniker/RNA:83 1222 
+Celniker/RNA:83 574:Celniker/RNA:83 1223 
+Celniker/RNA:83 574:Celniker/RNA:83 1224 
+Celniker/RNA:83 574:Celniker/RNA:83 1225 
+Celniker/RNA:83 574:Celniker/RNA:83 1226 
+Celniker/RNA:83 574:Celniker/RNA:83 1227 
+Celniker/RNA:83 574:Celniker/RNA:83 1228 
+Celniker/RNA:83 574:Celniker/RNA:83 1229 
+Celniker/RNA:83 574:Celniker/RNA:83 1230 
+Celniker/RNA:83 574:Celniker/RNA:83 1231 
+Celniker/RNA:83 574:Celniker/RNA:83 1232 
+Celniker/RNA:83 574:Celniker/RNA:83 1233 
+Celniker/RNA:83 574:Celniker/RNA:83 1234 
+Celniker/RNA:83 574:Celniker/RNA:83 1235 
+Celniker/RNA:83 574:Celniker/RNA:83 1236 
+Celniker/RNA:83 574:Celniker/RNA:83 1237 
+Celniker/RNA:83 574:Celniker/RNA:83 1238 
+Celniker/RNA:83 574:Celniker/RNA:83 1239 
+Celniker/RNA:83 574:Celniker/RNA:83 1240 
+Celniker/RNA:83 574:Celniker/RNA:83 1241 
+Celniker/RNA:83 574:Celniker/RNA:83 1242 
+Celniker/RNA:83 574:Celniker/RNA:83 1243 
+Celniker/RNA:83 574:Celniker/RNA:83 1244 
+Celniker/RNA:83 574:Celniker/RNA:83 1245 
+Celniker/RNA:83 574:Celniker/RNA:83 1246 
+Celniker/RNA:83 574:Celniker/RNA:83 1247 
+Celniker/RNA:83 574:Celniker/RNA:83 1248 
+Celniker/RNA:83 574:Celniker/RNA:83 1249 
+Celniker/RNA:83 574:Celniker/RNA:83 1250 
+Celniker/RNA:83 574:Celniker/RNA:83 1251 
+Celniker/RNA:83 574:Celniker/RNA:83 1252 
+Celniker/RNA:83 574:Celniker/RNA:83 1253 
+Celniker/RNA:83 574:Celniker/RNA:83 1254 
+Celniker/RNA:83 574:Celniker/RNA:83 1255 
+Celniker/RNA:83 574:Celniker/RNA:83 1256 
+Celniker/RNA:83 574:Celniker/RNA:83 1257 
+Celniker/RNA:83 574:Celniker/RNA:83 1258 
+Celniker/RNA:83 574:Celniker/RNA:83 1259 
+Celniker/RNA:83 574:Celniker/RNA:83 1260 
+Celniker/RNA:83 574:Celniker/RNA:83 1261 
+Celniker/RNA:83 574:Celniker/RNA:83 1262 
+Celniker/RNA:83 574:Celniker/RNA:83 1263 
+Celniker/RNA:83 574:Celniker/RNA:83 1264 
+Celniker/RNA:83 574:Celniker/RNA:83 1265 
+Celniker/RNA:83 574:Celniker/RNA:83 1266 
+Celniker/RNA:83 574:Celniker/RNA:83 1267 
+Celniker/RNA:83 574:Celniker/RNA:83 1268 
+Celniker/RNA:83 574:Celniker/RNA:83 1269 
+Celniker/RNA:83 574:Celniker/RNA:83 1270 
+Celniker/RNA:83 574:Celniker/RNA:83 1271 
+Celniker/RNA:83 574:Celniker/RNA:83 1272 
+Celniker/RNA:83 574:Celniker/RNA:83 1273 
+Celniker/RNA:83 574:Celniker/RNA:83 1274 
+Celniker/RNA:83 574:Celniker/RNA:83 1275 
+Celniker/RNA:83 574:Celniker/RNA:83 1276 
+Celniker/RNA:83 574:Celniker/RNA:83 1277 
+Celniker/RNA:83 574:Celniker/RNA:83 1278 
+Celniker/RNA:83 574:Celniker/RNA:83 1279 
+Celniker/RNA:83 574:Celniker/RNA:83 1280 
+Celniker/RNA:83 574:Celniker/RNA:83 1281 
+Celniker/RNA:83 574:Celniker/RNA:83 1282 
+Celniker/RNA:83 574:Celniker/RNA:83 1283 
+Celniker/RNA:83 574:Celniker/RNA:83 1284 
+Celniker/RNA:83 574:Celniker/RNA:83 1285 
+Celniker/RNA:83 574:Celniker/RNA:83 1286 
+Celniker/RNA:83 574:Celniker/RNA:83 1287 
+Celniker/RNA:83 574:Celniker/RNA:83 1288 
+Celniker/RNA:83 574:Celniker/RNA:83 1289 
+Celniker/RNA:83 574:Celniker/RNA:83 1290 
+Celniker/RNA:83 574:Celniker/RNA:83 1291 
+Celniker/RNA:83 574:Celniker/RNA:83 1292 
+Celniker/RNA:83 574:Celniker/RNA:83 1293 
+Celniker/RNA:83 574:Celniker/RNA:83 1294 
+Celniker/RNA:83 574:Celniker/RNA:83 1295 
+Celniker/RNA:83 574:Celniker/RNA:83 1296 
+Celniker/RNA:83 574:Celniker/RNA:83 1297 
+Celniker/RNA:83 574:Celniker/RNA:83 1298 
+Celniker/RNA:83 574:Celniker/RNA:83 1299 
+Celniker/RNA:83 574:Celniker/RNA:83 1300 
+Celniker/RNA:83 574:Celniker/RNA:83 1301 
+Celniker/RNA:83 574:Celniker/RNA:83 1302 
+Celniker/RNA:83 574:Celniker/RNA:83 1303 
+Celniker/RNA:83 574:Celniker/RNA:83 1304 
+Celniker/RNA:83 574:Celniker/RNA:83 1305 
+Celniker/RNA:83 574:Celniker/RNA:83 1306 
+Celniker/RNA:83 574:Celniker/RNA:83 1307 
+Celniker/RNA:83 574:Celniker/RNA:83 1308 
+Celniker/RNA:83 574:Celniker/RNA:83 1309 
+Celniker/RNA:83 574:Celniker/RNA:83 1310 
+Celniker/RNA:83 574:Celniker/RNA:83 1311 
+Celniker/RNA:83 574:Celniker/RNA:83 1312 
+Celniker/RNA:83 574:Celniker/RNA:83 1313 
+Celniker/RNA:83 574:Celniker/RNA:83 1314 
+Celniker/RNA:83 574:Celniker/RNA:83 1315 
+Celniker/RNA:83 574:Celniker/RNA:83 1316 
+Celniker/RNA:83 574:Celniker/RNA:83 1317 
+Celniker/RNA:83 574:Celniker/RNA:83 1318 
+Celniker/RNA:83 574:Celniker/RNA:83 1319 
+Celniker/RNA:83 574:Celniker/RNA:83 1320 
+Celniker/RNA:83 574:Celniker/RNA:83 1321 
+Celniker/RNA:83 574:Celniker/RNA:83 1322 
+Celniker/RNA:83 574:Celniker/RNA:83 1323 
+Celniker/RNA:83 574:Celniker/RNA:83 1324 
+Celniker/RNA:83 574:Celniker/RNA:83 1325 
+Celniker/RNA:83 574:Celniker/RNA:83 1326 
+Celniker/RNA:83 574:Celniker/RNA:83 1327 
+Celniker/RNA:83 574:Celniker/RNA:83 1328 
+Celniker/RNA:83 574:Celniker/RNA:83 1329 
+Celniker/RNA:83 574:Celniker/RNA:83 1330 
+Celniker/RNA:83 574:Celniker/RNA:83 1331 
+Celniker/RNA:83 574:Celniker/RNA:83 1332 
+Celniker/RNA:83 574:Celniker/RNA:83 1333 
+Celniker/RNA:83 574:Celniker/RNA:83 1334 
+Celniker/RNA:83 574:Celniker/RNA:83 1335 
+Celniker/RNA:83 574:Celniker/RNA:83 1336 
+Celniker/RNA:83 574:Celniker/RNA:83 1337 
+Celniker/RNA:83 574:Celniker/RNA:83 1338 
+Celniker/RNA:83 574:Celniker/RNA:83 1339 
+Celniker/RNA:83 574:Celniker/RNA:83 1340 
+Celniker/RNA:83 574:Celniker/RNA:83 1341 
+Celniker/RNA:83 574:Celniker/RNA:83 1342 
+Celniker/RNA:83 574:Celniker/RNA:83 1343 
+Celniker/RNA:83 574:Celniker/RNA:83 1344 
+Celniker/RNA:83 574:Celniker/RNA:83 1345 
+Celniker/RNA:83 574:Celniker/RNA:83 1346 
+Celniker/RNA:83 574:Celniker/RNA:83 1347 
+Celniker/RNA:83 574:Celniker/RNA:83 1348 
+Celniker/RNA:83 574:Celniker/RNA:83 1349 
+Celniker/RNA:83 574:Celniker/RNA:83 1350 
+Celniker/RNA:83 574:Celniker/RNA:83 1351 
+Celniker/RNA:83 574:Celniker/RNA:83 1352 
+Celniker/RNA:83 574:Celniker/RNA:83 1353 
+Celniker/RNA:83 574:Celniker/RNA:83 1354 
+Celniker/RNA:83 574:Celniker/RNA:83 1355 
+Celniker/RNA:83 574:Celniker/RNA:83 1356 
+Celniker/RNA:83 574:Celniker/RNA:83 1357 
+Celniker/RNA:83 574:Celniker/RNA:83 1358 
+Celniker/RNA:83 574:Celniker/RNA:83 1359 
+Celniker/RNA:83 574:Celniker/RNA:83 1360 
+Celniker/RNA:83 574:Celniker/RNA:83 1361 
+Celniker/RNA:83 574:Celniker/RNA:83 1362 
+Celniker/RNA:83 574:Celniker/RNA:83 1363 
+Celniker/RNA:83 574:Celniker/RNA:83 1364 
+Celniker/RNA:83 574:Celniker/RNA:83 1365 
+Celniker/RNA:83 574:Celniker/RNA:83 1366 
+Celniker/RNA:83 574:Celniker/RNA:83 1367 
+Celniker/RNA:83 574:Celniker/RNA:83 1368 
+Celniker/RNA:83 574:Celniker/RNA:83 1369 
+Celniker/RNA:83 574:Celniker/RNA:83 1370 
+Celniker/RNA:83 574:Celniker/RNA:83 1371 
+Celniker/RNA:83 574:Celniker/RNA:83 1372 
+Celniker/RNA:83 574:Celniker/RNA:83 1373 
+Celniker/RNA:83 574:Celniker/RNA:83 1374 
+Celniker/RNA:83 574:Celniker/RNA:83 1375 
+Celniker/RNA:83 574:Celniker/RNA:83 1376 
+Celniker/RNA:83 574:Celniker/RNA:83 1377 
+Celniker/RNA:83 574:Celniker/RNA:83 1378 
+Celniker/RNA:83 574:Celniker/RNA:83 1379 
+Celniker/RNA:83 574:Celniker/RNA:83 1380 
+Celniker/RNA:83 574:Celniker/RNA:83 1381 
+Celniker/RNA:83 574:Celniker/RNA:83 1382 
+Celniker/RNA:83 574:Celniker/RNA:83 1383 
+Celniker/RNA:83 574:Celniker/RNA:83 1384 
+Celniker/RNA:83 574:Celniker/RNA:83 1385 
+Celniker/RNA:83 574:Celniker/RNA:83 1386 
+Celniker/RNA:83 574:Celniker/RNA:83 1387 
+Celniker/RNA:83 574:Celniker/RNA:83 1388 
+Celniker/RNA:83 574:Celniker/RNA:83 1389 
+Celniker/RNA:83 574:Celniker/RNA:83 1390 
+Celniker/RNA:83 574:Celniker/RNA:83 1391 
+Celniker/RNA:83 574:Celniker/RNA:83 1392 
+Celniker/RNA:83 574:Celniker/RNA:83 1393 
+Celniker/RNA:83 574:Celniker/RNA:83 1394 
+Celniker/RNA:83 574:Celniker/RNA:83 1395 
+Celniker/RNA:83 574:Celniker/RNA:83 1396 
+Celniker/RNA:83 574:Celniker/RNA:83 1397 
+Celniker/RNA:83 574:Celniker/RNA:83 1398 
+Celniker/RNA:83 574:Celniker/RNA:83 1399 
+Celniker/RNA:83 574:Celniker/RNA:83 1400 
+Celniker/RNA:83 574:Celniker/RNA:83 1401 
+Celniker/RNA:83 574:Celniker/RNA:83 1402 
+Celniker/RNA:83 574:Celniker/RNA:83 1403 
+Celniker/RNA:83 574:Celniker/RNA:83 1404 
+Celniker/RNA:83 574:Celniker/RNA:83 1405 
+Celniker/RNA:83 574:Celniker/RNA:83 1406 
+Celniker/RNA:83 574:Celniker/RNA:83 1407 
+Celniker/RNA:83 574:Celniker/RNA:83 1408 
+Celniker/RNA:83 574:Celniker/RNA:83 1409 
+Celniker/RNA:83 574:Celniker/RNA:83 1410 
+Celniker/RNA:83 574:Celniker/RNA:83 1411 
+Celniker/RNA:83 574:Celniker/RNA:83 1412 
+Celniker/RNA:83 574:Celniker/RNA:83 1413 
+Celniker/RNA:83 574:Celniker/RNA:83 1414 
+Celniker/RNA:83 574:Celniker/RNA:83 1415 
+Celniker/RNA:83 574:Celniker/RNA:83 1416 
+Celniker/RNA:83 574:Celniker/RNA:83 1417 
+Celniker/RNA:83 574:Celniker/RNA:83 1418 
+Celniker/RNA:83 574:Celniker/RNA:83 1419 
+Celniker/RNA:83 574:Celniker/RNA:83 1420 
+Celniker/RNA:83 574:Celniker/RNA:83 1421 
+Celniker/RNA:83 574:Celniker/RNA:83 1422 
+Celniker/RNA:83 574:Celniker/RNA:83 1423 
+Celniker/RNA:83 574:Celniker/RNA:83 1424 
+Celniker/RNA:83 574:Celniker/RNA:83 1425 
+Celniker/RNA:83 574:Celniker/RNA:83 1426 
+Celniker/RNA:83 574:Celniker/RNA:83 1427 
+Celniker/RNA:83 574:Celniker/RNA:83 1428 
+Celniker/RNA:83 574:Celniker/RNA:83 1429 
+Celniker/RNA:83 574:Celniker/RNA:83 1430 
+Celniker/RNA:83 574:Celniker/RNA:83 1431 
+Celniker/RNA:83 574:Celniker/RNA:83 1432 
+Celniker/RNA:83 574:Celniker/RNA:83 1433 
+Celniker/RNA:83 574:Celniker/RNA:83 1434 
+Celniker/RNA:83 574:Celniker/RNA:83 1435 
+Celniker/RNA:83 574:Celniker/RNA:83 1436 
+Celniker/RNA:83 574:Celniker/RNA:83 1437 
+Celniker/RNA:83 574:Celniker/RNA:83 1438 
+Celniker/RNA:83 574:Celniker/RNA:83 1439 
+Celniker/RNA:83 574:Celniker/RNA:83 1440 
+Celniker/RNA:83 574:Celniker/RNA:83 1441 
+Celniker/RNA:83 574:Celniker/RNA:83 1442 
+Celniker/RNA:83 574:Celniker/RNA:83 1443 
+Celniker/RNA:83 574:Celniker/RNA:83 1444 
+Celniker/RNA:83 574:Celniker/RNA:83 1445 
+Celniker/RNA:83 574:Celniker/RNA:83 1446 
+Celniker/RNA:83 574:Celniker/RNA:83 1447 
+Celniker/RNA:83 574:Celniker/RNA:83 1448 
+Celniker/RNA:83 574:Celniker/RNA:83 1449 
+Celniker/RNA:83 574:Celniker/RNA:83 1450 
+Celniker/RNA:83 574:Celniker/RNA:83 1451 
+Celniker/RNA:83 574:Celniker/RNA:83 1452 
+Celniker/RNA:83 574:Celniker/RNA:83 1453 
+Celniker/RNA:83 574:Celniker/RNA:83 1454 
+Celniker/RNA:83 574:Celniker/RNA:83 1455 
+Celniker/RNA:83 574:Celniker/RNA:83 1456 
+Celniker/RNA:83 574:Celniker/RNA:83 1457 
+Celniker/RNA:83 574:Celniker/RNA:83 1458 
+Celniker/RNA:83 574:Celniker/RNA:83 1459 
+Celniker/RNA:83 574:Celniker/RNA:83 1460 
+Celniker/RNA:83 574:Celniker/RNA:83 1461 
+Celniker/RNA:83 574:Celniker/RNA:83 1462 
+Celniker/RNA:83 574:Celniker/RNA:83 1463 
+Celniker/RNA:83 574:Celniker/RNA:83 1464 
+Celniker/RNA:83 574:Celniker/RNA:83 1465 
+Celniker/RNA:83 574:Celniker/RNA:83 1466 
+Celniker/RNA:83 574:Celniker/RNA:83 1467 
+Celniker/RNA:83 574:Celniker/RNA:83 1468 
+Celniker/RNA:83 574:Celniker/RNA:83 1469 
+Celniker/RNA:83 574:Celniker/RNA:83 1470 
+Celniker/RNA:83 574:Celniker/RNA:83 1471 
+Celniker/RNA:83 574:Celniker/RNA:83 1472 
+Celniker/RNA:83 574:Celniker/RNA:83 1473 
+Celniker/RNA:83 574:Celniker/RNA:83 1474 
+Celniker/RNA:83 574:Celniker/RNA:83 1475 
+Celniker/RNA:83 574:Celniker/RNA:83 1476 
+Celniker/RNA:83 574:Celniker/RNA:83 1477 
+Celniker/RNA:83 574:Celniker/RNA:83 1478 
+Celniker/RNA:83 574:Celniker/RNA:83 1479 
+Celniker/RNA:83 574:Celniker/RNA:83 1480 
+Celniker/RNA:83 574:Celniker/RNA:83 1481 
+Celniker/RNA:83 574:Celniker/RNA:83 1482 
+Celniker/RNA:83 574:Celniker/RNA:83 1483 
+Celniker/RNA:83 574:Celniker/RNA:83 1484 
+Celniker/RNA:83 574:Celniker/RNA:83 1485 
+Celniker/RNA:83 574:Celniker/RNA:83 1486 
+Celniker/RNA:83 574:Celniker/RNA:83 1487 
+Celniker/RNA:83 574:Celniker/RNA:83 1488 
+Celniker/RNA:83 574:Celniker/RNA:83 1489 
+Celniker/RNA:83 574:Celniker/RNA:83 1490 
+Celniker/RNA:83 574:Celniker/RNA:83 1491 
+Celniker/RNA:83 574:Celniker/RNA:83 1492 
+Celniker/RNA:83 574:Celniker/RNA:83 1493 
+Celniker/RNA:83 574:Celniker/RNA:83 1494 
+Celniker/RNA:83 574:Celniker/RNA:83 1495 
+Celniker/RNA:83 574:Celniker/RNA:83 1496 
+Celniker/RNA:83 574:Celniker/RNA:83 1497 
+Celniker/RNA:83 574:Celniker/RNA:83 1498 
+Celniker/RNA:83 574:Celniker/RNA:83 1499 
+Celniker/RNA:83 574:Celniker/RNA:83 1500 
+Celniker/RNA:83 574:Celniker/RNA:83 1501 
+Celniker/RNA:83 574:Celniker/RNA:83 1502 
+Celniker/RNA:83 574:Celniker/RNA:83 1503 
+Celniker/RNA:83 574:Celniker/RNA:83 1504 
+Celniker/RNA:83 574:Celniker/RNA:83 1505 
+Celniker/RNA:83 574:Celniker/RNA:83 1506 
+Celniker/RNA:83 574:Celniker/RNA:83 1507 
+Celniker/RNA:83 574:Celniker/RNA:83 1508 
+Celniker/RNA:83 574:Celniker/RNA:83 1509 
+Celniker/RNA:83 574:Celniker/RNA:83 1510 
+Celniker/RNA:83 574:Celniker/RNA:83 1511 
+Celniker/RNA:83 574:Celniker/RNA:83 1512 
+Celniker/RNA:83 574:Celniker/RNA:83 1513 
+Celniker/RNA:83 574:Celniker/RNA:83 1514 
+Celniker/RNA:83 574:Celniker/RNA:83 1515 
+Celniker/RNA:83 574:Celniker/RNA:83 1516 
+Celniker/RNA:83 574:Celniker/RNA:83 1517 
+Celniker/RNA:83 574:Celniker/RNA:83 1518 
+Celniker/RNA:83 574:Celniker/RNA:83 1519 
+Celniker/RNA:83 574:Celniker/RNA:83 1520 
+Celniker/RNA:83 574:Celniker/RNA:83 1521 
+Celniker/RNA:83 574:Celniker/RNA:83 1522 
+Celniker/RNA:83 574:Celniker/RNA:83 1523 
+Celniker/RNA:83 574:Celniker/RNA:83 1524 
+Celniker/RNA:83 574:Celniker/RNA:83 1525 
+Celniker/RNA:83 574:Celniker/RNA:83 1526 
+Celniker/RNA:83 574:Celniker/RNA:83 1527 
+Celniker/RNA:83 574:Celniker/RNA:83 1528 
+Celniker/RNA:83 574:Celniker/RNA:83 1529 
+Celniker/RNA:83 574:Celniker/RNA:83 1530 
+Celniker/RNA:83 574:Celniker/RNA:83 1531 
+Celniker/RNA:83 574:Celniker/RNA:83 1532 
+Celniker/RNA:83 574:Celniker/RNA:83 1533 
+Celniker/RNA:83 574:Celniker/RNA:83 1534 
+Celniker/RNA:83 574:Celniker/RNA:83 1535 
+Celniker/RNA:83 574:Celniker/RNA:83 1536 
+Celniker/RNA:83 574:Celniker/RNA:83 1537 
+Celniker/RNA:83 574:Celniker/RNA:83 1538 
+Celniker/RNA:83 574:Celniker/RNA:83 1539 
+Celniker/RNA:83 574:Celniker/RNA:83 1540 
+Celniker/RNA:83 574:Celniker/RNA:83 1541 
+Celniker/RNA:83 574:Celniker/RNA:83 1542 
+Celniker/RNA:83 574:Celniker/RNA:83 1543 
+Celniker/RNA:83 574:Celniker/RNA:83 1544 
+Celniker/RNA:83 574:Celniker/RNA:83 1545 
+Celniker/RNA:83 574:Celniker/RNA:83 1546 
+Celniker/RNA:83 574:Celniker/RNA:83 1547 
+Celniker/RNA:83 574:Celniker/RNA:83 1548 
+Celniker/RNA:83 574:Celniker/RNA:83 1549 
+Celniker/RNA:83 574:Celniker/RNA:83 1550 
+Celniker/RNA:83 574:Celniker/RNA:83 1551 
+Celniker/RNA:83 574:Celniker/RNA:83 1552 
+Celniker/RNA:83 574:Celniker/RNA:83 1553 
+Celniker/RNA:83 574:Celniker/RNA:83 1554 
+Celniker/RNA:83 574:Celniker/RNA:83 1555 
+Celniker/RNA:83 574:Celniker/RNA:83 1556 
+Celniker/RNA:83 574:Celniker/RNA:83 1557 
+Celniker/RNA:83 574:Celniker/RNA:83 1558 
+Celniker/RNA:83 574:Celniker/RNA:83 1559 
+Celniker/RNA:83 574:Celniker/RNA:83 1560 
+Celniker/RNA:83 574:Celniker/RNA:83 1561 
+Celniker/RNA:83 574:Celniker/RNA:83 1562 
+Celniker/RNA:83 574:Celniker/RNA:83 1563 
+Celniker/RNA:83 574:Celniker/RNA:83 1564 
+Celniker/RNA:83 574:Celniker/RNA:83 1565 
+Celniker/RNA:83 574:Celniker/RNA:83 1566 
+Celniker/RNA:83 574:Celniker/RNA:83 1567 
+Celniker/RNA:83 574:Celniker/RNA:83 1568 
+Celniker/RNA:83 574:Celniker/RNA:83 1569 
+Celniker/RNA:83 574:Celniker/RNA:83 1570 
+Celniker/RNA:83 574:Celniker/RNA:83 1571 
+Celniker/RNA:83 574:Celniker/RNA:83 1572 
+Celniker/RNA:83 574:Celniker/RNA:83 1573 
+Celniker/RNA:83 574:Celniker/RNA:83 1574 
+Celniker/RNA:83 574:Celniker/RNA:83 1575 
+Celniker/RNA:83 574:Celniker/RNA:83 1576 
+Celniker/RNA:83 574:Celniker/RNA:83 1577 
+Celniker/RNA:83 574:Celniker/RNA:83 1578 
+Celniker/RNA:83 574:Celniker/RNA:83 1579 
+Celniker/RNA:83 574:Celniker/RNA:83 1580 
+Celniker/RNA:83 574:Celniker/RNA:83 1581 
+Celniker/RNA:83 574:Celniker/RNA:83 1582 
+Celniker/RNA:83 574:Celniker/RNA:83 1583 
+Celniker/RNA:83 574:Celniker/RNA:83 1584 
+Celniker/RNA:83 574:Celniker/RNA:83 1585 
+Celniker/RNA:83 574:Celniker/RNA:83 1586 
+Celniker/RNA:83 574:Celniker/RNA:83 1587 
+Celniker/RNA:83 574:Celniker/RNA:83 1588 
+Celniker/RNA:83 574:Celniker/RNA:83 1589 
+Celniker/RNA:83 574:Celniker/RNA:83 1590 
+Celniker/RNA:83 574:Celniker/RNA:83 1591 
+Celniker/RNA:83 574:Celniker/RNA:83 1592 
+Celniker/RNA:83 574:Celniker/RNA:83 1593 
+Celniker/RNA:83 574:Celniker/RNA:83 1594 
+Celniker/RNA:83 574:Celniker/RNA:83 1595 
+Celniker/RNA:83 574:Celniker/RNA:83 1596 
+Celniker/RNA:83 574:Celniker/RNA:83 1597 
+Celniker/RNA:83 574:Celniker/RNA:83 1598 
+Celniker/RNA:83 574:Celniker/RNA:83 1599 
+Celniker/RNA:83 574:Celniker/RNA:83 1600 
+Celniker/RNA:83 574:Celniker/RNA:83 1601 
+Celniker/RNA:83 574:Celniker/RNA:83 1602 
+Celniker/RNA:83 574:Celniker/RNA:83 1603 
+Celniker/RNA:83 574:Celniker/RNA:83 1604 
+Celniker/RNA:83 574:Celniker/RNA:83 1605 
+Celniker/RNA:83 574:Celniker/RNA:83 1606 
+Celniker/RNA:83 574:Celniker/RNA:83 1607 
+Celniker/RNA:83 574:Celniker/RNA:83 1608 
+Celniker/RNA:83 574:Celniker/RNA:83 1609 
+Celniker/RNA:83 574:Celniker/RNA:83 1610 
+Celniker/RNA:83 574:Celniker/RNA:83 1611 
+Celniker/RNA:83 574:Celniker/RNA:83 1612 
+Celniker/RNA:83 574:Celniker/RNA:83 1613 
+Celniker/RNA:83 574:Celniker/RNA:83 1614 
+Celniker/RNA:83 574:Celniker/RNA:83 1615 
+Celniker/RNA:83 574:Celniker/RNA:83 1616 
+Celniker/RNA:83 574:Celniker/RNA:83 1617 
+Celniker/RNA:83 574:Celniker/RNA:83 1618 
+Celniker/RNA:83 574:Celniker/RNA:83 1619 
+Celniker/RNA:83 574:Celniker/RNA:83 1620 
+Celniker/RNA:83 574:Celniker/RNA:83 1621 
+Celniker/RNA:83 574:Celniker/RNA:83 1622 
+Celniker/RNA:83 574:Celniker/RNA:83 1623 
+Celniker/RNA:83 574:Celniker/RNA:83 1624 
+Celniker/RNA:83 574:Celniker/RNA:83 1625 
+Celniker/RNA:83 574:Celniker/RNA:83 1626 
+Celniker/RNA:83 574:Celniker/RNA:83 1627 
+Celniker/RNA:83 574:Celniker/RNA:83 1628 
+Celniker/RNA:83 574:Celniker/RNA:83 1629 
+Celniker/RNA:83 574:Celniker/RNA:83 1630 
+Celniker/RNA:83 574:Celniker/RNA:83 1631 
+Celniker/RNA:83 574:Celniker/RNA:83 1632 
+Celniker/RNA:83 574:Celniker/RNA:83 1633 
+Celniker/RNA:83 574:Celniker/RNA:83 1634 
+Celniker/RNA:83 574:Celniker/RNA:83 1635 
+Celniker/RNA:83 574:Celniker/RNA:83 1636 
+Celniker/RNA:83 574:Celniker/RNA:83 1637 
+Celniker/RNA:83 574:Celniker/RNA:83 1638 
+Celniker/RNA:83 574:Celniker/RNA:83 1639 
+Celniker/RNA:83 574:Celniker/RNA:83 1640 
+Celniker/RNA:83 574:Celniker/RNA:83 1641 
+Celniker/RNA:83 574:Celniker/RNA:83 1642 
+Celniker/RNA:83 574:Celniker/RNA:83 1643 
+Celniker/RNA:83 574:Celniker/RNA:83 1644 
+Celniker/RNA:83 574:Celniker/RNA:83 1645 
+Celniker/RNA:83 574:Celniker/RNA:83 1646 
+Celniker/RNA:83 574:Celniker/RNA:83 1647 
+Celniker/RNA:83 574:Celniker/RNA:83 1648 
+Celniker/RNA:83 574:Celniker/RNA:83 1649 
+Celniker/RNA:83 574:Celniker/RNA:83 1650 
+Celniker/RNA:83 574:Celniker/RNA:83 1651 
+Celniker/RNA:83 574:Celniker/RNA:83 1652 
+Celniker/RNA:83 574:Celniker/RNA:83 1653 
+Celniker/RNA:83 574:Celniker/RNA:83 1654 
+Celniker/RNA:83 574:Celniker/RNA:83 1655 
+Celniker/RNA:83 574:Celniker/RNA:83 1656 
+Celniker/RNA:83 574:Celniker/RNA:83 1657 
+Celniker/RNA:83 574:Celniker/RNA:83 1658 
+Celniker/RNA:83 574:Celniker/RNA:83 1659 
+Celniker/RNA:83 574:Celniker/RNA:83 1660 
+Celniker/RNA:83 574:Celniker/RNA:83 1661 
+Celniker/RNA:83 574:Celniker/RNA:83 1662 
+Celniker/RNA:83 574:Celniker/RNA:83 1663 
+Celniker/RNA:83 574:Celniker/RNA:83 1664 
+Celniker/RNA:83 574:Celniker/RNA:83 1665 
+Celniker/RNA:83 574:Celniker/RNA:83 1666 
+Celniker/RNA:83 574:Celniker/RNA:83 1667 
+Celniker/RNA:83 574:Celniker/RNA:83 1668 
+Celniker/RNA:83 574:Celniker/RNA:83 1669 
+Celniker/RNA:83 574:Celniker/RNA:83 1670 
+Celniker/RNA:83 574:Celniker/RNA:83 1671 
+Celniker/RNA:83 574:Celniker/RNA:83 1672 
+Celniker/RNA:83 574:Celniker/RNA:83 1673 
+Celniker/RNA:83 574:Celniker/RNA:83 1674 
+Celniker/RNA:83 574:Celniker/RNA:83 1675 
+Celniker/RNA:83 574:Celniker/RNA:83 1676 
+Celniker/RNA:83 574:Celniker/RNA:83 1677 
+Celniker/RNA:83 574:Celniker/RNA:83 1678 
+Celniker/RNA:83 574:Celniker/RNA:83 1679 
+Celniker/RNA:83 574:Celniker/RNA:83 1680 
+Celniker/RNA:83 574:Celniker/RNA:83 1681 
+Celniker/RNA:83 574:Celniker/RNA:83 1682 
+Celniker/RNA:83 574:Celniker/RNA:83 1683 
+Celniker/RNA:83 574:Celniker/RNA:83 1684 
+Celniker/RNA:83 574:Celniker/RNA:83 1685 
+Celniker/RNA:83 574:Celniker/RNA:83 1686 
+Celniker/RNA:83 574:Celniker/RNA:83 1687 
+Celniker/RNA:83 574:Celniker/RNA:83 1688 
+Celniker/RNA:83 574:Celniker/RNA:83 1689 
+Celniker/RNA:83 574:Celniker/RNA:83 1690 
+Celniker/RNA:83 574:Celniker/RNA:83 1691 
+Celniker/RNA:83 574:Celniker/RNA:83 1692 
+Celniker/RNA:83 574:Celniker/RNA:83 1693 
+Celniker/RNA:83 574:Celniker/RNA:83 1694 
+Celniker/RNA:83 574:Celniker/RNA:83 1695 
+Celniker/RNA:83 574:Celniker/RNA:83 1696 
+Celniker/RNA:83 574:Celniker/RNA:83 1697 
+Celniker/RNA:83 574:Celniker/RNA:83 1698 
+Celniker/RNA:83 574:Celniker/RNA:83 1699 
+Celniker/RNA:83 574:Celniker/RNA:83 1700 
+Celniker/RNA:83 574:Celniker/RNA:83 1701 
+Celniker/RNA:83 574:Celniker/RNA:83 1702 
+Celniker/RNA:83 574:Celniker/RNA:83 1703 
+Celniker/RNA:83 574:Celniker/RNA:83 1704 
+Celniker/RNA:83 574:Celniker/RNA:83 1705 
+Celniker/RNA:83 574:Celniker/RNA:83 1706 
+Celniker/RNA:83 574:Celniker/RNA:83 1707 
+Celniker/RNA:83 574:Celniker/RNA:83 1708 
+Celniker/RNA:83 574:Celniker/RNA:83 1709 
+Celniker/RNA:83 574:Celniker/RNA:83 1710 
+Celniker/RNA:83 574:Celniker/RNA:83 1711 
+Celniker/RNA:83 574:Celniker/RNA:83 1712 
+Celniker/RNA:83 574:Celniker/RNA:83 1713 
+Celniker/RNA:83 574:Celniker/RNA:83 1714 
+Celniker/RNA:83 574:Celniker/RNA:83 1715 
+Celniker/RNA:83 574:Celniker/RNA:83 1716 
+Celniker/RNA:83 574:Celniker/RNA:83 1717 
+Celniker/RNA:83 574:Celniker/RNA:83 1718 
+Celniker/RNA:83 574:Celniker/RNA:83 1719 
+Celniker/RNA:83 574:Celniker/RNA:83 1720 
+Celniker/RNA:83 574:Celniker/RNA:83 1721 
+Celniker/RNA:83 574:Celniker/RNA:83 1722 
+Celniker/RNA:83 574:Celniker/RNA:83 1723 
+Celniker/RNA:83 574:Celniker/RNA:83 1724 
+Celniker/RNA:83 574:Celniker/RNA:83 1725 
+Celniker/RNA:83 574:Celniker/RNA:83 1726 
+Celniker/RNA:83 574:Celniker/RNA:83 1727 
+Celniker/RNA:83 574:Celniker/RNA:83 1728 
+Celniker/RNA:83 574:Celniker/RNA:83 1729 
+Celniker/RNA:83 574:Celniker/RNA:83 1730 
+Celniker/RNA:83 574:Celniker/RNA:83 1731 
+Celniker/RNA:83 574:Celniker/RNA:83 1732 
+Celniker/RNA:83 574:Celniker/RNA:83 1733 
+Celniker/RNA:83 574:Celniker/RNA:83 1734 
+Celniker/RNA:83 574:Celniker/RNA:83 1735 
+Celniker/RNA:83 574:Celniker/RNA:83 1736 
+Celniker/RNA:83 574:Celniker/RNA:83 1737 
+Celniker/RNA:83 574:Celniker/RNA:83 1738 
+Celniker/RNA:83 574:Celniker/RNA:83 1739 
+Celniker/RNA:83 574:Celniker/RNA:83 1740 
+Celniker/RNA:83 574:Celniker/RNA:83 1741 
+Celniker/RNA:83 574:Celniker/RNA:83 1742 
+Celniker/RNA:83 574:Celniker/RNA:83 1743 
+Celniker/RNA:83 574:Celniker/RNA:83 1744 
+Celniker/RNA:83 574:Celniker/RNA:83 1745 
+Celniker/RNA:83 574:Celniker/RNA:83 1746 
+Celniker/RNA:83 574:Celniker/RNA:83 1747 
+Celniker/RNA:83 574:Celniker/RNA:83 1748 
+Celniker/RNA:83 574:Celniker/RNA:83 1749 
+Celniker/RNA:83 574:Celniker/RNA:83 1750 
+Celniker/RNA:83 574:Celniker/RNA:83 1751 
+Celniker/RNA:83 574:Celniker/RNA:83 1752 
+Celniker/RNA:83 574:Celniker/RNA:83 1753 
+Celniker/RNA:83 574:Celniker/RNA:83 1754 
+Celniker/RNA:83 574:Celniker/RNA:83 1755 
+Celniker/RNA:83 574:Celniker/RNA:83 1756 
+Celniker/RNA:83 574:Celniker/RNA:83 1757 
+Celniker/RNA:83 574:Celniker/RNA:83 1758 
+Celniker/RNA:83 574:Celniker/RNA:83 1759 
+Celniker/RNA:83 574:Celniker/RNA:83 1760 
+Celniker/RNA:83 574:Celniker/RNA:83 1761 
+Celniker/RNA:83 574:Celniker/RNA:83 1762 
+Celniker/RNA:83 574:Celniker/RNA:83 1763 
+Celniker/RNA:83 574:Celniker/RNA:83 1764 
+Celniker/RNA:83 574:Celniker/RNA:83 1765 
+Celniker/RNA:83 574:Celniker/RNA:83 1766 
+Celniker/RNA:83 574:Celniker/RNA:83 1767 
+Celniker/RNA:83 574:Celniker/RNA:83 1768 
+Celniker/RNA:83 574:Celniker/RNA:83 1769 
+Celniker/RNA:83 574:Celniker/RNA:83 1770 
+Celniker/RNA:83 574:Celniker/RNA:83 1771 
+Celniker/RNA:83 574:Celniker/RNA:83 1772 
+Celniker/RNA:83 574:Celniker/RNA:83 1773 
+Celniker/RNA:83 574:Celniker/RNA:83 1774 
+Celniker/RNA:83 574:Celniker/RNA:83 1775 
+Celniker/RNA:83 574:Celniker/RNA:83 1776 
+Celniker/RNA:83 574:Celniker/RNA:83 1777 
+Celniker/RNA:83 574:Celniker/RNA:83 1778 
+Celniker/RNA:83 574:Celniker/RNA:83 1779 
+Celniker/RNA:83 574:Celniker/RNA:83 1780 
+Celniker/RNA:83 574:Celniker/RNA:83 1781 
+Celniker/RNA:83 574:Celniker/RNA:83 1782 
+Celniker/RNA:83 574:Celniker/RNA:83 1783 
+Celniker/RNA:83 574:Celniker/RNA:83 1784 
+Celniker/RNA:83 574:Celniker/RNA:83 1785 
+Celniker/RNA:83 574:Celniker/RNA:83 1786 
+Celniker/RNA:83 574:Celniker/RNA:83 1787 
+Celniker/RNA:83 574:Celniker/RNA:83 1788 
+Celniker/RNA:83 574:Celniker/RNA:83 1789 
+Celniker/RNA:83 574:Celniker/RNA:83 1790 
+Celniker/RNA:83 574:Celniker/RNA:83 1791 
+Celniker/RNA:83 574:Celniker/RNA:83 1792 
+Celniker/RNA:83 574:Celniker/RNA:83 1793 
+Celniker/RNA:83 574:Celniker/RNA:83 1794 
+Celniker/RNA:83 574:Celniker/RNA:83 1795 
+Celniker/RNA:83 574:Celniker/RNA:83 1796 
+Celniker/RNA:83 574:Celniker/RNA:83 1797 
+Celniker/RNA:83 574:Celniker/RNA:83 1798 
+Celniker/RNA:83 574:Celniker/RNA:83 1799 
+Celniker/RNA:83 574:Celniker/RNA:83 1800 
+Celniker/RNA:83 574:Celniker/RNA:83 1801 
+Celniker/RNA:83 574:Celniker/RNA:83 1802 
+Celniker/RNA:83 574:Celniker/RNA:83 1803 
+Celniker/RNA:83 574:Celniker/RNA:83 1804 
+Celniker/RNA:83 574:Celniker/RNA:83 1805 
+Celniker/RNA:83 574:Celniker/RNA:83 1806 
+Celniker/RNA:83 574:Celniker/RNA:83 1807 
+Celniker/RNA:83 574:Celniker/RNA:83 1808 
+Celniker/RNA:83 574:Celniker/RNA:83 1809 
+Celniker/RNA:83 574:Celniker/RNA:83 1810 
+Celniker/RNA:83 574:Celniker/RNA:83 1811 
+Celniker/RNA:83 574:Celniker/RNA:83 1812 
+Celniker/RNA:83 574:Celniker/RNA:83 1813 
+Celniker/RNA:83 574:Celniker/RNA:83 1814 
+Celniker/RNA:83 574:Celniker/RNA:83 1815 
+Celniker/RNA:83 574:Celniker/RNA:83 1816 
+Celniker/RNA:83 574:Celniker/RNA:83 1817 
+Celniker/RNA:83 574:Celniker/RNA:83 1818 
+Celniker/RNA:83 574:Celniker/RNA:83 1819 
+Celniker/RNA:83 574:Celniker/RNA:83 1820 
+Celniker/RNA:83 574:Celniker/RNA:83 1821 
+Celniker/RNA:83 574:Celniker/RNA:83 1822 
+Celniker/RNA:83 574:Celniker/RNA:83 1823 
+Celniker/RNA:83 574:Celniker/RNA:83 1824 
+Celniker/RNA:83 574:Celniker/RNA:83 1825 
+Celniker/RNA:83 574:Celniker/RNA:83 1826 
+Celniker/RNA:83 574:Celniker/RNA:83 1827 
+Celniker/RNA:83 574:Celniker/RNA:83 1828 
+Celniker/RNA:83 574:Celniker/RNA:83 1829 
+Celniker/RNA:83 574:Celniker/RNA:83 1830 
+Celniker/RNA:83 574:Celniker/RNA:83 1831 
+Celniker/RNA:83 574:Celniker/RNA:83 1832 
+Celniker/RNA:83 574:Celniker/RNA:83 1833 
+Celniker/RNA:83 574:Celniker/RNA:83 1834 
+Celniker/RNA:83 574:Celniker/RNA:83 1835 
+Celniker/RNA:83 574:Celniker/RNA:83 1836 
+Celniker/RNA:83 574:Celniker/RNA:83 1837 
+Celniker/RNA:83 574:Celniker/RNA:83 1838 
+Celniker/RNA:83 574:Celniker/RNA:83 1839 
+Celniker/RNA:83 574:Celniker/RNA:83 1840 
+Celniker/RNA:83 574:Celniker/RNA:83 1841 
+Celniker/RNA:83 574:Celniker/RNA:83 1842 
+Celniker/RNA:83 574:Celniker/RNA:83 1843 
+Celniker/RNA:83 574:Celniker/RNA:83 1844 
+Celniker/RNA:83 574:Celniker/RNA:83 1845 
+Celniker/RNA:83 574:Celniker/RNA:83 1846 
+Celniker/RNA:83 574:Celniker/RNA:83 1847 
+Celniker/RNA:83 574:Celniker/RNA:83 1848 
+Celniker/RNA:83 574:Celniker/RNA:83 1849 
+Celniker/RNA:83 574:Celniker/RNA:83 1850 
+Celniker/RNA:83 574:Celniker/RNA:83 1851 
+Celniker/RNA:83 574:Celniker/RNA:83 1852 
+Celniker/RNA:83 574:Celniker/RNA:83 1853 
+Celniker/RNA:83 574:Celniker/RNA:83 1854 
+Celniker/RNA:83 574:Celniker/RNA:83 1855 
+Celniker/RNA:83 574:Celniker/RNA:83 1856 
+Celniker/RNA:83 574:Celniker/RNA:83 1857 
+Celniker/RNA:83 574:Celniker/RNA:83 1858 
+Celniker/RNA:83 574:Celniker/RNA:83 1859 
+Celniker/RNA:83 574:Celniker/RNA:83 1860 
+Celniker/RNA:83 574:Celniker/RNA:83 1861 
+Celniker/RNA:83 574:Celniker/RNA:83 1862 
+Celniker/RNA:83 574:Celniker/RNA:83 1863 
+Celniker/RNA:83 574:Celniker/RNA:83 1864 
+connecting to database ...schema is modencode_experiment_574_data,public
+database connected.
+loading experiment ...try to find num_of_rows ...1865 done
+try to find num_of_cols ...7 done
+try to find title ...Dm Embryonic 5'RACE 454 sequencing – pool 4 done
+try to find description ...To map transcription start sites (TSSs) of capped transcripts, 5' RLM (RNA Ligase Mediated)-RACE (Rapid Amplification of cDNA Ends) is performed.  The 5' ends of uncapped RNAs are dephosphorylated; 5' ends of capped RNAs are protected. The 5' cap structure is then removed from capped RNAs, leaving a 5' phosphate group. An RNA oligonucleotide adapter is ligated to the 5' ends of the decapped transcripts. First-strand cDNA is synthesized using a random dodecamer primer, and the products are aliquoted into transcript-specific reactions. Two rounds of nested PCR are performed using transcript-specific primers; the number of cycles of amplification is limited in an effort to preserve the diversity of TSSs of each transcript. The products are sequenced by one of two methods. In the first method, the products are cloned in the vector pCR2.1, and the sequences of individual clones are determined using conventional capillary sequencing.  In the second method, RACE products are analyzed on agarose gels to estimate product sizes and concentrations, and normalized equimolar pools of 1,000 to 5,000 products are sequenced on the Roche 454 Life Sciences platform. The sequence data then undergo base calling, vector or linker trimming, RLM adapter identification, and quality trimming. Sequences for which the RLM adapter can be identified are aligned to the genome and, in cases where the aligned location is near a transcript targeted in the pool, transcription start sites are identified.  The 5' RLM-RACE sequence reads are submitted to dbEST (capillary sequencing) or the Short Read Archive (454 sequencing) at Genbank. done
+try to find organism ...Drosophila melanogaster done
+try to find project ...Susan Celniker done
+try to find lab ...Celniker done
+try to find factors ... done
+try to find data_type ...Gene Structure - mRNA done
+try to find assay_type ...RACE done
+try to find hyb_slot ...NA done
+try to find seq_slot ...6 done
+try to find ip_slot ...NA done
+try to find label_slot ...NA done
+try to find raw_slot ...NA done
+try to find norm_slot ...NA done
+try to find platform ... done
+try to find sample_name_slot ...NA done
+try to find source_name_slot ...NA done
+try to find extract_name_slot ...NA done
+try to find hybridization_name_slot ...NA done
+try to find replicate_group_slot ...NA done
+try to find last_extraction_slot ...2 done
+try to find groups ...group by last extraction protocol.
+$VAR1 = {
+          '1049' => 0,
+          '127' => 0,
+          '1801' => 0,
+          '71' => 0,
+          '1648' => 0,
+          '1481' => 0,
+          '882' => 0,
+          '1488' => 0,
+          '1050' => 0,
+          '560' => 0,
+          '1178' => 0,
+          '898' => 0,
+          '798' => 0,
+          '1387' => 0,
+          '1031' => 0,
+          '512' => 0,
+          '1273' => 0,
+          '463' => 0,
+          '517' => 0,
+          '458' => 0,
+          '451' => 0,
+          '1785' => 0,
+          '454' => 0,
+          '1364' => 0,
+          '1408' => 0,
+          '1250' => 0,
+          '1363' => 0,
+          '722' => 0,
+          '634' => 0,
+          '1109' => 0,
+          '578' => 0,
+          '1630' => 0,
+          '1597' => 0,
+          '695' => 0,
+          '978' => 0,
+          '728' => 0,
+          '1244' => 0,
+          '1638' => 0,
+          '742' => 0,
+          '378' => 0,
+          '325' => 0,
+          '29' => 0,
+          '889' => 0,
+          '350' => 0,
+          '1233' => 0,
+          '1810' => 0,
+          '540' => 0,
+          '1615' => 0,
+          '1162' => 0,
+          '58' => 0,
+          '684' => 0,
+          '211' => 0,
+          '153' => 0,
+          '1732' => 0,
+          '861' => 0,
+          '337' => 0,
+          '1546' => 0,
+          '101' => 0,
+          '340' => 0,
+          '76' => 0,
+          '311' => 0,
+          '982' => 0,
+          '571' => 0,
+          '1214' => 0,
+          '1190' => 0,
+          '825' => 0,
+          '389' => 0,
+          '917' => 0,
+          '1660' => 0,
+          '495' => 0,
+          '1703' => 0,
+          '1345' => 0,
+          '1171' => 0,
+          '1123' => 0,
+          '966' => 0,
+          '1322' => 0,
+          '1816' => 0,
+          '992' => 0,
+          '758' => 0,
+          '236' => 0,
+          '706' => 0,
+          '218' => 0,
+          '1172' => 0,
+          '14' => 0,
+          '1259' => 0,
+          '1608' => 0,
+          '834' => 0,
+          '285' => 0,
+          '234' => 0,
+          '594' => 0,
+          '1438' => 0,
+          '1216' => 0,
+          '1135' => 0,
+          '1203' => 0,
+          '96' => 0,
+          '1068' => 0,
+          '1778' => 0,
+          '1667' => 0,
+          '1859' => 0,
+          '486' => 0,
+          '1354' => 0,
+          '160' => 0,
+          '569' => 0,
+          '8' => 0,
+          '98' => 0,
+          '1278' => 0,
+          '1048' => 0,
+          '1381' => 0,
+          '1000' => 0,
+          '1061' => 0,
+          '43' => 0,
+          '1396' => 0,
+          '686' => 0,
+          '1760' => 0,
+          '391' => 0,
+          '1728' => 0,
+          '943' => 0,
+          '288' => 0,
+          '193' => 0,
+          '1555' => 0,
+          '119' => 0,
+          '1375' => 0,
+          '586' => 0,
+          '180' => 0,
+          '1585' => 0,
+          '410' => 0,
+          '246' => 0,
+          '999' => 0,
+          '690' => 0,
+          '1168' => 0,
+          '61' => 0,
+          '1180' => 0,
+          '1185' => 0,
+          '430' => 0,
+          '447' => 0,
+          '1446' => 0,
+          '536' => 0,
+          '1741' => 0,
+          '1767' => 0,
+          '1653' => 0,
+          '1315' => 0,
+          '1130' => 0,
+          '415' => 0,
+          '1688' => 0,
+          '1266' => 0,
+          '189' => 0,
+          '1292' => 0,
+          '1356' => 0,
+          '480' => 0,
+          '1153' => 0,
+          '438' => 0,
+          '107' => 0,
+          '87' => 0,
+          '1022' => 0,
+          '1458' => 0,
+          '1832' => 0,
+          '444' => 0,
+          '508' => 0,
+          '953' => 0,
+          '1336' => 0,
+          '221' => 0,
+          '39' => 0,
+          '1424' => 0,
+          '1560' => 0,
+          '1089' => 0,
+          '558' => 0,
+          '417' => 0,
+          '12' => 0,
+          '1762' => 0,
+          '1554' => 0,
+          '784' => 0,
+          '260' => 0,
+          '573' => 0,
+          '1844' => 0,
+          '1084' => 0,
+          '1530' => 0,
+          '1144' => 0,
+          '762' => 0,
+          '638' => 0,
+          '734' => 0,
+          '1723' => 0,
+          '875' => 0,
+          '1522' => 0,
+          '1' => 0,
+          '506' => 0,
+          '136' => 0,
+          '116' => 0,
+          '1197' => 0,
+          '144' => 0,
+          '1580' => 0,
+          '1440' => 0,
+          '661' => 0,
+          '381' => 0,
+          '1471' => 0,
+          '1814' => 0,
+          '581' => 0,
+          '308' => 0,
+          '906' => 0,
+          '1349' => 0,
+          '177' => 0,
+          '678' => 0,
+          '1517' => 0,
+          '373' => 0,
+          '773' => 0,
+          '1247' => 0,
+          '205' => 0,
+          '22' => 0,
+          '927' => 0,
+          '1752' => 0,
+          '1309' => 0,
+          '1576' => 0,
+          '301' => 0,
+          '51' => 0,
+          '1758' => 0,
+          '1622' => 0,
+          '1260' => 0,
+          '1822' => 0,
+          '456' => 0,
+          '874' => 0,
+          '652' => 0,
+          '975' => 0,
+          '1708' => 0,
+          '493' => 0,
+          '1436' => 0,
+          '1033' => 0,
+          '1591' => 0,
+          '1677' => 0,
+          '1539' => 0,
+          '1320' => 0,
+          '796' => 0,
+          '1026' => 0,
+          '366' => 0,
+          '844' => 0,
+          '1541' => 0,
+          '1390' => 0,
+          '272' => 0,
+          '1646' => 0,
+          '1499' => 0,
+          '1469' => 0,
+          '775' => 0,
+          '919' => 0,
+          '746' => 0,
+          '534' => 0,
+          '400' => 0,
+          '1268' => 0,
+          '744' => 0,
+          '20' => 0,
+          '888' => 0,
+          '633' => 0,
+          '1372' => 0,
+          '1011' => 0,
+          '151' => 0,
+          '1754' => 0,
+          '1825' => 0,
+          '1669' => 0,
+          '1627' => 0,
+          '1161' => 0,
+          '468' => 0,
+          '1285' => 0,
+          '1019' => 0,
+          '700' => 0,
+          '287' => 0,
+          '475' => 0,
+          '78' => 0,
+          '1380' => 0,
+          '990' => 0,
+          '413' => 0,
+          '294' => 0,
+          '1614' => 0,
+          '1442' => 0,
+          '932' => 0,
+          '764' => 0,
+          '349' => 0,
+          '1743' => 0,
+          '1549' => 0,
+          '1525' => 0,
+          '515' => 0,
+          '1242' => 0,
+          '1208' => 0,
+          '1107' => 0,
+          '138' => 0,
+          '1383' => 0,
+          '606' => 0,
+          '1803' => 0,
+          '137' => 0,
+          '1414' => 0,
+          '1855' => 0,
+          '1201' => 0,
+          '724' => 0,
+          '666' => 0,
+          '432' => 0,
+          '519' => 0,
+          '1074' => 0,
+          '860' => 0,
+          '1195' => 0,
+          '1567' => 0,
+          '1063' => 0,
+          '17' => 0,
+          '1776' => 0,
+          '1327' => 0,
+          '1274' => 0,
+          '708' => 0,
+          '110' => 0,
+          '333' => 0,
+          '1601' => 0,
+          '710' => 0,
+          '1656' => 0,
+          '323' => 0,
+          '856' => 0,
+          '1834' => 0,
+          '1664' => 0,
+          '112' => 0,
+          '545' => 0,
+          '191' => 0,
+          '187' => 0,
+          '588' => 0,
+          '1684' => 0,
+          '646' => 0,
+          '756' => 0,
+          '446' => 0,
+          '1283' => 0,
+          '262' => 0,
+          '1220' => 0,
+          '212' => 0,
+          '1582' => 0,
+          '1599' => 0,
+          '1331' => 0,
+          '1149' => 0,
+          '542' => 0,
+          '1305' => 0,
+          '961' => 0,
+          '1662' => 0,
+          '1288' => 0,
+          '1087' => 0,
+          '810' => 0,
+          '574' => 0,
+          '1238' => 0,
+          '170' => 0,
+          '1587' => 0,
+          '33' => 0,
+          '660' => 0,
+          '1559' => 0,
+          '1793' => 0,
+          '7' => 0,
+          '1701' => 0,
+          '26' => 0,
+          '227' => 0,
+          '1860' => 0,
+          '977' => 0,
+          '566' => 0,
+          '526' => 0,
+          '806' => 0,
+          '264' => 0,
+          '255' => 0,
+          '359' => 0,
+          '182' => 0,
+          '1229' => 0,
+          '1817' => 0,
+          '108' => 0,
+          '604' => 0,
+          '1001' => 0,
+          '556' => 0,
+          '717' => 0,
+          '232' => 0,
+          '477' => 0,
+          '815' => 0,
+          '1338' => 0,
+          '671' => 0,
+          '1511' => 0,
+          '1182' => 0,
+          '225' => 0,
+          '1447' => 0,
+          '330' => 0,
+          '142' => 0,
+          '207' => 0,
+          '1510' => 0,
+          '167' => 0,
+          '48' => 0,
+          '1857' => 0,
+          '360' => 0,
+          '692' => 0,
+          '1605' => 0,
+          '663' => 0,
+          '854' => 0,
+          '969' => 0,
+          '1174' => 0,
+          '1076' => 0,
+          '766' => 0,
+          '510' => 0,
+          '393' => 0,
+          '449' => 0,
+          '1501' => 0,
+          '658' => 0,
+          '274' => 0,
+          '1574' => 0,
+          '1579' => 0,
+          '549' => 0,
+          '877' => 0,
+          '659' => 0,
+          '1508' => 0,
+          '1771' => 0,
+          '1141' => 0,
+          '1128' => 0,
+          '682' => 0,
+          '353' => 0,
+          '375' => 0,
+          '984' => 0,
+          '1155' => 0,
+          '946' => 0,
+          '1485' => 0,
+          '788' => 0,
+          '128' => 0,
+          '1724' => 0,
+          '1520' => 0,
+          '303' => 0,
+          '250' => 0,
+          '1361' => 0,
+          '614' => 0,
+          '1765' => 0,
+          '501' => 0,
+          '1313' => 0,
+          '278' => 0,
+          '1617' => 0,
+          '490' => 0,
+          '1843' => 0,
+          '130' => 0,
+          '155' => 0,
+          '1373' => 0,
+          '387' => 0,
+          '53' => 0,
+          '1465' => 0,
+          '1302' => 0,
+          '1112' => 0,
+          '626' => 0,
+          '1397' => 0,
+          '1294' => 0,
+          '941' => 0,
+          '461' => 0,
+          '583' => 0,
+          '1562' => 0,
+          '1426' => 0,
+          '257' => 0,
+          '1358' => 0,
+          '951' => 0,
+          '782' => 0,
+          '85' => 0,
+          '1824' => 0,
+          '809' => 0,
+          '1156' => 0,
+          '1557' => 0,
+          '1486' => 0,
+          '425' => 0,
+          '591' => 0,
+          '832' => 0,
+          '736' => 0,
+          '539' => 0,
+          '781' => 0,
+          '828' => 0,
+          '276' => 0,
+          '102' => 0,
+          '1831' => 0,
+          '1698' => 0,
+          '520' => 0,
+          '1218' => 0,
+          '532' => 0,
+          '1193' => 0,
+          '1404' => 0,
+          '55' => 0,
+          '1543' => 0,
+          '1681' => 0,
+          '57' => 0,
+          '259' => 0,
+          '424' => 0,
+          '872' => 0,
+          '1625' => 0,
+          '163' => 0,
+          '1402' => 0,
+          '1106' => 0,
+          '1836' => 0,
+          '1146' => 0,
+          '395' => 0,
+          '89' => 0,
+          '175' => 0,
+          '1531' => 0,
+          '584' => 0,
+          '988' => 0,
+          '35' => 0,
+          '1841' => 0,
+          '1550' => 0,
+          '1454' => 0,
+          '1421' => 0,
+          '347' => 0,
+          '1333' => 0,
+          '665' => 0,
+          '434' => 0,
+          '1476' => 0,
+          '1184' => 0,
+          '865' => 0,
+          '1207' => 0,
+          '1584' => 0,
+          '904' => 0,
+          '930' => 0,
+          '442' => 0,
+          '1675' => 0,
+          '1577' => 0,
+          '649' => 0,
+          '1572' => 0,
+          '689' => 0,
+          '1318' => 0,
+          '886' => 0,
+          '648' => 0,
+          '642' => 0,
+          '1116' => 0,
+          '1764' => 0,
+          '1329' => 0,
+          '1028' => 0,
+          '1725' => 0,
+          '1589' => 0,
+          '198' => 0,
+          '1718' => 0,
+          '1098' => 0,
+          '1059' => 0,
+          '727' => 0,
+          '939' => 0,
+          '320' => 0,
+          '913' => 0,
+          '811' => 0,
+          '1670' => 0,
+          '202' => 0,
+          '249' => 0,
+          '361' => 0,
+          '465' => 0,
+          '1612' => 0,
+          '184' => 0,
+          '819' => 0,
+          '1189' => 0,
+          '1177' => 0,
+          '1537' => 0,
+          '1127' => 0,
+          '776' => 0,
+          '894' => 0,
+          '1748' => 0,
+          '1819' => 0,
+          '1298' => 0,
+          '858' => 0,
+          '1459' => 0,
+          '140' => 0,
+          '1570' => 0,
+          '1269' => 0,
+          '181' => 0,
+          '412' => 0,
+          '954' => 0,
+          '385' => 0,
+          '1479' => 0,
+          '1359' => 0,
+          '307' => 0,
+          '1671' => 0,
+          '801' => 0,
+          '985' => 0,
+          '1467' => 0,
+          '1463' => 0,
+          '971' => 0,
+          '830' => 0,
+          '154' => 0,
+          '754' => 0,
+          '847' => 0,
+          '479' => 0,
+          '1166' => 0,
+          '1101' => 0,
+          '704' => 0,
+          '1563' => 0,
+          '326' => 0,
+          '1462' => 0,
+          '1378' => 0,
+          '1165' => 0,
+          '1003' => 0,
+          '1054' => 0,
+          '681' => 0,
+          '1800' => 0,
+          '619' => 0,
+          '1717' => 0,
+          '335' => 0,
+          '1029' => 0,
+          '698' => 0,
+          '5' => 0,
+          '1634' => 0,
+          '621' => 0,
+          '524' => 0,
+          '1848' => 0,
+          '554' => 0,
+          '552' => 0,
+          '598' => 0,
+          '780' => 0,
+          '1623' => 0,
+          '1433' => 0,
+          '74' => 0,
+          '240' => 0,
+          '1666' => 0,
+          '890' => 0,
+          '440' => 0,
+          '230' => 0,
+          '1289' => 0,
+          '115' => 0,
+          '299' => 0,
+          '377' => 0,
+          '1282' => 0,
+          '922' => 0,
+          '602' => 0,
+          '1694' => 0,
+          '841' => 0,
+          '1311' => 0,
+          '1044' => 0,
+          '1072' => 0,
+          '1787' => 0,
+          '1394' => 0,
+          '1350' => 0,
+          '612' => 0,
+          '1751' => 0,
+          '1391' => 0,
+          '936' => 0,
+          '1277' => 0,
+          '91' => 0,
+          '1240' => 0,
+          '1086' => 0,
+          '701' => 0,
+          '467' => 0,
+          '474' => 0,
+          '481' => 0,
+          '867' => 0,
+          '214' => 0,
+          '564' => 0,
+          '817' => 0,
+          '563' => 0,
+          '1650' => 0,
+          '731' => 0,
+          '657' => 0,
+          '229' => 0,
+          '1783' => 0,
+          '768' => 0,
+          '1092' => 0,
+          '673' => 0,
+          '503' => 0,
+          '1756' => 0,
+          '1636' => 0,
+          '68' => 0,
+          '1483' => 0,
+          '315' => 0,
+          '1827' => 0,
+          '338' => 0,
+          '1347' => 0,
+          '761' => 0,
+          '576' => 0,
+          '222' => 0,
+          '1504' => 0,
+          '25' => 0,
+          '1775' => 0,
+          '738' => 0,
+          '1415' => 0,
+          '484' => 0,
+          '1243' => 0,
+          '1078' => 0,
+          '1036' => 0,
+          '305' => 0,
+          '1253' => 0,
+          '928' => 0,
+          '1265' => 0,
+          '623' => 0,
+          '544' => 0,
+          '1512' => 0,
+          '1644' => 0,
+          '1526' => 0,
+          '1196' => 0,
+          '1114' => 0,
+          '217' => 0,
+          '328' => 0,
+          '239' => 0,
+          '122' => 0,
+          '1730' => 0,
+          '1223' => 0,
+          '878' => 0,
+          '628' => 0,
+          '158' => 0,
+          '269' => 0,
+          '281' => 0,
+          '363' => 0,
+          '46' => 0,
+          '1851' => 0,
+          '1316' => 0,
+          '733' => 0,
+          '1418' => 0,
+          '997' => 0,
+          '630' => 0,
+          '36' => 0,
+          '1368' => 0,
+          '748' => 0,
+          '472' => 0,
+          '1655' => 0,
+          '1449' => 0,
+          '317' => 0,
+          '608' => 0,
+          '711' => 0,
+          '132' => 0,
+          '1791' => 0,
+          '1254' => 0,
+          '1649' => 0,
+          '1642' => 0,
+          '1234' => 0,
+          '892' => 0,
+          '1314' => 0,
+          '1428' => 0,
+          '546' => 0,
+          '537' => 0,
+          '1798' => 0,
+          '1474' => 0,
+          '522' => 0,
+          '125' => 0,
+          '1632' => 0,
+          '1423' => 0,
+          '1018' => 0,
+          '44' => 0,
+          '1687' => 0,
+          '1125' => 0,
+          '1007' => 0,
+          '667' => 0,
+          '1443' => 0,
+          '741' => 0,
+          '1833' => 0,
+          '1188' => 0,
+          '1186' => 0,
+          '998' => 0,
+          '1564' => 0,
+          '1280' => 0,
+          '714' => 0,
+          '1789' => 0,
+          '313' => 0,
+          '529' => 0,
+          '1545' => 0,
+          '1838' => 0,
+          '1773' => 0,
+          '1058' => 0,
+          '987' => 0,
+          '1324' => 0,
+          '397' => 0,
+          '1150' => 0,
+          '1096' => 0,
+          '1657' => 0,
+          '1535' => 0,
+          '1335' => 0,
+          '908' => 0,
+          '1191' => 0,
+          '459' => 0,
+          '284' => 0,
+          '823' => 0,
+          '1340' => 0,
+          '903' => 0,
+          '247' => 0,
+          '165' => 0,
+          '289' => 0,
+          '1495' => 0,
+          '729' => 0,
+          '1753' => 0,
+          '771' => 0,
+          '2' => 0,
+          '808' => 0,
+          '401' => 0,
+          '845' => 0,
+          '186' => 0,
+          '1847' => 0,
+          '1797' => 0,
+          '1231' => 0,
+          '1119' => 0,
+          '1249' => 0,
+          '147' => 0,
+          '973' => 0,
+          '1705' => 0,
+          '1046' => 0,
+          '1142' => 0,
+          '1291' => 0,
+          '915' => 0,
+          '319' => 0,
+          '1586' => 0,
+          '1456' => 0,
+          '1179' => 0,
+          '1052' => 0,
+          '735' => 0,
+          '404' => 0,
+          '516' => 0,
+          '1813' => 0,
+          '1493' => 0,
+          '1551' => 0,
+          '974' => 0,
+          '1271' => 0,
+          '702' => 0,
+          '1668' => 0,
+          '1715' => 0,
+          '344' => 0,
+          '1613' => 0,
+          '636' => 0,
+          '1710' => 0,
+          '1406' => 0,
+          '1104' => 0,
+          '561' => 0,
+          '1133' => 0,
+          '209' => 0,
+          '1118' => 0,
+          '1575' => 0,
+          '357' => 0,
+          '1307' => 0,
+          '117' => 0,
+          '1812' => 0,
+          '1769' => 0,
+          '455' => 0,
+          '600' => 0,
+          '80' => 0,
+          '336' => 0,
+          '1673' => 0,
+          '457' => 0,
+          '1301' => 0,
+          '821' => 0,
+          '696' => 0,
+          '383' => 0,
+          '963' => 0,
+          '297' => 0,
+          '1721' => 0,
+          '1431' => 0,
+          '92' => 0,
+          '1489' => 0,
+          '1212' => 0,
+          '1805' => 0,
+          '1596' => 0,
+          '980' => 0,
+          '10' => 0,
+          '550' => 0,
+          '1727' => 0,
+          '1477' => 0,
+          '1164' => 0,
+          '1651' => 0,
+          '1081' => 0,
+          '505' => 0,
+          '670' => 0,
+          '1094' => 0,
+          '1736' => 0,
+          '1569' => 0,
+          '958' => 0,
+          '419' => 0,
+          '995' => 0,
+          '1225' => 0,
+          '837' => 0,
+          '290' => 0,
+          '625' => 0,
+          '592' => 0,
+          '149' => 0,
+          '712' => 0,
+          '210' => 0,
+          '406' => 0,
+          '1640' => 0,
+          '173' => 0,
+          '530' => 0,
+          '66' => 0,
+          '19' => 0,
+          '1030' => 0,
+          '365' => 0,
+          '763' => 0,
+          '470' => 0,
+          '1524' => 0,
+          '793' => 0,
+          '1287' => 0,
+          '1205' => 0,
+          '1696' => 0,
+          '654' => 0,
+          '570' => 0,
+          '252' => 0,
+          '1159' => 0,
+          '883' => 0,
+          '156' => 0,
+          '283' => 0,
+          '655' => 0,
+          '59' => 0,
+          '421' => 0,
+          '1367' => 0,
+          '271' => 0,
+          '1226' => 0,
+          '1256' => 0,
+          '1070' => 0,
+          '1024' => 0,
+          '1744' => 0,
+          '1853' => 0,
+          '491' => 0,
+          '864' => 0,
+          '1863' => 0,
+          '1016' => 0,
+          '219' => 0,
+          '13' => 0,
+          '1170' => 0,
+          '799' => 0,
+          '105' => 0,
+          '1514' => 0,
+          '925' => 0,
+          '840' => 0,
+          '1647' => 0,
+          '597' => 0,
+          '390' => 0,
+          '111' => 0,
+          '1686' => 0,
+          '1515' => 0,
+          '1042' => 0,
+          '1411' => 0,
+          '38' => 0,
+          '408' => 0,
+          '1480' => 0,
+          '196' => 0,
+          '945' => 0,
+          '242' => 0,
+          '1169' => 0,
+          '559' => 0,
+          '1588' => 0,
+          '32' => 0,
+          '118' => 0,
+          '206' => 0,
+          '443' => 0,
+          '1674' => 0,
+          '959' => 0,
+          '1065' => 0,
+          '331' => 0,
+          '358' => 0,
+          '1659' => 0,
+          '737' => 0,
+          '1795' => 0,
+          '580' => 0,
+          '767' => 0,
+          '84' => 0,
+          '805' => 0,
+          '1020' => 0,
+          '437' => 0,
+          '194' => 0,
+          '1768' => 0,
+          '220' => 0,
+          '1312' => 0,
+          '1257' => 0,
+          '846' => 0,
+          '1021' => 0,
+          '31' => 0,
+          '1263' => 0,
+          '1689' => 0,
+          '934' => 0,
+          '1861' => 0,
+          '1296' => 0,
+          '1553' => 0,
+          '948' => 0,
+          '1303' => 0,
+          '1654' => 0,
+          '572' => 0,
+          '968' => 0,
+          '675' => 0,
+          '1398' => 0,
+          '226' => 0,
+          '15' => 0,
+          '1430' => 0,
+          '431' => 0,
+          '527' => 0,
+          '1145' => 0,
+          '382' => 0,
+          '1448' => 0,
+          '1506' => 0,
+          '62' => 0,
+          '833' => 0,
+          '139' => 0,
+          '1573' => 0,
+          '1472' => 0,
+          '129' => 0,
+          '548' => 0,
+          '926' => 0,
+          '1246' => 0,
+          '859' => 0,
+          '1083' => 0,
+          '739' => 0,
+          '1293' => 0,
+          '1110' => 0,
+          '876' => 0,
+          '1792' => 0,
+          '1772' => 0,
+          '662' => 0,
+          '418' => 0,
+          '783' => 0,
+          '933' => 0,
+          '1357' => 0,
+          '168' => 0,
+          '135' => 0,
+          '348' => 0,
+          '1518' => 0,
+          '1152' => 0,
+          '145' => 0,
+          '49' => 0,
+          '789' => 0,
+          '178' => 0,
+          '1131' => 0,
+          '124' => 0,
+          '772' => 0,
+          '1759' => 0,
+          '1090' => 0,
+          '627' => 0,
+          '993' => 0,
+          '1308' => 0,
+          '1429' => 0,
+          '715' => 0,
+          '0' => 0,
+          '1374' => 0,
+          '1722' => 0,
+          '23' => 0,
+          '1528' => 0,
+          '364' => 0,
+          '388' => 0,
+          '653' => 0,
+          '1425' => 0,
+          '1692' => 0,
+          '950' => 0,
+          '1845' => 0,
+          '1678' => 0,
+          '1445' => 0,
+          '1025' => 0,
+          '509' => 0,
+          '1015' => 0,
+          '367' => 0,
+          '976' => 0,
+          '716' => 0,
+          '1821' => 0,
+          '1842' => 0,
+          '940' => 0,
+          '1466' => 0,
+          '485' => 0,
+          '685' => 0,
+          '743' => 0,
+          '778' => 0,
+          '21' => 0,
+          '523' => 0,
+          '720' => 0,
+          '1270' => 0,
+          '460' => 0,
+          '1645' => 0,
+          '1460' => 0,
+          '1389' => 0,
+          '324' => 0,
+          '453' => 0,
+          '723' => 0,
+          '244' => 0,
+          '1202' => 0,
+          '637' => 0,
+          '351' => 0,
+          '1040' => 0,
+          '595' => 0,
+          '1755' => 0,
+          '1138' => 0,
+          '488' => 0,
+          '1854' => 0,
+          '752' => 0,
+          '1232' => 0,
+          '1012' => 0,
+          '1498' => 0,
+          '835' => 0,
+          '1607' => 0,
+          '1267' => 0,
+          '379' => 0,
+          '1386' => 0,
+          '1032' => 0,
+          '1639' => 0,
+          '1536' => 0,
+          '113' => 0,
+          '901' => 0,
+          '1035' => 0,
+          '152' => 0,
+          '342' => 0,
+          '452' => 0,
+          '1419' => 0,
+          '862' => 0,
+          '295' => 0,
+          '579' => 0,
+          '341' => 0,
+          '1056' => 0,
+          '535' => 0,
+          '1618' => 0,
+          '77' => 0,
+          '683' => 0,
+          '541' => 0,
+          '1215' => 0,
+          '64' => 0,
+          '1712' => 0,
+          '1473' => 0,
+          '765' => 0,
+          '881' => 0,
+          '1628' => 0,
+          '312' => 0,
+          '897' => 0,
+          '45' => 0,
+          '405' => 0,
+          '507' => 0,
+          '237' => 0,
+          '1002' => 0,
+          '1173' => 0,
+          '370' => 0,
+          '309' => 0,
+          '1734' => 0,
+          '1733' => 0,
+          '567' => 0,
+          '416' => 0,
+          '100' => 0,
+          '380' => 0,
+          '914' => 0,
+          '1279' => 0,
+          '1258' => 0,
+          '300' => 0,
+          '965' => 0,
+          '1439' => 0,
+          '824' => 0,
+          '1395' => 0,
+          '120' => 0,
+          '286' => 0,
+          '1075' => 0,
+          '800' => 0,
+          '1148' => 0,
+          '254' => 0,
+          '392' => 0,
+          '1321' => 0,
+          '1365' => 0,
+          '1407' => 0,
+          '496' => 0,
+          '605' => 0,
+          '1779' => 0,
+          '1568' => 0,
+          '607' => 0,
+          '1807' => 0,
+          '1699' => 0,
+          '813' => 0,
+          '42' => 0,
+          '644' => 0,
+          '759' => 0,
+          '851' => 0,
+          '1820' => 0,
+          '399' => 0,
+          '1228' => 0,
+          '1073' => 0,
+          '235' => 0,
+          '1811' => 0,
+          '694' => 0,
+          '436' => 0,
+          '1342' => 0,
+          '1802' => 0,
+          '94' => 0,
+          '213' => 0,
+          '816' => 0,
+          '1103' => 0,
+          '1450' => 0,
+          '568' => 0,
+          '1062' => 0,
+          '265' => 0,
+          '296' => 0,
+          '1129' => 0,
+          '791' => 0,
+          '171' => 0,
+          '1143' => 0,
+          '1700' => 0,
+          '1355' => 0,
+          '386' => 0,
+          '916' => 0,
+          '1457' => 0,
+          '445' => 0,
+          '200' => 0,
+          '1339' => 0,
+          '1261' => 0,
+          '1352' => 0,
+          '329' => 0,
+          '525' => 0,
+          '1621' => 0,
+          '27' => 0,
+          '787' => 0,
+          '1561' => 0,
+          '161' => 0,
+          '582' => 0,
+          '1310' => 0,
+          '109' => 0,
+          '1858' => 0,
+          '557' => 0,
+          '718' => 0,
+          '1581' => 0,
+          '1604' => 0,
+          '1507' => 0,
+          '1239' => 0,
+          '441' => 0,
+          '868' => 0,
+          '672' => 0,
+          '1140' => 0,
+          '769' => 0,
+          '1556' => 0,
+          '1181' => 0,
+          '275' => 0,
+          '983' => 0,
+          '1809' => 0,
+          '803' => 0,
+          '197' => 0,
+          '1731' => 0,
+          '853' => 0,
+          '751' => 0,
+          '1766' => 0,
+          '1500' => 0,
+          '60' => 0,
+          '1746' => 0,
+          '1245' => 0,
+          '1400' => 0,
+          '1067' => 0,
+          '691' => 0,
+          '1676' => 0,
+          '1388' => 0,
+          '346' => 0,
+          '911' => 0,
+          '1295' => 0,
+          '427' => 0,
+          '1111' => 0,
+          '677' => 0,
+          '907' => 0,
+          '82' => 0,
+          '650' => 0,
+          '1154' => 0,
+          '1210' => 0,
+          '590' => 0,
+          '895' => 0,
+          '1763' => 0,
+          '69' => 0,
+          '1157' => 0,
+          '664' => 0,
+          '1470' => 0,
+          '1790' => 0,
+          '224' => 0,
+          '1690' => 0,
+          '79' => 0,
+          '617' => 0,
+          '1420' => 0,
+          '352' => 0,
+          '1006' => 0,
+          '126' => 0,
+          '1594' => 0,
+          '1034' => 0,
+          '251' => 0,
+          '426' => 0,
+          '369' => 0,
+          '996' => 0,
+          '1533' => 0,
+          '1548' => 0,
+          '1435' => 0,
+          '1840' => 0,
+          '279' => 0,
+          '651' => 0,
+          '176' => 0,
+          '956' => 0,
+          '483' => 0,
+          '498' => 0,
+          '629' => 0,
+          '947' => 0,
+          '1823' => 0,
+          '256' => 0,
+          '1487' => 0,
+          '372' => 0,
+          '1540' => 0,
+          '920' => 0,
+          '1661' => 0,
+          '1330' => 0,
+          '1284' => 0,
+          '428' => 0,
+          '887' => 0,
+          '1606' => 0,
+          '1160' => 0,
+          '99' => 0,
+          '72' => 0,
+          '500' => 0,
+          '869' => 0,
+          '1592' => 0,
+          '1496' => 0,
+          '1221' => 0,
+          '1757' => 0,
+          '1200' => 0,
+          '790' => 0,
+          '533' => 0,
+          '918' => 0,
+          '1682' => 0,
+          '1413' => 0,
+          '1122' => 0,
+          '1275' => 0,
+          '1108' => 0,
+          '1697' => 0,
+          '1598' => 0,
+          '1053' => 0,
+          '414' => 0,
+          '462' => 0,
+          '1770' => 0,
+          '1014' => 0,
+          '1856' => 0,
+          '843' => 0,
+          '1491' => 0,
+          '1362' => 0,
+          '1209' => 0,
+          '1804' => 0,
+          '263' => 0,
+          '632' => 0,
+          '1371' => 0,
+          '394' => 0,
+          '991' => 0,
+          '514' => 0,
+          '610' => 0,
+          '725' => 0,
+          '931' => 0,
+          '513' => 0,
+          '615' => 0,
+          '50' => 0,
+          '476' => 0,
+          '1519' => 0,
+          '1198' => 0,
+          '1626' => 0,
+          '1409' => 0,
+          '797' => 0,
+          '1077' => 0,
+          '1716' => 0,
+          '1136' => 0,
+          '1175' => 0,
+          '293' => 0,
+          '1272' => 0,
+          '1781' => 0,
+          '1299' => 0,
+          '1663' => 0,
+          '1236' => 0,
+          '967' => 0,
+          '1683' => 0,
+          '1611' => 0,
+          '1326' => 0,
+          '322' => 0,
+          '645' => 0,
+          '469' => 0,
+          '635' => 0,
+          '1088' => 0,
+          '575' => 0,
+          '1382' => 0,
+          '1835' => 0,
+          '1452' => 0,
+          '1176' => 0,
+          '1566' => 0,
+          '1815' => 0,
+          '1039' => 0,
+          '979' => 0,
+          '709' => 0,
+          '1005' => 0,
+          '28' => 0,
+          '40' => 0,
+          '310' => 0,
+          '192' => 0,
+          '589' => 0,
+          '1337' => 0,
+          '215' => 0,
+          '699' => 0,
+          '1115' => 0,
+          '687' => 0,
+          '960' => 0,
+          '818' => 0,
+          '150' => 0,
+          '1038' => 0,
+          '1707' => 0,
+          '245' => 0,
+          '267' => 0,
+          '543' => 0,
+          '1777' => 0,
+          '826' => 0,
+          '354' => 0,
+          '1437' => 0,
+          '1344' => 0,
+          '1064' => 0,
+          '757' => 0,
+          '332' => 0,
+          '9' => 0,
+          '1099' => 0,
+          '1217' => 0,
+          '1740' => 0,
+          '1600' => 0,
+          '34' => 0,
+          '745' => 0,
+          '603' => 0,
+          '90' => 0,
+          '1850' => 0,
+          '1410' => 0,
+          '565' => 0,
+          '620' => 0,
+          '1346' => 0,
+          '1434' => 0,
+          '850' => 0,
+          '1547' => 0,
+          '1045' => 0,
+          '891' => 0,
+          '937' => 0,
+          '1004' => 0,
+          '1619' => 0,
+          '16' => 0,
+          '730' => 0,
+          '1360' => 0,
+          '921' => 0,
+          '1069' => 0,
+          '233' => 0,
+          '1013' => 0,
+          '1490' => 0,
+          '1224' => 0,
+          '368' => 0,
+          '1693' => 0,
+          '316' => 0,
+          '1806' => 0,
+          '994' => 0,
+          '1738' => 0,
+          '1786' => 0,
+          '611' => 0,
+          '1849' => 0,
+          '1370' => 0,
+          '849' => 0,
+          '11' => 0,
+          '492' => 0,
+          '208' => 0,
+          '511' => 0,
+          '842' => 0,
+          '1523' => 0,
+          '93' => 0,
+          '899' => 0,
+          '292' => 0,
+          '291' => 0,
+          '374' => 0,
+          '199' => 0,
+          '114' => 0,
+          '1306' => 0,
+          '429' => 0,
+          '1328' => 0,
+          '1091' => 0,
+          '409' => 0,
+          '73' => 0,
+          '1737' => 0,
+          '67' => 0,
+          '241' => 0,
+          '795' => 0,
+          '812' => 0,
+          '489' => 0,
+          '1609' => 0,
+          '585' => 0,
+          '794' => 0,
+          '327' => 0,
+          '1392' => 0,
+          '1080' => 0,
+          '944' => 0,
+          '1780' => 0,
+          '1281' => 0,
+          '1113' => 0,
+          '674' => 0,
+          '732' => 0,
+          '1864' => 0,
+          '1317' => 0,
+          '280' => 0,
+          '957' => 0,
+          '273' => 0,
+          '1603' => 0,
+          '471' => 0,
+          '622' => 0,
+          '1503' => 0,
+          '970' => 0,
+          '1509' => 0,
+          '1416' => 0,
+          '24' => 0,
+          '1658' => 0,
+          '1325' => 0,
+          '104' => 0,
+          '1643' => 0,
+          '131' => 0,
+          '1565' => 0,
+          '1558' => 0,
+          '502' => 0,
+          '1286' => 0,
+          '314' => 0,
+          '1796' => 0,
+          '1635' => 0,
+          '1237' => 0,
+          '1513' => 0,
+          '1502' => 0,
+          '1264' => 0,
+          '355' => 0,
+          '159' => 0,
+          '553' => 0,
+          '747' => 0,
+          '1252' => 0,
+          '1633' => 0,
+          '555' => 0,
+          '1037' => 0,
+          '47' => 0,
+          '1427' => 0,
+          '1484' => 0,
+          '37' => 0,
+          '1017' => 0,
+          '855' => 0,
+          '270' => 0,
+          '195' => 0,
+          '1057' => 0,
+          '1706' => 0,
+          '538' => 0,
+          '1839' => 0,
+          '1788' => 0,
+          '679' => 0,
+          '680' => 0,
+          '831' => 0,
+          '1602' => 0,
+          '1147' => 0,
+          '521' => 0,
+          '1332' => 0,
+          '162' => 0,
+          '1241' => 0,
+          '433' => 0,
+          '880' => 0,
+          '1441' => 0,
+          '647' => 0,
+          '1399' => 0,
+          '1206' => 0,
+          '334' => 0,
+          '786' => 0,
+          '986' => 0,
+          '1117' => 0,
+          '740' => 0,
+          '1008' => 0,
+          '1027' => 0,
+          '103' => 0,
+          '201' => 0,
+          '871' => 0,
+          '1401' => 0,
+          '1680' => 0,
+          '423' => 0,
+          '719' => 0,
+          '1139' => 0,
+          '1319' => 0,
+          '1826' => 0,
+          '1529' => 0,
+          '902' => 0,
+          '1222' => 0,
+          '827' => 0,
+          '266' => 0,
+          '1747' => 0,
+          '1742' => 0,
+          '1353' => 0,
+          '174' => 0,
+          '820' => 0,
+          '1799' => 0,
+          '1624' => 0,
+          '1571' => 0,
+          '422' => 0,
+          '1695' => 0,
+          '1219' => 0,
+          '905' => 0,
+          '1552' => 0,
+          '1194' => 0,
+          '97' => 0,
+          '1704' => 0,
+          '41' => 0,
+          '668' => 0,
+          '52' => 0,
+          '1749' => 0,
+          '688' => 0,
+          '750' => 0,
+          '1451' => 0,
+          '302' => 0,
+          '1126' => 0,
+          '774' => 0,
+          '1453' => 0,
+          '866' => 0,
+          '910' => 0,
+          '1341' => 0,
+          '693' => 0,
+          '593' => 0,
+          '770' => 0,
+          '188' => 0,
+          '402' => 0,
+          '1534' => 0,
+          '1097' => 0,
+          '641' => 0,
+          '893' => 0,
+          '1641' => 0,
+          '838' => 0,
+          '616' => 0,
+          '640' => 0,
+          '1121' => 0,
+          '83' => 0,
+          '804' => 0,
+          '870' => 0,
+          '1384' => 0,
+          '896' => 0,
+          '1468' => 0,
+          '1726' => 0,
+          '1385' => 0,
+          '1464' => 0,
+          '1818' => 0,
+          '1494' => 0,
+          '962' => 0,
+          '1085' => 0,
+          '755' => 0,
+          '1837' => 0,
+          '1714' => 0,
+          '777' => 0,
+          '143' => 0,
+          '464' => 0,
+          '1403' => 0,
+          '1672' => 0,
+          '1685' => 0,
+          '1051' => 0,
+          '6' => 0,
+          '562' => 0,
+          '1497' => 0,
+          '1304' => 0,
+          '1102' => 0,
+          '497' => 0,
+          '183' => 0,
+          '518' => 0,
+          '1478' => 0,
+          '1211' => 0,
+          '439' => 0,
+          '362' => 0,
+          '1379' => 0,
+          '411' => 0,
+          '169' => 0,
+          '1711' => 0,
+          '1593' => 0,
+          '1542' => 0,
+          '705' => 0,
+          '478' => 0,
+          '398' => 0,
+          '384' => 0,
+          '836' => 0,
+          '1735' => 0,
+          '1720' => 0,
+          '942' => 0,
+          '955' => 0,
+          '1376' => 0,
+          '407' => 0,
+          '18' => 0,
+          '376' => 0,
+          '912' => 0,
+          '1432' => 0,
+          '785' => 0,
+          '599' => 0,
+          '1393' => 0,
+          '1167' => 0,
+          '587' => 0,
+          '609' => 0,
+          '1595' => 0,
+          '1235' => 0,
+          '190' => 0,
+          '298' => 0,
+          '95' => 0,
+          '1808' => 0,
+          '1750' => 0,
+          '923' => 0,
+          '1739' => 0,
+          '601' => 0,
+          '822' => 0,
+          '231' => 0,
+          '243' => 0,
+          '1610' => 0,
+          '779' => 0,
+          '551' => 0,
+          '148' => 0,
+          '504' => 0,
+          '343' => 0,
+          '753' => 0,
+          '1343' => 0,
+          '697' => 0,
+          '981' => 0,
+          '726' => 0,
+          '857' => 0,
+          '106' => 0,
+          '707' => 0,
+          '1010' => 0,
+          '157' => 0,
+          '964' => 0,
+          '1665' => 0,
+          '65' => 0,
+          '935' => 0,
+          '203' => 0,
+          '261' => 0,
+          '1782' => 0,
+          '1213' => 0,
+          '1093' => 0,
+          '81' => 0,
+          '1023' => 0,
+          '321' => 0,
+          '1300' => 0,
+          '1199' => 0,
+          '86' => 0,
+          '624' => 0,
+          '792' => 0,
+          '1158' => 0,
+          '371' => 0,
+          '656' => 0,
+          '1248' => 0,
+          '1079' => 0,
+          '204' => 0,
+          '1041' => 0,
+          '1590' => 0,
+          '435' => 0,
+          '814' => 0,
+          '1652' => 0,
+          '1516' => 0,
+          '1482' => 0,
+          '924' => 0,
+          '885' => 0,
+          '1412' => 0,
+          '884' => 0,
+          '1709' => 0,
+          '339' => 0,
+          '228' => 0,
+          '760' => 0,
+          '863' => 0,
+          '749' => 0,
+          '268' => 0,
+          '531' => 0,
+          '829' => 0,
+          '345' => 0,
+          '1745' => 0,
+          '172' => 0,
+          '596' => 0,
+          '1297' => 0,
+          '1521' => 0,
+          '1366' => 0,
+          '1862' => 0,
+          '223' => 0,
+          '613' => 0,
+          '721' => 0,
+          '1255' => 0,
+          '1043' => 0,
+          '282' => 0,
+          '669' => 0,
+          '1082' => 0,
+          '420' => 0,
+          '1066' => 0,
+          '121' => 0,
+          '1852' => 0,
+          '639' => 0,
+          '952' => 0,
+          '989' => 0,
+          '1505' => 0,
+          '1071' => 0,
+          '494' => 0,
+          '487' => 0,
+          '1348' => 0,
+          '238' => 0,
+          '873' => 0,
+          '1137' => 0,
+          '577' => 0,
+          '253' => 0,
+          '448' => 0,
+          '1227' => 0,
+          '1417' => 0,
+          '216' => 0,
+          '852' => 0,
+          '643' => 0,
+          '63' => 0,
+          '1637' => 0,
+          '1120' => 0,
+          '179' => 0,
+          '1532' => 0,
+          '1475' => 0,
+          '1794' => 0,
+          '1105' => 0,
+          '1187' => 0,
+          '713' => 0,
+          '676' => 0,
+          '1334' => 0,
+          '1251' => 0,
+          '277' => 0,
+          '1192' => 0,
+          '1784' => 0,
+          '879' => 0,
+          '938' => 0,
+          '1679' => 0,
+          '1830' => 0,
+          '1620' => 0,
+          '1095' => 0,
+          '1183' => 0,
+          '1262' => 0,
+          '1444' => 0,
+          '1290' => 0,
+          '1527' => 0,
+          '1132' => 0,
+          '929' => 0,
+          '1846' => 0,
+          '133' => 0,
+          '123' => 0,
+          '304' => 0,
+          '547' => 0,
+          '631' => 0,
+          '1616' => 0,
+          '1583' => 0,
+          '1544' => 0,
+          '1538' => 0,
+          '396' => 0,
+          '258' => 0,
+          '1631' => 0,
+          '1422' => 0,
+          '1828' => 0,
+          '482' => 0,
+          '949' => 0,
+          '499' => 0,
+          '56' => 0,
+          '1369' => 0,
+          '1151' => 0,
+          '54' => 0,
+          '306' => 0,
+          '1204' => 0,
+          '70' => 0,
+          '1047' => 0,
+          '839' => 0,
+          '1055' => 0,
+          '1276' => 0,
+          '166' => 0,
+          '1578' => 0,
+          '88' => 0,
+          '1009' => 0,
+          '30' => 0,
+          '141' => 0,
+          '909' => 0,
+          '403' => 0,
+          '466' => 0,
+          '1124' => 0,
+          '1230' => 0,
+          '75' => 0,
+          '134' => 0,
+          '618' => 0,
+          '848' => 0,
+          '1829' => 0,
+          '1163' => 0,
+          '450' => 0,
+          '1761' => 0,
+          '1629' => 0,
+          '1702' => 0,
+          '1323' => 0,
+          '1455' => 0,
+          '1405' => 0,
+          '1713' => 0,
+          '1060' => 0,
+          '1492' => 0,
+          '703' => 0,
+          '900' => 0,
+          '1134' => 0,
+          '318' => 0,
+          '1729' => 0,
+          '972' => 0,
+          '1100' => 0,
+          '473' => 0,
+          '1377' => 0,
+          '1461' => 0,
+          '1774' => 0,
+          '3' => 0,
+          '185' => 0,
+          '248' => 0,
+          '146' => 0,
+          '1351' => 0,
+          '1719' => 0,
+          '356' => 0,
+          '802' => 0,
+          '4' => 0,
+          '528' => 0,
+          '164' => 0,
+          '1691' => 0,
+          '807' => 0
+        };
+HASH(0xe7ad90) done
+try to find strain ...Y cn bw sp done
+try to find cellline ...NA done
+try to find devstage ...Mixed Embryos 0-24h done
+try to find tissue ...NA done
+try to find sex ...NA done
+try to find antibody ...NA done
+try to find tgt_gene ...NA done
+try to find level1 ...Dmel_r5.4 done
+try to find level2 ...mRNA done
+try to find level3 ...RACE done
+level4 factor is UTR
+level4 condition is Strain_Y cn bw sp;Developmental-Stage_Mixed Embryos 0-24h
+try to get raw data...done.
+try to get intermediate data...done
+try to get interpret data...done
