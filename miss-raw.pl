@@ -87,7 +87,7 @@ if (defined($tagger->get_hyb_slot) || defined($tagger->get_seq_slot)) {
 	print 'ok1';
 	print $mrfh join("\t", ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition)), "\n";
     }
-    if (scalar(grep {$_ !~ /record/} @$raw_type) == 0) {
+    elsif (scalar(grep {$_ !~ /record/} @$raw_type) == 0) {
 	print 'ok2';
 	print $mrfh join("\t", ($id, $title, $lvl1, $lvl2, $lvl3, $lvl4_factor, $lvl4_condition, @$raw)), "\n";
     }
