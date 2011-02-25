@@ -1,0 +1,30 @@
+#Configuration file for geoid.pl
+[database]
+dbname     =  modencode_chado
+host       =  heartbroken.lbl.gov
+username   =  db_public
+password   =  ir84#4nm
+pathprefix =  modencode_experiment_
+pathsuffix =  _data
+schema     =  public
+[geo]
+search_url = http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?
+summary_url =  http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?
+db = gds
+term = modENCODE
+field = Project
+retmax = 10000
+[acc]
+acc_url = http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=
+targ = self
+view = full
+form = xml
+[output]
+strategy = ChIP-Seq
+uid = uid.txt
+gse = gse.txt
+gsm = gsm.txt
+fastq = fastq.txt
+[cache]
+summary = summary_xml
+gsm = gsm_xml

@@ -27,6 +27,7 @@ my %strain      :ATTR( :get<strain>         :default<undef>);
 my %cellline      :ATTR( :get<cellline>         :default<undef>);
 my %devstage      :ATTR( :get<devstage>         :default<undef>);
 my %antibody      :ATTR( :get<antibody>         :default<undef>);
+my %internal_data  :ATTR( :get<internal_data>      :default<undef>);
 my %supplementary_data  :ATTR( :get<supplementary_data>         :default<undef>);
 my %general_data   :ATTR( :get<general_data>   :default<[]>);
 my %bed             :ATTR( :get<bed>         :default<[]>);
@@ -50,10 +51,20 @@ sub BUILD {
 
 sub set_all {
     my $self = shift;
-    for my $parameter (qw[miniml contributor lab title submission_date type strategy lib_source num_channel organism source characteristics strain devstage antibody supplementary_data general_data bed wiggle sra tissue timepoint]) {
+    for my $parameter (qw[miniml contributor lab title submission_date type strategy lib_source num_channel organism source characteristics strain devstage antibody internal_data supplementary_data general_data bed wiggle sra tissue timepoint]) {
         my $set_func = "set_" . $parameter;
         $self->$set_func();
     }
+}
+
+sub set_other {
+    my $self = shift;
+    for my $parameter (qw[contributor lab title submission_date type strategy lib_source num_channel organism source characteristics strain devstage antibody internal_da\
+ta supplementary_data general_data bed wiggle sra tissue timepoint]) {
+        my $set_func = "set_" . $parameter;
+        $self->$set_func();
+    }
+
 }
 
 sub set_contributor {
@@ -217,6 +228,13 @@ sub set_timepoint {
     $timepoint{ident $self} = $contents[0];      
 }
 
+sub set_internal_data {
+    my ($self) = @_;
+    my $accxml = $miniml{ident $self};
+    my $datal = $accxml->{Sample}->{'Internal-Data'} || undef;
+    $internal_data{ident $self} = $datal;
+}
+
 sub set_supplementary_data {
     my ($self) = @_;
     my $accxml = $miniml{ident $self};
@@ -289,15 +307,15 @@ sub get_content {
 	}
     }
     if (ref($contentl) eq 'HASH') {
-	print "it is a hash!!!";
-	print Dumper($contentl);
-	print $attr_name, $attr_value;
+	#print "it is a hash!!!";
+	#print Dumper($contentl);
+	#print $attr_name, $attr_value;
 	if ($contentl->{$attr_name} eq $attr_value) {
 	    my $content = $contentl->{'content'};
 	    $content =~ s/^\s*//; $content =~ s/\s*$//;
 	    push @contents, $content;
 	}
-	print Dumper(@contents);
+	#print Dumper(@contents);
     }
     return @contents;
 }
@@ -308,11 +326,11 @@ sub set_miniml {
     my $gsm_id = $gsm{ident $self};
     my $acc_url = $ini->{acc}{acc_url} . $gsm_id . "&targ=$ini->{acc}{targ}" . "&view=$ini->{acc}{view}" . "&form=$ini->{acc}{form}" ;
     my $accfile = $xmldir{ident $self} . $gsm_id . '.xml';
-    unless (-e $accfile && !$refresh) {
-	print "Download miniml $accfile from GEO.\n";
+    unless (-e $accfile && -s $accfile && !$refresh) {
+	#print "Download miniml $accfile from GEO.\n";
 	$accfile = fetch($acc_url, $accfile);
     } else {
-	print "miniml $accfile exists. use cache...\n";
+	#print "miniml $accfile exists. use cache...\n";
     }
     my $xsacc = new XML::Simple;
     my $accxml = $xsacc->XMLin($accfile);
@@ -321,6 +339,7 @@ sub set_miniml {
 
 sub fetch {
     my ($url, $outfile) = @_;
+    print $url, "\n";
     my ($fh, $file);
     if ($outfile) {
         $file = $outfile;
@@ -331,7 +350,7 @@ sub fetch {
     my $ua = new LWP::UserAgent;
     my $request = $ua->request(HTTP::Request->new('GET' => $url));
     $request->is_success or die "$url: " . $request->message;
-    print $fh $request->content();
+    #print $fh $request->content();
     close $fh;
     return $file;
 }
