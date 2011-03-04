@@ -52,6 +52,7 @@ my %tgt_gene               :ATTR( :get<tgt_gene>               :default<undef>);
 my %lib_strategy       :ATTR( :get<lib_strategy>       :default<undef>);
 my %lib_selection      :ATTR( :get<lib_selection>      :default<undef>);
 
+my %group_strategy     :ATTR( :name<group_strategy>     :default<undef>);
 sub BUILD {
     my ($self, $ident, $args) = @_;
     for my $parameter (qw[config unique_id sampleFH seriesFH report_dir reader experiment long_protocol_text split_seq_group split_arr_group]) {
@@ -60,6 +61,7 @@ sub BUILD {
 	my $set_func = "set_" . $parameter;
 	$self->$set_func($value);
     }
+    $self->set_group_strategy($args->{group_strategy}) if defined($args->{group_strategy});
     return $self;
 }
 
@@ -1982,7 +1984,8 @@ sub get_slotnum_seq {
     my $type = "sequencing";
     my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
     if (scalar(@aps) > 1) {
-	croak("you confused me with more than 1 sequencing protocols.");
+	return $aps[0];
+	#croak("you confused me with more than 1 sequencing protocols.");
     } elsif (scalar(@aps) == 0) {
 	return -1;
     } else {
@@ -2321,6 +2324,7 @@ sub get_ap_slot_by_attr_info {
 
 sub group_by_this_ap_slot {
     my $self = shift;
+
     my $hyb_col = $ap_slots{ident $self}->{'hybridization'};
     my $seq_col = $ap_slots{ident $self}->{'seq'};
     my $replicate_group_col = $replicate_group_ap_slot{ident $self};
@@ -2335,7 +2339,20 @@ sub group_by_this_ap_slot {
     print "source name slot $source_name_col\n";
     print 'last extraction slot is ', $last_extraction_slot{ident $self};
     print "hybridization name slot is $hybridization_name_col\n";
-    
+		  
+    my $gs = $self->get_group_strategy();
+    my %gs_map = ('sample' => [$sample_name_col, '[Sample|Hybridization]\s*Name'],
+		  'replicate' => [$replicate_group_col, 'replicate[\s_]*group'],
+		  'extract' => [$extract_name_col, 'Extract\s*Name'],
+		  'source' => [$source_name_col, 'Source\s*Name'],
+		  'hyb' => [$hybridization_name_col, 'Hybridization\s*Name'],
+		  'raw' => [$raw_data_col, 'raw'],
+		  'auto' => [$last_extraction_slot{ident $self}, 'protocol'],
+	);
+    if (defined($gs)) {
+	return $gs_map{$gs};
+    }
+
     if (defined($sample_name_col)) {
                 print "I will use ap slot $sample_name_col (sample name) to group\n" and return [$sample_name_col, '[Sample|Hybridization]\s*Name'];
     }
