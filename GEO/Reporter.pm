@@ -775,7 +775,7 @@ sub write_normalized_data_dup {
     for my $datum (@{$normalization_ap->get_output_data()}) {
         if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
             my $path = $datum->get_value();
-	    my $x = scalar grep {$path eq $_} @$exist_normalize_datafiles;
+	    next if $path =~ /^\s*\d*\s*$/;
 	    unless (scalar grep {$path eq $_} @$exist_normalize_datafiles) {
 		push @new_datafiles, $path;
 		if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
@@ -813,7 +813,7 @@ sub write_raw_data {
     for my $datum (@{$ap->get_output_data()}) {
 	if (($datum->get_heading() =~ /Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
 	    my $path = $datum->get_value();
-	    print $path, "\n";
+	    next if $path =~ /^\s*\d*\s*$/;
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {#assume there is just one fastq file per channel
 		my ($file, $dir, $suffix) = fileparse($path);
 		print $sampleFH "!Sample_raw_file_", "$num_raw_data = ", $file . $suffix, "\n";
@@ -858,6 +858,7 @@ sub write_normalized_data {
 	if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*[File|Value]/i)) {
 	    my $path = $datum->get_value();
 	    next unless $path;
+	    next if $path =~ /^\s*\d*\s*$/;
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
 		my ($file, $dir, $suffix) = fileparse($path);
 		my $type;
@@ -900,6 +901,7 @@ sub get_more_data {
 	 for my $datum (@{$ap->get_output_data()}) {
 	     if ($datum->get_heading() =~ /Result\s*File/i) {
 		 my $path = $datum->get_value();
+		 next if $path =~ /^\s*\d*\s*$/;
 		 unless (scalar grep {$_ eq $path} @$normalized_data) {
 		     print "get more data called to fill in more data\n";
 		     my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
@@ -938,6 +940,7 @@ sub get_more_data_dup {
 	for my $datum (@{$ap->get_output_data()}) {
 	    if ($datum->get_heading() =~ /Result\s*File/i) {
 		my $path = $datum->get_value();
+		next if $path =~ /^\s*\d*\s*$/;
 		unless (scalar grep {$path eq $_} @$exist_more_datafiles) {
 		    push @new_datafiles, $path;
 		    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
