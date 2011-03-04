@@ -375,6 +375,7 @@ sub chado2sample {
 				print "write_normalized_data_dup called since I get duplicated row $that_row\n";
 				my @those_normalize_datafiles = $self->write_normalized_data_dup($that_row, \@these_normalize_datafiles);
 				push @normalize_datafiles, @those_normalize_datafiles;
+				push @these_normalize_datafiles, @those_normalize_datafiles;
 			    }
 			}
 			my @these_more_datafiles = $self->get_more_data($row, \@these_normalize_datafiles);
@@ -382,8 +383,11 @@ sub chado2sample {
 			if ($rdup->{$row}) {
 			    for my $that_row (@{$rdup->{$row}}) {
 				print "get_more_data_dup called since I get duplicated row $that_row\n";
-				my @those_more_datafiles = $self->get_more_data_dup($that_row, \@these_more_datafiles);
+				my @data_files = (@these_more_datafiles, @these_normalize_datafiles);
+				#my @those_more_datafiles = $self->get_more_data_dup($that_row, \(@these_more_datafiles, @these_normalize_datafiles));
+				my @those_more_datafiles = $self->get_more_data_dup($that_row, \@data_files);
 				push @more_datafiles, @those_more_datafiles;
+				push @these_more_datafiles, @those_more_datafiles;
 			    }
 			}
 		    }
@@ -771,6 +775,7 @@ sub write_normalized_data_dup {
     for my $datum (@{$normalization_ap->get_output_data()}) {
         if (($datum->get_heading() =~ /Derived\s*Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
             my $path = $datum->get_value();
+	    my $x = scalar grep {$path eq $_} @$exist_normalize_datafiles;
 	    unless (scalar grep {$path eq $_} @$exist_normalize_datafiles) {
 		push @new_datafiles, $path;
 		if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
@@ -778,8 +783,8 @@ sub write_normalized_data_dup {
 		$type = 'WIG' if ($path =~ /\.wig\.?/i);
 		$type = 'GFF3' if ($path =~ /\.gff3$/i);
 		$type = 'SAM' if ($path =~ /\.sam\.?/i);
-		print $sampleFH "!Sample_supplementary_file_", $num_processed_data, " = ", $path, "\n";
-		print $sampleFH "!Sample_supplementary_file_type_", $num_processed_data, " = $type", "\n";
+		print $sampleFH "!Sample_supplementary_file", $num_processed_data, " = ", $path, "\n";
+		print $sampleFH "!Sample_supplementary_file_type", $num_processed_data, " = $type", "\n";
 		$num_processed_data+=1;
 		}
 		else {
@@ -896,6 +901,7 @@ sub get_more_data {
 	     if ($datum->get_heading() =~ /Result\s*File/i) {
 		 my $path = $datum->get_value();
 		 unless (scalar grep {$_ eq $path} @$normalized_data) {
+		     print "get more data called to fill in more data\n";
 		     my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
 		     if ($ap_slots{ident $self}->{seq} >= 0) {
 			 my $type;
