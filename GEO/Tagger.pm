@@ -1631,12 +1631,12 @@ sub set_level2 {
 	    if (scalar grep {$gene eq $_} @histone_variants) {
 		$level2{ident $self} = 'Chromatin-Structure'; 
 	    } elsif (scalar grep {$gene eq $_} @dosage_compensation) {
-                $level2{ident $self} = 'non-TF-Chromatin-binding-factor';
+                $level2{ident $self} = 'Non-TF-Chromatin-binding-factor';
 	    } else {
 		$level2{ident $self} =  'Histone-Modification';
 	    }
 	}
-        $level2{ident $self} =  'non-TF-Chromatin-binding-factor' if $dt eq 'Other chromatin binding sites';
+        $level2{ident $self} =  'Non-TF-Chromatin-binding-factor' if $dt eq 'Other chromatin binding sites';
         $level2{ident $self} =  'DNA-Replication' if $dt eq 'Replication Factors' || $dt eq 'Replication Timing' || $dt eq 'Origins of Replication';
         $level2{ident $self} =  'Chromatin-Structure' if $dt eq 'Chromatin structure';
         $level2{ident $self} =  'small-RNA' if $dt eq 'RNA expression profiling' and $project eq 'Eric Lai' || $project eq 'Fabio Piano';
@@ -1649,7 +1649,7 @@ sub set_level2 {
 	    $level2{ident $self} = 'mRNA' if $project eq 'Robert Waterston';
 	    $level2{ident $self} = 'mRNA' if $project eq 'Fabio Piano';
 	    $level2{ident $self} = 'Histone-Modification' if $project eq 'Kevin White' and $self->get_hyb_slot() > 0 and defined($self->get_antibody()) and scalar grep {antibody_to_string($self->get_antibody()) eq $_} @histone_modification;
-	    $level2{ident $self} = 'non-TF-Chromatin-binding-factor' if $project eq 'Kevin White' and $self->get_hyb_slot() > 0 and defined($self->get_antibody()) and scalar grep {antibody_to_string($self->get_antibody()) eq $_} @non_tf_factor;
+	    $level2{ident $self} = 'Non-TF-Chromatin-binding-factor' if $project eq 'Kevin White' and $self->get_hyb_slot() > 0 and defined($self->get_antibody()) and scalar grep {antibody_to_string($self->get_antibody()) eq $_} @non_tf_factor;
 	}
     }
 
