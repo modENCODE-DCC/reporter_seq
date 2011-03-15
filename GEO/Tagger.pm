@@ -1014,7 +1014,7 @@ sub get_raw_data {
 
 sub get_intermediate_data {
     my ($self, $rpt_ncbi_id) = @_;
-    my %type_map =  ('WIG' => $self->get_hyb_slot() ? 'normalized-arrayfile_wig' : 'coverage-graph_wiggle',
+    my %type_map =  ('WIG' => $self->get_hyb_slot() ? 'normalized-arrayfile_wiggle' : 'coverage-graph_wiggle',
 		     'BED' => $self->get_hyb_slot() ? 'normalized-arrayfile_bed' : 'coverage-graph_bed', 
 		     'Sequence_Alignment/Map (SAM)' => 'alignment_sam', 
 		     'Signal_Graph_File' => 'normalized-arrayfile_wiggle');
