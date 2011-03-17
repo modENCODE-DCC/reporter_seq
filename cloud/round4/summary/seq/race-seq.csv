@@ -1,0 +1,58 @@
+2327	3'RACE polyA-capture N2 L1 454 alignments	GSM446652	RACE
+2327	3'RACE polyA-capture N2 L1 454 alignments	L1.ws190.sam	RACE
+2328	3'RACE polyA-capture N2 L2 454 alignments	GSM446653	RACE
+2328	3'RACE polyA-capture N2 L2 454 alignments	L2.ws190.sam	RACE
+2329	3'RACE polyA-capture N2 L3 454 alignments	GSM446654	RACE
+2329	3'RACE polyA-capture N2 L3 454 alignments	L3.ws190.sam	RACE
+2330	3'RACE polyA-capture N2 L4 454 alignments	GSM446655	RACE
+2330	3'RACE polyA-capture N2 L4 454 alignments	L4.ws190.sam	RACE
+2331	3'RACE polyA-capture N2 embryo 454 alignments	GSM446651	RACE
+2331	3'RACE polyA-capture N2 embryo 454 alignments	emb.ws190.sam	RACE
+2332	3'RACE polyA-capture N2 hermaphrodite 454 alignments	GSM446656	RACE
+2332	3'RACE polyA-capture N2 hermaphrodite 454 alignments	herm.ws190.sam	RACE
+2333	3'RACE polyA-capture N2 male 454 alignments	GSM446657	RACE
+2333	3'RACE polyA-capture N2 male 454 alignments	male.ws190.sam	RACE
+2334	3'RACE polyA-capture  daf-11 dauer 454 alignments	GSM446661	RACE
+2334	3'RACE polyA-capture  daf-11 dauer 454 alignments	daf11.ws190.sam	RACE
+2335	3'RACE polyA-capture daf-2 dauer 454 alignments	GSM446658	RACE
+2335	3'RACE polyA-capture daf-2 dauer 454 alignments	daf2.ws190.sam	RACE
+2336	3'RACE polyA-capture daf-7 dauer 454 alignments	GSM446659	RACE
+2336	3'RACE polyA-capture daf-7 dauer 454 alignments	daf7.ws190.sam	RACE
+2337	3'RACE polyA-capture daf-9 dauer 454 alignments	GSM446660	RACE
+2337	3'RACE polyA-capture daf-9 dauer 454 alignments	daf9.ws190.sam	RACE
+2455	3'RACE polyA-capture L1 454 sequencing	GSM446652	RACE
+2456	3'RACE polyA-capture L2 454 sequencing	GSM446653	RACE
+2457	3'RACE polyA-capture L3 454 sequencing	GSM446654	RACE
+2458	3'RACE polyA-capture N2 L4 454 sequencing	GSM446655	RACE
+2459	3'RACE polyA-capture adult males 454 sequencing	GSM446657	RACE
+2460	3'RACE polyA-capture adult hermaphrodite 454 sequencing	GSM446656	RACE
+2461	3'RACE polyA-capture daf-2 dauer 454 sequencing	GSM446658	RACE
+2462	3'RACE polyA-capture daf-7 dauer 454 sequencing	GSM446659	RACE
+2463	3'RACE polyA-capture daf-9 dauer 454 sequencing	GSM446660	RACE
+2464	3'RACE polyA-capture daf-11 dauer 454 sequencing	GSM446661	RACE
+2465	3'RACE polyA-capture N2 embryos 454 sequencing	GSM446651	RACE
+2484	Mixed-stage 3'RACE Solexa sequencing & alignment	GSM469439	RACE
+2484	Mixed-stage 3'RACE Solexa sequencing & alignment	G_bowtie.map.sam.gz	RACE
+2484	Mixed-stage 3'RACE Solexa sequencing & alignment	A_bowtie.map.sam.gz	RACE
+2484	Mixed-stage 3'RACE Solexa sequencing & alignment	F_bowtie.map.sam.gz	RACE
+2484	Mixed-stage 3'RACE Solexa sequencing & alignment	C_bowtie.map.sam.gz	RACE
+2484	Mixed-stage 3'RACE Solexa sequencing & alignment	H_bowtie.map.sam.gz	RACE
+2484	Mixed-stage 3'RACE Solexa sequencing & alignment	D_bowtie.map.sam.gz	RACE
+896	3'RACE polyA-capture N2 emb-thru-adult 454 sequencing pilot	GSM443959	RACE
+896	3'RACE polyA-capture N2 emb-thru-adult 454 sequencing pilot	GSM443960	RACE
+896	3'RACE polyA-capture N2 emb-thru-adult 454 sequencing pilot	GSM443961	RACE
+896	3'RACE polyA-capture N2 emb-thru-adult 454 sequencing pilot	GSM443962	RACE
+896	3'RACE polyA-capture N2 emb-thru-adult 454 sequencing pilot	GSM443963	RACE
+896	3'RACE polyA-capture N2 emb-thru-adult 454 sequencing pilot	GSM443964	RACE
+992	3'RACE polyA-capture N2 emb-thru-adult 454 alignments pilot	GSM443959	RACE
+992	3'RACE polyA-capture N2 emb-thru-adult 454 alignments pilot	GSM443960	RACE
+992	3'RACE polyA-capture N2 emb-thru-adult 454 alignments pilot	GSM443961	RACE
+992	3'RACE polyA-capture N2 emb-thru-adult 454 alignments pilot	GSM443962	RACE
+992	3'RACE polyA-capture N2 emb-thru-adult 454 alignments pilot	GSM443963	RACE
+992	3'RACE polyA-capture N2 emb-thru-adult 454 alignments pilot	GSM443964	RACE
+992	3'RACE polyA-capture N2 emb-thru-adult 454 alignments pilot	emb_pilot.sam	RACE
+992	3'RACE polyA-capture N2 emb-thru-adult 454 alignments pilot	L1_pilot.sam	RACE
+992	3'RACE polyA-capture N2 emb-thru-adult 454 alignments pilot	L2_pilot.sam	RACE
+992	3'RACE polyA-capture N2 emb-thru-adult 454 alignments pilot	L3_pilot.sam	RACE
+992	3'RACE polyA-capture N2 emb-thru-adult 454 alignments pilot	L4_pilot.sam	RACE
+992	3'RACE polyA-capture N2 emb-thru-adult 454 alignments pilot	herm_pilot.sam	RACE
