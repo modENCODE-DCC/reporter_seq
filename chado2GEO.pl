@@ -185,16 +185,16 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
     my $max_download_times = 10;
     my @fastqfiles;
     for my $datafile (@datafiles) {
-	if ($datafile =~ /\.fastq/) {
-	    print $datafile, "\n";
-	    my $fastqfile = basename($datafile);
-	    push @fastqfiles, $fastqfile;
-	    unless ( -e $fastqfile ) {
-		download_fastq($datafile, $max_download_times, $fastqfile);
-	    }
-	    system("tar -r -f $tarfile $fastqfile") == 0 || die "can not append a fastq file $fastqfile from download to my tarball $tarfile.";
-    	} # end of if datafile is fastq
-	else {
+#	if ($datafile =~ /\.fastq/) {
+#	    print $datafile, "\n";
+#	    my $fastqfile = basename($datafile);
+#	    push @fastqfiles, $fastqfile;
+#	    unless ( -e $fastqfile ) {
+#		download_fastq($datafile, $max_download_times, $fastqfile);
+#	    }
+#	    system("tar -r -f $tarfile $fastqfile") == 0 || die "can not append a fastq file $fastqfile from download to my tarball $tarfile.";
+#    	} # end of if datafile is fastq
+#	else {
 	    #remove subdirectory prefix, remove suffix of compression, such as .zip, .bz2, this is the filename goes into geo tarball
 	    print $datafile, "#######from chado\n";
 	    print basename($datafile), " base name\n";
@@ -236,7 +236,7 @@ if (($make_tarball == 1) && ($use_existent_tarball == 0)) {
 		system("mv $filename_in_tarball $myfile") == 0 || die "can not change filename $filename_in_tarball to $myfile";
 	    }
 	    system("tar -r --remove-files -f $tarfile $myfile") == 0 || die "can not append a datafile $filename_in_tarball from download tarball $pipeline_tarball to my tarball $tarfile and then remove it (leave no garbage).";
-	}
+#	}
     }
 #    system("rm $tarballfile 2>&1 > /dev/null") if -e $tarballfile; # Remove the gzip if it already exists; ignore output
     system("gzip $tarfile") == 0 || die "cannot gzip the tar file $tarfile";
