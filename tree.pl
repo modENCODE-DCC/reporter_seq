@@ -74,15 +74,19 @@ while(my $line = <$fh>) {
 
 sub std_filename {
     my ($factor, $condition, $tech, $rep, $chip, $label, $build, $std_id) = @_ ;
-    $rep+=1; $rep = 'ReplicateSet-' . $rep;
+    $rep+=1; 
+    #$rep = 'ReplicateSet-' . $rep;
+    $rep = 'Rep-' . $rep;
     my $filename = join(Filename_separator, ($factor, $condition, $tech, $rep));
     if (defined($chip) && $chip ne '') {
-	my $t = join(Tag_value_separator, ('ChIP-or-input', $chip));
-	$filename = join(Filename_separator, ($filename, $t));
+	#my $t = join(Tag_value_separator, ('ChIP-or-input', $chip));
+	#$filename = join(Filename_separator, ($filename, $t));
+	$filename = join(Filename_separator, ($filename, $chip));
     }
     if (defined($label) && lc($label) ne 'biotin' && $label ne '') {
-	my $t = join(Tag_value_separator, ('Label', $label));
-	$filename = join(Filename_separator, ($filename, $t));
+	#my $t = join(Tag_value_separator, ('Label', $label));
+	#$filename = join(Filename_separator, ($filename, $t));
+	$filename = join(Filename_separator, ($filename, $label));
     }
     $filename = join(Filename_separator, ($filename, $build, $std_id));
     return $filename;
