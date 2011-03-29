@@ -1239,6 +1239,7 @@ sub group_by_this_ap_slot {
 	}
 	print "group by Sample/Hyb name.\n" and return [$sample_name_col, '[Sample|Hybridization]\s*Name'] if defined($sample_name_col);
 	print "group by Hyb name.\n" and return [$hyb_name_col, 'Hybridization\s*Name'] if defined($hyb_name_col);
+	print "group by last extraction protocol.\n" and return [$last_extract_col, 'protocol'];
     }
 }
 
