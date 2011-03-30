@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+3201	CNV CME W1 Cl.8+ Cells	cl8_cnv.wig	cl8_cnv.wig	Dmel_r5.4	Copy-Number-Variation	CNV-seq	coverage-graph_wiggle	Replication-Copy-Number	Cell-Line_CME-W1-Cl.8+;Tissue_dorsal mesothoracic disc;Developmental-Stage_third instar larval stage	CNV-seq				Dmel_r5.4	modENCODE_3201

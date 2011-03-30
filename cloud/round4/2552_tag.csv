@@ -1,0 +1,2 @@
+DCC id	Title	Data File	Data Filepath	Level 1 <organism>	Level 2 <Target>	Level 3 <Technique>	Level 4 <File Format>	Filename <Factor>	Filename <Condition>	Filename <Technique>	Filename <ReplicateSetNum>	Filename <ChIP>	Filename <label>	Filename <Build>	Filename <Modencode ID>
+2552	CNV Kc-167 Cells	kc_cnv.wig	kc_cnv.wig	Dmel_r5.4	Copy-Number-Variation	CNV-seq	coverage-graph_wiggle	Replication-Copy-Number	Cell-Line_Kc167;Tissue_embryo-derived cell-line;Developmental-Stage_late embryonic stage	CNV-seq				Dmel_r5.4	modENCODE_2552
