@@ -88,7 +88,32 @@ WIG = wiggle track format. WIG files are used to display genomic data in a track
 SAM = Sequence Alignment Map. These files are used for mapping sequence reads to genomic co-ordinates. The sam format allows nucleotide sequences and the corresponding genomic location to which it maps for each line. More information about sam format can be found at 
 http://samtools.sourceforge.net/
 
+Files organization
+spreadsheet.csv contains all data files released on Nov 4, 2010 at modENCODE
+DCC. every row starts with the DCC submission id. the second and third column
+show the filename and its relative path in the original submission package.
+the forth column shows the species in which the experiment was done.
+the fifth column shows the general category of the target of the experiment.
+the sixth column shows the technique used.
+the seventh column shows the format of the file.
+the eighth column shows the real biological factor that the experiment aims at.
+the ninth column shows the biological condition, such as cell line that the experiment studied.
+the tenth column shows again the technique.
+the eleventh column shows the biological replicate set that the data file belongs to.
+for ChIP experiments, the twelveth column shows whether the data file comes from a ChIP or an input sample.
+for array experiments, the thirteenth column shows the label that the data file belongs to.
+then the 14th and 15th are genome builds and modencode ID again.
+
+all of the data listed in the spreadsheet physically located in the data dir.
+to avoid possible redundancy, modencode ID is add before the file excepth the file is a raw sequening data.
+
+a directory structure that classify every data files into a tree structure was
+attempted. the result is presented in symbolic_links dir. they directory structure follows the guideline in document modencode_data_organization_UIC.pdf
+the leaves of the directory tree are data files universally renamed by the 
+factor, condition, etc. followed by the original filename to make sure it is unique.
+
 about Strain 
+the following are the strains used in all experiments. please check the respective modencode webpage for the detailed description.
 FlyStrain:7T-CAD:KW:1&oldid=24882
 FlyStrain:Ago2_414:EL:1&oldid=27131
 FlyStrain:B3:SH:1&oldid=24916
