@@ -11,10 +11,10 @@ BEGIN {
   $root_dir = "./" unless $root_dir =~ /\//;
   push @INC, $root_dir;
 }
-use GEO::Tagger;
+#use GEO::Tagger;
 my $spreadsheet = $ARGV[0];
-use constant P_dir => '/home/zzha/my_modENCODE';
-use constant Data_dir => 'all_data';
+use constant P_dir => '/modencode/modencode-dcc';
+use constant Data_dir => 'data';
 use constant Slink_dir => 'symbolic_links';
 use constant Filename_separator => ';';
 use constant Tag_value_separator => '_';
@@ -41,6 +41,9 @@ while(my $line = <$fh>) {
 	$label,
 	$build,
 	$std_id) = split "\t", $line;
+    for my $x ($id, $title, $filename, $rel_path, $organism, $target, $tech, $format, $factor, $lvl4_tech,	$rep, $chip, $label, $build, $std_id) {
+	$x =~ s/^\s*//; $x =~ s/\s*$//;
+    }	
     my ($lvl1_dir, $lvl2_dir, $lvl3_dir, $lvl4_dir) = ($organism, $target, $tech, $format);    
     $factor = universal_factor($factor);
     my ($strain, $cellline, $devstage, $tissue) = parse_condition($condition);
@@ -56,21 +59,59 @@ while(my $line = <$fh>) {
     my $universal_ext_filename = format_dirname2($universal_filename, $filename);
     $universal_ext_filename .= sfx($format);
     my $ln_file = $leaf_dir . $universal_ext_filename;
-    print $ln_file, "\n";
+    #print $ln_file, "\n";
     if (scalar(grep {$_ eq $ln_file} @nr)) {
-	print "repeat $ln_file\n";
+	print join("\t", ('repeat', $ln_file)), "\n";
     } else {
 	push @nr, $ln_file;
     }
 
-    #print $ln_file, "##link file\n";
-    my $data_file = Data_dir . "/" . "$id" . "_". $filename;
-    chdir P_dir;
-    mkdir(Data_dir);
-    symlink($rel_path, $data_file);  
-    symlink($data_file, $ln_file);
+    my $data_file = find_path($id, $filename, $format);
+    chdir $leaf_dir;
+    my $t;
+    if (length($universal_ext_filename)>255) {
+	$t = substr($universal_ext_filename, 0, 255);
+    } else {
+	$t = $universal_ext_filename;
+    }
+    if (-e $data_file) {
+	my $signal = symlink($data_file, $t);
+	print join("\t", ('##ln -s ', $ln_file, $data_file)), "\n" if $signal == 0;
+    } else {
+	symlink($data_file, $t);
+	print join("\t", ('#ln -s ', $ln_file, $data_file)), "\n";
+    }
 }
 #map {print $_, "\n"} @nr;
+
+sub find_path {
+    my ($id, $filename, $format) = @_;
+    my $data_file;
+    my $t;
+    if ($format =~ /raw-seqfile/) {
+        $t = $filename;
+    } else {
+        $t = "$id" . "_". $filename;
+    }
+    $data_file = P_dir . "/" . Data_dir . "/" . $t;
+    if (-e $data_file) {
+	return $data_file;
+    } 
+    else {
+	if ($data_file =~ /\.gz$/) {
+	    $t = $data_file;
+	    $t =~ s/\.gz$//;
+	    if (-e $t) {
+		return $t;
+	    } 
+	    else {
+		return $data_file;
+	    }
+	} else {
+	    return $data_file;
+	}
+    }
+}
 
 sub std_filename {
     my ($factor, $condition, $tech, $rep, $chip, $label, $build, $std_id) = @_ ;
