@@ -955,8 +955,9 @@ sub get_data {
 	    my $ap = $denorm_slots{ident $self}->[$col]->[$row];
             for my $datum (@{$ap->get_output_data()}) {
                 my ($value, $type) = ($datum->get_value(), $datum->get_type());
-		if ( $value ne '' && scalar(grep {$type->get_name() eq $_} @types) && !scalar(grep {$value eq $_} @nr) ) {
-		    push @file_types, $type_map->{$type->get_name()}; 
+		#print $value, " ", $type->get_name, "\n";
+		if ( $value ne '' && (scalar(grep {$type->get_name() eq $_} @types) || scalar(grep {lc($type->get_name()) eq $_} @types)) && !scalar(grep {$value eq $_} @nr) ) {
+		    push @file_types, $type_map->{$type->get_name()} || $type_map->{lc($type->get_name())}; 
 		    push @files, $value;
 		    #push @file_rows, $row;
 		    push @grps, $grp;
@@ -1214,6 +1215,7 @@ sub group_by_this_ap_slot {
     my $extract_name_col = $extract_name_slot{ident $self};
     my $hyb_name_col = $hybridization_name_slot{ident $self};
     my $last_extract_col = $last_extraction_slot{ident $self};
+    print $project, "\n";
     #if (defined($replicate_group_col)) {
 	#print "group by replicate group info.\n" and return [$replicate_group_col, 'replicate[\s_]*group'];
     #}
@@ -1227,10 +1229,19 @@ sub group_by_this_ap_slot {
 	    print "group by sample name.\n" and return [$sample_name_col, 'Sample\s*Name'];
 	}
     }
-    if ($project eq 'Gary Karpen' || $project eq 'Michael Snyder' || $project eq 'David MacAlpine') {
+    if ($project eq 'Gary Karpen' || $project eq 'Michael Snyder') {
 	print "group by sample name.\n" and return [$sample_name_col, 'Sample\s*Name'];
     }
-    if ($project eq 'Steve Henikoff') {
+    if ($project eq 'David MacAlpine') {
+	if (defined($replicate_group_col)) {                                                                                                                                    
+            print "group by replicate group info.\n" and return [$replicate_group_col, 'replicate[\s_]*group'];                                                                 
+        } 
+	print "group by sample name.\n" and return [$sample_name_col, 'Sample\s*Name'];
+    }
+    if ($project eq 'Steven Henikoff') {
+	if (defined($replicate_group_col)) {
+            print "group by replicate group info.\n" and return [$replicate_group_col, 'replicate[\s_]*group'];
+	}
 	print "group by extract name.\n" and return [$extract_name_col, 'Extract\s*Name'];
     }
     if ($project eq 'Kevin White') {
@@ -1417,8 +1428,10 @@ sub get_slotnum_extract {
     my $type = "extract";
     my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
     if (scalar(@aps) > 1) {
+	print "ok1\n";
         if ($option eq 'group') { #report this one to group rows in SDRF to GEO samples=extraction+array
-            return $self->check_complexity(\@aps);
+            #return $self->check_complexity(\@aps);
+	    return $aps[-1];
         } elsif ($option eq 'protocol') { #report this one to write out all extraction protocols and in between
             if (defined($extract_name_slot{ident $self}) and $extract_name_slot{ident $self} != -1) {
                 return $aps[0] > $extract_name_slot{ident $self} ? $extract_name_slot{ident $self} : $aps[0] ;
@@ -1482,6 +1495,13 @@ sub get_slotnum_extract {
                         return $aps[0];
                     } else {
 			# I paniced, obviously no protocol with type like extract.
+			my @types = ('grow');
+			for my $type (@types) {
+			    my @aps = $self->get_slotnum_by_protocol_property(1, 'heading', 'Protocol\s*Type', $type);
+			    if (scalar @aps >= 1) {
+				return $aps[0];
+			    }
+			}
                         croak("Every experiment must have at least one extraction protocol. Maybe you omitted this protocol in SDRF?");
                     }
                 }
