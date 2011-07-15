@@ -1,0 +1,92 @@
+download nih report from http://submit.modencode.org/submit/reports/nih_spreadsheet
+grep 'released' output_nih_2011-06-21.csv > released_2011-06-21.csv
+cut -f 18 released_2011-06-21.csv > id-20110621.txt
+
+perl cmp-two-id-list.pl id-20110503.txt id-20110621.txt |grep 'uniq to file 2' 
+vim to clean 'uniq to file 2'
+#uniq to file 1 means some submissions has been deprecated, replaced, etc.
+
+perl batch-extract.pl id-20110503-20110621.txt tmp/cloud
+
+#check to see any submission fails to be tagged.
+perl find-missed-id.pl id-20110503-20110621.txt
+
+cat *_tag.csv > 1.csv
+perl make_clean_spreasheet.pl 1.csv > ../tmp/cloud/summary/2.csv
+#note there might be many gff3 from one single race exp.
+
+#std the terms in spreadsheet...
+
+#get the files
+##first separate file formats
+zzha@xfer-cloud:~/staging2/0621-data$ cut -f8 0503-0621.csv |sort|uniq
+alignment_sam
+computed-peaks_gff3
+coverage-graph_wiggle
+gene-model_gff3
+GEO_record
+Level 4 <File Format>
+normalized-arrayfile_wiggle
+raw-arrayfile_CEL
+raw-arrayfile_pair
+ShortReadArchive_record
+TraceArchive_record
+zzha@xfer-cloud:~/staging2/0621-data$ grep computed-peaks_gff3 0503-0621.csv > gff3.csv
+zzha@xfer-cloud:~/staging2/0621-data$ grep gene-model_gff3 0503-0621.csv >> gff3.csv
+zzha@xfer-cloud:~/staging2/0621-data$ grep normalized-arrayfile_wiggle 0503-0621.csv > wiggle.csv
+zzha@xfer-cloud:~/staging2/0621-data$ grep coverage-graph_wiggle 0503-0621.csv >> wiggle.csv
+zzha@xfer-cloud:~/staging2/0621-data$ grep raw-arrayfile_CEL 0503-0621.csv > cel.csv
+zzha@xfer-cloud:~/staging2/0621-data$ grep alignment_sam 0503-0621.csv  > sam.csv
+zzha@xfer-cloud:~/staging2/0621-data$ grep raw-arrayfile_pair 0503-0621.csv > pair.csv
+zzha@xfer-cloud:~/staging2/0621-data$ grep ShortReadArchive_record 0503-0621.csv > sra.csv
+zzha@xfer-cloud:~/staging2/0621-data$ grep GEO_record 0503-0621.csv > geo.csv
+
+##copy file from modencode-www* to /modencode/modencode_dcc staging place.
+#code at /home/zzha/staging2/script
+perl copy.pl ../0621-data/gff3.csv >gff3.log 2>&1
+perl iter.pl ../0621-data/gff3.log > ../0621-data/gff3-cp-missing.txt
+perl copy-missing.pl ../0621-data/gff3-cp-missing.txt
+
+perl copy.pl ../0621-data/wiggle.csv >../0621-data/wiggle.log 2>&1
+perl iter.pl ../0621-data/wiggle.log > ../0621-data/wiggle-cp-missing.txt
+perl copy-missing.pl ../0621-data/wiggle-cp-missing.txt
+
+perl copy.pl ../0621-data/sam.csv > ../0621-data/sam.log 2>&1
+perl iter.pl ../0621-data/sam.log > ../0621-data/sam-cp-missing.txt
+perl copy-missing.pl ../0621-data/sam-cp-missing.txt
+
+perl copy.pl ../0621-data/cel.csv > ../0621-data/cel.log 2>&1
+perl iter.pl ../0621-data/cel.log > ../0621-data/cel-cp-missing.txt
+perl copy-missing.pl ../0621-data/cel-cp-missing.txt
+
+perl copy.pl ../0621-data/pair.csv > ../0621-data/pair.log 2>&1
+perl iter.pl ../0621-data/pair.log > ../0621-data/pair-cp-missing.txt
+perl copy-missing.pl ../0621-data/pair-cp-missing.txt
+
+#update sra lib
+#this needs to be done at modencode-www1 machine and then copy to xfer-cloud.
+perl get-all-srx-srr.pl > all-srx-srr-jun30-2011.csv
+
+#create download sra cmd.
+#create mapping
+perl create-download-cmd.pl ../0621-data/all-srx-srr-jun30-2011.csv ../0621-data/sra.csv > ../0621-data/sra-map.csv
+perl create-download-cmd.pl ../0621-data/all-srx-srr-jun30-2011.csv ../0621-data/sra.csv 1 > ../0621-data/dwn-cmd.sh
+#download
+nohup bash dwn-cmd.sh > dwn.log 2>&1
+
+#create transform (sra format to fastq)
+perl create-tfm-cmd.pl ../0621-data/sra-map.csv > ../0621-data/tfm-cmd.sh
+nohup bash tfm-cmd.sh > tfm.log 2>&1
+
+#find those with geo id only
+grep GEO_record |cut -f1 | sort -n |uniq
+grep ShortReadArchive_record |cut -f1 |sort -n |uniq
+perl cmp-two-id-list.pl | grep 'unique to file 1 '
+perl batch-grep.pl GEO_record file
+
+#gse to gsm map
+perl batch-gse-t2.pl 
+#gsm to sra map, two options either to print id-gsm-sra-map, or to print wget cmd.
+perl download3.pl
+#get srr for transform command
+perl srx-srr2.pl id-gsm-sra.csv #the third column is srx number
