@@ -11,8 +11,8 @@ BEGIN {
 
 use Config::IniFiles;
 use Getopt::Long;
-
-my $cfg = $root_dir . 'config.ini';
+print $root_dir;
+my $cfg = $root_dir . 'config/pipeline.ini';
 my $name;
 my $option = GetOptions ("cfg:s" => \$cfg,
 			 "name=s" => \$name);
@@ -38,4 +38,16 @@ if (defined($preprocess) && $preprocess == 1) {
 }
 
 if (defined($align) && $align == 1) {
-    my $run
+    my $run_bowtie = $ini{ALIGNMENT}{run_bowtie};
+    if (defined($run_bowtie) && $run_bowtie == 1) {
+	#my 
+    }
+}
+
+if (defined($peakcall) && $peakcall == 1) {
+    my
+
+
+sub usage
+{
+}
