@@ -1,0 +1,46 @@
+ssh zhengzha@gatewayx.lac.uic.edu
+source .euca/eucarc
+euca-describe-images |grep utoronto
+IMAGE	emi-07A015E5	xinfeng/ranger_jul_2_Xin_Feng_OICR.img.manifest.xml	utoronto	available	public 	x86_64	machine
+IMAGE	emi-CBAE143B	oicr_shrava/shrava-main-11-30-2010.img.manifest.xml	utoronto	available	public 	x86_64	machine
+IMAGE	emi-1592120D	oicr/oicr-uniform-peaks.img.manifest.xml	utoronto	available	public 	x86_64	machine
+euca-run-instances -n 1 -t c1.medium emi-1592120D
+INSTANCE	i-3EE505B8	emi-1592120D	10.101.8.59	10.101.8.59	running 	0 	c1.medium 	2011-07-20T16:44:18.259Z 	cistrack 	eki-E6AF1072 	eri-1B6B1159
+ssh root@10.101.8.59
+
+#download genome sequence fasta files
+scp zzha@modencode.oicr.on.ca:/nfs/browser_data/worm/fasta/c_elegans.WS220.genomic.fa .
+scp zzha@modencode.oicr.on.ca:/nfs/browser_data/fly/fasta/dmel-all-chromosome-r5.32.fasta .
+ncftp -u uoicr bws.lac.uic.edu
+Password: ********
+User uoicr logged in
+Logged in to bws.lac.uic.edu.                                                   
+ncftp / > cd zheng/
+ncftp /zheng > put dmel-all-chromosome-r5.32.fasta
+#at vm instance side
+cistrack-10-101-8-59:~# ncftp -u uoicr 10.101.8.252
+ncftp / > get zheng/c_elegans.WS220.genomic.fa 
+ncftp / > get zheng/dmel-all-chromosome-r5.32.fasta
+
+#download bowtie
+ncftp /zheng > put bowtie-0.12.7-linux-x86_64.zip
+#build index file
+cistrack-10-101-8-59:~/code/bowtie-0.12.7# ./bowtie-build ~/genome_seq_fasta/c_elegans.WS220.genomic.fa worm_ws220 
+cistrack-10-101-8-59:~/code/bowtie-0.12.7# ./bowtie-build ~/genome_seq_fasta/dmel-all-chromosome-r5.32.fasta fly_r5.32 
+
+#build bowtie index file
+cistrack-10-101-8-59:~/code/ranger-1.02# ./bowtie-build
+/glusterfs/zheng/alignment/genome_seq_fasta/dmel-all-chromosome-r5.32.fasta
+fly_r5.32
+
+#run bowtie
+cistrack-10-101-8-59:~/code/ranger-1.02# bowtie-0.12.7/bowtie -n 2 -l 28 -e 70
+-k 1 -p 4 -t -q --sam /glusterfs/zheng/alignment/bowtie-indexes/fly/fly_r5.32
+/glusterfs/zheng/SRR034714.fastq /glusterfs/zheng/SRR034714.sam
+
+#run peakranger
+cistrack-10-101-8-59:~/code/ranger-1.02# ./ranger -d /glusterfs/zheng/test/SRR034714.sam -c /glusterfs/zheng/test/SRR034716.sam
+--format=sam -t 4 -p 1e-4 -l 200 -r 0.8 -b 99 --mode=region -o
+/glusterfs/zheng/test/
+
+
