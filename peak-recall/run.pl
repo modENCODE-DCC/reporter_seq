@@ -10,7 +10,7 @@ BEGIN {
 }
 
 use Config::IniFiles;
-use Getopt::Long;
+use Getopt::Long qw[GetOptions];
 #default config files
 my $cfg_dir = $root_dir . 'config/';
 my $cfg = $cfg_dir . 'pipeline.ini';
@@ -44,21 +44,21 @@ my @r2_chip = split /\s+/, $ini{INPUT}{r2_ChIP} if exists $ini{INPUT}{r2_ChIP};
 my @r1_input = split /\s+/, $ini{INPUT}{r1_input};
 my @r2_input = split /\s+/, $ini{INPUT}{r2_input} if exists $ini{INPUT}{r2_input};
 #check files exist, to do!
-print "no rep1 ChIP files specified.\n" and die unless scalar @r1_chip;
-print "no rep1 input files specified.\n" and die unless scalar @r1_input;
-print "not rep2 ChIP files specified although there are rep2 input files.\n" and die if scalar @r2_input && !scalar @r2_chip;
-print "not rep2 input files specified although there are rep2 ChIP files.\n" and die if scalar @r2_chip && !scalar @r2_input;
-map {print "$_ does not exist!\n" and die unless -e $_} (@r1_chip, @r1_input);
-map {print "$_ does not exist!\n" and die unless -e $_} @r2_chip if scalar @r2_chip;
-map {print "$_ does not exist!\n" and die unless -e $_} @r2_input if scalar @r2_input;
+die "no rep1 ChIP files specified.\n" unless scalar @r1_chip;
+die "no rep1 input files specified.\n" unless scalar @r1_input;
+die "not rep2 ChIP files specified although there are rep2 input files.\n" if scalar @r2_input && !scalar @r2_chip;
+die "not rep2 input files specified although there are rep2 ChIP files.\n" if scalar @r2_chip && !scalar @r2_input;
+map {die "$_ does not exist!\n" unless -e $_} (@r1_chip, @r1_input);
+map {die "$_ does not exist!\n" unless -e $_} @r2_chip if scalar @r2_chip;
+map {die "$_ does not exist!\n" unless -e $_} @r2_input if scalar @r2_input;
  
 #uniform name/format of the input short read files
 my $r1_chip_reads = $out_dir . $name . '_r1_chip.fastq';
 my $r2_chip_reads = $out_dir . $name . '_r2_chip.fastq';
-my $chip_reads = $out_dir . $name . '_chip.fastq';
+#my $chip_reads = $out_dir . $name . '_chip.fastq';
 my $r1_input_reads = $out_dir . $name . '_r1_input.fastq';
 my $r2_input_reads = $out_dir . $name . '_r2_input.fastq';
-my $input_reads = $out_dir . $name . '_input.fastq';
+#my $input_reads = $out_dir . $name . '_input.fastq';
 #uniform name/format of the alignment files;
 my $r1_chip_alignment = $out_dir . $name . '_r1_chip.sam';
 my $r2_chip_alignment = $out_dir . $name . '_r2_chip.sam';
@@ -71,17 +71,13 @@ my $r1_peak = $out_dir . $name . '_r1_peak';
 my $r2_peak = $out_dir . $name . '_r2_peak';
 my $peak = $out_dir . $name . '_peak';
 
-#do copy if input are symlink
-#do unzip if input are zipped
-#cat multiple-lanes file into one lane file
-run_uniform_input();
-
 if (defined($preprocess) && $preprocess == 1) {
     my $remove_barcode = $ini{PRE_PROCESS}{run_remove_barcode};
     if (defined($remove_barcode) && $remove_barcode == 1) {
 	print "pipeline will do preprocess: remove barcode.\n";
-	my $cfg = $cfg_dir . 'remove_barcode.ini';
-	run_remove_barcode($cfg);
+	run_uniform_input({rm_barcode =>1});
+    } else {
+	run_uniform_input();
     }
 }
 
@@ -106,7 +102,7 @@ if (defined($peakcall) && $peakcall == 1) {
 if (defined($postprocess) && $postprocess == 1) {
     my $run_idr = $ini{POSTPROCESS}{run_idr};
     if (defined($run_idr) && $run_idr == 1) {
-	print "need rep2 files to do IDR.\n" and die unless scalar @r2_chip && scalar @r2_input; 
+	die "need rep2 files to do IDR.\n" unless scalar @r2_chip && scalar @r2_input; 
 	print "pipeline will do postprocess: idr.\n";
 	my $cfg = $cfg_dir . 'idr.ini';
 	run_idr($cfg);
@@ -119,47 +115,37 @@ sub usage {
 }
 
 sub run_uniform_input {
+    my ($opt) = @_;
+    #do copy if input are symlink
+    #do unzip if input are zipped
+    #cat multiple-lanes file into one lane file
+    #remove barcode if necessary
     my $script = $root_dir . 'uniform_input.pl';
-    print "$script does not exist.\n" and die unless -e $script;
-    system(join(" ", ("$script $r1_chip_reads", @r1_chip)));
-    system(join(" ", ("$script $r1_input_reads", @r1_input)));
-    system(join(" ", ("$script $r2_chip_reads", @r2_chip))) if scalar @r2_chip;
-    system(join(" ", ("$script $r2_input_reads", @r2_chip))) if scalar @r2_input;
-}
-
-sub run_remove_barcode {
-    my ($cfg) = @_;
-    tie my %ini, 'Config::IniFiles', (-file => $cfg);
-    my $script = $ini{SCRIPT}{remove_barcode};
-    print "$script does not exist.\n" and die unless -e $script;
-    system("$script -o $r1_chip_reads $r1_chip_reads");
-    if (scalar @r2_chip) {
-	system("$script -o $r2_chip_reads $r2_chip_reads");
-	system("$script -o $chip_reads $r1_chip_reads $r2_chip_reads");
-    }
-    system("$script -o $r1_input_reads $r1_input_reads");
-    if (scalar @r2_input) {
-	system("$script -o $r2_input_reads $r2_input_reads");
-	system("$script -o $input_reads $r1_input_reads $r2_input_reads");    
-    }
+    die "$script does not exist.\n" unless -e $script;
+    my $rm_barcode = "";
+    $rm_barcode = '-rm_barcode 1' if defined($opt) && $opt->{rm_barcode} == 1;
+    system(join(" ", ($script, $rm_barcode, $r1_chip_reads, @r1_chip)));
+    system(join(" ", ($script, $rm_barcode, $r1_input_reads, @r1_input)));
+    system(join(" ", ($script, $rm_barcode, $r2_chip_reads, @r2_chip))) if scalar @r2_chip;
+    system(join(" ", ($script, $rm_barcode, $r2_input_reads, @r2_chip))) if scalar @r2_input;
 }
 
 sub run_bowtie {
     my ($cfg) = @_;
     tie my %ini, 'Config::IniFiles', (-file => $cfg);
     my $bowtie_bin = $ini{BOWTIE}{bowtie_bin};
-    print "bowtie binary $bowtie_bin does not exist.\n" unless -e $bowtie_bin;
+    die "bowtie binary $bowtie_bin does not exist.\n" unless -e $bowtie_bin;
     my $bowtie_index = $ini{BOWTIE}{bowtie_index};
     my $parameter = $ini{BOWTIE}{parameter};
     system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $r1_chip_reads, $r1_chip_alignment)));
     if (scalar @r2_chip) {
 	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $r2_chip_reads, $r2_chip_alignment)));	
-	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $chip_reads, $chip_alignment)));
+	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, join(",", ($r1_chip_reads, $r2_chip_read)), $chip_alignment)));
     }
     system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $r1_input_reads, $r1_input_alignment)));
     if (scalar @r2_input) {
 	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $r2_input_reads, $r2_input_alignment)));	
-	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $input_reads, $input_alignment)));
+	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, join(",", ($r1_input_reads, $r2_input_reads)), $input_alignment)));
     }
 }
 
@@ -167,7 +153,7 @@ sub run_peakranger {
     my ($cfg) = @_;
     tie my %ini, 'Config::IniFiles', (-file => $cfg);
     my $script = $ini{PEAKRANGER}{script};
-    print "peakranger binary $script does not exist.\n" unless -e $script;
+    die "peakranger binary $script does not exist.\n" unless -e $script;
     my $parameter = $ini{PEAKRANGER}{parameter};
     system("$script -d $r1_chip_alignment -c $r1_input_alignment -o $r1_peak $parameter");
     if (scalar @r2_chip && scalar @r2_input) {
