@@ -95,7 +95,7 @@ if (defined($peakcall) && $peakcall == 1) {
     if (defined($run_peakranger) && $run_peakranger == 1) {
 	print "pipeline will do peak call: peakranger.\n";
 	my $cfg = $cfg_dir . 'peakranger.ini';
-	run_peakranger($cfg);
+	run_peakranger({cfg => $cfg});
     }
 }
 
@@ -149,15 +149,107 @@ sub run_bowtie {
     }
 }
 
-sub run_peakranger {
-    my ($cfg) = @_;
-    tie my %ini, 'Config::IniFiles', (-file => $cfg);
+sub run_peakranger {#accept a hashref argument
+    my $arg = shift;
+    tie my %ini, 'Config::IniFiles', (-file => $arg->{cfg});
     my $script = $ini{PEAKRANGER}{script};
     die "peakranger binary $script does not exist.\n" unless -e $script;
     my $parameter = $ini{PEAKRANGER}{parameter};
-    system("$script -d $r1_chip_alignment -c $r1_input_alignment -o $r1_peak $parameter");
-    if (scalar @r2_chip && scalar @r2_input) {
-	system("$script -d $r2_chip_alignment -c $r2_input_alignment -o $r2_peak $parameter");
-	system("$script -d $chip_alignment -c $input_alignment -o $peak $parameter");
+    if (scalar keys %$arg == 1) {#only cfg
+	system("$script -d $r1_chip_alignment -c $r1_input_alignment -o $r1_peak $parameter");
+	if (scalar @r2_chip && scalar @r2_input) {
+	    system("$script -d $r2_chip_alignment -c $r2_input_alignment -o $r2_peak $parameter");
+	    system("$script -d $chip_alignment -c $input_alignment -o $peak $parameter");
+	}
     }
+    else {#other arguments,
+	my ($d, $c, $o);
+	if (defined($arg->{d})) {
+	    $d = $arg->{d};
+	    delete $arg->{d};
+	}
+	if (defined($arg->{c})) {
+	    $c = $arg->{c};
+	    delete $arg->{c};
+	}
+	if (defined($arg->{o})) {
+	    $o = $arg->{o};
+	    delete $arg->{o};
+	}
+	my $par = __change_parameter($parameter, $arg);
+	system("$script -d $d -c $c -o $o $par");
+    }
+}
+
+sub run_idr {
+    my ($cfg) = @_;
+    tie my %ini, 'Config::IniFiles', (-file => $cfg);
+    my $analysis = $ini{IDR}{batch-consistency-analysis};
+    my $plot = $ini{IDR}{batch-consistency-plot};
+    my $idr_ori = $ini{IDR}{idr-ori};
+    my $idr_self = $ini{IDR}{idr-self};
+    my $idr_pseudo = $ini{IDR}{idr-pseudo};
+
+    my @samples, @o_prefiz;
+    #s1_c0
+    my $o_prefix = $out_dir . $name . '_s1_c0';
+    push @samples $r1_chip_alignment;
+    push @o_prefiz, $o_prefix;
+    
+    #s2_c0
+    $o_prefix = $out_dir . $name . '_s2_c0';
+    push @samples $r2_chip_alignment;
+    push @o_prefiz, $o_prefix;
+
+    #s0_c0
+    $o_prefix = $out_dir . $name . '_s0_c0';	
+    push @samples $chip_alignment;
+    push @o_prefiz, $o_prefix;
+    
+    #s1p1_c0 and s1p2_c0	
+    my ($r1p1_chip_alignment, $r1p2_chip_alignment) = 
+	shuffle_split($r1_chip_alignment);
+    push @samples $r1p1_chip_alignment;
+    push @samples $r1p2_chip_alignment;
+    $o_prefix = $out_dir . $name . '_s1p1_c0';
+    push @o_prefiz, $o_prefix;
+    $o_prefix = $out_dir . $name . '_s1p2_c0';
+    push @o_prefiz, $o_prefix;
+
+    #s2p1_c0 and s2p2_c0	
+    my ($r2p1_chip_alignment, $r2p2_chip_alignment) = 
+	shuffle_split($r2_chip_alignment);
+    push @samples $r2p1_chip_alignment;
+    push @samples $r2p2_chip_alignment;
+    $o_prefix = $out_dir . $name . '_s2p1_c0';
+    push @o_prefiz, $o_prefix;
+    $o_prefix = $out_dir . $name . '_s2p2_c0';
+    push @o_prefiz, $o_prefix;
+
+    #s0p1_c0 and s0p2_c0	
+    my ($p1_chip_alignment, $p2_chip_alignment) = 
+	shuffle_split($chip_alignment);
+    push @samples $p1_chip_alignment;
+    push @samples $p2_chip_alignment;
+    $o_prefix = $out_dir . $name . '_p1_c0';
+    push @o_prefiz, $o_prefix;
+    $o_prefix = $out_dir . $name . '_p2_c0';
+    push @o_prefiz, $o_prefix;
+
+    my $peakcall = $ini{PEAK}{script};
+    my $cfg;
+    if ( $peakcall eq 'peakranger' ) {
+	$cfg = $cfg_dir . 'peakranger.ini';
+	my $p = $ini{PEAK}{pvalue};
+
+	#run all peakcalls needed for idr
+	for $i (0..8) {
+	    run_peakranger({cfg => $cfg,
+			    d => $samples[$i],
+			    c => $input_alignment,
+			    o => $o_prefiz[$i],
+			    p => $p});
+	}
+	#run idr on pairs
+    }#end of if peakcall == peakranger
 }
