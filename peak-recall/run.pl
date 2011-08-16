@@ -186,9 +186,9 @@ sub run_idr {
     tie my %ini, 'Config::IniFiles', (-file => $cfg);
     my $analysis = $ini{IDR}{batch-consistency-analysis};
     my $plot = $ini{IDR}{batch-consistency-plot};
-    my $idr_ori = $ini{IDR}{idr-ori};
-    my $idr_self = $ini{IDR}{idr-self};
-    my $idr_pseudo = $ini{IDR}{idr-pseudo};
+    my $idr_cut_ori = $ini{IDR}{idr-ori};
+    my $idr_cut_self = $ini{IDR}{idr-self};
+    my $idr_cut_pseudo = $ini{IDR}{idr-pseudo};
 
     my @samples, @o_prefiz;
     #s1_c0
@@ -237,7 +237,9 @@ sub run_idr {
     push @o_prefiz, $o_prefix;
 
     my $peakcall = $ini{PEAK}{script};
+    my $rank_measure = $ini{PEAK}{rank_measure}
     my $cfg;
+    my @peaks;
     if ( $peakcall eq 'peakranger' ) {
 	$cfg = $cfg_dir . 'peakranger.ini';
 	my $p = $ini{PEAK}{pvalue};
@@ -249,7 +251,41 @@ sub run_idr {
 			    c => $input_alignment,
 			    o => $o_prefiz[$i],
 			    p => $p});
+	    push @peaks, $o_prefiz[$i] . "_peak_with_region.bed";
 	}
-	#run idr on pairs
-    }#end of if peakcall == peakranger
+	#transform *_peaks_with_region.bed (6 bed format) to 6+4 bed format
+	#transform p/q values into -log10
+    }
+    
+    #run idr on pairs
+    #s1_c0/s2_c0
+    my $idr_ori = $out_dir . $name . "_s1_c0_vs_s2_c0";
+    system("$analysis $peaks[0] $peaks[1] -1 $idr_ori 0 F $rank_measure");
+    system("$plot 1 $idr_ori $idr_ori");
+    #s1p1_c0/s1p2_c0
+    my $idr_self_r1 = $out_dir . $name . "s1p1_c0_vs_s1p2_c0";
+    system("$analysis $peaks[3] $peaks[4] -1 $idr_self_r1 0 F $rank_measure");
+    system("$plot 1 $idr_self_r1 $idr_self_r1");
+    #s2p1_c0/s2p2_c0
+    my $idr_self_r2 = $out_dir . $name . "s2p1_c0_vs_s2p2_c0";
+    system("$analysis $peaks[5] $peaks[6] -1 $idr_self_r2 0 F $rank_measure");
+    system("$plot 1 $idr_self_r2 $idr_self_r2");
+    #s0p1_c0/s0p2_c0
+    my $idr_pseudo = $out_dir . $name . "s0p1_c0_vs_s0p2_c0";
+    system("$analysis $peaks[7] $peaks[8] -1 $idr_pseudo 0 F $rank_measure");
+    system("$plot 1 $idr_pseudo $idr_pseudo");    
+
+    #final peaks
+    my $overlap_peaks_ori = $idr_ori . 'overlapped-peaks.txt';
+    my $finalpeaks_ori = $idr_ori . 'final-peaks.txt';
+    system("awk '$11 <= $idr_cut_ori {print $0}' $overlap_peaks_ori > $finalpeaks_ori");
+    my $overlap_peaks_self_r1 = $idr_self_r1 . 'overlapped-peaks.txt';
+    my $finalpeaks_r1 = $idr_self_r1 . 'final-peaks.txt';
+    system("awk '$11 <= $idr_cut_self {print $0}' $overlap_peaks_self_r1 > $finalpeaks_r1");
+    my $overlap_peaks_self_r2 = $idr_self_r2 . 'overlapped-peaks.txt';
+    my $final_peaks_r2 = $idr_self_r2 . 'final-peaks.txt';
+    system("awk '$11 <= $idr_cut_self {print $0}' $overlap_peaks_self_r2 > $finalpeaks_r2");
+    my $overlap_peaks_pseudo = $idr_pseudo . 'overlapped-peaks.txt';
+    my $finalpeaks_pseudo = $idr_pseudo . 'final-peaks.txt';
+    system("awk '$11 <= $idr_cut_pseudo {print $0}' $overlap_peaks_pseudo > $finalpeaks_pseudo"); 
 }
