@@ -10,7 +10,7 @@ BEGIN {
 }
 
 use Config::IniFiles;
-use Getopt::Long qw[GetOptions];
+use Getopt::Long qw[GetOptions GetOptionsFromString];
 #default config files
 my $cfg_dir = $root_dir . 'config/';
 my $cfg = $cfg_dir . 'pipeline.ini';
@@ -151,6 +151,7 @@ sub run_bowtie {
 
 sub run_peakranger {#accept a hashref argument
     my $arg = shift;
+    die "need cfg to run peakranger.\n" unless exists $arg->{cfg};
     tie my %ini, 'Config::IniFiles', (-file => $arg->{cfg});
     my $script = $ini{PEAKRANGER}{script};
     die "peakranger binary $script does not exist.\n" unless -e $script;
@@ -163,21 +164,9 @@ sub run_peakranger {#accept a hashref argument
 	}
     }
     else {#other arguments,
-	my ($d, $c, $o);
-	if (defined($arg->{d})) {
-	    $d = $arg->{d};
-	    delete $arg->{d};
-	}
-	if (defined($arg->{c})) {
-	    $c = $arg->{c};
-	    delete $arg->{c};
-	}
-	if (defined($arg->{o})) {
-	    $o = $arg->{o};
-	    delete $arg->{o};
-	}
-	my $par = __change_parameter($parameter, $arg);
-	system("$script -d $d -c $c -o $o $par");
+	die "need to specify options d/c/o to run peakranger.\n" unless exists $arg->{d} && exists $arg->{c} && exists $arg->{o};
+	my $par = __change_parameter('peakranger', $parameter, $arg);
+	system("$script $par");
     }
 }
 
@@ -237,7 +226,7 @@ sub run_idr {
     push @o_prefiz, $o_prefix;
 
     my $peakcall = $ini{PEAK}{script};
-    my $rank_measure = $ini{PEAK}{rank_measure}
+    my $rank_measure = $ini{PEAK}{rank_measure};
     my $cfg;
     my @peaks;
     if ( $peakcall eq 'peakranger' ) {
@@ -289,3 +278,40 @@ sub run_idr {
     my $finalpeaks_pseudo = $idr_pseudo . 'final-peaks.txt';
     system("awk '$11 <= $idr_cut_pseudo {print $0}' $overlap_peaks_pseudo > $finalpeaks_pseudo"); 
 }
+
+sub __change_parameter {
+    my ($algo, $par, $arg) = @_;
+    my $new_par = '';
+    if ($algo eq 'peakranger') {
+	my ($format, $t, $p, $l, $r, $b, $mode);
+	GetOptionsFromString($par, 
+			     'format:s' => \$format,
+			     't:i' => \$t,
+			     'p:s' => \$p,
+			     'l:i' => \$l,
+			     'r:s' => \$r, #delibrate str instead of float
+			     'b:i' => \$b
+			     'mode:s' => \$mode
+	    );
+	my %opt = ('--format=' => $format,
+		   '-t '       => $t,
+		   '-p '       => $p,
+		   '-l '       => $l,
+		   '-r '       => $r,
+		   '-b '       => $b,
+		   '--mode='   => $mode
+	    );
+	my %arg2opt = ('format' => '--format=',
+		       "t" => '-t ',
+		       "p" => '-p ',
+		       "l" => '-l ',
+		       "r" => '-r ',
+		       "b" => '-b ',
+		       "mode" => '--mode='
+	    );
+	map {$opt{$arg2opt{$_}} = $arg->{$_}} keys %$arg;
+	map { $new_par .= $_; $new_par .= $opt{$_}; } keys %opt;
+	return $new_par;
+    }
+}
+
