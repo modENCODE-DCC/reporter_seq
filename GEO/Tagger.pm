@@ -11,6 +11,7 @@ use ModENCODE::Parser::LWChado;
 use constant Filename_separator => ';';
 use constant Filename_separator_replacement => ' ';
 use constant Tag_value_separator => '_';
+use constant Tag_value_separator_replacement => '-';
 
 my %config                 :ATTR( :name<config>                :default<undef>);
 my %unique_id              :ATTR( :name<unique_id>             :default<undef>);
@@ -1763,18 +1764,22 @@ sub lvl4_condition {
     my @c = ();
     if ( defined($strain) ) {
 	$strain =~ s/Filename_separator/Filename_separator_replacement/g;
+	$strain =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
 	push @c, 'Strain' . Tag_value_separator . $strain;
     }
     if ( defined($cellline) ) {
 	$cellline =~ s/Filename_separator/Filename_separator_replacement/g;
+	$cellline =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
 	push @c, 'Cell-Line' . Tag_value_separator . $cellline;
     }
     if ( defined($tissue) ) {
 	$tissue =~ s/Filename_separator/Filename_separator_replacement/g;
+	$tissue =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
 	push @c, 'Tissue' . Tag_value_separator . $tissue;
     }
     if ( defined($devstage) ) {
-	$devstage =~  s/Filename_separator/Filename_separator_replacement/g;
+	$devstage =~ s/Filename_separator/Filename_separator_replacement/g;
+	$devstage =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
 	push  @c, 'Developmental-Stage' . Tag_value_separator . $devstage;
     }
     #push @c, 'Strain_' . $strain if defined($strain);
@@ -1785,7 +1790,9 @@ sub lvl4_condition {
 	next if scalar grep {$k eq $_} @exclude_factors;
 	my $v = $of{$k};
 	$k =~ s/Filename_separator/Filename_separator_replacement/g;
-	$v =~ s/Filename_separator/Filename_separator_replacement/g; 
+	$v =~ s/Filename_separator/Filename_separator_replacement/g;
+	$k =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
+	$v =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
 	#$k =~ s/_/-/g;
 	#$v =~ s/_/-/g;
 	push @c, $k . Tag_value_separator . $v;
