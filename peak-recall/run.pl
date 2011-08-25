@@ -11,6 +11,9 @@ BEGIN {
 
 use Config::IniFiles;
 use Getopt::Long qw[GetOptions GetOptionsFromString];
+mprint("###pipeline started###", 0);
+my $now = localtime;
+mprint("initiate... $now", 0);
 #default config files
 my $cfg_dir = $root_dir . 'config/';
 my $cfg = $cfg_dir . 'pipeline.ini';
@@ -22,9 +25,10 @@ my $option = GetOptions ("cfg:s" => \$cfg,
 			 "name=s" => \$name);
 usage() unless -e $cfg;
 usage() unless defined($name);
+mprint("the pipeline will be constructed according to configure file $cfg", 1);
+mprint("all output files will have prefix $name", 1);
 
 tie my %ini, 'Config::IniFiles', (-file => $cfg);
-
 #parse [PIPELINE] session to understand what need to run
 my $preprocess = $ini{PIPELINE}{run_preprocess};
 my $align = $ini{PIPELINE}{run_alignment};
@@ -37,7 +41,8 @@ mkdir($out_dir) unless -e $out_dir;
 mkdir($log_dir) unless -e $log_dir;
 $out_dir .= '/' unless $out_dir =~ /\/$/;
 $log_dir .= '/' unless $log_dir =~ /\/$/;
-
+mprint("output dir is $out_dir", 1);
+mprint("log dir is $log_dir", 1);
 #input files
 my @r1_chip = split /\s+/, $ini{INPUT}{r1_ChIP};
 my @r2_chip = split /\s+/, $ini{INPUT}{r2_ChIP} if exists $ini{INPUT}{r2_ChIP};
@@ -46,11 +51,26 @@ my @r2_input = split /\s+/, $ini{INPUT}{r2_input} if exists $ini{INPUT}{r2_input
 #check files exist, to do!
 die "no rep1 ChIP files specified.\n" unless scalar @r1_chip;
 die "no rep1 input files specified.\n" unless scalar @r1_input;
-die "not rep2 ChIP files specified although there are rep2 input files.\n" if scalar @r2_input && !scalar @r2_chip;
-die "not rep2 input files specified although there are rep2 ChIP files.\n" if scalar @r2_chip && !scalar @r2_input;
-map {die "$_ does not exist!\n" unless -e $_} (@r1_chip, @r1_input);
-map {die "$_ does not exist!\n" unless -e $_} @r2_chip if scalar @r2_chip;
-map {die "$_ does not exist!\n" unless -e $_} @r2_input if scalar @r2_input;
+die "no rep2 ChIP files specified although there are rep2 input files.\n" if scalar @r2_input && !scalar @r2_chip;
+die "no rep2 input files specified although there are rep2 ChIP files.\n" if scalar @r2_chip && !scalar @r2_input;
+map {die "rep1 ChIP file $_ does not exist!\n" unless -e $_} @r1_chip;
+map {die "rep1 input file $_ does not exist!\n" unless -e $_} @r1_input;
+map {die "rep2 ChIP file $_ does not exist!\n" unless -e $_} @r2_chip if scalar @r2_chip;
+map {die "rep2 input file $_ does not exist!\n" unless -e $_} @r2_input if scalar @r2_input;
+mprint("rep1 ChIP files are:", 1);
+map {mprint($_, 2)} @r1_chip;
+mprint("rep1 input files are:", 1);
+map {mprint($_, 2)} @r1_input;
+if (scalar @r2_chip) {
+    mprint("rep2 ChIP files are:", 1);
+    map {mprint($_, 2)} @r2_chip;
+}
+if (scalar @r2_input) {
+    mprint("rep2 input files are:", 1);
+    map {mprint($_, 2)} @r2_input;
+}
+$now = localtime;
+mprint("initiation done $now\n", 0);
  
 #uniform name/format of the input short read files
 my $r1_chip_reads = $out_dir . $name . '_r1_chip.fastq';
@@ -71,47 +91,93 @@ my $r1_peak = $out_dir . $name . '_r1_peak';
 my $r2_peak = $out_dir . $name . '_r2_peak';
 my $peak = $out_dir . $name . '_peak';
 
+my $done_preprocess = 0;
 if (defined($preprocess) && $preprocess == 1) {
-    my $remove_barcode = $ini{PRE_PROCESS}{run_remove_barcode};
+    $now = localtime;
+    mprint("preprocessing... $now", 0);
+    my $remove_barcode = $ini{PREPROCESS}{run_remove_barcode};
     if (defined($remove_barcode) && $remove_barcode == 1) {
-	print "pipeline will do preprocess: remove barcode.\n";
-	run_uniform_input({rm_barcode =>1});
+	mprint("pipeline will do preprocess: remove barcode.", 1);
+	#run_uniform_input({rm_barcode =>1});
+	$done_preprocess = 1;
+	$now = localtime;
+	mprint("done $now", 1);
     } else {
-	run_uniform_input();
+	mprint("pipeline will do misc preprocess, such as unzip, etc.", 1);
+	#run_uniform_input();
+	$done_preprocess = 1;
+	$now = localtime;
+	mprint("done $now", 1);
     }
+    mprint("preprocess done $now\n", 0);
 }
 
+my $done_align = 0;
 if (defined($align) && $align == 1) {
+    if (defined($preprocess) && $preprocess == 1) {
+	die "preprocess not done yet\n" unless $done_preprocess == 1;
+    }
+    $now = localtime;
+    mprint("aligning $now...", 0);
     my $run_bowtie = $ini{ALIGNMENT}{run_bowtie};
     if (defined($run_bowtie) && $run_bowtie == 1) {
-	print "pipeline will do alignment: bowtie.\n";
+	mprint("pipeline will do alignment: bowtie.", 1); #this shall put into bowtie module
 	my $cfg = $cfg_dir . 'bowtie.ini';
-	run_bowtie($cfg);
+	#run_bowtie($cfg);
+	$done_align = 1;
+	$now = localtime;
+	mprint("done $now", 0);
     }
 }
 
+my $done_peakcall = 0;
 if (defined($peakcall) && $peakcall == 1) {
+    if (defined($align) && $align == 1) {
+	die "alignment not done yet\n" unless $done_align == 1 ; 
+    }
+    $now = localtime;
+    mprint("peak calling $now...", 0);
     my $run_peakranger = $ini{PEAK_CALLING}{run_peakranger};
     if (defined($run_peakranger) && $run_peakranger == 1) {
-	print "pipeline will do peak call: peakranger.\n";
+	mprint("pipeline will do peak call: peakranger.", 1);
 	my $cfg = $cfg_dir . 'peakranger.ini';
-	run_peakranger({cfg => $cfg});
+	#run_peakranger({cfg => $cfg});
+	$done_peakcall = 1;
+	$now = localtime;
+	mprint("done $now", 0);
     }
 }
 
 if (defined($postprocess) && $postprocess == 1) {
+    if (defined($peakcall) && $peakcall == 1) {
+	die "peak calling not done yet\n" unless $done_peakcall == 1 ;
+    }
+    $now = localtime;
+    mprint("postprocessing $now...", 0);
     my $run_idr = $ini{POSTPROCESS}{run_idr};
     if (defined($run_idr) && $run_idr == 1) {
 	die "need rep2 files to do IDR.\n" unless scalar @r2_chip && scalar @r2_input; 
-	print "pipeline will do postprocess: idr.\n";
+	mprint("pipeline will do postprocess: idr.", 1);
 	my $cfg = $cfg_dir . 'idr.ini';
-	run_idr($cfg);
+	#run_idr($cfg);
+	$now = localtime;
+	mprint("done $now", 1);
     }
+}
+
+mprint("###pipeline finished###", 0);
+
+sub mprint {
+    my ($msg, $dent) = @_;
+    my $default_dent = "    ";
+    print $default_dent x $dent;
+    print $msg . "\n";
 }
 
 sub usage {
     my $usage = qq[$0 -name <name> [-cfg <cfg_file>]];
     print "Usage: $usage\n";
+    exit 1;
 }
 
 sub run_uniform_input {
@@ -140,7 +206,7 @@ sub run_bowtie {
     system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $r1_chip_reads, $r1_chip_alignment)));
     if (scalar @r2_chip) {
 	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $r2_chip_reads, $r2_chip_alignment)));	
-	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, join(",", ($r1_chip_reads, $r2_chip_read)), $chip_alignment)));
+	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, join(",", ($r1_chip_reads, $r2_chip_reads)), $chip_alignment)));
     }
     system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $r1_input_reads, $r1_input_alignment)));
     if (scalar @r2_input) {
@@ -173,33 +239,33 @@ sub run_peakranger {#accept a hashref argument
 sub run_idr {
     my ($cfg) = @_;
     tie my %ini, 'Config::IniFiles', (-file => $cfg);
-    my $analysis = $ini{IDR}{batch-consistency-analysis};
-    my $plot = $ini{IDR}{batch-consistency-plot};
-    my $idr_cut_ori = $ini{IDR}{idr-ori};
-    my $idr_cut_self = $ini{IDR}{idr-self};
-    my $idr_cut_pseudo = $ini{IDR}{idr-pseudo};
+    my $analysis = $ini{IDR}{'batch-consistency-analysis'};
+    my $plot = $ini{IDR}{'batch-consistency-plot'};
+    my $idr_cut_ori = $ini{IDR}{'idr-ori'};
+    my $idr_cut_self = $ini{IDR}{'idr-self'};
+    my $idr_cut_pseudo = $ini{IDR}{'idr-pseudo'};
 
-    my @samples, @o_prefiz;
+    my @samples; my @o_prefiz;
     #s1_c0
     my $o_prefix = $out_dir . $name . '_s1_c0';
-    push @samples $r1_chip_alignment;
+    push @samples, $r1_chip_alignment;
     push @o_prefiz, $o_prefix;
     
     #s2_c0
     $o_prefix = $out_dir . $name . '_s2_c0';
-    push @samples $r2_chip_alignment;
+    push @samples, $r2_chip_alignment;
     push @o_prefiz, $o_prefix;
 
     #s0_c0
     $o_prefix = $out_dir . $name . '_s0_c0';	
-    push @samples $chip_alignment;
+    push @samples, $chip_alignment;
     push @o_prefiz, $o_prefix;
     
     #s1p1_c0 and s1p2_c0	
     my ($r1p1_chip_alignment, $r1p2_chip_alignment) = 
 	shuffle_split($r1_chip_alignment);
-    push @samples $r1p1_chip_alignment;
-    push @samples $r1p2_chip_alignment;
+    push @samples, $r1p1_chip_alignment;
+    push @samples, $r1p2_chip_alignment;
     $o_prefix = $out_dir . $name . '_s1p1_c0';
     push @o_prefiz, $o_prefix;
     $o_prefix = $out_dir . $name . '_s1p2_c0';
@@ -208,8 +274,8 @@ sub run_idr {
     #s2p1_c0 and s2p2_c0	
     my ($r2p1_chip_alignment, $r2p2_chip_alignment) = 
 	shuffle_split($r2_chip_alignment);
-    push @samples $r2p1_chip_alignment;
-    push @samples $r2p2_chip_alignment;
+    push @samples, $r2p1_chip_alignment;
+    push @samples, $r2p2_chip_alignment;
     $o_prefix = $out_dir . $name . '_s2p1_c0';
     push @o_prefiz, $o_prefix;
     $o_prefix = $out_dir . $name . '_s2p2_c0';
@@ -218,8 +284,8 @@ sub run_idr {
     #s0p1_c0 and s0p2_c0	
     my ($p1_chip_alignment, $p2_chip_alignment) = 
 	shuffle_split($chip_alignment);
-    push @samples $p1_chip_alignment;
-    push @samples $p2_chip_alignment;
+    push @samples, $p1_chip_alignment;
+    push @samples, $p2_chip_alignment;
     $o_prefix = $out_dir . $name . '_p1_c0';
     push @o_prefiz, $o_prefix;
     $o_prefix = $out_dir . $name . '_p2_c0';
@@ -234,7 +300,7 @@ sub run_idr {
 	my $p = $ini{PEAK}{pvalue};
 
 	#run all peakcalls needed for idr
-	for $i (0..8) {
+	for my $i (0..8) {
 	    run_peakranger({cfg => $cfg,
 			    d => $samples[$i],
 			    c => $input_alignment,
@@ -272,7 +338,7 @@ sub run_idr {
     my $finalpeaks_r1 = $idr_self_r1 . 'final-peaks.txt';
     system("awk '$11 <= $idr_cut_self {print $0}' $overlap_peaks_self_r1 > $finalpeaks_r1");
     my $overlap_peaks_self_r2 = $idr_self_r2 . 'overlapped-peaks.txt';
-    my $final_peaks_r2 = $idr_self_r2 . 'final-peaks.txt';
+    my $finalpeaks_r2 = $idr_self_r2 . 'final-peaks.txt';
     system("awk '$11 <= $idr_cut_self {print $0}' $overlap_peaks_self_r2 > $finalpeaks_r2");
     my $overlap_peaks_pseudo = $idr_pseudo . 'overlapped-peaks.txt';
     my $finalpeaks_pseudo = $idr_pseudo . 'final-peaks.txt';
@@ -290,7 +356,7 @@ sub __change_parameter {
 			     'p:s' => \$p,
 			     'l:i' => \$l,
 			     'r:s' => \$r, #delibrate str instead of float
-			     'b:i' => \$b
+			     'b:i' => \$b,
 			     'mode:s' => \$mode
 	    );
 	my %opt = ('--format=' => $format,
