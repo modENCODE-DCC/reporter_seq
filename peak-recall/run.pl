@@ -98,13 +98,14 @@ if (defined($preprocess) && $preprocess == 1) {
     my $remove_barcode = $ini{PREPROCESS}{run_remove_barcode};
     if (defined($remove_barcode) && $remove_barcode == 1) {
 	mprint("pipeline will do preprocess: remove barcode.", 1);
-	#run_uniform_input({rm_barcode =>1});
+	run_uniform_input({rm_barcode =>1, 
+			   dent => 1});
 	$done_preprocess = 1;
 	$now = localtime;
 	mprint("done $now", 1);
     } else {
 	mprint("pipeline will do misc preprocess, such as unzip, etc.", 1);
-	#run_uniform_input();
+	run_uniform_input({dent => 1});
 	$done_preprocess = 1;
 	$now = localtime;
 	mprint("done $now", 1);
@@ -190,10 +191,22 @@ sub run_uniform_input {
     die "$script does not exist.\n" unless -e $script;
     my $rm_barcode = "";
     $rm_barcode = '-rm_barcode 1' if defined($opt) && $opt->{rm_barcode} == 1;
-    system(join(" ", ($script, $rm_barcode, $r1_chip_reads, @r1_chip)));
-    system(join(" ", ($script, $rm_barcode, $r1_input_reads, @r1_input)));
-    system(join(" ", ($script, $rm_barcode, $r2_chip_reads, @r2_chip))) if scalar @r2_chip;
-    system(join(" ", ($script, $rm_barcode, $r2_input_reads, @r2_chip))) if scalar @r2_input;
+    my $cmd = join(" ", ($script, $rm_barcode, $r1_chip_reads, @r1_chip));
+    mprint(join(" ", ("will run ", $cmd)), 1);
+    system($cmd) == 0 || die "error occured when run $cmd\n";
+    $cmd = join(" ", ($script, $rm_barcode, $r1_input_reads, @r1_input));
+    mprint(join(" ", ("will run ", $cmd)), 1);
+    system($cmd) == 0 || die "error occured when run $cmd\n";
+    if (scalar @r2_chip) {
+	$cmd = join(" ", ($script, $rm_barcode, $r2_chip_reads, @r2_chip));
+	mprint(join(" ", ("will run ", $cmd)), 1);
+	system($cmd) == 0 || die "error occured when run $cmd\n";
+    }
+    if (scalar @r2_input) {
+        $cmd = join(" ", ($script, $rm_barcode, $r2_input_reads, @r2_chip));
+	mprint(join(" ", ("will run ", $cmd)), 1);
+	system($cmd) == 0 || die "error occured when run $cmd\n";
+    }
 }
 
 sub run_bowtie {

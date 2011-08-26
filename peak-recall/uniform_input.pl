@@ -7,9 +7,13 @@ use strict;
 use Getopt::Long qw[GetOptions];
 use File::Basename qw[fileparse];
 use Archive::Extract;
+$Archive::Extract::WARN = 0;
+#use Misc;
 
 my $rm_barcode = 0;
-my $option = GetOptions ("rm_barcode:i" => \$rm_barcode);
+my $dent = 0;
+my $option = GetOptions ("rm_barcode:i" => \$rm_barcode,
+			 "dent:i" => \$dent);
 my ($out, @in) = @ARGV;
 my $out_dir = (fileparse($out))[1];
 my @want;
@@ -17,14 +21,18 @@ my @tmp;
 foreach my $inf (@in) {
     my $fn = (fileparse($inf))[0]; #original file
     my $t = $out_dir . $fn; #copy file
-    if (-l $inf) { #symlink
-	print "$inf is a symbolic link. copying...";
-	system("cp -L $inf $t");
-	print "done\n";
+    unless (-e $t) {
+	if (-l $inf) { #symlink
+	    print "$inf is a symbolic link. copying...";
+	    system("cp -L $inf $t");
+	    print "done\n";
+	} else {
+	    print "$inf is an ordinary file. copying...";
+	    system("cp $inf $t");
+	    print "done\n";
+	}
     } else {
-	print "$inf is an ordinary file. copying...";
-	system("cp $inf $t");
-	print "done\n";
+	print "$t already exists!\n";
     }
     
     my $ae;
@@ -32,12 +40,11 @@ foreach my $inf (@in) {
     if ( !$@ && defined($ae)) {#a zipped file
 	print "$t is a zipped file. unzipping...";
 	$ae->extract(to => $out_dir) || die "failed to extract $t.\n";
-	die "multiple files found in $t.\n" if scalar $ae->files != 1;
+	die "multiple files found in $t.\n" if scalar @{$ae->files} != 1;
 	push @tmp, $t;
 	$t = $out_dir . $ae->files->[0]; #the unzipped file
-	die "can not found just extracted $t\n" if -e $t;
-	print "done\n";
-	print "the new unzipped file is $t, the copied file from the above step is removed.\n";
+	die "can not found just extracted $t\n" unless -e $t;
+	print "done. the new unzipped file is $t\n";
     }
     
     if ($rm_barcode) {
@@ -45,14 +52,14 @@ foreach my $inf (@in) {
 	$t = remove_barcode($t);
     }
 
-    push @want $t;
+    push @want, $t;
 }
 
 #catenate files
 system(join(" ", ("cat", @want, "> $out")));  
 
 #cleanup files
-system(join(" ", ("rm", (@want, @tmp))));
+#system(join(" ", ("rm", (@want, @tmp))));
 
 sub remove_barcode {
     my ($file) = @_;
@@ -66,7 +73,7 @@ sub remove_barcode {
     }
     else {
 	print "The following barcode was found and will be stripped from file: $barcode\n";
-	my $outfile = $file . 'barcode-removed';
+	my $outfile = $file . '.barcode-removed';
 	open( my $IN, "<", $file ) || die "cannot open $file for input $!";
 	open( my $OUT, ">", $outfile ) || die "cannot open $outfile for output $!";
 	my $check_next      = 0;
@@ -74,6 +81,8 @@ sub remove_barcode {
         my $nobarcode_count = 0;
         my $barcode_endpos  = length($barcode);
         my $badquality_barcode =0;
+	my $qual_next = 0;
+	my $barcode_removed = 0;
 	while ( my $line = <$IN> ) {
 	    chomp $line;
 	    if ( $check_next == 1 && $line =~ /^[ACGTN]*$/) {
@@ -81,6 +90,7 @@ sub remove_barcode {
 		if ( $line =~ /^$barcode/ ) {
 		    $line = substr( $line, $barcode_endpos );
 		    $barcode_count++;
+		    $barcode_removed = 1;
 		} 
 		else {
 		    my $non_matches=0;
@@ -91,14 +101,23 @@ sub remove_barcode {
 		    if ($non_matches <=1) {
 			$badquality_barcode++;
 			$line = substr( $line, $barcode_endpos );
+			$barcode_removed = 1;
 		    } 
 		    else {
 			$nobarcode_count++;
 		    }
 		} #endo of $line !~ /^$barcode/
 	    } #end of check_next == 1
+	    elsif ($qual_next == 1) {
+		$qual_next = 0;
+		if ($barcode_removed == 1) {
+		    $barcode_removed = 0;
+		    $line = substr($line, $barcode_endpos);
+		}
+	    }
 	    else {
 		$check_next = ( $line =~ /^@/ ) ? 1 : 0; 
+		$qual_next = ( $line =~ /^\+/ ) ? 1 : 0;
 	    }
 	    print $OUT ($line . "\n");
         } #end of while
