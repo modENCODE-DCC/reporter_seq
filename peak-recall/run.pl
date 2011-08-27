@@ -95,20 +95,25 @@ my $done_preprocess = 0;
 if (defined($preprocess) && $preprocess == 1) {
     $now = localtime;
     mprint("preprocessing... $now", 0);
-    my $remove_barcode = $ini{PREPROCESS}{run_remove_barcode};
-    if (defined($remove_barcode) && $remove_barcode == 1) {
-	mprint("pipeline will do preprocess: remove barcode.", 1);
-	run_uniform_input({rm_barcode =>1, 
-			   dent => 1});
-	$done_preprocess = 1;
-	$now = localtime;
-	mprint("done $now", 1);
+    unless (-e $r1_chip_reads && -e $r2_chip_reads && -e $r1_input_reads && -e $r2_input_reads) {
+	my $remove_barcode = $ini{PREPROCESS}{run_remove_barcode};
+	if (defined($remove_barcode) && $remove_barcode == 1) {
+	    mprint("pipeline will do preprocess: remove barcode.", 1);
+	    run_uniform_input({rm_barcode =>1, 
+			       dent => 1});
+	    $done_preprocess = 1;
+	    $now = localtime;
+	    mprint("done $now", 1);
+	} else {
+	    mprint("pipeline will do misc preprocess, such as unzip, etc.", 1);
+	    run_uniform_input({dent => 1});
+	    $done_preprocess = 1;
+	    $now = localtime;
+	    mprint("done $now", 1);
+	}
     } else {
-	mprint("pipeline will do misc preprocess, such as unzip, etc.", 1);
-	run_uniform_input({dent => 1});
 	$done_preprocess = 1;
-	$now = localtime;
-	mprint("done $now", 1);
+	mprint("uniformed files already exists: $r1_chip_reads, $r1_input_reads, $r2_chip_reads, $r2_input_reads", 1);
     }
     mprint("preprocess done $now\n", 0);
 }
@@ -124,7 +129,7 @@ if (defined($align) && $align == 1) {
     if (defined($run_bowtie) && $run_bowtie == 1) {
 	mprint("pipeline will do alignment: bowtie.", 1); #this shall put into bowtie module
 	my $cfg = $cfg_dir . 'bowtie.ini';
-	#run_bowtie($cfg);
+	run_bowtie($cfg);
 	$done_align = 1;
 	$now = localtime;
 	mprint("done $now", 0);
@@ -142,7 +147,7 @@ if (defined($peakcall) && $peakcall == 1) {
     if (defined($run_peakranger) && $run_peakranger == 1) {
 	mprint("pipeline will do peak call: peakranger.", 1);
 	my $cfg = $cfg_dir . 'peakranger.ini';
-	#run_peakranger({cfg => $cfg});
+	run_peakranger({cfg => $cfg});
 	$done_peakcall = 1;
 	$now = localtime;
 	mprint("done $now", 0);
@@ -203,7 +208,7 @@ sub run_uniform_input {
 	system($cmd) == 0 || die "error occured when run $cmd\n";
     }
     if (scalar @r2_input) {
-        $cmd = join(" ", ($script, $rm_barcode, $r2_input_reads, @r2_chip));
+        $cmd = join(" ", ($script, $rm_barcode, $r2_input_reads, @r2_input));
 	mprint(join(" ", ("will run ", $cmd)), 1);
 	system($cmd) == 0 || die "error occured when run $cmd\n";
     }
@@ -213,18 +218,57 @@ sub run_bowtie {
     my ($cfg) = @_;
     tie my %ini, 'Config::IniFiles', (-file => $cfg);
     my $bowtie_bin = $ini{BOWTIE}{bowtie_bin};
-    die "bowtie binary $bowtie_bin does not exist.\n" unless -e $bowtie_bin;
-    my $bowtie_index = $ini{BOWTIE}{bowtie_index};
+    $bowtie_bin .= '/' unless $bowtie_bin =~ /\/$/;
+    $bowtie_bin .= 'bowtie';
+    die "bowtie binary $bowtie_bin not executable.\n" unless -x $bowtie_bin;
+    my $bowtie_indexes = $ini{BOWTIE}{bowtie_indexes};
     my $parameter = $ini{BOWTIE}{parameter};
-    system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $r1_chip_reads, $r1_chip_alignment)));
-    if (scalar @r2_chip) {
-	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $r2_chip_reads, $r2_chip_alignment)));	
-	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, join(",", ($r1_chip_reads, $r2_chip_reads)), $chip_alignment)));
+    my $cmd;
+    unless (-e $r1_chip_alignment) {
+	$cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r1_chip_reads, $r1_chip_alignment));
+	mprint(join(" ", ("will run ", $cmd)), 1);
+	system($cmd) == 0 || die "error occured when run $cmd\n";
+    } else {
+	print "rep1 ChIP aligned already! $r1_chip_alignment\n";
     }
-    system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $r1_input_reads, $r1_input_alignment)));
+    if (scalar @r2_chip) {
+	unless ( -e $r2_chip_alignment) { 
+	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r2_chip_reads, $r2_chip_alignment));
+	    mprint(join(" ", ("will run ", $cmd)), 1);
+	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	} else {
+	    print "rep2 ChIP aligned already! $r2_chip_alignment\n";
+	}
+	unless (-e $chip_alignment) {
+	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, join(",", ($r1_chip_reads, $r2_chip_reads)), $chip_alignment));
+	    mprint(join(" ", ("will run ", $cmd)), 1);
+	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	} else {
+	    print "Pooled ChIP aligned already! $chip_alignment\n";
+	}
+    }
+    unless (-e $r1_input_alignment) {
+	$cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r1_input_reads, $r1_input_alignment));
+	mprint(join(" ", ("will run ", $cmd)), 1);
+	system($cmd) == 0 || die "error occured when run $cmd\n";
+    } else {
+	print "rep1 input aligned already! $r1_input_alignment\n";
+    }
     if (scalar @r2_input) {
-	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, $r2_input_reads, $r2_input_alignment)));	
-	system(join(" ", ($bowtie_bin, $parameter, $bowtie_index, join(",", ($r1_input_reads, $r2_input_reads)), $input_alignment)));
+	unless (-e $r2_input_alignment) {
+	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r2_input_reads, $r2_input_alignment));
+	    mprint(join(" ", ("will run ", $cmd)), 1);
+	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	} else {
+	    print "rep2 input aligned already! $r2_input_alignment\n";
+	}
+	unless (-e $input_alignment) {
+	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, join(",", ($r1_input_reads, $r2_input_reads)), $input_alignment));
+	    mprint(join(" ", ("will run ", $cmd)), 1);
+	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	} else {
+	    print "Pooled input aligned already! $input_alignment\n";
+	}
     }
 }
 
@@ -236,10 +280,13 @@ sub run_peakranger {#accept a hashref argument
     die "peakranger binary $script does not exist.\n" unless -e $script;
     my $parameter = $ini{PEAKRANGER}{parameter};
     if (scalar keys %$arg == 1) {#only cfg
-	system("$script -d $r1_chip_alignment -c $r1_input_alignment -o $r1_peak $parameter");
+	print "$script -d $r1_chip_alignment -c $r1_input_alignment -o $r1_peak $parameter\n";
+	#system("$script -d $r1_chip_alignment -c $r1_input_alignment -o $r1_peak $parameter");
 	if (scalar @r2_chip && scalar @r2_input) {
-	    system("$script -d $r2_chip_alignment -c $r2_input_alignment -o $r2_peak $parameter");
-	    system("$script -d $chip_alignment -c $input_alignment -o $peak $parameter");
+	    print "$script -d $r2_chip_alignment -c $r2_input_alignment -o $r2_peak $parameter\n";
+	    #system("$script -d $r2_chip_alignment -c $r2_input_alignment -o $r2_peak $parameter");
+	    print "$script -d $chip_alignment -c $input_alignment -o $peak $parameter\n";
+	    #system("$script -d $chip_alignment -c $input_alignment -o $peak $parameter");
 	}
     }
     else {#other arguments,
