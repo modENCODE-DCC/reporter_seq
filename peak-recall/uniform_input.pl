@@ -16,11 +16,12 @@ my $option = GetOptions ("rm_barcode:i" => \$rm_barcode,
 			 "dent:i" => \$dent);
 my ($out, @in) = @ARGV;
 my $out_dir = (fileparse($out))[1];
+my $ori_dir = $out_dir; $ori_dir =~ s/uniform/origin/;
 my @want;
 my @tmp;
 foreach my $inf (@in) {
     my $fn = (fileparse($inf))[0]; #original file
-    my $t = $out_dir . $fn; #copy file
+    my $t = $ori_dir . $fn; #copy file
     unless (-e $t) {
 	if (-l $inf) { #symlink
 	    print "$inf is a symbolic link. copying...";
@@ -39,10 +40,10 @@ foreach my $inf (@in) {
     eval {$ae = Archive::Extract->new(archive => $t)};
     if ( !$@ && defined($ae)) {#a zipped file
 	print "$t is a zipped file. unzipping...";
-	$ae->extract(to => $out_dir) || die "failed to extract $t.\n";
+	$ae->extract(to => $ori_dir) || die "failed to extract $t.\n";
 	die "multiple files found in $t.\n" if scalar @{$ae->files} != 1;
 	push @tmp, $t;
-	$t = $out_dir . $ae->files->[0]; #the unzipped file
+	$t = $ori_dir . $ae->files->[0]; #the unzipped file
 	die "can not found just extracted $t\n" unless -e $t;
 	print "done. the new unzipped file is $t\n";
     }
