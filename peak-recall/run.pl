@@ -20,12 +20,16 @@ my $cfg_dir = $root_dir . 'config/';
 my $cfg = $cfg_dir . 'pipeline.ini';
 #uniform name for all intermediate files;
 #do we need timestamp to make it unique?
-my $name;
+my ($org, $name);
 #create cfg for each TF run to override the default
 my $option = GetOptions ("cfg:s" => \$cfg,
+			 "org=s" => \$org,
 			 "name=s" => \$name);
+$org = lc($org);
 usage() unless -e $cfg;
 usage() unless defined($name);
+my @allow_org = qw[worm fly];
+usage() unless defined($org) && scalar grep {$org eq $_} @allow_org;
 mprint("the pipeline will be constructed according to configure file $cfg", 1);
 mprint("all output files will have prefix $name", 1);
 
@@ -109,7 +113,8 @@ if (defined($preprocess) && $preprocess == 1) {
     my $remove_barcode = $ini{PREPROCESS}{run_remove_barcode};
     if (defined($remove_barcode) && $remove_barcode == 1) {
 	mprint("pipeline will do preprocess: remove barcode.", 1);
-	run_uniform_input({rm_barcode =>1, 
+	run_uniform_input({rm_barcode =>1,
+			   cfg => $cfg_dir . 'remove_barcode.ini', 
 			   dent => 1});
 	$done_preprocess = 1;
 	$now = localtime;
@@ -228,7 +233,7 @@ sub mprint {
 }
 
 sub usage {
-    my $usage = qq[$0 -name <name> [-cfg <cfg_file>]];
+    my $usage = qq[$0 -name <name> -org <worm|fly> [-cfg <cfg_file>]];
     print "Usage: $usage\n";
     exit 1;
 }
@@ -239,34 +244,44 @@ sub run_uniform_input {
     #do unzip if input are zipped
     #cat multiple-lanes file into one lane file
     #remove barcode if necessary
-    my $script = $root_dir . 'uniform_input.pl';
+    tie my %ini, "Config::IniFiles", (-file => $opt->{cfg}) if exists $opt->{cfg};
+    my $script = $ini{SCRIPT}{remove_barcode};
+    my $force_redo = $ini{SCRIPT}{force_redo};
     die "$script does not exist.\n" unless -e $script;
     my $rm_barcode = "";
     $rm_barcode = '-rm_barcode 1' if defined($opt) && $opt->{rm_barcode} == 1;
     my $cmd;
-    unless ( -e $r1_chip_reads ) {
+    if ( ! -e $r1_chip_reads || $force_redo) {
 	$cmd = join(" ", ($script, $rm_barcode, $r1_chip_reads, @r1_chip));
 	mprint("will run $cmd", 1);
 	system($cmd) == 0 || die "error occured when run $cmd\n";
+    } else {
+	mprint("uniformed input for rep1 ChIP already exists: $r1_chip_reads", 1); 
     }
-    unless ( -e $r1_input_reads ) {
+    if ( ! -e $r1_input_reads || $force_redo) {
 	$cmd = join(" ", ($script, $rm_barcode, $r1_input_reads, @r1_input));
 	mprint("will run $cmd", 1);
 	system($cmd) == 0 || die "error occured when run $cmd\n";
+    } else {
+	mprint("uniformed input for rep1 control already exists: $r1_input_reads", 1);
     }
     if (scalar @r2_chip) {
-	unless ( -e $r2_chip_reads ) {
+	if ( ! -e $r2_chip_reads && $force_redo) {
 	    $cmd = join(" ", ($script, $rm_barcode, $r2_chip_reads, @r2_chip));
 	    mprint("will run $cmd", 1);
 	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	} else {
+	    mprint("uniformed input for rep2 ChIP already exists: $r2_chip_reads", 1);
 	}
     }
     if (scalar @r2_input) {
-	unless ( -e $r2_input_reads ) {
+	if ( ! -e $r2_input_reads && $force_redo) {
 	    $cmd = join(" ", ($script, $rm_barcode, $r2_input_reads, @r2_input));
 	    mprint("will run $cmd", 1);
 	    system($cmd) == 0 || die "error occured when run $cmd\n";
-	}
+	} else {
+            mprint("uniformed input for rep2 control already exists: $r2_input_reads", 1);
+        }
     }
 }
 
@@ -277,10 +292,11 @@ sub run_bowtie {
     $bowtie_bin .= '/' unless $bowtie_bin =~ /\/$/;
     $bowtie_bin .= 'bowtie';
     die "bowtie binary $bowtie_bin not executable.\n" unless -x $bowtie_bin;
-    my $bowtie_indexes = $ini{BOWTIE}{bowtie_indexes};
+    my $bowtie_indexes = $ini{BOWTIE}{"bowtie_indexes_$org"};
+    my $force_redo = $ini{BOWTIE}{force_redo};
     my $parameter = $ini{BOWTIE}{parameter};
     my $cmd;
-    unless (-e $r1_chip_alignment) {
+    if ( ! -e $r1_chip_alignment || $force_redo ) {
 	$cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r1_chip_reads, $r1_chip_alignment));
 	mprint("will run $cmd", 1);
 	#system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -288,14 +304,14 @@ sub run_bowtie {
 	mprint("rep1 ChIP aligned already! $r1_chip_alignment", 1);
     }
     if (scalar @r2_chip) {
-	unless ( -e $r2_chip_alignment) { 
+	if ( ! -e $r2_chip_alignment || $force_redo ) { 
 	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r2_chip_reads, $r2_chip_alignment));
 	    mprint("will run $cmd", 1);
 	    system($cmd) == 0 || die "error occured when run $cmd\n";
 	} else {
 	    mprint("rep2 ChIP aligned already! $r2_chip_alignment", 1);
 	}
-	unless (-e $chip_alignment) {
+	if ( ! -e $chip_alignment || $force_redo ) {
 	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, join(",", ($r1_chip_reads, $r2_chip_reads)), $chip_alignment));
 	    mprint("will run $cmd", 1);
 	    system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -303,7 +319,7 @@ sub run_bowtie {
 	    mprint("Pooled ChIP aligned already! $chip_alignment", 1);
 	}
     }
-    unless (-e $r1_input_alignment) {
+    if ( ! -e $r1_input_alignment || $force_redo ) {
 	$cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r1_input_reads, $r1_input_alignment));
 	mprint("will run $cmd", 1);
 	system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -311,14 +327,14 @@ sub run_bowtie {
 	mprint("rep1 input aligned already! $r1_input_alignment", 1);
     }
     if (scalar @r2_input) {
-	unless (-e $r2_input_alignment) {
+	if (! -e $r2_input_alignment || $force_redo ) {
 	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r2_input_reads, $r2_input_alignment));
 	    mprint("will run $cmd", 1);
 	    system($cmd) == 0 || die "error occured when run $cmd\n";
 	} else {
 	    mprint("rep2 input aligned already! $r2_input_alignment", 1);
 	}
-	unless (-e $input_alignment) {
+	if ( ! -e $input_alignment || $force_redo ) {
 	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, join(",", ($r1_input_reads, $r2_input_reads)), $input_alignment));
 	    mprint("will run $cmd", 1);
 	    system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -334,6 +350,7 @@ sub run_peakranger {#accept a hashref argument
     tie my %ini, 'Config::IniFiles', (-file => $arg->{cfg});
     my $script = $ini{PEAKRANGER}{script};
     die "peakranger binary $script does not exist.\n" unless -e $script;
+    my $force_redo = $ini{PEAKRANGER}{force_redo};
     my $parameter = $ini{PEAKRANGER}{parameter};
 
     if (scalar keys %$arg == 1) {#only cfg
@@ -342,7 +359,7 @@ sub run_peakranger {#accept a hashref argument
 	my $r2_prefix = $prefix . $name . '_r2';
 	my $pool_prefix = $prefix . $name . '_pool';
 	my $cmd;
-	unless ( -e $r1_peak ) {
+	if ( ! -e $r1_peak || $force_redo ) {
 	    $cmd = "$script -d $r1_chip_alignment -c $r1_input_alignment -o $r1_prefix $parameter"; #r1_peak is prefix
 	    mprint("will run $cmd", 1);
 	    system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -352,7 +369,7 @@ sub run_peakranger {#accept a hashref argument
 	    mprint("peak already called for rep1: $r1_peak", 1);
 	}
 	if (scalar @r2_chip && scalar @r2_input) {
-	    unless ( -e $r2_peak && -e $peak ) {
+	    if ( ! (-e $r2_peak && -e $peak) || $force_redo ) {
 		$cmd = "$script -d $r2_chip_alignment -c $r2_input_alignment -o $r2_prefix $parameter";
 		mprint("will run $cmd", 1);
 		system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -374,14 +391,15 @@ sub run_peakranger {#accept a hashref argument
 	delete $arg->{cfg};
 	my $dent = $arg->{dent} and delete $arg->{dent} if exists $arg->{dent};
 	my $custom_peak = $arg->{peak} and delete $arg->{peak} if exists $arg->{peak};
-	mprint("peak already called: $custom_peak", $dent) and return $custom_peak if -e $custom_peak;
+	my $force_redo = $arg->{force_redo} and delete $arg->{force_redo} if exists $arg->{force_redo};
+	mprint("peak already called: $custom_peak", $dent) and return $custom_peak if -e $custom_peak && ! $force_redo;
 	die "need to specify options d/c/o to run peakranger.\n" unless exists $arg->{d} && exists $arg->{c} && exists $arg->{o};
 	my $par = join(" ", ('-d', $arg->{d}, '-c', $arg->{c}, '-o', $arg->{o}, __change_parameter('peakranger', $parameter, $arg)));
 	my $cmd = "$script $par --nowig";
-	mprint("fdr cutoff set as $arg->{p} !!!", $dent);
-	mprint("will run $cmd", $dent);
+	mprint("fdr cutoff set as $arg->{p} !!!", $dent || 1);
+	mprint("will run $cmd", $dent || 1);
 	system($cmd) == 0 || die "error occured when run $cmd\n";
-	mprint("transform into narrowPeak format with log p/q values", $dent);
+	mprint("transform into narrowPeak format with log p/q values", $dent || 1);
 	peakranger2narrowPeak($arg->{o}, $custom_peak, 1) and return $custom_peak if defined($custom_peak);
     }
 }
@@ -393,10 +411,11 @@ sub run_idr {
     my $code_dir = $ini{IDR}{'code-dir'};
     my $analysis = $ini{IDR}{'batch-consistency-analysis'};
     my $plot = $ini{IDR}{'batch-consistency-plot'};
+    my $force_redo = $ini{IDR}{force_redo};
     my $idr_cut_ori = $ini{IDR}{'idr-ori'};
     my $idr_cut_self = $ini{IDR}{'idr-self'};
     my $idr_cut_pseudo = $ini{IDR}{'idr-pseudo'};
-    my $genome_table = $ini{IDR}{'genome-table'};
+    my $genome_table = $ini{IDR}{"genome-table-$org"};
 
     mprint("idr uses the following cutoff: ", 1);
     mprint("original replicate threshold: $idr_cut_ori", 2);
@@ -436,7 +455,7 @@ sub run_idr {
     push @set, 'pseudo rep1 part2 vs merged control';
     my $r1p1_chip_alignment = $alignment_dir . $name . '_r1p1_chip.sam';
     my $r1p2_chip_alignment = $alignment_dir . $name . '_r1p2_chip.sam';
-    shuffle_split($r1_chip_alignment, $r1p1_chip_alignment, $r1p2_chip_alignment) unless (-e $r1p1_chip_alignment && -e $r1p2_chip_alignment);
+    shuffle_split($r1_chip_alignment, $r1p1_chip_alignment, $r1p2_chip_alignment) if ( ! (-e $r1p1_chip_alignment && -e $r1p2_chip_alignment) || $force_redo );
     push @samples, $r1p1_chip_alignment;
     push @samples, $r1p2_chip_alignment;
     $o_prefix = $idr_dir . $name . '_s1p1_c0';
@@ -454,7 +473,7 @@ sub run_idr {
     push @set, 'pseudo rep2 part2 vs merged control';
     my $r2p1_chip_alignment = $alignment_dir . $name . '_r2p1_chip.sam';
     my $r2p2_chip_alignment = $alignment_dir . $name . '_r2p2_chip.sam';
-    shuffle_split($r2_chip_alignment, $r2p1_chip_alignment, $r2p2_chip_alignment) unless (-e $r2p1_chip_alignment && -e $r2p2_chip_alignment);
+    shuffle_split($r2_chip_alignment, $r2p1_chip_alignment, $r2p2_chip_alignment) if ( ! (-e $r2p1_chip_alignment && -e $r2p2_chip_alignment) || $force_redo );
     push @samples, $r2p1_chip_alignment;
     push @samples, $r2p2_chip_alignment;
     $o_prefix = $idr_dir . $name . '_s2p1_c0';
@@ -471,7 +490,7 @@ sub run_idr {
     push @set, 'pseudo merged-rep part2 vs merged control';
     my $p1_chip_alignment = $alignment_dir . $name . '_p1_chip.sam';
     my $p2_chip_alignment = $alignment_dir . $name . '_p2_chip.sam';
-    shuffle_split($chip_alignment, $p1_chip_alignment, $p2_chip_alignment) unless (-e $p1_chip_alignment && -e $p2_chip_alignment);
+    shuffle_split($chip_alignment, $p1_chip_alignment, $p2_chip_alignment) if ( ! (-e $p1_chip_alignment && -e $p2_chip_alignment) || $force_redo );
     push @samples, $p1_chip_alignment;
     push @samples, $p2_chip_alignment;
     $o_prefix = $idr_dir . $name . '_p1_c0';
@@ -506,6 +525,7 @@ sub run_idr {
 	    my $o = $o_dir . $peak_name_prefiz[$i];
 	    $idr_peak = run_peakranger({cfg => $cfg,
 					dent => 2,
+					force_redo => $force_redo,
 					peak => $idr_peak,
 					d => $samples[$i],
 					c => $input_alignment,
@@ -528,12 +548,12 @@ sub run_idr {
     my $idr_ori = $idr_dir . $name . "_s1_c0_vs_s2_c0/"; mkdir($idr_ori) unless -e $idr_ori;
     my $idr_ori_prefix = $idr_ori . $name . "_s1_c0_vs_s2_c0";
     mprint("check pairwise consistency by idr on pair s1_c0 vs s2_c0", 1);
-    unless ( -e $idr_ori_prefix. '-Rout.txt') {
+    if ( ! -e $idr_ori_prefix . '-Rout.txt' || $force_redo ) {
 	$cmd = "$rscript $analysis $peaks[0] $peaks[1] -1 $idr_ori_prefix 0 F $rank_measure $genome_table";
 	mprint("will run $cmd", 1);
 	system($cmd) == 0 || die "error occured when run $cmd\n";
     }
-    unless ( -e $idr_ori_prefix . '-plot.ps' ){
+    if ( ! -e $idr_ori_prefix . '-plot.ps' || $force_redo ) {
 	$cmd = "$rscript $plot 1 $idr_ori_prefix $idr_ori_prefix";
 	mprint("will run $cmd", 1);
 	system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -542,12 +562,12 @@ sub run_idr {
     my $idr_self_r1 = $idr_dir . $name . "_s1p1_c0_vs_s1p2_c0/"; mkdir($idr_self_r1) unless -e $idr_self_r1;
     my $idr_self_r1_prefix = $idr_self_r1 . $name . "_s1p1_c0_vs_s1p2_c0";
     mprint("check self consistency of rep1 by idr on pair s1p1_c0 vs s1p2_c0", 1);
-    unless ( -e $idr_self_r1_prefix . '-Rout.txt') {
+    if ( ! -e $idr_self_r1_prefix . '-Rout.txt' || $force_redo ) {
 	$cmd = "$rscript $analysis $peaks[3] $peaks[4] -1 $idr_self_r1_prefix 0 F $rank_measure $genome_table";
 	mprint("will run $cmd", 1);
 	system($cmd) == 0 || die "error occured when run $cmd\n";
     }
-    unless ( -e $idr_self_r1_prefix . '-plot.ps') {
+    if ( ! -e $idr_self_r1_prefix . '-plot.ps' || $force_redo ) {
 	$cmd = "$rscript $plot 1 $idr_self_r1_prefix $idr_self_r1_prefix";
 	mprint("will run $cmd", 1);
 	system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -556,12 +576,12 @@ sub run_idr {
     my $idr_self_r2 = $idr_dir . $name . "_s2p1_c0_vs_s2p2_c0/"; mkdir($idr_self_r2) unless -e $idr_self_r2;
     my $idr_self_r2_prefix = $idr_self_r2 . $name . "_s2p1_c0_vs_s2p2_c0";
     mprint("check self consistency of rep2 by idr on pair s2p1_c0 vs s2p2_c0", 1);
-    unless ( -e $idr_self_r2_prefix . '-Rout.txt') {
+    if ( ! -e $idr_self_r2_prefix . '-Rout.txt' || $force_redo ) {
         $cmd = "$rscript $analysis $peaks[5] $peaks[6] -1 $idr_self_r2_prefix 0 F $rank_measure $genome_table";
 	mprint($cmd, 1);
         system($cmd) == 0 || die "error occured when run $cmd\n";
     }
-    unless ( -e $idr_self_r2_prefix . '-plot.ps') {
+    if ( ! -e $idr_self_r2_prefix . '-plot.ps' || $force_redo ) {
         $cmd = "$rscript $plot 1 $idr_self_r2_prefix $idr_self_r2_prefix";
         mprint($cmd, 1);
         system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -570,12 +590,12 @@ sub run_idr {
     my $idr_pseudo = $idr_dir . $name . "_s0p1_c0_vs_s0p2_c0/"; mkdir($idr_pseudo) unless -e $idr_pseudo;
     my $idr_pseudo_prefix = $idr_pseudo . $name . "_s0p1_c0_vs_s0p2_c0";
     mprint("check pseudo consistency of merged by idr on s0p1_c0 vs s0p2_c0", 1);
-    unless ( -e $idr_pseudo_prefix . '-Rout.txt') {
+    if ( ! -e $idr_pseudo_prefix . '-Rout.txt' || $force_redo ) {
 	$cmd = "$rscript $analysis $peaks[7] $peaks[8] -1 $idr_pseudo_prefix 0 F $rank_measure $genome_table";
 	mprint($cmd, 1);
         system($cmd) == 0 || die "error occured when run $cmd\n";
     }
-    unless ( -e $idr_pseudo_prefix . '-plot.ps') {
+    if ( ! -e $idr_pseudo_prefix . '-plot.ps' || $force_redo ) {
         $cmd = "$rscript $plot 1 $idr_pseudo_prefix $idr_pseudo_prefix";
         mprint($cmd, 1);
         system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -583,7 +603,7 @@ sub run_idr {
     #change working dir back to my root (code) dir.
     chdir($root_dir);
 
-    #final peaks 
+    #final peaks, alway force_redo 
     my $overlap_peaks_ori = $idr_ori_prefix . '-overlapped-peaks.txt';
     my $np_r1_r2 = `awk '\$11 <= $idr_cut_ori {print \$0}' $overlap_peaks_ori |wc -l`; chomp $np_r1_r2;
     mprint("number of peaks passed pairwise idr threshold is $np_r1_r2", 1); 
@@ -670,11 +690,12 @@ sub peakranger2narrowPeak {
 	    if ($fld[4] != 0 && $fld[5] != 0) {
 		$fld[4] = -log($fld[4])/log(10);
 		$fld[5] = -log($fld[5])/log(10);
-		print $outh join("\t", ($fld[0], $fld[1], $fld[2], $name, 0, '.', $enrich->{$rgn}->[2], $fld[4], $fld[5], $fld[3])), "\n";
+	    } else { #min subnormal positive double is about 10^-324 
+		$fld[4] = 323;
+		$fld[5] = 323;
 	    }
-	} else {
-	    print $outh join("\t", ($fld[0], $fld[1], $fld[2], $name, 0, '.', $enrich->{$rgn}->[2], $fld[4], $fld[5], $fld[3])), "\n";
 	}
+	print $outh join("\t", ($fld[0], $fld[1], $fld[2], $name, 0, '.', $enrich->{$rgn}->[2], $fld[4], $fld[5], $fld[3])), "\n";
     }
     close $in1h;
     close $in2h;
