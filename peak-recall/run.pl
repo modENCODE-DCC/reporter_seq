@@ -616,8 +616,8 @@ sub run_idr {
     my $overlap_peaks_pseudo = $idr_pseudo_prefix . '-overlapped-peaks.txt';
     my $np_r0 = `awk '\$11 <= $idr_cut_pseudo {print \$0}' $overlap_peaks_pseudo |wc -l`; chomp $np_r0;
     mprint("number of peaks passed rep2 merge pseudo threshold is $np_r0", 1);
-    my $conservative_peaks = $idr_dir . $name . '_conservative-peaks.bed';
-    my $optimal_peaks = $idr_dir . $name . '_optimal-peaks.bed';
+    my $conservative_peaks = $idr_dir . $name . '_conservative-peaks.txt';
+    my $optimal_peaks = $idr_dir . $name . '_optimal-peaks.txt';
     mprint("final $np_r1_r2 conservative peaks called by idr are in file $conservative_peaks", 1);
     my $opt_cut = $np_r1_r2 > $np_r0 ? $np_r1_r2 : $np_r0 ;
     mprint("final $opt_cut optimal peaks called by idr are in file $optimal_peaks", 1);
@@ -625,6 +625,9 @@ sub run_idr {
 	`sort -k9nr,9nr $overlap_peaks_pseudo | head -n $np_r1_r2 > $conservative_peaks`;
 	`sort -k9nr,9nr $overlap_peaks_pseudo | head -n $opt_cut > $optimal_peaks`;
     }
+    my $optimal_peaks_r1 = $idr_dir . $name . '_rep1_optimal-peaks.bed';
+    my $optimal_peaks_r2 = $idr_dir . $name . '_rep2_optimal-peaks.bed';
+    idr2bed($optimal_peaks, $optimal_peaks_r1, $optimal_peaks_r2);
 }
 
 sub __change_parameter {
@@ -719,4 +722,22 @@ sub shuffle_split {
     }
     my $tp1 = $prefix . '00'; my $tp2 = $prefix . '01'; 
     `mv $tp1 $p1`; `mv $tp2 $p2`;
+}
+
+sub idr2bed {
+    my ($idr_file, $rep1, $rep2) = @_;
+    open my $ifh, "<", $idr_file || die ("cannot open idr output file $idr_file\n");
+    open my $r1h, ">", $rep1 || die ("cannot open $rep1 to write\n");
+    open my $r2h, ">", $rep2 || die ("cannot open $rep2 to write\n");
+    while(<$ifh>) {
+	chomp;
+	my @flds = split /\s+/;
+	my $chr = $flds[1]; $chr =~ s/^"//; $chr =~ s/"$//;
+	print $r1h join("\t", ($chr, $flds[2], $flds[3], $flds[10])), "\n";
+	my $chr = $flds[5]; $chr =~ s/^"//; $chr =~ s/"$//;
+	print $r2h join("\t", ($chr, $flds[6], $flds[7], $flds[10])), "\n";
+    }
+    close $ifh;
+    close $r1h;
+    close $r2h;
 }
