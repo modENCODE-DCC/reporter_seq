@@ -2,36 +2,49 @@
 use strict;
 use constant PARENT_DIR => '/glusterfs/zheng/fastq-replica-v2/';
 use constant CFG_DIR => '/glusterfs/zheng/cfg/';
-my $cfg_dir; my @tf_dirs;
+
+my $cfg_dir; my @tf_dirs; my %taxa;
 if (scalar @ARGV == 0) {
     $cfg_dir = CFG_DIR;
     for my $pi ('snyder', 'white', 'macalpine') {
 	my $dir = PARENT_DIR . $pi . '/';
 	opendir my $dh, $dir || die "cannot open dir $dir \n";
 	my @dirs = map {$dir . $_ . '/'} grep {!/^\./} readdir($dh);
+	my $org = $pi eq 'snyder' ? 'worm' : 'fly';
+	for my $t (@dirs) {
+	    $taxa{$t} = $org;
+	}
    	push @tf_dirs, @dirs;
     }
 }
-elsif (scalar @ARGV >= 2) {
-    @tf_dirs = ($ARGV[0, -1]);
+elsif (scalar @ARGV >= 3) {
+    %taxa = reverse $ARGV[0, -1];
+    @tf_dirs = keys %taxa;
     $cfg_dir = $ARGV[-1];
 }
 else {
     usage();
 }
-
+mkdir($cfg_dir) unless -d $cfg_dir;
 #map {print $_, "\n"} @tf_dirs; #right
 
 foreach my $tf (@tf_dirs) {
+    next unless $tf =~ /caudal/;
     opendir my $dh, $tf || die"cannot open dir $tf \n";
     my @stages = map {$tf . $_ . '/'} grep {!/^\./} readdir($dh);
     for my $stage (@stages) {
-#	print "###$stage\n"; #right
+	#print "###$stage\n"; #right
 	opendir my $dh, $stage || die "cannot open dir $stage \n";
 	my (@chips, @inputs, @pol2s);
 	my ($chips_dir_ready, $inputs_dir_ready, $pol2s_dir_ready) = (1,1,1);
-	my $name = $tf . '_' . $stage;
+
+      
+	my @t = split "/", $tf; my $x = $t[-1];
+	my @t = split "/", $stage; my $y = $t[-1];
+	my $z = $taxa{$tf};
+	my $name = join('_', ($z, $x, $y));
 	my $pol2_name = $name . '_pol2';
+
 	foreach (readdir($dh)) {
 	    /^anti/ && push @chips, $stage . $_ . '/';
 	    /^input/ && push @inputs, $stage . $_ . '/';
@@ -154,51 +167,90 @@ foreach my $tf (@tf_dirs) {
             #only 1 rep for /glusterfs/zheng/fastq-replica-v2/white/pol2/L1/anti-PolII/ #
             #only 1 rep for /glusterfs/zheng/fastq-replica-v2/white/pol2/L3/anti-PolII/ #
             #only 1 rep for /glusterfs/zheng/fastq-replica-v2/white/pol2/Pupae/anti-PolII/ #
-	    ####################################################################################################
+	    #######################################################################################
 
-            if ( scalar @input_reps_dir == 1 ) { #shared input
-                for my $chip (@chip_reps_dir) {
-		    my $num_reps = scalar @chip_reps_dir;
-		    for my $i (0..$num_reps-1) {
-			gen_cfgfile($chip_reps_dir[$i], $input_reps_dir[0], $name);
-		    }
-		}
-		if (scalar @pol2_reps_dir) {
-		    for my $pol2 (@pol2_reps_dir) {
-			my $num_reps = scalar @pol2_reps_dir;
-			for my $i (0..$num_reps-1) {
-			    gen_cfgfile($pol2_reps_dir[$i], $input_reps_dir[0], $pol2_name);
-			}
-		    }
-		}
-            }
-	    else {
+	    if (scalar @input_reps_dir > 1) {
 		die "#ChIP and #input donot match\n" unless scalar @chip_reps_dir == scalar @input_reps_dir;
-		my $num_reps = scalar @chip_reps_dir;
-		for my $i (0..$num_reps-1) {
-		    gen_cfgfile($chip_reps_dir[$i], $input_reps_dir[$i], $name);
-		}
 		if (scalar @pol2_reps_dir) {
 		    die "#pol2 and #input donot match\n" unless scalar @pol2_reps_dir == scalar @input_reps_dir;
-		    my $num_reps = scalar @pol2_reps_dir;
-		    for my $i (0..$num_reps-1) {
-			gen_cfgfile($pol2_reps_dir[$i], $input_reps_dir[$i], $pol2_name);
-		    }
 		}
 	    }
+
+	    gen_cfgfile(\@chip_reps_dir, \@input_reps_dir, $name);
+	    gen_cfgfile(\@pol2_reps_dir, \@input_reps_dir, $pol2_name) if scalar @pol2_reps_dir;
 	}
     }
 }     
 
 sub usage {
-    my $usage = qq[$0 <DIR_to_TF1 DIR_to_TF2 ...> <DIR_to_CFG>];
+    my $usage = qq[$0 [<worm|fly> <DIR_to_TF1> <worm|fly> <DIR_to_TF2> ... <DIR_to_CFG>]];
     print "Usage: $usage\n";
     print "please follow directory structure of DIR_to_TF--->SUBDIR_to_DevStage--->SUBDIR_to_ChIP/input/pol2--->SUBDIR_to_rep1/2--->files\n";
     exit 1;
 }
 
 sub gen_cfgfile {
-    my ($dir1, $dir2, $name) = @_;
+    my ($sdirs, $cdirs, $name) = @_;
     my $cfg = CFG_DIR . $name . '_pipeline.ini';
-    if -e $cfg;
+    if (-e $cfg) {
+	my $bak = $cfg . '.bak';
+	`mv $cfg $bak`;
+	print "Warning! a same name configure file exists $cfg, moved the original one to $bak\n";
+    }
+    open my $cfgh, ">", $cfg || die "cannot open $cfg: $!";
+    print $cfgh <<"CFG";
+[PIPELINE]
+run_preprocess = 1
+run_alignment = 1
+run_peak_calling = 1
+run_postprocess = 1
+	
+[PREPROCESS]
+run_remove_barcode = 1
+	
+[ALIGNMENT]
+run_bowtie = 1
+
+[PEAK_CALLING]
+run_peakranger = 1
+
+[POSTPROCESS]
+run_idr = 1
+    
+[OUTPUT]
+dir = /glusterfs/zheng/tmp/
+log = /glusterfs/zheng/tmp/log/
+
+[INPUT]
+CFG
+
+    my $num_reps = scalar @$sdirs;
+    for my $i (1..$num_reps) {
+	for my $j (0..$num_reps-1) {
+	    my $sdir = $sdirs->[$j];
+	    if ($sdir =~ /$i\/$/) {
+		print $cfgh "r${i}_ChIP = ", get_raw($sdir), "\n";
+	    }
+	}
+    }
+    if (scalar @$cdirs == 1) {
+	print $cfgh "share_input = ", get_raw($cdirs->[0]), "\n";
+    } else { 
+	for my $i (1..$num_reps) {
+	    for my $j (0..$num_reps-1) {
+		my $cdir = $cdirs->[$j];
+		if ($cdir =~ /$i\/$/) {
+		    print $cfgh "r${i}_input = ", get_raw($cdir), "\n";
+		}
+	    }
+	}
+    }
+}
+
+sub get_raw {
+    my $dir = shift;
+    opendir my $dh, $dir || die "cannot open dir $dir: $!";
+    my @raw = map {$dir . $_} grep {!/^\./} readdir($dh);
+    my $str = join(" ", @raw);
+    return $str;
 }
