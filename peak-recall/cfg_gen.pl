@@ -29,7 +29,6 @@ mkdir($cfg_dir) unless -d $cfg_dir;
 #map {print $_, "\n"} @tf_dirs; #right
 
 foreach my $tf (@tf_dirs) {
-    next unless $tf =~ /caudal/;
     opendir my $dh, $tf || die"cannot open dir $tf \n";
     my @stages = map {$tf . $_ . '/'} grep {!/^\./} readdir($dh);
     for my $stage (@stages) {
