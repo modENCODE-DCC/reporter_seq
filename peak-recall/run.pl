@@ -326,7 +326,7 @@ sub run_uniform_input {
 	mprint("uniformed input for rep1 control already exists: $r1_input_reads", 1);
     }
     if (scalar @r2_chip) {
-	if ( ! -e $r2_chip_reads && $force_redo) {
+	if ( ! -e $r2_chip_reads || $force_redo) {
 	    $cmd = join(" ", ($script, $rm_barcode, $r2_chip_reads, @r2_chip));
 	    mprint("will run $cmd", 1);
 	    system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -335,7 +335,7 @@ sub run_uniform_input {
 	}
     }
     if (scalar @r2_input) {
-	if ( ! -e $r2_input_reads && $force_redo) {
+	if ( ! -e $r2_input_reads || $force_redo) {
 	    $cmd = join(" ", ($script, $rm_barcode, $r2_input_reads, @r2_input));
 	    mprint("will run $cmd", 1);
 	    system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -344,7 +344,7 @@ sub run_uniform_input {
         }
     }
     if (scalar @r3_chip) {
-        if ( ! -e $r3_chip_reads && $force_redo) {
+        if ( ! -e $r3_chip_reads || $force_redo) {
             $cmd = join(" ", ($script, $rm_barcode, $r3_chip_reads, @r3_chip));
             mprint("will run $cmd", 1);
             system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -353,7 +353,7 @@ sub run_uniform_input {
         }
     }
     if (scalar @r3_input) {
-        if ( ! -e $r3_input_reads && $force_redo) {
+        if ( ! -e $r3_input_reads || $force_redo) {
             $cmd = join(" ", ($script, $rm_barcode, $r3_input_reads, @r3_input));
             mprint("will run $cmd", 1);
             system($cmd) == 0 || die "error occured when run $cmd\n";
@@ -377,7 +377,7 @@ sub run_bowtie {
     if ( ! -e $r1_chip_alignment || $force_redo ) {
 	$cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r1_chip_reads, $r1_chip_alignment));
 	mprint("will run $cmd", 1);
-	#system($cmd) == 0 || die "error occured when run $cmd\n";
+	system($cmd) == 0 || die "error occured when run $cmd\n";
     } else {
 	mprint("rep1 ChIP aligned already! $r1_chip_alignment", 1);
     }
