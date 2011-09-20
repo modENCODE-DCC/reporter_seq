@@ -1033,7 +1033,7 @@ sub shuffle_split {
     my $nlines = `wc -l $sam`; $nlines = int(($nlines-$num_head+1)/2);
 
     if ($num_head) {
-	`grep -v @ $sam | shuf | split -d -l $nlines - $prefix`;
+	`grep -v -e "^@" $sam | shuf | split -d -l $nlines - $prefix`;
     } else {
 	`shuf $sam| split -d -l $nlines - $prefix` ;
     }
