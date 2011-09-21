@@ -143,17 +143,17 @@ if (defined($preprocess) && $preprocess == 1) {
 	mprint("pipeline will do preprocess: remove barcode.", 1);
 	run_uniform_input({rm_barcode =>1,
 			   cfg => $cfg_dir . 'remove_barcode.ini', 
-			   dent => 1});
+			   dent => 2});
 	$done_preprocess = 1;
 	$now = localtime;
-	mprint("done $now", 1);
+	mprint("done $now", 2);
     } 
     elsif (defined($simple_preprocess) && $simple_preprocess == 1) {
 	mprint("pipeline will do misc preprocess, such as unzip, etc.", 1);
-	run_uniform_input({dent => 1});
+	run_uniform_input({dent => 2});
 	$done_preprocess = 1;
 	$now = localtime;
-	mprint("done $now", 1);
+	mprint("done $now", 2);
     }
     else {
 	if (-e $r1_chip_reads && -e $r1_input_reads) {
@@ -162,18 +162,18 @@ if (defined($preprocess) && $preprocess == 1) {
 		    if (scalar @r3_chip && scalar @r3_input) {
 			if (-e $r3_chip_reads && -e $r3_input_reads) {
 			    $done_preprocess = 1;
-			    mprint("uniformed input files already exists: $r1_chip_reads, $r1_input_reads, $r2_chip_reads, $r2_input_reads $r3_chip_reads, $r3_input_reads", 1);
+			    mprint("uniformed input files already exists: $r1_chip_reads, $r1_input_reads, $r2_chip_reads, $r2_input_reads $r3_chip_reads, $r3_input_reads", 2);
 			}
 		    } 
 		    else {
 			$done_preprocess = 1;
-			mprint("uniformed input files already exists: $r1_chip_reads, $r1_input_reads, $r2_chip_reads, $r2_input_reads", 1);
+			mprint("uniformed input files already exists: $r1_chip_reads, $r1_input_reads, $r2_chip_reads, $r2_input_reads", 2);
 		    }
 		}
 	    } 
 	    else {
 		$done_preprocess = 1;
-		mprint("uniformed input files already exists: $r1_chip_reads, $r1_input_reads", 1);
+		mprint("uniformed input files already exists: $r1_chip_reads, $r1_input_reads", 2);
 	    }
 	}
     }
@@ -538,7 +538,7 @@ sub run_peakranger {#accept a hashref argument
 	mprint("peak already called: $custom_peak", $dent) and return $custom_peak if -e $custom_peak && ! $force_redo;
 	die "need to specify options d/c/o to run peakranger.\n" unless exists $arg->{d} && exists $arg->{c} && exists $arg->{o};
 	my $par = join(" ", ('-d', $arg->{d}, '-c', $arg->{c}, '-o', $arg->{o}, __change_parameter('peakranger', $parameter, $arg)));
-	my $cmd = "$script $par --nowig";
+	my $cmd = "$script $par";
 	mprint("fdr cutoff set as $arg->{p} !!!", $dent || 1);
 	mprint("will run $cmd", $dent || 1);
 	system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
@@ -932,8 +932,8 @@ sub run_idr {
     my $opt_cut;
     if (scalar @r2_chip) {
 	$opt_cut = $max_numpeaks_pair > $np_r0 ? $max_numpeaks_pair : $np_r0 ;
+	mprint("final $opt_cut optimal peaks called by idr are in file $optimal_peaks", 1);
     }
-    mprint("final $opt_cut optimal peaks called by idr are in file $optimal_peaks", 1);
     my $fpeak;
     if (scalar @r2_chip) {
 	if (scalar @r3_chip) {
@@ -956,7 +956,7 @@ sub __change_parameter {
     my ($algo, $par, $arg) = @_;
     my $new_par = '';
     if ($algo eq 'peakranger') {
-	my ($format, $t, $p, $l, $r, $b, $mode);
+	my ($nowig, $format, $t, $p, $l, $r, $b, $mode);
 	GetOptionsFromString($par, 
 			     'format:s' => \$format,
 			     't:i' => \$t,
@@ -964,7 +964,8 @@ sub __change_parameter {
 			     'l:i' => \$l,
 			     'r:s' => \$r, #delibrate str instead of float
 			     'b:i' => \$b,
-			     'mode:s' => \$mode
+			     'mode:s' => \$mode,
+			     'nowig' => \$nowig
 	    );
 	my %opt = ('--format=' => $format,
 		   '-t '       => $t,
@@ -984,6 +985,7 @@ sub __change_parameter {
 	    );
 	map { $opt{$arg2opt{$_}} = $arg->{$_} if exists $arg2opt{$_} } keys %$arg;
 	map { $new_par .= " $_"; $new_par .= $opt{$_}; } keys %opt;
+	$new_par .= " --nowig" if $nowig;
 	return $new_par;
     }
 }
@@ -996,7 +998,7 @@ sub peakranger2narrowPeak {
     open my $in1h, "<", $in1 || die "cannot open $in1\n";
     open my $in2h, "<", $in2 || die "cannot open $in2\n";
     open my $outh, ">", $out || die "cannot open $out\n";
-    my $enrich = {[]};
+    my $enrich = {};
     <$in2h>;
     while (<$in2h>) {
 	chomp;
@@ -1035,7 +1037,9 @@ sub shuffle_split {
 
     my @sam_head = `head -n 40 $sam`;
     my $num_head = scalar grep {/^@/} @sam_head;
-    my $nlines = `wc -l $sam`; $nlines = int(($nlines-$num_head+1)/2);
+    my $nlines = `wc -l $sam`;
+    chomp $nlines; my @t = split /\s+/, $nlines; $nlines = $t[0];
+    $nlines = int(($nlines-$num_head+1)/2);
 
     if ($num_head) {
 	`grep -v -e "^@" $sam | shuf | split -d -l $nlines - $prefix`;
