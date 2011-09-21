@@ -24,56 +24,67 @@ foreach my $inf (@in) {
     my $t = $ori_dir . $fn; #copy file
     unless (-e $t) {
 	if (-l $inf) { #symlink
-	    print "$inf is a symbolic link. copying...";
+	    mprint("$inf is a symbolic link. copying...", $dent);
 	    system("cp -L $inf $t");
-	    print "done\n";
+	    mprint("done", $dent);
 	} else {
-	    print "$inf is an ordinary file. copying...";
+	    mprint("$inf is an ordinary file. copying...", $dent);
 	    system("cp $inf $t");
-	    print "done\n";
+	    mprint("done", $dent);
 	}
     } else {
-	print "$t already exists!\n";
+	mprint("$t already exists!", $dent);
     }
     
     my $ae;
     eval {$ae = Archive::Extract->new(archive => $t)};
     if ( !$@ && defined($ae)) {#a zipped file
-	print "$t is a zipped file. unzipping...";
+	mprint("$t is a zipped file. unzipping...", $dent);
 	$ae->extract(to => $ori_dir) || die "failed to extract $t.\n";
 	die "multiple files found in $t.\n" if scalar @{$ae->files} != 1;
 	push @tmp, $t;
 	$t = $ori_dir . $ae->files->[0]; #the unzipped file
 	die "can not found just extracted $t\n" unless -e $t;
-	print "done. the new unzipped file is $t\n";
+	mprint("done. the new unzipped file is $t", $dent);
     }
     
     if ($rm_barcode) {
-	print "checking $t for a barcode...\n";
+	mprint("checking $t for a barcode...", $dent);
 	$t = remove_barcode($t);
+	mprint("done", $dent);
     }
 
     push @want, $t;
 }
 
 #catenate files
-system(join(" ", ("cat", @want, "> $out")));  
-
+if (scalar @want == 1) {
+    system("mv $want[0] $out") == 0 || die "cannot move files \n";
+} else {
+    system(join(" ", ("cat", @want, "> $out"))) == 0 || die "cannot cat files \n";  
+}
 #cleanup files
 #system(join(" ", ("rm", (@want, @tmp))));
+
+sub mprint {
+    my ($msg, $dent) = @_;
+    my $default_dent = "    ";
+    print $default_dent x $dent;
+    print $msg . "\n";
+}
 
 sub remove_barcode {
     my ($file) = @_;
     my $barcode = determine_barcode($file);
     if ($barcode eq "INVALID") {
-	print "file being ignored...\n";
+	mprint("file being ignored...", $dent);
     }
     if ( length($barcode) == 0 ) {
-	print "file does not appear to contain a barcode...\n";
+	mprint("file does not appear to contain a barcode...", $dent);
 	return $file;
     }
     else {
-	print "The following barcode was found and will be stripped from file: $barcode\n";
+	mprint("The following barcode was found and will be stripped from file: $barcode", $dent);
 	my $outfile = $file . '.barcode-removed';
 	open( my $IN, "<", $file ) || die "cannot open $file for input $!";
 	open( my $OUT, ">", $outfile ) || die "cannot open $outfile for output $!";
@@ -95,7 +106,7 @@ sub remove_barcode {
 		} 
 		else {
 		    my $non_matches=0;
-		    print "Barcode $barcode not found in $line\n";
+		    mprint("Barcode $barcode not found in $line", $dent);
 		    for (my $i=0; $i<=$barcode_endpos; $i++) {
 			$non_matches++ if substr( $line, $i, 1 ) ne substr($barcode, $i, 1);
 		    }
@@ -124,14 +135,15 @@ sub remove_barcode {
         } #end of while
         close $OUT;
 	close $IN;
-	print "Barcode removal complete: #sequence with barcode= $barcode_count, #sequences without= $nobarcode_count, #of sequences with bad quality barcodes= $badquality_barcode...\n";
+	mprint("Barcode removal complete: #sequence with barcode= $barcode_count, #sequences without= $nobarcode_count, #of sequences with bad quality barcodes= $badquality_barcode...", $dent);
         if ( $nobarcode_count == 0 && $barcode_count > 0 ) {
 	    push @tmp, $file;
 	    return $outfile;
         }        
 	elsif ( $nobarcode_count > 0 ) {
 	    if ( ( ( $barcode_count / ($barcode_count +$nobarcode_count) ) < 0.2 ) ) {
-		print "WARNING: something weird has occured here, barcodes were found in  " . ( $barcode_count / ($barcode_count +$nobarcode_count) ). "% of sequences\n";
+		my $str = "WARNING: something weird has occured here, barcodes were found in  " . ( $barcode_count / ($barcode_count +$nobarcode_count) ). "% of sequences";
+		mprint($str, $dent);
 		return $file;
 	    }
 	}
@@ -160,7 +172,8 @@ sub determine_barcode {
     }
     close $IN;
     if ( scalar(@lines) < 10 ) {
-	print "file contains " . scalar(@lines) . " sequences. It does not meet minimum size requirement of 10 sequences and will be skipped\n";
+	my $str = "file contains " . scalar(@lines) . " sequences. It does not meet minimum size requirement of 10 sequences and will be skipped\n";
+	mprint($str, $dent);
 	return "INVALID";
     }
 
