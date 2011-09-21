@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 use strict;
+use File::Basename qw/fileparse/;
 use constant PARENT_DIR => '/glusterfs/zheng/fastq-replica-v2/';
 use constant CFG_DIR => '/glusterfs/zheng/cfg/';
 
@@ -50,9 +51,9 @@ foreach my $tf (@tf_dirs) {
 	    /pol2/ && !/^anti/ && push @pol2s, $stage . $_ . '/';
 	}
 	
-	print "exactly 1 ChIP dir expected for $stage\n" and $chips_dir_ready = 0 if scalar @chips != 1;
-	print "exactly 1 input dir expected for $stage\n" and $inputs_dir_ready = 0 if scalar @inputs != 1;
-	print "exactly 1 pol2 dir expected for $stage\n" and $pol2s_dir_ready = 0 if scalar @pol2s > 0 && scalar @pol2s != 1;
+	print "exactly 1 ChIP dir expected for $name $stage\n" and $chips_dir_ready = 0 if scalar @chips != 1;
+	print "exactly 1 input dir expected for $name $stage\n" and $inputs_dir_ready = 0 if scalar @inputs != 1;
+	print "exactly 1 pol2 dir expected for $pol2_name $stage\n" and $pol2s_dir_ready = 0 if scalar @pol2s > 0 && scalar @pol2s != 1;
 
       
 	###check whether input dir exists as of 13 Sep 2011#################################
@@ -169,9 +170,9 @@ foreach my $tf (@tf_dirs) {
 	    #######################################################################################
 
 	    if (scalar @input_reps_dir > 1) {
-		die "#ChIP and #input donot match\n" unless scalar @chip_reps_dir == scalar @input_reps_dir;
+		die "$name $stage #ChIP and #input donot match\n" unless scalar @chip_reps_dir == scalar @input_reps_dir;
 		if (scalar @pol2_reps_dir) {
-		    die "#pol2 and #input donot match\n" unless scalar @pol2_reps_dir == scalar @input_reps_dir;
+		    die "$pol2_name $stage #pol2 and #input donot match\n" unless scalar @pol2_reps_dir == scalar @input_reps_dir;
 		}
 	    }
 
@@ -224,32 +225,53 @@ log = /glusterfs/zheng/tmp/log/
 CFG
 
     my $num_reps = scalar @$sdirs;
+    my @chips;
+    my @inputs;
     for my $i (1..$num_reps) {
 	for my $j (0..$num_reps-1) {
 	    my $sdir = $sdirs->[$j];
 	    if ($sdir =~ /$i\/$/) {
-		print $cfgh "r${i}_ChIP = ", get_raw($sdir), "\n";
+		my @files = get_raw($sdir);
+		push @chips, @files;
+		print $cfgh "r${i}_ChIP = ", join(" ", @files), "\n";
 	    }
 	}
     }
     if (scalar @$cdirs == 1) {
-	print $cfgh "share_input = ", get_raw($cdirs->[0]), "\n";
+	my @files = get_raw($cdirs->[0]);
+	push @inputs, @files;
+	print $cfgh "share_input = ", join(" ", @files), "\n";
     } else { 
 	for my $i (1..$num_reps) {
 	    for my $j (0..$num_reps-1) {
 		my $cdir = $cdirs->[$j];
 		if ($cdir =~ /$i\/$/) {
-		    print $cfgh "r${i}_input = ", get_raw($cdir), "\n";
+		    my @files = get_raw($cdir);
+		    push @inputs, @files;
+		    print $cfgh "r${i}_input = ", join(" ", @files), "\n";
 		}
 	    }
 	}
     }
+    check_sanity(\@chips, \@inputs);
 }
 
 sub get_raw {
     my $dir = shift;
     opendir my $dh, $dir || die "cannot open dir $dir: $!";
     my @raw = map {$dir . $_} grep {!/^\./} readdir($dh);
-    my $str = join(" ", @raw);
-    return $str;
+    return @raw;
+}
+
+sub check_sanity {
+    my ($fl1, $fl2) = @_;
+    my @f1; my @f2;
+    #ChIP vs. control shall never point to the same file
+    map { my ($b, $p, $s) = fileparse($_); push @f1, $b;} @$fl1;
+    map { my ($b, $p, $s) = fileparse($_); push @f2, $b;} @$fl2;
+    for (my $i=0; $i<scalar @$fl1; $i++) {
+	for (my $j=0; $j<scalar @$fl2; $j++) {
+	    die "$fl1->[$i] points to the same file $fl2->[$j] \n" if $f1[$i] eq $f2[$j];
+	}
+    }
 }

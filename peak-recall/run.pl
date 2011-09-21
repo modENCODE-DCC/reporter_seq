@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 use strict;
+use warnings;
 use Data::Dumper;
 use File::Basename qw/fileparse/;
 my $root_dir;
@@ -12,9 +13,7 @@ BEGIN {
 
 use Config::IniFiles;
 use Getopt::Long qw[GetOptions GetOptionsFromString];
-mprint("###pipeline started###", 0);
 my $now = localtime;
-mprint("initiate... $now", 0);
 #default config files
 my $cfg_dir = $root_dir . 'config/';
 my $cfg = $cfg_dir . 'pipeline.ini';
@@ -31,9 +30,6 @@ usage() unless defined($name);
 my @allow_org = qw[worm fly];
 usage() unless defined($org) && scalar grep {$org eq $_} @allow_org;
 $name = $org . '_' . $name;
-mprint("the pipeline will be constructed according to configure file $cfg", 1);
-mprint("all output files will have prefix $name", 1);
-
 tie my %ini, 'Config::IniFiles', (-file => $cfg);
 #parse [PIPELINE] session to understand what need to run
 my $preprocess = $ini{PIPELINE}{run_preprocess};
@@ -48,10 +44,14 @@ mkdir($log_dir) unless -e $log_dir;
 $out_dir .= '/' unless $out_dir =~ /\/$/;
 $log_dir .= '/' unless $log_dir =~ /\/$/;
 $out_dir .= $name ; mkdir($out_dir) unless -e $out_dir; $out_dir .= '/' unless $out_dir =~ /\/$/;
-$log_dir .= $name ; mkdir($log_dir) unless -e $log_dir; $log_dir .= '/' unless $log_dir =~ /\/$/;
-
+my $log_file = $log_dir . $name . '.log';
+open my $log, ">", $log_file || die "cannot open $log_file to write: $!";
+mprint("###pipeline started###", 0);
+mprint("initiate... $now", 0);
+mprint("the pipeline will be constructed according to configure file $cfg", 1);
+mprint("all output files will have prefix $name", 1);
 mprint("output dir is $out_dir", 1);
-mprint("log dir is $log_dir", 1);
+mprint("log file is $log_file", 1);
 #input files
 my (@r1_chip,  @r2_chip , @r3_chip, @r1_input, @r2_input, @r3_input);
 @r1_chip = split /\s+/, $ini{INPUT}{r1_ChIP};
@@ -284,12 +284,17 @@ if (defined($postprocess) && $postprocess == 1) {
 }
 
 mprint("###pipeline finished###", 0);
+close($log);
 
 sub mprint {
     my ($msg, $dent) = @_;
+    my $str = "";
     my $default_dent = "    ";
-    print $default_dent x $dent;
-    print $msg . "\n";
+    #print $default_dent x $dent;
+    $str .= $default_dent x $dent;
+    #print $msg . "\n";
+    $str .= $msg . "\n";
+    print $log $str;
 }
 
 sub usage {
@@ -314,14 +319,14 @@ sub run_uniform_input {
     if ( ! -e $r1_chip_reads || $force_redo) {
 	$cmd = join(" ", ($script, $rm_barcode, $r1_chip_reads, @r1_chip));
 	mprint("will run $cmd", 1);
-	system($cmd) == 0 || die "error occured when run $cmd\n";
+	system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
     } else {
 	mprint("uniformed input for rep1 ChIP already exists: $r1_chip_reads", 1); 
     }
     if ( ! -e $r1_input_reads || $force_redo) {
 	$cmd = join(" ", ($script, $rm_barcode, $r1_input_reads, @r1_input));
 	mprint("will run $cmd", 1);
-	system($cmd) == 0 || die "error occured when run $cmd\n";
+	system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
     } else {
 	mprint("uniformed input for rep1 control already exists: $r1_input_reads", 1);
     }
@@ -329,7 +334,7 @@ sub run_uniform_input {
 	if ( ! -e $r2_chip_reads || $force_redo) {
 	    $cmd = join(" ", ($script, $rm_barcode, $r2_chip_reads, @r2_chip));
 	    mprint("will run $cmd", 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	} else {
 	    mprint("uniformed input for rep2 ChIP already exists: $r2_chip_reads", 1);
 	}
@@ -338,7 +343,7 @@ sub run_uniform_input {
 	if ( ! -e $r2_input_reads || $force_redo) {
 	    $cmd = join(" ", ($script, $rm_barcode, $r2_input_reads, @r2_input));
 	    mprint("will run $cmd", 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	} else {
             mprint("uniformed input for rep2 control already exists: $r2_input_reads", 1);
         }
@@ -347,7 +352,7 @@ sub run_uniform_input {
         if ( ! -e $r3_chip_reads || $force_redo) {
             $cmd = join(" ", ($script, $rm_barcode, $r3_chip_reads, @r3_chip));
             mprint("will run $cmd", 1);
-            system($cmd) == 0 || die "error occured when run $cmd\n";
+            system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
         } else {
             mprint("uniformed input for rep3 ChIP already exists: $r3_chip_reads", 1);
         }
@@ -356,7 +361,7 @@ sub run_uniform_input {
         if ( ! -e $r3_input_reads || $force_redo) {
             $cmd = join(" ", ($script, $rm_barcode, $r3_input_reads, @r3_input));
             mprint("will run $cmd", 1);
-            system($cmd) == 0 || die "error occured when run $cmd\n";
+            system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
         } else {
             mprint("uniformed input for rep3 control already exists: $r3_input_reads", 1);
         }
@@ -377,7 +382,7 @@ sub run_bowtie {
     if ( ! -e $r1_chip_alignment || $force_redo ) {
 	$cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r1_chip_reads, $r1_chip_alignment));
 	mprint("will run $cmd", 1);
-	system($cmd) == 0 || die "error occured when run $cmd\n";
+	system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
     } else {
 	mprint("rep1 ChIP aligned already! $r1_chip_alignment", 1);
     }
@@ -385,7 +390,7 @@ sub run_bowtie {
 	if ( ! -e $r2_chip_alignment || $force_redo ) { 
 	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r2_chip_reads, $r2_chip_alignment));
 	    mprint("will run $cmd", 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	} else {
 	    mprint("rep2 ChIP aligned already! $r2_chip_alignment", 1);
 	}
@@ -394,14 +399,14 @@ sub run_bowtie {
 	if ( ! -e $r3_chip_alignment || $force_redo ) {
 	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r3_chip_reads, $r3_chip_alignment));
             mprint("will run $cmd", 1);
-            system($cmd) == 0 || die "error occured when run $cmd\n";
+            system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
         } else {
             mprint("rep3 ChIP aligned already! $r3_chip_alignment", 1);
         }
 	if ( ! -e $chip_alignment || $force_redo ) {
 	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, join(",", ($r1_chip_reads, $r2_chip_reads, $r3_chip_reads)), $chip_alignment));
             mprint("will run $cmd", 1);
-            system($cmd) == 0 || die "error occured when run $cmd\n";
+            system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	} else {
 	    mprint("merge ChIP aligned already! $chip_alignment", 1);
 	}
@@ -411,7 +416,7 @@ sub run_bowtie {
 	    if ( ! -e $chip_alignment || $force_redo ) {
 		$cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, join(",", ($r1_chip_reads, $r2_chip_reads)), $chip_alignment));
 		mprint("will run $cmd", 1);
-		system($cmd) == 0 || die "error occured when run $cmd\n";
+		system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	    } else {
 		mprint("Pooled ChIP aligned already! $chip_alignment", 1);
 	    }
@@ -420,7 +425,7 @@ sub run_bowtie {
     if ( ! -e $r1_input_alignment || $force_redo ) {
 	$cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r1_input_reads, $r1_input_alignment));
 	mprint("will run $cmd", 1);
-	system($cmd) == 0 || die "error occured when run $cmd\n";
+	system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
     } else {
 	mprint("rep1 input aligned already! $r1_input_alignment", 1);
     }
@@ -428,7 +433,7 @@ sub run_bowtie {
 	if (! -e $r2_input_alignment || $force_redo ) {
 	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r2_input_reads, $r2_input_alignment));
 	    mprint("will run $cmd", 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	} else {
 	    mprint("rep2 input aligned already! $r2_input_alignment", 1);
 	}
@@ -437,14 +442,14 @@ sub run_bowtie {
 	if ( ! -e $r3_input_alignment || $force_redo ) {
 	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r3_input_reads, $r3_input_alignment));
             mprint("will run $cmd", 1);
-            system($cmd) == 0 || die "error occured when run $cmd\n";
+            system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
         } else {
             mprint("rep3 input aligned already! $r3_input_alignment", 1);
         }
 	if ( ! -e $input_alignment || $force_redo ) {
 	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, join(",", ($r1_input_reads, $r2_input_reads, $r3_input_reads)), $input_alignment));
 	    mprint("will run $cmd", 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	} else {
 	    mprint("Pooled input aligned already! $input_alignment", 1);
 	}
@@ -454,7 +459,7 @@ sub run_bowtie {
             if ( ! -e $input_alignment || $force_redo ) {
                 $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, join(",", ($r1_input_reads, $r2_input_reads)), $input_alignment));
                 mprint("will run $cmd", 1);
-                system($cmd) == 0 || die "error occured when run $cmd\n";
+                system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
             } else {
                 mprint("Pooled input aligned already! $input_alignment", 1);
             }
@@ -481,7 +486,7 @@ sub run_peakranger {#accept a hashref argument
 	if ( ! -e $r1_peak || $force_redo ) {
 	    $cmd = "$script -d $r1_chip_alignment -c $r1_input_alignment -o $r1_prefix $parameter";
 	    mprint("will run $cmd", 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	    mprint("transform rep1 peak to narrowPeak format", 1);
 	    peakranger2narrowPeak($r1_prefix, $r1_peak); 
 	} else {
@@ -491,7 +496,7 @@ sub run_peakranger {#accept a hashref argument
 	    if ( ! -e $r2_peak || $force_redo ) {
 		$cmd = "$script -d $r2_chip_alignment -c $r2_input_alignment -o $r2_prefix $parameter";
 		mprint("will run $cmd", 1);
-		system($cmd) == 0 || die "error occured when run $cmd\n";
+		system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 		mprint("transform rep2 peak to narrowPeak format", 1);
 		peakranger2narrowPeak($r2_prefix, $r2_peak);
 	    } else {
@@ -502,7 +507,7 @@ sub run_peakranger {#accept a hashref argument
             if ( ! -e $r3_peak || $force_redo ) {
                 $cmd = "$script -d $r3_chip_alignment -c $r3_input_alignment -o $r3_prefix $parameter";
                 mprint("will run $cmd", 1);
-                system($cmd) == 0 || die "error occured when run $cmd\n";
+                system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
                 mprint("transform rep3 peak to narrowPeak format", 1);
                 peakranger2narrowPeak($r3_prefix, $r3_peak);
             } else {
@@ -515,7 +520,7 @@ sub run_peakranger {#accept a hashref argument
 	    if ( ! -e $peak || $force_redo ) {
 		$cmd = "$script -d $chip_alignment -c $input_alignment -o $pool_prefix $parameter";
 		mprint("will run $cmd", 1);
-		system($cmd) == 0 || die "error occured when run $cmd\n";
+		system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 		mprint("transform pool peak to narrowPeak format", 1);
 		peakranger2narrowPeak($pool_prefix, $peak);
 	    } else {
@@ -536,7 +541,7 @@ sub run_peakranger {#accept a hashref argument
 	my $cmd = "$script $par --nowig";
 	mprint("fdr cutoff set as $arg->{p} !!!", $dent || 1);
 	mprint("will run $cmd", $dent || 1);
-	system($cmd) == 0 || die "error occured when run $cmd\n";
+	system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	mprint("transform into narrowPeak format with log p/q values", $dent || 1);
 	peakranger2narrowPeak($arg->{o}, $custom_peak, 1) and return $custom_peak if defined($custom_peak);
     }
@@ -686,7 +691,7 @@ sub run_idr {
 
     my $peakcall = $ini{PEAK}{script};
     my $rank_measure = $ini{PEAK}{rank_measure};
-    my $cfg;
+    my $peakcall_cfg;
     my @peaks;
     #run all peakcalls needed for idr                                                                                                                     
     my $cycle;
@@ -701,7 +706,7 @@ sub run_idr {
     }
 
     if ( $peakcall eq 'peakranger' ) {
-	$cfg = $cfg_dir . 'peakranger.ini';
+	$peakcall_cfg = $cfg_dir . 'peakranger.ini';
 	my $p = $ini{PEAK}{fdr};
 
 	for my $i (0..$cycle) {
@@ -711,7 +716,7 @@ sub run_idr {
 	    my $idr_peak = $o_prefiz[$i] . "/" . $peak_name_prefiz[$i] . '.bed'; 
 	    my $o = $o_dir . $peak_name_prefiz[$i];
 	    my $c = scalar @r2_chip ? $input_alignment : $r1_input_alignment; 
-	    $idr_peak = run_peakranger({cfg => $cfg,
+	    $idr_peak = run_peakranger({cfg => $peakcall_cfg,
 					dent => 2,
 					force_redo => $force_redo,
 					peak => $idr_peak,
@@ -741,12 +746,12 @@ sub run_idr {
 	if ( ! -e $idr_ori_prefix_12 . '-Rout.txt' || $force_redo ) {
 	    $cmd = "$rscript $analysis $peaks[0] $peaks[1] -1 $idr_ori_prefix_12 0 F $rank_measure $genome_table";
 	    mprint("will run $cmd", 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	}
 	if ( ! -e $idr_ori_prefix_12 . '-plot.ps' || $force_redo ) {
 	    $cmd = "$rscript $plot 1 $idr_ori_prefix_12 $idr_ori_prefix_12";
 	    mprint("will run $cmd", 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	}
     }
     #s1_c0/s3_c0
@@ -757,12 +762,12 @@ sub run_idr {
 	if ( ! -e $idr_ori_prefix_13 . '-Rout.txt' || $force_redo ) {
 	    $cmd = "$rscript $analysis $peaks[0] $peaks[2] -1 $idr_ori_prefix_13 0 F $rank_measure $genome_table";
 	    mprint("will run $cmd", 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	}
 	if ( ! -e $idr_ori_prefix_13 . '-plot.ps' || $force_redo ) {
 	    $cmd = "$rscript $plot 1 $idr_ori_prefix_13 $idr_ori_prefix_13";
 	    mprint("will run $cmd", 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	}
     #s2_c0/s3_c0
 	$idr_ori = $idr_dir . $name . "_s2_c0_vs_s3_c0/"; mkdir($idr_ori) unless -e $idr_ori;
@@ -771,12 +776,12 @@ sub run_idr {
 	if ( ! -e $idr_ori_prefix_23 . '-Rout.txt' || $force_redo ) {
 	    $cmd = "$rscript $analysis $peaks[1] $peaks[2] -1 $idr_ori_prefix_23 0 F $rank_measure $genome_table";
 	    mprint("will run $cmd", 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	}
 	if ( ! -e $idr_ori_prefix_23 . '-plot.ps' || $force_redo ) {
 	    $cmd = "$rscript $plot 1 $idr_ori_prefix_23 $idr_ori_prefix_23";
 	    mprint("will run $cmd", 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	}
     }
 
@@ -797,12 +802,12 @@ sub run_idr {
     if ( ! -e $idr_self_r1_prefix . '-Rout.txt' || $force_redo ) {
 	$cmd = "$rscript $analysis $apeak $bpeak -1 $idr_self_r1_prefix 0 F $rank_measure $genome_table";
 	mprint("will run $cmd", 1);
-	system($cmd) == 0 || die "error occured when run $cmd\n";
+	system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
     }
     if ( ! -e $idr_self_r1_prefix . '-plot.ps' || $force_redo ) {
 	$cmd = "$rscript $plot 1 $idr_self_r1_prefix $idr_self_r1_prefix";
 	mprint("will run $cmd", 1);
-	system($cmd) == 0 || die "error occured when run $cmd\n";
+	system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
     }
     #s2p1_c0/s2p2_c0
     my ($idr_self_r2, $idr_self_r2_prefix);
@@ -818,12 +823,12 @@ sub run_idr {
 	if ( ! -e $idr_self_r2_prefix . '-Rout.txt' || $force_redo ) {
 	    $cmd = "$rscript $analysis $apeak $bpeak -1 $idr_self_r2_prefix 0 F $rank_measure $genome_table";
 	    mprint($cmd, 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	}
 	if ( ! -e $idr_self_r2_prefix . '-plot.ps' || $force_redo ) {
 	    $cmd = "$rscript $plot 1 $idr_self_r2_prefix $idr_self_r2_prefix";
 	    mprint($cmd, 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	}
     }
     #s3p1_c0/s3p2_c0
@@ -835,12 +840,12 @@ sub run_idr {
 	if ( ! -e $idr_self_r3_prefix . '-Rout.txt' || $force_redo ) {
 	    $cmd = "$rscript $analysis $peaks[8] $peaks[9] -1 $idr_self_r3_prefix 0 F $rank_measure $genome_table";
 	    mprint($cmd, 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	}
 	if ( ! -e $idr_self_r3_prefix . '-plot.ps' || $force_redo ) {
 	    $cmd = "$rscript $plot 1 $idr_self_r3_prefix $idr_self_r3_prefix";
 	    mprint($cmd, 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	}
     }
     #s0p1_c0/s0p2_c0
@@ -857,12 +862,12 @@ sub run_idr {
 	if ( ! -e $idr_pseudo_prefix . '-Rout.txt' || $force_redo ) {
 	    $cmd = "$rscript $analysis $apeak $bpeak -1 $idr_pseudo_prefix 0 F $rank_measure $genome_table";
 	    mprint($cmd, 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	}
 	if ( ! -e $idr_pseudo_prefix . '-plot.ps' || $force_redo ) {
 	    $cmd = "$rscript $plot 1 $idr_pseudo_prefix $idr_pseudo_prefix";
 	    mprint($cmd, 1);
-	    system($cmd) == 0 || die "error occured when run $cmd\n";
+	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 	}
     }
     #change working dir back to my root (code) dir.
