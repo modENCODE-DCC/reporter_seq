@@ -290,11 +290,11 @@ sub mprint {
     my ($msg, $dent) = @_;
     my $str = "";
     my $default_dent = "    ";
-    #print $default_dent x $dent;
+    print $default_dent x $dent;
     $str .= $default_dent x $dent;
-    #print $msg . "\n";
+    print $msg . "\n";
     $str .= $msg . "\n";
-    print $log $str;
+    #print $log $str;
 }
 
 sub usage {
@@ -341,9 +341,13 @@ sub run_uniform_input {
     }
     if (scalar @r2_input) {
 	if ( ! -e $r2_input_reads || $force_redo) {
-	    $cmd = join(" ", ($script, $rm_barcode, $r2_input_reads, @r2_input));
-	    mprint("will run $cmd", 1);
-	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
+	    if ($share_input) {
+		system("ln -s $r1_input_reads $r2_input_reads") == 0 || die "cannot do symlink btw $r1_input_reads and $r2_input_reads: $!";
+	    } else {
+		$cmd = join(" ", ($script, $rm_barcode, $r2_input_reads, @r2_input));
+		mprint("will run $cmd", 1);
+		system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
+	    }
 	} else {
             mprint("uniformed input for rep2 control already exists: $r2_input_reads", 1);
         }
@@ -359,9 +363,13 @@ sub run_uniform_input {
     }
     if (scalar @r3_input) {
         if ( ! -e $r3_input_reads || $force_redo) {
-            $cmd = join(" ", ($script, $rm_barcode, $r3_input_reads, @r3_input));
-            mprint("will run $cmd", 1);
-            system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
+	    if ($share_input) {
+                system("ln -s $r1_input_reads $r3_input_reads") == 0 || die "cannot do symlink btw $r1_input_reads and $r3_input_reads: $!";
+            } else {
+		$cmd = join(" ", ($script, $rm_barcode, $r3_input_reads, @r3_input));
+		mprint("will run $cmd", 1);
+		system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
+	    }
         } else {
             mprint("uniformed input for rep3 control already exists: $r3_input_reads", 1);
         }
@@ -431,25 +439,37 @@ sub run_bowtie {
     }
     if (scalar @r2_input) {
 	if (! -e $r2_input_alignment || $force_redo ) {
-	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r2_input_reads, $r2_input_alignment));
-	    mprint("will run $cmd", 1);
-	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
+	    if ($share_input) {
+		system("ln -s $r1_input_alignment $r2_input_alignment") == 0 || die "cannot do symlink btw $r1_input_alignment and $r2_input_alignment: $!";
+	    } else {
+		$cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r2_input_reads, $r2_input_alignment));
+		mprint("will run $cmd", 1);
+		system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
+	    }
 	} else {
 	    mprint("rep2 input aligned already! $r2_input_alignment", 1);
 	}
     }
     if (scalar @r3_input) {
 	if ( ! -e $r3_input_alignment || $force_redo ) {
-	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r3_input_reads, $r3_input_alignment));
-            mprint("will run $cmd", 1);
-            system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
+	    if ($share_input) {
+                system("ln -s $r1_input_alignment $r3_input_alignment") == 0 || die "cannot do symlink btw $r1_input_alignment and $r3_input_alignment: $!";
+            } else {
+		$cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, $r3_input_reads, $r3_input_alignment));
+		mprint("will run $cmd", 1);
+		system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
+	    }
         } else {
             mprint("rep3 input aligned already! $r3_input_alignment", 1);
         }
 	if ( ! -e $input_alignment || $force_redo ) {
-	    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, join(",", ($r1_input_reads, $r2_input_reads, $r3_input_reads)), $input_alignment));
-	    mprint("will run $cmd", 1);
-	    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
+	    if ($share_input) {
+                system("ln -s $r1_input_alignment $input_alignment") == 0 || die "cannot do symlink btw $r1_input_alignment and $input_alignment: $!";
+            } else {
+		$cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, join(",", ($r1_input_reads, $r2_input_reads, $r3_input_reads)), $input_alignment));
+		mprint("will run $cmd", 1);
+		system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
+	    }
 	} else {
 	    mprint("Pooled input aligned already! $input_alignment", 1);
 	}
@@ -457,9 +477,13 @@ sub run_bowtie {
     if ( scalar @r2_input ) {
         if ( ! scalar @r3_input ) {
             if ( ! -e $input_alignment || $force_redo ) {
-                $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, join(",", ($r1_input_reads, $r2_input_reads)), $input_alignment));
-                mprint("will run $cmd", 1);
-                system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
+		if ($share_input) {
+		    system("ln -s $r1_input_alignment $input_alignment") == 0 || die "cannot do symlink btw $r1_input_alignment and $input_alignment: $!";
+		} else {
+		    $cmd = join(" ", ($bowtie_bin, $parameter, $bowtie_indexes, join(",", ($r1_input_reads, $r2_input_reads)), $input_alignment));
+		    mprint("will run $cmd", 1);
+		    system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
+		}
             } else {
                 mprint("Pooled input aligned already! $input_alignment", 1);
             }
@@ -494,7 +518,8 @@ sub run_peakranger {#accept a hashref argument
 	}
 	if (scalar @r2_chip && scalar @r2_input) {
 	    if ( ! -e $r2_peak || $force_redo ) {
-		$cmd = "$script -d $r2_chip_alignment -c $r2_input_alignment -o $r2_prefix $parameter";
+		my $x_input_alignment = $share_input ? $r1_input_alignment : $r2_input_alignment;		    
+		$cmd = "$script -d $r2_chip_alignment -c $x_input_alignment -o $r2_prefix $parameter";
 		mprint("will run $cmd", 1);
 		system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 		mprint("transform rep2 peak to narrowPeak format", 1);
@@ -505,7 +530,8 @@ sub run_peakranger {#accept a hashref argument
 	}
 	if (scalar @r3_chip && scalar @r3_input) {
             if ( ! -e $r3_peak || $force_redo ) {
-                $cmd = "$script -d $r3_chip_alignment -c $r3_input_alignment -o $r3_prefix $parameter";
+		my $x_input_alignment = $share_input ? $r1_input_alignment : $r3_input_alignment;
+                $cmd = "$script -d $r3_chip_alignment -c $x_input_alignment -o $r3_prefix $parameter";
                 mprint("will run $cmd", 1);
                 system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
                 mprint("transform rep3 peak to narrowPeak format", 1);
@@ -518,7 +544,8 @@ sub run_peakranger {#accept a hashref argument
             #doesnot matter if there is rep3, since chip_alignment/input_alignment
 	    #already took care of them.
 	    if ( ! -e $peak || $force_redo ) {
-		$cmd = "$script -d $chip_alignment -c $input_alignment -o $pool_prefix $parameter";
+		my $x_input_alignment = $share_input ? $r1_input_alignment : $input_alignment;
+		$cmd = "$script -d $chip_alignment -c $x_input_alignment -o $pool_prefix $parameter";
 		mprint("will run $cmd", 1);
 		system("$cmd >> $log_file 2>&1") == 0 || die "error occured when run $cmd\n";
 		mprint("transform pool peak to narrowPeak format", 1);
@@ -715,7 +742,12 @@ sub run_idr {
 	    my $o_dir = $o_prefiz[$i] . '/peakranger/'; mkdir($o_dir) unless -e $o_dir; 
 	    my $idr_peak = $o_prefiz[$i] . "/" . $peak_name_prefiz[$i] . '.bed'; 
 	    my $o = $o_dir . $peak_name_prefiz[$i];
-	    my $c = scalar @r2_chip ? $input_alignment : $r1_input_alignment; 
+	    my $c;
+	    if ($share_input) {
+		$c = $r1_input_alignment;
+	    } else { 
+		$c = scalar @r2_chip ? $input_alignment : $r1_input_alignment;
+	    }
 	    $idr_peak = run_peakranger({cfg => $peakcall_cfg,
 					dent => 2,
 					force_redo => $force_redo,
