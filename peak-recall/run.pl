@@ -31,7 +31,7 @@ my @allow_org = qw[worm fly];
 usage() unless defined($org) && scalar grep {$org eq $_} @allow_org;
 my $x; my $y; 
 ($x, $cfg_dir, $y) = fileparse($cfg); #custom cfg_dir
-$name = $org . '_' . $name;
+$name = $org . '_' . $name unless $name =~ /^$org/i;
 tie my %ini, 'Config::IniFiles', (-file => $cfg);
 #parse [PIPELINE] session to understand what need to run
 my $preprocess = $ini{PIPELINE}{run_preprocess};
