@@ -290,11 +290,11 @@ sub mprint {
     my ($msg, $dent) = @_;
     my $str = "";
     my $default_dent = "    ";
-    print $default_dent x $dent;
+    #print $default_dent x $dent;
     $str .= $default_dent x $dent;
-    print $msg . "\n";
+    #print $msg . "\n";
     $str .= $msg . "\n";
-    #print $log $str;
+    print $log $str;
 }
 
 sub usage {
