@@ -64,7 +64,7 @@ if (scalar @want == 1) {
     system(join(" ", ("cat", @want, "> $out"))) == 0 || die "cannot cat files \n";  
 }
 #cleanup files
-#system(join(" ", ("rm", (@want, @tmp))));
+system(join(" ", ("rm", (@want, @tmp))));
 
 sub mprint {
     my ($msg, $dent) = @_;

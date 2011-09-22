@@ -29,6 +29,8 @@ usage() unless -e $cfg;
 usage() unless defined($name);
 my @allow_org = qw[worm fly];
 usage() unless defined($org) && scalar grep {$org eq $_} @allow_org;
+my $x; my $y; 
+($x, $cfg_dir, $y) = fileparse($cfg); #custom cfg_dir
 $name = $org . '_' . $name;
 tie my %ini, 'Config::IniFiles', (-file => $cfg);
 #parse [PIPELINE] session to understand what need to run
@@ -44,11 +46,13 @@ mkdir($log_dir) unless -e $log_dir;
 $out_dir .= '/' unless $out_dir =~ /\/$/;
 $log_dir .= '/' unless $log_dir =~ /\/$/;
 $out_dir .= $name ; mkdir($out_dir) unless -e $out_dir; $out_dir .= '/' unless $out_dir =~ /\/$/;
+$cfg_dir .= '/' unless $cfg_dir =~ /\/$/;
 my $log_file = $log_dir . $name . '.log';
 open my $log, ">", $log_file || die "cannot open $log_file to write: $!";
 mprint("###pipeline started###", 0);
 mprint("initiate... $now", 0);
 mprint("the pipeline will be constructed according to configure file $cfg", 1);
+mprint("the components of the pipeline will be configured by their respective configure files in $cfg_dir!!!", 1);
 mprint("all output files will have prefix $name", 1);
 mprint("output dir is $out_dir", 1);
 mprint("log file is $log_file", 1);
@@ -141,7 +145,7 @@ if (defined($preprocess) && $preprocess == 1) {
     my $remove_barcode = $ini{PREPROCESS}{run_remove_barcode};
     if (defined($remove_barcode) && $remove_barcode == 1) {
 	mprint("pipeline will do preprocess: remove barcode.", 1);
-	run_uniform_input({rm_barcode =>1,
+     	run_uniform_input({rm_barcode =>1,
 			   cfg => $cfg_dir . 'remove_barcode.ini', 
 			   dent => 2});
 	$done_preprocess = 1;

@@ -3,6 +3,15 @@ use strict;
 use File::Basename qw/fileparse/;
 use constant PARENT_DIR => '/glusterfs/zheng/fastq-replica-v2/';
 use constant CFG_DIR => '/glusterfs/zheng/cfg/';
+#use constant BOWTIE_CFG => 'config/bowtie.ini';
+#use constant PEAKRANGER_CFG => 'config/peakranger.ini';
+#use constant IDR_CFG => 'config/idr.ini';
+#use constant REMOVE_BARCODE_CFG => 'config/remove_barcode.ini';
+#use constant CODE => 'run.pl';
+my $bowtie_cfg = 'config/bowtie.ini';
+my $peakranger_cfg = 'config/peakranger.ini';
+my $idr_cfg = 'config/idr.ini';
+my $remove_barcode_cfg = 'config/remove_barcode.ini';
 
 my $cfg_dir; my @tf_dirs; my %taxa;
 if (scalar @ARGV == 0) {
@@ -29,6 +38,8 @@ else {
 mkdir($cfg_dir) unless -d $cfg_dir;
 #map {print $_, "\n"} @tf_dirs; #right
 
+my $cmd = CFG_DIR . 'all_cmd.txt';
+open my $cmdh, ">", $cmd || die "cannot open $cmd to write: $!";
 foreach my $tf (@tf_dirs) {
     opendir my $dh, $tf || die"cannot open dir $tf \n";
     my @stages = map {$tf . $_ . '/'} grep {!/^\./} readdir($dh);
@@ -41,8 +52,8 @@ foreach my $tf (@tf_dirs) {
       
 	my @t = split "/", $tf; my $x = $t[-1];
 	my @t = split "/", $stage; my $y = $t[-1];
-	my $z = $taxa{$tf};
-	my $name = join('_', ($z, $x, $y));
+	my $org = $taxa{$tf};
+	my $name = join('_', ($org, $x, $y));
 	my $pol2_name = $name . '_pol2';
 
 	foreach (readdir($dh)) {
@@ -176,11 +187,12 @@ foreach my $tf (@tf_dirs) {
 		}
 	    }
 
-	    gen_cfgfile(\@chip_reps_dir, \@input_reps_dir, $name);
-	    gen_cfgfile(\@pol2_reps_dir, \@input_reps_dir, $pol2_name) if scalar @pol2_reps_dir;
+	    gen_cfg_cmd(\@chip_reps_dir, \@input_reps_dir, $name, $org, $cmdh);
+	    gen_cfg_cmd(\@pol2_reps_dir, \@input_reps_dir, $pol2_name, $org, $cmdh) if scalar @pol2_reps_dir;
 	}
     }
 }     
+close($cmdh);
 
 sub usage {
     my $usage = qq[$0 [<worm|fly> <DIR_to_TF1> <worm|fly> <DIR_to_TF2> ... <DIR_to_CFG>]];
@@ -189,9 +201,10 @@ sub usage {
     exit 1;
 }
 
-sub gen_cfgfile {
-    my ($sdirs, $cdirs, $name) = @_;
-    my $cfg = CFG_DIR . $name . '_pipeline.ini';
+sub gen_cfg_cmd {
+    my ($sdirs, $cdirs, $name, $org, $cmdh) = @_;
+    my $cfgd = CFG_DIR . $name; mkdir($cfgd) unless -e $cfgd; $cfgd .= '/' unless $cfgd =~ /\/$/;
+    my $cfg = $cfgd . $name . '_pipeline.ini';
     if (-e $cfg) {
 	my $bak = $cfg . '.bak';
 	`mv $cfg $bak`;
@@ -254,6 +267,12 @@ CFG
 	}
     }
     check_sanity(\@chips, \@inputs);
+
+    system("cp $bowtie_cfg $cfgd");
+    system("cp $peakranger_cfg $cfgd");
+    system("cp $idr_cfg $cfgd");
+    system("cp $remove_barcode_cfg $cfgd");
+    print $cmdh "perl run.pl -name $name -org $org -cfg $cfg\n";
 }
 
 sub get_raw {
