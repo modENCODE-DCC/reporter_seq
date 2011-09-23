@@ -1,0 +1,177 @@
+34 #race 1 gff3
+214 #rt-pcr
+215 #rt-pcr
+339 #rt-pcr
+340 #rt-pcr
+445 #rt-pcr
+446 #rf-pcr
+447 #rt-pcr
+448 #rt-pcr
+515 #race, lots of gff3
+555 #sample
+559 #sample
+560 #sample
+574 #sample
+577 #sample
+896 
+992
+1040 #race, lots of gff3
+1042 #race, lots of gff3
+1043 #race, lots of gff3
+1044 #race, lots of gff3
+2270 #rt-pcr
+2304 #rt-pcr
+2327 
+2328
+2329 
+2330
+2331
+2332
+2333
+2334
+2335
+2336
+2337
+2403
+2455
+2456
+2457
+2458
+2459
+2460
+2461
+2462
+2463
+2464
+2465
+2501 #sample
+2539 #sample
+2540 #sample
+2675 #gene model, ???
+2688 #anno ???, reference 3 hops
+2689 #anno ???, reference 3 hops
+2690 #anno ???, reference 3 hops
+2691 #anno ???
+2692 #anno ???
+2693 #anno ???
+2694 #anno ???
+2695 #
+2696 #
+2697 #
+2698 #
+2699 #
+2700 #
+2701 #
+2702 #
+2703 #
+2704 #
+2705 #
+2706 #
+2707 #
+2708 #
+2709 #
+2710 #
+2711 #
+2712 #
+2713 #
+2714 #
+2715 #
+2716 #
+2717 # all brent anno.
+2718 #rt-pcr
+2720 #rt-pcr
+2745 #???
+2838 
+2850 #???
+2858 #not released?
+2859 #nr
+2860 #nr
+2861 #nr
+2862 #nr
+2863 #nr
+2928
+2929 #6916 gff + 1 bedgraph
+2946 #Classes_of_Insulator_Binding_Sites
+2947 #anno ???
+2948 #anno ???
+2949 #anno ???
+2950 #anno ???
+2951 #anno ???
+2952 #anno
+2954 #anno
+2955 #anno
+2956 #anno
+2958 #anno
+2959 #anno
+2960 #anno
+2961 
+2962 #anno ???
+2963 #anno 3 hops
+2964 #anno 3 hops
+2965 #anno 3 hops
+2967 #anno 
+2974
+2976
+2979
+3008
+3009
+3010
+3045
+3046
+3047
+3050
+3051
+3055
+3056
+3058
+3170
+3207
+3247
+3248
+3250
+3251
+3253
+3275
+3277
+3278
+3305
+3316
+3326
+3327
+3327
+3328
+modENCODE_1041
+modENCODE_3232 # 
+modENCODE_3255 #
+modENCODE_3256 #
+modENCODE_3257 #
+modENCODE_3258 #
+modENCODE_3259 #
+modENCODE_3260 #
+modENCODE_3261 #
+modENCODE_3263 #
+modENCODE_3264 #
+modENCODE_3265 #
+modENCODE_3266 #
+modENCODE_3267 #
+modENCODE_3268 #
+modENCODE_3270 #
+modENCODE_3271 #
+modENCODE_3272 #
+modENCODE_3273 #
+modENCODE_3274 #
+modENCODE_3307 #
+modENCODE_3310 #
+modENCODE_3317 #
+modENCODE_3362 #
+modENCODE_3363 #
+modENCODE_3364 #
+modENCODE_3365 #
+modENCODE_3389 #
+modENCODE_3506 #
+modENCODE_3508 #
+modENCODE_3510 #
+modENCODE_3511 #
+modENCODE_3512 #
+modENCODE_3513 #
+modENCODE_3514 #
