@@ -1,0 +1,260 @@
+L3_N2_RNA_Expression	Lieb	Lieb					NOT RELEASED							2009-10-15		uploaded	2447		
+L3_N2_RNA_Expression_ME3	Lieb	Lieb					NOT RELEASED							2009-10-15		uploaded	2448		
+DAF-16_fastq_DCC_test	Snyder	Snyder	ChIP-seq	chromatin		Target=daf-16;AbName=eGFP	4		Caenorhabditis elegans		TJ356	whole organism	larva: L4 larva, L4-adult molt, newly molted young adult hermaphrodite	2009-12-09		uploaded	2542	GSM389648	Snyder_DAF16_GFP_L4YA_combined_peaks.GFF3
+7T-E4-8h_GFP	White	White	ChIP-chip	chromatin		Target=cad;AbName=odg-GFP;Array=38bp;ArrayPlatform=Affymetrix	2		Drosophila melanogaster		7T-CAD	whole organism	embryo: embryonic stage 9-12	2010-01-08		uploaded	2578		7T-E4-8h_GFP_pvalue_Dm_BDGPv5.bed.gff
+Kc_Kr	White	White	ChIP-chip	chromatin		Target=Kr;AbName=KW3-Kr-D2;Array=38bp;ArrayPlatform=Affymetrix	1		Drosophila melanogaster	Kc167				2010-01-08		uploaded	2579	GSM621337	Kc_Kr_pvalue_Dm_BDGPv5.bed.gff
+RNA-seq-ERCC-control-serial-dilution-of-ERCCandS2-mRNA-mixture-library	Oliver	Oliver					NOT RELEASED							2010-03-02		uploaded	2930		
+RNA-seq-ERCC-controls-serial-dilution-of-ERCCcontrol-RNAs-with-S2-mRNA-library	Oliver	Oliver					NOT RELEASED							2010-03-03		uploaded	2931		
+test	Stein	Stein					NOT RELEASED							2010-05-28		uploaded	2936		
+Snyder_AHA-1_GFP_L1	Snyder	Snyder					NOT RELEASED							2010-04-30		uploaded	2937		
+Snyder_EGL-27_GFP_L2	Snyder	Snyder					NOT RELEASED							2010-04-30		uploaded	2938		
+Snyder_EGL-27_GFP_L3	Snyder	Snyder					NOT RELEASED							2010-04-30		uploaded	2939		
+Snyder_ELT-3_GFP_L3	Snyder	Snyder					NOT RELEASED							2010-04-30		uploaded	2940		
+Snyder_ELT-3_GFP_YA	Snyder	Snyder					NOT RELEASED							2010-04-30		uploaded	2941		
+Snyder_FKH-2_GFP_L3	Snyder	Snyder					NOT RELEASED							2010-04-30		uploaded	2942		
+Snyder_MML-1_GFP_L3	Snyder	Snyder					NOT RELEASED							2010-04-30		uploaded	2943		
+Snyder_NHR-76_GFP_L3	Snyder	Snyder					NOT RELEASED							2010-04-30		uploaded	2944		
+Snyder_PHA-4_GFP_L4	Snyder	Snyder					NOT RELEASED							2010-04-30		uploaded	2945		
+testing upload	Stein	Stein					NOT RELEASED							2010-07-01		uploaded	2977		
+A_Test	Stein	Stein					NOT RELEASED							2010-07-21		uploaded	2981		
+HP1b (Henikoff).BG3	Karpen	Karpen					NOT RELEASED							2010-07-22		uploaded	3016		
+HP1b (Henikoff).D.mel 3rd Instar Larvae Nuclei	Karpen	Elgin	ChIP-chip	chromatin		Target=HP1b;AbName=HP1b (Henikoff);Array=38bp;ArrayPlatform=Affymetrix	1		Drosophila melanogaster		Oregon-R-modENCODE	whole organism	larva: larval stage, third instar larval stage	2010-07-22		uploaded	3018		repset.9276758.smoothedM.clusters.gff3
+Snyder_R02D3.7_GFP_L4	Snyder	Snyder	ChIP-seq	chromatin		Target=R02D3.7;AbName=eGFP	3		Caenorhabditis elegans		OP218	whole organism	larva: L4 larva	2010-07-23		uploaded	3077		Snyder_R02D3.7_GFP_L4_combined_peaks.GFF3
+Snyder_HAM-1_GFP_L1	Snyder	Snyder					NOT RELEASED							2010-08-11		uploaded	3152		
+Snyder_EOR-1_L3_POL-2	Snyder	Snyder					NOT RELEASED							2010-08-23		uploaded	3160		
+Snyder_EGL-5_L3_POL-2	Snyder	Snyder					NOT RELEASED							2010-08-24		uploaded	3162		
+seq-SDQ3891_LEM2_N2_MXemb	Lieb	Lieb					NOT RELEASED							2010-08-24		uploaded	3168		
+seq-WA30534819_H3K4me3_N2_MXemb	Lieb	Lieb					NOT RELEASED							2010-08-24		uploaded	3169		
+13T-EXD_E0-8h_GFP	White	White					NOT RELEASED							2010-09-09		uploaded	3183		
+3T-EN_E0-12h_GFP	White	White					NOT RELEASED							2010-09-09		uploaded	3184		
+3T-EN_E12-24h_GFP	White	White					NOT RELEASED							2010-09-09		uploaded	3185		
+8T-TLL_E0-4h_GFP	White	White					NOT RELEASED							2010-09-09		uploaded	3186		
+E16-24h_HP1-Abcam	White	White					NOT RELEASED							2010-09-09		uploaded	3187		
+E16-24h_Hp1-Covance	White	White					NOT RELEASED							2010-09-09		uploaded	3188		
+S2_H3K36me3	White	White					NOT RELEASED							2010-09-09		uploaded	3189		
+Snyder_C34F6.9_GFP_L2	Snyder	Snyder					NOT RELEASED							2010-10-18		uploaded	3208		
+Snyder_CEH-16_GFP_L2	Snyder	Snyder					NOT RELEASED							2010-10-18		uploaded	3209		
+Snyder_DPL-1_GFP_L1	Snyder	Snyder					NOT RELEASED							2010-10-18		uploaded	3210		
+Snyder_EFL-1_GFP_L1	Snyder	Snyder					NOT RELEASED							2010-10-18		uploaded	3211		
+Snyder_F49E12.6_GFP_L3	Snyder	Snyder					NOT RELEASED							2010-10-18		uploaded	3212		
+Snyder_LIN-35_GFP_L1	Snyder	Snyder					NOT RELEASED							2010-10-18		uploaded	3213		
+Snyder_NHR-12_GFP_L2	Snyder	Snyder					NOT RELEASED							2010-10-18		uploaded	3214		
+Snyder_ELT-2_GFP_L3	Snyder	Snyder					NOT RELEASED							2010-10-22		uploaded	3225		
+Snyder_LIR-2_GFP_L3	Snyder	Snyder					NOT RELEASED							2010-10-22		uploaded	3226		
+Snyder_PEB-1_GFP_L2	Snyder	Snyder					NOT RELEASED							2010-10-22		uploaded	3227		
+Snyder_SMA-9_GFP_L2	Snyder	Snyder					NOT RELEASED							2010-10-22		uploaded	3228		
+E8-16_GFP[eve]	White	White					NOT RELEASED							2010-10-25		uploaded	3241		
+Kc_K4Me3	White	White					NOT RELEASED							2010-10-25		uploaded	3244		
+Kc_Trl	White	White					NOT RELEASED							2010-10-25		uploaded	3245		
+H3 antibody2.S2	Karpen	Karpen					NOT RELEASED							2010-11-11		uploaded	3301		
+DNase_I_Hypersensitive_Sites.BG3	Karpen	Karpen					NOT RELEASED							2010-12-10		uploaded	3323		
+DNase_I_Hypersensitive_Sites.S2	Karpen	Karpen					NOT RELEASED							2010-12-10		uploaded	3324		
+DNase_I_Hypersensitive_Sites.Kc	Karpen	Karpen					NOT RELEASED							2010-12-10		uploaded	3325		
+ChIP-seq BLMP1_L1_peaks	Snyder	Gerstein	ChIP-seq	gene model			1		Caenorhabditis elegans					2010-12-14		uploaded	3331		BLMP1.gff3
+Snyder_DPL-1_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-01-11		uploaded	3366		
+Snyder_C16A3.4_GFP_L1	Snyder	Snyder					NOT RELEASED							2011-01-11		uploaded	3367		
+Snyder_C30G4.7_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-01-11		uploaded	3368		
+Snyder_SKN-1_GFP_L2	Snyder	Snyder					NOT RELEASED							2011-01-11		uploaded	3369		
+Snyder_GEI-11_GFP_L1	Snyder	Snyder					NOT RELEASED							2011-01-11		uploaded	3373		
+Snyder_F45C12.2_GFP_L2	Snyder	Snyder					NOT RELEASED							2011-01-13		uploaded	3379		
+Snyder_ALY-2_GFP_L2	Snyder	Snyder					NOT RELEASED							2011-01-13		uploaded	3383		
+EcR_WPP-4-5h	White	White					NOT RELEASED							2011-01-31		uploaded	3398		
+15T_8-16_NW_GFP	White	White					NOT RELEASED							2011-01-31		uploaded	3402		
+RNA_Expression_N2_EEMB	Lieb	Strome					NOT RELEASED							2011-02-24		uploaded	3433		
+AB6002_H3K27ME3_N2_L3_LM	Lieb	Ahringer					NOT RELEASED							2011-02-24		uploaded	3436		
+AR0108_H3K9ME2_N2_L3_LM	Lieb	Ahringer					NOT RELEASED							2011-02-24		uploaded	3437		
+Cell Lines OSS RNA-Seq uniquely mapped reads	Celniker	Graveley					NOT RELEASED							2011-03-07		uploaded	3489		
+Cell Lines OSC RNA-Seq uniquely mapped reads	Celniker	Graveley					NOT RELEASED							2011-03-07		uploaded	3490		
+Cell Lines fGS RNA-Seq uniquely mapped reads	Celniker	Graveley					NOT RELEASED							2011-03-07		uploaded	3491		
+seq_JL00001_DPY27_N2_MXEMB	Lieb	Lieb					NOT RELEASED							2011-03-15		uploaded	3495		
+seq_JL00002_SDC3_N2_MXEMB	Lieb	Lieb					NOT RELEASED							2011-03-15		uploaded	3496		
+seq_JL00003_DPY26_N2_MXEMB	Lieb	Lieb					NOT RELEASED							2011-03-15		uploaded	3497		
+seq_JL00004_MIX1_N2_MXEMB	Lieb	Lieb					NOT RELEASED							2011-03-15		uploaded	3498		
+seq_SDQ3146_SDC2_N2_MXEMB	Lieb	Lieb					NOT RELEASED							2011-03-15		uploaded	3499		
+seq_SDQ3564_RBR2_N2_MXEMB	Lieb	Lieb					NOT RELEASED							2011-03-15		uploaded	3500		
+seq_SDQ3582_CBP1_N2_MXEMB	Lieb	Lieb					NOT RELEASED							2011-03-15		uploaded	3501		
+seq_SDQ3897_NPP13_N2_MXEMB	Lieb	Lieb					NOT RELEASED							2011-03-15		uploaded	3502		
+seq_SDQ4154_IMB1_N2_MXEMB	Lieb	Lieb					NOT RELEASED							2011-03-15		uploaded	3503		
+seq_JL_SonicPaireP1_N2_MXEMB_A	Lieb	Lieb					NOT RELEASED							2011-03-15		uploaded	3504		
+seq_JL_SonicPaireP1_N2_MXEMB_B	Lieb	Lieb					NOT RELEASED							2011-03-15		uploaded	3505		
+C. elegans Regulatory Network	Waterston	Gerstein					NOT RELEASED							2011-03-18		uploaded	3509		
+RNAseq - L4b alignments	Waterston	Waterston					NOT RELEASED							2011-03-22		uploaded	3525		
+OD00079_HCP3_N2_EEMB	Lieb	Desai					NOT RELEASED							2011-03-29		uploaded	3540		
+OD00079_HCP3_N2_MXEMB	Lieb	Desai					NOT RELEASED							2011-03-29		uploaded	3541		
+OD00079_HCP3_N2_LTEMB	Lieb	Desai					NOT RELEASED							2011-03-29		uploaded	3542		
+SDQ0804_HCP3_N2_LTEMB	Lieb	Desai					NOT RELEASED							2011-03-29		uploaded	3543		
+SGF3165_FLAG_N2_EEMB	Lieb	Strome					NOT RELEASED							2011-03-29		uploaded	3560		
+seq-AR0144_H3_144_N2_L3	Lieb	Ahringer					NOT RELEASED							2011-04-01		uploaded	3564		
+seq-JA00001_HTZ1_N2_L3	Lieb	Ahringer					NOT RELEASED							2011-04-01		uploaded	3569		
+seq-SDQ2370_LIN53_N2_L3	Lieb	Ahringer					NOT RELEASED							2011-04-01		uploaded	3574		
+seq-WA30932379_H3K9ac_N2_L3	Lieb	Ahringer					NOT RELEASED							2011-04-04		uploaded	3578		
+seq-WA30534819_H3K4me3_N2_MXemb_se	Lieb	Lieb					NOT RELEASED							2011-04-04		uploaded	3582		
+Snyder_UNC-62_GFP_D4YA	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3584		
+Snyder_ZAG-1_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3585		
+Snyder_R02D3.7_GFP_L3	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3586		
+Snyder_FOS-1_GFP_L3	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3587		
+Snyder_FOS-1_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3588		
+Snyder_LIN-15B_GFP_L1	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3589		
+Snyder_ZK377.2_GFP_L1	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3590		
+Snyder_ZK377.2_GFP_L2	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3591		
+Snyder_ZK377.2_GFP_L3	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3592		
+Snyder_ZK377.2_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3593		
+Snyder_NHR-77_GFP_L1	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3594		
+Snyder_NHR-77_GFP_L2	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3595		
+Snyder_NHR-77_GFP_L3	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3596		
+Snyder_NHR-77_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3597		
+Snyder_NHR-116_GFP_L2	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3598		
+Snyder_NHR-116_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3599		
+Snyder_F45C12.2_GFP_L1	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3600		
+Snyder_Ppie-1_LIN-35_YL402_yAd	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3602		
+Snyder_Pges-1_LIN-35_YL398_L1	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3603		
+Snyder_Pges-1_HPL-2_YL416 L1	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3604		
+Snyder_N2_EFL-1_Ab	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3605		
+Snyder_SEM-4_GFP_L2	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3606		
+Snyder_DPL-1_GFP_L1v2	Snyder	Snyder					NOT RELEASED							2011-04-27		uploaded	3607		
+FP00001_HPL2_N2_L3	Lieb	Ahringer					NOT RELEASED							2011-05-05		uploaded	3624		
+H3K36me3_abcam.D.mel_3rd_Instar_Larvae_Nuclei_EGG_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3684		
+H3K36me3_abcam.D.mel_3rd_Instar_Larvae_Nuclei_HP1c_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3685		
+H3K36me3_abcam.D.mel_3rd_Instar_Larvae_Nuclei_POF_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3686		
+H3K4me2_JBC_1360331.D.mel_3rd_Instar_Larvae_Nuclei_Su(var)_3-9_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3690		
+H3K9me2-Ab2_(new_lot).D.mel_3rd_Instar_Larvae_Nuclei_EGG_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3692		
+H3K9me2-Ab2_(new_lot).D.mel_3rd_Instar_Larvae_Nuclei_mt2_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3693		
+H3K9me2-Ab2_(new_lot).D.mel_3rd_Instar_Larvae_Nuclei_Su(var)_3-9_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3695		
+H3K9me3_abcam.D.mel_3rd_Instar_Larvae_Nuclei_Su(var)_3-9_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3696		
+H4K16ac(L).14-16_hr_OR_embryo	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3697		
+H4K16ac(M).14-16_hr_OR_embryo	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3698		
+HP1c_(MO_462).D.mel_3rd_Instar_Larvae_Nuclei_HP1a_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3701		
+HP1_wa191.D.mel_3rd_Instar_Larvae_Nuclei_EGG_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3702		
+HP1_wa191.D.mel_3rd_Instar_Larvae_Nuclei_mt2_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3703		
+HP1_wa191.D.mel_3rd_Instar_Larvae_Nuclei_Su(var)_3-9_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3706		
+RNA_Pol_II_(abcam).D.mel_3rd_Instar_Larvae_Nuclei_HP1c_Mutant	Karpen	Karpen					NOT RELEASED							2011-05-30		uploaded	3711		
+RNAseq - AF16_Mx-1	Waterston	Waterston					NOT RELEASED							2011-07-20		uploaded	3728		
+RNAseq - AF16_L4-1	Waterston	Waterston					NOT RELEASED							2011-07-20		uploaded	3731		
+RNAseq - DF5081_L4-1	Waterston	Waterston					NOT RELEASED							2011-07-20		uploaded	3732		
+RNAseq - AG1106	Waterston	Waterston					NOT RELEASED							2011-07-20		uploaded	3734		
+RNAseq - PB2801_YAF-1	Waterston	Waterston					NOT RELEASED							2011-07-20		uploaded	3735		
+RNAseq - PB2801_YAM-1	Waterston	Waterston					NOT RELEASED							2011-07-20		uploaded	3736		
+RNAseq - SB146_L2-1	Waterston	Waterston					NOT RELEASED							2011-07-20		uploaded	3737		
+RNAseq - SB146_L4-1	Waterston	Waterston					NOT RELEASED							2011-07-20		uploaded	3738		
+RNAseq - SB146_YAF-1	Waterston	Waterston					NOT RELEASED							2011-07-20		uploaded	3739		
+RNAseq - SB146_YAM-1	Waterston	Waterston					NOT RELEASED							2011-07-20		uploaded	3740		
+Chro(Chriz)WR.14-16 hr OR embryo	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3746		
+H3K18Ac (new lot).14-16 hr OR embryo	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3754		
+H3K23ac.OR Head Nuclei	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3756		
+H3K36me3 abcam.D.mel 3rd Instar Larvae Nuclei HP1a Mutant	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3759		
+H3K9ac.14-16 hr OR embryo	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3764		
+H3K9ac.OR Head Nuclei	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3766		
+H3K9acS10P (new lot).OR Head Nuclei	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3767		
+H3K9me2-Ab2 (new lot).D.mel 3rd Instar Larvae Nuclei HP1a Mutant	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3771		
+H3K9me2-Ab2 (new lot).OR Head Nuclei	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3773		
+H3K9me3 abcam.D.mel 3rd Instar Larvae Nuclei EGG Mutant	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3774		
+H3K9me3 abcam.D.mel 3rd Instar Larvae Nuclei HP1a Mutant	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3775		
+HP1b Q4114.OR Head Nuclei	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3778		
+HP1c (MO 462).OR Head Nuclei	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3779		
+HP1 wa191.D.mel 3rd Instar Larvae Nuclei POF Mutant	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3780		
+HP2 (Ab2-90).OR Head Nuclei	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3781		
+POF (MO 459).D.mel 3rd Instar Larvae Nuclei EGG Mutant	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3793		
+POF (MO 459).D.mel 3rd Instar Larvae Nuclei POF Mutant	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3794		
+POF (MO 459).OR Head Nuclei	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3796		
+RNA Pol II (abcam).D.mel 3rd Instar Larvae Nuclei HP1a Mutant	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3798		
+SU(HW)-HB.Kc	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3801		
+Su(var)3-9-Q2598.OR Head Nuclei	Karpen	Karpen					NOT RELEASED							2011-07-27		uploaded	3802		
+WPP_BR-core	White	White					NOT RELEASED							2011-07-28		uploaded	3806		
+D.pse_E0-4h_K27me3	White	White					NOT RELEASED							2011-07-28		uploaded	3807		
+D.pse_E0-4h_Psq	White	White					NOT RELEASED							2011-07-28		uploaded	3808		
+D.pse_E0-4h_Trl	White	White					NOT RELEASED							2011-07-28		uploaded	3809		
+D.pse_WPP_K27me3	White	White					NOT RELEASED							2011-07-28		uploaded	3810		
+D.sim_E0-4h_K27me3	White	White					NOT RELEASED							2011-07-28		uploaded	3811		
+D.sim_E0-4h_Kr	White	White					NOT RELEASED							2011-07-28		uploaded	3812		
+D.sim_E0-4h_Pcl	White	White					NOT RELEASED							2011-07-28		uploaded	3813		
+D.sim_E0-4h_Trl-D2	White	White					NOT RELEASED							2011-07-28		uploaded	3814		
+D.sim_WPP_K27me3	White	White					NOT RELEASED							2011-07-28		uploaded	3815		
+D.sim_WPP_Pcl	White	White					NOT RELEASED							2011-07-28		uploaded	3816		
+D.yak_E0-4h_Kr	White	White					NOT RELEASED							2011-07-28		uploaded	3817		
+D.yak_E0-4h_Pcl	White	White					NOT RELEASED							2011-07-28		uploaded	3818		
+D.yak_E0-4h_Psq	White	White					NOT RELEASED							2011-07-28		uploaded	3819		
+D.yak_E0-4h_Trl-D2	White	White					NOT RELEASED							2011-07-28		uploaded	3820		
+D.yak_WPP_Trl-D2	White	White					NOT RELEASED							2011-07-28		uploaded	3821		
+E0-12_Hr4_GFP	White	White					NOT RELEASED							2011-07-28		uploaded	3822		
+E0-4_Yki-91	White	White					NOT RELEASED							2011-07-28		uploaded	3823		
+E16-24h_13T(exd)-GFP	White	White					NOT RELEASED							2011-07-28		uploaded	3824		
+E16-24h_Cabut	White	White					NOT RELEASED							2011-07-28		uploaded	3825		
+E16-24h_Fer3	White	White					NOT RELEASED							2011-07-28		uploaded	3826		
+E8-16h_h	White	White					NOT RELEASED							2011-07-28		uploaded	3827		
+Ad_Female_3d_EcR_GFP	White	White					NOT RELEASED							2011-07-28		uploaded	3828		
+WPP_K27me3	White	White					NOT RELEASED							2011-07-28		uploaded	3829		
+WPP_Trl-D2	White	White					NOT RELEASED							2011-07-28		uploaded	3830		
+RNAseq - AG1106 genelets	Waterston	Waterston					NOT RELEASED							2011-07-29		uploaded	3832		
+Snyder_Pmex-5_LIN-35_YL468 yAd	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3833		
+Snyder_pGES_HPL-2_lin-35_YL474_L1	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3834		
+Snyder_NHR-25_GFP_L2	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3835		
+Snyder_NHR-6_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3836		
+Snyder_NHR-23_GFP_L3	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3837		
+Snyder_SKN-1_GFP_L3	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3838		
+Snyder_F23F12.9_GFP_Emb	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3839		
+Snyder_MAB-5_GFP_Emb	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3840		
+Snyder_F49E12.6_GFP_L1	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3841		
+Snyder_HAM-1_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3842		
+Snyder_ELT-1_GFP_L3	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3843		
+Snyder_LSY-2_GFP_Emb	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3844		
+Snyder_LSY-2_GFP_L1	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3845		
+Snyder_LSY-2_GFP_Starved_L1	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3846		
+Snyder_LSY-2_GFP_L2	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3847		
+Snyder_LSY-2_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3848		
+Snyder_nhr-237_GFP_L2	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3849		
+Snyder_nhr-237_GFP_L3	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3850		
+Snyder_nhr-237_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3851		
+Snyder_nhr-237_GFP_L1	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3852		
+Snyder_nhr-237_GFP_EMB	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3853		
+Snyder_nhr-116_GFP_L1	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3854		
+Snyder_ZK546.5_GFP_L1	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3855		
+Snyder_PAX-1_GFP_EMB	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3856		
+Snyder_CES-1_GFP_EMB	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3857		
+Snyder_CEH-39_GFP_EMB	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3858		
+Snyder_NHR-2_GFP_EMB	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3859		
+Snyder_RABS-5_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3860		
+Snyder_NHR-275_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3861		
+Snyder_SYP-1_GFP_L4	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3862		
+Snyder_Pges-1_HPL-2_YL416_L1	Snyder	Snyder					NOT RELEASED							2011-07-30		uploaded	3863		
+pncr012 RNAi RNA-seq	Celniker	Perrimon					NOT RELEASED							2011-07-26		uploaded	3865		
+pncr013 RNAi RNA-seq	Celniker	Perrimon					NOT RELEASED							2011-07-26		uploaded	3866		
+pncr009 overexpression RNA-seq	Celniker	Perrimon					NOT RELEASED							2011-07-26		uploaded	3867		
+pncr012 overexpression RNA-seq	Celniker	Perrimon					NOT RELEASED							2011-07-26		uploaded	3868		
+pncr013 overexpression RNA-seq	Celniker	Perrimon					NOT RELEASED							2011-07-26		uploaded	3869		
+dslacz RNAi control RNA-seq	Celniker	Perrimon					NOT RELEASED							2011-07-26		uploaded	3870		
+mock treatment RNAi RNA-seq	Celniker	Perrimon					NOT RELEASED							2011-07-26		uploaded	3871		
+empty vector overexpression control RNA-seq	Celniker	Perrimon					NOT RELEASED							2011-07-26		uploaded	3872		
+H3K18Ac_14-16h_embryos_mixedABlot	Karpen	Karpen					NOT RELEASED							2011-07-29		uploaded	3886		
+H3K36me3 abcam.D.mel 3rd Instar Larvae Nuclei Su(var) 3-9 06_17 Mutant	Karpen	Karpen					NOT RELEASED							2011-07-29		uploaded	3888		
+H3K9me2-Ab2 (new lot).D.mel 3rd Instar Larvae Nuclei Su(var) 3-9 06_17 Mutant	Karpen	Karpen					NOT RELEASED							2011-07-29		uploaded	3889		
+H3K9me3 abcam.D.mel 3rd Instar Larvae Nuclei Su(var) 3-9 06_17 Mutant	Karpen	Karpen					NOT RELEASED							2011-07-29		uploaded	3891		
+HP1 wa191.D.mel 3rd Instar Larvae Nuclei Su(var) 3-9 06_17 Mutant	Karpen	Karpen					NOT RELEASED							2011-07-29		uploaded	3892		
+POF (MO 459).14-16 hr OR embryo	Karpen	Karpen					NOT RELEASED							2011-07-29		uploaded	3895		
+POF (MO 459).D.mel 3rd Instar Larvae Nuclei HP1a Mutant	Karpen	Karpen					NOT RELEASED							2011-07-29		uploaded	3896		
+RNA-seq C. elegans Pharyngeal Muscle sequence & alignments	Waterston	Waterston					NOT RELEASED							2011-08-25		uploaded	3900		
+seq-SDQ3161_GAK1_FEM2_AD	Lieb	Dernburg					NOT RELEASED							2011-09-01		uploaded	3914		
+seq-SDQ3179_GAK1_FEM2_AD	Lieb	Dernburg					NOT RELEASED							2011-09-01		uploaded	3915		
+seq-SDQ0801_HIM17_FEM2_AD	Lieb	Dernburg					NOT RELEASED							2011-09-01		uploaded	3916		
+seq-SDQ4501_T09A5.8_FEM2_AD	Lieb	Dernburg					NOT RELEASED							2011-09-01		uploaded	3917		
+seq-SDQ4625_T09A5.8_FEM2_AD	Lieb	Dernburg					NOT RELEASED							2011-09-01		uploaded	3918		
+seq-ab9051_H4K20me1csr_FEM2_AD	Lieb	Dernburg					NOT RELEASED							2011-09-01		uploaded	3919		
+seq-WA30534819_H3K4me3_FEM2_AD	Lieb	Dernburg					NOT RELEASED							2011-09-01		uploaded	3920		
+seq-WA30634849_H3K27ac_FEM2_AD	Lieb	Dernburg					NOT RELEASED							2011-09-01		uploaded	3921		
+seq-WA30834809_H3K4me2_FEM2_AD	Lieb	Dernburg					NOT RELEASED							2011-09-01		uploaded	3922		
+seq-SDQ0811_RAD51_FEM2_AD	Lieb	Dernburg					NOT RELEASED							2011-09-01		uploaded	3923		
+seq-BH00005_LIN9_N2_LTemb	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3924		
+seq-JA00011_LIN35_N2_LTemb	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3925		
+seq-JA00013_LIN35_N2_LTemb	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3926		
+JA00013_LIN35_N2_LTemb_val	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3927		
+seq-BH00003_LIN37_N2_LTemb	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3928		
+seq-SDQ3166_LIN37_N2_LTemb	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3929		
+seq-BH00001_LIN52_N2_LTemb	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3930		
+seq-SDQ2370_LIN53_N2_LTemb	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3931		
+seq-BH00004_LIN54_N2_LTemb	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3932		
+BH00004_LIN54_N2_LTemb_val	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3933		
+seq-SDQ3590_EFL1_N2_LTemb	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3934		
+seq-SDQ3599_DPL1_N2_LTemb	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3935		
+SDQ2931_SET2_N2_LTEMB	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3936		
+seq-SDQ2931_SET2_N2_LTemb_val	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3937		
+seq-SDQ2324_HPL2_N2_LTemb_val	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3938		
+seq-SDQ2327_LIN15B_N2_LTemb_val	Lieb	Strome					NOT RELEASED							2011-09-01		uploaded	3939		
