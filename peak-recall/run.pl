@@ -942,14 +942,14 @@ sub run_idr {
     if (scalar @r3_chip) {
 	$overlap_peaks_self_r3 = $idr_self_r3_prefix . '-overlapped-peaks.txt';
 	$np_r3_pr = `awk '\$11 <= $idr_cut_self {print \$0}' $overlap_peaks_self_r3 |wc -l`; chomp $np_r3_pr;
-	mprint("number of peaks passed rep2 self idr threshold is $np_r3_pr", 1);
+	mprint("number of peaks passed rep3 self idr threshold is $np_r3_pr", 1);
     }
     #0
     my ($overlap_peaks_pseudo, $np_r0);
     if (scalar @r2_chip) {
 	$overlap_peaks_pseudo = $idr_pseudo_prefix . '-overlapped-peaks.txt';
 	$np_r0 = `awk '\$11 <= $idr_cut_pseudo {print \$0}' $overlap_peaks_pseudo |wc -l`; chomp $np_r0;
-	mprint("number of peaks passed rep2 merge pseudo threshold is $np_r0", 1);
+	mprint("number of peaks passed merge pseudo threshold is $np_r0", 1);
     }
     
     my $max_numpeaks_pair;
