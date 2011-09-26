@@ -1763,23 +1763,31 @@ sub lvl4_condition {
     my @exclude_factors = ('CellLine');
     my @c = ();
     if ( defined($strain) ) {
-	$strain =~ s/Filename_separator/Filename_separator_replacement/g;
-	$strain =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
+	#$strain =~ s/Filename_separator/Filename_separator_replacement/g;
+	#$strain =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
+	$strain =~ s/;/ /g;
+	$strain =~ s/_/-/g;
 	push @c, 'Strain' . Tag_value_separator . $strain;
     }
     if ( defined($cellline) ) {
-	$cellline =~ s/Filename_separator/Filename_separator_replacement/g;
-	$cellline =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
+	#$cellline =~ s/Filename_separator/Filename_separator_replacement/g;
+	#$cellline =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
+	$cellline =~ s/;/ /g;
+	$cellline =~ s/_/-/g;
 	push @c, 'Cell-Line' . Tag_value_separator . $cellline;
     }
     if ( defined($tissue) ) {
-	$tissue =~ s/Filename_separator/Filename_separator_replacement/g;
-	$tissue =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
+	#$tissue =~ s/Filename_separator/Filename_separator_replacement/g;
+	#$tissue =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
+	$tissue =~ s/;/ /g;
+	$tissue =~ s/_/-/g;
 	push @c, 'Tissue' . Tag_value_separator . $tissue;
     }
     if ( defined($devstage) ) {
-	$devstage =~ s/Filename_separator/Filename_separator_replacement/g;
-	$devstage =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
+	#$devstage =~ s/Filename_separator/Filename_separator_replacement/g;
+	#$devstage =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
+	$devstage =~ s/;/ /g;
+	$devstage =~ s/_/-/g;
 	push  @c, 'Developmental-Stage' . Tag_value_separator . $devstage;
     }
     #push @c, 'Strain_' . $strain if defined($strain);
@@ -1789,12 +1797,14 @@ sub lvl4_condition {
     for my $k (sort keys %of) {
 	next if scalar grep {$k eq $_} @exclude_factors;
 	my $v = $of{$k};
-	$k =~ s/Filename_separator/Filename_separator_replacement/g;
-	$v =~ s/Filename_separator/Filename_separator_replacement/g;
-	$k =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
-	$v =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
-	#$k =~ s/_/-/g;
-	#$v =~ s/_/-/g;
+	#$k =~ s/Filename_separator/Filename_separator_replacement/g;
+	#$v =~ s/Filename_separator/Filename_separator_replacement/g;
+	#$k =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
+	#$v =~ s/Tag_value_separator/Tag_value_separator_replacement/g;
+	$k =~ s/;/ /g;
+	$v =~ s/;/ /g;
+	$k =~ s/_/-/g;
+	$v =~ s/_/-/g;
 	push @c, $k . Tag_value_separator . $v;
     }
     return join(Filename_separator, @c);
@@ -1822,3 +1832,5 @@ sub _data_groups {
 
 
 1;
+
+#  LocalWords:  func
