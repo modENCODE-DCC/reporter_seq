@@ -1618,9 +1618,13 @@ sub set_level1 {
     my $org = $self->get_organism();
     my $s;
     if ($org eq 'Caenorhabditis elegans') {
-	$s = 'Cele_WS190';    
+	#change to WS220
+	$s = 'Cele_WS220';
+	#$s = 'Cele_WS190';    
     } elsif ($org eq 'Drosophila melanogaster') {
-	$s = 'Dmel_r5.4';    
+	#change to r5.32
+	$s = 'Dmel_r5.32';
+	#$s = 'Dmel_r5.4';    
     } elsif ($org =~ /Drosophila\s*pseudoobscura/) {
 	$s = 'Dpse_r2.4';    
     } elsif ($org eq 'Drosophila mojavensis') { 
