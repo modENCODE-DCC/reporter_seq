@@ -62,9 +62,9 @@ foreach my $tf (@tf_dirs) {
 	    /pol2/ && !/^anti/ && push @pol2s, $stage . $_ . '/';
 	}
 	
-	print "exactly 1 ChIP dir expected for $name $stage\n" and $chips_dir_ready = 0 if scalar @chips != 1;
-	print "exactly 1 input dir expected for $name $stage\n" and $inputs_dir_ready = 0 if scalar @inputs != 1;
-	print "exactly 1 pol2 dir expected for $pol2_name $stage\n" and $pol2s_dir_ready = 0 if scalar @pol2s > 0 && scalar @pol2s != 1;
+	print "exactly 1 ChIP dir expected for $name $stage, you have " . scalar @chips . " ChIP dir(s)\n" and $chips_dir_ready = 0 if scalar @chips != 1;
+	print "exactly 1 input dir expected for $name $stage, you have " . scalar @chips . " input dir(s)\n" and $inputs_dir_ready = 0 if scalar @inputs != 1;
+	print "exactly 1 pol2 dir expected for $pol2_name $stage, you have " . scalar @pol2s . " pol2 dir(s)\n" and $pol2s_dir_ready = 0 if scalar @pol2s > 0 && scalar @pol2s != 1;
 
       
 	###check whether input dir exists as of 13 Sep 2011#################################
@@ -245,13 +245,16 @@ CFG
 	    my $sdir = $sdirs->[$j];
 	    if ($sdir =~ /$i\/$/) {
 		my @files = get_raw($sdir);
+		print "$sdir does not contain any file\n" if scalar @files == 0;
 		push @chips, @files;
 		print $cfgh "r${i}_ChIP = ", join(" ", @files), "\n";
 	    }
 	}
     }
     if (scalar @$cdirs == 1) {
-	my @files = get_raw($cdirs->[0]);
+	my $cdir = $cdirs->[0];
+	my @files = get_raw($cdir);
+	print "$cdir does not contain any file\n" if scalar @files == 0;
 	push @inputs, @files;
 	print $cfgh "share_input = ", join(" ", @files), "\n";
     } else { 
@@ -260,12 +263,14 @@ CFG
 		my $cdir = $cdirs->[$j];
 		if ($cdir =~ /$i\/$/) {
 		    my @files = get_raw($cdir);
+		    print "$cdir does not contain any file\n" if scalar @files == 0;
 		    push @inputs, @files;
 		    print $cfgh "r${i}_input = ", join(" ", @files), "\n";
 		}
 	    }
 	}
     }
+
     check_sanity(\@chips, \@inputs);
 
     system("cp $bowtie_cfg $cfgd");
