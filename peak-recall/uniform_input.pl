@@ -20,6 +20,7 @@ my $option = GetOptions ("rm_barcode:i" => \$rm_barcode,
 #otherwise, use Knuth reservoir sampling algo, much much slower
 $sampling = 'random' unless lc($sampling) eq 'fast';
 
+usage() if scalar @ARGV == 0;
 my ($out, @in) = @ARGV;
 my $out_dir = (fileparse($out))[1];
 my $ori_dir = $out_dir; $ori_dir =~ s/uniform/origin/;
@@ -282,3 +283,12 @@ sub __test_forbarcode {
     return $barcode;
 }
 
+sub usage {
+    my $usage = qq[$0 [-rm_barcode [0|1] -sampling [fast|random] -dent [1|2]] <out> <in1 in2 ...>];
+    print $usage, "\n";
+    print "options are for remove barcode, sampling method, log output formatting.\n";
+    print "fast sampling will select first 1000 lines to determine barcode\n";
+    print "random sampling will select randomly 1000 lines\n";
+    print "out is filepath for output. in1/2/3... are input filepath\n";
+    exit 2;
+}
