@@ -28,9 +28,11 @@ if (scalar @ARGV == 0) {
     }
 }
 elsif (scalar @ARGV >= 3) {
-    %taxa = reverse $ARGV[0, -1];
+    %taxa = reverse @ARGV[0, scalar(@ARGV)-2];
     @tf_dirs = keys %taxa;
+    print @tf_dirs, "\n";
     $cfg_dir = $ARGV[-1];
+    print $cfg_dir, "\n";
 }
 else {
     usage();
@@ -38,7 +40,7 @@ else {
 mkdir($cfg_dir) unless -d $cfg_dir;
 #map {print $_, "\n"} @tf_dirs; #right
 
-my $cmd = CFG_DIR . 'all_cmd.txt';
+my $cmd = $cfg_dir . 'all_cmd.txt';
 open my $cmdh, ">", $cmd || die "cannot open $cmd to write: $!";
 foreach my $tf (@tf_dirs) {
     opendir my $dh, $tf || die"cannot open dir $tf \n";
@@ -203,7 +205,7 @@ sub usage {
 
 sub gen_cfg_cmd {
     my ($sdirs, $cdirs, $name, $org, $cmdh) = @_;
-    my $cfgd = CFG_DIR . $name; mkdir($cfgd) unless -e $cfgd; $cfgd .= '/' unless $cfgd =~ /\/$/;
+    my $cfgd = $cfg_dir . $name; mkdir($cfgd) unless -e $cfgd; $cfgd .= '/' unless $cfgd =~ /\/$/;
     my $cfg = $cfgd . $name . '_pipeline.ini';
     if (-e $cfg) {
 	my $bak = $cfg . '.bak';
