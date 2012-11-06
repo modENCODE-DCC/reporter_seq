@@ -306,10 +306,11 @@ sub chado2sample {
 	    unless ( ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) || ($split_arr_group{ident $self} == 1 and $ap_slots{ident $self}->{hybridization} >= 0) ) {
 		$self->write_series_sample($extraction, $array);
 	    }
+	    my $seq_flag = $ap_slots{ident $self}->{seq} >= 0 ? 1 : 0;
 	    for (my $channel=0; $channel<scalar(@{$combined_grp{$extraction}{$array}}); $channel++) {
 		my $row = $combined_grp{$extraction}{$array}->[$channel];
 		if ( ($split_seq_group{ident $self} == 1 and $ap_slots{ident $self}->{seq} >= 0) || ($split_arr_group{ident $self} == 1 and $ap_slots{ident $self}->{hybridization} >= 0) ) {
-		    $self->write_series_sample_seq_arr($extraction, $array, $channel);
+		    $seq_flag ? $self->write_series_sample_seq_arr($extraction, $array, 0) : $self->write_series_sample_seq_arr($extraction, $array, $channel);
 		    print "ok with write_series_sample_seq\n";
 		}
 		$self->write_sample_source($extraction, $array, $row, $channel);
@@ -475,8 +476,9 @@ sub write_sample_source {
     my $sampleFH = $sampleFH{ident $self};
     my $ch = $channel+1;
     my $sample_name = $self->get_sample_sourcename_row_safe($extraction, $array, $row);
+    $sample_name =~s/ extraction.*//;
     if (defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1) {
-	print $sampleFH "!Sample_source_name = ", $sample_name, " channel_$ch\n";
+	print $sampleFH "!Sample_source_name = ", $sample_name, "\n";
     } else {
 	print $sampleFH "!Sample_source_name_ch$ch = ", $sample_name, " channel_$ch\n";
     }
@@ -520,33 +522,35 @@ sub write_sample_description {
 	    my $str = "!Sample_description = ";
 	    my $info = get_dbfield_info($antibody);
 	    my $check = is_antibody($antibody);
+	    my $seq = (defined($ap_slots{ident $self}->{'seq'}) && $ap_slots{ident $self}->{'seq'} != -1) ? 1 : 0;
 	    if ( $check == 1 ) { #real antibody or antibody with Comment[IP]=0 column
 		my $double_check = have_comment_IP_0($antibody);
 		if ( $double_check == 0 ) {
 		    $is_chip_row = 1;
 		    if ($molecule_type{ident $self} =~ /rna/i) {
-			$str .= "channel ch$ch is RIP RNA; Antibody information listed below: "
+			$str .= $seq ? "RIP RNA;" : "channel ch$ch is RIP RNA;";
+                        $str .= " Antibody information listed below: ";
 		    }
 		    if ($molecule_type{ident $self} =~ /dna/i) {
-			$str .= "channel ch$ch is ChIP DNA; Antibody information listed below: ";
+			$str.= $seq ? "ChIP DNA;" : "channel ch$ch is ChIP DNA;";
+                        $str .= " Antibody information listed below: ";
 		    }
 		    $str .= write_dbfield_info($info, \@output_antibody_dbfields);
 		} else {
 		    if ($molecule_type{ident $self} =~ /dna/i) {
-			$str .= "channel ch$ch is input DNA;";
+                        $str.= $seq ? "input DNA" : "channel ch$ch is input DNA";
 		    }
 		    if ($molecule_type{ident $self} =~ /rna/i) {
-			$str .= "channel ch$ch is input RNA;";
+			$str.= $seq ? "input RNA" : "channel ch$ch is input RNA;";
 		    }
 		}
 	    }
 	    elsif ( $check == 0 ) { #negative control
-		$str .= "channel ch$ch is negative control for ChIP; Antibody information listed below: ";
+                unless($seq){$str .= "channel ch$ch is negative control for ChIP;";}
+                $str .= " Antibody information listed below: ";
 		$str .= write_dbfield_info($info, \@output_antibody_dbfields);
 	    }
-	    else {
-		$str .= "channel ch$ch is input DNA;" ;
-	    }
+            $str .=  $seq ? "input DNA" : "channel ch$ch is input DNA;" ;
 	    print $sampleFH $str, "\n";
 	}
     }
@@ -574,7 +578,9 @@ sub write_sample_extraction {
     my ($self, $row, $channel) = @_;
     my $sampleFH = $sampleFH{ident $self};
     my $ch = $channel+1;
-    print $sampleFH "!Sample_molecule_ch$ch = ", $self->get_molecule_type_row($row), "\n";
+    my $seq = defined($ap_slots{ident $self}->{'seq'}) && $ap_slots{ident $self}->{'seq'} != -1;
+    $seq ? print $sampleFH "!Sample_molecule = " : print $sampleFH "!Sample_molecule_ch$ch = "; 
+    print $sampleFH $self->get_molecule_type_row($row), "\n";
     my $final_slot;
     if ( defined($ap_slots{ident $self}->{'hybridization'}) and $ap_slots{ident $self}->{'hybridization'} != -1 ) {
 	if ( defined($ap_slots{ident $self}->{'labeling'}) ) {
@@ -583,14 +589,14 @@ sub write_sample_extraction {
 	    $final_slot = $ap_slots{ident $self}->{'hybridization'} - 1 ;
 	}
     }
-    elsif ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
+    elsif ( $seq ) {
 	$final_slot = $ap_slots{ident $self}->{'seq'}+1;
     }
     for (my $i=$first_extraction_slot{ident $self}; $i<$final_slot; $i++) {
 	my $ap = $denorm_slots{ident $self}->[$i]->[$row];
 	my $protocol_text = $self->get_protocol_text($ap);
 	$protocol_text =~ s/\n//g; #one line
-	if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {
+	if ( $seq ) {
 	    print $sampleFH "!Sample_extract_protocol = ", $protocol_text, "\n";
 	} else {
 	    print $sampleFH "!Sample_extract_protocol_ch$ch = ", $protocol_text, "\n";
@@ -811,7 +817,8 @@ sub write_raw_data {
     my $num_raw_data = 1;
     my @suffixs = ('.bz2', '.z', '.gz', '.zip', '.rar');
     for my $datum (@{$ap->get_output_data()}) {
-	if (($datum->get_heading() =~ /Array\s*Data\s*File/i) || ($datum->get_heading() =~ /Result\s*File/i)) {
+        my $heading = $datum->get_heading();
+	if ($heading =~ /Array\s*Data\s*File/i || $heading =~ /Result\s*File/i || $heading =~ /Result\s*Value/i) {
 	    my $path = $datum->get_value();
 	    next if $path =~ /^\s*\d*\s*$/;
 	    if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1 ) {#assume there is just one fastq file per channel
@@ -821,19 +828,23 @@ sub write_raw_data {
 		$type = 'FASTQ' if $file =~ /\.fastq\.?/i;
 		$type = 'WIG' if $file =~ /\.wig\.?/i;
 		$type = 'SAM' if ($path =~ /\.sam\.?/i);
+                my $chsum = `md5sum $file` if ($file=~/\.gz$/ && -e $file); # Do it only if file gzipped
+                $chsum =~ s/\s.*$//;
+                $chsum ||= "INSERT md5sum checksum HERE";
 		print $sampleFH "!Sample_raw_file_type_", "$num_raw_data = ", $type, "\n";
+                print $sampleFH "!Sample_raw_file_checksum_", "$num_raw_data = ", $chsum, "\n";
 		$num_raw_data += 1;
 	    }
-	    else {
-		my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
-		if (scalar grep {lc($suffix) eq $_} @suffixs) {
-		    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
+	    #else {
+#		my ($file, $dir, $suffix) = fileparse($path, qr/\.[^.]*/);
+#		if (scalar grep {lc($suffix) eq $_} @suffixs) {
+#		    print $sampleFH "!Sample_supplementary_file = ", $file, "\n";
 		    #print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
-		} else {
-		    print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
+#		} else {
+#		    print $sampleFH "!Sample_supplementary_file = ", $file . $suffix, "\n";
 		    #print $sampleFH "!Sample_supplementary_file = ", $path, "\n";
-		}
-	    }
+#		}
+#	    }
 	    push @raw_datafiles, $path;
 	}
     }
@@ -1246,7 +1257,7 @@ sub get_replicate_status {
     my $self = shift;
     my $str = '';
     $str .= "NUMBER OF REPLICATES: " . $self->get_number_of_replicates() . "; ";
-
+    print $str."\n";
     my $extraction_array = $self->get_extraction_array_status();
     my $dye_swap_status;
     unless ( $antibody{ident $self} ) { #no antibody info
@@ -1823,6 +1834,7 @@ sub set_extract_name_ap_slot {
 sub get_sample_name_safe {
     my ($self, $extraction, $array) = @_;
     my $row = $groups{ident $self}->{$extraction}->{$array}->[0];
+    #print "DUMPING array for group ".Dumper($groups{ident $self}->{$extraction}->{$array});
     return $self->get_sample_name_row_safe($extraction, $array, $row);
 }
 
@@ -1834,6 +1846,7 @@ sub get_sample_name_row_safe {
 	return $self->get_sample_name_row($extraction, $array, $row) . ' extraction' . $extrac . "_array" . $arry;
     }
     if ( defined($ap_slots{ident $self}->{'seq'}) and $ap_slots{ident $self}->{'seq'} != -1) {
+        print "This is a seq submission, DUMPING ROW".Dumper($row);
 	return $self->get_sample_name_row($extraction, $array, $row) . ' extraction' . $extrac . "_seq" . $arry;
     }    
 }
@@ -2403,7 +2416,7 @@ sub set_groups_seq {
     my $ap_slots = $ap_slots{ident $self};
     my ($nr_grp, $all_grp, $all_grp_by_seq);
     my ($last_extraction_slot, $method) = @{$self->group_by_this_ap_slot()};
-    print "group by this slot $last_extraction_slot using method $method\n";
+    print "group by this slot ".$last_extraction_slot." using method ".$method."\n";
     if ( $method eq 'protocol' ) {
 	($nr_grp, $all_grp) = $self->group_applied_protocols($denorm_slots->[$last_extraction_slot], 1);
     } else {
@@ -2472,11 +2485,11 @@ sub set_groups_seq {
 	    $combined_grp{$extract_grp}{$seq_grp} = [$row]; 
 	}
     }
-    print "final groups...\n";
-    print Dumper(%combined_grp);
+    #print "final groups...\n";
+    #print Dumper(%combined_grp);
     $groups{ident $self} = \%combined_grp;
-    print "duplicates...\n";
-    map {print $_, ":", $duplicate{$_}, "\n"} keys %duplicate;
+    #print "duplicates...\n";
+    #map {print $_, ":", $duplicate{$_}, "\n"} keys %duplicate;
     $dup{ident $self} = \%duplicate;
 }
 
@@ -2839,6 +2852,7 @@ sub _get_datum_by_info {
 	}
     }
     croak("can not find data that has fieldtext like $fieldtext in field $field in chado.data table") unless (scalar @data);
+    print "DATA: ".Dumper(@data);
     return \@data;
 }
 
